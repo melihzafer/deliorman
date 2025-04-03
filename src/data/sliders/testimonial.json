@@ -1,0 +1,67 @@
+{
+    "subtitle": "Testimonials",
+    "title": "What Our visitors say",
+    "description": "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam.",
+    "button": {
+        "link": "/about",
+        "label": "More about us"
+    },
+    "items": [
+        {
+            "title": "It was very delicious!",
+            "name": "Emma Newman",
+            "image": "/img/faces/1.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
+            "date": "02.02.21"
+        },
+        {
+            "title": "I'm delighted!",
+            "name": "Viktoria Freeman",
+            "image": "/img/faces/2.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
+            "date": "02.02.21"
+        },
+        {
+            "title": "I will visit again.",
+            "name": "Paul Trueman",
+            "image": "/img/faces/3.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
+            "date": "02.02.21"
+        },
+        {
+            "title": "The best restaurant!",
+            "name": "Oscar Oldman",
+            "image": "/img/faces/4.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
+            "date": "02.02.21"
+        },
+        {
+            "title": "It was very delicious!",
+            "name": "Emma Newman",
+            "image": "/img/faces/1.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
+            "date": "02.02.21"
+        },
+        {
+            "title": "I'm delighted!",
+            "name": "Viktoria Freeman",
+            "image": "/img/faces/2.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
+            "date": "02.02.21"
+        },
+        {
+            "title": "I will visit again.",
+            "name": "Paul Trueman",
+            "image": "/img/faces/3.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
+            "date": "02.02.21"
+        },
+        {
+            "title": "The best restaurant!",
+            "name": "Oscar Oldman",
+            "image": "/img/faces/4.jpg",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
+            "date": "02.02.21"
+        }
+    ]
+}

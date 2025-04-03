@@ -1,0 +1,17 @@
+{
+    "subtitle": "Good offer",
+    "title": "Pay for one <br>Get two!",
+    "description": "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita.",
+    "image": {
+        "url": "/img/burger.png",
+        "alt": "burger"
+    },
+    "button1": {
+        "link": "https://www.apple.com/ua/app-store/",
+        "label": "Get now"
+    },
+    "button2": {
+        "link": "https://play.google.com/store",
+        "label": "Reservation"
+    }
+}

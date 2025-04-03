@@ -1,0 +1,22 @@
+$pf: var(--font-playfair_display), serif; // primary font
+$sf: var(--font-josefin_sans), sans-serif; // secondary font
+
+$ac: rgba(243,156,18 ,1); // accent color
+$auxc1: rgba(231,76,60 ,1); //auxiliary color 1
+$auxc2: rgba(46,204,113 ,1); //auxiliary color 2
+$auxc3: rgba(52,152,219 ,1); //auxiliary color 3
+$dl1: rgba(26,47,51 ,1); // dark level 1
+$dl1t: rgba(26,47,51 ,.7); // transparent dark level 1
+$dl2: rgba(4,25,29 ,1); // dark level 2
+$wl1: rgba(242,246,247 ,1); // white level 1
+$wl1t: rgba(242,246,247 ,.3); // transparent white level 1
+$wl2: rgba(229,235,239 ,1); // white level 2
+
+
+$bg: rgba(252,252,252 ,1); // bg color
+$card: rgba(255,255,255 ,1); // card color
+
+
+$tr-sm: 0.3s ease-in-out; // short transition
+$tr-md: 0.4s ease-in-out; // medium transition
+$tr-lg: 0.6s ease-in-out; // long transition

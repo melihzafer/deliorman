@@ -1,0 +1,9 @@
+{
+    "title": "Most <span>popular</span> dishes",
+    "description": "Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.",
+    "button": {
+        "link": "/menu",
+        "icon": "/img/ui/icons/menu.svg",
+        "label": "Full menu"
+    }
+}

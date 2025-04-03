@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "value": "200",
+            "value_after": "+",
+            "label": "Visitors daily"
+        },
+        {
+            "value": "400",
+            "value_after": "+",
+            "label": "Deliveries monthly"
+        },
+        {
+            "value": "100",
+            "value_after": "%",
+            "label": "Positive feedback"
+        },
+        {
+            "value": "40",
+            "value_after": "+",
+            "label": "Awards and honors"
+        }
+    ]
+}

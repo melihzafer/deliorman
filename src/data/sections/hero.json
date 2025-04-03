@@ -1,0 +1,20 @@
+{
+    "image": {
+       "url": "/img/banners/banner-1.jpg",
+       "alt": "cover"
+    },
+    "video": {
+        "url": "https://bslthemes.com/mp4/tastycs/video-banner.mp4"
+     },
+    "subtitle": "Hello, new friend!",
+    "title": "Welcome Back <br>to Tastycs",
+    "description": "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita.",
+    "button1": {
+        "link": "/contact",
+        "label": "Reservation"
+    },
+    "button2": {
+        "link": "/menu",
+        "label": "Open Menu"
+    }
+}

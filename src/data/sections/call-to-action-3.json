@@ -1,0 +1,14 @@
+{
+    "title": "Get in touch!",
+    "subtitle": "Contact",
+    "description": "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita.",
+    "button": {
+        "label": "Reservation",
+        "link": "/contact"
+    },
+    "map": {
+        "long": "",
+        "lat": "",
+        "zoom": ""
+    }
+}

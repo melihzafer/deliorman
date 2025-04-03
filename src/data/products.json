@@ -1,0 +1,172 @@
+{
+    "collection": {
+        "special": [
+            {
+                "image": "/img/menu/3.jpg",
+                "title": "Сasserole",
+                "old_price": "36.00",
+                "price": "6.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/4.jpg",
+                "title": "Boiled crayfish",
+                "old_price": "36.00",
+                "price": "12.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/6.jpg",
+                "title": "Pizza margherita",
+                "old_price": "16.00",
+                "price": "7.00",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/5.jpg",
+                "title": "Saumon Gravlax",
+                "old_price": "10.00",
+                "price": "2.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/2.jpg",
+                "title": "Chevrefrit au miel",
+                "old_price": "10.00",
+                "price": "2.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            }
+        ],
+        "popular": [
+            {
+                "image": "/img/menu/6.jpg",
+                "title": "Pizza margherita",
+                "old_price": "16.00",
+                "price": "7.00",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/5.jpg",
+                "title": "Saumon Gravlax",
+                "old_price": "10.00",
+                "price": "2.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/2.jpg",
+                "title": "Chevrefrit au miel",
+                "old_price": "10.00",
+                "price": "2.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/3.jpg",
+                "title": "Сasserole",
+                "old_price": "36.00",
+                "price": "6.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/4.jpg",
+                "title": "Boiled crayfish",
+                "old_price": "36.00",
+                "price": "12.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            }
+        ],
+        "bestseller": [
+            {
+                "image": "/img/menu/4.jpg",
+                "title": "Boiled crayfish",
+                "old_price": "36.00",
+                "price": "12.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/6.jpg",
+                "title": "Pizza margherita",
+                "old_price": "16.00",
+                "price": "7.00",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/3.jpg",
+                "title": "Сasserole",
+                "old_price": "36.00",
+                "price": "6.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/5.jpg",
+                "title": "Saumon Gravlax",
+                "old_price": "10.00",
+                "price": "2.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            },
+            {
+                "image": "/img/menu/2.jpg",
+                "title": "Chevrefrit au miel",
+                "old_price": "10.00",
+                "price": "2.99",
+                "currency": "$",
+                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+            }
+        ]
+    },
+    "items": [
+        {
+            "image": "/img/menu/3.jpg",
+            "title": "Сasserole",
+            "old_price": "36.00",
+            "price": "6.99",
+            "currency": "$",
+            "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+        },
+        {
+            "image": "/img/menu/4.jpg",
+            "title": "Boiled crayfish",
+            "old_price": "36.00",
+            "price": "12.99",
+            "currency": "$",
+            "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+        },
+        {
+            "image": "/img/menu/6.jpg",
+            "title": "Pizza margherita",
+            "old_price": "16.00",
+            "price": "7.00",
+            "currency": "$",
+            "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+        },
+        {
+            "image": "/img/menu/5.jpg",
+            "title": "Saumon Gravlax",
+            "old_price": "10.00",
+            "price": "2.99",
+            "currency": "$",
+            "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+        },
+        {
+            "image": "/img/menu/2.jpg",
+            "title": "Chevrefrit au miel",
+            "old_price": "10.00",
+            "price": "2.99",
+            "currency": "$",
+            "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+        }
+    ]
+}

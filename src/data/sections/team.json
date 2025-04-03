@@ -1,0 +1,88 @@
+{
+    "title": "They are ready to treat you",
+    "subtitle": "Team",
+    "description": "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam.",
+    "items": [
+        {
+            "image": "/img/faces/c1.jpg",
+            "name": "Paul Trueman",
+            "role": "Master Chef",
+            "social": [
+                {
+                    "icon": "fab fa-facebook-f",
+                    "link": "https://facebook.com",
+                    "title": "Facebook"
+                },
+                {
+                    "icon": "fab fa-instagram",
+                    "link": "https://instagram.com",
+                    "title": "Instagram"
+                },
+                {
+                    "icon": "fab fa-twitter",
+                    "link": "https://twitter.com",
+                    "title": "Twitter"
+                },
+                {
+                    "icon": "fab fa-youtube",
+                    "link": "https://youtube.com",
+                    "title": "Youtube"
+                }
+            ]
+        },
+        {
+            "image": "/img/faces/c2.jpg",
+            "name": "Oscar Oldman",
+            "role": "Master Chef",
+            "social": [
+                {
+                    "icon": "fab fa-facebook-f",
+                    "link": "https://facebook.com",
+                    "title": "Facebook"
+                },
+                {
+                    "icon": "fab fa-instagram",
+                    "link": "https://instagram.com",
+                    "title": "Instagram"
+                },
+                {
+                    "icon": "fab fa-twitter",
+                    "link": "https://twitter.com",
+                    "title": "Twitter"
+                },
+                {
+                    "icon": "fab fa-youtube",
+                    "link": "https://youtube.com",
+                    "title": "Youtube"
+                }
+            ]
+        },
+        {
+            "image": "/img/faces/c3.jpg",
+            "name": "Emma Newman",
+            "role": "Master Chef",
+            "social": [
+                {
+                    "icon": "fab fa-facebook-f",
+                    "link": "https://facebook.com",
+                    "title": "Facebook"
+                },
+                {
+                    "icon": "fab fa-instagram",
+                    "link": "https://instagram.com",
+                    "title": "Instagram"
+                },
+                {
+                    "icon": "fab fa-twitter",
+                    "link": "https://twitter.com",
+                    "title": "Twitter"
+                },
+                {
+                    "icon": "fab fa-youtube",
+                    "link": "https://youtube.com",
+                    "title": "Youtube"
+                }
+            ]
+        }
+    ]
+}

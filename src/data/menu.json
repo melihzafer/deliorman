@@ -1,0 +1,117 @@
+{
+    "categories": [
+        {
+            "name": "Пици",
+            "slug": "pizza",
+            "subtitle": "Меню",
+            "description": "Нашите вкусни и ароматни пици, приготвени с най-добрите съставки.",
+            "items": [
+                {
+                    "image": "/assets/img/pizza.jpg",
+                    "title": "Делиорман",
+                    "text": "Доматен сос, шунка, мариновани гъби, кашкавал, луканка, сирене, кисели краставички, чеснова паста, босилек."
+                },
+                {
+                    "image": "/assets/img/pizza.jpg",
+                    "title": "Бонджорно",
+                    "text": "Доматен сос, кашкавал, сирене."
+                },
+                {
+                    "image": "/assets/img/pizza.jpg",
+                    "title": "Маргарита",
+                    "text": "Доматен сос, кашкавал, босилек."
+                },
+                {
+                    "image": "/assets/img/pizza.jpg",
+                    "title": "Компира",
+                    "text": "Доматен сос, шунка, пресни гъби, кашкавал."
+                },
+                {
+                    "image": "/assets/img/pizza.jpg",
+                    "title": "Карлеона",
+                    "text": "Доматен сос, шунка, кашкавал, луканка, кисели краставички."
+                }
+            ]
+        },
+        {
+            "name": "Скара",
+            "slug": "grill",
+            "subtitle": "Меню",
+            "description": "Прясно изпечени меса на скара, приготвени с внимание и умение.",
+            "items": [
+                {
+                    "image": "/assets/img/kyufte.jpg",
+                    "title": "Кюфте"
+                },
+                {
+                    "image": "/assets/img/kebapche.jpg",
+                    "title": "Кебапче"
+                },
+                {
+                    "image": "/assets/img/shish.jpg",
+                    "title": "Пилешки шиш"
+                },
+                {
+                    "image": "/assets/img/shish.jpg",
+                    "title": "Свински шиш"
+                },
+                {
+                    "image": "/assets/img/parjola.jpg",
+                    "title": "Пилешка пържола бут"
+                },
+                {
+                    "image": "/assets/img/parjola.jpg",
+                    "title": "Свинска пържола"
+                }
+            ]
+        },
+        {
+            "name": "Салати",
+            "slug": "salads",
+            "subtitle": "Меню",
+            "description": "Свежи салати, приготвени от най-добрите продукти за вас.",
+            "items": [
+                {
+                    "image": "/assets/img/menu/greek-salad.jpg",
+                    "title": "Зелена салата с риба тон",
+                    "text": "Маруля, краставици, маслини, риба тон, зехтин."
+                },
+                {
+                    "image": "/assets/img/menu/spinach-salad.jpg",
+                    "title": "Редена салата",
+                    "text": "Домати, краставици, печена чушка, сирене, маслини, лук."
+                },
+                {
+                    "image": "/assets/img/menu/spinach-salad.jpg",
+                    "title": "Зеле с моркови",
+                    "text": "Зеле, моркови."
+                },
+                {
+                    "image": "/assets/img/menu/spinach-salad.jpg",
+                    "title": "Салата шопска",
+                    "text": "Домати, краставици, пипер, лук, сирене, маслини."
+                }
+            ]
+        },
+        {
+            "name": "Сандвичи",
+            "slug": "sandwiches",
+            "subtitle": "Меню",
+            "description": "Вкусни сандвичи, подходящи за всяко време на деня.",
+            "items": [
+                {
+                    "image": "/assets/img/menu/mincemeat_sandwich.webp",
+                    "title": "Сандвич с кайма"
+                },
+                {
+                    "image": "/assets/img/menu/sandwich_ham_cheese.webp",
+                    "title": "Сандвич с шунка и кашкавал"
+                },
+                {
+                    "image": "/assets/img/menu/sandwich_egg_cheese.webp",
+                    "title": "Сандвич с яйце и кашкавал"
+                }
+            ]
+        }
+    ]
+}

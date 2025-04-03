@@ -1,0 +1,225 @@
+/**********************************
+
+menu
+
+***********************************/
+/*-------------------------
+default card
+-------------------------*/
+.tst-menu-book-item {
+  background-color: $card;
+  box-shadow: 0 5px 10px 0 rgba(26,47,51,0.15);
+  border-radius: 5px;
+  margin-bottom: 60px;
+
+  & .tst-btn.tst-cart-btn svg {
+    width: 22px;
+  }
+
+  & .tst-item-cover-frame {
+    display: block;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 65%;
+
+    & img {
+      border-radius: 5px 5px 0 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: $tr-md;
+    }
+
+    &:focus {
+      outline: inherit;
+    }
+
+    &:hover {
+      & img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  & .tst-menu-book-descr {
+    padding: 30px;
+
+    & .tst-menu-book-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      & .tst-menu-book-price {
+        & .tst-price {
+          font-size: 22px;
+          font-weight: 600;
+          margin-bottom: 0;
+
+          & .tst-symbol {
+            margin-right: 5px;
+            display: inline-block;
+            font-weight: 400;
+            font-size: 12px;
+            opacity: 0.6;
+          }
+
+          &.tst-old-price {
+            font-size: 17px;
+            font-weight: 300;
+            opacity: 0.6;
+            margin-bottom: 5px;
+
+            & .tst-symbol {
+              font-size: 6px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.tst-mbi-2 {
+    display: flex;
+    justify-content: space-between;
+
+    & .tst-btn.tst-cart-btn svg {
+      width: 15px;
+    }
+
+    & .tst-item-cover-frame {
+      width: 30%;
+      padding-bottom: 1%;
+      border-radius: 5px 0 0 5px;
+
+      & img {
+        border-radius: 5px 0 0 5px;
+      }
+    }
+
+    & .tst-menu-book-descr {
+      padding: 30px;
+      width: 70%;
+    }
+  }
+  /*-------------------------
+  small card
+  -------------------------*/
+  &.tst-mbi-3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: none;
+    background-color: transparent;
+    margin-bottom: 60px;
+
+    & .tst-btn.tst-cart-btn svg {
+      width: 15px;
+    }
+
+    & .tst-item-cover-frame {
+      height: 90px;
+      width: 130px;
+      border-radius: 5px;
+      padding-bottom: 0;
+      box-shadow: 0 5px 10px 0 rgba(26,47,51,0.15);
+    }
+
+    & .tst-menu-book-descr {
+      width: calc(100% - 130px);
+      padding: 0 0 0 30px;
+      display: flex;
+      justify-content: space-between;
+
+      & .tst-spacer-sm {
+        display: none;
+      }
+
+      & .tst-menu-book-bottom {
+        width: 140px;
+        flex-direction: column;
+        justify-content: space-around;
+
+        & .tst-menu-book-price {
+          & .tst-price {
+            font-size: 18px;
+          }
+        }
+
+        & .tst-cart-btn {
+          border-radius: 50%;
+          padding: 0;
+          height: 35px;
+          width: 35px;
+
+          & svg {
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.swiper-menu-nav {
+  text-align: center;
+  position: static;
+  width: auto !important;
+  left: auto !important;
+  margin: 0 0 60px;
+
+  & .swiper-pagination-bullet {
+    opacity: 1;
+    position: relative;
+    padding: 0 30px;
+    background-color: transparent !important;
+    display: inline-block;
+    height: 50px;
+    width: auto;
+    color: $dl1 !important;
+    line-height: 54px;
+    cursor: pointer;
+    font-family: $sf;
+    transform: scale(1) !important;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    border: none !important;
+    transition: $tr-sm;
+    border-radius: 5px;
+    width: auto;
+    &.swiper-pagination-bullet-active {
+      transform: scale(1) !important;
+      border: none !important;
+      color: $dl1 !important;
+      background-color: $ac !important;
+    }
+  }
+}
+
+.swiper-menu {
+  overflow: visible !important;
+
+  & .swiper-slide {
+    background-color: $bg;
+  }
+}
+@media (max-width: 500px) {
+  .tst-menu-book-item {
+    &.tst-mbi-3 {
+      & .tst-item-cover-frame {
+        display: none;
+      }
+
+      & .tst-menu-book-descr {
+        width: 100%;
+        padding: 0;
+      }
+    }
+  }
+}

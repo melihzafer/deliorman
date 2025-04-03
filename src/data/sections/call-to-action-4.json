@@ -1,0 +1,17 @@
+{
+    "subtitle": "Reservation",
+    "title": "This evening <br>will be great!",
+    "description": "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita.",
+    "image": {
+        "url": "/img/reserved.png",
+        "alt": "burger"
+    },
+    "button1": {
+        "link": "/menu",
+        "label": "Reservation"
+    },
+    "button2": {
+        "link": "/contact",
+        "label": "Get in touch"
+    }
+}

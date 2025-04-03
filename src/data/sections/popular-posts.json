@@ -1,0 +1,17 @@
+{
+    "title": "Popular publications",
+    "subtitle": "Newsletter",
+    "description": "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam.",
+    "button": {
+        "link": "/blog",
+        "label": "All publications",
+        "info": "Read the news of our restaurant, recipes for delicious fears, tips for your home kitchen in our blog!"
+    },
+    "featured": [
+        "beet-and-burrata-salad-with-fried-bread",
+        "creamy-kale-pasta",
+        "incredible-vegan-mac-and-cheese",
+        "new-breakfast-menu-renaissance",
+        "the-office-business-lunch"
+    ]
+}

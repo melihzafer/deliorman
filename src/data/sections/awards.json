@@ -1,0 +1,20 @@
+{
+    "items": [
+        {
+            "icon": "/img/awards/a1.svg",
+            "title": "HTFG 2020"
+        },
+        {
+            "icon": "/img/awards/a2.svg",
+            "title": "HTF 2018"
+        },
+        {
+            "icon": "/img/awards/a3.svg",
+            "title": "GFA 2019"
+        },
+        {
+            "icon": "/img/awards/a4.svg",
+            "title": "LUA 2021"
+        }
+    ]
+}

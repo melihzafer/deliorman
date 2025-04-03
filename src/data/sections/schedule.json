@@ -1,0 +1,15 @@
+{
+	"image": { "url": "/img/menu/4.jpg", "alt": "cover" },
+	"subtitle": "За нас",
+	"title": "Работно време",
+	"description": "Вкусна храна и уютна атмосфера – всеки ден за вас!",
+	"button1": { "link": "/menu", "label": "Резервация" },
+	"button2": { "link": "/contact", "label": "Свържете се с нас" },
+	"items": [
+		{
+			"label": "Всеки ден",
+			"from": { "hours": "07", "minutes": "00" },
+			"to": { "hours": "12", "minutes": "00" }
+		}
+	]
+}

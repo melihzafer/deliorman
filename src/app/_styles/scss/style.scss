@@ -1,0 +1,67 @@
+/* -------------------------------------------
+
+Name: 		Tastycs
+Version:  1.1
+Author:		Nazar Miller (millerDigitalDesign)
+Portfolio:  https://themeforest.net/user/millerdigitaldesign/portfolio?ref=MillerDigitalDesign
+
+p.s. I am available for Freelance hire (UI design, web development). mail: miller.themes@gmail.com
+
+------------------------------------------- */
+/*--------------------------------------------
+
+1. common
+      - fonts
+      - scrollbar
+      - typography
+      - buttons
+      - forms
+      - spaces
+2. frame
+      - preloader
+      - marcup
+      - menu
+      - scroll hint
+      - fade scroll object
+3. content
+      - banner
+      - call to action
+      - about
+      - icon box
+      - banner sm
+      - counters
+      - team
+      - testimonials
+      - blog
+      - comments
+      - footer
+      - popup
+      - breadcrumbs
+      - timeline (update 1.1)
+      - new menu (update 1.1)
+4. menu
+      - default card
+      - small card
+4. shop
+      - minicart
+      - product card
+      - sidebar
+      - cart
+      - checkout
+5. custom
+      - swiper
+      - datepicker
+      - nice select
+      - fancybox
+      - mapbox
+
+
+--------------------------------------------*/
+@import 'variables';
+@import 'transitions';
+@import 'common';
+@import 'frame';
+@import 'content';
+@import 'menu';
+@import 'shop';
+@import 'custom';
