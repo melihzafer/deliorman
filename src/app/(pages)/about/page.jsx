@@ -19,28 +19,33 @@ import CallToActionFourSection from "@components/sections/CallToActionFour";
 import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
 
-const TestimonialSlider = dynamic( () => import("@components/sliders/Testimonial"), { ssr: false } );
+const TestimonialSlider = dynamic(() => import("@components/sliders/Testimonial"), { ssr: false });
 
 export const metadata = {
   title: {
-		default: "About",
-	},
+    default: "За нас",
+  },
   description: AppData.settings.siteDescription,
-}
+};
 
 async function About() {
   const posts = await getAllPosts();
 
   const Content = {
-    "subtitle": "About us",
-    "title": "We invite you to<br> visit our restaurant",
-    "description": "Assumenda possimus eaque illo iste, autem. Porro eveniet, autem ipsam vitae amet repellat repudiandae tenetur, quod corrupti consectetur cum? Repudiandae dignissimos fugiat sit nam. Tempore aspernatur quae repudiandae dolorem, beatae dolorum, praesentium itaque et quam quaerat. Cumque, consequatur!"
-  }
+    subtitle: "За нас",
+    title: "Каним ви да<br> посетите нашия ресторант",
+    description:
+      "Добре дошли в нашия уютен ресторант, където традицията се среща с модерността. Вече повече от няколко години ние сервираме автентични български ястия, приготвени с любов и внимание към детайла. Нашият екип от опитни готвачи използва само най-свежите съставки и традиционни рецепти, предавани от поколение на поколение. Тук ще откриете топла атмосфера, отлично обслужване и незабравими вкусове, които ще ви пренесат в сърцето на българската кулинарна традиция.",
+  };
 
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner pageTitle={"Story of our restaurant"} description={"Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."} breadTitle={"About us"} />
+        <PageBanner
+          pageTitle={"Историята на нашия ресторант"}
+          description={"Открийте нашата страст към българската кухня и традиции"}
+          breadTitle={"За нас"}
+        />
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
@@ -50,22 +55,31 @@ async function About() {
 
               <div className="row">
                 <div className="col-lg-12">
-
                   {/* about text */}
                   <div className="tst-mb-60 text-center">
-                    <div className="tst-suptitle tst-suptitle-center tst-mb-15" dangerouslySetInnerHTML={{__html : Content.subtitle}} /> 
-                    <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : Content.title}} />
-                    <p className="tst-text tst-mb-30" dangerouslySetInnerHTML={{__html : Content.description}} />
+                    <div
+                      className="tst-suptitle tst-suptitle-center tst-mb-15"
+                      dangerouslySetInnerHTML={{ __html: Content.subtitle }}
+                    />
+                    <h3 className="tst-mb-30" dangerouslySetInnerHTML={{ __html: Content.title }} />
+                    <p className="tst-text tst-mb-30" dangerouslySetInnerHTML={{ __html: Content.description }} />
 
                     {AppData.social.map((item, key) => (
-                    <a href={item.link} target="_blank" title={item.title} className="tst-icon-link" key={`about-social-item-${key}`}><i className={item.icon}></i></a>
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        title={item.title}
+                        className="tst-icon-link"
+                        key={`about-social-item-${key}`}
+                      >
+                        <i className={item.icon}></i>
+                      </a>
                     ))}
                   </div>
                   {/* about text end */}
-
                 </div>
               </div>
-              <AwardsSection />
+              {/* <AwardsSection /> Awards will be added soon!! */}
               <PromoVideoSection />
               <Divider />
               <FeaturesSection />
@@ -84,7 +98,7 @@ async function About() {
             <div className="container tst-p-60-60">
               <TestimonialSlider />
               <Divider onlyBottom={0} />
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<div>Зареждане...</div>}>
                 <LatestPostsSection posts={posts} />
               </Suspense>
               <Divider onlyBottom={0} />
@@ -95,7 +109,7 @@ async function About() {
       </div>
     </>
   );
-};
+}
 export default About;
 
 async function getAllPosts() {

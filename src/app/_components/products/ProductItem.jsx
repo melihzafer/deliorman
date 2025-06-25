@@ -13,7 +13,9 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
 
   useEffect(() => {
     const cartNumberEl = document.querySelector('.tst-cart-number');
-    cartNumberEl.innerHTML = cartTotal;
+    if (cartNumberEl) {
+      cartNumberEl.innerHTML = cartTotal;
+    }
   }, [cartTotal]);
 
   const addToCart = (e) => {
@@ -21,12 +23,16 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
     const cartNumberEl = document.querySelector('.tst-cart-number');
     setCartTotal(cartTotal + quantity);
 
-    cartNumberEl.classList.add('tst-added');
-    e.currentTarget.classList.add('tst-added');
-    
-    setTimeout(() => {
+    if (cartNumberEl) {
+      cartNumberEl.classList.add('tst-added');
+      setTimeout(() => {
         cartNumberEl.classList.remove('tst-added');
-    }, 600);
+      }, 600);
+    }
+    
+    if (e.currentTarget) {
+      e.currentTarget.classList.add('tst-added');
+    }
   }
 
   const [img, setImg] = useState(false);

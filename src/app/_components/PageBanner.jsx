@@ -69,7 +69,7 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
                 <h1 className="tst-white-2 tst-text-shadow tst-mb-30" dangerouslySetInnerHTML={{__html : pageTitle}} />
                 <div className="tst-text tst-text-shadow tst-text-lg tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : description}} />
                 <ul className="tst-breadcrumbs">
-                    <li><Link href="/" className="tst-anima-link">Home</Link></li>
+                    <li><Link href="/" className="tst-anima-link">Начало</Link></li>
                     {asPath.indexOf('/blog/') != -1 && asPath.indexOf('/blog/page/') == -1 &&
                     <li>
                       <Link href="/blog">Blog</Link>

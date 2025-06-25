@@ -11,7 +11,7 @@ import ContactFormSection from "@components/sections/ContactForm";
 
 export const metadata = {
     title: {
-        default: "Contact",
+        default: "Контакти",
     },
     description: AppData.settings.siteDescription,
 }
@@ -20,7 +20,7 @@ const Contact = () => {
   return (
     <>
         <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-            <PageBanner pageTitle={"Get in touch"} description={"Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."} breadTitle={"Contact"} showMap={1} />
+            <PageBanner pageTitle={"Свържете се с нас"} description={"Ресторант Делиорман ви очаква с топло гостоприемство <br>и незабравими кулинарни изживявания в село Самуил."} breadTitle={"Контакти"} showMap={1} />
         </div>
         <div id="tst-dynamic-content" className="tst-dynamic-content">
             <div className="tst-content-frame">

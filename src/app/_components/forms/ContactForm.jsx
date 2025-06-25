@@ -72,7 +72,7 @@ const ContactForm = () => {
                 <div className="col-lg-6">
                     <input 
                         type="text" 
-                        placeholder="First Name"
+                        placeholder="Име"
                         name="first_name" 
                         required="required" 
                         onChange={handleChange}
@@ -83,7 +83,7 @@ const ContactForm = () => {
                 <div className="col-lg-6">
                     <input 
                         type="text" 
-                        placeholder="Last Name"
+                        placeholder="Фамилия"
                         name="last_name" 
                         required="required" 
                         onChange={handleChange}
@@ -94,7 +94,7 @@ const ContactForm = () => {
                 <div className="col-lg-6">
                     <input 
                         type="tel" 
-                        placeholder="Phone"
+                        placeholder="Телефон"
                         name="phone" 
                         required="required" 
                         onChange={handleChange}
@@ -105,7 +105,7 @@ const ContactForm = () => {
                 <div className="col-lg-6">
                     <input 
                         type="email" 
-                        placeholder="Email"
+                        placeholder="Имейл"
                         name="email" 
                         required="required" 
                         onChange={handleChange}
@@ -115,7 +115,7 @@ const ContactForm = () => {
                 </div>
                 <div className="col-lg-12">
                     <textarea 
-                        placeholder="Message"
+                        placeholder="Съобщение"
                         name="message" 
                         required="required"
                         onChange={handleChange}
@@ -125,7 +125,7 @@ const ContactForm = () => {
                     />
                 </div>
             </div>
-            <button className="tst-btn" type="submit" name="button">Send a message</button>
+            <button className="tst-btn" type="submit" name="button">Изпрати съобщение</button>
 
             <div id="contactFormStatus" className="tst-form-status"></div>
         </form>

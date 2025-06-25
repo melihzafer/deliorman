@@ -1,0 +1,29 @@
+.tst-menu nav ul li a,
+.tst-menu nav ul li ul li a {
+  color: #7e2010 !important;
+}
+
+.tst-menu nav ul li a:hover,
+.tst-menu nav ul li ul li a:hover {
+  color: #7e2010 !important;
+}
+
+.tst-btn,
+.tst-res-btn,
+.tst-menu-right a,
+.tst-cart,
+a.tst-btn {
+  color: #7e2010 !important;
+  border-color: #7e2010 !important;
+}
+/* a {
+  color: #7e2010;
+}
+a:hover {
+  color: #a52815;
+} */
+.tst-menu nav ul li.current-menu-item > a,
+.tst-menu nav ul li.tst-active > a {
+  font-weight: bold;
+  color: #7e2010 !important;
+}
