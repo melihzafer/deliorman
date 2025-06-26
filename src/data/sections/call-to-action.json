@@ -10,7 +10,7 @@
 	},
 	"button2": {
 		"icon": "fas fa-phone",
-		"link": "/contact",
-		"label": "Свържете се с нас"
+		"link": "tel:+359894766273",
+		"label": "Обадете се сега"
 	}
 }

@@ -47,21 +47,21 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
         </a>
         <div className="tst-menu-book-descr">
           <div className="tst-menu-book-name">
-            <h5 className="tst-mb-15">{item.title}</h5>
+            <h6 className="tst-mb-15">{item.title}</h6>
             <div className="tst-text">{item.short}</div>
             <div className="tst-spacer-sm"></div>
           </div>
           <div className="tst-menu-book-bottom">
             <div className="tst-menu-book-price">
               <del><span className="tst-price tst-old-price"><bdi><span className="tst-symbol">{item.currency}</span>{item.old_price}</bdi></span></del>
-              <div className="tst-price"><span className="tst-symbol">{item.currency}</span>{item.price}</div>
+              <div className="tst-price">{item.weight}</div>
             </div>
-            <a href="#." className="tst-btn tst-cart-btn" title="add to cart" onClick={(e) => addToCart(e) }>
+            {/* <a href="#." className="tst-btn tst-cart-btn" title="add to cart" onClick={(e) => addToCart(e) }>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
                 <path
                   d="M87.7,33.1l-0.8-10.8C86,10.4,76,1,64,1s-22.1,9.4-22.9,21.3l-0.8,10.8H28.8c-4.7,0-8.6,3.7-9,8.4l-5.4,75.9c0,0,0,0,0,0 c-0.2,2.5,0.7,5,2.4,6.8s4.1,2.9,6.6,2.9h81.3c2.5,0,4.9-1,6.6-2.9c1.7-1.8,2.6-4.3,2.4-6.8l-5.4-75.2c-0.4-5.1-4.6-9-9.7-9H87.7z M47.1,22.7C47.7,13.9,55.1,7,64,7s16.3,6.9,16.9,15.7l0.7,10.4H46.3L47.1,22.7z M102.3,42.6l5.4,75.2c0.1,0.8-0.2,1.6-0.8,2.3 c-0.6,0.6-1.4,1-2.2,1H23.4c-0.8,0-1.6-0.3-2.2-1s-0.9-1.4-0.8-2.3h0l5.4-75.9c0.1-1.6,1.4-2.8,3-2.8h11.1l-0.6,8 c-0.1,1.7,1.1,3.1,2.8,3.2c0.1,0,0.1,0,0.2,0c1.6,0,2.9-1.2,3-2.8l0.6-8.4h36.2l0.6,8.4c0.1,1.7,1.5,2.9,3.2,2.8 c1.7-0.1,2.9-1.5,2.8-3.2l-0.6-8h10.5C100.5,39.1,102.1,40.6,102.3,42.6z" />
               </svg>
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

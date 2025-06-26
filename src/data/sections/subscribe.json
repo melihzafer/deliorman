@@ -1,9 +1,9 @@
 {
     "image": {
         "url": "/img/menu/1.jpg",
-        "alt": "cover"
+        "alt": "заглавна снимка"
     },
-    "title": "Subscribe our newsletter",
-    "subtitle": "Newsletter",
-    "description": "Rolorem, beatae dolorum, praesentium itaque et quam quaerat."
+    "title": "Абонирайте се за нашия бюлетин",
+    "subtitle": "Бюлетин",
+    "description": "Получавайте най-новите рецепти, съвети и новини от ресторант Делиорман директно в пощенската си кутия."
 }

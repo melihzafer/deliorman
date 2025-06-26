@@ -2,29 +2,29 @@
     "incredible-vegan-mac-and-cheese": [
         {
             "avatar": "/img/faces/1.jpg",
-            "name": "Emma Newman",
-            "date": "02.02.21",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?",
+            "name": "Емилия Николова",
+            "date": "15.03.24",
+            "text": "Страхотна рецепта! Опитах я у дома и излезе удивително вкусно. Благодаря за споделената рецепта, ще я правя отново!",
             "child": [
                 {
                     "avatar": "/img/faces/2.jpg",
-                    "name": "Viktoria Freeman",
-                    "date": "02.02.21",
-                    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?"
+                    "name": "Виктория Фримън",
+                    "date": "16.03.24",
+                    "text": "Аз също опитах тази рецепта. Много е вкусно и лесно за приготвяне. Препоръчвам на всички вегетарианци!"
                 },
                 {
                     "avatar": "/img/faces/3.jpg",
-                    "name": "Paul Trueman",
-                    "date": "02.02.21",
-                    "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?"
+                    "name": "Павел Тръничев",
+                    "date": "17.03.24",
+                    "text": "Отлична алтернатива на класическото мак и сирене. Децата много харесаха и не разбраха, че е веган вариант."
                 }
             ]
         },
         {
             "avatar": "/img/faces/4.jpg",
-            "name": "Oscar Oldman",
-            "date": "03.02.21",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?",
+            "name": "Оскар Олдмън",
+            "date": "18.03.24",
+            "text": "Като готвач с дългогодишен опит, мога да кажа, че тази рецепта е изключително добре обмислена. Браво за споделянето!",
             "child": []
         }
     ],

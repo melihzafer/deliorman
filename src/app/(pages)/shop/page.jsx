@@ -1,5 +1,4 @@
 import React from "react";
-import dynamic from "next/dynamic";
 
 import AppData from "@data/app.json";
 import ScrollHint from "@layouts/scroll-hint/Index";
@@ -10,8 +9,7 @@ import Products from '@data/products';
 import PageBanner from "@components/PageBanner";
 import SubscribeSection from "@components/sections/Subscribe";
 import TeamSection from "@components/sections/Team";
-
-const ProductsSlider = dynamic( () => import("@components/sliders/Products"), { ssr: false } );
+import ProductsSlider from "@components/sliders/Products";
 
 export const metadata = {
   title: {

@@ -29,7 +29,7 @@ const MiniCart = () => {
         <>
             <div className="tst-minicart-header">
                 <div className="tst-suptitle tst-suptitle-center"></div>
-                <h5>Your order, sir!</h5>
+                <h5>Вашата поръчка!</h5>
             </div>
             <ul className="woocommerce-mini-cart cart_list product_list_widget">
                 {CartData.items.map((item, key) => (
@@ -44,11 +44,11 @@ const MiniCart = () => {
                 ))}
             </ul>
             <p className="woocommerce-mini-cart__total total">
-                <strong>Subtotal:</strong> <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">$</span>298.00</bdi></span>
+                <strong>Междинна сума:</strong> <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">лв.</span>52.00</bdi></span>
             </p>
             <p className="woocommerce-mini-cart__buttons buttons">
-                <Link href="/cart" className="tst-btn tst-btn-2">View cart</Link>
-                <Link href="/checkout" className="tst-btn">Checkout</Link>
+                <Link href="/cart" className="tst-btn tst-btn-2">Виж количката</Link>
+                <Link href="/checkout" className="tst-btn">Поръчай</Link>
             </p>
         </>
     );

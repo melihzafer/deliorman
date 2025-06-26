@@ -168,6 +168,17 @@ h6 {
   opacity: 0.7;
 }
 
+.tst-white-circle-as-bg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+  padding-bottom: 9px;
+}
+
 .tst-label {
   display: inline-block;
   white-space: nowrap;

@@ -12,11 +12,11 @@ const CheckoutForm = () => {
         validate = { values => {
             const errors = {};
             if (!values.email) {
-                errors.email = 'Required';
+                errors.email = 'Задължително поле';
             } else if (
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
-                errors.email = 'Invalid email address';
+                errors.email = 'Невалиден имейл адрес';
             }
             return errors;
         }}
@@ -46,7 +46,7 @@ const CheckoutForm = () => {
                 }
             }).then(response => {
                 if (response.ok) {
-                    status.innerHTML = "<h5>Thanks, your message is sent successfully.</h5>";
+                    status.innerHTML = "<h5>Благодарим, вашето съобщение е изпратено успешно.</h5>";
                     form.reset()
                 } else {
                     response.json().then(data => {
@@ -76,15 +76,15 @@ const CheckoutForm = () => {
         }) => (
         <form onSubmit={handleSubmit} id="checkoutForm" action={AppData.settings.formspreeURL} className="tst-checkout-form">
             <div className="tst-mb-30">
-                <h5>Billing details</h5>
+                <h5>Данни за фактуриране</h5>
             </div>
             <div className="row">
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>First name</label>
+                    <label>Име</label>
                     <input 
                         type="text" 
-                        placeholder="Alex"
+                        placeholder="Александър"
                         name="firstname" 
                         required="required" 
                         onChange={handleChange}
@@ -95,10 +95,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Last name</label>
+                    <label>Фамилия</label>
                     <input 
                         type="text" 
-                        placeholder="Adler"
+                        placeholder="Петров"
                         name="lastname" 
                         required="required" 
                         onChange={handleChange}
@@ -109,10 +109,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Company name</label>
+                    <label>Фирма</label>
                     <input 
                         type="text" 
-                        placeholder="Plax ltd"
+                        placeholder="ОМНИ Тех ЕООД"
                         name="company"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -122,10 +122,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Country</label>
+                    <label>Държава</label>
                     <input 
                         type="text" 
-                        placeholder="Italy"
+                        placeholder="България"
                         name="country"
                         required="required"
                         onChange={handleChange}
@@ -136,10 +136,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>City</label>
+                    <label>Град</label>
                     <input 
                         type="text" 
-                        placeholder="Rome"
+                        placeholder="Самуил"
                         name="city"
                         required="required"
                         onChange={handleChange}

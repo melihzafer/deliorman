@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
 
 import { getSortedPostsData } from "@library/posts";
 
@@ -18,8 +17,7 @@ import CountersSection from "@components/sections/Counters";
 import CallToActionFourSection from "@components/sections/CallToActionFour";
 import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
-
-const TestimonialSlider = dynamic(() => import("@components/sliders/Testimonial"), { ssr: false });
+import TestimonialSlider from "@components/sliders/Testimonial";
 
 export const metadata = {
   title: {
@@ -84,24 +82,27 @@ async function About() {
               <Divider />
               <FeaturesSection />
               <Divider />
-              <TeamSection />
-              <Divider />
+              {/* <TeamSection />
+              <Divider /> */}
               <ScheduleSection />
               <Divider onlyBottom={0} />
               <CountersSection />
             </div>
           </div>
         </div>
+        <br />
         <CallToActionFourSection />
+        <br />
+        <br />
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              <TestimonialSlider />
-              <Divider onlyBottom={0} />
+              {/* <TestimonialSlider /> */}
+              {/* <Divider onlyBottom={0} />
               <Suspense fallback={<div>Зареждане...</div>}>
                 <LatestPostsSection posts={posts} />
               </Suspense>
-              <Divider onlyBottom={0} />
+              <Divider onlyBottom={0} /> */}
               <SubscribeSection />
             </div>
           </div>

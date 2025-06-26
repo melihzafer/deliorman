@@ -12,11 +12,11 @@ const ReservationForm = () => {
         validate = { values => {
             const errors = {};
             if (!values.email) {
-                errors.email = 'Required';
+                errors.email = 'Задължително поле';
             } else if (
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
-                errors.email = 'Invalid email address';
+                errors.email = 'Невалиден имейл адрес';
             }
             return errors;
         }}
@@ -41,19 +41,19 @@ const ReservationForm = () => {
                 }
             }).then(response => {
                 if (response.ok) {
-                    status.innerHTML = "<h5>Thanks for your submission!</h5>"
+                    status.innerHTML = "<h5>Благодарим за вашата резервация!</h5>"
                     form.reset()
                 } else {
                     response.json().then(data => {
                         if (Object.hasOwn(data, 'errors')) {
                             status.innerHTML = "<h5 style='color:red;'>"+data["errors"].map(error => error["message"]).join(", ")+"</h5>"
                         } else {
-                            status.innerHTML = "<h5 style='color:red;'>Oops! There was a problem submitting your form</h5>"
+                            status.innerHTML = "<h5 style='color:red;'>Упс! Възникна проблем при изпращането на формата</h5>"
                         }
                     })
                 }
             }).catch(error => {
-                status.innerHTML = "<h5 style='color:red;'>Oops! There was a problem submitting your form</h5>"
+                status.innerHTML = "<h5 style='color:red;'>Упс! Възникна проблем при изпращането на формата</h5>"
             });
 
             setSubmitting(false);
@@ -74,7 +74,7 @@ const ReservationForm = () => {
                 <div className="col-6 col-md-4">
                     <input
                         type="text" 
-                        placeholder="First Name"
+                        placeholder="Име"
                         name="first_name" 
                         required="required" 
                         onChange={handleChange}
@@ -85,7 +85,7 @@ const ReservationForm = () => {
                 <div className="col-6 col-md-4">
                     <input
                         type="text" 
-                        placeholder="Last Name"
+                        placeholder="Фамилия"
                         name="last_name" 
                         required="required" 
                         onChange={handleChange}
@@ -96,7 +96,7 @@ const ReservationForm = () => {
                 <div className="col-6 col-md-4">
                     <input 
                         type="email" 
-                        placeholder="Email"
+                        placeholder="Имейл"
                         name="email"
                         required="required"
                         onChange={handleChange}
@@ -106,13 +106,13 @@ const ReservationForm = () => {
                 </div>
                 <div className="col-6 col-md-4">
                     <select name="person" className="wide">
-                        <option>Person</option>
-                        <option value="1">1 Preson</option>
-                        <option value="2">2 People</option>
-                        <option value="3">3 People</option>
-                        <option value="4">4 People</option>
-                        <option value="3">5 People</option>
-                        <option value="3">6 or more</option>
+                        <option>Брой гости</option>
+                        <option value="1">1 човек</option>
+                        <option value="2">2 души</option>
+                        <option value="3">3 души</option>
+                        <option value="4">4 души</option>
+                        <option value="5">5 души</option>
+                        <option value="6+">6 или повече</option>
                     </select>
                 </div>
                 <div className="col-6 col-md-4">
@@ -127,25 +127,25 @@ const ReservationForm = () => {
                 </div>
                 <div className="col-6 col-md-4">
                     <select name="time" className="wide">
-                        <option>Time</option>
-                        <option value="10:00am">10:00 am</option>
-                        <option value="11:00am">11:00 am</option>
-                        <option value="12:00pm">12:00 pm</option>
-                        <option value="1:00pm">1:00 pm</option>
-                        <option value="2:00pm">2:00 pm</option>
-                        <option value="3:00pm">3:00 pm</option>
-                        <option value="4:00pm">4:00 pm</option>
-                        <option value="5:00pm">5:00 pm</option>
-                        <option value="6:00pm">6:00 pm</option>
-                        <option value="7:00pm">7:00 pm</option>
-                        <option value="8:00pm">8:00 pm</option>
-                        <option value="9:00pm">9:00 pm</option>
-                        <option value="10:00pm">10:00 pm</option>
+                        <option>Час</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                        <option value="17:00">17:00</option>
+                        <option value="18:00">18:00</option>
+                        <option value="19:00">19:00</option>
+                        <option value="20:00">20:00</option>
+                        <option value="21:00">21:00</option>
+                        <option value="22:00">22:00</option>
                     </select>
                 </div>
                 <div className="col-12">
                     <textarea 
-                        placeholder="Message"
+                        placeholder="Съобщение"
                         name="message" 
                         required="required"
                         onChange={handleChange}
@@ -155,7 +155,7 @@ const ReservationForm = () => {
                     />
                 </div>
             </div>
-            <button className="tst-btn" type="submit" name="button">Reserve a table</button>
+            <button className="tst-btn" type="submit" name="button">Резервирай маса</button>
 
             <div id="reservationFormStatus" className="tst-form-status"></div>
         </form>

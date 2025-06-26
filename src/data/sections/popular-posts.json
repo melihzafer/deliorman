@@ -1,11 +1,11 @@
 {
-    "title": "Popular publications",
-    "subtitle": "Newsletter",
-    "description": "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam.",
+    "title": "Популярни публикации",
+    "subtitle": "Новини",
+    "description": "Най-четените статии от нашия блог с рецепти, съвети <br>и интересни истории от света на кулинарията.",
     "button": {
         "link": "/blog",
-        "label": "All publications",
-        "info": "Read the news of our restaurant, recipes for delicious fears, tips for your home kitchen in our blog!"
+        "label": "Всички публикации",
+        "info": "Прочетете новините на нашия ресторант, рецепти за вкусни ястия, съвети за вашата домашна кухня в нашия блог!"
     },
     "featured": [
         "beet-and-burrata-salad-with-fried-bread",

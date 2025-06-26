@@ -1,17 +1,16 @@
 import React from "react";
-import dynamic from "next/dynamic";
 
 import AppData from "@data/app.json";
-import MenuData from "@data/menu.json";
 import ProductsData from "@data/products.json";
+import MenuData from "@data/menu.json";
+import Specialties from "@data/specialties.json";
 
 import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
 import CallToActionTwoSection from "@components/sections/CallToActionTwo";
-
-const MenuFiltered = dynamic( () => import("@components/menu/MenuFiltered"), { ssr: false } );
-const ProductsSlider = dynamic( () => import("@components/sliders/Products"), { ssr: false } );
+import MenuFiltered from "@components/menu/MenuFiltered";
+import ProductsSlider from "@components/sliders/Products";
 
 export const metadata = {
   title: {
@@ -26,7 +25,7 @@ const Menu1 = () => {
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner 
           pageTitle={"Открийте нашето меню"} 
-          description={"Насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Силистра."} 
+          description={"Насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Лудогоритето."} 
           breadTitle={"Меню"} 
         />
       </div>
@@ -44,7 +43,10 @@ const Menu1 = () => {
             </div>
           </div>
         </div>
+        <br />
         <CallToActionTwoSection />
+        <br />
+        <br />
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
@@ -57,7 +59,7 @@ const Menu1 = () => {
                     "description": "Открийте нашите най-нови кулинарни творения, <br>приготвени с любов и традиционни рецепти." 
                   }
                 } 
-                items={MenuData.categories.find(cat => cat.slug === "specialties")?.items || []}
+                items={Specialties.categories.find(cat => cat.slug === "specialties")?.items || []}
                 button={
                   {
                     "link": "/menu",

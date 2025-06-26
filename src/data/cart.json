@@ -2,28 +2,28 @@
     "total": 3,
     "items": [
         {
-            "title": "Chevrefrit au miel",
-            "description": "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
+            "title": "Козе сирене с мед",
+            "description": "домати, нори, фета сирене, гъби, оризови нудъли, царевица, скариди.",
             "image": "/img/menu/1.jpg",
             "quantity": 1,
             "price": "14.00",
-            "currency": "$"
+            "currency": "лв."
         },
         {
-            "title": "Carpaccio de daurade",
-            "description": "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
+            "title": "Карпачо от ципура",
+            "description": "домати, нори, фета сирене, гъби, оризови нудъли, царевица, скариди.",
             "image": "/img/menu/2.jpg",
             "quantity": 1,
-            "price": "7.99",
-            "currency": "$"
+            "price": "17.99",
+            "currency": "лв."
         },
         {
-            "title": "Stracciatella",
-            "description": "tomatoes, nori, feta cheese, mushrooms, rice noodles, corn, shrimp.",
+            "title": "Страчатела",
+            "description": "домати, нори, фета сирене, гъби, оризови нудъли, царевица, скариди.",
             "image": "/img/menu/3.jpg",
             "quantity": 1,
-            "price": "11.00",
-            "currency": "$"
+            "price": "21.00",
+            "currency": "лв."
         }
     ]
 }

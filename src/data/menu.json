@@ -33,35 +33,6 @@
             ]
           },
       {
-        "name": "Новите Специалитети",
-        "slug": "specialties",
-        "subtitle": "Меню",
-        "description": "Нови специалитети от кухнята на ресторант Делиорман.",
-        "items": [
-          {
-            "image": "/assets/img/specialties/shish-deliorman.jpg",
-            "title": "Шиш 'Делиорман'",
-            "text": "Телешка кайма, арабска питка, лук",
-            "weight": "300 г",
-            "price": "12.90 лв."
-          },
-          {
-            "image": "/assets/img/specialties/roast-beef.jpg",
-            "title": "Телешко печено",
-            "text": "Телешко месо от рибицата, чесън, картофи",
-            "weight": "300 г",
-            "price": "19.90 лв."
-          },
-          {
-            "image": "/assets/img/specialties/lamb-delicacy.jpg",
-            "title": "Агнешки деликатес на шиш",
-            "text": "Агнешко месо, зеленчуци",
-            "weight": "500 г",
-            "price": "29.90 лв."
-          }
-        ]
-      },
-      {
         "name": "Скара и Специалитети",
         "slug": "grill-specialties",
         "subtitle": "Меню",
@@ -96,6 +67,27 @@
             "title": "Свински шиш",
             "weight": "130 г",
             "price": "2.80 лв."
+          },
+          {
+            "image": "/assets/img/specialties/shish-deliorman.jpg",
+            "title": "Шиш 'Делиорман'",
+            "text": "Телешка кайма, арабска питка, лук",
+            "weight": "300 г",
+            "price": "12.90 лв."
+          },
+          {
+            "image": "/assets/img/specialties/roast-beef.jpg",
+            "title": "Телешко печено",
+            "text": "Телешко месо от рибицата, чесън, картофи",
+            "weight": "300 г",
+            "price": "19.90 лв."
+          },
+          {
+            "image": "/assets/img/specialties/lamb-delicacy.jpg",
+            "title": "Агнешки деликатес на шиш",
+            "text": "Агнешко месо, зеленчуци",
+            "weight": "500 г",
+            "price": "29.90 лв."
           },
           {
             "image": "/assets/img/grill/chicken-steak.jpg",

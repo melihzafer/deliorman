@@ -1,10 +1,10 @@
 {
-    "title": "Get in touch!",
-    "subtitle": "Contact",
-    "description": "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita.",
+    "title": "Свържете се с нас!",
+    "subtitle": "Контакти",
+    "description": "Очакваме вашите въпроси, предложения и резервации. <br>Свържете се с нас за незабравимо кулинарно изживяване.",
     "button": {
-        "label": "Reservation",
-        "link": "/contact"
+        "label": "Обадете се за резервация",
+        "link": "tel:+359894766273"
     },
     "map": {
         "long": "",

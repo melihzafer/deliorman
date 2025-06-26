@@ -3,61 +3,61 @@
         "special": [
             {
                 "image": "/img/menu/3.jpg",
-                "title": "Сasserole",
-                "old_price": "36.00",
-                "price": "6.99",
-                "currency": "$",
-                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+                "title": "Гювеч с месо",
+                "old_price": "22.00",
+                "price": "18.90",
+                "currency": "лв.",
+                "short": "Традиционен български гювеч с телешко месо и сезонни зеленчуци."
             },
             {
                 "image": "/img/menu/4.jpg",
-                "title": "Boiled crayfish",
-                "old_price": "36.00",
-                "price": "12.99",
-                "currency": "$",
-                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+                "title": "Речни раци",
+                "old_price": "28.00",
+                "price": "24.90",
+                "currency": "лв.",
+                "short": "Прясно уловени речни раци, приготвени по класическа рецепта."
             },
             {
                 "image": "/img/menu/6.jpg",
-                "title": "Pizza margherita",
+                "title": "Пица Маргарита",
                 "old_price": "16.00",
-                "price": "7.00",
-                "currency": "$",
-                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+                "price": "12.00",
+                "currency": "лв.",
+                "short": "Класическа италианска пица с домати, моцарела и прясна босилек."
             },
             {
                 "image": "/img/menu/5.jpg",
-                "title": "Saumon Gravlax",
-                "old_price": "10.00",
-                "price": "2.99",
-                "currency": "$",
-                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+                "title": "Гравирана сьомга",
+                "old_price": "20.00",
+                "price": "16.90",
+                "currency": "лв.",
+                "short": "Деликатесна сьомга, маринована с билки и подправки."
             },
             {
                 "image": "/img/menu/2.jpg",
-                "title": "Chevrefrit au miel",
-                "old_price": "10.00",
-                "price": "2.99",
-                "currency": "$",
-                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+                "title": "Козе сирене с мед",
+                "old_price": "14.00",
+                "price": "12.90",
+                "currency": "лв.",
+                "short": "Крем от козе сирене с ароматен планински мед и орехи."
             }
         ],
         "popular": [
             {
                 "image": "/img/menu/6.jpg",
-                "title": "Pizza margherita",
+                "title": "Пица Маргарита",
                 "old_price": "16.00",
-                "price": "7.00",
-                "currency": "$",
-                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+                "price": "12.00",
+                "currency": "лв.",
+                "short": "Класическа италианска пица с домати, моцарела и прясна босилек."
             },
             {
                 "image": "/img/menu/5.jpg",
-                "title": "Saumon Gravlax",
-                "old_price": "10.00",
-                "price": "2.99",
-                "currency": "$",
-                "short": "Lorem, ipsum, dolor, amet, consectetur, adipisicing elit."
+                "title": "Гравирана сьомга",
+                "old_price": "20.00",
+                "price": "16.90",
+                "currency": "лв.",
+                "short": "Деликатесна сьомга, маринована с билки и подправки."
             },
             {
                 "image": "/img/menu/2.jpg",

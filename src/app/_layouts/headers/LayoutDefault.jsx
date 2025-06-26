@@ -141,7 +141,7 @@ const DefaultHeader = () => {
                     {/* title */}
                     <div className="text-center">
                         <div className="tst-suptitle tst-suptitle-center"></div>
-                        <h4 className="tst-mb-60">Table Reservation</h4>
+                        <h4 className="tst-mb-60">Резервация на маса</h4>
                     </div>
                     {/* title end */}
                     
