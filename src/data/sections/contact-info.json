@@ -1,22 +1,22 @@
 {
-    "subtitle": "Have a questions?",
-    "title": "Contact Us",
-    "description": "Quaerat debitis, vel, sapiente dicta sequi labore porro pariatur harum expedita.",
+    "subtitle": "Имате въпроси?",
+    "title": "Свържете се с нас",
+    "description": "Ресторант Делиорман ви очаква с топло гостоприемство и незабравими кулинарни изживявания в сърцето на село Самуил.",
     "items": [
         {
-            "icon": "/img/icons/4.svg",
-            "title": "Write Us",
-            "text": "<a href='mailto:info@tastyc.com'>info@tastyc.com</a><br/><a href='mailto:reservation@tastyc.com'>reservation@tastyc.com</a>"
+            "icon": "/img/icons/5.svg",
+            "title": "Телефон за резервации",
+            "text": "<a href='tel:+359896088804'>+359 89 6088804</a><br/><span style='font-size: 14px; color: #999;'>Работно време: 08:00 - 23:00</span>"
         },
         {
-            "icon": "/img/icons/5.svg",
-            "title": "Call Us",
-            "text": "<a href='tel:+76 (094) 754 43 71'>+76 (094) 754 43 71</a><br/><a href='tel:+76 (093) 753 43 72'>+76 (093) 753 43 72</a>"
+            "icon": "/img/icons/4.svg", 
+            "title": "Имейл за запитвания",
+            "text": "<a href='mailto:contact@deliorman.bg'>contact@deliorman.bg</a><br/><span style='font-size: 14px; color: #999;'>Отговаряме в рамките на 24 часа</span>"
         },
         {
             "icon": "/img/icons/6.svg",
-            "title": "Visit Us",
-            "text": "Canada, Toronto, North Avenue 31B"
+            "title": "Адрес",
+            "text": "с. Самуил, ул. \"Хаджи Димитър\" №25<br/>обл. Разград<br/><span style='font-size: 14px; color: #999;'>Паркинг наличен</span>"
         }
     ]
 }

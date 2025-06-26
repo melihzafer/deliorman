@@ -50,7 +50,7 @@ async function Home() {
           </div>
         </div>
         <CallToActionSection />
-        <div className="tst-content-frame">
+        {/* <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
               <TestimonialSlider />
@@ -62,7 +62,7 @@ async function Home() {
               <SubscribeSection />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

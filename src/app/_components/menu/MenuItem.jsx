@@ -15,20 +15,27 @@ const MenuItem = ({ item }) => {
 
   useEffect(() => {
     const cartNumberEl = document.querySelector('.tst-cart-number');
-    cartNumberEl.innerHTML = cartTotal;
+    if (cartNumberEl) {
+      cartNumberEl.innerHTML = cartTotal;
+    }
   }, [cartTotal]);
 
   const addToCart = (e) => {
     e.preventDefault();
     const cartNumberEl = document.querySelector('.tst-cart-number');
     setCartTotal(cartTotal + quantity);
+    console.log(cartTotal + quantity);
 
-    cartNumberEl.classList.add('tst-added');
-    e.currentTarget.classList.add('tst-added');
-    
-    setTimeout(() => {
+    if (cartNumberEl) {
+      cartNumberEl.classList.add('tst-added');
+      setTimeout(() => {
         cartNumberEl.classList.remove('tst-added');
-    }, 600);
+      }, 600);
+    }
+    
+    if (e.currentTarget) {
+      e.currentTarget.classList.add('tst-added');
+    }
   }
 
   return (
@@ -46,7 +53,9 @@ const MenuItem = ({ item }) => {
             </div>
             <div className="tst-menu-book-bottom">
             <div className="tst-menu-book-price">
+                
                 <div className="tst-price"><span className="tst-symbol">{item.currency}</span>{item.price}</div>
+                <div className="tst-weight">{item.weight}</div>
             </div>
             <a href="#." className="tst-btn tst-cart-btn" title="add to cart" onClick={(e) => addToCart(e) }>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">

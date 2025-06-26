@@ -15,7 +15,7 @@ const ProductsSlider = dynamic( () => import("@components/sliders/Products"), { 
 
 export const metadata = {
   title: {
-		default: "Menu",
+		default: "Меню",
 	},
   description: AppData.settings.siteDescription,
 }
@@ -24,7 +24,11 @@ const Menu1 = () => {
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner pageTitle={"Discover Our menu"} description={"Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."} breadTitle={"Menu"} />
+        <PageBanner 
+          pageTitle={"Открийте нашето меню"} 
+          description={"Насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Силистра."} 
+          breadTitle={"Меню"} 
+        />
       </div>
       
       <div id="tst-dynamic-content" className="tst-dynamic-content">
@@ -48,16 +52,16 @@ const Menu1 = () => {
               <ProductsSlider
                 heading={
                   { 
-                    "subtitle": "Menu", 
-                    "title": "Special proposals", 
-                    "description": "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam." 
+                    "subtitle": "Специалитети", 
+                    "title": "Новите Специалитети", 
+                    "description": "Открийте нашите най-нови кулинарни творения, <br>приготвени с любов и традиционни рецепти." 
                   }
                 } 
-                items={ProductsData.collection.special}
+                items={MenuData.categories.find(cat => cat.slug === "specialties")?.items || []}
                 button={
                   {
-                    "link": "/shop",
-                    "label": "Go to online store"
+                    "link": "/menu",
+                    "label": "Вижте цялото меню"
                   }
                 }
               />

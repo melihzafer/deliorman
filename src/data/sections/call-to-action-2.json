@@ -1,17 +1,17 @@
 {
-    "subtitle": "Good offer",
-    "title": "Pay for one <br>Get two!",
-    "description": "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita.",
+    "subtitle": "Лятна промоция",
+    "title": "Освежаващи лятни <br>коктейли и специалитети!",
+    "description": "Открийте нашите нови летни коктейли с <br>домашна ракия и свежи плодове. Плюс специално <br>лятно меню с морски деликатеси.",
     "image": {
         "url": "/img/burger.png",
-        "alt": "burger"
+        "alt": "summer cocktails"
     },
     "button1": {
-        "link": "https://www.apple.com/ua/app-store/",
-        "label": "Get now"
+        "link": "/menu",
+        "label": "Вижте менюто"
     },
     "button2": {
-        "link": "https://play.google.com/store",
-        "label": "Reservation"
+        "link": "/reservation",
+        "label": "Резервация"
     }
 }
