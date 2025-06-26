@@ -13,16 +13,16 @@
 .tst-menu-right a,
 .tst-cart,
 a.tst-btn {
-  color: #7e2010 !important;
-  border-color: #7e2010 !important;
+  color: #461509 !important;
+  border-color: #461509 !important;
 }
 a {
-  color: #7e2010 !important;
+  color: #461509 !important;
 }
 a:hover {
-  color: #7e2010 !important;
+  color: #502017 !important;
 }
 .tst-menu nav ul li.current-menu-item > a,
 .tst-menu nav ul li.tst-active > a {
   font-weight: bold;
-  color: #7e2010 !important;}
+  color: #461509 !important;}
