@@ -56,7 +56,7 @@ const TestimonialSlider = () => {
 
             {/* slider navigation */}
             <div className="tst-slider-navigation">
-              <Link href={Data.button.link} className="tst-btn tst-anima-link">{Data.button.label}</Link>
+              <Link href={Data.button.link} className="tst-btn tst-anima-link light">{Data.button.label}</Link>
               <div className="tst-slider-pagination tst-testi-pagination"></div>
               <div className="tst-nav tst-right">
                 <div className="tst-label">Slider navigation</div>
