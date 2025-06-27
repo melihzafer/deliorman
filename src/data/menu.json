@@ -12,7 +12,7 @@
               {"title": "Фанта лимон", "amount": "250 мл.", "price": "2.60 лв."},
               {"title": "Спрайт", "amount": "250 мл.", "price": "2.60 лв."},
               {"title": "Швепс сода", "amount": "250 мл.", "price": "1.80 лв."},
-              {"title": "Швепс", "amount": "250 мл.", "price": "2.80 лв."},
+              {"title": "Швепс", "amount": "250 мл.","price": "2.80 лв."},
               {"title": "Натурален сок 'Капи'", "amount": "250 мл.", "price": "2.80 лв."},
               {"title": "Студен чай", "amount": "250 мл.", "price": "2.80 лв."},
               {"title": "Минерална вода 'Банка'", "amount": "330 мл.", "price": "1.80 лв."},
@@ -39,100 +39,100 @@
         "description": "Прясно изпечени на скара и специалитети.",
         "items": [
           {
-            "image": "/assets/img/grill/kufte.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/sq_kyufte.png",
             "title": "Кюфте",
             "weight": "80 г",
             "price": "2.00 лв."
           },
           {
-            "image": "/assets/img/grill/kebapche.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/sq_kebabche.png",
             "title": "Кебапче",
             "weight": "80 г",
             "price": "2.00 лв."
           },
           {
-            "image": "/assets/img/grill/beef-kufte.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/sq_kyufte.png",
             "title": "Телешко кюфте",
             "weight": "80 г",
             "price": "2.00 лв."
           },
           {
-            "image": "/assets/img/grill/chicken-shish.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/sq_pileshki_shish.jpg",
             "title": "Пилешки шиш",
             "weight": "100 г",
             "price": "2.80 лв."
           },
           {
-            "image": "/assets/img/grill/pork-shish.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/12360922.png",
             "title": "Свински шиш",
             "weight": "130 г",
             "price": "2.80 лв."
           },
           {
-            "image": "/assets/img/specialties/shish-deliorman.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/willbeadded.jpg",
             "title": "Шиш 'Делиорман'",
             "text": "Телешка кайма, арабска питка, лук",
             "weight": "300 г",
             "price": "12.90 лв."
           },
           {
-            "image": "/assets/img/specialties/roast-beef.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/willbeadded.png",
             "title": "Телешко печено",
             "text": "Телешко месо от рибицата, чесън, картофи",
             "weight": "300 г",
             "price": "19.90 лв."
           },
           {
-            "image": "/assets/img/specialties/lamb-delicacy.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/willbeadded.png",
             "title": "Агнешки деликатес на шиш",
             "text": "Агнешко месо, зеленчуци",
             "weight": "500 г",
             "price": "29.90 лв."
           },
           {
-            "image": "/assets/img/grill/chicken-steak.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/12360952.png",
             "title": "Пилешка пържола бут",
             "weight": "250 г",
             "price": "5.50 лв."
           },
           {
-            "image": "/assets/img/grill/pork-steak.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/sq_svinska_parjola.png",
             "title": "Свинска пържола",
             "weight": "250 г",
             "price": "6.50 лв."
           },
           {
-            "image": "/assets/img/grill/adana-kebab.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/12361002.png",
             "title": "Адана кебап",
             "weight": "160 г",
             "price": "5.60 лв."
           },
           {
-            "image": "/assets/img/grill/tatar-kufte.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/sq_tatarsko_kyufte.jpg",
             "title": "Татарско кюфте",
             "weight": "280 г",
             "price": "5.50 лв."
           },
           {
-            "image": "/assets/img/grill/mixed-grill.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/12361012.png",
             "title": "Мешена скара",
             "weight": "900 г",
             "price": "29.50 лв."
           },
           {
-            "image": "/assets/img/grill/beef-tongue.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/123612022.png",
             "title": "Телешки език",
             "weight": "200 г",
             "price": "14.90 лв."
           },
           {
-            "image": "/assets/img/grill/deliorman-bites.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/sq_hapki_deliorman.png",
             "title": "Хапки 'Делиорман'",
             "weight": "700 г",
             "price": "22.90 лв."
           },
           {
-            "image": "/assets/img/grill/bear-paw.jpg",
+            "image": "/img/menuCategorised/Grill&Specialties/12331.png",
             "title": "Меча лапа",
             "weight": "300 г",
             "price": "10.90 лв."
@@ -146,49 +146,49 @@
         "description": "Нашите вкусни и ароматни пици, приготвени с най-добрите съставки.",
         "items": [
           {
-            "image": "/assets/img/pizza/deliorman.jpg",
+            "image": "/img/menuCategorised/Pizzas/sq_pizza_deliorman.jpg",
             "title": "Делиорман",
             "text": "Доматен сос, шунка, мариновани гъби, кашкавал, луканка, сирене, кисели краставички, чеснова паста, босилек",
             "weight": "400 г",
             "price": "8.90 лв."
           },
           {
-            "image": "/assets/img/pizza/bondzhorno.jpg",
+            "image": "/img/menuCategorised/Pizzas/12361172.png",
             "title": "Бонджорно",
             "text": "Доматен сос, сирене, кашкавал",
             "weight": "400 г",
             "price": "7.50 лв."
           },
           {
-            "image": "/assets/img/pizza/margarita.jpg",
+            "image": "/img/menuCategorised/Pizzas/12361182.png",
             "title": "Маргарита",
             "text": "Доматен сос, кашкавал, босилек",
             "weight": "400 г",
             "price": "6.50 лв."
           },
           {
-            "image": "/assets/img/pizza/kompira.jpg",
+            "image": "/img/menuCategorised/Pizzas/12361192.png",
             "title": "Компира",
             "text": "Доматен сос, шунка, пресни гъби, кашкавал",
             "weight": "400 г",
             "price": "8.00 лв."
           },
           {
-            "image": "/assets/img/pizza/karleona.jpg",
+            "image": "/img/menuCategorised/Pizzas/sq_pizza_karleona.png",
             "title": "Карлеона",
             "text": "Доматен сос, шунка, луканка, кисели краставички, кашкавал",
             "weight": "400 г",
             "price": "8.50 лв."
           },
           {
-            "image": "/assets/img/pizza/antigua.jpg",
+            "image": "/img/menuCategorised/Pizzas/1233.jpg",
             "title": "Антигуа",
             "text": "Доматен сос, шунка, кашкавал",
             "weight": "400 г",
             "price": "7.50 лв."
           },
           {
-            "image": "/assets/img/pizza/neapolitana.jpg",
+            "image": "/img/menuCategorised/Pizzas/12361172.png",
             "title": "Неаполитана",
             "text": "Доматен сос, пилешко филе, пресни гъби, маслини, царевица, кашкавал",
             "weight": "400 г",
@@ -203,84 +203,84 @@
         "description": "Свежи салати, приготвени от най-добрите продукти.",
         "items": [
           {
-            "image": "/assets/img/salads/zele-mayoneza.jpg",
+            "image": "/img/menuCategorised/Salads/sq_zele_s_mayo.png",
             "title": "Салата зеле с майонеза",
             "text": "зеле, майонеза, маслини",
             "weight": "300 г",
             "price": "5.90 лв."
           },
           {
-            "image": "/assets/img/salads/redena-salata.jpg",
+            "image": "/img/menuCategorised/Salads/12360972.png",
             "title": "Редена салата",
             "text": "домати, краставици, печени чушки, сирене, маслини, лук",
             "weight": "350 г",
             "price": "7.50 лв."
           },
           {
-            "image": "/assets/img/salads/zelena-salata.jpg",
+            "image": "/img/menuCategorised/Salads/12360982.png",
             "title": "Зелена салата",
             "text": "маруля, краставици, репички, маслини, яйце",
             "weight": "300 г",
             "price": "6.50 лв."
           },
           {
-            "image": "/assets/img/salads/snezhanka.jpg",
+            "image": "/img/menuCategorised/Salads/12360992.png",
             "title": "Снежанка",
             "text": "кисели краставици, копър, чесън, кисело мляко, маслини",
             "weight": "300 г",
             "price": "6.50 лв."
           },
           {
-            "image": "/assets/img/salads/zele-morkovi.jpg",
+            "image": "/img/menuCategorised/Salads/sq_salad_zele_s_morkovi.jpg",
             "title": "Зеле с моркови",
             "text": "зеле, моркови",
             "weight": "300 г",
             "price": "5.50 лв."
           },
           {
-            "image": "/assets/img/salads/morkovi-mayoneza.jpg",
+            "image": "/img/menuCategorised/Salads/salad_morkovi_s_mayo.jpg",
             "title": "Салата моркови с майонеза",
             "text": "моркови, майонеза, маслини",
             "weight": "300 г",
             "price": "5.90 лв."
           },
           {
-            "image": "/assets/img/salads/shopska.jpg",
+            "image": "/img/menuCategorised/Salads/sq_salad_shopska.jpg",
             "title": "Салата шопска",
             "text": "домати, краставици, пипер, лук, сирене, маслини",
             "weight": "400 г",
             "price": "7.50 лв."
           },
           {
-            "image": "/assets/img/salads/deliorman-salad.jpg",
+            "image": "/img/menuCategorised/Salads/sq_salad_deliorman.png",
             "title": "Салата Делиорман",
             "text": "домати, краставици, кашкавал, сирене, шунка, снежанка, печена чушка, маслини",
             "weight": "500 г",
             "price": "9.90 лв."
           },
           {
-            "image": "/assets/img/salads/ovcharska.jpg",
+            "image": "/img/menuCategorised/Salads/sq_salad_ovcharska.jpg",
             "title": "Салата овчарска",
             "text": "домати, краставици, пипер, лук, гъби, шунка, кашкавал, сирене, яйце, маслини",
             "weight": "550 г",
             "price": "8.50 лв."
           },
           {
-            "image": "/assets/img/salads/caesar.jpg",
+            "image": "/img/menuCategorised/Salads/123.jpg",
             "title": "Салата 'Цезар'",
             "text": "айсберг, пилешко филе, краставици, крутони, пармезан, сос",
             "weight": "450 г",
             "price": "9.90 лв."
           },
           {
-            "image": "/assets/img/salads/greek.jpg",
+            "image": "/img/menuCategorised/Salads/sq_salad_greece.jpg",
             "title": "Салата гръцка",
             "text": "домати, краставици, печени чушки, сирене, маслини, лук, лимон, зехтин, риган",
             "weight": "450 г",
             "price": "7.50 лв."
           },
           {
-            "image": "/assets/img/salads/green-tuna.jpg",
+            "image": "/img/menuCategorised/Salads/Ш123.jpg",
             "title": "Зелена салата с риба тон",
             "text": "маруля, краставици, маслини, риба тон, зехтин",
             "weight": "300 г",
@@ -295,106 +295,106 @@
         "description": "Леки хапки и бар храни.",
         "items": [
           {
-            "image": "/assets/img/snacks/fries.jpg",
+            "image": "/img/menuCategorised/QuickBites/123333463.png",
             "title": "Пържени картофи",
             "weight": "200 г",
             "price": "5.50 лв."
           },
           {
-            "image": "/assets/img/snacks/fries-cheese.jpg",
+            "image": "/img/menuCategorised/QuickBites/123333473.png",
             "title": "Пържени картофи със сирене",
             "weight": "250 г",
             "price": "6.50 лв."
           },
           {
-            "image": "/assets/img/snacks/chicken-livers.jpg",
+            "image": "/img/menuCategorised/QuickBites/sq_drobcheta.png",
             "title": "Пилешки дробчета с лук",
             "text": "лук, моркови, пипер",
             "weight": "350 г",
             "price": "6.90 лв."
           },
           {
-            "image": "/assets/img/snacks/chicken-hearts.jpg",
+            "image": "/img/menuCategorised/QuickBites/123333483.png",
             "title": "Пилешки сърца на тиган",
             "text": "лук, моркови",
             "weight": "300 г",
             "price": "7.90 лв."
           },
           {
-            "image": "/assets/img/snacks/gizzards.jpg",
+            "image": "/img/menuCategorised/QuickBites/123и.jpg",
             "title": "Пилешки воденички на тиган",
             "text": "лук, моркови",
             "weight": "300 г",
             "price": "7.90 лв."
           },
           {
-            "image": "/assets/img/snacks/chicken-strips.jpg",
+            "image": "/img/menuCategorised/QuickBites/sq_pileshki_kornflex.jpg",
             "title": "Пилешки филенца с корнфлейкс",
             "weight": "400 г",
             "price": "9.90 лв."
           },
           {
-            "image": "/assets/img/snacks/cheese-dippers.jpg",
+            "image": "/img/menuCategorised/QuickBites/123с.jpg",
             "title": "Топени сиренца",
             "weight": "200 г",
             "price": "6.90 лв."
           },
           {
-            "image": "/assets/img/snacks/breaded-cheese.jpg",
+            "image": "/img/menuCategorised/QuickBites/123.jpg",
             "title": "Кашкавал пане",
             "weight": "200 г",
             "price": "6.90 лв."
           },
           {
-            "image": "/assets/img/snacks/chicken-wings.jpg",
+            "image": "/img/menuCategorised/QuickBites/123.jpg",
             "title": "Пилешки крилца",
             "weight": "200 г",
             "price": "8.90 лв."
           },
           {
-            "image": "/assets/img/snacks/country-fries.jpg",
+            "image": "/img/menuCategorised/QuickBites/123.jpg",
             "title": "Пържени картофи по селски",
             "weight": "200 г",
             "price": "6.90 лв."
           },
           {
-            "image": "/assets/img/snacks/omelet-ham.jpg",
+            "image": "/img/menuCategorised/QuickBites/123.jpg",
             "title": "Омлет с шунка и гарнитура",
             "weight": "250 г",
             "price": "6.90 лв."
           },
           {
-            "image": "/assets/img/snacks/omelet.jpg",
+            "image": "/img/menuCategorised/QuickBites/123а.jpg",
             "title": "Омлет с гарнитура",
             "weight": "250 г",
             "price": "6.90 лв."
           },
           {
-            "image": "/assets/img/snacks/doner.jpg",
+            "image": "/img/menuCategorised/QuickBites/12333346.png",
             "title": "Порция дюнер",
             "weight": "500 г",
             "price": "9.90 лв."
           },
           {
-            "image": "/assets/img/snacks/ribs.jpg",
+            "image": "/img/menuCategorised/QuickBites/12333347.png",
             "title": "Свински ребра печени",
             "weight": "250 г",
             "price": "12.90 лв."
           },
           {
-            "image": "/assets/img/snacks/baby-mozzarella.jpg",
+            "image": "/img/menuCategorised/QuickBites/sq_baby_mozzarella.jpg",
             "title": "Бейби моцарела",
             "weight": "350 г",
             "price": "9.50 лв."
           },
           {
-            "image": "/assets/img/snacks/onion-rings.jpg",
+            "image": "/img/menuCategorised/QuickBites/123.jpg",
             "title": "Лучени кръгчета",
             "weight": "300 г",
             "price": "6.90 лв."
           },
           {
-            "image": "/assets/img/snacks/chicken-leg-cornflakes.jpg",
+            "image": "/img/menuCategorised/QuickBites/12333342.png",
             "title": "Пилешко бутче с корнфлейкс",
             "weight": "500 г",
             "price": "9.90 лв."
@@ -427,85 +427,85 @@
         "description": "Традиционни супи, прясна риба и бързи сандвичи.",
         "items": [
           {
-            "image": "/assets/img/soups/chicken-soup.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
             "title": "Пилешка супа",
             "amount": "300 мл",
             "price": "3.50 лв."
           },
           {
-            "image": "/assets/img/soups/tripe-soup.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/Шкембе чорба.jpg",
             "title": "Шкембе чорба",
             "amount": "300 мл",
             "price": "3.50 лв."
           },
           {
-            "image": "/assets/img/soups/meatball-soup.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
             "title": "Супа топчета",
             "amount": "300 мл",
             "price": "3.50 лв."
           },
           {
-            "image": "/assets/img/soups/tarator.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/123а.jpg",
             "title": "Таратор",
             "amount": "300 мл",
             "price": "2.50 лв."
           },
           {
-            "image": "/assets/img/fish/tsatsa.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
             "title": "Цаца",
             "weight": "200 г",
             "price": "5.50 лв."
           },
           {
-            "image": "/assets/img/fish/mackerel.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/Скумрия с гарнитура 2.jpg",
             "title": "Скумрия",
             "weight": "250 г",
             "price": "8.90 лв."
           },
           {
-            "image": "/assets/img/fish/carps.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
             "title": "Шаран на тиган",
             "weight": "750 г",
             "price": "35.00 лв."
           },
           {
-            "image": "/assets/img/sandwiches/mincemeat.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/Сандвич с къйма.JPG",
             "title": "Сандвич с кайма",
             "price": "2.90 лв."
           },
           {
-            "image": "/assets/img/sandwiches/ham-cheese.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/Сандвич с шунка и кашкавал.JPG",
             "title": "Сандвич с кашкавал и шунка",
             "price": "2.90 лв."
           },
           {
-            "image": "/assets/img/sandwiches/cheese.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/Сандвич с шунка и кашкавал.JPG",
             "title": "Сандвич с кашкавал",
             "price": "2.90 лв."
           },
           {
-            "image": "/assets/img/sandwiches/brie-egg-cheese.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/Сандвич с яйце и кашкавал.JPG",
             "title": "Сандвич със сирене, яйце и кашкавал",
             "price": "2.90 лв."
           },
           {
-            "image": "/assets/img/bread/white-slice.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/Сомун Хляб-.jpg",
             "title": "Филия хляб",
             "price": "0.25 лв."
           },
           {
-            "image": "/assets/img/bread/toasted-slice.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
             "title": "Филия препечен хляб",
             "price": "0.35 лв."
           },
           {
-            "image": "/assets/img/bread/greek-pita.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
             "title": "Гръцка питка",
             "weight": "100 г",
             "price": "1.00 лв."
           },
           {
-            "image": "/assets/img/bread/garlic-pita.jpg",
+            "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
             "title": "Гръцка чеснова питка",
             "weight": "100 г",
             "price": "1.00 лв."
@@ -726,25 +726,83 @@
         "subtitle": "Меню",
         "description": "Вкусни десерти за всеки вкус.",
         "items": [
-          {"title": "Кюнефе", "price": "9.50 лв."},
-          {"title": "Чийзкейк с череши", "price": "5.90 лв."},
-          {"title": "Шоколадов ганаш", "price": "5.90 лв."},
-          {"title": "Торта 'Рафаело'", "price": "5.90 лв."},
-          {"title": "Солен карамел", "price": "5.90 лв."},
-          {"title": "Френска торта", "price": "5.90 лв."},
-          {"title": "Премиум десерти в буркан", "price": "5.90 лв."},
-          {"title": "Банофи", "price": "5.90 лв."},
-          {"title": "Профитерол", "price": "5.90 лв."},
-          {"title": "Морковена", "price": "5.90 лв."},
-          {"title": "Фереро", "price": "5.90 лв."},
-          {"title": "Сладоледени торти", "price": "5.90 лв."},
-          {"title": "Френска ванилия със смокини", "price": "5.90 лв."},
-          {"title": "Белгийски шоколад с печ. лешници", "price": "5.90 лв."},
-          {"title": "Сладолед", "price": "5.00 лв."}
-        ]
-      }
+          {
+            "image": "/img/menuCategorised/Desserts/sq_baklava.jpg",
+            "title": "Кюнефе",
+            "price": "9.50 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Баклава.jpg",
+            "title": "Чийзкейк с череши",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/sq_krem_karamel.jpg",
+            "title": "Шоколадов ганаш",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Баклава 2.jpg",
+            "title": "Торта 'Рафаело'",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Крем карамел.jpg",
+            "title": "Солен карамел",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Сладко.jpg",
+            "title": "Френска торта",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Сладко 2.jpg",
+            "title": "Премиум десерти в буркан",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/sq_baklava.jpg",
+            "title": "Банофи",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/sq_krem_karamel.jpg",
+            "title": "Профитерол",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Баклава.jpg",
+            "title": "Морковена",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Крем карамел.jpg",
+            "title": "Фереро",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Сладко.jpg",
+            "title": "Сладоледени торти",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Баклава 2.jpg",
+            "title": "Френска ванилия със смокини",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/Сладко 2.jpg",
+            "title": "Белгийски шоколад с печ. лешници",
+            "price": "5.90 лв."
+          },
+          {
+            "image": "/img/menuCategorised/Desserts/sq_baklava.jpg",
+            "title": "Сладолед",
+            "price": "5.00 лв."
+          }
+        ]}
     
 
-    ]
+        ]
   }
-  

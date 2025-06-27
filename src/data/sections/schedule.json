@@ -15,11 +15,6 @@
 			"label": "Събота и Неделя",
 			"from": { "hours": "07", "minutes": "00" },
 			"to": { "hours": "00", "minutes": "00" }
-		},
-		{
-			"label": "Кухня работи до",
-			"from": { "hours": "--", "minutes": "--" },
-			"to": { "hours": "23", "minutes": "00" }
 		}
 	]
 }

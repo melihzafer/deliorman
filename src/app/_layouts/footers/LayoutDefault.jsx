@@ -29,8 +29,9 @@ const DefaultFooter = () => {
         <footer className="tst-white tst-fade-down">
             <div className="container">
                 <div className="tst-footer-top">
+                    <div className="tst-white-circle-as-bg">
                     <img src={AppData.footer.logo.url} alt={AppData.footer.logo.alt} className="tst-logo" />
-
+</div>
                     <div className="tst-social">
                         {AppData.social.map((item, key) => (
                         <a href={item.link} target="_blank" title={item.title} className="tst-icon-link" key={`footer-social-item-${key}`}><i className={item.icon}></i></a>

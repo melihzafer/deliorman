@@ -2,6 +2,7 @@
 
 import Data from "@data/sections/schedule.json";
 import Link from "next/link";
+import DividerModule from "../../_layouts/divider/Index";
 
 const ScheduleSection = () => {
     return (
@@ -32,13 +33,14 @@ const ScheduleSection = () => {
                     </div>
                     <div className="col-lg-4">
 
-                      <div className="tst-wh-frame tst-pb-60" style={{ minHeight: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <div className="tst-wh-frame tst-pb-60" style={{ minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                       {Data.items.map((item, key) => (
                       <div className={key == 0 ? "tst-mb-2": ""} key={`schedule-item-${key}`}>
                         <div className="tst-label">{item.label}</div>
                         <div className="h5">{item.from.hours} <span className="tst-color">:</span> {item.from.minutes}</div>
                         <div className="h5">{item.to.hours} <span className="tst-color">:</span> {item.to.minutes}</div>
                         <br />
+                        <DividerModule/>
                       </div>
                       ))}
                       </div>

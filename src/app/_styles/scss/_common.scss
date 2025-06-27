@@ -197,10 +197,10 @@ h6 {
   font-family: $sf;
   margin: 0 15px 0 0;
   transition: $tr-sm;
-
+  color: white !important;
   &:hover {
     opacity: 1;
-    color: $ac;
+    color: $ac !important;
   }
 }
 
