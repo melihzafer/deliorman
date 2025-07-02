@@ -19,17 +19,17 @@ export const metadata = {
   description: "Специално меню с цени - достъпно само чрез директен линк",
 }
 
-const Menu1 = () => {
+const Menu2 = () => {
   return (
     <>
-      <div id="tst-dynamic-banner" className="tst-dynamic-banner">
+      {/* <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner 
           pageTitle={"Открийте нашето меню с цени"} 
           description={"Специално меню с цени - насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Лудогоритето."} 
           breadTitle={"Меню с цени"} 
         />
       </div>
-      
+       */}
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
@@ -43,7 +43,7 @@ const Menu1 = () => {
             </div>
           </div>
         </div>
-        <br />
+        {/* <br />
         <CallToActionTwoSection />
         <br />
         <br />
@@ -70,9 +70,9 @@ const Menu1 = () => {
 
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
 };
-export default Menu1;
+export default Menu2;
