@@ -14,9 +14,9 @@ import ProductsSlider from "@components/sliders/Products";
 
 export const metadata = {
   title: {
-    default: "Меню",
+    default: "Меню с цени",
   },
-  description: AppData.settings.siteDescription,
+  description: "Специално меню с цени - достъпно само чрез директен линк",
 }
 
 const Menu1 = () => {
@@ -24,9 +24,9 @@ const Menu1 = () => {
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner 
-          pageTitle={"Открийте нашето меню"} 
-          description={"Насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Лудогоритето."} 
-          breadTitle={"Меню"} 
+          pageTitle={"Открийте нашето меню с цени"} 
+          description={"Специално меню с цени - насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Лудогоритето."} 
+          breadTitle={"Меню с цени"} 
         />
       </div>
       
