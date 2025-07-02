@@ -6,6 +6,8 @@ menu
 /*-------------------------
 default card
 -------------------------*/
+
+
 .tst-menu-book-item {
   background-color: $card;
   box-shadow: 0 5px 10px 0 rgba(26,47,51,0.15);
@@ -117,6 +119,16 @@ default card
     background-color: transparent;
     margin-bottom: 60px;
 
+    // For items without images
+    &:not(:has(.tst-item-cover-frame)) {
+      justify-content: flex-start;
+      
+      & .tst-menu-book-descr {
+        width: 100%;
+        padding: 0;
+      }
+    }
+
     & .tst-btn.tst-cart-btn svg {
       width: 15px;
     }
@@ -209,16 +221,104 @@ default card
     background-color: $bg;
   }
 }
+
+.swiper-slide-active{
+  
+}
+// .menuitem{
+//   visibility: hidden !important;
+// }
 @media (max-width: 500px) {
   .tst-menu-book-item {
     &.tst-mbi-3 {
+      flex-direction: column;
+      align-items: flex-start;
+
       & .tst-item-cover-frame {
-        display: none;
+        display: block;
+        width: 100%;
+        height: 200px;
+        margin-bottom: 15px;
       }
 
       & .tst-menu-book-descr {
         width: 100%;
         padding: 0;
+        flex-direction: column;
+        
+        & .tst-menu-book-bottom {
+          width: 100%;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .tst-menu-book-item {
+    &.tst-mbi-3 {
+      flex-direction: column;
+      align-items: flex-start;
+
+      // For items without images, keep them simple
+      &:not(:has(.tst-item-cover-frame)) {
+        flex-direction: row;
+        align-items: center;
+        
+        & .tst-menu-book-descr {
+          width: 100%;
+          padding: 0;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          
+          & .tst-menu-book-bottom {
+            width: auto;
+            flex-direction: row;
+            margin-top: 0;
+          }
+        }
+      }
+
+      & .tst-item-cover-frame {
+        width: 100%;
+        height: 180px;
+        margin-bottom: 15px;
+        
+        & img {
+          border-radius: 5px;
+        }
+      }
+
+      & .tst-menu-book-descr {
+        width: 100%;
+        padding: 0;
+        flex-direction: column;
+        
+        & .tst-menu-book-name {
+          margin-bottom: 10px;
+        }
+        
+        & .tst-menu-book-bottom {
+          width: 100%;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .tst-menu-book-item {
+    &.tst-mbi-3 {
+      & .tst-item-cover-frame {
+        height: 160px;
       }
     }
   }
