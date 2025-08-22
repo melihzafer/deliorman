@@ -11,7 +11,7 @@ import ReservationFormSection from "@components/sections/ReservationForm";
 
 export const metadata = {
     title: {
-        default: "Reservation Form",
+        default: "Резервация",
     },
     description: AppData.settings.siteDescription,
 }
@@ -20,7 +20,7 @@ const Reservation = () => {
   return (
     <>
         <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-            <PageBanner pageTitle={"Reservation"} description={"Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."} breadTitle={"Table Reservation"} showMap={1} />
+            <PageBanner pageTitle={"Резервация"} description={"Резервирайте маса в ресторант Делиорман и се насладете <br>на изискана кухня и уютна атмосфера в село Самуил."} breadTitle={"Резервация на маса"} showMap={1} />
         </div>
         <div id="tst-dynamic-content" className="tst-dynamic-content">
             <div className="tst-content-frame">

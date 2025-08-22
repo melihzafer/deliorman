@@ -41,7 +41,7 @@ const SearchBarModule = () => {
                 onKeyDown={searchPressHandler}
                 required
                 id="searchField"
-                placeholder="What you search?"
+                placeholder="Какво търсите?"
             />
             <button 
                 onClick={() => {

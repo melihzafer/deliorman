@@ -101,6 +101,10 @@ export const SliderProps = {
     effect: 'fade',
     parallax: true,
     speed: 600,
+    autoHeight: true,
+    fadeEffect: {
+      crossFade: true
+    },
     pagination: {
       el: '.swiper-menu-nav',
       clickable: true,

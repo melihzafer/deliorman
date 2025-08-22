@@ -1,17 +1,17 @@
 {
-    "subtitle": "Reservation",
-    "title": "This evening <br>will be great!",
-    "description": "Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita.",
+    "subtitle": "Резервация",
+    "title": "Тази вечер <br>ще бъде незабравима!",
+    "description": "Резервирайте маса в ресторант Делиорман и се насладете <br>на изискана кухня и уютна атмосфера в село Самуил.",
     "image": {
         "url": "/img/reserved.png",
-        "alt": "burger"
-    },
-    "button1": {
-        "link": "/menu",
-        "label": "Reservation"
+        "alt": "резервация"
     },
     "button2": {
-        "link": "/contact",
-        "label": "Get in touch"
+        "link": "/menu",
+        "label": "Меню"
+    },
+    "button1": {
+        "link": "tel:+359894766273",
+        "label": "Обадете се сега"
     }
 }

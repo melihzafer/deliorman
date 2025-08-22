@@ -47,7 +47,7 @@ const MenuFiltered = ({ heading = 0, categories }) => {
             >
                 
                 {categories.map((category, category_key) => (
-                <SwiperSlide className="swiper-slide" key={`menu-filtered-category-${category_key}`}>
+                <SwiperSlide className="menuitem" key={`menu-filtered-category-${category_key}`}>
 
                     <div className="row">
 

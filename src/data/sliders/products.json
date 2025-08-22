@@ -1,9 +1,9 @@
 {
-    "title": "Most <span>popular</span> dishes",
-    "description": "Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.",
+    "title": "Най-<span>популярни</span> ястия",
+    "description": "Открийте нашите най-обичани специалитети<br>приготвени с традиционни рецепти и качествени продукти.",
     "button": {
         "link": "/menu",
         "icon": "/img/ui/icons/menu.svg",
-        "label": "Full menu"
+        "label": "Пълно меню"
     }
 }

@@ -1,11 +1,11 @@
 {
-    "title": "Use the tips <br>and recipes of our chefs",
-    "subtitle": "Newsletter",
-    "description": "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam.",
+    "title": "Използвайте съветите <br>и рецептите на нашите готвачи",
+    "subtitle": "Новини",
+    "description": "Следете нашия блог за най-новите рецепти, съвети за готвене <br>и интересни статии за кулинарията от екипа на Делиорман.",
     "button": {
         "link": "/blog",
-        "label": "All publications",
-        "info": "Read the news of our restaurant, recipes for delicious fears, tips for your home kitchen in our blog!"
+        "label": "Всички публикации",
+        "info": "Прочетете новините на нашия ресторант, рецепти за вкусни ястия, съвети за вашата домашна кухня в нашия блог!"
     },
     "numOfItems": 3
 }

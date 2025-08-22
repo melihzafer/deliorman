@@ -1,758 +1,806 @@
 {
-    "categories": [
+  "categories": [
+    {
+      "name": "Безалкохолни и топли напитки",
+      "slug": "soft-hot-drinks",
+      "subtitle": "Меню",
+      "description": "Освежаващи безалкохолни и топли напитки.",
+      "items": [
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/cola.jpg", "title": "Кока Кола", "weight": "250 мл.", "price": "2.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/cola_zero.webp", "title": "Кока Кола Зиро", "weight": "250 мл.", "price": "2.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/fanta_orange.jpg", "title": "Фанта портокал", "weight": "250 мл.", "price": "2.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/fanta_lemon.jpg", "title": "Фанта лимон", "weight": "250 мл.", "price": "2.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/sprite.webp", "title": "Спрайт", "weight": "250 мл.", "price": "2.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/club_soda_-removebg-preview_1.webp", "title": "Швепс сода", "weight": "250 мл.", "price": "1.80 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/schweppes.jpg", "title": "Швепс", "weight": "250 мл.", "price": "2.80 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/cappy.jpg", "title": "Натурален сок 'Капи'", "weight": "250 мл.", "price": "2.80 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/ice_tea.jpg", "title": "Студен чай", "weight": "250 мл.", "price": "2.80 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/voda_bankya.jpg", "title": "Минерална вода 'Банка'", "weight": "330 мл.", "price": "1.80 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/redbull.webp", "title": "Енергийна напитка Red Bull", "weight": "250 мл.", "price": "5.50 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/Ayran-WEB-10.webp", "title": "Айрян", "weight": "250 мл.", "price": "2.00 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/esspresso.jpg", "title": "Кафе еспресо", "weight": "60 мл.", "price": "1.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/lavazza.jpg", "title": "Кафе 'Лаваца' капсула", "weight": "60 мл.", "price": "2.20 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/nescafe.jpg", "title": "Нес кафе", "weight": "60 мл.", "price": "1.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/cappuchino.jpg", "title": "Капучино", "weight": "150 мл.", "price": "2.20 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/moccacino.jpg", "title": "Мокачино", "weight": "150 мл.", "price": "2.20 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/hot_choclate.jpg", "title": "Горещ шоколад", "weight": "150 мл.", "price": "2.20 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/milk.webp", "title": "Прясно мляко", "weight": "150 мл.", "price": "1.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/herbal_tea.webp", "title": "Чай билков", "weight": "150 мл.", "price": "1.40 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/fruit_tea.webp", "title": "Плодов чай", "weight": "150 мл.", "price": "1.40 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/honey.jpg", "title": "Мед", "weight": "15 мл.", "price": "0.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/milk_kanichka.jpg", "title": "Каничка мляко", "weight": "50 мл.", "price": "0.60 лв." },
+        { "image": "/img/menuCategorised/Soft drinks & Beverages/coffee_creamer.png", "title": "Сметана", "weight": "10 мл.", "price": "0.60 лв." }
+      ]
+    },
+    {
+      "name": "Скара и Специалитети",
+      "slug": "grill-specialties",
+      "subtitle": "Меню",
+      "description": "Прясно изпечени на скара и специалитети.",
+      "items": [
         {
-            "name": "Безалкохолни и топли напитки",
-            "slug": "soft-hot-drinks",
-            "subtitle": "Меню",
-            "description": "Освежаващи безалкохолни и топли напитки.",
-            "items": [
-              {"title": "Кока Кола", "amount": "250 мл.", "price": "2.60 лв."},
-              {"title": "Кока Кола Зиро", "amount": "250 мл.", "price": "2.60 лв."},
-              {"title": "Фанта портокал", "amount": "250 мл.", "price": "2.60 лв."},
-              {"title": "Фанта лимон", "amount": "250 мл.", "price": "2.60 лв."},
-              {"title": "Спрайт", "amount": "250 мл.", "price": "2.60 лв."},
-              {"title": "Швепс сода", "amount": "250 мл.", "price": "1.80 лв."},
-              {"title": "Швепс", "amount": "250 мл.", "price": "2.80 лв."},
-              {"title": "Натурален сок 'Капи'", "amount": "250 мл.", "price": "2.80 лв."},
-              {"title": "Студен чай", "amount": "250 мл.", "price": "2.80 лв."},
-              {"title": "Минерална вода 'Банка'", "amount": "330 мл.", "price": "1.80 лв."},
-              {"title": "Енергийна напитка Red Bull", "amount": "250 мл.", "price": "5.50 лв."},
-              {"title": "Айрян", "amount": "250 мл.", "price": "2.00 лв."},
-              {"title": "Кафе еспресо", "amount": "60 мл.", "price": "1.60 лв."},
-              {"title": "Кафе 'Лаваца' капсула", "amount": "60 мл.", "price": "2.20 лв."},
-              {"title": "Нес кафе", "amount": "60 мл.", "price": "1.60 лв."},
-              {"title": "Капучино", "amount": "150 мл.", "price": "2.20 лв."},
-              {"title": "Мокачино", "amount": "150 мл.", "price": "2.20 лв."},
-              {"title": "Горещ шоколад", "amount": "150 мл.", "price": "2.20 лв."},
-              {"title": "Прясно мляко", "amount": "150 мл.", "price": "1.60 лв."},
-              {"title": "Чай билков", "amount": "150 мл.", "price": "1.40 лв."},
-              {"title": "Плодов чай", "amount": "150 мл.", "price": "1.40 лв."},
-              {"title": "Мед", "amount": "15 мл.", "price": "0.60 лв."},
-              {"title": "Каничка мляко", "amount": "50 мл.", "price": "0.60 лв."},
-              {"title": "Сметана", "amount": "10 мл.", "price": "0.60 лв."}
-            ]
-          },
-      {
-        "name": "Новите Специалитети",
-        "slug": "specialties",
-        "subtitle": "Меню",
-        "description": "Нови специалитети от кухнята на ресторант Делиорман.",
-        "items": [
-          {
-            "image": "/assets/img/specialties/shish-deliorman.jpg",
-            "title": "Шиш 'Делиорман'",
-            "text": "Телешка кайма, арабска питка, лук",
-            "weight": "300 г",
-            "price": "12.90 лв."
-          },
-          {
-            "image": "/assets/img/specialties/roast-beef.jpg",
-            "title": "Телешко печено",
-            "text": "Телешко месо от рибицата, чесън, картофи",
-            "weight": "300 г",
-            "price": "19.90 лв."
-          },
-          {
-            "image": "/assets/img/specialties/lamb-delicacy.jpg",
-            "title": "Агнешки деликатес на шиш",
-            "text": "Агнешко месо, зеленчуци",
-            "weight": "500 г",
-            "price": "29.90 лв."
-          }
-        ]
-      },
-      {
-        "name": "Скара и Специалитети",
-        "slug": "grill-specialties",
-        "subtitle": "Меню",
-        "description": "Прясно изпечени на скара и специалитети.",
-        "items": [
-          {
-            "image": "/assets/img/grill/kufte.jpg",
-            "title": "Кюфте",
-            "weight": "80 г",
-            "price": "2.00 лв."
-          },
-          {
-            "image": "/assets/img/grill/kebapche.jpg",
-            "title": "Кебапче",
-            "weight": "80 г",
-            "price": "2.00 лв."
-          },
-          {
-            "image": "/assets/img/grill/beef-kufte.jpg",
-            "title": "Телешко кюфте",
-            "weight": "80 г",
-            "price": "2.00 лв."
-          },
-          {
-            "image": "/assets/img/grill/chicken-shish.jpg",
-            "title": "Пилешки шиш",
-            "weight": "100 г",
-            "price": "2.80 лв."
-          },
-          {
-            "image": "/assets/img/grill/pork-shish.jpg",
-            "title": "Свински шиш",
-            "weight": "130 г",
-            "price": "2.80 лв."
-          },
-          {
-            "image": "/assets/img/grill/chicken-steak.jpg",
-            "title": "Пилешка пържола бут",
-            "weight": "250 г",
-            "price": "5.50 лв."
-          },
-          {
-            "image": "/assets/img/grill/pork-steak.jpg",
-            "title": "Свинска пържола",
-            "weight": "250 г",
-            "price": "6.50 лв."
-          },
-          {
-            "image": "/assets/img/grill/adana-kebab.jpg",
-            "title": "Адана кебап",
-            "weight": "160 г",
-            "price": "5.60 лв."
-          },
-          {
-            "image": "/assets/img/grill/tatar-kufte.jpg",
-            "title": "Татарско кюфте",
-            "weight": "280 г",
-            "price": "5.50 лв."
-          },
-          {
-            "image": "/assets/img/grill/mixed-grill.jpg",
-            "title": "Мешена скара",
-            "weight": "900 г",
-            "price": "29.50 лв."
-          },
-          {
-            "image": "/assets/img/grill/beef-tongue.jpg",
-            "title": "Телешки език",
-            "weight": "200 г",
-            "price": "14.90 лв."
-          },
-          {
-            "image": "/assets/img/grill/deliorman-bites.jpg",
-            "title": "Хапки 'Делиорман'",
-            "weight": "700 г",
-            "price": "22.90 лв."
-          },
-          {
-            "image": "/assets/img/grill/bear-paw.jpg",
-            "title": "Меча лапа",
-            "weight": "300 г",
-            "price": "10.90 лв."
-          }
-        ]
-      },
-      {
-        "name": "Пици",
-        "slug": "pizza",
-        "subtitle": "Меню",
-        "description": "Нашите вкусни и ароматни пици, приготвени с най-добрите съставки.",
-        "items": [
-          {
-            "image": "/assets/img/pizza/deliorman.jpg",
-            "title": "Делиорман",
-            "text": "Доматен сос, шунка, мариновани гъби, кашкавал, луканка, сирене, кисели краставички, чеснова паста, босилек",
-            "weight": "400 г",
-            "price": "8.90 лв."
-          },
-          {
-            "image": "/assets/img/pizza/bondzhorno.jpg",
-            "title": "Бонджорно",
-            "text": "Доматен сос, сирене, кашкавал",
-            "weight": "400 г",
-            "price": "7.50 лв."
-          },
-          {
-            "image": "/assets/img/pizza/margarita.jpg",
-            "title": "Маргарита",
-            "text": "Доматен сос, кашкавал, босилек",
-            "weight": "400 г",
-            "price": "6.50 лв."
-          },
-          {
-            "image": "/assets/img/pizza/kompira.jpg",
-            "title": "Компира",
-            "text": "Доматен сос, шунка, пресни гъби, кашкавал",
-            "weight": "400 г",
-            "price": "8.00 лв."
-          },
-          {
-            "image": "/assets/img/pizza/karleona.jpg",
-            "title": "Карлеона",
-            "text": "Доматен сос, шунка, луканка, кисели краставички, кашкавал",
-            "weight": "400 г",
-            "price": "8.50 лв."
-          },
-          {
-            "image": "/assets/img/pizza/antigua.jpg",
-            "title": "Антигуа",
-            "text": "Доматен сос, шунка, кашкавал",
-            "weight": "400 г",
-            "price": "7.50 лв."
-          },
-          {
-            "image": "/assets/img/pizza/neapolitana.jpg",
-            "title": "Неаполитана",
-            "text": "Доматен сос, пилешко филе, пресни гъби, маслини, царевица, кашкавал",
-            "weight": "400 г",
-            "price": "8.50 лв."
-          }
-        ]
-      },
-      {
-        "name": "Салати",
-        "slug": "salads",
-        "subtitle": "Меню",
-        "description": "Свежи салати, приготвени от най-добрите продукти.",
-        "items": [
-          {
-            "image": "/assets/img/salads/zele-mayoneza.jpg",
-            "title": "Салата зеле с майонеза",
-            "text": "зеле, майонеза, маслини",
-            "weight": "300 г",
-            "price": "5.90 лв."
-          },
-          {
-            "image": "/assets/img/salads/redena-salata.jpg",
-            "title": "Редена салата",
-            "text": "домати, краставици, печени чушки, сирене, маслини, лук",
-            "weight": "350 г",
-            "price": "7.50 лв."
-          },
-          {
-            "image": "/assets/img/salads/zelena-salata.jpg",
-            "title": "Зелена салата",
-            "text": "маруля, краставици, репички, маслини, яйце",
-            "weight": "300 г",
-            "price": "6.50 лв."
-          },
-          {
-            "image": "/assets/img/salads/snezhanka.jpg",
-            "title": "Снежанка",
-            "text": "кисели краставици, копър, чесън, кисело мляко, маслини",
-            "weight": "300 г",
-            "price": "6.50 лв."
-          },
-          {
-            "image": "/assets/img/salads/zele-morkovi.jpg",
-            "title": "Зеле с моркови",
-            "text": "зеле, моркови",
-            "weight": "300 г",
-            "price": "5.50 лв."
-          },
-          {
-            "image": "/assets/img/salads/morkovi-mayoneza.jpg",
-            "title": "Салата моркови с майонеза",
-            "text": "моркови, майонеза, маслини",
-            "weight": "300 г",
-            "price": "5.90 лв."
-          },
-          {
-            "image": "/assets/img/salads/shopska.jpg",
-            "title": "Салата шопска",
-            "text": "домати, краставици, пипер, лук, сирене, маслини",
-            "weight": "400 г",
-            "price": "7.50 лв."
-          },
-          {
-            "image": "/assets/img/salads/deliorman-salad.jpg",
-            "title": "Салата Делиорман",
-            "text": "домати, краставици, кашкавал, сирене, шунка, снежанка, печена чушка, маслини",
-            "weight": "500 г",
-            "price": "9.90 лв."
-          },
-          {
-            "image": "/assets/img/salads/ovcharska.jpg",
-            "title": "Салата овчарска",
-            "text": "домати, краставици, пипер, лук, гъби, шунка, кашкавал, сирене, яйце, маслини",
-            "weight": "550 г",
-            "price": "8.50 лв."
-          },
-          {
-            "image": "/assets/img/salads/caesar.jpg",
-            "title": "Салата 'Цезар'",
-            "text": "айсберг, пилешко филе, краставици, крутони, пармезан, сос",
-            "weight": "450 г",
-            "price": "9.90 лв."
-          },
-          {
-            "image": "/assets/img/salads/greek.jpg",
-            "title": "Салата гръцка",
-            "text": "домати, краставици, печени чушки, сирене, маслини, лук, лимон, зехтин, риган",
-            "weight": "450 г",
-            "price": "7.50 лв."
-          },
-          {
-            "image": "/assets/img/salads/green-tuna.jpg",
-            "title": "Зелена салата с риба тон",
-            "text": "маруля, краставици, маслини, риба тон, зехтин",
-            "weight": "300 г",
-            "price": "9.90 лв."
-          }
-        ]
-      },
-      {
-        "name": "Аламинути",
-        "slug": "alaminuти",
-        "subtitle": "Меню",
-        "description": "Леки хапки и бар храни.",
-        "items": [
-          {
-            "image": "/assets/img/snacks/fries.jpg",
-            "title": "Пържени картофи",
-            "weight": "200 г",
-            "price": "5.50 лв."
-          },
-          {
-            "image": "/assets/img/snacks/fries-cheese.jpg",
-            "title": "Пържени картофи със сирене",
-            "weight": "250 г",
-            "price": "6.50 лв."
-          },
-          {
-            "image": "/assets/img/snacks/chicken-livers.jpg",
-            "title": "Пилешки дробчета с лук",
-            "text": "лук, моркови, пипер",
-            "weight": "350 г",
-            "price": "6.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/chicken-hearts.jpg",
-            "title": "Пилешки сърца на тиган",
-            "text": "лук, моркови",
-            "weight": "300 г",
-            "price": "7.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/gizzards.jpg",
-            "title": "Пилешки воденички на тиган",
-            "text": "лук, моркови",
-            "weight": "300 г",
-            "price": "7.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/chicken-strips.jpg",
-            "title": "Пилешки филенца с корнфлейкс",
-            "weight": "400 г",
-            "price": "9.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/cheese-dippers.jpg",
-            "title": "Топени сиренца",
-            "weight": "200 г",
-            "price": "6.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/breaded-cheese.jpg",
-            "title": "Кашкавал пане",
-            "weight": "200 г",
-            "price": "6.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/chicken-wings.jpg",
-            "title": "Пилешки крилца",
-            "weight": "200 г",
-            "price": "8.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/country-fries.jpg",
-            "title": "Пържени картофи по селски",
-            "weight": "200 г",
-            "price": "6.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/omelet-ham.jpg",
-            "title": "Омлет с шунка и гарнитура",
-            "weight": "250 г",
-            "price": "6.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/omelet.jpg",
-            "title": "Омлет с гарнитура",
-            "weight": "250 г",
-            "price": "6.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/doner.jpg",
-            "title": "Порция дюнер",
-            "weight": "500 г",
-            "price": "9.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/ribs.jpg",
-            "title": "Свински ребра печени",
-            "weight": "250 г",
-            "price": "12.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/baby-mozzarella.jpg",
-            "title": "Бейби моцарела",
-            "weight": "350 г",
-            "price": "9.50 лв."
-          },
-          {
-            "image": "/assets/img/snacks/onion-rings.jpg",
-            "title": "Лучени кръгчета",
-            "weight": "300 г",
-            "price": "6.90 лв."
-          },
-          {
-            "image": "/assets/img/snacks/chicken-leg-cornflakes.jpg",
-            "title": "Пилешко бутче с корнфлейкс",
-            "weight": "500 г",
-            "price": "9.90 лв."
-          }
-        ]
-      },
-      {
-        "name": "Сач, Мезета и Гарнитури",
-        "slug": "sach-appetizers-sides",
-        "subtitle": "Меню",
-        "description": "Голям избор от сачове, мезета и гарнитури.",
-        "items": [
-          {"title": "Пилешки сач със зеленчуци", "amount": "1000 гр.", "price": "26.90 лв."},
-          {"title": "Свински сач със зеленчуци", "amount": "1000 гр.", "price": "26.90 лв."},
-          {"title": "Агнешки сач със зеленчуци", "amount": "1000 гр.", "price": "38.00 лв."},
-          {"title": "Луканка", "amount": "100 гр.", "price": "6.00 лв."},
-          {"title": "Суджук", "amount": "100 гр.", "price": "6.00 лв."},
-          {"title": "Пастърма", "amount": "100 гр.", "price": "8.00 лв."},
-          {"title": "Сирене", "amount": "100 гр.", "price": "3.00 лв."},
-          {"title": "Кашкавал", "amount": "100 гр.", "price": "4.00 лв."},
-          {"title": "Топла гарнитура (ориз, картофи)", "amount": "200 гр.", "price": "2.50 лв."},
-          {"title": "Студена гарнитура (зеле, моркови)", "amount": "200 гр.", "price": "2.50 лв."},
-          {"title": "Студена гарнитура (домати, краставици)", "amount": "200 гр.", "price": "2.50 лв."}
-        ]
-      },
-      {
-        "name": "Супи, Риба и Сандвичи",
-        "slug": "soups-fish-sandwiches",
-        "subtitle": "Меню",
-        "description": "Традиционни супи, прясна риба и бързи сандвичи.",
-        "items": [
-          {
-            "image": "/assets/img/soups/chicken-soup.jpg",
-            "title": "Пилешка супа",
-            "amount": "300 мл",
-            "price": "3.50 лв."
-          },
-          {
-            "image": "/assets/img/soups/tripe-soup.jpg",
-            "title": "Шкембе чорба",
-            "amount": "300 мл",
-            "price": "3.50 лв."
-          },
-          {
-            "image": "/assets/img/soups/meatball-soup.jpg",
-            "title": "Супа топчета",
-            "amount": "300 мл",
-            "price": "3.50 лв."
-          },
-          {
-            "image": "/assets/img/soups/tarator.jpg",
-            "title": "Таратор",
-            "amount": "300 мл",
-            "price": "2.50 лв."
-          },
-          {
-            "image": "/assets/img/fish/tsatsa.jpg",
-            "title": "Цаца",
-            "weight": "200 г",
-            "price": "5.50 лв."
-          },
-          {
-            "image": "/assets/img/fish/mackerel.jpg",
-            "title": "Скумрия",
-            "weight": "250 г",
-            "price": "8.90 лв."
-          },
-          {
-            "image": "/assets/img/fish/carps.jpg",
-            "title": "Шаран на тиган",
-            "weight": "750 г",
-            "price": "35.00 лв."
-          },
-          {
-            "image": "/assets/img/sandwiches/mincemeat.jpg",
-            "title": "Сандвич с кайма",
-            "price": "2.90 лв."
-          },
-          {
-            "image": "/assets/img/sandwiches/ham-cheese.jpg",
-            "title": "Сандвич с кашкавал и шунка",
-            "price": "2.90 лв."
-          },
-          {
-            "image": "/assets/img/sandwiches/cheese.jpg",
-            "title": "Сандвич с кашкавал",
-            "price": "2.90 лв."
-          },
-          {
-            "image": "/assets/img/sandwiches/brie-egg-cheese.jpg",
-            "title": "Сандвич със сирене, яйце и кашкавал",
-            "price": "2.90 лв."
-          },
-          {
-            "image": "/assets/img/bread/white-slice.jpg",
-            "title": "Филия хляб",
-            "price": "0.25 лв."
-          },
-          {
-            "image": "/assets/img/bread/toasted-slice.jpg",
-            "title": "Филия препечен хляб",
-            "price": "0.35 лв."
-          },
-          {
-            "image": "/assets/img/bread/greek-pita.jpg",
-            "title": "Гръцка питка",
-            "weight": "100 г",
-            "price": "1.00 лв."
-          },
-          {
-            "image": "/assets/img/bread/garlic-pita.jpg",
-            "title": "Гръцка чеснова питка",
-            "weight": "100 г",
-            "price": "1.00 лв."
-          }
-        ]
-      },
-
-      {
-        "name": "Ракии и Бира",
-        "slug": "rakia-beer",
-        "subtitle": "Меню",
-        "description": "Традиционни ракии и бира.",
-        "items": [
-          {"title": "Пещерска Гроздова", "amount": "50 мл.", "price": "2.00 лв."},
-          {"title": "Пещерска Гроздова отлежала", "amount": "50 мл.", "price": "2.20 лв."},
-          {"title": "Нежибар 'Гроздова'", "amount": "50 мл.", "price": "2.40 лв."},
-          {"title": "Бургаска Мускатова", "amount": "50 мл.", "price": "2.40 лв."},
-          {"title": "Бургас 63", "amount": "50 мл.", "price": "3.40 лв."},
-          {"title": "Бургас 63 Барел", "amount": "50 мл.", "price": "3.80 лв."},
-          {"title": "Сливенска перла", "amount": "50 мл.", "price": "2.20 лв."},
-          {"title": "Сливенска перла Барел", "amount": "50 мл.", "price": "2.40 лв."},
-          {"title": "Кайлъшка Гроздова", "amount": "50 мл.", "price": "3.40 лв."},
-          {"title": "Ямболска Гроздова", "amount": "50 мл.", "price": "3.80 лв."},
-          {"title": "Троянска Слива", "amount": "50 мл.", "price": "2.00 лв."},
-          {"title": "Троянска Слива Отлежала", "amount": "50 мл.", "price": "2.40 лв."},
-          {"title": "Търговище Мускатова", "amount": "50 мл.", "price": "2.20 лв."},
-          {"title": "Търговище Мускатова отлежала", "amount": "50 мл.", "price": "2.40 лв."},
-          {"title": "Кортен отлежала Резерва", "amount": "50 мл.", "price": "4.50 лв."},
-          {"title": "Стралджанска мускатова", "amount": "50 мл.", "price": "3.40 лв."},
-          {"title": "Стралджанска мускатова Барел", "amount": "50 мл.", "price": "3.80 лв."},
-          {"title": "Исперих кайсиева", "amount": "50 мл.", "price": "3.80 лв."}
-        ]
-      },
-      {
-        "name": "Бели и Червени Вина",
-        "slug": "wines",
-        "subtitle": "Меню",
-        "description": "Подбран асортимент от бели, червени и розе вина.",
-        "items": [
-          {
-            "image": "/assets/img/wines/white/muscat-trg.jpg",
-            "title": "Търговище Мускат",
-            "amount": "750 мл",
-            "price": "13.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/chardonnay-trg.jpg",
-            "title": "Търговище Шардоне",
-            "amount": "750 мл",
-            "price": "13.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/sauvignon-trg.jpg",
-            "title": "Търговище Совиньон Блан",
-            "amount": "750 мл",
-            "price": "13.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/traminer-trg.jpg",
-            "title": "Търговище Траминер",
-            "amount": "750 мл",
-            "price": "13.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/sauvignon-quantum.jpg",
-            "title": "Квантум Совиньон Блан",
-            "amount": "750 мл",
-            "price": "18.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/chardonnay-quantum.jpg",
-            "title": "Квантум Шардоне",
-            "amount": "750 мл",
-            "price": "18.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/traminer-quantum.jpg",
-            "title": "Квантум Траминер",
-            "amount": "750 мл",
-            "price": "17.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/chergа.jpg",
-            "title": "Черга",
-            "amount": "750 мл",
-            "price": "26.00 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/pearl-white.jpg",
-            "title": "PEARL WHITE Совиньон Блан & Семийон",
-            "amount": "500 мл",
-            "price": "7.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/white/sauvignon-on-tap.jpg",
-            "title": "Наливно кана Совиньон Блан",
-            "amount": "500 мл",
-            "price": "7.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/red/cabernet-trg.jpg",
-            "title": "Търговище Каберне",
-            "amount": "750 мл",
-            "price": "13.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/red/merlot-trg.jpg",
-            "title": "Търговище Мерло",
-            "amount": "750 мл",
-            "price": "13.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/red/cabernet-quantum.jpg",
-            "title": "Квантум Каберне Совиньон",
-            "amount": "750 мл",
-            "price": "18.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/red/pinot-noir-merlot.jpg",
-            "title": "Квантум Пино Ноар & Мерло",
-            "amount": "750 мл",
-            "price": "18.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/red/chergа.jpg",
-            "title": "Черга",
-            "amount": "750 мл",
-            "price": "17.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/red/merlot-on-tap.jpg",
-            "title": "Наливно кана Мерло",
-            "amount": "500 мл",
-            "price": "7.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/rose/rose-trg.jpg",
-            "title": "Търговище Розе",
-            "amount": "750 мл",
-            "price": "13.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/rose/rose-quantum.jpg",
-            "title": "Квантум Розе",
-            "amount": "750 мл",
-            "price": "18.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/rose/pure-pink.jpg",
-            "title": "PURE PINK Розе Сира & Мурведър",
-            "amount": "750 мл",
-            "price": "26.00 лв."
-          },
-          {
-            "image": "/assets/img/wines/rose/rose-on-tap.jpg",
-            "title": "Наливно кана Розе",
-            "amount": "500 мл",
-            "price": "7.90 лв."
-          },
-          {
-            "image": "/assets/img/wines/rose/chergа-rose.jpg",
-            "title": "Черга Розе",
-            "amount": "750 мл",
-            "price": "17.90 лв."
-          }
-        ]
-      },
-      {
-        "name": "Водка и други напитки",
-        "slug": "vodka-other-drinks",
-        "subtitle": "Меню",
-        "description": "Водка и други високоградусови напитки.",
-        "items": [
-          {"title": "Водка 'Савой' Силвър", "amount": "50 мл.", "price": "1.50 лв."},
-          {"title": "Водка 'Савой'", "amount": "50 мл.", "price": "1.40 лв."},
-          {"title": "Водка 'Аляска'", "amount": "50 мл.", "price": "1.60 лв."},
-          {"title": "Водка 'Финландия'", "amount": "50 мл.", "price": "2.80 лв."},
-          {"title": "Водка 'Руски стандарт'", "amount": "50 мл.", "price": "2.90 лв."},
-          {"title": "Водка 'Абсолют'", "amount": "50 мл.", "price": "2.90 лв."},
-          {"title": "Водка 'Смирноф'", "amount": "50 мл.", "price": "2.60 лв."},
-          {"title": "Водка 'Флирт'", "amount": "50 мл.", "price": "1.50 лв."},
-          {"title": "Водка 'Мери Джейн'", "amount": "50 мл.", "price": "1.50 лв."},
-          {"title": "Узо Плумаги", "amount": "50 мл.", "price": "2.00 лв."},
-          {"title": "Ром Савой", "amount": "50 мл.", "price": "1.20 лв."},
-          {"title": "Ром Савой бял", "amount": "50 мл.", "price": "1.40 лв."},
-          {"title": "Мастика Карнобат", "amount": "50 мл.", "price": "1.20 лв."},
-          {"title": "Джин Савой", "amount": "50 мл.", "price": "1.20 лв."},
-          {"title": "Коняк Метакса", "amount": "50 мл.", "price": "2.80 лв."},
-          {"title": "Мента Пещера", "amount": "50 мл.", "price": "1.20 лв."},
-          {"title": "Шампанско Криста", "amount": "750 мл.", "price": "5.50 лв."}
-        ]
-      },
-      {
-        "name": "Уиски и Ядки",
-        "slug": "whisky-nuts",
-        "subtitle": "Меню",
-        "description": "Уискита и ядки.",
-        "items": [
-          {"title": "Джони Уокър", "amount": "50 мл.", "price": "2.90 лв."},
-          {"title": "Тюламор Дю", "amount": "50 мл.", "price": "3.00 лв."},
-          {"title": "Грантс", "amount": "50 мл.", "price": "2.50 лв."},
-          {"title": "Джак Даниелс", "amount": "50 мл.", "price": "3.90 лв."},
-          {"title": "Паспорт", "amount": "50 мл.", "price": "1.90 лв."},
-          {"title": "Савой", "amount": "50 мл.", "price": "2.90 лв."},
-          {"title": "Балантайнс", "amount": "50 мл.", "price": "2.50 лв."},
-          {"title": "Джим Бийм", "amount": "50 мл.", "price": "5.00 лв."},
-          {"title": "Чивас Регал", "amount": "50 мл.", "price": "3.00 лв."},
-          {"title": "Джи Би", "amount": "50 мл.", "price": "3.00 лв."},
-          {"title": "Лешници", "amount": "100 гр.", "price": "6.00 лв."},
-          {"title": "Бадеми", "amount": "100 гр.", "price": "6.00 лв."},
-          {"title": "Индийско кашу", "amount": "100 гр.", "price": "6.00 лв."},
-          {"title": "Фъстъци", "amount": "100 гр.", "price": "3.00 лв."}
-        ]
-      },
-      {
-        "name": "Десерти",
-        "slug": "desserts",
-        "subtitle": "Меню",
-        "description": "Вкусни десерти за всеки вкус.",
-        "items": [
-          {"title": "Кюнефе", "price": "9.50 лв."},
-          {"title": "Чийзкейк с череши", "price": "5.90 лв."},
-          {"title": "Шоколадов ганаш", "price": "5.90 лв."},
-          {"title": "Торта 'Рафаело'", "price": "5.90 лв."},
-          {"title": "Солен карамел", "price": "5.90 лв."},
-          {"title": "Френска торта", "price": "5.90 лв."},
-          {"title": "Премиум десерти в буркан", "price": "5.90 лв."},
-          {"title": "Банофи", "price": "5.90 лв."},
-          {"title": "Профитерол", "price": "5.90 лв."},
-          {"title": "Морковена", "price": "5.90 лв."},
-          {"title": "Фереро", "price": "5.90 лв."},
-          {"title": "Сладоледени торти", "price": "5.90 лв."},
-          {"title": "Френска ванилия със смокини", "price": "5.90 лв."},
-          {"title": "Белгийски шоколад с печ. лешници", "price": "5.90 лв."},
-          {"title": "Сладолед", "price": "5.00 лв."}
-        ]
-      }
-    
-
-    ]
-  }
-  
+          "image": "/img/menuCategorised/Grill&Specialties/sq_kyufte.png",
+          "title": "Кюфте",
+          "weight": "80 г",
+          "price": "2.00 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/sq_kebabche.png",
+          "title": "Кебапче",
+          "weight": "80 г",
+          "price": "2.00 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/sq_kyufte.png",
+          "title": "Телешко кюфте",
+          "weight": "80 г",
+          "price": "2.00 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/sq_pileshki_shish.jpg",
+          "title": "Пилешки шиш",
+          "weight": "100 г",
+          "price": "2.80 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/12360922.png",
+          "title": "Свински шиш",
+          "weight": "130 г",
+          "price": "2.80 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/willbeadded.jpg",
+          "title": "Шиш 'Делиорман'",
+          "text": "Телешка кайма, арабска питка, лук",
+          "weight": "300 г",
+          "price": "12.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/willbeadded.png",
+          "title": "Телешко печено",
+          "text": "Телешко месо от рибицата, чесън, картофи",
+          "weight": "300 г",
+          "price": "19.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/willbeadded.png",
+          "title": "Агнешки деликатес на шиш",
+          "text": "Агнешко месо, зеленчуци",
+          "weight": "500 г",
+          "price": "29.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/12360952.png",
+          "title": "Пилешка пържола бут",
+          "weight": "250 г",
+          "price": "5.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/sq_svinska_parjola.png",
+          "title": "Свинска пържола",
+          "weight": "250 г",
+          "price": "6.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/12361002.png",
+          "title": "Адана кебап",
+          "weight": "160 г",
+          "price": "5.60 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/sq_tatarsko_kyufte.jpg",
+          "title": "Татарско кюфте",
+          "weight": "280 г",
+          "price": "5.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/12361012.png",
+          "title": "Мешена скара",
+          "weight": "900 г",
+          "price": "29.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/123612022.png",
+          "title": "Телешки език",
+          "weight": "200 г",
+          "price": "14.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/sq_hapki_deliorman.png",
+          "title": "Хапки 'Делиорман'",
+          "weight": "700 г",
+          "price": "22.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Grill&Specialties/12331.png",
+          "title": "Меча лапа",
+          "weight": "300 г",
+          "price": "10.90 лв."
+        }
+      ]
+    },
+    {
+      "name": "Пици",
+      "slug": "pizza",
+      "subtitle": "Меню",
+      "description": "Нашите вкусни и ароматни пици, приготвени с най-добрите съставки.",
+      "items": [
+        {
+          "image": "/img/menuCategorised/Pizzas/sq_pizza_deliorman.jpg",
+          "title": "Делиорман",
+          "text": "Доматен сос, шунка, мариновани гъби, кашкавал, луканка, сирене, кисели краставички, чеснова паста, босилек",
+          "weight": "400 г",
+          "price": "8.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Pizzas/12361172.png",
+          "title": "Бонджорно",
+          "text": "Доматен сос, сирене, кашкавал",
+          "weight": "400 г",
+          "price": "7.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Pizzas/12361182.png",
+          "title": "Маргарита",
+          "text": "Доматен сос, кашкавал, босилек",
+          "weight": "400 г",
+          "price": "6.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Pizzas/12361192.png",
+          "title": "Компира",
+          "text": "Доматен сос, шунка, пресни гъби, кашкавал",
+          "weight": "400 г",
+          "price": "8.00 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Pizzas/sq_pizza_karleona.png",
+          "title": "Карлеона",
+          "text": "Доматен сос, шунка, луканка, кисели краставички, кашкавал",
+          "weight": "400 г",
+          "price": "8.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Pizzas/1233.jpg",
+          "title": "Антигуа",
+          "text": "Доматен сос, шунка, кашкавал",
+          "weight": "400 г",
+          "price": "7.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Pizzas/12361172.png",
+          "title": "Неаполитана",
+          "text": "Доматен сос, пилешко филе, пресни гъби, маслини, царевица, кашкавал",
+          "weight": "400 г",
+          "price": "8.50 лв."
+        }
+      ]
+    },
+    {
+      "name": "Салати",
+      "slug": "salads",
+      "subtitle": "Меню",
+      "description": "Свежи салати, приготвени от най-добрите продукти.",
+      "items": [
+        {
+          "image": "/img/menuCategorised/Salads/sq_zele_s_mayo.png",
+          "title": "Салата зеле с майонеза",
+          "text": "зеле, майонеза, маслини",
+          "weight": "300 г",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/12360972.png",
+          "title": "Редена салата",
+          "text": "домати, краставици, печени чушки, сирене, маслини, лук",
+          "weight": "350 г",
+          "price": "7.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/12360982.png",
+          "title": "Зелена салата",
+          "text": "маруля, краставици, репички, маслини, яйце",
+          "weight": "300 г",
+          "price": "6.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/12360992.png",
+          "title": "Снежанка",
+          "text": "кисели краставици, копър, чесън, кисело мляко, маслини",
+          "weight": "300 г",
+          "price": "6.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/sq_salad_zele_s_morkovi.jpg",
+          "title": "Зеле с моркови",
+          "text": "зеле, моркови",
+          "weight": "300 г",
+          "price": "5.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/salad_morkovi_s_mayo.jpg",
+          "title": "Салата моркови с майонеза",
+          "text": "моркови, майонеза, маслини",
+          "weight": "300 г",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/sq_salad_shopska.jpg",
+          "title": "Салата шопска",
+          "text": "домати, краставици, пипер, лук, сирене, маслини",
+          "weight": "400 г",
+          "price": "7.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/sq_salad_deliorman.png",
+          "title": "Салата Делиорман",
+          "text": "домати, краставици, кашкавал, сирене, шунка, снежанка, печена чушка, маслини",
+          "weight": "500 г",
+          "price": "9.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/sq_salad_ovcharska.jpg",
+          "title": "Салата овчарска",
+          "text": "домати, краставици, пипер, лук, гъби, шунка, кашкавал, сирене, яйце, маслини",
+          "weight": "550 г",
+          "price": "8.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/123.jpg",
+          "title": "Салата 'Цезар'",
+          "text": "айсберг, пилешко филе, краставици, крутони, пармезан, сос",
+          "weight": "450 г",
+          "price": "9.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/sq_salad_greece.jpg",
+          "title": "Салата гръцка",
+          "text": "домати, краставици, печени чушки, сирене, маслини, лук, лимон, зехтин, риган",
+          "weight": "450 г",
+          "price": "7.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Salads/Ш123.jpg",
+          "title": "Зелена салата с риба тон",
+          "text": "маруля, краставици, маслини, риба тон, зехтин",
+          "weight": "300 г",
+          "price": "9.90 лв."
+        }
+      ]
+    },
+    {
+      "name": "Аламинути",
+      "slug": "alaminuти",
+      "subtitle": "Меню",
+      "description": "Леки хапки и бар храни.",
+      "items": [
+        {
+          "image": "/img/menuCategorised/QuickBites/123333463.png",
+          "title": "Пържени картофи",
+          "weight": "200 г",
+          "price": "5.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123333473.png",
+          "title": "Пържени картофи със сирене",
+          "weight": "250 г",
+          "price": "6.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/sq_drobcheta.png",
+          "title": "Пилешки дробчета с лук",
+          "text": "лук, моркови, пипер",
+          "weight": "350 г",
+          "price": "6.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123333483.png",
+          "title": "Пилешки сърца на тиган",
+          "text": "лук, моркови",
+          "weight": "300 г",
+          "price": "7.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123и.jpg",
+          "title": "Пилешки воденички на тиган",
+          "text": "лук, моркови",
+          "weight": "300 г",
+          "price": "7.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/sq_pileshki_kornflex.jpg",
+          "title": "Пилешки филенца с корнфлейкс",
+          "weight": "400 г",
+          "price": "9.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123с.jpg",
+          "title": "Топени сиренца",
+          "weight": "200 г",
+          "price": "6.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123.jpg",
+          "title": "Кашкавал пане",
+          "weight": "200 г",
+          "price": "6.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123.jpg",
+          "title": "Пилешки крилца",
+          "weight": "200 г",
+          "price": "8.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123.jpg",
+          "title": "Пържени картофи по селски",
+          "weight": "200 г",
+          "price": "6.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123.jpg",
+          "title": "Омлет с шунка и гарнитура",
+          "weight": "250 г",
+          "price": "6.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123а.jpg",
+          "title": "Омлет с гарнитура",
+          "weight": "250 г",
+          "price": "6.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/12333346.png",
+          "title": "Порция дюнер",
+          "weight": "500 г",
+          "price": "9.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/12333347.png",
+          "title": "Свински ребра печени",
+          "weight": "250 г",
+          "price": "12.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/sq_baby_mozzarella.jpg",
+          "title": "Бейби моцарела",
+          "weight": "350 г",
+          "price": "9.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/123.jpg",
+          "title": "Лучени кръгчета",
+          "weight": "300 г",
+          "price": "6.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/QuickBites/12333342.png",
+          "title": "Пилешко бутче с корнфлейкс",
+          "weight": "500 г",
+          "price": "9.90 лв."
+        }
+      ]
+    },
+    {
+      "name": "Сач, Мезета и Гарнитури",
+      "slug": "sach-appetizers-sides",
+      "subtitle": "Меню",
+      "description": "Голям избор от сачове, мезета и гарнитури.",
+      "items": [
+        { "image": "", "title": "Пилешки сач със зеленчуци", "amount": "1000 гр.", "price": "26.90 лв." },
+        { "image": "", "title": "Свински сач със зеленчуци", "amount": "1000 гр.", "price": "26.90 лв." },
+        { "image": "", "title": "Агнешки сач със зеленчуци", "amount": "1000 гр.", "price": "38.00 лв." },
+        { "image": "", "title": "Луканка", "amount": "100 гр.", "price": "6.00 лв." },
+        { "image": "", "title": "Суджук", "amount": "100 гр.", "price": "6.00 лв." },
+        { "image": "", "title": "Пастърма", "amount": "100 гр.", "price": "8.00 лв." },
+        { "image": "", "title": "Сирене", "amount": "100 гр.", "price": "3.00 лв." },
+        { "image": "", "title": "Кашкавал", "amount": "100 гр.", "price": "4.00 лв." },
+        { "image": "", "title": "Топла гарнитура (ориз, картофи)", "amount": "200 гр.", "price": "2.50 лв." },
+        { "image": "", "title": "Студена гарнитура (зеле, моркови)", "amount": "200 гр.", "price": "2.50 лв." },
+        { "image": "", "title": "Студена гарнитура (домати, краставици)", "amount": "200 гр.", "price": "2.50 лв." }
+      ]
+    },
+    {
+      "name": "Супи, Риба и Сандвичи",
+      "slug": "soups-fish-sandwiches",
+      "subtitle": "Меню",
+      "description": "Традиционни супи, прясна риба и бързи сандвичи.",
+      "items": [
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
+          "title": "Пилешка супа",
+          "amount": "300 мл",
+          "price": "3.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/Шкембе чорба.jpg",
+          "title": "Шкембе чорба",
+          "amount": "300 мл",
+          "price": "3.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
+          "title": "Супа топчета",
+          "amount": "300 мл",
+          "price": "3.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/123а.jpg",
+          "title": "Таратор",
+          "amount": "300 мл",
+          "price": "2.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
+          "title": "Цаца",
+          "weight": "200 г",
+          "price": "5.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/Скумрия с гарнитура 2.jpg",
+          "title": "Скумрия",
+          "weight": "250 г",
+          "price": "8.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
+          "title": "Шаран на тиган",
+          "weight": "750 г",
+          "price": "35.00 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/Сандвич с къйма.JPG",
+          "title": "Сандвич с кайма",
+          "price": "2.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/Сандвич с шунка и кашкавал.JPG",
+          "title": "Сандвич с кашкавал и шунка",
+          "price": "2.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/Сандвич с шунка и кашкавал.JPG",
+          "title": "Сандвич с кашкавал",
+          "price": "2.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/Сандвич с яйце и кашкавал.JPG",
+          "title": "Сандвич със сирене, яйце и кашкавал",
+          "price": "2.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/Сомун Хляб-.jpg",
+          "title": "Филия хляб",
+          "price": "0.25 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
+          "title": "Филия препечен хляб",
+          "price": "0.35 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
+          "title": "Гръцка питка",
+          "weight": "100 г",
+          "price": "1.00 лв."
+        },
+        {
+          "image": "/img/menuCategorised/SoupsFIshSandwiches/123.jpg",
+          "title": "Гръцка чеснова питка",
+          "weight": "100 г",
+          "price": "1.00 лв."
+        }
+      ]
+    },
+    {
+      "name": "Ракии и Бира",
+      "slug": "rakia-beer",
+      "subtitle": "Меню",
+      "description": "Традиционни ракии и бира.",
+      "items": [
+        { "image": "asd", "title": "Пещерска Гроздова", "weight": "50 мл.", "price": "2.00 лв." },
+        { "image": "asd", "title": "Пещерска Гроздова отлежала", "weight": "50 мл.", "price": "2.20 лв." },
+        { "image": "", "title": "Нежибар 'Гроздова'", "weight": "50 мл.", "price": "2.40 лв." },
+        { "image": "", "title": "Бургаска Мускатова", "weight": "50 мл.", "price": "2.40 лв." },
+        { "image": "", "title": "Бургас 63", "weight": "50 мл.", "price": "3.40 лв." },
+        { "image": "", "title": "Бургас 63 Барел", "weight": "50 мл.", "price": "3.80 лв." },
+        { "image": "", "title": "Сливенска перла", "weight": "50 мл.", "price": "2.20 лв." },
+        { "image": "", "title": "Сливенска перла Барел", "weight": "50 мл.", "price": "2.40 лв." },
+        { "image": "", "title": "Кайлъшка Гроздова", "weight": "50 мл.", "price": "3.40 лв." },
+        { "image": "", "title": "Ямболска Гроздова", "weight": "50 мл.", "price": "3.80 лв." },
+        { "image": "", "title": "Троянска Слива", "weight": "50 мл.", "price": "2.00 лв." },
+        { "image": "", "title": "Троянска Слива Отлежала", "weight": "50 мл.", "price": "2.40 лв." },
+        { "image": "", "title": "Търговище Мускатова", "weight": "50 мл.", "price": "2.20 лв." },
+        { "image": "", "title": "Търговище Мускатова отлежала", "weight": "50 мл.", "price": "2.40 лв." },
+        { "image": "", "title": "Кортен отлежала Резерва", "weight": "50 мл.", "price": "4.50 лв." },
+        { "image": "", "title": "Стралджанска мускатова", "weight": "50 мл.", "price": "3.40 лв." },
+        { "image": "", "title": "Стралджанска мускатова Барел", "weight": "50 мл.", "price": "3.80 лв." },
+        { "image": "", "title": "Исперих кайсиева", "weight": "50 мл.", "price": "3.80 лв." }
+      ]
+    },
+    {
+      "name": "Бели и Червени Вина",
+      "slug": "wines",
+      "subtitle": "Меню",
+      "description": "Подбран асортимент от бели, червени и розе вина.",
+      "items": [
+        {
+          "image": "/assets/img/wines/white/muscat-trg.jpg",
+          "title": "Търговище Мускат",
+          "weight": "750 мл",
+          "price": "13.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/chardonnay-trg.jpg",
+          "title": "Търговище Шардоне",
+          "weight": "750 мл",
+          "price": "13.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/sauvignon-trg.jpg",
+          "title": "Търговище Совиньон Блан",
+          "weight": "750 мл",
+          "price": "13.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/traminer-trg.jpg",
+          "title": "Търговище Траминер",
+          "weight": "750 мл",
+          "price": "13.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/sauvignon-quantum.jpg",
+          "title": "Квантум Совиньон Блан",
+          "weight": "750 мл",
+          "price": "18.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/chardonnay-quantum.jpg",
+          "title": "Квантум Шардоне",
+          "weight": "750 мл",
+          "price": "18.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/traminer-quantum.jpg",
+          "title": "Квантум Траминер",
+          "weight": "750 мл",
+          "price": "17.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/chergа.jpg",
+          "title": "Черга",
+          "weight": "750 мл",
+          "price": "26.00 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/pearl-white.jpg",
+          "title": "PEARL WHITE Совиньон Блан & Семийон",
+          "weight": "500 мл",
+          "price": "7.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/white/sauvignon-on-tap.jpg",
+          "title": "Наливно кана Совиньон Блан",
+          "weight": "500 мл",
+          "price": "7.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/red/cabernet-trg.jpg",
+          "title": "Търговище Каберне",
+          "weight": "750 мл",
+          "price": "13.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/red/merlot-trg.jpg",
+          "title": "Търговище Мерло",
+          "weight": "750 мл",
+          "price": "13.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/red/cabernet-quantum.jpg",
+          "title": "Квантум Каберне Совиньон",
+          "weight": "750 мл",
+          "price": "18.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/red/pinot-noir-merlot.jpg",
+          "title": "Квантум Пино Ноар & Мерло",
+          "weight": "750 мл",
+          "price": "18.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/red/chergа.jpg",
+          "title": "Черга",
+          "weight": "750 мл",
+          "price": "17.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/red/merlot-on-tap.jpg",
+          "title": "Наливно кана Мерло",
+          "weight": "500 мл",
+          "price": "7.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/rose/rose-trg.jpg",
+          "title": "Търговище Розе",
+          "weight": "750 мл",
+          "price": "13.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/rose/rose-quantum.jpg",
+          "title": "Квантум Розе",
+          "weight": "750 мл",
+          "price": "18.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/rose/pure-pink.jpg",
+          "title": "PURE PINK Розе Сира & Мурведър",
+          "weight": "750 мл",
+          "price": "26.00 лв."
+        },
+        {
+          "image": "/assets/img/wines/rose/rose-on-tap.jpg",
+          "title": "Наливно кана Розе",
+          "weight": "500 мл",
+          "price": "7.90 лв."
+        },
+        {
+          "image": "/assets/img/wines/rose/chergа-rose.jpg",
+          "title": "Черга Розе",
+          "weight": "750 мл",
+          "price": "17.90 лв."
+        }
+      ]
+    },
+    {
+      "name": "Водка и други напитки",
+      "slug": "vodka-other-drinks",
+      "subtitle": "Меню",
+      "description": "Водка и други високоградусови напитки.",
+      "items": [
+        { "image": "", "title": "Водка 'Савой' Силвър", "weight": "50 мл.", "price": "1.50 лв." },
+        { "image": "", "title": "Водка 'Савой'", "weight": "50 мл.", "price": "1.40 лв." },
+        { "image": "", "title": "Водка 'Аляска'", "weight": "50 мл.", "price": "1.60 лв." },
+        { "image": "", "title": "Водка 'Финландия'", "weight": "50 мл.", "price": "2.80 лв." },
+        { "image": "", "title": "Водка 'Руски стандарт'", "weight": "50 мл.", "price": "2.90 лв." },
+        { "image": "", "title": "Водка 'Абсолют'", "weight": "50 мл.", "price": "2.90 лв." },
+        { "image": "", "title": "Водка 'Смирноф'", "weight": "50 мл.", "price": "2.60 лв." },
+        { "image": "", "title": "Водка 'Флирт'", "weight": "50 мл.", "price": "1.50 лв." },
+        { "image": "", "title": "Водка 'Мери Джейн'", "weight": "50 мл.", "price": "1.50 лв." },
+        { "image": "", "title": "Узо Плумаги", "weight": "50 мл.", "price": "2.00 лв." },
+        { "image": "", "title": "Ром Савой", "weight": "50 мл.", "price": "1.20 лв." },
+        { "image": "", "title": "Ром Савой бял", "weight": "50 мл.", "price": "1.40 лв." },
+        { "image": "", "title": "Мастика Карнобат", "weight": "50 мл.", "price": "1.20 лв." },
+        { "image": "", "title": "Джин Савой", "weight": "50 мл.", "price": "1.20 лв." },
+        { "image": "", "title": "Коняк Метакса", "weight": "50 мл.", "price": "2.80 лв." },
+        { "image": "", "title": "Мента Пещера", "weight": "50 мл.", "price": "1.20 лв." },
+        { "image": "", "title": "Шампанско Криста", "weight": "750 мл.", "price": "5.50 лв." }
+      ]
+    },
+    {
+      "name": "Уиски и Ядки",
+      "slug": "whisky-nuts",
+      "subtitle": "Меню",
+      "description": "Уискита и ядки.",
+      "items": [
+        { "image": "", "title": "Джони Уокър", "weight": "50 мл.", "price": "2.90 лв." },
+        { "image": "", "title": "Тюламор Дю", "weight": "50 мл.", "price": "3.00 лв." },
+        { "image": "", "title": "Грантс", "weight": "50 мл.", "price": "2.50 лв." },
+        { "image": "", "title": "Джак Даниелс", "weight": "50 мл.", "price": "3.90 лв." },
+        { "image": "", "title": "Паспорт", "weight": "50 мл.", "price": "1.90 лв." },
+        { "image": "", "title": "Савой", "weight": "50 мл.", "price": "2.90 лв." },
+        { "image": "", "title": "Балантайнс", "weight": "50 мл.", "price": "2.50 лв." },
+        { "image": "", "title": "Джим Бийм", "weight": "50 мл.", "price": "5.00 лв." },
+        { "image": "", "title": "Чивас Регал", "weight": "50 мл.", "price": "3.00 лв." },
+        { "image": "", "title": "Джи Би", "weight": "50 мл.", "price": "3.00 лв." },
+        { "image": "", "title": "Лешници", "weight": "100 гр.", "price": "6.00 лв." },
+        { "image": "", "title": "Бадеми", "weight": "100 гр.", "price": "6.00 лв." },
+        { "image": "", "title": "Индийско кашу", "weight": "100 гр.", "price": "6.00 лв." },
+        { "image": "", "title": "Фъстъци", "weight": "100 гр.", "price": "3.00 лв." }
+      ]
+    },
+    {
+      "name": "Десерти",
+      "slug": "desserts",
+      "subtitle": "Меню",
+      "description": "Вкусни десерти за всеки вкус.",
+      "items": [
+        {
+          "image": "/img/menuCategorised/Desserts/sq_baklava.jpg",
+          "title": "Кюнефе",
+          "price": "9.50 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Баклава.jpg",
+          "title": "Чийзкейк с череши",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/sq_krem_karamel.jpg",
+          "title": "Шоколадов ганаш",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Баклава 2.jpg",
+          "title": "Торта 'Рафаело'",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Крем карамел.jpg",
+          "title": "Солен карамел",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Сладко.jpg",
+          "title": "Френска торта",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Сладко 2.jpg",
+          "title": "Премиум десерти в буркан",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/sq_baklava.jpg",
+          "title": "Банофи",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/sq_krem_karamel.jpg",
+          "title": "Профитерол",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Баклава.jpg",
+          "title": "Морковена",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Крем карамел.jpg",
+          "title": "Фереро",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Сладко.jpg",
+          "title": "Сладоледени торти",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Баклава 2.jpg",
+          "title": "Френска ванилия със смокини",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/Сладко 2.jpg",
+          "title": "Белгийски шоколад с печ. лешници",
+          "price": "5.90 лв."
+        },
+        {
+          "image": "/img/menuCategorised/Desserts/sq_baklava.jpg",
+          "title": "Сладолед",
+          "price": "5.00 лв."
+        }
+      ]
+    }
+  ]
+}

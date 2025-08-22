@@ -2,6 +2,7 @@
 
 import Data from "@data/sections/schedule.json";
 import Link from "next/link";
+import DividerModule from "../../_layouts/divider/Index";
 
 const ScheduleSection = () => {
     return (
@@ -24,7 +25,7 @@ const ScheduleSection = () => {
                       <p className="tst-text tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : Data.description}} />
 
                       <div className="tst-btn-mobile">
-                        <Link href={Data.button2.link} className="tst-btn tst-res-btn tst-mr-30">{Data.button2.label}</Link>
+                        <Link href={Data.button2.link} className="tst-btn tst-res-btn tst-mr-30 light">{Data.button2.label}</Link>
                         {/* <Link href={Data.button2.link} className="tst-label tst-white-2">{Data.button2.label}</Link> Reservation */}
                       </div>
                       </div>
@@ -32,13 +33,14 @@ const ScheduleSection = () => {
                     </div>
                     <div className="col-lg-4">
 
-                      <div className="tst-wh-frame tst-pb-60" style={{ minHeight: '600px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <div className="tst-wh-frame tst-pb-60" style={{ minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                       {Data.items.map((item, key) => (
                       <div className={key == 0 ? "tst-mb-2": ""} key={`schedule-item-${key}`}>
                         <div className="tst-label">{item.label}</div>
                         <div className="h5">{item.from.hours} <span className="tst-color">:</span> {item.from.minutes}</div>
                         <div className="h5">{item.to.hours} <span className="tst-color">:</span> {item.to.minutes}</div>
                         <br />
+                        <DividerModule/>
                       </div>
                       ))}
                       </div>

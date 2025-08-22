@@ -1,24 +1,24 @@
 {
     "items": [
         {
-            "value": "200",
+            "value": "50",
             "value_after": "+",
-            "label": "Visitors daily"
+            "label": "Посетители дневно"
         },
         {
-            "value": "400",
+            "value": "5",
             "value_after": "+",
-            "label": "Deliveries monthly"
+            "label": "Кетъринг услуги месечно"
         },
         {
-            "value": "100",
+            "value": "90",
             "value_after": "%",
-            "label": "Positive feedback"
+            "label": "Положителни отзиви"
         },
         {
-            "value": "40",
+            "value": "2",
             "value_after": "+",
-            "label": "Awards and honors"
+            "label": "Награди и отличия"
         }
     ]
 }

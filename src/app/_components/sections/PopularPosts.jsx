@@ -35,7 +35,7 @@ const PopularPostsSlider = ( { posts } ) => {
                 {/* read more */}
                 <div className="tst-read-more">
                   <div className="tst-text" dangerouslySetInnerHTML={{__html : Data.button.info}} />
-                  <Link href={Data.button.link} className="tst-btn tst-anima-link">{Data.button.label}</Link>
+                  <Link href={Data.button.link} className="tst-btn tst-anima-link light">{Data.button.label}</Link>
                 </div>
                 {/* read more end */}
 

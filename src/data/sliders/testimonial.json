@@ -1,67 +1,67 @@
 {
-    "subtitle": "Testimonials",
-    "title": "What Our visitors say",
-    "description": "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam.",
+    "subtitle": "Отзиви",
+    "title": "Какво казват нашите посетители",
+    "description": "Радваме се на положителните мнения и отзиви от нашите гости, <br>които споделят своето незабравимо изживяване в ресторант Делиорман.",
     "button": {
         "link": "/about",
-        "label": "More about us"
+        "label": "Повече за нас"
     },
     "items": [
         {
-            "title": "It was very delicious!",
-            "name": "Emma Newman",
+            "title": "Беше много вкусно!",
+            "name": "Емилия Николова",
             "image": "/img/faces/1.jpg",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
-            "date": "02.02.21"
+            "text": "Посетихме ресторант Делиорман с цялото семейство и останахме възхитени от качеството на храната и обслужването. Всяко ястие беше приготвено с много внимание и грижа. Препоръчвам топло на всички, които търсят автентично българско кулинарно изживяване.",
+            "date": "15.03.24"
         },
         {
-            "title": "I'm delighted!",
-            "name": "Viktoria Freeman",
+            "title": "Възхитена съм!",
+            "name": "Виктория Фримън",
             "image": "/img/faces/2.jpg",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
-            "date": "02.02.21"
+            "text": "Атмосферата в ресторант Делиорман е неповторима! Усещането за домашност и топлота, съчетано с изискана кухня, прави това място наистина специално. Със сигурност ще се върнем отново много скоро.",
+            "date": "08.02.24"
         },
         {
-            "title": "I will visit again.",
-            "name": "Paul Trueman",
+            "title": "Ще посетя отново.",
+            "name": "Павел Тръничев",
             "image": "/img/faces/3.jpg",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
-            "date": "02.02.21"
+            "text": "Като ценител на добрата храна, мога да кажа, че ресторант Делиорман предлага едни от най-вкусните традиционни ястия, които съм опитвал. Особено впечатляващо е качеството на месото и свежестта на продуктите.",
+            "date": "22.01.24"
         },
         {
-            "title": "The best restaurant!",
-            "name": "Oscar Oldman",
+            "title": "Най-добрият ресторант!",
+            "name": "Оскар Олдмън",
             "image": "/img/faces/4.jpg",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
-            "date": "02.02.21"
+            "text": "Организирахме тук корпоративно събитие и всички гости бяха възхитени. Професионализмът на персонала и качеството на храната направиха вечерта незабравима. Благодаря на екипа на Делиорман за перфектното обслужване!",
+            "date": "10.12.23"
         },
         {
-            "title": "It was very delicious!",
-            "name": "Emma Newman",
+            "title": "Беше много вкусно!",
+            "name": "Емилия Николова",
             "image": "/img/faces/1.jpg",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
-            "date": "02.02.21"
+            "text": "Посетихме ресторант Делиорман с цялото семейство и останахме възхитени от качеството на храната и обслужването. Всяко ястие беше приготвено с много внимание и грижа. Препоръчвам топло на всички, които търсят автентично българско кулинарно изживяване.",
+            "date": "15.03.24"
         },
         {
-            "title": "I'm delighted!",
-            "name": "Viktoria Freeman",
+            "title": "Възхитена съм!",
+            "name": "Виктория Фримън",
             "image": "/img/faces/2.jpg",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
-            "date": "02.02.21"
+            "text": "Атмосферата в ресторант Делиорман е неповторима! Усещането за домашност и топлота, съчетано с изискана кухня, прави това място наистина специално. Със сигурност ще се върнем отново много скоро.",
+            "date": "08.02.24"
         },
         {
-            "title": "I will visit again.",
-            "name": "Paul Trueman",
+            "title": "Ще посетя отново.",
+            "name": "Павел Тръничев",
             "image": "/img/faces/3.jpg",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
-            "date": "02.02.21"
+            "text": "Като ценител на добрата храна, мога да кажа, че ресторант Делиорман предлага едни от най-вкусните традиционни ястия, които съм опитвал. Особено впечатляващо е качеството на месото и свежестта на продуктите.",
+            "date": "22.01.24"
         },
         {
-            "title": "The best restaurant!",
-            "name": "Oscar Oldman",
+            "title": "Най-добрият ресторант!",
+            "name": "Оскар Олдмън",
             "image": "/img/faces/4.jpg",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique, eligendi dolorem? Voluptates rem magnam nesciunt ullam hic error sed, minus, accusantium inventore ex reprehenderit ipsum aperiam libero ut, laudantium delectus deleniti debitis quas dolore quos. Accusamus ea saepe, veniam. Nemo.",
-            "date": "02.02.21"
+            "text": "Организирахме тук корпоративно събитие и всички гости бяха възхитени. Професионализмът на персонала и качеството на храната направиха вечерта незабравима. Благодаря на екипа на Делиорман за перфектното обслужване!",
+            "date": "10.12.23"
         }
     ]
 }

@@ -1,46 +1,56 @@
 import React from "react";
-import dynamic from "next/dynamic";
 
 import AppData from "@data/app.json";
-import MenuData from "@data/menu.json";
 import ProductsData from "@data/products.json";
+import MenuData from "@data/menu.json";
+import Specialties from "@data/specialties.json";
 
 import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
 import CallToActionTwoSection from "@components/sections/CallToActionTwo";
-
-const MenuGrid = dynamic( () => import("@components/menu/MenuGrid"), { ssr: false } );
-const ProductsSlider = dynamic( () => import("@components/sliders/Products"), { ssr: false } );
+import MenuFiltered from "@components/menu/MenuFiltered2";
+import ProductsSlider from "@components/sliders/Products";
 
 export const metadata = {
   title: {
-		default: "Menu 2",
-	},
-  description: AppData.settings.siteDescription,
+    default: "Меню с цени",
+  },
+  description: "Специално меню с цени - достъпно само чрез директен линк",
 }
 
 const Menu2 = () => {
   return (
     <>
-      <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner pageTitle={"Discover Our menu"} description={"Quaerat debitis, vel, sapiente dicta sequi <br>labore porro pariatur harum expedita."} breadTitle={"Menu"} />
+      {/* <div id="tst-dynamic-banner" className="tst-dynamic-banner">
+        <PageBanner 
+          pageTitle={"Открийте нашето меню с цени"} 
+          description={"Специално меню с цени - насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Лудогоритето."} 
+          breadTitle={"Меню с цени"} 
+        />
       </div>
-      
+       */}
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-0">
+              <br />
+              <br />
+              <br />
+              <br />
               <ScrollHint />
 
-              <MenuGrid
+              <MenuFiltered
                 categories={MenuData.categories} 
               />
 
             </div>
           </div>
         </div>
+        {/* <br />
         <CallToActionTwoSection />
+        <br />
+        <br />
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
@@ -48,23 +58,23 @@ const Menu2 = () => {
               <ProductsSlider
                 heading={
                   { 
-                    "subtitle": "Menu", 
-                    "title": "Special proposals", 
-                    "description": "Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam." 
+                    "subtitle": "Специалитети", 
+                    "title": "Новите Специалитети", 
+                    "description": "Открийте нашите най-нови кулинарни творения, <br>приготвени с любов и традиционни рецепти." 
                   }
                 } 
-                items={ProductsData.collection.special}
+                items={Specialties.categories.find(cat => cat.slug === "specialties")?.items || []}
                 button={
                   {
-                    "link": "/shop",
-                    "label": "Go to online store"
+                    "link": "/menu",
+                    "label": "Вижте цялото меню"
                   }
                 }
               />
 
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

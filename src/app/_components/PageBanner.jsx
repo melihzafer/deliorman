@@ -72,17 +72,17 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
                     <li><Link href="/" className="tst-anima-link">Начало</Link></li>
                     {asPath.indexOf('/blog/') != -1 && asPath.indexOf('/blog/page/') == -1 &&
                     <li>
-                      <Link href="/blog">Blog</Link>
+                      <Link href="/blog">Блог</Link>
                     </li>
                     }
                     {asPath.indexOf('/products') != -1 || asPath.indexOf('/cart') != -1 || asPath.indexOf('/checkout') != -1 &&
                     <li>
-                      <Link href="/shop">Shop</Link>
+                      <Link href="/shop">Магазин</Link>
                     </li>
                     }
                     {asPath.endsWith('/product') == 1 &&
                     <li>
-                      <Link href="/products">Products</Link>
+                      <Link href="/products">Продукти</Link>
                     </li>
                     }
                     <li className="tst-active"><a dangerouslySetInnerHTML={{__html : clearBreadTitle}} /></li>

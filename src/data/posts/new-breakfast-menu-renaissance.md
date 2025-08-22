@@ -1,32 +1,34 @@
 ---
 #preview
-title: 'New breakfast menu'
-date: '2022-01-02'
+title: 'Ново закуска меню'
+date: '2024-01-15'
 image: "/img/blog/3.jpg"
 categories:
-    - Gastronomy
+    - Гастрономия
 tags:
-    - Fast food
-    - Recipes
-author: Nguta Ithya
+    - Закуска
+    - Рецепти
+author: Нгута Ития
 authorAvatar: /img/faces/4.jpg
-short: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos.
+short: Представяме ви нашето обновено закуска меню с традиционни български ястия и модерни интерпретации.
 ---
 
-Gutem temporibus quae facilis totam, dolorem laborum optio laudantium explicabo quia ea. Officia beatae excepturi adipisci? Nobis consequatur ullam officiis adipisci assumenda, voluptas optio, commodi, soluta itaque error consectetur cupiditate vero voluptatem architecto blanditiis quidem amet. Quod ipsam consequuntur distinctio velit sed ipsum quisquam, itaque placeat error non animi quam aut similique nulla ab. Quaerat dicta, dolores veritatis magnam quae aut omnis in porro.
+Ресторант Делиорман представя своето ново закуска меню, което съчетава традиционните български вкусове с модерни кулинарни техники. Нашият екип от опитни готвачи е работил месеци, за да създаде перфектния баланс между автентичност и иновация.
 
-###### Voluptatem odit ullam veritatis
+###### Традиция среща иновация
 
-Omnis consectetur in libero! Quo animi minus sunt, excepturi inventore! Recusandae enim fugit saepe mollitia laboriosam minima sapiente laborum aspernatur ut! Voluptatibus tempora cupiditate nulla cum dicta odit unde eius sit molestias corrupti pariatur illum aspernatur blanditiis, dolor earum quidem incidunt eligendi magnam obcaecati iure quis corporis. Perspiciatis rem provident aliquid iusto temporibus, exercitationem voluptatibus accusamus amet ratione atque, dolor vel necessitatibus illo ipsa officia, sunt quia magni saepe velit ipsum sapiente blanditiis minima.
+Новото ни закуска меню е вдъхновено от богатата българска кулинарна традиция. Започваме деня с домашно приготвена банка, пресни млечни продукти от местни ферми и традиционни хлебни изделия, печени в нашата фурна. Всяко ястие е приготвено с внимание към детайла и с използване на най-качествените продукти.
 
-- Voluptate aspernatur
-- Fugiat asperiores
-- Doloremque quidem porro
-- Numquam porro sequi
-- Laudantium quis
+- Домашна банка с мед и орехи
+- Млечна завивка с сирене 
+- Баничка с праз лук
+- Традиционен кисело мляко
+- Пресни плодове от сезона
 
-Voluptatem odit ullam veritatis corrupti officia non aperiam eius vero amet, sed porro blanditiis, harum, quo fugit cupiditate. Maxime quaerat ratione
+Закуската е най-важното хранене на деня и в ресторант Делиорман сме убедени, че добрият ден започва с добра храна
 
-Tempora quasi nihil eos minus facilis. Modi atque odit mollitia, molestias eum inventore, minima distinctio laborum asperiores odio sit fuga rem, totam error aspernatur ipsa? Officia doloribus, non perspiciatis, aspernatur a numquam pariatur reprehenderit, incidunt fugiat modi nam. **Repudiandae obcaecati** excepturi, autem dicta tempore qui consequatur quisquam architecto dolorem voluptates nihil est ex perferendis eligendi laboriosam maxime placeat doloribus et reprehenderit beatae tempora numquam harum expedita! Amet at odit pariatur eum tenetur ratione
+Нашите гости ще могат да се насладят на богато разнообразие от традиционни и модерни варианти. От класическата българска баница до авторски интерпретации на световни закуски - всичко е приготвено с грижа и любов. **Специалното предложение** включва комбинирано меню със свежо изцеден сок от местни плодове и ароматно българско кафе.
+
+Елате и опитайте новото ни закуска меню в ресторант Делиорман, село Самуил. Отворени сме всеки ден от 07:00 часа и ви очакваме да започнете деня си вкусно и здравословно!
 
 Modi sint reprehenderit vitae officiis pariatur, ab debitis voluptate ea eius assumenda beatae, tempora, dolores deserunt, ipsam ipsum! Quod ipsam consequuntur distinctio velit sed ipsum quisquam, itaque placeat error non animi quam aut similique nulla ab. Quaerat dicta, dolores veritatis magnam quae aut omnis in porro.

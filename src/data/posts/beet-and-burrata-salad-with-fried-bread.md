@@ -1,32 +1,35 @@
 ---
 #preview
-title: 'Beet and Burrata Salad'
-date: '2022-02-02'
+title: 'Салата с цвекло и бурата'
+date: '2024-03-15'
 image: "/img/blog/2.jpg"
 categories:
-    - Gastronomy
+    - Гастрономия
 tags:
-    - Gastronomy
-    - Fast Food
-author: Anya Taylor
+    - Гастрономия
+    - Здравословно хранене
+author: Анна Тейлър
 authorAvatar: /img/faces/1.jpg
-short: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos.
+short: Освежаваща салата с печено цвекло, крем сирене бурата и хрупкави филийки хляб.
 ---
 
-Gutem temporibus quae facilis totam, dolorem laborum optio laudantium explicabo quia ea. Officia beatae excepturi adipisci? Nobis consequatur ullam officiis adipisci assumenda, voluptas optio, commodi, soluta itaque error consectetur cupiditate vero voluptatem architecto blanditiis quidem amet. Quod ipsam consequuntur distinctio velit sed ipsum quisquam, itaque placeat error non animi quam aut similique nulla ab. Quaerat dicta, dolores veritatis magnam quae aut omnis in porro.
+Тази салата съчетава земния вкус на печеното цвекло с кремовостта на италианското сирене бурата и хрупкавостта на запечения хляб. Перфектна за лятна вечеря или като изискана предястие в ресторант Делиорман.
 
-###### Voluptatem odit ullam veritatis
+###### Съставки и приготвяне
 
-Omnis consectetur in libero! Quo animi minus sunt, excepturi inventore! Recusandae enim fugit saepe mollitia laboriosam minima sapiente laborum aspernatur ut! Voluptatibus tempora cupiditate nulla cum dicta odit unde eius sit molestias corrupti pariatur illum aspernatur blanditiis, dolor earum quidem incidunt eligendi magnam obcaecati iure quis corporis. Perspiciatis rem provident aliquid iusto temporibus, exercitationem voluptatibus accusamus amet ratione atque, dolor vel necessitatibus illo ipsa officia, sunt quia magni saepe velit ipsum sapiente blanditiis minima.
+Началото на добрата салата е в качествените съставки. В ресторант Делиорман използваме само най-прясното цвекло от местни производители, автентична бурата от Италия и домашно приготвен хляб. Комбинацията от тези три основни компонента създава хармония от вкусове и текстури.
 
-- Voluptate aspernatur
-- Fugiat asperiores
-- Doloremque quidem porro
-- Numquam porro sequi
-- Laudantium quis
+- Средно цвекло - 3 броя
+- Бурата сирене - 200г
+- Хляб от квас - 4 филии
+- Балсамов оцет - 2 с.л.
+- Екстра върджин зехтин - 3 с.л.
+- Мед - 1 ч.л.
 
-Voluptatem odit ullam veritatis corrupti officia non aperiam eius vero amet, sed porro blanditiis, harum, quo fugit cupiditate. Maxime quaerat ratione
+Цветето се пече в сол и билки при 180 градуса за около 45 минути, докато стане мекичко
 
-Tempora quasi nihil eos minus facilis. Modi atque odit mollitia, molestias eum inventore, minima distinctio laborum asperiores odio sit fuga rem, totam error aspernatur ipsa? Officia doloribus, non perspiciatis, aspernatur a numquam pariatur reprehenderit, incidunt fugiat modi nam. **Repudiandae obcaecati** excepturi, autem dicta tempore qui consequatur quisquam architecto dolorem voluptates nihil est ex perferendis eligendi laboriosam maxime placeat doloribus et reprehenderit beatae tempora numquam harum expedita! Amet at odit pariatur eum tenetur ratione
+Тази салата е перфектно съчетание от сладко и солено, меко и хрупкаво. В ресторант Делиорман я сервираме като специалитет от нашето сезонно меню, придружена с чаша добро българско вино. Препоръчваме да я опитате с нашето домашно приготвено песто от рукула за още по-богат вкус.
 
-Modi sint reprehenderit vitae officiis pariatur, ab debitis voluptate ea eius assumenda beatae, tempora, dolores deserunt, ipsam ipsum! Quod ipsam consequuntur distinctio velit sed ipsum quisquam, itaque placeat error non animi quam aut similique nulla ab. Quaerat dicta, dolores veritatis magnam quae aut omnis in porro.
+**Полезни съвети** от шеф готвача: цвеклото е най-вкусно, когато се пече цяло в обвивка от алуминиево фолио. След печенето, кожата се обелва лесно, а вкусът остава концентриран и сладникав.
+
+Посетете ресторант Делиорман в село Самуил, за да опитате тази и много други авторски салати, приготвени с внимание към всеки детайл и с използване на най-добрите български продукти.

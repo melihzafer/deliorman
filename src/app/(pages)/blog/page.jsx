@@ -18,7 +18,7 @@ const BlogPaginated = dynamic( () => import("@components/blog/BlogPaginated"), {
 
 export const metadata = {
   title: {
-		default: "Blog",
+		default: "Блог",
 	},
   description: AppData.settings.siteDescription,
 }
@@ -30,7 +30,7 @@ async function Blog() {
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <PageBanner pageTitle={"Our Blog"} description={"Porro eveniet, autem ipsam corrupti consectetur cum. <br>Repudiandae dignissimos fugiat sit nam."} breadTitle={"Blog"} />
+        <PageBanner pageTitle={"Нашият блог"} description={"Откройте рецепти, съвети и истории от света на кулинарията <br>в блога на ресторант Делиорман."} breadTitle={"Блог"} />
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">

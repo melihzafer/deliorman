@@ -1,5 +1,4 @@
 import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
 
 import { getSortedPostsData } from "@library/posts";
 
@@ -15,13 +14,12 @@ import CountersSection from "@components/sections/Counters";
 import CallToActionSection from "@components/sections/CallToAction";
 import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
-
-const HeroSlider = dynamic( () => import("@components/sliders/Hero"), { ssr: false } );
-const TestimonialSlider = dynamic( () => import("@components/sliders/Testimonial"), { ssr: false } );
+import HeroSlider from "@components/sliders/Hero";
+import TestimonialSlider from "@components/sliders/Testimonial";
 
 export const metadata = {
   title: {
-		default: "Home",
+		default: "Начало",
 	},
   description: AppData.settings.siteDescription,
 }

@@ -1,10 +1,10 @@
 {
     "video": {
-        "title": "Promo video",
+        "title": "Промо видео",
         "link": "https://www.youtube.com/watch?v=SXJqEnauNaY"
     },
     "image": {
         "url": "/img/about.jpg",
-        "alt": "video cover"
+        "alt": "видео корица"
     }
 }
