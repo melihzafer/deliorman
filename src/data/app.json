@@ -104,17 +104,23 @@
             "title": "Галерия от нашия ресторант",
             "items": [
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 { "image": "/img/menu/1.jpg", "alt": "Традиционни ястия от Делиорман" },
                 { "image": "/img/menu/2.jpg", "alt": "Интериор на ресторант Делиорман" },
                 { "image": "/img/menu/3.jpg", "alt": "Специалитет на шеф-готвача" },
                 { "image": "/img/menu/4.jpg", "alt": "Десерти от Делиорман" },
                 { "image": "/img/menu/5.jpg", "alt": "Лятна градина на ресторант Делиорман" }
 =======
+=======
+>>>>>>> Stashed changes
                 { "image": "/img/indoor_footage/camphoto_1423418003.webp", "alt": "Делиорман" },
                 { "image": "/img/indoor_footage/IMG_9339.webp", "alt": "Интериор на ресторант Делиорман" },
                 { "image": "/img/indoor_footage/IMG_9075.webp", "alt": "Вход на ресторант Делиорман" },
                 { "image": "/img/outdoor_footage/IMG_9339.png", "alt": "Делиорман" },
                 { "image": "/img/outdoor_footage/IMG_9337.webp", "alt": "Външна сграда на ресторант Делиорман" }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             ],
             "button": { "link": "/gallery", "label": "Разгледайте повече снимки" }

@@ -71,7 +71,11 @@ const DefaultFooter = () => {
     <>
         {/* footer */}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <footer className="tst-white tst-fade-down">
+=======
+        <footer className="tst-white" ref={footerRef}>
+>>>>>>> Stashed changes
 =======
         <footer className="tst-white" ref={footerRef}>
 >>>>>>> Stashed changes
