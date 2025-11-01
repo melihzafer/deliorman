@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import Link from "next/link";
 
 import AppData from "@data/app.json";
+import { ScrollAnimation } from "@common/scrollAnims";
 
 const FooterGallery = dynamic( () => import("@layouts/footers/Gallery"), { ssr: false } );
 
@@ -13,6 +14,8 @@ const DefaultFooter = () => {
   const asPath = usePathname();
   
   useEffect(() => {
+    ScrollAnimation();
+    
     // Add fade-down animation class based on screen size
     const footer = document.querySelector('footer');
     if (footer) {
