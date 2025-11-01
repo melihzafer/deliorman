@@ -121,10 +121,10 @@
             "title": "Галерия от нашия ресторант",
             "items": [
                 { "image": "/img/indoor_footage/IMG_9066.webp", "alt": "Традиционни ястия от Делиорман" },
-                { "image": "/img/indoor_footage/IMG_9072.webp", "alt": "Интериор на ресторант Делиорман" },
-                { "image": "/img/outdoor_footage/IMG_9335.webp", "alt": "Градина на ресторант Делиорман" },
-                { "image": "/img/decoration_footage/ukrasa2.webp", "alt": "Украса за специален ден" },
-                { "image": "/img/outdoor_footage/IMG_9340.webp", "alt": "Външна градина на ресторант Делиорман" }
+                { "image": "/img/indoor_footage/IMG_9067.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9068.webp", "alt": "Ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9069.webp", "alt": "Прелестна атмосфера в ресторант" },
+                { "image": "/img/indoor_footage/IMG_9070.webp", "alt": "Красив интериор Делиорман" }
             ],
             "button": { "link": "/gallery", "label": "Разгледайте повече снимки" }
         },

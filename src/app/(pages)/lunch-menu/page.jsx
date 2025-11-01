@@ -43,7 +43,7 @@ const LunchMenu = () => {
               {/* Facebook CTA Card */}
               <div className="row justify-content-center tst-mb-60">
                 <div className="col-lg-10">
-                  <div className="tst-call-to-action" style={{backgroundColor: '#503d20ff', borderRadius: '15px', padding: '60px 40px'}}>
+                  <div className="tst-call-to-action" style={{backgroundColor: '#04161B', borderRadius: '15px', padding: '60px 40px'}}>
                     <div className="row align-items-center">
                       <div className="col-lg-8">
                         <div className="tst-cta-frame">
