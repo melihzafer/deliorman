@@ -57,7 +57,7 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
         </div>
         ) : (
         <div className="tst-cover-frame"> 
-          <img src="/img/banners/banner-sm-1.jpg" alt="cover" className="tst-cover tst-parallax" />
+          <img src="/img/outdoor_footage/IMG_9339.png" alt="cover" className="tst-cover tst-parallax" />
           <div className="tst-overlay"></div>
         </div>
         )}

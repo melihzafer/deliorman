@@ -1,15 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 
 import CartData from "@data/cart.json";
 
 const MenuItem = ({ item }) => {  
-  const [img, setImg] = useState(false);
-  const [imgValue, setImgValue] = useState([]);
-
   const [cartTotal, setCartTotal] = useState(CartData.total);
   const [quantity, setQuantity] = useState(1);
 
@@ -41,20 +36,6 @@ const MenuItem = ({ item }) => {
   return (
     <>
       <div className="tst-menu-book-item tst-mbi-3" data-swiper-parallax-y="60" data-swiper-parallax-opacity="0" data-swiper-parallax-duration="1000">
-        {item.image && (
-          <a href={item.image} data-fancybox="menu" className="tst-item-cover-frame tst-cursor-zoom" onClick={ (e) => { e.preventDefault(); setImg(true); setImgValue( [{ "src": item.image, "alt": item.title }] ); }}>
-              <img 
-                src={item.image} 
-                alt={item.title}
-                loading="lazy"
-                onError={(e) => {
-                  console.warn(`Failed to load image: ${item.image}`);
-                  e.target.style.display = 'none';
-                }}
-              />
-              <span className="tst-overlay"></span>
-          </a>
-        )}
         <div className="tst-menu-book-descr">
             <div className="tst-menu-book-name">
             <h5 className="tst-mb-15">{item.title}</h5>
@@ -77,17 +58,6 @@ const MenuItem = ({ item }) => {
             </div>
         </div>
       </div>
-      
-      <Lightbox
-        open={img}
-        close={() => setImg(false)}
-        slides={imgValue}
-        styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
-        render={{
-          buttonPrev: imgValue.length <= 1 ? () => null : undefined,
-          buttonNext: imgValue.length <= 1 ? () => null : undefined,
-        }}
-      />
     </>
   );
 };

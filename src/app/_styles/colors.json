@@ -1,0 +1,50 @@
+{
+  "primary": {
+    "rgb": "rgb(243, 156, 18)",
+    "hex": "#f39c12",
+    "name": "Golden Orange",
+    "description": "Main brand color"
+  },
+  "secondary": {
+    "rgb": "rgb(75, 44, 18)",
+    "hex": "#4b2c12",
+    "name": "Deep Brown",
+    "description": "Dark chocolate brown for accents and hover states",
+    "usage": "Buttons, card accents, hover effects",
+    "note": "Used in specialties showcase"
+  },
+  "tertiary": {
+    "rgb": "rgb(230, 126, 34)",
+    "hex": "#e67e22",
+    "name": "Burnt Orange",
+    "description": "Darker shade for depth",
+    "ratio": "Triadic harmony"
+  },
+  "quaternary": {
+    "rgb": "rgb(52, 73, 94)",
+    "hex": "#344b5e",
+    "name": "Slate Blue",
+    "description": "Cool neutral for text/backgrounds",
+    "ratio": "Analogous harmony"
+  },
+  "accent": {
+    "rgb": "rgb(212, 163, 115)",
+    "hex": "#d4a373",
+    "name": "Warm Taupe",
+    "description": "Elegant accent for highlights",
+    "usage": "Already used in your site"
+  },
+  "neutrals": {
+    "white": "#ffffff",
+    "lightGray": "#f8f9fa",
+    "darkGray": "#333333",
+    "black": "#000000"
+  },
+  "notes": {
+    "primaryUse": "Buttons, CTA, highlights, key elements",
+    "secondaryUse": "Navigation, cards, dark sections",
+    "tertiaryUse": "Hover states, active states, depth",
+    "quaternaryUse": "Body text, backgrounds, subtle elements",
+    "accentUse": "Gold/warm highlights, decorative elements"
+  }
+}

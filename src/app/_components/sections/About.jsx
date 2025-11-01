@@ -37,23 +37,24 @@ const AboutSection = () => {
 
               <div className="col-lg-6">
 
-                {/* about video */}
+                {/* about image */}
                 <div className="tst-about-cover tst-mb-60">
                   <img src={Data.image.url} alt={Data.image.alt} className="tst-cover" />
                   <div className="tst-overlay"></div>
-                  <div className="tst-btn-animation"></div>
+                  {/* Video button commented out - now showing static image */}
+                  {/* <div className="tst-btn-animation"></div>
                   <a className="tst-play-button" onClick={() => setOpen(true)} style={{ "cursor" : "pointer" }} data-width="10" data-height="600">
                     <i className="fas fa-play"></i>
-                  </a>
+                  </a> */}
                 </div>
-                {/* about video end */}
+                {/* about image end */}
 
               </div>
 
             </div>
             {/* about end */}
 
-            <ModalVideo channel='youtube' isOpen={isOpen} videoId={Data.video.replace("https://www.youtube.com/watch?v=", "")} onClose={() => setOpen(false)} />
+            {/* <ModalVideo channel='youtube' isOpen={isOpen} videoId={Data.video.replace("https://www.youtube.com/watch?v=", "")} onClose={() => setOpen(false)} /> */}
         </>
     );
 };
