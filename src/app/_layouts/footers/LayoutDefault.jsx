@@ -1,21 +1,65 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { usePathname } from 'next/navigation';
 import Link from "next/link";
 
 import AppData from "@data/app.json";
 
-import { ScrollAnimation } from "@common/scrollAnims";
-
 const FooterGallery = dynamic( () => import("@layouts/footers/Gallery"), { ssr: false } );
 
 const DefaultFooter = () => {
   const asPath = usePathname();
+  const footerRef = useRef(null);
   
   useEffect(() => {
-    ScrollAnimation();
+    const footer = footerRef.current;
+    if (!footer) return;
+
+    // Add fade-down animation class based on screen size
+    const updateResponsiveClass = () => {
+      if (window.innerWidth >= 992) {
+        footer.classList.add('tst-fade-down');
+      } else {
+        footer.classList.remove('tst-fade-down');
+      }
+    };
+
+    // Set initial state
+    updateResponsiveClass();
+
+    // Intersection Observer for scroll animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Add a small delay to ensure smooth animation
+            setTimeout(() => {
+              footer.classList.add('tst-active');
+            }, 50);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      }
+    );
+
+    observer.observe(footer);
+
+    // Handle window resize
+    const handleResize = () => {
+      updateResponsiveClass();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      observer.disconnect();
+    };
   }, []);
 
   const scrollToTop = (e) => {
@@ -26,7 +70,11 @@ const DefaultFooter = () => {
   return (
     <>
         {/* footer */}
+<<<<<<< Updated upstream
         <footer className="tst-white tst-fade-down">
+=======
+        <footer className="tst-white" ref={footerRef}>
+>>>>>>> Stashed changes
             <div className="container">
                 <div className="tst-footer-top">
                     <div className="tst-white-circle-as-bg">
