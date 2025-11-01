@@ -26,7 +26,7 @@ const DefaultFooter = () => {
   return (
     <>
         {/* footer */}
-        <footer className="tst-white tst-fade-down">
+        <footer className="tst-white">
             <div className="container">
                 <div className="tst-footer-top">
                     <div className="tst-white-circle-as-bg">

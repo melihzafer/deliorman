@@ -7,17 +7,11 @@ menu
 default card
 -------------------------*/
 
-
 .tst-menu-book-item {
   background-color: $card;
   box-shadow: 0 5px 10px 0 rgba(26,47,51,0.15);
   border-radius: 5px;
   margin-bottom: 60px;
-
-  border-bottom: 2px solid transparent;
-  border-bottom: 2px solid transparent;
-  background: linear-gradient($card, $card) padding-box, 
-              linear-gradient(45deg, $ac, rgba(255,255,255,0.1)) border-box;
 
   & .tst-btn.tst-cart-btn svg {
     width: 22px;
@@ -29,8 +23,6 @@ default card
     position: relative;
     overflow: hidden;
     padding-bottom: 65%;
-    aspect-ratio: 1/1;
-
 
     & img {
       border-radius: 5px 5px 0 0;
@@ -141,13 +133,11 @@ default card
     }
 
     & .tst-item-cover-frame {
-      height: 100px;
-      width: 100px;
+      height: 90px;
+      width: 130px;
       border-radius: 5px;
       padding-bottom: 0;
       box-shadow: 0 5px 10px 0 rgba(26,47,51,0.15);
-        aspect-ratio: 1/1;
-        object-fit: cover;
     }
 
     & .tst-menu-book-descr {
@@ -226,14 +216,16 @@ default card
 .swiper-menu {
   overflow: visible !important;
 
+  & .swiper-wrapper {
+    height: auto !important;
+  }
+
   & .swiper-slide {
     background-color: $bg;
+    height: auto !important;
   }
 }
 
-.swiper-slide-active{
-  
-}
 // .menuitem{
 //   visibility: hidden !important;
 // }
@@ -248,12 +240,11 @@ default card
         width: 100%;
         height: 200px;
         margin-bottom: 15px;
-        aspect-ratio: 1/1;
-        object-fit: contain;
       }
 
       & .tst-menu-book-descr {
         width: 100%;
+        padding: 0;
         flex-direction: column;
         
         & .tst-menu-book-bottom {
@@ -280,6 +271,7 @@ default card
         
         & .tst-menu-book-descr {
           width: 100%;
+          padding: 0;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
@@ -293,30 +285,18 @@ default card
       }
 
       & .tst-item-cover-frame {
-        width: 65%;
-        margin: 0 auto;
+        width: 100%;
         height: 180px;
         margin-bottom: 15px;
-        aspect-ratio: 1/1;
-        object-fit: contain;
         
-       
-    & img {
-      border-radius: 5px 5px 0 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-      transform: scale(1);
-      transition: $tr-md;
-    }
+        & img {
+          border-radius: 5px;
+        }
       }
 
       & .tst-menu-book-descr {
         width: 100%;
+        padding: 0;
         flex-direction: column;
         
         & .tst-menu-book-name {
@@ -340,8 +320,6 @@ default card
     &.tst-mbi-3 {
       & .tst-item-cover-frame {
         height: 160px;
-        aspect-ratio: 1/1;
-        object-fit: contain;
       }
     }
   }

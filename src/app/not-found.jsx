@@ -12,7 +12,7 @@ const NotFound = () => {
         {/* banner -*/}
         <div className="tst-banner">
           <div className="tst-cover-frame" style={{"overflow": "hidden"}}>
-            <img src="/img/banners/banner-sm-1.jpg" alt="cover" className="tst-cover tst-parallax" />
+            <img src="/img/outdoor_footage/IMG_9337.webp" alt="cover" className="tst-cover tst-parallax" />
             <div className="tst-overlay"></div>
           </div>
           <div className="tst-banner-content-frame">
