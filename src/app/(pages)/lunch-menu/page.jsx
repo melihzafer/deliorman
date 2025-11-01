@@ -43,7 +43,7 @@ const LunchMenu = () => {
               {/* Facebook CTA Card */}
               <div className="row justify-content-center tst-mb-60">
                 <div className="col-lg-10">
-                  <div className="tst-call-to-action" style={{backgroundColor: '#04161B', borderRadius: '15px', padding: '60px 40px'}}>
+                  <div className="tst-call-to-action" style={{backgroundColor: '#05232B', borderRadius: '15px', padding: '60px 40px'}}>
                     <div className="row align-items-center">
                       <div className="col-lg-8">
                         <div className="tst-cta-frame">
@@ -131,7 +131,7 @@ const LunchMenu = () => {
                       Понеделник - Неделя: 12:00 - 15:00
                     </p>
                     <p className="tst-text">
-                      За резервации: <a href="tel:+359894766273" style={{color: '#04161B', fontWeight: '600'}}>+359 89 4766273</a>
+                      За резервации: <a href="tel:+359894766273" style={{color: '#05232B', fontWeight: '600'}}>+359 89 4766273</a>
                     </p>
                   </div>
                 </div>

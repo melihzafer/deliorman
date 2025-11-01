@@ -43,7 +43,7 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-birthday-cake" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Рожденни дни</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Рожденни дни</h5>
                     <p className="tst-text">
                       Направете вашия рожден ден незабравим с нашето специално меню и атмосфера
                     </p>
@@ -54,7 +54,7 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-rings-wedding" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Годежи и сватби</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Годежи и сватби</h5>
                     <p className="tst-text">
                       Празнувайте вашата любов с перфектна организация и изискано меню
                     </p>
@@ -65,7 +65,7 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-users" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Семейни тържества</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Семейни тържества</h5>
                     <p className="tst-text">
                       Съберете цялото семейство за специални моменти в топла и уютна обстановка
                     </p>
@@ -76,7 +76,7 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-briefcase" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Корпоративни събития</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Корпоративни събития</h5>
                     <p className="tst-text">
                       Професионално обслужване за бизнес срещи, тийм билдинги и коктейли
                     </p>
@@ -87,7 +87,7 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-graduation-cap" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Дипломирания и абитуриенти</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Дипломирания и абитуриенти</h5>
                     <p className="tst-text">
                       Празнувайте успехите с приятели и близки в стилна обстановка
                     </p>
@@ -98,7 +98,7 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-star-and-crescent" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Религиозни празници</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Религиозни празници</h5>
                     <p className="tst-text">
                       Специални менюта за Мевлид и други важни религиозни дни
                     </p>
@@ -119,7 +119,7 @@ const SpecialDays = () => {
                       <i className="fas fa-paint-brush" style={{marginRight: '8px'}}></i>
                       Декорация
                     </div>
-                    <h4 className="tst-mb-20" style={{color: '#04161B'}}>Перфектната атмосфера за вашето събитие</h4>
+                    <h4 className="tst-mb-20" style={{color: '#05232B'}}>Перфектната атмосфера за вашето събитие</h4>
                     <p className="tst-text tst-mb-20">
                       <strong>Украсата е от нас!</strong> Нашият екип се грижи за цялостната декорация на пространството 
                       според вашите предпочитания и темата на събитието.
@@ -179,7 +179,7 @@ const SpecialDays = () => {
               <div className="row justify-content-center">
                 <div className="col-lg-10">
                   <div style={{
-                    backgroundColor: '#04161B',
+                    backgroundColor: '#05232B',
                     borderRadius: '15px',
                     padding: '50px 40px',
                     color: 'white'

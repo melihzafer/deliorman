@@ -36,7 +36,7 @@ const DecorationGallery = () => {
             <i className="fas fa-sparkles" style={{ marginRight: "8px" }}></i>
             Украса и дизайн
           </div>
-                            <h3 style={{ textAlign: 'center', marginBottom: '40px', color: '#04161B', fontWeight: '600', fontSize: '32px' }}>
+                            <h3 style={{ textAlign: 'center', marginBottom: '40px', color: '#05232B', fontWeight: '600', fontSize: '32px' }}>
                     Украсата е от нас!</h3>
           <p className="tst-text tst-text-lg tst-mb-30">
             Всяко събитие заслужава прекрасна украса. Преглеждайте нашите дизайни и се вдъхновете!

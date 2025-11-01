@@ -85,7 +85,7 @@ const SpecialtiesShowcase = () => {
                     {/* Card Content */}
                     <div style={{padding: '25px'}}>
                       <h4 style={{
-                        color: '#04161B',
+                        color: '#05232B',
                         marginBottom: '10px',
                         fontSize: '18px',
                         fontWeight: '600'
@@ -110,7 +110,7 @@ const SpecialtiesShowcase = () => {
                         borderBottom: '1px solid #e8e8e8'
                       }}>
                         <i className="fas fa-weight" style={{color: '#f39c12', marginRight: '8px'}}></i>
-                        <span style={{color: '#04161B', fontWeight: '600', fontSize: '14px'}}>
+                        <span style={{color: '#05232B', fontWeight: '600', fontSize: '14px'}}>
                           {specialty.weight}
                         </span>
                       </div>
@@ -144,7 +144,7 @@ const SpecialtiesShowcase = () => {
                           style={{
                             flex: 1,
                             padding: '12px 15px',
-                            backgroundColor: '#04161B',
+                            backgroundColor: '#05232B',
                             color: 'white',
                             textAlign: 'center',
                             borderRadius: '6px',
@@ -156,7 +156,7 @@ const SpecialtiesShowcase = () => {
                             cursor: 'pointer'
                           }}
                           onMouseEnter={(e) => e.target.style.backgroundColor = '#6b3c1a'}
-                          onMouseLeave={(e) => e.target.style.backgroundColor = '#04161B'}
+                          onMouseLeave={(e) => e.target.style.backgroundColor = '#05232B'}
                         >
                           <i className="fas fa-calendar" style={{marginRight: '6px'}}></i>
                           Резервация
@@ -178,7 +178,7 @@ const SpecialtiesShowcase = () => {
                     width: '100%',
                     display: 'block',
                     textAlign: 'center',
-                    backgroundColor: '#04161B',
+                    backgroundColor: '#05232B',
                     color: 'white !important',
                     textDecoration: 'none',
                     borderRadius: '8px',
@@ -187,7 +187,7 @@ const SpecialtiesShowcase = () => {
                     transition: 'background-color 0.3s ease'
                   }}
                   onMouseEnter={(e) => e.target.style.backgroundColor = '#6b3c1a'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#04161B'}
+                  onMouseLeave={(e) => e.target.style.backgroundColor = '#05232B'}
                 >
                   {/* <i className="fas fa-phone" style={{marginRight: '10px'}}></i> */}
                   Резервирайте вашата маса сега
