@@ -65,6 +65,24 @@ const initScrollListeners = () => {
         }
     };
 
+    // scrolling counters
+    const handleScrollCounters = () => {
+        const animatedCounters = document.querySelectorAll(".tst-number");
+        animatedCounters.forEach((element) => {
+            if (!element.classList.contains('tst-counted')) {
+                let bottom_of_object = element.offsetTop - 200;
+                let bottom_of_window = window.scrollY + window.innerHeight;
+                if (bottom_of_window > bottom_of_object) {
+                    element.classList.add('tst-counted');
+                    var countTo = element.getAttribute('data-count');
+                    numberAnimate(function(newValue) {
+                        element.innerText = Math.floor(newValue);
+                    }, 0, countTo, 3000, x => x);
+                }
+            }
+        });
+    };
+
     // Combined scroll handler with throttling
     let lastScrollTime = 0;
     const throttledScrollHandler = () => {
@@ -76,6 +94,7 @@ const initScrollListeners = () => {
         handleScrollSlider();
         handleScrollParallax();
         handleScrollMenu();
+        handleScrollCounters();
     };
 
     window.addEventListener("scroll", throttledScrollHandler, { passive: true });
@@ -87,45 +106,3 @@ export const ScrollAnimation = () => {
         initScrollListeners();
     }
 };
-    const animatedCounters = document.querySelectorAll(".tst-number");
-
-    if ( animatedCounters !== undefined ) {
-        window.addEventListener("scroll", (e) => {
-            animatedCounters.forEach((element) => {
-                if ( element.innerText == 0 ) {
-                    let bottom_of_object = element.getBoundingClientRect().top + window.scrollY - 140;
-                    let bottom_of_window = window.scrollY + window.innerHeight/2;
-
-                    if (bottom_of_window > bottom_of_object) {
-                        var countTo = element.getAttribute('data-count');
-                        numberAnimate(function(newValue) {
-                            element.innerText = Math.floor(newValue);
-                        }, 0, countTo, 3000, x => x);
-                    }
-                }
-            });
-        });
-    }
-
-    // resize & orientation change animation
-    window.addEventListener("resize", (e) => {
-        if ( window.innerWidth < 992 ) {
-            footer.classList.remove('tst-fade-down');
-        } else {
-            footer.classList.add('tst-fade-down');
-        }
-    });
-    window.addEventListener("orientationChange", (e) => {
-        if ( window.innerWidth < 992 ) {
-            footer.classList.remove('tst-fade-down');
-        } else {
-            footer.classList.add('tst-fade-down');
-        }
-    });
-
-    // sticky
-    const sticky = new Sticky('.tst-sticky');
-    if ( window.innerWidth < 992 ) {
-        sticky.destroy();
-    }
-}
