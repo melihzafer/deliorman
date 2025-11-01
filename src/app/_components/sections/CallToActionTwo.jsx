@@ -29,9 +29,11 @@ const CallToActionTwoSection = () => {
                 </div>
                 <div className="col-lg-6">
 
-                {/* image */}
-                <img src={Data.image.url} alt={Data.image.alt} className="tst-cta-image tst-fade-up" />
-                {/* image end */}
+                {/* icon */}
+                <div className="tst-cta-icon-wrapper tst-fade-up" style={{textAlign: 'center', padding: '60px 0'}}>
+                    <i className={Data.icon} style={{fontSize: '120px', color: '#f39c12', textShadow: '0 0 30px rgba(243, 156, 18, 0.3)'}}></i>
+                </div>
+                {/* icon end */}
 
                 </div>
             </div>

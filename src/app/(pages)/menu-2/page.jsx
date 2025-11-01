@@ -14,30 +14,26 @@ import ProductsSlider from "@components/sliders/Products";
 
 export const metadata = {
   title: {
-    default: "Меню с цени",
+    default: "Меню",
   },
-  description: "Специално меню с цени - достъпно само чрез директен линк",
+  description: AppData.settings.siteDescription,
 }
 
-const Menu2 = () => {
+const Menu1 = () => {
   return (
     <>
-      {/* <div id="tst-dynamic-banner" className="tst-dynamic-banner">
+      <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner 
-          pageTitle={"Открийте нашето меню с цени"} 
-          description={"Специално меню с цени - насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Лудогоритето."} 
-          breadTitle={"Меню с цени"} 
+          pageTitle={"Открийте нашето меню"} 
+          description={"Насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Лудогоритето."} 
+          breadTitle={"Меню"} 
         />
       </div>
-       */}
+      
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-0">
-              <br />
-              <br />
-              <br />
-              <br />
               <ScrollHint />
 
               <MenuFiltered
@@ -47,7 +43,7 @@ const Menu2 = () => {
             </div>
           </div>
         </div>
-        {/* <br />
+        <br />
         <CallToActionTwoSection />
         <br />
         <br />
@@ -74,9 +70,9 @@ const Menu2 = () => {
 
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );
 };
-export default Menu2;
+export default Menu1;
