@@ -73,7 +73,7 @@ const CateringServices = () => {
                     <i className="fas fa-truck" style={{marginRight: '8px'}}></i>
                     Кетъринг
                   </div>
-                                    <h4 className="tst-mb-20" style={{color: '#04161B'}}>Огромни количества за вашите събития</h4>
+                                    <h4 className="tst-mb-20" style={{color: '#05232B'}}>Огромни количества за вашите събития</h4>
                   <p className="tst-text tst-mb-30">
                     Организираме кетъринг за <strong>големи събития от 10 порции нагоре</strong>. 
                     Нашият екип се грижи за всичко - от приготвянето на храната до доставката и сервирането.
@@ -99,7 +99,7 @@ const CateringServices = () => {
                           <i className="fas fa-check" style={{fontSize: '16px', color: 'white'}}></i>
                         </div>
                         <div>
-                          <h6 style={{color: '#04161B', marginBottom: '5px'}}>Минимум 10 порции</h6>
+                          <h6 style={{color: '#05232B', marginBottom: '5px'}}>Минимум 10 порции</h6>
                           <p className="tst-text" style={{fontSize: '14px', marginBottom: 0}}>
                             Идеално за събития
                           </p>
@@ -125,7 +125,7 @@ const CateringServices = () => {
                           <i className="fas fa-check" style={{fontSize: '16px', color: 'white'}}></i>
                         </div>
                         <div>
-                          <h6 style={{color: '#04161B', marginBottom: '5px'}}>Свежа храна</h6>
+                          <h6 style={{color: '#05232B', marginBottom: '5px'}}>Свежа храна</h6>
                           <p className="tst-text" style={{fontSize: '14px', marginBottom: 0}}>
                             Приготвена на момента
                           </p>
@@ -151,7 +151,7 @@ const CateringServices = () => {
                           <i className="fas fa-check" style={{fontSize: '16px', color: 'white'}}></i>
                         </div>
                         <div>
-                          <h6 style={{color: '#04161B', marginBottom: '5px'}}>Доставка</h6>
+                          <h6 style={{color: '#05232B', marginBottom: '5px'}}>Доставка</h6>
                           <p className="tst-text" style={{fontSize: '14px', marginBottom: 0}}>
                             Навреме и безопасно
                           </p>
@@ -177,7 +177,7 @@ const CateringServices = () => {
                           <i className="fas fa-check" style={{fontSize: '16px', color: 'white'}}></i>
                         </div>
                         <div>
-                          <h6 style={{color: '#04161B', marginBottom: '5px'}}>Персонализирано меню</h6>
+                          <h6 style={{color: '#05232B', marginBottom: '5px'}}>Персонализирано меню</h6>
                           <p className="tst-text" style={{fontSize: '14px', marginBottom: 0}}>
                             По ваш избор
                           </p>
@@ -195,7 +195,7 @@ const CateringServices = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-building" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Корпоративен кетъринг</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Корпоративен кетъринг</h5>
                     <p className="tst-text">
                       Бизнес обеди, конференции и корпоративни събития с професионално обслужване
                     </p>
@@ -206,7 +206,7 @@ const CateringServices = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-home" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Домашни партита</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Домашни партита</h5>
                     <p className="tst-text">
                       Семейни събирания и домашни празненства с богато меню
                     </p>
@@ -217,7 +217,7 @@ const CateringServices = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-utensils" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Специални менюта</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Специални менюта</h5>
                     <p className="tst-text">
                       Персонализирани менюта според вашите изисквания и диетични нужди
                     </p>
@@ -228,7 +228,7 @@ const CateringServices = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-users-cog" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Професионален персонал</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Професионален персонал</h5>
                     <p className="tst-text">
                       Опитен екип за обслужване на вашето събитие
                     </p>
@@ -239,7 +239,7 @@ const CateringServices = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-wine-glass-alt" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Напитки и коктейли</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Напитки и коктейли</h5>
                     <p className="tst-text">
                       Пълна гама напитки и специални коктейли за вашите гости
                     </p>
@@ -250,7 +250,7 @@ const CateringServices = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-boxes" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#04161B'}}>Пакетни предложения</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Пакетни предложения</h5>
                     <p className="tst-text">
                       Изгодни пакети според броя гости и вида на събитието
                     </p>

@@ -138,9 +138,9 @@ const Gallery = () => {
                         onClick={() => setActiveFilter(filter.key)}
                         style={{
                           padding: '12px 30px',
-                          backgroundColor: activeFilter === filter.key ? '#04161B' : '#f8f9fa',
-                          color: activeFilter === filter.key ? 'white' : '#04161B',
-                          border: `2px solid ${activeFilter === filter.key ? '#04161B' : '#e8e8e8'}`,
+                          backgroundColor: activeFilter === filter.key ? '#05232B' : '#f8f9fa',
+                          color: activeFilter === filter.key ? 'white' : '#05232B',
+                          border: `2px solid ${activeFilter === filter.key ? '#05232B' : '#e8e8e8'}`,
                           borderRadius: '8px',
                           fontSize: '15px',
                           fontWeight: '600',
@@ -152,21 +152,21 @@ const Gallery = () => {
                         }}
                         onMouseEnter={(e) => {
                           if (activeFilter !== filter.key) {
-                            e.target.style.backgroundColor = '#04161B';
+                            e.target.style.backgroundColor = '#05232B';
                             e.target.style.color = 'white';
                           }
                         }}
                         onMouseLeave={(e) => {
                           if (activeFilter !== filter.key) {
                             e.target.style.backgroundColor = '#f8f9fa';
-                            e.target.style.color = '#04161B';
+                            e.target.style.color = '#05232B';
                           }
                         }}
                       >
                         <i className={`fas ${filter.icon}`}></i>
                         {filter.label}
                         <span style={{
-                          backgroundColor: activeFilter === filter.key ? '#f39c12' : '#04161B',
+                          backgroundColor: activeFilter === filter.key ? '#f39c12' : '#05232B',
                           color: 'white',
                           padding: '2px 8px',
                           borderRadius: '12px',

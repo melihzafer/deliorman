@@ -122,8 +122,17 @@
             "items": [
                 { "image": "/img/indoor_footage/camphoto_1423418003.webp", "alt": "Делиорман" },
                 { "image": "/img/indoor_footage/IMG_9339.webp", "alt": "Интериор на ресторант Делиорман" },
-                { "image": "/img/indoor_footage/IMG_9075.webp", "alt": "Вход на ресторант Делиорман" },
-                { "image": "/img/outdoor_footage/IMG_93.png", "alt": "Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9066.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9067.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9068.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9069.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9070.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9071.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9072.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9073.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9074.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9075.webp", "alt": "Интериор на ресторант Делиорман" },
+                { "image": "/img/indoor_footage/IMG_9076.webp", "alt": "Интериор на ресторант Делиорман" },
                 { "image": "/img/outdoor_footage/IMG_9337.webp", "alt": "Външна сграда на ресторант Делиорман" }
             ],
             "button": { "link": "/gallery", "label": "Разгледайте повече снимки" }
