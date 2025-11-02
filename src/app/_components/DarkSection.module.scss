@@ -1,0 +1,25 @@
+/**
+ * DarkSection Component Styles
+ * Mobile-first responsive section styling
+ */
+
+.darkSection {
+  // Mobile-first base: minimal padding, no radius
+  background-color: #05232b;
+  color: white;
+  padding: 30px 1em;
+  border-radius: 0px;
+  transition: padding 0.3s ease, border-radius 0.3s ease;
+
+  // Tablet (790px+): medium padding, slight radius
+  @media (min-width: 790px) {
+    padding: 40px 1.5em;
+    border-radius: 8px;
+  }
+
+  // Desktop (992px+): generous padding, rounded corners
+  @media (min-width: 992px) {
+    padding: 50px 2em;
+    border-radius: 12px;
+  }
+}

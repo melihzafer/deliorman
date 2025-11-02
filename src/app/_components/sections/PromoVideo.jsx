@@ -20,17 +20,17 @@ const PromoVideoSection = () => {
             {/* about video */}
             <div className="tst-about-cover tst-video-cover tst-mb-60">
                 <img src={Data.image.url} alt={Data.image.alt} className="tst-cover animateme" data-when="span" data-from="-1" data-to="2" data-easing="easeinout" data-scale="1.2" />
-                <div className="tst-overlay"></div>
+                {/* <div className="tst-overlay"></div>
                 <div className="tst-btn-animation"></div>
                 <a className="tst-play-button" data-fancybox onClick={() => setOpen(true)} style={{ "cursor" : "pointer" }} data-width="1000" data-height="600">
                     <i className="fas fa-play"></i>
-                </a>
+                </a> */}
             </div>
             {/* about video end */}
 
             </div>
 
-            <ModalVideo channel='youtube' isOpen={isOpen} videoId={Data.video.link.replace("https://www.youtube.com/watch?v=", "")} onClose={() => setOpen(false)} />
+            {/* <ModalVideo channel='custom' isOpen={isOpen} videoId={Data.video.link.replace("https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F574305161867774%2F&show_text=false&width=267&t=0", "")} onClose={() => setOpen(false)} /> */}
         </div>
         {/* video end */}
     </>

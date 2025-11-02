@@ -45,13 +45,13 @@ const Menu1 = () => {
           </div>
         </div>
         <br />
-        <CallToActionTwoSection />
+        {/* <CallToActionTwoSection /> */}
         <br />
         <br />
         <NewSpecialtiesCTA />
-        <br />
-        <br />
-        <div className="tst-content-frame">
+        {/* <br />
+        <br /> */}
+        {/* <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
               
@@ -74,7 +74,7 @@ const Menu1 = () => {
 
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

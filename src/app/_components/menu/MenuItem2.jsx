@@ -56,7 +56,7 @@ const MenuItem = ({ item }) => {
           </a>
         )}
         <div className="tst-menu-book-descr">
-            <div className="tst-menu-book-name">
+            <div className="tst-menu-book-name" style={{maxWidth: '80%'}}>
             <h5 className="tst-mb-15">{item.title}</h5>
             <div className="tst-text" dangerouslySetInnerHTML={{__html : item.text}} />
             <div className="tst-spacer-sm"></div>
@@ -64,8 +64,8 @@ const MenuItem = ({ item }) => {
             <div className="tst-menu-book-bottom">
             <div className="tst-menu-book-price">
                 
-                <div className="tst-price"><span className="tst-symbol">{item.currency}</span>{item.price}</div>
-                <div className="tst-weight">{item.weight}</div>
+                <div className="tst-price"><span className="tst-symbol">{item.currency}</span>{item.price} лв</div>
+                <div className="tst-weight">{item.amount}</div>
             </div>
             { /* We dont make reservation yet
              <a href="#." className="tst-btn tst-cart-btn" title="add to cart" onClick={(e) => addToCart(e) }> 

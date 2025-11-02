@@ -5,6 +5,7 @@ import React from "react";
 import AppData from "@data/app.json";
 
 import PageBanner from "@components/PageBanner";
+import DarkSection from "@components/DarkSection";
 import CallToActionFourSection from "../../_components/sections/CallToActionFour";
 import CallToActionThreeSection from "../../_components/sections/CallToActionThree";
 import SpecialtiesShowcase from "../../_components/sections/SpecialtiesShowcase";
@@ -43,7 +44,7 @@ const LunchMenu = () => {
               {/* Facebook CTA Card */}
               <div className="row justify-content-center tst-mb-60">
                 <div className="col-lg-10">
-                  <div className="tst-call-to-action" style={{backgroundColor: '#05232B', borderRadius: '15px', padding: '60px 40px'}}>
+                  <DarkSection>
                     <div className="row align-items-center">
                       <div className="col-lg-8">
                         <div className="tst-cta-frame">
@@ -80,7 +81,7 @@ const LunchMenu = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </DarkSection>
                 </div>
               </div>
 

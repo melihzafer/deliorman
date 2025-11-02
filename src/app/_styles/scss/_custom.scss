@@ -41,6 +41,14 @@ body .tst-slider-navigation .tst-slider-pagination {
   }
 }
 
+.catering-list-group div{
+  padding: 0.5rem 0.25rem;
+}
+
+.card-list-grid div{
+  padding: 1rem 0.5rem;
+}
+
 .tst-slider-navigation {
   display: flex;
   justify-content: space-between;
@@ -109,7 +117,9 @@ body .tst-slider-navigation .tst-slider-pagination {
 }
 
 @media (max-width: 767px) {
-	.tst-dynamic-banner {min-height: 80px;}
+	.tst-dynamic-banner {min-height: 300px;
+  max-height: 65vh;
+  }
 }
 
 @media (min-width: 768px) {
