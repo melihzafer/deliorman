@@ -12,7 +12,7 @@ const ScheduleSection = () => {
 
                     <div className="tst-cover-frame">
                     <img src={Data.image.url} alt={Data.image.alt} className="tst-cover" />
-                    <div className="tst-overlay"></div>
+                    <div className="tst-overlay" style={{background: "#000000d0"}}></div>
                     </div>
 
                     <div className="row align-items-center">

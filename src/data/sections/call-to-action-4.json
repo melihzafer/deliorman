@@ -3,6 +3,10 @@
     "title": "Тази вечер <br>ще бъде незабравима!",
     "description": "Резервирайте маса в ресторант Делиорман и се насладете <br>на изискана кухня и уютна атмосфера в село Самуил.",
     "icon": "fas fa-calendar-check",
+    "image": {
+        "url": "img/menuCategorised/Grill&Specialties/Пилешко шиш с гарнитура 2.jpg",
+        "alt": "Резервация в ресторант Делиорман"
+    },
     "button2": {
         "link": "/menu",
         "label": "Меню"

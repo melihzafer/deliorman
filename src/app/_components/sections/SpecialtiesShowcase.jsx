@@ -140,7 +140,7 @@ const SpecialtiesShowcase = () => {
                           Меню
                         </a>
                         <a 
-                          href="/reservation" 
+                          href="tel:+359894766273" 
                           style={{
                             flex: 1,
                             padding: '12px 15px',
@@ -172,7 +172,7 @@ const SpecialtiesShowcase = () => {
             <div className="row justify-content-center">
               <div className="col-lg-6">
                 <a 
-                  href="/reservation" 
+                  href="tel:+359894766273" 
                   className="tst-btn tst-btn-lg tst-btn-shadow"
                   style={{
                     width: '100%',

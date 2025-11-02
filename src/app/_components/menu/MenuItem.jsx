@@ -37,15 +37,15 @@ const MenuItem = ({ item }) => {
     <>
       <div className="tst-menu-book-item tst-mbi-3" data-swiper-parallax-y="60" data-swiper-parallax-opacity="0" data-swiper-parallax-duration="1000">
         <div className="tst-menu-book-descr">
-            <div className="tst-menu-book-name">
+            <div className="tst-menu-book-name" style={{maxWidth: '80%'}}>
             <h5 className="tst-mb-15">{item.title}</h5>
-            <div className="tst-text" dangerouslySetInnerHTML={{__html : item.text}} />
+            <div className="tst-text"  dangerouslySetInnerHTML={{__html : item.text}} />
             <div className="tst-spacer-sm"></div>
             </div>
             <div className="tst-menu-book-bottom">
             <div className="tst-menu-book-price">
                 
-                <div className="tst-price">{/*<span className="tst-symbol">{item.currency}</span>*/}{item.weight}</div>
+                <div className="tst-price">{/*<span className="tst-symbol">{item.currency}</span>*/}{item.amount}</div>
                 {/* <div className="tst-weight">{item.weight}</div> */}
             </div>
             { /* We dont make reservation yet

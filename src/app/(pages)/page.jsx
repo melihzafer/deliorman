@@ -16,13 +16,14 @@ import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
 import HeroSlider from "@components/sliders/Hero";
 import TestimonialSlider from "@components/sliders/Testimonial";
+import NewSpecialtiesCTA from "../_components/sections/NewSpecialtiesCTA";
 
 export const metadata = {
   title: {
-		default: "Начало",
-	},
+    default: "Начало",
+  },
   description: AppData.settings.siteDescription,
-}
+};
 
 async function Home() {
   const posts = await getAllPosts();
@@ -40,13 +41,21 @@ async function Home() {
               <AboutSection />
               <Divider />
               <FeaturesSection />
-              <Divider />
+            </div>
+          </div>
+        </div>
+        <NewSpecialtiesCTA />
+        <div className="tst-content-frame">
+          <div className="tst-content-box">
+            <div className="container tst-p-60-0">
               <ScheduleSection />
               <Divider onlyBottom={0} />
               <CountersSection />
             </div>
           </div>
         </div>
+        <br />
+        <br />
         <CallToActionSection />
         {/* <div className="tst-content-frame">
           <div className="tst-content-box">
@@ -64,7 +73,7 @@ async function Home() {
       </div>
     </>
   );
-};
+}
 export default Home;
 
 async function getAllPosts() {

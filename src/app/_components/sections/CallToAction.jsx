@@ -4,7 +4,7 @@ const CallToActionSection = () => {
     return (
         <>
                 {/* call to action */}
-                <div className="tst-call-to-action" style={{backgroundColor: '#f8f9fa10'}}>
+                <div className="tst-call-to-action" style={{backgroundColor: '#00000021'}}>
                         <div className="container">
                                 <div className="row align-items-center">
                                         <div className="col-lg-6">

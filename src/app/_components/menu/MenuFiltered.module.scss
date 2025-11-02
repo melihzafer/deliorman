@@ -1,0 +1,147 @@
+// Menu Navigation Container
+.menuNavContainer {
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 0 0.5rem;
+  width: 100%;
+  
+  // Mobile: Hide scroll on small screens, show horizontal scroll on larger
+  @media (max-width: 768px) {
+    padding: 1rem 1.5rem;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 85%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}
+
+// Menu Navigation Bar
+.menuNav {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+  scroll-behavior: smooth;
+  
+  // Hide scrollbar but keep functionality
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  // Mobile: Horizontal scroll
+  @media (max-width: 790px) {
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    
+    // Ensure items don't wrap
+    flex-wrap: nowrap;
+  }
+
+  // Tablet+: Center and wrap
+  @media (min-width: 991px) {
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: visible;
+  }
+}
+
+// Menu Navigation Button
+.menuNavBtn {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+
+  // Hover state
+  &:hover {
+    border-color: #f39c12;
+    color: #f39c12;
+    transform: translateY(-2px);
+  }
+
+  // Active state
+  &.active {
+    background-color: #f39c12;
+    border-color: #f39c12;
+    color: white;
+    box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+  }
+
+  // Mobile: Smaller buttons
+  @media (max-width: 790px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    border-width: 1.5px;
+  }
+
+  // Tablet: Medium buttons
+  @media (min-width: 791px) and (max-width: 992px) {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.9rem;
+  }
+
+  // Desktop: Larger buttons
+  @media (min-width: 993px) {
+    padding: 0.75rem 1.75rem;
+    font-size: 1rem;
+  }
+}
+
+// Category Name Text
+.categoryName {
+  display: block;
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  
+  @media (max-width: 790px) {
+    font-size: 0.8rem;
+    letter-spacing: 0.3px;
+  }
+}
+
+// Animation for active state
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.menuNavBtn.active {
+  animation: slideIn 0.3s ease;
+}
+
+// Responsive adjustments
+@media (max-width: 480px) {
+  .menuNav {
+    gap: 0.4rem;
+  }
+
+  .menuNavBtn {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    border-radius: 3px;
+  }
+}

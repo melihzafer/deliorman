@@ -84,26 +84,31 @@ async function About() {
               <Divider />
               {/* <TeamSection />
               <Divider /> */}
-              <ScheduleSection />
-              <Divider onlyBottom={0} />
-              <CountersSection />
+              
             </div>
           </div>
         </div>
         <br />
-        <CallToActionFourSection />
+              <CallToActionFourSection />
+        
         <br />
         <br />
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              {/* <TestimonialSlider /> */}
-              {/* <Divider onlyBottom={0} />
+               {/* <TestimonialSlider /> 
+               <Divider onlyBottom={0} />
               <Suspense fallback={<div>Зареждане...</div>}>
                 <LatestPostsSection posts={posts} />
               </Suspense>
-              <Divider onlyBottom={0} /> */}
-              <SubscribeSection />
+              <Divider onlyBottom={0} /> 
+              <SubscribeSection /> */}
+
+
+              <ScheduleSection />
+              
+              <Divider onlyBottom={0} />
+              <CountersSection />
             </div>
           </div>
         </div>

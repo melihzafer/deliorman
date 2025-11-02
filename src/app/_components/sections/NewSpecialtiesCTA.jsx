@@ -1,68 +1,124 @@
 "use client";
 
+import { useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
 import Data from "@data/sections/new-specialties-cta.json";
+import styles from "./NewSpecialtiesCTA.module.scss";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 const NewSpecialtiesCTA = () => {
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
+
     return (
         <>
-            {/* New Specialties Call to Action */}
-            <div className="tst-call-to-action" style={{backgroundColor: '#1a2f33'}}>
+            {/* New Specialties Slider */}
+            <div className={styles.specialtiesSlider}>
                 <div className="container">
-                    <div className="row align-items-center">
-                        <div className="col-lg-6 order-lg-2">
-                            {/* text */}
-                            <div className="tst-cta-frame">
-                                <div className="tst-cta">
-                                    <div className="tst-fade-up">
-                                        <div className="tst-suptitle tst-suptitle-mobile-md-center tst-mb-15" style={{color: '#d4a373'}} dangerouslySetInnerHTML={{__html : Data.subtitle}} />
-                                    </div>
-                                    <h2 className="tst-white-2 tst-mb-30 tst-fade-up" dangerouslySetInnerHTML={{__html : Data.title}} />
-                                    <div className="tst-fade-up">
-                                        <div className="tst-text tst-text-lg tst-white-2 tst-mb-40" dangerouslySetInnerHTML={{__html : Data.description}} />
-                                    </div>
+                    {/* Navigation Buttons */}
+                    <div className={styles.navButtons}>
+                        <button ref={prevRef} className={styles.navBtn} aria-label="Previous specialty">
+                            <i className="fas fa-chevron-left"></i>
+                        </button>
+                        <button ref={nextRef} className={styles.navBtn} aria-label="Next specialty">
+                            <i className="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
 
-                                    {/* Features */}
-                                    <div className="row tst-mb-30">
-                                        {Data.features.map((feature, index) => (
-                                        <div className="col-lg-12 tst-mb-20" key={`feature-${index}`}>
-                                            <div className="tst-icon-box-inline tst-fade-up">
-                                                <div className="tst-icon-box-icon" style={{color: '#d4a373', marginRight: '15px'}}>
-                                                    <i className={feature.icon} style={{fontSize: '24px'}}></i>
+                    <Swiper
+                        modules={[Navigation, Pagination, Autoplay, EffectFade]}
+                        spaceBetween={30}
+                        slidesPerView={1}
+                        effect="fade"
+                        fadeEffect={{ crossFade: true }}
+                        speed={800}
+                        autoplay={{
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            clickable: true,
+                            el: `.${styles.pagination}`,
+                        }}
+                        navigation={{
+                            prevEl: prevRef.current,
+                            nextEl: nextRef.current,
+                        }}
+                        onBeforeInit={(swiper) => {
+                            swiper.params.navigation.prevEl = prevRef.current;
+                            swiper.params.navigation.nextEl = nextRef.current;
+                        }}
+                        loop={true}
+                        className={styles.swiperContainer}
+                    >
+                        {Data.slides.map((slide, slideIndex) => (
+                            <SwiperSlide key={`slide-${slideIndex}`}>
+                                <div className={styles.slideContent}>
+                                    <div className="row align-items-center">
+                                        <div className="col-lg-6 order-lg-2">
+                                            {/* Text Content */}
+                                            <div className={styles.textContent}>
+                                                <div className={styles.badge}>
+                                                    <i className="fas fa-star"></i>
+                                                    <span dangerouslySetInnerHTML={{__html: slide.subtitle}} />
                                                 </div>
-                                                <div className="tst-icon-box-content">
-                                                    <h6 className="tst-white-2 tst-mb-5">{feature.title}</h6>
-                                                    <p className="tst-text tst-white-2" style={{opacity: '0.8', margin: 0}}>{feature.text}</p>
+                                                
+                                                <h2 className={styles.title} dangerouslySetInnerHTML={{__html: slide.title}} />
+                                                
+                                                <p className={styles.description} dangerouslySetInnerHTML={{__html: slide.description}} />
+
+                                                {/* Features */}
+                                                <div className={styles.features}>
+                                                    {slide.features.map((feature, featureIndex) => (
+                                                        <div className={styles.feature} key={`feature-${slideIndex}-${featureIndex}`}>
+                                                            <div className={styles.featureIcon}>
+                                                                <i className={feature.icon}></i>
+                                                            </div>
+                                                            <div className={styles.featureContent}>
+                                                                <h6 className={styles.featureTitle}>{feature.title}</h6>
+                                                                <p className={styles.featureText}>{feature.text}</p>
+                                                            </div>
+                                                        </div>
+                                                    ))}
                                                 </div>
+
+                                                <a href={slide.button.link} className={styles.ctaBtn}>
+                                                    <i className={slide.button.icon}></i>
+                                                    {slide.button.label}
+                                                </a>
                                             </div>
                                         </div>
-                                        ))}
+                                        
+                                        <div className="col-lg-6 order-lg-1">
+                                            {/* Image */}
+                                            <div className={styles.imageWrapper}>
+                                                <img 
+                                                    src={slide.image.url} 
+                                                    alt={slide.image.alt}
+                                                    className={styles.slideImage}
+                                                    onError={(e) => {
+                                                        e.target.src = '/img/bg.jpg';
+                                                    }}
+                                                />
+                                                <div className={styles.imageOverlay}></div>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <a href={Data.button.link} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up">
-                                        <i className={Data.button.icon}></i> 
-                                        {Data.button.label}
-                                    </a>
                                 </div>
-                            </div>
-                            {/* text end */}
-                        </div>
-                        <div className="col-lg-6 order-lg-1">
-                            {/* image */}
-                            <img 
-                                src={Data.image.url} 
-                                alt={Data.image.alt} 
-                                className="tst-cta-image tst-fade-up" 
-                                style={{borderRadius: '15px'}}
-                                onError={(e) => {
-                                    e.target.src = '/img/bg.jpg';
-                                }}
-                            />
-                            {/* image end */}
-                        </div>
-                    </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+
+                    {/* Custom Pagination */}
+                    <div className={styles.pagination}></div>
                 </div>
             </div>
-            {/* New Specialties Call to Action end */}
+            {/* New Specialties Slider end */}
         </>
     );
 };

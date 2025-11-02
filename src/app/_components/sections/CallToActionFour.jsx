@@ -32,7 +32,8 @@ const CallToActionFourSection = () => {
 
                 {/* icon */}
                 <div className="tst-cta-icon-wrapper tst-fade-up" style={{textAlign: 'center', padding: '60px 0'}}>
-                    <i className={Data.icon} style={{fontSize: '120px', color: '#f39c12', textShadow: '0 0 30px rgba(243, 156, 18, 0.3)'}}></i>
+                    {/* <i className={Data.icon} style={{fontSize: '120px', color: '#f39c12', textShadow: '0 0 30px rgba(243, 156, 18, 0.3)'}}></i> */}
+                    <img src={Data.image.url} alt={Data.image.alt} style={{maxWidth: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)'}} />
                 </div>
                 {/* icon end */}
 

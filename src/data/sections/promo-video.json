@@ -1,10 +1,10 @@
 {
     "video": {
         "title": "Промо видео",
-        "link": "https://www.youtube.com/watch?v=SXJqEnauNaY"
+        "link": "https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F574305161867774%2F&show_text=false&width=267&t=0"
     },
     "image": {
-        "url": "/img/about.jpg",
+        "url": "/img/indoor_footage/camphoto_1423418003.webp",
         "alt": "видео корица"
     }
 }

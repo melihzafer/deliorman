@@ -2,6 +2,7 @@
 
 import React from "react";
 import PageBanner from "@components/PageBanner";
+import DarkSection from "@components/DarkSection";
 
 const SpecialDays = () => {
   return (
@@ -37,7 +38,7 @@ const SpecialDays = () => {
               </div>
 
               {/* Special Events Grid */}
-              <div className="row tst-mb-60">
+              <div className="row tst-mb-60 card-list-grid">
                 <div className="col-lg-4 col-md-6">
                   <div className="tst-icon-box tst-mb-40 text-center">
                     <div className="tst-icon-frame tst-mb-20">
@@ -52,7 +53,7 @@ const SpecialDays = () => {
                 <div className="col-lg-4 col-md-6">
                   <div className="tst-icon-box tst-mb-40 text-center">
                     <div className="tst-icon-frame tst-mb-20">
-                      <i className="fas fa-rings-wedding" style={{fontSize: '56px', color: '#f39c12'}}></i>
+                      <i className="fas fa-ring" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
                     <h5 className="tst-mb-15" style={{color: '#05232B'}}>Годежи и сватби</h5>
                     <p className="tst-text">
@@ -112,8 +113,11 @@ const SpecialDays = () => {
                   <div style={{
                     backgroundColor: '#f8f9fa',
                     borderRadius: '12px',
-                    padding: '40px',
-                    height: '100%'
+                    padding: '1em',
+                    height: '100%',
+                    gap: "1em",
+                    display: 'flex',
+                    flexDirection: 'column',
                   }}>
                     <div className="tst-suptitle tst-mb-15" style={{color: '#f39c12'}}>
                       <i className="fas fa-paint-brush" style={{marginRight: '8px'}}></i>
@@ -178,12 +182,7 @@ const SpecialDays = () => {
               {/* Mevlid Special Section */}
               <div className="row justify-content-center">
                 <div className="col-lg-10">
-                  <div style={{
-                    backgroundColor: '#05232B',
-                    borderRadius: '15px',
-                    padding: '50px 40px',
-                    color: 'white'
-                  }}>
+                  <DarkSection>
                     <div className="text-center tst-mb-40">
                       <div className="tst-suptitle tst-white-2 tst-mb-15">
                         <i className="fas fa-star-and-crescent" style={{marginRight: '10px'}}></i>
@@ -310,7 +309,7 @@ const SpecialDays = () => {
                         +359 89 4766273
                       </p>
                     </div>
-                  </div>
+                  </DarkSection>
                 </div>
               </div>
 

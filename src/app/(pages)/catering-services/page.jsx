@@ -79,11 +79,12 @@ const CateringServices = () => {
                     Нашият екип се грижи за всичко - от приготвянето на храната до доставката и сервирането.
                   </p>
                   
-                  <div className="row">
+                  <div className="row catering-list-group">
                     <div className="col-md-6 tst-mb-20">
                       <div style={{
                         display: 'flex',
-                        alignItems: 'flex-start'
+                        alignItems: 'flex-start',
+                       
                       }}>
                         <div style={{
                           backgroundColor: '#f39c12',
@@ -189,7 +190,7 @@ const CateringServices = () => {
               </div>
 
               {/* Services Grid */}
-              <div className="row tst-mb-60">
+              <div className="row tst-mb-60 card-list-grid">
                 <div className="col-lg-4 col-md-6">
                   <div className="tst-icon-box tst-mb-40 text-center">
                     <div className="tst-icon-frame tst-mb-20">
