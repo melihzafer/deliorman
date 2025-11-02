@@ -118,7 +118,11 @@ body .tst-slider-navigation .tst-slider-pagination {
 
 @media (max-width: 767px) {
 	.tst-dynamic-banner {min-height: 300px;
-  max-height: 65vh;
+  // max-height: 65vh;
+  }
+
+  .tst-cta-icon-wrapper {
+    padding: 1em !important;
   }
 }
 
