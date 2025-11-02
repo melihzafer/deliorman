@@ -12,7 +12,7 @@ const numberAnimate = (render, from, to, duration, timeFx) => {
         if (pTime > 1) pTime = 1;
         render(from + (to - from) * timeFx(pTime));
         if (pTime < 1) {
-        requestAnimationFrame(step);
+            requestAnimationFrame(step);
         }
     });
 }
