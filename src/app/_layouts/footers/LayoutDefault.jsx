@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import Link from "next/link";
 
 import AppData from "@data/app.json";
-
 import { ScrollAnimation } from "@common/scrollAnims";
 
 const FooterGallery = dynamic( () => import("@layouts/footers/Gallery"), { ssr: false } );
@@ -16,6 +15,31 @@ const DefaultFooter = () => {
   
   useEffect(() => {
     ScrollAnimation();
+    
+    // Add fade-down animation class based on screen size
+    const footer = document.querySelector('footer');
+    if (footer) {
+      if (window.innerWidth >= 992) {
+        footer.classList.add('tst-fade-down');
+      } else {
+        footer.classList.remove('tst-fade-down');
+      }
+    }
+
+    // Handle window resize to update animation
+    const handleResize = () => {
+      const footer = document.querySelector('footer');
+      if (footer) {
+        if (window.innerWidth >= 992) {
+          footer.classList.add('tst-fade-down');
+        } else {
+          footer.classList.remove('tst-fade-down');
+        }
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const scrollToTop = (e) => {

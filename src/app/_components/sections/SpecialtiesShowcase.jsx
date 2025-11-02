@@ -133,7 +133,7 @@ const SpecialtiesShowcase = () => {
                             border: 'none',
                             cursor: 'pointer'
                           }}
-                          onMouseEnter={(e) => e.target.style.backgroundColor = '#d4a373'}
+                          onMouseEnter={(e) => e.target.style.backgroundColor = '#ff9100ff'}
                           onMouseLeave={(e) => e.target.style.backgroundColor = '#f39c12'}
                         >
                           <i className="fas fa-list" style={{marginRight: '6px'}}></i>
