@@ -19,11 +19,11 @@ const CallToActionSection = () => {
                                                                 <div className="tst-fade-up">
                                                                         <div className="tst-text tst-text-lg tst-text-shadow tst-white-2" dangerouslySetInnerHTML={{__html : Data.description}} />
                                                                 </div>
-                                                                <a href={Data.button1.link} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-mr-10 tst-fade-up">
+                                                                <a href={Data.button1.link} style={{marginLeft: 'auto', marginRight: 'auto'}} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-mr-10 tst-fade-up">
                                                                         <i className={Data.button1.icon}></i> 
                                                                         {Data.button1.label}
                                                                 </a>
-                                                                <a href={Data.button2.link} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-fade-up">
+                                                                <a href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-fade-up">
                                                                         <i className={Data.button2.icon}></i> 
                                                                         {Data.button2.label}
                                                                 </a>
