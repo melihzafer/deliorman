@@ -38,11 +38,17 @@ const initScrollListeners = () => {
         cachedCounters = document.querySelectorAll(".tst-number");
     };
     
-    // Initial cache
+    // Initial cache and periodic refresh for dynamic content
     setTimeout(refreshCache, 100);
+    setTimeout(refreshCache, 500);  // Additional refresh for slower loading content
+    setTimeout(refreshCache, 1000); // Final refresh
 
     // scrolling fade - optimized with will-change hint
     const handleScrollFade = () => {
+        // Re-cache if elements are missing (handles dynamic content)
+        if (!cachedAnimatedElements || cachedAnimatedElements.length === 0) {
+            refreshCache();
+        }
         if (!cachedAnimatedElements || cachedAnimatedElements.length === 0) return;
         
         const windowHeight = window.innerHeight;
@@ -64,6 +70,9 @@ const initScrollListeners = () => {
 
     // scrolling main slider - with GPU acceleration
     const handleScrollSlider = () => {
+        if (!cachedMainSliderElements || cachedMainSliderElements.length === 0) {
+            refreshCache();
+        }
         if (!cachedMainSliderElements || cachedMainSliderElements.length === 0) return;
         
         const opacity = Math.max(0, 1 - window.scrollY / 500);
@@ -74,6 +83,9 @@ const initScrollListeners = () => {
 
     // scrolling parallax - optimized with transform3d for GPU
     const handleScrollParallax = () => {
+        if (!cachedParallaxElements || cachedParallaxElements.length === 0) {
+            refreshCache();
+        }
         if (!cachedParallaxElements || cachedParallaxElements.length === 0) return;
         
         const translateY = window.scrollY * 0.3;
@@ -99,6 +111,9 @@ const initScrollListeners = () => {
 
     // scrolling counters
     const handleScrollCounters = () => {
+        if (!cachedCounters || cachedCounters.length === 0) {
+            refreshCache();
+        }
         if (!cachedCounters || cachedCounters.length === 0) return;
         
         const windowHeight = window.innerHeight;

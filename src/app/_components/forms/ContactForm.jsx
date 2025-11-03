@@ -169,6 +169,7 @@ const ContactForm = () => {
                 className="tst-btn" 
                 type="submit" 
                 disabled={isSubmitting}
+                style={{marginLeft: 'auto', marginRight: 'auto'}}
             >
                 {isSubmitting ? 'Изпращане...' : 'Изпрати съобщение'}
             </button>
