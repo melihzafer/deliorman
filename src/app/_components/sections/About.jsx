@@ -25,8 +25,8 @@ const AboutSection = () => {
                   <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : Data.title}} />
                   <p className="tst-text tst-mb-30" dangerouslySetInnerHTML={{__html : Data.description}} />
 
-                  <Link href={Data.button.link} className="tst-btn tst-anima-link tst-mr-30">{Data.button.label}</Link>
-                  
+                  <Link href={Data.button.link} className="tst-btn tst-anima-link text-center">{Data.button.label}</Link>
+                  <div style={{display: 'flex', padding: '1.5em'}}></div>
                   {AppData.social.map((item, key) => (
                   <a href={item.url} className="tst-icon-link" title={item.title} key={`about-social-item-${key}`}><i className={item.icon}></i></a>
                   ))}

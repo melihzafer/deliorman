@@ -25,7 +25,7 @@ const ScheduleSection = () => {
                       <p className="tst-text tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : Data.description}} />
 
                       <div className="tst-btn-mobile">
-                        <Link href={Data.button2.link} className="tst-btn tst-res-btn tst-mr-30 light">{Data.button2.label}</Link>
+                        <Link href={Data.button2.link} className="tst-btn tst-res-btn light">{Data.button2.label}</Link>
                         {/* <Link href={Data.button2.link} className="tst-label tst-white-2">{Data.button2.label}</Link> Reservation */}
                       </div>
                       </div>
