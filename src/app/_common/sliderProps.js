@@ -1,3 +1,5 @@
+"use client";
+
 import SwiperCore, {
   A11y,
   Autoplay,

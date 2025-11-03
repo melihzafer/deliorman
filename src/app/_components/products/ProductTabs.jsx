@@ -1,6 +1,5 @@
 "use client";
 
-import Isotope from "isotope-layout";
 import { useEffect, useRef, useState } from "react";
 
 const ProductTabs = ({items, active}) => {
@@ -9,8 +8,9 @@ const ProductTabs = ({items, active}) => {
   const [filterKey, setFilterKey] = useState(active);
   
   useEffect(() => {
-      //setTimeout(() => {
-          isotope.current = new Isotope(".tst-masonry-grid", {
+      // Dynamically import isotope only on client side
+      import("isotope-layout").then((Isotope) => {
+          isotope.current = new Isotope.default(".tst-masonry-grid", {
               itemSelector: ".tst-grid-item",
               percentPosition: true,
               masonry: {
@@ -18,7 +18,7 @@ const ProductTabs = ({items, active}) => {
               },
               transitionDuration: '0.5s',
           });
-      //}, 500);
+      });
   }, []);
 
   useEffect(() => {
