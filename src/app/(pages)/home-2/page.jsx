@@ -17,7 +17,7 @@ import CallToActionSection from "@components/sections/CallToAction";
 import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
 
-const TestimonialSlider = dynamic( () => import("@components/sliders/Testimonial"), { ssr: false } );
+const TestimonialSlider = dynamic( () => import("@components/sliders/Testimonial") );
 
 export const metadata = {
   title: {

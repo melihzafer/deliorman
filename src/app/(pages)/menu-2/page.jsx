@@ -43,7 +43,7 @@ const Menu1 = () => {
             </div>
           </div>
         </div>
-        <br />
+        {/* <br />
         <CallToActionTwoSection />
         <br />
         <br />
@@ -70,7 +70,7 @@ const Menu1 = () => {
 
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
