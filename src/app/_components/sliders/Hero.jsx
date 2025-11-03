@@ -3,6 +3,7 @@
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect } from "react";
+import Image from "next/image";
 
 import Data from '@data/sliders/hero';
 import Link from "next/link";
@@ -28,7 +29,19 @@ const HeroSlider = () => {
             {/* banner */}
             <div className="tst-banner">
               <div className="tst-cover-frame">
-                <img src={item.image.url} alt={item.image.alt} className="tst-cover tst-parallax" data-swiper-parallax-y="120" data-swiper-parallax-scale="1.2" data-swiper-parallax-duration="1000" />
+                <Image 
+                  src={item.image.url} 
+                  alt={item.image.alt} 
+                  fill
+                  priority={key === 0}
+                  quality={90}
+                  sizes="100vw"
+                  className="tst-cover tst-parallax" 
+                  data-swiper-parallax-y="120" 
+                  data-swiper-parallax-scale="1.2" 
+                  data-swiper-parallax-duration="1000"
+                  style={{ objectFit: 'cover' }}
+                />
                 <div className="tst-overlay"></div>
               </div>
               <div className="tst-banner-content-frame">

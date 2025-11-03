@@ -12,8 +12,8 @@ import ProductImage from "@components/products/ProductImage";
 import ProductButtons from "@components/products/ProductButtons";
 import SubscribeSection from "@components/sections/Subscribe";
 
-const ProductsSlider = dynamic( () => import("@components/sliders/Products"), { ssr: false } );
-const ProductTabs = dynamic( () => import("@components/products/ProductTabs"), { ssr: false } );
+const ProductsSlider = dynamic( () => import("@components/sliders/Products") );
+const ProductTabs = dynamic( () => import("@components/products/ProductTabs") );
 
 export const metadata = {
   title: {

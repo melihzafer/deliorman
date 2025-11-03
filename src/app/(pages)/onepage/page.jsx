@@ -22,10 +22,10 @@ import SubscribeSection from "@components/sections/Subscribe";
 import ContactInfoSection from "@components/sections/ContactInfo";
 import ContactFormSection from "@components/sections/ContactForm";
 
-const HeroSlider = dynamic( () => import("@components/sliders/Hero"), { ssr: false } );
-const TestimonialSlider = dynamic( () => import("@components/sliders/Testimonial"), { ssr: false } );
+const HeroSlider = dynamic( () => import("@components/sliders/Hero") );
+const TestimonialSlider = dynamic( () => import("@components/sliders/Testimonial") );
 
-const MenuFiltered = dynamic( () => import("@components/menu/MenuFiltered"), { ssr: false } );
+const MenuFiltered = dynamic( () => import("@components/menu/MenuFiltered") );
 
 export const metadata = {
   title: {
