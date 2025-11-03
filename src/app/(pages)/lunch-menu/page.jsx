@@ -9,6 +9,7 @@ import DarkSection from "@components/DarkSection";
 import CallToActionFourSection from "../../_components/sections/CallToActionFour";
 import CallToActionThreeSection from "../../_components/sections/CallToActionThree";
 import SpecialtiesShowcase from "../../_components/sections/SpecialtiesShowcase";
+import NewSpecialtiesCTA from "../../_components/sections/NewSpecialtiesCTA";
 
 const LunchMenu = () => {
   return (
@@ -146,7 +147,7 @@ const LunchMenu = () => {
       
             
         {/* Call to Action - View Full Menu */}
-        <div className="tst-call-to-action" style={{backgroundColor: '#f8f9fa10'}}>
+        {/* <div className="tst-call-to-action" style={{backgroundColor: '#f8f9fa10'}}>
           <div className="container">
             <div className="row align-items-center">
               <div className="col-lg-6">
@@ -184,8 +185,8 @@ const LunchMenu = () => {
               </div>
             </div>
           </div>
-        </div>
-                    <SpecialtiesShowcase />
+        </div> */}
+                      <NewSpecialtiesCTA />
       </div>
     </>
   );

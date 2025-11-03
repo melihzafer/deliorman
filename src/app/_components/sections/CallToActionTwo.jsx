@@ -21,6 +21,7 @@ const CallToActionTwoSection = () => {
                         <div className="tst-text tst-text-lg tst-text-shadow tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : Data.description}} />
                     </div>
                     <a href={Data.button1.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-anima-link tst-fade-up tst-mr-30 dark">{Data.button1.label}</a>
+                    
                     <a href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-label tst-white-2 tst-fade-up dark">{Data.button2.label}</a>
                     </div>
                 </div>

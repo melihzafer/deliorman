@@ -281,7 +281,7 @@ const CateringServices = () => {
                       href="tel:+359894766273"
                       style={{
                         display: 'inline-block',
-                        padding: '18px 40px',
+                        padding: '1em 2em',
                         backgroundColor: '#04161B',
                         color: 'white',
                         textDecoration: 'none',
@@ -289,7 +289,8 @@ const CateringServices = () => {
                         fontWeight: '600',
                         fontSize: '16px',
                         transition: 'background-color 0.3s ease',
-                        marginRight: '15px',
+                        marginRight: 'auto',
+                         marginLeft: 'auto',
                         marginBottom: '15px'
                       }}
                       onMouseEnter={(e) => e.target.style.backgroundColor = '#6b3c1a'}
@@ -298,6 +299,7 @@ const CateringServices = () => {
                       <i className="fas fa-phone" style={{marginRight: '10px'}}></i>
                       Обадете се сега
                     </a>
+                    <div style={{display: 'flex', width: '1em', height: '1em'}}></div>
                     <a 
                       href="/menu"
                       style={{
@@ -310,7 +312,8 @@ const CateringServices = () => {
                         fontWeight: '600',
                         fontSize: '16px',
                         transition: 'background-color 0.3s ease',
-                        marginBottom: '15px'
+                        marginBottom: '15px',
+                        marginRight: 'auto', marginLeft: 'auto'
                       }}
                       onMouseEnter={(e) => e.target.style.backgroundColor = '#d4a373'}
                       onMouseLeave={(e) => e.target.style.backgroundColor = '#f39c12'}
