@@ -983,10 +983,58 @@ footer {
 			list-style-type: none;
 			display: flex;
 			justify-content: space-between;
-			margin-bottom: 13px;
+			align-items: flex-start;
+			margin-bottom: 18px;
+			line-height: 1.6;
+			gap: 12px;
 
 			& .tst-label {
-				line-height: 26px;
+				line-height: 1.7;
+				font-weight: 600;
+				font-size: 15px;
+				flex-shrink: 0;
+				letter-spacing: 0.3px;
+			}
+
+			& .tst-text {
+				line-height: 1.7;
+				font-size: 15px;
+				
+				color: white;
+				text-align: right;
+				font-weight: 400;
+				word-break: break-word;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			// Special styling for address (last item)
+			&:last-child .tst-text {
+				max-width: 280px;
+				line-height: 1.8;
+			}
+
+			@media (max-width: 991px) {
+				flex-direction: column;
+				gap: 6px;
+				margin-bottom: 20px;
+
+				& .tst-text {
+					text-align: left;
+				}
+
+				&:last-child .tst-text {
+					max-width: 100%;
+				}
+			}
+
+			@media (max-width: 575px) {
+				& .tst-label,
+				& .tst-text {
+					font-size: 14px;
+				}
 			}
 		}
 	}

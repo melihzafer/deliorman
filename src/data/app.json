@@ -111,8 +111,8 @@
         "contact": {
             "title": "Контактна информация",
             "items": [
-                { "label": "Телефон за резервации", "value": "+359 89 4766273" },
-                { "label": "Имейл за запитвания", "value": "contact@deliorman.bg" },
+                { "label": "Телефон \n за резервации", "value": "+359 89 4766273" },
+                { "label": "Имейл", "value": "restaurantdeliorman@gmail.com" },
                 { "label": "Адрес", "value": "с. Самуил, ул. \"Хаджи Димитър\" №25, обл. Разград" }
             ],
             "button": { "link": "tel:+359894766273", "label": "Обадете се сега" }
@@ -135,28 +135,18 @@
             ],
             "button": { "link": "/gallery", "label": "Разгледайте повече снимки" }
         },
-        "copy": "© 2025 Ресторант Делиорман. Всички права запазени."
+        "copy": "Powered by Melih Hyusein © Ресторант Делиорман. Всички права запазени."
     },
     "social": [
         {
-            "link": "https://facebook.com/deliorman",
-            "title": "Фейсбук страница",
+            "link": "https://www.facebook.com/profile.php?id=100063542858187",
+            "title": "Посетете ни във Фейсбук",
             "icon": "fab fa-facebook-f"
         },
         {
-            "link": "https://instagram.com/deliorman_restaurant",
-            "title": "Инстаграм профил",
-            "icon": "fab fa-instagram"
-        },
-        {
-            "link": "https://twitter.com/DeliormanRest",
-            "title": "Туитър акаунт",
-            "icon": "fab fa-twitter"
-        },
-        {
-            "link": "https://youtube.com/c/DeliormanRestaurant",
-            "title": "Ютюб канал",
-            "icon": "fab fa-youtube"
+            "link": "tel:+359894766273",
+            "title": "Обадете се за резервация",
+            "icon": "fas fa-phone"
         }
     ]
 }

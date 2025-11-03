@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
 import Data from "@data/sections/new-specialties-cta.json";
-import styles from "./NewSpecialtiesCTA.module.scss";
+import styles from "../../_styles/scss/NewSpecialtiesCTA.module.scss";
 
 import "swiper/css";
 import "swiper/css/navigation";

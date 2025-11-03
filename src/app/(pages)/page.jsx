@@ -54,9 +54,9 @@ async function Home() {
             </div>
           </div>
         </div>
-        <br />
-        <br />
-        <CallToActionSection />
+        {/* <br />
+        <br /> */}
+        {/* <CallToActionSection /> */}
         {/* <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
