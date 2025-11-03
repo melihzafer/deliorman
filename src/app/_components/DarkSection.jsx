@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./DarkSection.module.scss";
+import styles from "../_styles/scss/DarkSection.module.scss";
 
 /**
  * DarkSection Component

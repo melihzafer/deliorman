@@ -23,6 +23,7 @@ const CallToActionSection = () => {
                                                                         <i className={Data.button1.icon}></i> 
                                                                         {Data.button1.label}
                                                                 </a>
+                                                              
                                                                 <a href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-fade-up">
                                                                         <i className={Data.button2.icon}></i> 
                                                                         {Data.button2.label}

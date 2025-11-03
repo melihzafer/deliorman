@@ -21,8 +21,10 @@ const CallToActionFourSection = () => {
                     <div className="tst-fade-up tst-mb-30">
                         <div className="tst-text tst-text-lg tst-text-shadow tst-white-2" dangerouslySetInnerHTML={{__html : Data.description}} />
                     </div>
+                   
                     <Link href={Data.button1.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up tst-res-btn tst-mr-30">{Data.button1.label}</Link>
-                    <Link href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-label tst-anima-link tst-white-2 tst-fade-up">{Data.button2.label}</Link>
+                    <div style={{display: 'flex', width: '1em', height: '1em'}}></div>                                   
+                    <Link href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up tst-res-btn tst-white-2 tst-fade-up">{Data.button2.label}</Link>
                     </div>
                 </div>
                 {/* text end */}

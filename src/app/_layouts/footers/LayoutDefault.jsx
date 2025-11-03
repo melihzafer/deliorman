@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import Link from "next/link";
 
 import AppData from "@data/app.json";
-import { ScrollAnimation } from "@common/scrollAnims";
 
 const FooterGallery = dynamic( () => import("@layouts/footers/Gallery"), { ssr: false } );
 
@@ -14,32 +13,21 @@ const DefaultFooter = () => {
   const asPath = usePathname();
   
   useEffect(() => {
-    ScrollAnimation();
-    
-    // Add fade-down animation class based on screen size
+    // Simple fade-in on mount (no scroll animation for footer)
     const footer = document.querySelector('footer');
-    if (footer) {
-      if (window.innerWidth >= 992) {
-        footer.classList.add('tst-fade-down');
-      } else {
-        footer.classList.remove('tst-fade-down');
-      }
+    if (footer && window.innerWidth >= 992) {
+      // Use requestAnimationFrame for smooth initial animation
+      requestAnimationFrame(() => {
+        footer.style.opacity = '0';
+        footer.style.transform = 'translateY(30px)';
+        footer.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        
+        requestAnimationFrame(() => {
+          footer.style.opacity = '1';
+          footer.style.transform = 'translateY(0)';
+        });
+      });
     }
-
-    // Handle window resize to update animation
-    const handleResize = () => {
-      const footer = document.querySelector('footer');
-      if (footer) {
-        if (window.innerWidth >= 992) {
-          footer.classList.add('tst-fade-down');
-        } else {
-          footer.classList.remove('tst-fade-down');
-        }
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const scrollToTop = (e) => {
@@ -94,7 +82,7 @@ const DefaultFooter = () => {
 
                 <div className="tst-footer-bottom">
                     <div className="tst-text" dangerouslySetInnerHTML={{__html : AppData.footer.copy}} />
-                    <a href="#tst-app" className="tst-label tst-color tst-anchor-scroll" onClick={ (e) => scrollToTop(e) }>Back to top</a>
+                    <a href="#tst-app" className="tst-label tst-color tst-anchor-scroll" onClick={ (e) => scrollToTop(e) }>Нагоре</a>
                 </div>
             </div>
         </footer>
