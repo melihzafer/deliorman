@@ -120,6 +120,8 @@ const MenuFiltered = ({ heading = 0, categories }) => {
                 </div>
               </SwiperSlide>
             ))}
+            <br />
+            <br />
           </Swiper>
         </div>
       </div>
