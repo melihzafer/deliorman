@@ -133,34 +133,41 @@
   animation: slideIn 0.3s ease;
 }
 
-// CSS Grid for Menu Items - Eliminates white space issues
+// CSS Columns for Menu Items - Eliminates white space by balancing columns
 .menuGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  column-count: 2;
+  column-gap: 30px;
   width: 100%;
-  align-items: start;
   
   // Mobile: Single column
   @media (max-width: 991px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    column-count: 1;
+    column-gap: 0;
   }
   
   // Tablet: Two columns with smaller gap
   @media (min-width: 992px) and (max-width: 1199px) {
-    gap: 25px;
+    column-gap: 25px;
   }
   
   // Large desktop: Two columns with optimal spacing
   @media (min-width: 1200px) {
-    gap: 35px;
+    column-gap: 35px;
   }
 }
 
 .menuGridItem {
   width: 100%;
-  min-height: fit-content;
+  display: inline-block; // Prevents items from breaking across columns
+  break-inside: avoid; // Prevents items from breaking across columns
+  page-break-inside: avoid; // Older browser support
+  
+  // Remove bottom margin from last item to prevent extra space
+  &:last-child {
+    :global(.tst-menu-book-item) {
+      margin-bottom: 0;
+    }
+  }
 }
 
 // Responsive adjustments
