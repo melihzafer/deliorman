@@ -149,6 +149,19 @@
   }
 }
 
+// Additional control via React state classes
+.inactiveSlide {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.activeSlide {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
 // CSS Columns for Menu Items - Eliminates white space by balancing columns
 .menuGrid {
   column-count: 2;

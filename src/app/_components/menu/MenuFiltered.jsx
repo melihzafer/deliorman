@@ -105,7 +105,7 @@ const MenuFiltered = ({ heading = 0, categories }) => {
           >
             {categories.map((category, category_key) => (
               <SwiperSlide
-                className="menuitem"
+                className={`menuitem ${activeCategory === category_key ? styles.activeSlide : styles.inactiveSlide}`}
                 key={`menu-filtered-category-${category_key}`}
               >
                 <div className={styles.menuGrid}>
