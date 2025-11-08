@@ -27,7 +27,7 @@ const Contact = () => {
                 <div className="tst-content-box">
                     <div className="container tst-p-60-60">
                         <ScrollHint />
-
+                        <Divider />
                         <ContactInfoSection />
                         <Divider />
                         <ContactFormSection />
