@@ -12,6 +12,17 @@ import Link from "next/link";
 const FooterGalleryModule = ( { items, button } ) => {
   const [img, setImg] = useState(false);
   const [imgValue, setImgValue] = useState([]);
+  const [initialIndex, setInitialIndex] = useState(0);
+
+  // Prepare all images for lightbox
+  const allImages = items.map(item => ({ src: item.image, alt: item.alt }));
+
+  const handleImageClick = (e, index) => {
+    e.preventDefault();
+    setInitialIndex(index);
+    setImgValue(allImages);
+    setImg(true);
+  };
 
   return (
     <>
@@ -24,7 +35,7 @@ const FooterGalleryModule = ( { items, button } ) => {
             <SwiperSlide key={`footer-gallery-item-${key}`}>
                 <div className="tst-footer-gal-item">
                     <img src={item.image} alt={item.alt} />
-                    <a data-fancybox="gal" href={item.image} className="tst-overlay" onClick={ (e) => { e.preventDefault(); setImg(true); setImgValue( [{ "src": item.image, "alt": item.alt }] ); }}>
+                    <a data-fancybox="gal" href={item.image} className="tst-overlay" onClick={(e) => handleImageClick(e, key)}>
                         <i className="fas fa-search-plus"></i>
                     </a>
                 </div>
@@ -42,11 +53,8 @@ const FooterGalleryModule = ( { items, button } ) => {
             open={img}
             close={() => setImg(false)}
             slides={imgValue}
+            index={initialIndex}
             styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
-            render={{
-                buttonPrev: imgValue.length <= 1 ? () => null : undefined,
-                buttonNext: imgValue.length <= 1 ? () => null : undefined,
-            }}
         />
         {/* footer gallery end */}
     </>

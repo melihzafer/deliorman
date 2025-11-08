@@ -12,20 +12,12 @@ const Gallery = () => {
   const galleryImages = useMemo(() => ({
     indoor: [
       { src: '/img/indoor_footage/camphoto_1423418003.webp', alt: 'Интериор на ресторант', category: 'indoor' },
-      { src: '/img/indoor_footage/IMG_9066.webp', alt: 'Интериор на ресторант', category: 'indoor' },
       { src: '/img/indoor_footage/IMG_9067.webp', alt: 'Интериор на ресторант', category: 'indoor' },
-      { src: '/img/indoor_footage/IMG_9068.webp', alt: 'Интериор на ресторант', category: 'indoor' },
       { src: '/img/indoor_footage/IMG_9069.webp', alt: 'Интериор на ресторант', category: 'indoor' },
-      { src: '/img/indoor_footage/IMG_9070.webp', alt: 'Интериор на ресторант', category: 'indoor' },
       { src: '/img/indoor_footage/IMG_9071.webp', alt: 'Интериор на ресторант', category: 'indoor' },
       { src: '/img/indoor_footage/IMG_9072.webp', alt: 'Интериор на ресторант', category: 'indoor' },
-      { src: '/img/indoor_footage/IMG_9075.webp', alt: 'Интериор на ресторант', category: 'indoor' },
-      { src: '/img/indoor_footage/IMG_9076.webp', alt: 'Интериор на ресторант', category: 'indoor' },
       { src: '/img/indoor_footage/IMG_9339.webp', alt: 'Интериор на ресторант', category: 'indoor' },
-      { src: '/img/indoor_footage/IMG_9340.webp', alt: 'Интериор на ресторант', category: 'indoor' },
       { src: '/img/indoor_footage/IMG_9341.webp', alt: 'Интериор на ресторант', category: 'indoor' },
-      { src: '/img/indoor_footage/IMG_9342.webp', alt: 'Интериор на ресторант', category: 'indoor' },
-      { src: '/img/indoor_footage/IMG_9343.webp', alt: 'Интериор на ресторант', category: 'indoor' },
       { src: '/img/indoor_footage/IMG_9344.webp', alt: 'Интериор на ресторант', category: 'indoor' },
     ],
     outdoor: [
@@ -34,6 +26,7 @@ const Gallery = () => {
       { src: '/img/outdoor_footage/IMG_9336.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
       { src: '/img/outdoor_footage/IMG_9337.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
       { src: '/img/outdoor_footage/IMG_9338.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
+      { src: '/img/outdoor_footage/IMG_9076.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
     ],
     decoration: [
       { src: '/img/decoration_footage/ukrasa1.webp', alt: 'Декорация за специални събития', category: 'decoration' },

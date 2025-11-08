@@ -119,7 +119,10 @@ const Layouts = ({
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body style={{ "backgroundImage": "url(" + AppData.settings.bgImage + ")" }}>
+      <body 
+        style={{ "backgroundImage": "url(" + AppData.settings.bgImage + ")" }}
+        suppressHydrationWarning
+      >
         <div className="tst-main-overlay"></div>
 
         {/* app wrapper */}

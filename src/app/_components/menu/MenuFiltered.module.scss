@@ -133,6 +133,72 @@
   animation: slideIn 0.3s ease;
 }
 
+// Hide inactive Swiper slides - Only show active category
+:global(.swiper-menu) {
+  .swiper-slide {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    &.swiper-slide-active {
+      display: block;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+// Additional control via React state classes
+.inactiveSlide {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.activeSlide {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+// CSS Columns for Menu Items - Eliminates white space by balancing columns
+.menuGrid {
+  column-count: 2;
+  column-gap: 30px;
+  width: 100%;
+  
+  // Mobile: Single column
+  @media (max-width: 991px) {
+    column-count: 1;
+    column-gap: 0;
+  }
+  
+  // Tablet: Two columns with smaller gap
+  @media (min-width: 992px) and (max-width: 1199px) {
+    column-gap: 25px;
+  }
+  
+  // Large desktop: Two columns with optimal spacing
+  @media (min-width: 1200px) {
+    column-gap: 35px;
+  }
+}
+
+.menuGridItem {
+  width: 100%;
+  display: inline-block; // Prevents items from breaking across columns
+  break-inside: avoid; // Prevents items from breaking across columns
+  page-break-inside: avoid; // Older browser support
+  
+  // Remove bottom margin from last item to prevent extra space
+  &:last-child {
+    :global(.tst-menu-book-item) {
+      margin-bottom: 0;
+    }
+  }
+}
+
 // Responsive adjustments
 @media (max-width: 480px) {
   .menuNav {

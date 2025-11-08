@@ -105,13 +105,13 @@ const MenuFiltered = ({ heading = 0, categories }) => {
           >
             {categories.map((category, category_key) => (
               <SwiperSlide
-                className="menuitem"
+                className={`menuitem ${activeCategory === category_key ? styles.activeSlide : styles.inactiveSlide}`}
                 key={`menu-filtered-category-${category_key}`}
               >
-                <div className="row">
+                <div className={styles.menuGrid}>
                   {category.items.map((item, key) => (
                     <div
-                      className="col-lg-6"
+                      className={styles.menuGridItem}
                       key={`menu-filtered-item-${category_key}-${key}`}
                     >
                       <MenuItem item={item} />
@@ -120,6 +120,8 @@ const MenuFiltered = ({ heading = 0, categories }) => {
                 </div>
               </SwiperSlide>
             ))}
+            <br />
+            <br />
           </Swiper>
         </div>
       </div>
