@@ -133,6 +133,22 @@
   animation: slideIn 0.3s ease;
 }
 
+// Hide inactive Swiper slides - Only show active category
+:global(.swiper-menu) {
+  .swiper-slide {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    &.swiper-slide-active {
+      display: block;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
 // CSS Columns for Menu Items - Eliminates white space by balancing columns
 .menuGrid {
   column-count: 2;
