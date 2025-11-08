@@ -133,6 +133,36 @@
   animation: slideIn 0.3s ease;
 }
 
+// CSS Grid for Menu Items - Eliminates white space issues
+.menuGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  width: 100%;
+  align-items: start;
+  
+  // Mobile: Single column
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  // Tablet: Two columns with smaller gap
+  @media (min-width: 992px) and (max-width: 1199px) {
+    gap: 25px;
+  }
+  
+  // Large desktop: Two columns with optimal spacing
+  @media (min-width: 1200px) {
+    gap: 35px;
+  }
+}
+
+.menuGridItem {
+  width: 100%;
+  min-height: fit-content;
+}
+
 // Responsive adjustments
 @media (max-width: 480px) {
   .menuNav {

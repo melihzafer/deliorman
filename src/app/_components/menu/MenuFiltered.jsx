@@ -108,10 +108,10 @@ const MenuFiltered = ({ heading = 0, categories }) => {
                 className="menuitem"
                 key={`menu-filtered-category-${category_key}`}
               >
-                <div className="row">
+                <div className={styles.menuGrid}>
                   {category.items.map((item, key) => (
                     <div
-                      className="col-lg-6"
+                      className={styles.menuGridItem}
                       key={`menu-filtered-item-${category_key}-${key}`}
                     >
                       <MenuItem item={item} />
