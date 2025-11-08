@@ -21,7 +21,6 @@ const Gallery = () => {
       { src: '/img/indoor_footage/IMG_9344.webp', alt: 'Интериор на ресторант', category: 'indoor' },
     ],
     outdoor: [
-      { src: '/img/outdoor_footage/camphoto_1817792895.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
       { src: '/img/outdoor_footage/IMG_9335.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
       { src: '/img/outdoor_footage/IMG_9336.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
       { src: '/img/outdoor_footage/IMG_9337.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
