@@ -24,8 +24,7 @@ const Gallery = () => {
       { src: '/img/outdoor_footage/IMG_9335.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
       { src: '/img/outdoor_footage/IMG_9336.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
       { src: '/img/outdoor_footage/IMG_9337.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
-      { src: '/img/outdoor_footage/IMG_9338.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
-      { src: '/img/outdoor_footage/IMG_9076.webp', alt: 'Външен вид на ресторант', category: 'outdoor' },
+      { src: '/img/outdoor_footage/IMG_9338.webp', alt: 'Външен вид на ресторант', category: 'outdoor' }
     ],
     decoration: [
       { src: '/img/decoration_footage/ukrasa1.webp', alt: 'Декорация за специални събития', category: 'decoration' },
