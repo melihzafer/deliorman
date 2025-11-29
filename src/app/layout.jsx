@@ -32,6 +32,7 @@ import '@styles/scss/style.scss';
 import AppData from "@data/app.json";
 import StructuredData from "@components/StructuredData";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const siteUrl = 'https://deliorman.com'; // TODO: Update with your actual domain
 
@@ -134,6 +135,7 @@ const Layouts = ({
 
         {/* Vercel Analytics */}
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
