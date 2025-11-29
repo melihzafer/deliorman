@@ -10,6 +10,7 @@
     "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "date-fns": "^3.6.0",
     "formik": "^2.4.5",
     "gray-matter": "^4.0.3",
