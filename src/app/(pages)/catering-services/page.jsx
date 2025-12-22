@@ -278,7 +278,7 @@ const CateringServices = () => {
                       Ще ви помогнем да изберете перфектното меню и организация.
                     </p>
                     <a 
-                      href="tel:+359894766273"
+                      href="/reservation"
                       style={{
                         display: 'inline-block',
                         padding: '1em 2em',
@@ -290,14 +290,14 @@ const CateringServices = () => {
                         fontSize: '16px',
                         transition: 'background-color 0.3s ease',
                         marginRight: 'auto',
-                         marginLeft: 'auto',
+                        marginLeft: 'auto',
                         marginBottom: '15px'
                       }}
                       onMouseEnter={(e) => e.target.style.backgroundColor = '#6b3c1a'}
                       onMouseLeave={(e) => e.target.style.backgroundColor = '#04161B'}
                     >
-                      <i className="fas fa-phone" style={{marginRight: '10px'}}></i>
-                      Обадете се сега
+                      <i className="fas fa-calendar" style={{marginRight: '10px'}}></i>
+                      Резервирайте
                     </a>
                     <div style={{display: 'flex', width: '1em', height: '1em'}}></div>
                     <a 

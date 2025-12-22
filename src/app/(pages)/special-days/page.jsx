@@ -285,7 +285,7 @@ const SpecialDays = () => {
                     {/* Contact Button */}
                     <div className="text-center">
                       <a 
-                        href="tel:+359894766273"
+                        href="/reservation"
                         style={{
                           display: 'inline-block',
                           padding: '18px 40px',
@@ -300,8 +300,8 @@ const SpecialDays = () => {
                         onMouseEnter={(e) => e.target.style.backgroundColor = '#d4a373'}
                         onMouseLeave={(e) => e.target.style.backgroundColor = '#f39c12'}
                       >
-                        <i className="fas fa-phone" style={{marginRight: '10px'}}></i>
-                        Обадете се за повече информация
+                        <i className="fas fa-calendar" style={{marginRight: '10px'}}></i>
+                        Резервирайте маса
                       </a>
                       
                       <p className="tst-text tst-white-2 mt-3" style={{opacity: 0.8}}>

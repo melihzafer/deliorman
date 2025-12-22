@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import dynamic from "next/dynamic";
-import { usePathname } from 'next/navigation';
 import Link from "next/link";
 
 import AppData from "@data/app.json";
@@ -10,8 +9,6 @@ import AppData from "@data/app.json";
 const FooterGallery = dynamic( () => import("@layouts/footers/Gallery"), { ssr: false } );
 
 const DefaultFooter = () => {
-  const asPath = usePathname();
-  
   useEffect(() => {
     // Simple fade-in on mount (no scroll animation for footer)
     const footer = document.querySelector('footer');
@@ -46,7 +43,15 @@ const DefaultFooter = () => {
 </div>
                     <div className="tst-social">
                         {AppData.social.map((item, key) => (
-                        <a href={item.link} target="_blank" title={item.title} className="tst-icon-link" key={`footer-social-item-${key}`}><i className={item.icon}></i></a>
+                          item.link?.startsWith('/') ? (
+                            <Link href={item.link} title={item.title} className="tst-icon-link" key={`footer-social-item-${key}`}>
+                              <i className={item.icon}></i>
+                            </Link>
+                          ) : (
+                            <a href={item.link} target="_blank" rel="noopener noreferrer" title={item.title} className="tst-icon-link" key={`footer-social-item-${key}`}>
+                              <i className={item.icon}></i>
+                            </a>
+                          )
                         ))}
                     </div>
                 </div>

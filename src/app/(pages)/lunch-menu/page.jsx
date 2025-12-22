@@ -133,7 +133,7 @@ const LunchMenu = () => {
                       Понеделник - Неделя: 12:00 - 15:00
                     </p>
                     <p className="tst-text">
-                      За резервации: <a href="tel:+359894766273" style={{color: '#05232B', fontWeight: '600'}}>+359 89 4766273</a>
+                      За резервации: <a href="/reservation" style={{color: '#05232B', fontWeight: '600'}}>+359 89 4766273</a>
                     </p>
                   </div>
                 </div>

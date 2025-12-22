@@ -111,7 +111,8 @@ Updated descriptions for three specialty dishes with owner-provided Bulgarian te
   - Date (cannot be in past)
   - Time (required)
   - Message (optional)
-- Email notifications configured via Resend API
+- **Reservation notifications**: изпращат се към Telegram канал (Bot API) чрез `/api/reservation`.
+- **Форма резервация**: събира **телефон** (вместо имейл) и показва модал, че резервацията не е валидна без потвърждение по телефона.
 - Layout and styling are production-ready
 - Page includes contact info section and map
 
@@ -263,3 +264,21 @@ The codebase is now updated with:
 - ✅ Zero security alerts
 
 All changes maintain minimal impact on existing functionality while addressing all requirements from the issue tracker.
+
+## Reservation → Telegram интеграция
+
+Резервациите се изпращат към Telegram канал чрез Bot API.
+
+### Необходими env променливи
+
+- `TELEGRAM_BOT_TOKEN` – токенът на бота (BotFather)
+- `TELEGRAM_RESERVATIONS_CHAT_ID` – chat id на канала/групата за резервации (пример: `-1003678849881`)
+
+### Изисквания
+
+- Ботът трябва да е добавен като **admin** в Telegram канала, за да може да публикува.
+
+### Какво се изпраща
+
+- Име/фамилия, телефон (в нормализиран формат), брой гости, дата/час, съобщение
+- Линк/бутон за директно набиране на телефона (`tel:+359...`) – работи най-добре на мобилен телефон.

@@ -80,6 +80,11 @@
                 "label": "Контакти",
                 "link": "/contact",
                 "children": 0
+            },
+            {
+                "label": "Резервации",
+                "link": "/reservation",
+                "children": 0
             }
         ],
         "onepage": [
@@ -115,7 +120,7 @@
                 { "label": "Имейл", "value": "restaurantdeliorman@gmail.com" },
                 { "label": "Адрес", "value": "с. Самуил, ул. \"Хаджи Димитър\" №6, обл. Разград" }
             ],
-            "button": { "link": "tel:+359894766273", "label": "Обадете се сега" }
+            "button": { "link": "/reservation", "label": "Резервирайте маса" }
         },
         "gallery": {
             "title": "Галерия от нашия ресторант",
@@ -144,8 +149,8 @@
             "icon": "fab fa-facebook-f"
         },
         {
-            "link": "tel:+359894766273",
-            "title": "Обадете се за резервация",
+            "link": "/reservation",
+            "title": "Резервации",
             "icon": "fas fa-phone"
         }
     ]
