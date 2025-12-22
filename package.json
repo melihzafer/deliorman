@@ -10,12 +10,14 @@
     "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
     "date-fns": "^3.6.0",
     "formik": "^2.4.5",
     "gray-matter": "^4.0.3",
     "isotope-layout": "^3.0.6",
     "mapbox-gl": "^3.2.0",
-    "next": "^16.0.1",
+    "next": "16.0.10",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-modal-video": "^2.0.1",
