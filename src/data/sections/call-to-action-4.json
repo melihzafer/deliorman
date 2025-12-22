@@ -12,7 +12,7 @@
         "label": "Меню"
     },
     "button1": {
-        "link": "tel:+359894766273",
-        "label": "Обадете се сега"
+        "link": "/reservation",
+        "label": "Резервирайте"
     }
 }
