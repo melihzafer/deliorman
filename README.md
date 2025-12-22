@@ -60,7 +60,6 @@
 
 ![Homepage](./screenshots/homepage.png)
 ![Menu](./screenshots/menu.png)
-![Reservation Form](./screenshots/reservation.png)
 
 ## 🎯 Project Goals
 
