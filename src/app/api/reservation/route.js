@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import crypto from 'crypto';
 
 function normalizeBgPhone(input) {
   const raw = String(input ?? '').trim();
@@ -103,91 +102,26 @@ function roundUpToNextHour(date) {
   return d;
 }
 
-const KV_URL = process.env.KV_REST_API_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN;
-const IP_HASH_SALT = process.env.IP_HASH_SALT;
-
-function getClientIp(request) {
-  const xff = request.headers.get('x-forwarded-for');
-  if (!xff) return null;
-  return xff.split(',')[0].trim();
-}
-
-function hashIp(ip) {
-  if (!IP_HASH_SALT) return ip; // fallback: raw IP (not ideal, but keeps functionality)
-  return crypto.createHmac('sha256', IP_HASH_SALT).update(ip).digest('hex');
-}
-
-async function kvGet(key) {
-  if (!KV_URL || !KV_TOKEN) return null;
-  const res = await fetch(`${KV_URL}/get/${encodeURIComponent(key)}`, {
-    headers: { Authorization: `Bearer ${KV_TOKEN}` },
-  });
-  if (!res.ok) return null;
-  const json = await res.json().catch(() => null);
-  return json?.result ?? null;
-}
-
-async function isIpBlocked(request) {
-  const ip = getClientIp(request);
-  if (!ip) return false;
-
-  const hashed = hashIp(ip);
-
-  // 1) Static blacklist via env (comma-separated)
-  const envList = (process.env.RESERVATION_IP_BLACKLIST || '')
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
-
-  if (envList.includes(ip) || envList.includes(hashed)) return true;
-
-  // 2) KV-backed blacklist (recommended)
-  const list = (await kvGet('reservation:blacklist')) || [];
-  return list.some((x) => x?.ip === ip || x?.ip === hashed);
-}
+// NOTE: Blacklist / IP audit / KV storage removed per request.
 
 const RATE_LIMIT_WINDOW_SECONDS = Number(process.env.RESERVATION_RATE_WINDOW_SECONDS || 600); // 10 min
 const RATE_LIMIT_MAX = Number(process.env.RESERVATION_RATE_MAX || 5);
 
-// In-memory fallback for local dev when KV isn't configured
+// In-memory rate limiter (per process)
 const memoryRate = globalThis.__reservationRate || (globalThis.__reservationRate = new Map());
 
-async function kvIncr(key) {
-  if (!KV_URL || !KV_TOKEN) return null;
-  const res = await fetch(`${KV_URL}/incr/${encodeURIComponent(key)}`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${KV_TOKEN}` },
-  });
-  if (!res.ok) return null;
-  const json = await res.json().catch(() => null);
-  return json?.result ?? null;
-}
-
-async function kvExpire(key, seconds) {
-  if (!KV_URL || !KV_TOKEN) return;
-  await fetch(`${KV_URL}/expire/${encodeURIComponent(key)}/${seconds}`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${KV_TOKEN}` },
-  }).catch(() => {});
+function getClientId(request) {
+  // Best-effort identifier for rate limiting only.
+  const xff = request.headers.get('x-forwarded-for');
+  const first = xff ? xff.split(',')[0].trim() : '';
+  const xri = (request.headers.get('x-real-ip') || '').trim();
+  return first || xri || 'unknown';
 }
 
 async function isRateLimited(request) {
-  const ip = getClientIp(request);
-  if (!ip) return false;
-
-  const keyBase = `reservation:rate:${hashIp(ip)}`;
-
-  // KV-backed (best)
-  if (KV_URL && KV_TOKEN) {
-    const count = await kvIncr(keyBase);
-    if (count === 1) {
-      await kvExpire(keyBase, RATE_LIMIT_WINDOW_SECONDS);
-    }
-    return typeof count === 'number' && count > RATE_LIMIT_MAX;
-  }
-
-  // Memory fallback
+  // Memory only
+  const clientId = getClientId(request);
+  const keyBase = `reservation:rate:${clientId}`;
   const now = Date.now();
   const windowMs = RATE_LIMIT_WINDOW_SECONDS * 1000;
   const entry = memoryRate.get(keyBase) || { count: 0, resetAt: now + windowMs };
