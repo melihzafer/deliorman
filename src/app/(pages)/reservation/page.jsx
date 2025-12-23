@@ -28,6 +28,7 @@ const Reservation = () => {
                     <div className="container tst-p-60-60">
                         <ScrollHint />
 
+                        <Divider onlyBottom={0} />
                         <ReservationFormSection />
                         <Divider onlyBottom={0} />
                         <ContactInfoSection />
