@@ -1,0 +1,20 @@
+{
+  "name": "deliorman-sanity-studio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "typecheck": "tsc --noEmit",
+    "import:legacy": "node migrations/importLegacyJson.mjs"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.11.2",
+    "sanity": "^3.93.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
+
