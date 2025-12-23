@@ -73,11 +73,6 @@ function roundUpToNextHour(date) {
 }
 
 const TIME_OPTIONS = [
-  '10:00',
-  '11:00',
-  '12:00',
-  '13:00',
-  '14:00',
   '15:00',
   '16:00',
   '17:00',
@@ -115,9 +110,10 @@ const ReservationForm = () => {
           }}
         >
           <div className="tst-reservation-modal">
-            <h4 className="tst-mb-15">Заявката е изпратена</h4>
+            <h4 className="tst-mb-10 tst-color-darkgreen">Заявката е изпратена</h4>
+            <h6 className="tst-mb-15 text-primary-yellow">Изчакайте обаждане</h6>
             <p className="tst-text tst-mb-15">
-              Резервацията е изпратена успешно. Ще се обадим на <strong>{successModal.phone}</strong> за потвърждение.
+              Ще се обадим на <strong>{successModal.phone}</strong> за потвърждение.
             </p>
             <p className="tst-text tst-mb-30" style={{ opacity: 0.85 }}>
               Моля, изчакайте обаждане от ресторанта. Докато не бъде потвърдена по телефона, резервацията не е валидна.
@@ -274,7 +270,7 @@ const ReservationForm = () => {
           return (
           <form onSubmit={handleSubmit} id="reservationForm">
             <div className="row">
-              <div className="col-6 col-md-4">
+              <div className="col-12 col-md-6">
                 <input
                   type="text"
                   placeholder="Име *"
@@ -286,7 +282,7 @@ const ReservationForm = () => {
                 />
                 {errors.first_name && touched.first_name && <div className="tst-field-error">{errors.first_name}</div>}
               </div>
-              <div className="col-6 col-md-4">
+              <div className="col-12 col-md-6">
                 <input
                   type="text"
                   placeholder="Фамилия *"
@@ -298,7 +294,7 @@ const ReservationForm = () => {
                 />
                 {errors.last_name && touched.last_name && <div className="tst-field-error">{errors.last_name}</div>}
               </div>
-              <div className="col-6 col-md-4">
+              <div className="col-8 col-md-8">
                 <input
                   type="tel"
                   placeholder="Телефон *"
@@ -312,7 +308,7 @@ const ReservationForm = () => {
                 />
                 {errors.phone && touched.phone && <div className="tst-field-error">{errors.phone}</div>}
               </div>
-              <div className="col-6 col-md-4">
+              <div className="col-4 col-md-4">
                 {/*<label style={{ display: 'block', textAlign: 'left', marginBottom: 6 }}>*/}
                 {/*  Брой гости <span style={{ opacity: 0.7 }}>(вкл. фирмени банкети)</span> **/}
                 {/*</label>*/}
@@ -320,7 +316,7 @@ const ReservationForm = () => {
                   <div className="tst-guests-input">
                     <input
                       type="number"
-                      placeholder="Брой гости *"
+                      placeholder="Гости *"
                       name="person"
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -333,28 +329,10 @@ const ReservationForm = () => {
                     />
                     {errors.person && touched.person && <div className="tst-field-error">{errors.person}</div>}
                   </div>
-
-                  <div className="tst-guests-chips" aria-label="Бърз избор на брой гости">
-                    {[2, 4, 6, 10, 50].map((n) => (
-                      <button
-                        key={n}
-                        type="button"
-                        className="tst-guest-chip"
-                        onClick={() => {
-                          handleChange({ target: { name: 'person', value: String(n) } });
-                        }}
-                      >
-                        {n === 50 ? '50+' : n}
-                      </button>
-                    ))}
-                  </div>
                 </div>
 
-                <div className="tst-text tst-guest-chip-text" style={{ fontSize: 13, opacity: 0.8, marginTop: 6, textAlign: 'left' }}>
-                  За големи групи (над 20 души) моля опишете детайли в съобщението.
-                </div>
               </div>
-              <div className="col-6 col-md-4">
+              <div className="col-6 col-md-6">
                 <input
                   type="date"
                   name="date"
@@ -366,13 +344,14 @@ const ReservationForm = () => {
                 />
                 {errors.date && touched.date && <div className="tst-field-error">{errors.date}</div>}
               </div>
-              <div className="col-6 col-md-4">
+              <div className="col-6 col-md-6">
                 <select
                   name="time"
                   className={`wide ${errors.time && touched.time ? 'error' : ''}`}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.time}
+
                 >
                   <option value="">Час *</option>
                   {filteredTimeOptions.length === 0 ? (
@@ -424,6 +403,13 @@ const ReservationForm = () => {
       {/* reservation form end */}
 
       <style jsx>{`
+          .tst-color-darkgreen{
+              color: #0b2e13;
+          }
+          .text-primary-yellow{
+              color: #e0a800;
+          }
+          
         .tst-field-error {
           color: #f44336;
           font-size: 13px;
@@ -435,6 +421,14 @@ const ReservationForm = () => {
         textarea.error,
         select.error {
           border-color: #f44336 !important;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+          border-color: #7e2010;
+          outline: none;
+          box-shadow: 0 0 0 3px rgba(126, 32, 16, 0.1);
         }
 
         .tst-form-status {
@@ -488,47 +482,16 @@ const ReservationForm = () => {
         }
 
         .tst-guests-input {
-          min-width: 280px;
-          flex: 1 1 280px;
+          min-width: 0;
+          flex: 1 1 auto;
         }
 
         .tst-guests-input input {
           width: 100%;
         }
 
-        .tst-guests-chips {
-          display: flex;
-          gap: 8px;
-          flex-wrap: wrap;
-          padding-top: 6px;
-          margin-bottom: 10px;
-        }
-
         .tst-guest-chip-text {
           margin-bottom: 20px;
-        }
-
-        .tst-guest-chip {
-          appearance: none;
-          border: 1px solid rgba(126, 32, 16, 0.35);
-          background: rgba(126, 32, 16, 0.06);
-          color: #7e2010;
-          padding: 6px 10px;
-          border-radius: 999px;
-          font-size: 12px;
-          line-height: 1;
-          cursor: pointer;
-          transition: background-color 0.15s ease, border-color 0.15s ease;
-        }
-
-        .tst-guest-chip:hover {
-          background: rgba(126, 32, 16, 0.12);
-          border-color: rgba(126, 32, 16, 0.55);
-        }
-
-        .tst-guest-chip:focus {
-          outline: none;
-          box-shadow: 0 0 0 3px rgba(126, 32, 16, 0.18);
         }
 
         .tst-reserve-submit {
@@ -556,16 +519,6 @@ const ReservationForm = () => {
             min-width: 0;
             width: 100%;
             flex: 1 1 auto;
-          }
-
-          .tst-guests-chips {
-            padding-top: 0;
-            margin-bottom: 6px;
-          }
-
-          .tst-guest-chip {
-            padding: 8px 12px;
-            font-size: 13px;
           }
         }
       `}</style>
