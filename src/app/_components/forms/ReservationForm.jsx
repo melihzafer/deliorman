@@ -152,8 +152,8 @@ const ReservationForm = () => {
             errors.person = 'Моля въведете валиден брой гости';
           } else if (guestsNum < 1) {
             errors.person = 'Броят гости трябва да е поне 1';
-          } else if (guestsNum > 500) {
-            errors.person = 'Моля въведете брой гости до 500';
+          } else if (guestsNum > 100) {
+            errors.person = 'Максималният брой гости е 100';
           }
 
           if (!values.date) {
@@ -163,8 +163,14 @@ const ReservationForm = () => {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
+            const maxDate = new Date(today);
+            maxDate.setMonth(today.getMonth() + 1);
+            maxDate.setHours(23, 59, 59, 999);
+
             if (selectedDate < today) {
               errors.date = 'Не може да резервирате за минала дата';
+            } else if (selectedDate > maxDate) {
+              errors.date = 'Резервации могат да се правят само до 1 месец напред';
             }
           }
 
@@ -267,6 +273,25 @@ const ReservationForm = () => {
             });
           })();
 
+          // Calculate min/max dates for the date picker
+          const today = new Date();
+          const maxDate = new Date(today);
+          maxDate.setMonth(today.getMonth() + 1);
+          // Handle month overflow (e.g. Jan 31 -> Feb 28/29)
+          if (today.getDate() !== maxDate.getDate()) {
+            maxDate.setDate(0);
+          }
+
+          const toDateInputStr = (d) => {
+              const y = d.getFullYear();
+              const m = String(d.getMonth() + 1).padStart(2, '0');
+              const day = String(d.getDate()).padStart(2, '0');
+              return `${y}-${m}-${day}`;
+          };
+
+          const minDateStr = toDateInputStr(today);
+          const maxDateStr = toDateInputStr(maxDate);
+
           return (
           <form onSubmit={handleSubmit} id="reservationForm">
             <div className="row">
@@ -340,7 +365,8 @@ const ReservationForm = () => {
                   onBlur={handleBlur}
                   value={values.date}
                   className={errors.date && touched.date ? 'error' : ''}
-                  min={new Date().toISOString().split('T')[0]}
+                  min={minDateStr}
+                  max={maxDateStr}
                 />
                 {errors.date && touched.date && <div className="tst-field-error">{errors.date}</div>}
               </div>
