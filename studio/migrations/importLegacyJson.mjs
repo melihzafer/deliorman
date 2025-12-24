@@ -1,16 +1,12 @@
-// Import legacy JSON from the Next.js repo into Sanity.
-//
-// Usage (from /studio):
-//   node migrations/importLegacyJson.mjs --projectId <id> --dataset <dataset> --token <token>
-//
-// Notes:
-// - menuItem is STRICT text-only: no images are ever included.
-// - promo/callToAction can import images by URL (relative paths are treated as local files under ../public).
-
 import fs from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import {createClient} from '@sanity/client';
+
+// Load env from studio/.env(.local) when running migrations directly.
+import 'dotenv/config';
+
+// --- CONFIGURATION & HELPERS ---
 
 function parseArgs(argv) {
   const args = {
@@ -20,7 +16,6 @@ function parseArgs(argv) {
     apiVersion: process.env.SANITY_API_VERSION || '2025-01-01',
     dryRun: false,
     replace: false,
-    // Paths relative to repo root
     menuJson: path.join('src', 'data', 'menu.json'),
     specialtiesJson: path.join('src', 'data', 'specialties.json'),
     ctaJsons: [
@@ -53,16 +48,35 @@ function stripHtmlBreaks(s) {
     .trim();
 }
 
+const cyrillicToLatinMap = {
+  '\u0430': 'a', '\u0431': 'b', '\u0432': 'v', '\u0433': 'g', '\u0434': 'd', '\u0435': 'e', '\u0436': 'zh',
+  '\u0437': 'z', '\u0438': 'i', '\u0439': 'y', '\u043a': 'k', '\u043b': 'l', '\u043c': 'm', '\u043d': 'n',
+  '\u043e': 'o', '\u043f': 'p', '\u0440': 'r', '\u0441': 's', '\u0442': 't', '\u0443': 'u', '\u0444': 'f',
+  '\u0445': 'h', '\u0446': 'ts', '\u0447': 'ch', '\u0448': 'sh', '\u0449': 'sht', '\u044a': 'a', '\u044c': 'y',
+  '\u044e': 'yu', '\u044f': 'ya',
+};
+
 function slugify(value) {
-  return String(value ?? '')
-    .trim()
-    .toLocaleLowerCase('bg-BG')
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9\u0400-\u04FF]+/gi, '-') // keep cyrillic too for ids if needed
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '')
-    .slice(0, 80) || 'item';
+  const text = String(value ?? '').trim().toLowerCase();
+
+  // 1) Transliterate BG -> LAT
+  const latinized = text
+    .split('')
+    .map((ch) => {
+      if (ch === ' ') return '-';
+      return cyrillicToLatinMap[ch] || ch;
+    })
+    .join('');
+
+  // 2) Keep only a-z, 0-9 and hyphen
+  return (
+    latinized
+      .normalize('NFKD')
+      .replace(/[^a-z0-9-]/g, '')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '')
+      .slice(0, 80) || 'item'
+  );
 }
 
 function parsePrice(value) {
@@ -75,12 +89,52 @@ function parsePrice(value) {
   return Number.isFinite(n) ? n : null;
 }
 
+// --- ID GENERATION & UNIQUENESS ---
+
+function ensureUniqueId(baseId, usedSet) {
+  let id = baseId;
+  let counter = 2;
+  while (usedSet.has(id)) {
+    id = `${baseId}__${counter}`;
+    counter++;
+  }
+  usedSet.add(id);
+  // Sanity hard limit: 128 chars
+  return id.length > 128 ? id.slice(0, 128) : id;
+}
+
+function menuItemId(categoryName, title, price, amount, usedSet) {
+  const base = `menuItem.${slugify(categoryName)}.${slugify(title)}.${String(price ?? 'na')}.${slugify(amount ?? '')}`;
+  return ensureUniqueId(base, usedSet);
+}
+
+function ctaId(sourceFile, headline, usedSet) {
+  const base = `callToAction.${slugify(path.basename(sourceFile, path.extname(sourceFile)))}.${slugify(headline)}`;
+  return ensureUniqueId(base, usedSet);
+}
+
+function promoId(title, usedSet) {
+  const base = `promo.${slugify(title)}`;
+  return ensureUniqueId(base, usedSet);
+}
+
+// --- DB OPERATIONS ---
+
+async function upsert(client, doc, opts) {
+  const {dryRun, replace} = opts;
+  if (dryRun) {
+    console.log(`[DRY RUN] Would create/update: ${doc._id} (${doc._type})`);
+    return {dryRun: true, _id: doc._id, _type: doc._type};
+  }
+  if (replace) return client.createOrReplace(doc);
+  return client.createIfNotExists(doc);
+}
+
 function resolveLocalOrUrl(repoRoot, maybeUrl) {
   const p = String(maybeUrl ?? '').trim();
   if (!p) return null;
   if (/^https?:\/\//i.test(p)) return {type: 'url', value: p};
 
-  // treat as local file under repoRoot/public
   const normalized = p.startsWith('/') ? p.slice(1) : p;
   const local = path.join(repoRoot, 'public', normalized);
   if (fs.existsSync(local)) return {type: 'file', value: local};
@@ -92,11 +146,7 @@ async function uploadImageAsset(client, repoRoot, imageUrlOrPath, opts) {
   if (opts?.dryRun) return null;
   const resolved = resolveLocalOrUrl(repoRoot, imageUrlOrPath);
   if (!resolved) return null;
-
-  if (resolved.type === 'url') {
-    // No network fetch here. For URL import, prefer downloading manually or extend script.
-    return null;
-  }
+  if (resolved.type === 'url') return null;
 
   const filePath = resolved.value;
   const stream = fs.createReadStream(filePath);
@@ -104,43 +154,11 @@ async function uploadImageAsset(client, repoRoot, imageUrlOrPath, opts) {
   return client.assets.upload('image', stream, {filename});
 }
 
-function menuItemId(categoryName, title, price, amount) {
-  // Deterministic IDs so reruns are idempotent.
-  return `menuItem.${slugify(categoryName)}.${slugify(title)}.${String(price ?? 'na')}.${slugify(amount ?? '')}`;
-}
+// --- IMPORT FUNCTIONS ---
 
-function ctaId(sourceFile, headline) {
-  return `callToAction.${slugify(path.basename(sourceFile, path.extname(sourceFile)))}.${slugify(headline)}`;
-}
-
-function promoId(title) {
-  return `promo.${slugify(title)}`;
-}
-
-async function upsert(client, doc, opts) {
-  const {dryRun, replace} = opts;
-  if (dryRun) return {dryRun: true, _id: doc._id, _type: doc._type};
-  if (replace) {
-    return client.createOrReplace(doc);
-  }
-  return client.createIfNotExists(doc);
-}
-
-async function upsertMany(client, docs, opts, {chunkSize = 100} = {}) {
-  const results = [];
-  for (let i = 0; i < docs.length; i += chunkSize) {
-    const chunk = docs.slice(i, i + chunkSize);
-    // keeping it simple/explicit (one-by-one) to reduce risk of transaction limits
-    for (const doc of chunk) {
-      results.push(await upsert(client, doc, opts));
-    }
-  }
-  return results;
-}
-
-async function importMenuItems(client, menuPath, opts) {
+async function importMenuItems(client, opts, repoRoot, menuPath, usedSet) {
   const menu = JSON.parse(fs.readFileSync(menuPath, 'utf8'));
-  const docs = [];
+  const mutations = [];
 
   for (const cat of menu.categories ?? []) {
     const categoryName = String(cat?.name ?? '').trim();
@@ -154,27 +172,27 @@ async function importMenuItems(client, menuPath, opts) {
       const amount = String(item?.amount ?? '').trim();
       const text = String(item?.text ?? '').trim();
 
-      // menuItem is text-only; we preserve `amount` by prefixing the description.
-      const description = [amount ? `${amount} —` : '', text].filter(Boolean).join(' ').trim();
-
-      docs.push({
-        _id: menuItemId(categoryName, title, price, amount),
+      mutations.push({
+        _id: menuItemId(categoryName, title, price, amount, usedSet),
         _type: 'menuItem',
         title,
         price,
-        description,
+        weight: amount,
+        description: text,
         category: categoryName,
       });
     }
   }
 
-  await upsertMany(client, docs, opts);
-  return {count: docs.length};
+  for (const doc of mutations) {
+    await upsert(client, doc, opts);
+  }
+  return {count: mutations.length};
 }
 
-async function importSpecialtiesAsMenuItems(client, specialtiesPath, opts) {
+async function importSpecialtiesAsMenuItems(client, opts, repoRoot, specialtiesPath, usedSet) {
   const data = JSON.parse(fs.readFileSync(specialtiesPath, 'utf8'));
-  const docs = [];
+  const mutations = [];
 
   for (const cat of data.categories ?? []) {
     const categoryName = String(cat?.name ?? '').trim();
@@ -187,28 +205,32 @@ async function importSpecialtiesAsMenuItems(client, specialtiesPath, opts) {
 
       const weight = String(item?.weight ?? '').trim();
       const text = String(item?.text ?? '').trim();
-      const description = [weight ? `${weight} —` : '', text].filter(Boolean).join(' ').trim();
 
-      docs.push({
-        _id: menuItemId(categoryName, title, price, weight),
+      mutations.push({
+        _id: menuItemId(categoryName, title, price, weight, usedSet),
         _type: 'menuItem',
         title,
         price,
-        description,
+        weight,
+        description: text,
         category: categoryName,
       });
     }
   }
 
-  await upsertMany(client, docs, opts);
-  return {count: docs.length};
+  for (const doc of mutations) {
+    await upsert(client, doc, opts);
+  }
+  return {count: mutations.length};
 }
 
-async function importCtasAsCards(client, repoRoot, jsonPaths, opts) {
-  const docs = [];
+async function importCtasAsCards(client, opts, repoRoot, jsonPaths, usedSet) {
+  const created = [];
 
   for (const relPath of jsonPaths) {
     const filePath = path.join(repoRoot, relPath);
+    if (!fs.existsSync(filePath)) continue;
+
     const raw = JSON.parse(fs.readFileSync(filePath, 'utf8'));
 
     const headline = stripHtmlBreaks(raw.title || raw.headline || raw.subtitle || '');
@@ -218,14 +240,13 @@ async function importCtasAsCards(client, repoRoot, jsonPaths, opts) {
     const linkUrl = raw?.button?.link || raw?.button1?.link || raw?.button2?.link || '/';
 
     const doc = {
-      _id: ctaId(relPath, headline),
+      _id: ctaId(relPath, headline, usedSet),
       _type: 'callToAction',
       headline,
       subtext,
       linkUrl,
     };
 
-    // Optional background image
     const imageUrl = raw?.image?.url;
     if (imageUrl) {
       const asset = await uploadImageAsset(client, repoRoot, imageUrl, opts);
@@ -237,16 +258,15 @@ async function importCtasAsCards(client, repoRoot, jsonPaths, opts) {
       }
     }
 
-    docs.push(doc);
+    created.push(await upsert(client, doc, opts));
   }
 
-  await upsertMany(client, docs, opts);
-  return {count: docs.length};
+  return {count: created.length};
 }
 
-async function importPromos(client, repoRoot, promosPath, opts) {
+async function importPromos(client, opts, repoRoot, promosPath, usedSet) {
   const data = JSON.parse(fs.readFileSync(promosPath, 'utf8'));
-  const docs = [];
+  const created = [];
 
   for (const slide of data.slides ?? []) {
     const title = stripHtmlBreaks(slide.title || slide.subtitle || '');
@@ -255,12 +275,27 @@ async function importPromos(client, repoRoot, promosPath, opts) {
     const description = stripHtmlBreaks(slide.description || '');
 
     const doc = {
-      _id: promoId(title),
+      _id: promoId(title, usedSet),
       _type: 'promo',
       title,
       description,
-      // Option C: no dates from JSON. Leave startDate/endDate empty.
     };
+
+    // Add features if present
+    if (slide.features && Array.isArray(slide.features)) {
+      doc.features = slide.features.map(f => ({
+        _type: 'object',
+        icon: f.icon || '',
+        title: f.title || '',
+        text: f.text || '',
+      }));
+    }
+
+    // Add button config if present
+    if (slide.button) {
+      doc.buttonLink = slide.button.link || '/menu';
+      doc.buttonLabel = slide.button.label || 'Вижте менюто';
+    }
 
     const imageUrl = slide?.image?.url;
     if (imageUrl) {
@@ -275,75 +310,74 @@ async function importPromos(client, repoRoot, promosPath, opts) {
 
     if (!opts?.dryRun && !doc.image) continue;
 
-    docs.push(doc);
+    created.push(await upsert(client, doc, opts));
   }
 
-  await upsertMany(client, docs, opts);
-  return {count: docs.length};
+  return {count: created.length};
 }
+
+// --- MAIN ---
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-
   const opts = {dryRun: args.dryRun, replace: args.replace};
-  const repoRoot = path.resolve(process.cwd(), '..'); // running from /studio
+
+  // Accept credentials from either CLI flags or environment variables.
+  // parseArgs already defaults to env, so here we only validate presence.
+  if (!opts.dryRun && (!args.projectId || !args.dataset || !args.token)) {
+    console.error('Missing required configuration for Sanity import.');
+    console.error('Provide via flags: --projectId <ID> --dataset <DATASET> --token <TOKEN>');
+    console.error('or via environment: SANITY_PROJECT_ID, SANITY_DATASET, SANITY_TOKEN');
+    process.exit(1);
+  }
+
+  const repoRoot = path.resolve(process.cwd(), '..');
+
+  const client = opts.dryRun
+    ? null
+    : createClient({
+        projectId: args.projectId,
+        dataset: args.dataset,
+        apiVersion: args.apiVersion,
+        token: args.token,
+        useCdn: false,
+      });
 
   const menuPath = path.join(repoRoot, args.menuJson);
   const specialtiesPath = path.join(repoRoot, args.specialtiesJson);
   const promosPath = path.join(repoRoot, args.promosJson);
 
-  // DRY-RUN: fully offline. Parse + count only, no Sanity client, no uploads.
-  if (opts.dryRun) {
-    // Minimal stub client object (never used due to opts.dryRun in upsert/uploadImageAsset)
-    const client = {};
+  // GLOBAL SETS to prevent ID collisions across files
+  const used = {
+    menuItem: new Set(),
+    cta: new Set(),
+    promo: new Set(),
+  };
 
-    console.log('Importing menu items…');
-    console.log(await importMenuItems(client, menuPath, opts));
-
-    console.log('Importing specialties as menu items…');
-    console.log(await importSpecialtiesAsMenuItems(client, specialtiesPath, opts));
-
-    console.log('Importing CTAs/cards…');
-    console.log(await importCtasAsCards(client, repoRoot, args.ctaJsons, opts));
-
-    console.log('Importing promos…');
-    console.log(await importPromos(client, repoRoot, promosPath, opts));
-
-    console.log('Done (dry-run)');
-    return;
-  }
-
-  if (!args.projectId || !args.dataset || !args.token) {
-    console.error(
-      'Missing required args: --projectId, --dataset, --token (or env SANITY_PROJECT_ID/SANITY_DATASET/SANITY_TOKEN)'
-    );
-    process.exit(1);
-  }
-
-  const client = createClient({
-    projectId: args.projectId,
-    dataset: args.dataset,
-    apiVersion: args.apiVersion,
-    token: args.token,
-    useCdn: false,
-  });
+  console.log('--- STARTING IMPORT ---');
+  console.log(`Target: projectId=${args.projectId} dataset=${args.dataset} dryRun=${opts.dryRun} replace=${opts.replace}`);
 
   console.log('Importing menu items…');
-  console.log(await importMenuItems(client, menuPath, opts));
+  const menuRes = await importMenuItems(client, opts, repoRoot, menuPath, used.menuItem);
+  console.log(` -> Imported ${menuRes.count} menu items`);
 
   console.log('Importing specialties as menu items…');
-  console.log(await importSpecialtiesAsMenuItems(client, specialtiesPath, opts));
+  const specRes = await importSpecialtiesAsMenuItems(client, opts, repoRoot, specialtiesPath, used.menuItem);
+  console.log(` -> Imported ${specRes.count} specialties`);
 
   console.log('Importing CTAs/cards…');
-  console.log(await importCtasAsCards(client, repoRoot, args.ctaJsons, opts));
+  const ctaRes = await importCtasAsCards(client, opts, repoRoot, args.ctaJsons, used.cta);
+  console.log(` -> Imported ${ctaRes.count} cards`);
 
   console.log('Importing promos…');
-  console.log(await importPromos(client, repoRoot, promosPath, opts));
+  const promoRes = await importPromos(client, opts, repoRoot, promosPath, used.promo);
+  console.log(` -> Imported ${promoRes.count} promos`);
 
-  console.log('Done');
+  console.log('--- DONE ---');
 }
 
 main().catch((err) => {
-  console.error(err);
+  console.error('Fatal Error:', err);
   process.exit(1);
 });
+

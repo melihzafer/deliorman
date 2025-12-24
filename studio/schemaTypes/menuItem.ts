@@ -16,6 +16,12 @@ export const menuItem = defineType({
       validation: (Rule) => Rule.required().min(1),
     }),
     defineField({
+      name: 'weight',
+      title: 'Weight / Amount',
+      type: 'string',
+      description: 'E.g. 250 ml, 500 g, etc.',
+    }),
+    defineField({
       name: 'price',
       title: 'Price',
       type: 'number',
@@ -34,20 +40,22 @@ export const menuItem = defineType({
       description: 'Category label (migrated from legacy JSON category.name)',
       options: {
         list: [
-          // Keep this list small; you can expand later in Studio.
           {title: 'Безалкохолни и Топли Напитки', value: 'Безалкохолни и Топли Напитки'},
           {title: 'Салати', value: 'Салати'},
           {title: 'Новите Специалитети', value: 'Новите Специалитети'},
+          // Може да добавите още категории тук по-късно
         ],
       },
       validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {
-    select: {title: 'title', subtitle: 'category'},
-    prepare({title, subtitle}) {
-      return {title, subtitle}
+    select: {title: 'title', subtitle: 'category', weight: 'weight'},
+    prepare({title, subtitle, weight}) {
+      return {
+        title,
+        subtitle: weight ? `${weight} | ${subtitle}` : subtitle,
+      }
     },
   },
 })
-

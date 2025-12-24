@@ -1,0 +1,13 @@
+﻿{
+    "query":  "{\"all\":count(*[]),\"promo\":count(*[_type==\"promo\"]),\"menu\":count(*[_type==\"menuItem\"]),\"cta\":count(*[_type==\"callToAction\"])}",
+    "result":  {
+                   "all":  5,
+                   "cta":  0,
+                   "menu":  0,
+                   "promo":  0
+               },
+    "syncTags":  [
+                     "s1:JAghiw"
+                 ],
+    "ms":  18
+}

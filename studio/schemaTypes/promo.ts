@@ -35,6 +35,36 @@ export const promo = defineType({
             type: 'date',
             description: 'Optional. If empty, promo is treated as unscheduled/draft in frontend logic.',
         }),
+        defineField({
+            name: 'features',
+            title: 'Features',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    fields: [
+                        {name: 'icon', type: 'string', title: 'Icon Class (e.g. fas fa-award)'},
+                        {name: 'title', type: 'string', title: 'Feature Title'},
+                        {name: 'text', type: 'string', title: 'Feature Description'},
+                    ],
+                    preview: {
+                        select: {title: 'title', subtitle: 'text'},
+                    },
+                },
+            ],
+        }),
+        defineField({
+            name: 'buttonLink',
+            title: 'Button Link',
+            type: 'string',
+            description: 'Optional custom button link (defaults to /menu)',
+        }),
+        defineField({
+            name: 'buttonLabel',
+            title: 'Button Label',
+            type: 'string',
+            description: 'Optional custom button text',
+        }),
     ],
     preview: {
         select: {title: 'title', media: 'image', startDate: 'startDate', endDate: 'endDate'},

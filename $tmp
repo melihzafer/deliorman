@@ -1,0 +1,9 @@
+﻿const res = await fetch('http://localhost:3000/menu')
+if (res.ok) {
+  const html = await res.text()
+  const hasMenu = html.includes('MenuFiltered') || html.includes('Меню')
+  console.log('Menu page loaded:', res.status, res.statusText)
+  console.log('Contains menu content:', hasMenu)
+} else {
+  console.error('Failed:', res.status, res.statusText)
+}

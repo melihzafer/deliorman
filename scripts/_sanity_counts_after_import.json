@@ -1,0 +1,14 @@
+﻿{
+    "query":  "{\"menu\":count(*[_type==\"menuItem\"]),\"cta\":count(*[_type==\"callToAction\"]),\"promo\":count(*[_type==\"promo\"])}",
+    "result":  {
+                   "cta":  0,
+                   "menu":  0,
+                   "promo":  0
+               },
+    "syncTags":  [
+                     "s1:RKI85w",
+                     "s1:UTvZvQ",
+                     "s1:y1uH4Q"
+                 ],
+    "ms":  15
+}

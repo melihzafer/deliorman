@@ -1,0 +1,24 @@
+﻿Adding CORS origin for localhost...
+Γ£à CORS origin already exists
+
+Checking document-level access...
+node : file:///D:/Projects/Web/deliorman/studio/node_modules/@sanity/client/dist/_chunks-es/config.js:50
+At line:1 char:38
++ ... cts\Web\deliorman\studio; node migrations/setup-cors.mjs 2>&1 | Out-F ...
++                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (file:///D:/Proj...es/config.js:50:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    throw new Error("`dataset` must be provided to perform queries");
+          ^
+
+Error: `dataset` must be provided to perform queries
+    at hasDataset (file:///D:/Projects/Web/deliorman/studio/node_modules/@sanity/client/dist/_chunks-es/config.js:50:11)
+    at _getDataUrl (file:///D:/Projects/Web/deliorman/studio/node_modules/@sanity/client/dist/index.js:946:19)
+    at _dataRequest (file:///D:/Projects/Web/deliorman/studio/node_modules/@sanity/client/dist/index.js:865:427)
+    at _fetch (file:///D:/Projects/Web/deliorman/studio/node_modules/@sanity/client/dist/index.js:707:113)
+    at SanityClient.fetch (file:///D:/Projects/Web/deliorman/studio/node_modules/@sanity/client/dist/index.js:2411:7)
+    at file:///D:/Projects/Web/deliorman/studio/migrations/setup-cors.mjs:36:27
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+
+Node.js v24.11.1

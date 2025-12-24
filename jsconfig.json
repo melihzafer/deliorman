@@ -8,6 +8,7 @@
       "@layouts/*": ["./src/app/_layouts/*"],
       "@library/*": ["./src/app/_lib/*"],
       "@data/*": ["./src/data/*"],
+      "@lib/*": ["./src/lib/*"]
     }
   }
 }

@@ -1,0 +1,11 @@
+﻿Testing with token auth...
+With token: {
+  "menu": 194,
+  "promo": 3
+}
+
+Testing without token (public)...
+Without token: {
+  "menu": 0,
+  "promo": 0
+}

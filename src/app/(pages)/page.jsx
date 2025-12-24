@@ -16,7 +16,7 @@ import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
 import HeroSlider from "@components/sliders/Hero";
 import TestimonialSlider from "@components/sliders/Testimonial";
-import NewSpecialtiesCTA from "../_components/sections/NewSpecialtiesCTA";
+import NewSpecialtiesCTA from "../_components/sections/NewSpecialtiesCTA-Sanity";
 
 export const metadata = {
   title: {
