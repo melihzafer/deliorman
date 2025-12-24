@@ -23,14 +23,13 @@ import "./globals.css";
 import "@styles/css/plugins/bootstrap.min.css";
 import "@styles/css/plugins/swiper.min.css";
 import "@styles/css/plugins/font-awesome.min.css";
-import { register } from "swiper/element/bundle";
-// register Swiper custom elements
-register();
+// (moved Swiper custom element registration to a client-only component)
 
 import '@styles/scss/style.scss';
 
 import AppData from "@data/app.json";
 import StructuredData from "@components/StructuredData";
+import ClientBoot from "@components/ClientBoot";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -50,14 +49,17 @@ export const metadata = {
     },
   },
 
+  // Strengthen PWA/app signals
+  applicationName: AppData.settings.siteName,
+  generator: 'Next.js',
+
   title: {
     default: `${AppData.settings.siteName} – Самуил (обл. Разград)`,
     template: `%s | ${AppData.settings.siteName}`,
   },
 
   // Keep description natural; avoid stuffing
-  description:
-    AppData.settings.siteDescription,
+  description: AppData.settings.siteDescription,
 
   // Keywords are not a major Google ranking factor; keep them short & relevant.
   keywords: [
@@ -118,16 +120,30 @@ export const metadata = {
     },
   },
 
+  // Keep icons in sync with /public and webmanifest
   icons: {
     icon: [
-      '/favicon.ico',
+      { url: '/favicon.ico' },
       { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    shortcut: ['/favicon.ico'],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
 
+  // Ensures browsers & crawlers can resolve manifest-relative icons from the canonical domain
   manifest: '/site.webmanifest',
+
+  // PWA hints (not required for SEO, but helps installability/branding)
+  appleWebApp: {
+    title: AppData.settings.siteName,
+    capable: true,
+    statusBarStyle: 'default',
+  },
+
+  // Optional: if you add Search Console / other verification tokens, put them here.
+  // verification: {
+  //   google: 'YOUR_TOKEN_HERE',
+  // },
 
   other: {
     'msapplication-TileColor': '#d4af37',
@@ -135,15 +151,28 @@ export const metadata = {
   },
 }
 
+// Next.js 16 expects themeColor under viewport.
+/** @type {import('next').Viewport} */
+export const viewport = {
+  themeColor: '#d4af37',
+}
+
 const Layouts = ({ children }) => {
   return (
-    <html lang="bg" className={`${josefin_sans.variable} ${playfair_display.variable}`}>
+    <html
+      lang="bg"
+      className={`${josefin_sans.variable} ${playfair_display.variable}`}
+      suppressHydrationWarning
+    >
       <body
         style={{ backgroundImage: `url(${AppData.settings.bgImage})` }}
         suppressHydrationWarning
       >
         {/* Structured data (JSON-LD). This can be safely included in the body. */}
         <StructuredData />
+
+        {/* Client-only bootstrapping (e.g., web components) */}
+        <ClientBoot />
 
         <div className="tst-main-overlay"></div>
 

@@ -5,15 +5,26 @@
 export default function StructuredData() {
   const canonicalBase = 'https://restorantdeliorman.com'
 
+  // A stable Google Maps place/search URL helps Google connect the entity.
+  // (Prefer an official "place" URL if you have one; this is still acceptable.)
+  const googleMapsUrl =
+    'https://www.google.com/maps/search/?api=1&query=%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82%20%D0%94%D0%B5%D0%BB%D0%B8%D0%BE%D1%80%D0%BC%D0%B0%D0%BD%20%D0%A1%D0%B0%D0%BC%D1%83%D0%B8%D0%BB'
+
   const restaurant = {
     '@context': 'https://schema.org',
-    '@type': 'Restaurant',
+    // Restaurant is a subtype of FoodEstablishment/LocalBusiness.
+    // Using an array lets Google interpret it in multiple ways.
+    '@type': ['Restaurant', 'FoodEstablishment'],
     '@id': `${canonicalBase}/#restaurant`,
     name: 'Ресторант Делиорман',
     url: canonicalBase,
     description:
       'Ресторант Делиорман предлага уникално кулинарно изживяване с традиционни български и регионални ястия, приготвени с най-качествени местни продукти в уютна и автентична атмосфера.',
-    image: `${canonicalBase}/img/logo.png`,
+
+    // Prefer absolute URLs in structured data
+    image: [`${canonicalBase}/img/logo.png`],
+    logo: `${canonicalBase}/img/logo.png`,
+
     telephone: '+359894766273',
     email: 'restaurantdeliorman@gmail.com',
     priceRange: '$$',
@@ -32,6 +43,8 @@ export default function StructuredData() {
       latitude: 43.513633,
       longitude: 26.7409,
     },
+
+    hasMap: googleMapsUrl,
 
     openingHoursSpecification: [
       {
@@ -52,6 +65,13 @@ export default function StructuredData() {
     acceptsReservations: true,
     menu: `${canonicalBase}/menu`,
 
+    // Optional but helpful business details
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: 'Разград, България',
+    },
+    paymentAccepted: ['Cash', 'Card'],
+
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -65,7 +85,7 @@ export default function StructuredData() {
       'https://www.facebook.com/p/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82-%D0%94%D0%B5%D0%BB%D0%B8%D0%BE%D1%80%D0%BC%D0%B0%D0%BD-100078695683893/',
       'https://www.instagram.com/restorant_deliorman/',
       'https://www.tiktok.com/@restorantdeliorman',
-      'https://share.google/juRTw0AN3iIrlChl1',
+      googleMapsUrl,
     ],
   }
 
@@ -91,7 +111,7 @@ export default function StructuredData() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{__html: JSON.stringify(payload)}}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
     />
   )
 }
