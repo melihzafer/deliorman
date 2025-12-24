@@ -34,7 +34,9 @@ import StructuredData from "@components/StructuredData";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const siteUrl = 'https://deliorman.com'; // TODO: Update with your actual domain
+// IMPORTANT: This must match the real canonical domain used in production.
+// Google uses it to resolve icon/manifest URLs.
+const siteUrl = 'https://restorantdeliorman.com';
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
@@ -45,13 +47,54 @@ export const metadata = {
   description: AppData.settings.siteDescription,
   keywords: [
     'ресторант Делиорман',
-    'българска кухня',
+    'ресторант Делиорман Разград',
+    'ресторант Делиорман Лудогорие',
+    'ресторант Делиорман България',
+      'българска кухня',
+      'ресторант делиорман меню',
+      'ресторант делиорман специалитети',
+      'ресторант делиорман традиционна храна',
+      'ресторант делиорман лудогорие',
     'традиционна храна',
     'ресторант България',
     'Лудогорие',
     'български специалитети',
     'ресторант меню',
     'традиционен ресторант',
+    'ресторант Разград',
+    'автентична българска кухня',
+    'ресторант с българска кухня',
+    'ресторант с традиционна храна',
+    'ресторант в Лудогорие',
+    'най-добрият ресторант в Разград',
+    'ресторант за специални поводи',
+      'самуил',
+        'самуил ресторант',
+        'ресторант самуил',
+        'ресторант самуил разград',
+        'ресторант самуил лудогорие',
+        'ресторант самуил българска кухня',
+        'ресторант самуил традиционна храна',
+        'ресторант самуил меню',
+        'ресторант самуил специалитети',
+        'ресторант самуил традиционен ресторант',
+        'ресторант самуил разград лудогорие',
+      'restorant deliorman',
+        'deliorman restorant',
+        'restorant deliorman razgrad',
+        'restorant deliorman ludogorie',
+        'restorant deliorman bulgaria',
+        'deliorman restorant menu',
+        'deliorman restorant specialties',
+        'deliorman restorant traditional food',
+        'deliorman restorant ludogorie',
+        'best restaurant in razgrad',
+        'restaurant for special occasions',
+      'deliorman restaurant',
+      'restorant deliorman menu',
+      'deliorman restaurant menu',
+      'restorant deliorman specialties',
+      'restorant deliorman obedno menyu'
   ],
   authors: [{ name: 'Ресторант Делиорман' }],
   creator: 'Ресторант Делиорман',
