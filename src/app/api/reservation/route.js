@@ -221,8 +221,8 @@ export async function POST(request) {
       errors.push({ field: 'person', message: 'Моля въведете валиден брой гости' });
     } else if (guestsNum < 1) {
       errors.push({ field: 'person', message: 'Броят гости трябва да е поне 1' });
-    } else if (guestsNum > 500) {
-      errors.push({ field: 'person', message: 'Моля въведете брой гости до 500' });
+    } else if (guestsNum > 100) {
+      errors.push({ field: 'person', message: 'Максималният брой гости е 100' });
     }
 
     if (!date) {
@@ -232,8 +232,18 @@ export async function POST(request) {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
 
+      const maxDate = new Date(today);
+      maxDate.setMonth(today.getMonth() + 1);
+      // Handle month overflow (e.g. Jan 31 -> Feb 28/29)
+      if (today.getDate() !== maxDate.getDate()) {
+        maxDate.setDate(0);
+      }
+      maxDate.setHours(23, 59, 59, 999);
+
       if (selectedDate < today) {
         errors.push({ field: 'date', message: 'Не може да резервирате за минала дата' });
+      } else if (selectedDate > maxDate) {
+        errors.push({ field: 'date', message: 'Резервации могат да се правят само до 1 месец напред' });
       }
     }
 
