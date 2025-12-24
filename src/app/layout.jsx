@@ -38,94 +38,74 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 // Google uses it to resolve icon/manifest URLs.
 const siteUrl = 'https://restorantdeliorman.com';
 
+/** @type {import('next').Metadata} */
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: AppData.settings.siteName,
-    template: "%s | " + AppData.settings.siteName,
+
+  // Canonical + language alternates
+  alternates: {
+    canonical: '/',
+    languages: {
+      bg: '/',
+    },
   },
-  description: AppData.settings.siteDescription,
+
+  title: {
+    default: `${AppData.settings.siteName} – Самуил (обл. Разград)`,
+    template: `%s | ${AppData.settings.siteName}`,
+  },
+
+  // Keep description natural; avoid stuffing
+  description:
+    AppData.settings.siteDescription,
+
+  // Keywords are not a major Google ranking factor; keep them short & relevant.
   keywords: [
     'ресторант Делиорман',
-    'ресторант Делиорман Разград',
-    'ресторант Делиорман Лудогорие',
-    'ресторант Делиорман България',
-      'българска кухня',
-      'ресторант делиорман меню',
-      'ресторант делиорман специалитети',
-      'ресторант делиорман традиционна храна',
-      'ресторант делиорман лудогорие',
-    'традиционна храна',
-    'ресторант България',
-    'Лудогорие',
-    'български специалитети',
-    'ресторант меню',
-    'традиционен ресторант',
+    'ресторант Самуил',
     'ресторант Разград',
-    'автентична българска кухня',
-    'ресторант с българска кухня',
-    'ресторант с традиционна храна',
-    'ресторант в Лудогорие',
-    'най-добрият ресторант в Разград',
-    'ресторант за специални поводи',
-      'самуил',
-        'самуил ресторант',
-        'ресторант самуил',
-        'ресторант самуил разград',
-        'ресторант самуил лудогорие',
-        'ресторант самуил българска кухня',
-        'ресторант самуил традиционна храна',
-        'ресторант самуил меню',
-        'ресторант самуил специалитети',
-        'ресторант самуил традиционен ресторант',
-        'ресторант самуил разград лудогорие',
-      'restorant deliorman',
-        'deliorman restorant',
-        'restorant deliorman razgrad',
-        'restorant deliorman ludogorie',
-        'restorant deliorman bulgaria',
-        'deliorman restorant menu',
-        'deliorman restorant specialties',
-        'deliorman restorant traditional food',
-        'deliorman restorant ludogorie',
-        'best restaurant in razgrad',
-        'restaurant for special occasions',
-      'deliorman restaurant',
-      'restorant deliorman menu',
-      'deliorman restaurant menu',
-      'restorant deliorman specialties',
-      'restorant deliorman obedno menyu'
+    'българска кухня',
+    'традиционна храна',
+    'обедно меню',
+    'резервации',
+    'ресторант с градина',
   ],
+
   authors: [{ name: 'Ресторант Делиорман' }],
   creator: 'Ресторант Делиорман',
   publisher: 'Ресторант Делиорман',
+
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
     url: siteUrl,
-    title: AppData.settings.siteName,
+    title: `${AppData.settings.siteName} – Самуил (обл. Разград)`,
     description: AppData.settings.siteDescription,
     siteName: AppData.settings.siteName,
     images: [
       {
-        url: '/img/og-image.jpg', // TODO: Create this image (1200x630px)
+        // Use the built-in Next.js OG image route (always exists)
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: AppData.settings.siteName,
       },
     ],
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: AppData.settings.siteName,
+    title: `${AppData.settings.siteName} – Самуил (обл. Разград)`,
     description: AppData.settings.siteDescription,
-    images: ['/img/og-image.jpg'], // TODO: Create this image
+    images: ['/opengraph-image'],
   },
+
   robots: {
     index: true,
     follow: true,
@@ -137,6 +117,7 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+
   icons: {
     icon: [
       '/favicon.ico',
@@ -145,29 +126,25 @@ export const metadata = {
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
+
   manifest: '/site.webmanifest',
+
   other: {
     'msapplication-TileColor': '#d4af37',
     'msapplication-config': '/browserconfig.xml',
   },
 }
 
-const Layouts = ({
-  children
-}) => {
+const Layouts = ({ children }) => {
   return (
     <html lang="bg" className={`${josefin_sans.variable} ${playfair_display.variable}`}>
-      <head>
-        <StructuredData />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
-      <body 
-        style={{ "backgroundImage": "url(" + AppData.settings.bgImage + ")" }}
+      <body
+        style={{ backgroundImage: `url(${AppData.settings.bgImage})` }}
         suppressHydrationWarning
       >
+        {/* Structured data (JSON-LD). This can be safely included in the body. */}
+        <StructuredData />
+
         <div className="tst-main-overlay"></div>
 
         {/* app wrapper */}
@@ -181,6 +158,7 @@ const Layouts = ({
         <SpeedInsights />
       </body>
     </html>
-  );
-};
-export default Layouts;
+  )
+}
+
+export default Layouts
