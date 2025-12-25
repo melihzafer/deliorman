@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next'
 import { getSortedPostsData } from '@library/posts'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://deliorman.com' // TODO: Update with your actual domain
-  
+  const baseUrl = 'https://restorantdeliorman.com' // Updated to the real domain
+
   // Get all blog posts
   const posts = getSortedPostsData()
   

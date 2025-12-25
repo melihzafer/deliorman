@@ -3,56 +3,115 @@
  * Provides rich snippets for search engines
  */
 export default function StructuredData() {
-  const structuredData = {
+  const canonicalBase = 'https://restorantdeliorman.com'
+
+  // A stable Google Maps place/search URL helps Google connect the entity.
+  // (Prefer an official "place" URL if you have one; this is still acceptable.)
+  const googleMapsUrl =
+    'https://www.google.com/maps/search/?api=1&query=%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82%20%D0%94%D0%B5%D0%BB%D0%B8%D0%BE%D1%80%D0%BC%D0%B0%D0%BD%20%D0%A1%D0%B0%D0%BC%D1%83%D0%B8%D0%BB'
+
+  const restaurant = {
     '@context': 'https://schema.org',
-    '@type': 'Restaurant',
+    // Restaurant is a subtype of FoodEstablishment/LocalBusiness.
+    // Using an array lets Google interpret it in multiple ways.
+    '@type': ['Restaurant', 'FoodEstablishment'],
+    '@id': `${canonicalBase}/#restaurant`,
     name: 'Ресторант Делиорман',
-    description: 'Ресторант Делиорман предлага уникално кулинарно изживяване с традиционни български и регионални ястия, приготвени с най-качествени местни продукти в уютна и автентична атмосфера.',
-    image: 'https://deliorman.com/img/logo.png', // TODO: Update domain
-    '@id': 'https://deliorman.com', // TODO: Update domain
-    url: 'https://deliorman.com', // TODO: Update domain
-    telephone: '+359-XX-XXX-XXXX', // TODO: Add real phone
+    url: canonicalBase,
+    description:
+      'Ресторант Делиорман предлага уникално кулинарно изживяване с традиционни български и регионални ястия, приготвени с най-качествени местни продукти в уютна и автентична атмосфера.',
+
+    // Prefer absolute URLs in structured data
+    image: [`${canonicalBase}/img/logo.png`],
+    logo: `${canonicalBase}/img/logo.png`,
+
+    telephone: '+359894766273',
+    email: 'restaurantdeliorman@gmail.com',
     priceRange: '$$',
+
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Address Here', // TODO: Add real address
-      addressLocality: 'City',
-      postalCode: 'XXXXX',
+      streetAddress: 'ул. "Хаджи Димитър" №6',
+      addressLocality: 'Самуил',
+      postalCode: '7451',
+      addressRegion: 'Разград',
       addressCountry: 'BG',
     },
+
     geo: {
       '@type': 'GeoCoordinates',
       latitude: 43.513633,
-      longitude: 26.740900,
+      longitude: 26.7409,
     },
+
+    hasMap: googleMapsUrl,
+
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '11:00',
+        opens: '07:00',
         closes: '23:00',
       },
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Saturday', 'Sunday'],
-        opens: '10:00',
+        opens: '07:00',
         closes: '00:00',
       },
     ],
+
     servesCuisine: ['Bulgarian', 'Traditional', 'European'],
-    acceptsReservations: 'True',
-    menu: 'https://deliorman.com/menu', // TODO: Update domain
-    sameAs: [
-      // TODO: Add social media profiles
-      // 'https://www.facebook.com/deliorman',
-      // 'https://www.instagram.com/deliorman',
+    acceptsReservations: true,
+    menu: `${canonicalBase}/menu`,
+
+    // Optional but helpful business details
+    areaServed: {
+      '@type': 'AdministrativeArea',
+      name: 'Разград, България',
+    },
+    paymentAccepted: ['Cash', 'Card'],
+
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+359894766273',
+        contactType: 'reservations',
+        availableLanguage: ['bg'],
+      },
     ],
-  };
+
+    sameAs: [
+      'https://www.facebook.com/p/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82-%D0%94%D0%B5%D0%BB%D0%B8%D0%BE%D1%80%D0%BC%D0%B0%D0%BD-100078695683893/',
+      'https://www.instagram.com/restorant_deliorman/',
+      'https://www.tiktok.com/@restorantdeliorman',
+      googleMapsUrl,
+    ],
+  }
+
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${canonicalBase}/#website`,
+    url: canonicalBase,
+    name: 'Ресторант Делиорман',
+    inLanguage: 'bg',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${canonicalBase}/search?term={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  }
+
+  const payload = {
+    '@context': 'https://schema.org',
+    '@graph': [website, restaurant],
+  }
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
     />
-  );
+  )
 }

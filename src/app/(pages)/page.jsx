@@ -1,6 +1,4 @@
-import React, { Suspense } from "react";
-
-import { getSortedPostsData } from "@library/posts";
+import React from "react";
 
 import AppData from "@data/app.json";
 
@@ -11,13 +9,10 @@ import AboutSection from "@components/sections/About";
 import FeaturesSection from "@components/sections/Features";
 import ScheduleSection from "@components/sections/Schedule";
 import CountersSection from "@components/sections/Counters";
-import CallToActionSection from "@components/sections/CallToAction";
-import LatestPostsSection from "@components/sections/LatestPosts";
-import SubscribeSection from "@components/sections/Subscribe";
-import HeroSlider from "@components/sliders/Hero";
-import TestimonialSlider from "@components/sliders/Testimonial";
-import NewSpecialtiesCTA from "../_components/sections/NewSpecialtiesCTA-Sanity";
+import NewSpecialtiesCTA from "../_components/sections/NewSpecialtiesCTA";
+import HeroSlider from "../_components/sliders/Hero";
 
+/** @type {import('next').Metadata} */
 export const metadata = {
   title: {
     default: "Начало",
@@ -26,8 +21,6 @@ export const metadata = {
 };
 
 async function Home() {
-  const posts = await getAllPosts();
-
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
@@ -75,8 +68,3 @@ async function Home() {
   );
 }
 export default Home;
-
-async function getAllPosts() {
-  const allPosts = getSortedPostsData();
-  return allPosts;
-}

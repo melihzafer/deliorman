@@ -110,7 +110,7 @@ const DefaultHeader = () => {
                     </a> */}
                     {/* minicart button end */}
                     {/* minicart */}
-                    {/*  <div className={`tst-minicart-window ${miniCart ? "tst-active" : "" }`}>
+                    {/* <div className={`tst-minicart-window ${miniCart ? "tst-active" : "" }`}>
                         <MiniCart />
                     </div>
                     </div> */}
