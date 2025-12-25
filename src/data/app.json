@@ -135,7 +135,7 @@
             ],
             "button": { "link": "/gallery", "label": "Разгледайте повече снимки" }
         },
-        "copy": "Powered by Melih Hyusein © Ресторант Делиорман. Всички права запазени."
+        "copy": "Powered by <a href=\"https://portfolio.melihzafer.me\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"tst-color tst-anima-link\">Melih Hyusein</a> © Ресторант Делиорман. Всички права запазени."
     },
     "social": [
         {
