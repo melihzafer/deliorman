@@ -1,90 +1,98 @@
 # 🍽️ Restaurant Deliorman
 
-> A modern, fully responsive restaurant website for Deliorman Restaurant located in Samuil, Razgrad, Bulgaria. Features online table reservations, interactive menu showcase, and elegant UI/UX design.
+> Modern, responsive website for Restaurant Deliorman (Samuil, Razgrad, Bulgaria) built with Next.js.
 
-[![Live Published](https://img.shields.io/badge/demo-live-success)](https://restorantdeliorman.com)
-[![Built with](https://img.shields.io/badge/built%20with-React-61dafb)](https://reactjs.org/)
-[![Powered by](https://img.shields.io/badge/powered%20by-Melih%20Hyusein-blue)](https://melihzafer.netlify.app)
+[![Live](https://img.shields.io/badge/demo-live-success)](https://restorantdeliorman.com)
 
 ## ✨ Features
 
-- **📅 Online Reservations** - Interactive table booking system with date/time selection
-- **🍴 Digital Menu** - Comprehensive menu display with specialty dishes and pricing
-- **📱 Fully Responsive** - Optimized for mobile, tablet, and desktop devices
-- **🎨 Modern UI/UX** - Clean design with smooth animations and transitions
-- **🖼️ Photo Gallery** - Showcase restaurant ambiance and signature dishes
-- **📍 Location Integration** - Contact information and directions
-- **🕒 Business Hours Display** - Real-time operating hours visibility
-- **🌐 Multilingual Support** - Content in Bulgarian for local audience
+- **📅 Online Reservations** – date/time + guest count + notes
+- **🍴 Digital Menu** – menu pages + categorized display
+- **🖼️ Gallery** – photos and lightbox
+- **📱 Fully Responsive** – mobile/tablet/desktop
+- **⚡ Performance-minded** – image caching headers, optimized build
+- **🔎 SEO-ready** – metadata, OpenGraph, sitemap/robots
+- **🧩 CMS-ready (optional)** – Sanity content fetching via API routes
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework:** React / Next.js
-- **Styling:** CSS3 / Tailwind CSS / Styled Components
-- **Form Handling:** React Hook Form / Formik
-- **Deployment:** Vercel / Netlify
-- **Analytics:** Google Analytics (optional)
+- **Framework:** Next.js (App Router)
+- **UI:** React
+- **Styling:** SCSS + CSS
+- **Forms:** Formik
+- **Deployment:** Vercel
+- **CMS (optional):** Sanity
 
-## 🚀 Key Sections
+## 📦 Project Structure (important)
 
-### Hero Section
-- Dynamic slider with call-to-action buttons
-- Direct links to menu and reservation system
-- Eye-catching visuals of signature dishes
+This repo contains **two separate apps**:
 
-### Menu Showcase
-- Шиш Делиорман (Signature kebab specialty)
-- Агнешки шиш (Lamb kebab)
-- Телешко печено (Traditional veal roast)
-- Full menu categorization
+1) **Website (Next.js)** – the root project (this folder)
+2) **Sanity Studio (Dashboard)** – in `studio/` (separate `package.json`)
 
-### About Section
-- Restaurant story and philosophy
-- Quality commitment highlights
-- Team expertise showcase
+They are intentionally separated to avoid dependency conflicts during deploy.
 
-### Reservation System
-- Real-time availability checking
-- Guest count selection (1-6+ people)
-- Date and time picker integration
-- Additional notes field
+## 🚀 Getting Started (Website)
 
-## 📊 Website Stats
+Install and run the website locally:
 
-- **Daily Visitors:** 500+ active users
-- **Monthly Catering Services:** 30+ events
-- **Customer Satisfaction:** 95% positive reviews
-- **Awards & Recognition:** Multiple local accolades
+```powershell
+npm install
+npm run dev
+```
+
+Build locally:
+
+```powershell
+npm run build
+npm run start
+```
+
+## 🧠 Sanity CMS (how this project uses it)
+
+The website **does not embed Sanity Studio**. Instead, it reads content using API endpoints:
+
+- `GET /api/sanity/menu`
+- `GET /api/sanity/promos`
+- `GET /api/sanity/cta`
+
+### Environment variables
+
+Create `.env` (or set them in Vercel) if you want to connect to your Sanity project:
+
+- `SANITY_PROJECT_ID` (or `NEXT_PUBLIC_SANITY_PROJECT_ID`)
+- `SANITY_DATASET` (or `NEXT_PUBLIC_SANITY_DATASET`)
+- `SANITY_API_VERSION` (or `NEXT_PUBLIC_SANITY_API_VERSION`)
+- `SANITY_TOKEN` (optional – only needed for private datasets / authenticated queries)
+
+## 🧩 Sanity Studio (Dashboard)
+
+Run the Studio locally from the `studio/` folder:
+
+```powershell
+cd studio
+npm install
+npm run dev
+```
+
+### Deploy Sanity Studio
+
+Recommended: deploy Studio as a **separate Vercel project** with **Root Directory = `studio`**.
 
 ## 📸 Screenshots
 
 ![Homepage](./screenshots/homepage.png)
 ![Menu](./screenshots/menu.png)
 
-## 🎯 Project Goals
-
-This project demonstrates:
-- Modern web development best practices
-- Responsive design implementation
-- User-centric interface design
-- Performance optimization
-- SEO-friendly structure
-- Accessibility standards compliance
-
 ## 📞 Contact & Links
 
-- **Live Website:** [restorantdeliorman.com](https://restorantdeliorman.com)
-- **Facebook:** [Restaurant Deliorman](https://www.facebook.com/profile.php?id=100063542858187)
-- **Phone:** +359 89 4766273
+- **Live Website:** https://restorantdeliorman.com
+- **Facebook:** https://www.facebook.com/p/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82-%D0%94%D0%B5%D0%BB%D0%B8%D0%BE%D1%80%D0%BC%D0%B0%D0%BD-100078695683893/?locale=bg_BG
+- **Instagram:** https://www.instagram.com/restorant_deliorman
+- **TikTok:** https://www.tiktok.com/@restorantdeliorman
+- **Phone:** +359 89 476 6273
 - **Email:** restaurantdeliorman@gmail.com
-- **Location:** с. Самуил, ул. "Хаджи Димитър" №6, обл. Разград
-
-## 👨‍💻 Developer
-
-**Melih Zafer Hyusein**
-- Portfolio: [melihzafer.netlify.app](https://portfolio.melihzafer.me)
-- GitHub: [@melihzafer](https://github.com/melihzafer)
-- Company: OMNI Tech Solutions
+- **Location:** с. Самуил, ул. „Хаджи Димитър“ №6, обл. Разград
 
 ## 📝 License
 

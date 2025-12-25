@@ -1,4 +1,4 @@
-import {groq} from '@sanity/client'
+import {groq} from 'groq'
 
 export const MENU_ITEMS_QUERY = groq`
   *[_type == "menuItem"] | order(category asc, title asc) {

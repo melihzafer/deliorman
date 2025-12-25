@@ -1,7 +1,3 @@
-import type {StructureResolver} from 'sanity/structure'
+// Standalone Studio structure lives in /studio. This file is kept for reference only.
+export const structure = undefined
 
-// https://www.sanity.io/docs/structure-builder-cheat-sheet
-export const structure: StructureResolver = (S) =>
-  S.list()
-    .title('Content')
-    .items(S.documentTypeListItems())
