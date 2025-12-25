@@ -6,7 +6,8 @@ const josefin_sans = Josefin_Sans({
   subsets: ['latin'],
   variable: '--font-josefin_sans',
   display: 'swap',
-  adjustFontFallback: false,
+  // Use Next.js default font fallback generation (matches previous behavior)
+  adjustFontFallback: true,
 })
 
 const playfair_display = Playfair_Display({
@@ -15,7 +16,7 @@ const playfair_display = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair_display',
   display: 'swap',
-  adjustFontFallback: false,
+  adjustFontFallback: true,
 })
 
 
@@ -23,66 +24,91 @@ import "./globals.css";
 import "@styles/css/plugins/bootstrap.min.css";
 import "@styles/css/plugins/swiper.min.css";
 import "@styles/css/plugins/font-awesome.min.css";
-import { register } from "swiper/element/bundle";
-// register Swiper custom elements
-register();
+// (moved Swiper custom element registration to a client-only component)
 
 import '@styles/scss/style.scss';
 
 import AppData from "@data/app.json";
 import StructuredData from "@components/StructuredData";
+import ClientBoot from "@components/ClientBoot";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const siteUrl = 'https://deliorman.com'; // TODO: Update with your actual domain
+// IMPORTANT: This must match the real canonical domain used in production.
+// Google uses it to resolve icon/manifest URLs.
+const siteUrl = 'https://restorantdeliorman.com';
 
+/** @type {import('next').Metadata} */
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: AppData.settings.siteName,
-    template: "%s | " + AppData.settings.siteName,
+
+  // Canonical + language alternates
+  alternates: {
+    canonical: '/',
+    languages: {
+      bg: '/',
+    },
   },
+
+  // Strengthen PWA/app signals
+  applicationName: AppData.settings.siteName,
+  generator: 'Next.js',
+
+  title: {
+    default: `${AppData.settings.siteName} – Самуил (обл. Разград)`,
+    template: `%s | ${AppData.settings.siteName}`,
+  },
+
+  // Keep description natural; avoid stuffing
   description: AppData.settings.siteDescription,
+
+  // Keywords are not a major Google ranking factor; keep them short & relevant.
   keywords: [
     'ресторант Делиорман',
+    'ресторант Самуил',
+    'ресторант Разград',
     'българска кухня',
     'традиционна храна',
-    'ресторант България',
-    'Лудогорие',
-    'български специалитети',
-    'ресторант меню',
-    'традиционен ресторант',
+    'обедно меню',
+    'резервации',
+    'ресторант с градина',
   ],
+
   authors: [{ name: 'Ресторант Делиорман' }],
   creator: 'Ресторант Делиорман',
   publisher: 'Ресторант Делиорман',
+
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
+
   openGraph: {
     type: 'website',
     locale: 'bg_BG',
     url: siteUrl,
-    title: AppData.settings.siteName,
+    title: `${AppData.settings.siteName} – Самуил (обл. Разград)`,
     description: AppData.settings.siteDescription,
     siteName: AppData.settings.siteName,
     images: [
       {
-        url: '/img/og-image.jpg', // TODO: Create this image (1200x630px)
+        // Use the built-in Next.js OG image route (always exists)
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: AppData.settings.siteName,
       },
     ],
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: AppData.settings.siteName,
+    title: `${AppData.settings.siteName} – Самуил (обл. Разград)`,
     description: AppData.settings.siteDescription,
-    images: ['/img/og-image.jpg'], // TODO: Create this image
+    images: ['/opengraph-image'],
   },
+
   robots: {
     index: true,
     follow: true,
@@ -94,37 +120,63 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
+
+  // Keep icons in sync with /public and webmanifest
   icons: {
     icon: [
-      '/favicon.ico',
+      { url: '/favicon.ico' },
       { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    shortcut: ['/favicon.ico'],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
   },
+
+  // Ensures browsers & crawlers can resolve manifest-relative icons from the canonical domain
   manifest: '/site.webmanifest',
+
+  // PWA hints (not required for SEO, but helps installability/branding)
+  appleWebApp: {
+    title: AppData.settings.siteName,
+    capable: true,
+    statusBarStyle: 'default',
+  },
+
+  // Optional: if you add Search Console / other verification tokens, put them here.
+  // verification: {
+  //   google: 'YOUR_TOKEN_HERE',
+  // },
+
   other: {
     'msapplication-TileColor': '#d4af37',
     'msapplication-config': '/browserconfig.xml',
   },
 }
 
-const Layouts = ({
-  children
-}) => {
+// Next.js 16 expects themeColor under viewport.
+/** @type {import('next').Viewport} */
+export const viewport = {
+  themeColor: '#d4af37',
+}
+
+const Layouts = ({ children }) => {
   return (
-    <html lang="bg" className={`${josefin_sans.variable} ${playfair_display.variable}`}>
-      <head>
-        <StructuredData />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
-      <body 
-        style={{ "backgroundImage": "url(" + AppData.settings.bgImage + ")" }}
+    <html
+      lang="bg"
+      className={`${josefin_sans.variable} ${playfair_display.variable}`}
+      suppressHydrationWarning
+    >
+      <body
+        style={{
+          backgroundImage: `url(${AppData.settings.bgImage})`,
+        }}
         suppressHydrationWarning
       >
+        {/* Structured data (JSON-LD). This can be safely included in the body. */}
+        <StructuredData />
+
+        {/* Client-only bootstrapping (e.g., web components) */}
+        <ClientBoot />
+
         <div className="tst-main-overlay"></div>
 
         {/* app wrapper */}
@@ -134,10 +186,15 @@ const Layouts = ({
         {/* app wrapper end */}
 
         {/* Vercel Analytics */}
-        <Analytics />
-        <SpeedInsights />
+        {process.env.NODE_ENV === 'production' ? (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        ) : null}
       </body>
     </html>
-  );
-};
-export default Layouts;
+  )
+}
+
+export default Layouts

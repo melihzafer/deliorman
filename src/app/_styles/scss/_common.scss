@@ -6,7 +6,6 @@ common
 /*-------------------------
 fonts
 -------------------------*/
-
 /*-------------------------
 scrollbar
 --------------------------*/
@@ -35,11 +34,15 @@ typography
   box-sizing: border-box;
 }
 
+html,
+body {
+   font-family: var(--font-josefin_sans), sans-serif;
+}
+
 body {
   color: $dl1;
   font-size: 16px;
-  font-weight: 400;
-  font-family: $sf;
+  //font-weight: 400;
   background-size: 100%;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
@@ -121,6 +124,8 @@ h6 {
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 800;
+
+
   letter-spacing: 1px;
   font-family: $sf;
   margin: 0;
@@ -187,6 +192,8 @@ h6 {
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 800;
+
+
   letter-spacing: 1px;
   font-family: $sf;
   margin: 0;
@@ -212,6 +219,8 @@ h6 {
   font-size: 12px;
   letter-spacing: 1px;
   font-weight: 800;
+
+
   font-family: $sf;
   margin: 0;
   padding-left: 45px;
@@ -418,6 +427,8 @@ buttons
   font-size: 12px;
   letter-spacing: 1px;
   font-weight: 800;
+
+
   border: none;
   transition: $tr-sm;
   border-radius: 5px;
