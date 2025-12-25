@@ -75,7 +75,7 @@ const NotFound = () => {
                   <Link href="/menu" className="tst-404-link-card">
                     <div className="tst-icon-box text-center tst-mb-30">
                       <div className="tst-icon-frame tst-mb-20">
-                        <i className="fas fa-utensils" style={{ fontSize: '40px', color: '#d4af37' }}></i>
+                        <i className="fas fa-utensils" style={{ fontSize: '40px', color: '#F39C12' }}></i>
                       </div>
                       <h5 className="tst-mb-10">Меню</h5>
                       <p className="tst-text-sm">Открийте нашите вкусни ястия</p>
@@ -86,7 +86,7 @@ const NotFound = () => {
                   <Link href="/reservation" className="tst-404-link-card">
                     <div className="tst-icon-box text-center tst-mb-30">
                       <div className="tst-icon-frame tst-mb-20">
-                        <i className="fas fa-calendar-check" style={{ fontSize: '40px', color: '#d4af37' }}></i>
+                        <i className="fas fa-calendar-check" style={{ fontSize: '40px', color: '#F39C12' }}></i>
                       </div>
                       <h5 className="tst-mb-10">Резервация</h5>
                       <p className="tst-text-sm">Запазете своята маса</p>
@@ -97,7 +97,7 @@ const NotFound = () => {
                   <Link href="/about" className="tst-404-link-card">
                     <div className="tst-icon-box text-center tst-mb-30">
                       <div className="tst-icon-frame tst-mb-20">
-                        <i className="fas fa-info-circle" style={{ fontSize: '40px', color: '#d4af37' }}></i>
+                        <i className="fas fa-info-circle" style={{ fontSize: '40px', color: '#F39C12' }}></i>
                       </div>
                       <h5 className="tst-mb-10">За нас</h5>
                       <p className="tst-text-sm">Научете повече за ресторанта</p>
@@ -108,7 +108,7 @@ const NotFound = () => {
                   <Link href="/contact" className="tst-404-link-card">
                     <div className="tst-icon-box text-center tst-mb-30">
                       <div className="tst-icon-frame tst-mb-20">
-                        <i className="fas fa-phone" style={{ fontSize: '40px', color: '#d4af37' }}></i>
+                        <i className="fas fa-phone" style={{ fontSize: '40px', color: '#F39C12' }}></i>
                       </div>
                       <h5 className="tst-mb-10">Контакти</h5>
                       <p className="tst-text-sm">Свържете се с нас</p>

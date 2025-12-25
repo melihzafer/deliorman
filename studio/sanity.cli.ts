@@ -4,6 +4,7 @@ const projectId = process.env.SANITY_STUDIO_PROJECT_ID || process.env.SANITY_PRO
 const dataset = process.env.SANITY_STUDIO_DATASET || process.env.SANITY_DATASET || 'production'
 
 export default defineCliConfig({
+  studioHost: 'deliorman',
   api: {
     projectId,
     dataset,

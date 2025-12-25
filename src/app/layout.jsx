@@ -147,7 +147,7 @@ export const metadata = {
   // },
 
   other: {
-    'msapplication-TileColor': '#d4af37',
+    'msapplication-TileColor': '#F39C12',
     'msapplication-config': '/browserconfig.xml',
   },
 }
@@ -155,7 +155,7 @@ export const metadata = {
 // Next.js 16 expects themeColor under viewport.
 /** @type {import('next').Viewport} */
 export const viewport = {
-  themeColor: '#d4af37',
+  themeColor: '#F39C12',
 }
 
 const Layouts = ({ children }) => {
