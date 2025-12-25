@@ -147,7 +147,7 @@ export const metadata = {
   // },
 
   other: {
-    'msapplication-TileColor': '#d4af37',
+    'msapplication-TileColor': '#F39C12',
     'msapplication-config': '/browserconfig.xml',
   },
 }
