@@ -6,7 +6,8 @@ const josefin_sans = Josefin_Sans({
   subsets: ['latin'],
   variable: '--font-josefin_sans',
   display: 'swap',
-  adjustFontFallback: false,
+  // Use Next.js default font fallback generation (matches previous behavior)
+  adjustFontFallback: true,
 })
 
 const playfair_display = Playfair_Display({
@@ -15,7 +16,7 @@ const playfair_display = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-playfair_display',
   display: 'swap',
-  adjustFontFallback: false,
+  adjustFontFallback: true,
 })
 
 
@@ -165,7 +166,9 @@ const Layouts = ({ children }) => {
       suppressHydrationWarning
     >
       <body
-        style={{ backgroundImage: `url(${AppData.settings.bgImage})` }}
+        style={{
+          backgroundImage: `url(${AppData.settings.bgImage})`,
+        }}
         suppressHydrationWarning
       >
         {/* Structured data (JSON-LD). This can be safely included in the body. */}
@@ -183,8 +186,12 @@ const Layouts = ({ children }) => {
         {/* app wrapper end */}
 
         {/* Vercel Analytics */}
-        <Analytics />
-        <SpeedInsights />
+        {process.env.NODE_ENV === 'production' ? (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        ) : null}
       </body>
     </html>
   )
