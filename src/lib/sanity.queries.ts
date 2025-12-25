@@ -1,4 +1,4 @@
-import {groq} from 'next-sanity'
+import {groq} from '@sanity/client'
 
 export const MENU_ITEMS_QUERY = groq`
   *[_type == "menuItem"] | order(category asc, title asc) {
@@ -38,4 +38,3 @@ export const CTA_QUERY = groq`
     backgroundImage
   }
 `
-

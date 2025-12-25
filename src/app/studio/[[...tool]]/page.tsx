@@ -7,13 +7,26 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from 'next-sanity/studio'
-import config from '../../../../sanity.config'
-
 export const dynamic = 'force-static'
 
-export { metadata, viewport } from 'next-sanity/studio'
-
 export default function StudioPage() {
-  return <NextStudio config={config} />
+  return (
+    <div style={{maxWidth: 720, margin: '60px auto', padding: '0 20px'}}>
+      <h1>Sanity Studio</h1>
+      <p>
+        Studio-то е отделен проект и не е вградено в сайта, за да няма конфликт на зависимости при
+        build/deploy.
+      </p>
+      <p>
+        Стартира се от папка <code>studio/</code>:
+      </p>
+      <pre style={{background: '#f6f8fa', padding: 12, borderRadius: 8, overflowX: 'auto'}}>
+        cd studio
+
+        npm install
+
+        npm run dev
+      </pre>
+    </div>
+  )
 }
