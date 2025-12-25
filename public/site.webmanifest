@@ -1,8 +1,11 @@
 {
   "name": "Ресторант Делиорман",
   "short_name": "Делиорман",
+  "id": "/",
+  "lang": "bg",
   "description": "Ресторант Делиорман предлага уникално кулинарно изживяване с традиционни български и регионални ястия",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#d4af37",
@@ -10,12 +13,14 @@
     {
       "src": "/favicon.ico",
       "sizes": "16x16 32x32 48x48",
-      "type": "image/x-icon"
+      "type": "image/x-icon",
+      "purpose": "any"
     },
     {
       "src": "/favicon-96x96.png",
       "sizes": "96x96",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "/apple-touch-icon.png",
