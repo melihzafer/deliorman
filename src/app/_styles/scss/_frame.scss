@@ -1,5 +1,5 @@
-/**********************************
 
+/**********************************
 frame
 
 ***********************************/
@@ -354,6 +354,51 @@ menu
       display: flex;
       align-items: center;
 
+      & .tst-res-btn {
+        margin-left: 12px;
+      }
+
+      /* icon-only reservation button in header */
+      & .tst-res-btn.tst-btn-icon {
+        width: 44px;
+        height: 44px;
+        padding: 0 0 5px 0;
+        margin-right: 0;
+        border-radius: 25%;
+        color: #F39C12 !important;
+        background-color: transparent;
+        // border: 2px solid #F39C12;
+        box-shadow: none;
+
+        &:before {
+          display: none;  
+        }
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        &:focus-visible {
+          // outline: 2px solid #F39C12;
+          outline-offset: 2px;
+        }
+      }
+
+      & .tst-res-btn.tst-btn-icon .tst-icon {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 50%;
+        transform: none;
+      }
+
+      & .tst-res-btn.tst-btn-icon i {
+        margin-right: 0;
+        font-size: 2em;
+        transform: none;
+      }
+
       & .tst-cart {
         transform: translateY(-2px);
         position: relative;
@@ -560,16 +605,19 @@ menu
         }
       }
     }
-
+  // ANCHOR FOR RIGHT MENU ADJUSTMENTS
     & .tst-menu-right {
       width: auto;
-
+      // margin-left: 2em;
+      flex-direction: row-reverse;
       & .tst-res-btn {
-        display: none;
+        display: inline-flex;
+        // margin-left: 12px;
       }
 
       & .tst-menu-button-frame {
         display: flex !important;
+        padding: 0 1em;
       }
     }
   }

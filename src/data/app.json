@@ -39,6 +39,21 @@
                     }
                 ]
             },
+            
+            {
+                "label": "Меню",
+                "link": "/menu",
+                "children": [
+                    {
+                        "label": "Класическо меню",
+                        "link": "/menu"
+                    },
+                    {
+                        "label": "Обедно меню",
+                        "link": "/lunch-menu"
+                    }
+                ]
+            },
             {
                 "label": "За нас",
                 "link": "/about",
@@ -57,20 +72,7 @@
                     }
                 ]
             },
-            {
-                "label": "Меню",
-                "link": "/menu",
-                "children": [
-                    {
-                        "label": "Класическо меню",
-                        "link": "/menu"
-                    },
-                    {
-                        "label": "Обедно меню",
-                        "link": "/lunch-menu"
-                    }
-                ]
-            },
+            
             {
                 "label": "Галерия",
                 "link": "/gallery",
@@ -81,11 +83,12 @@
                 "link": "/contact",
                 "children": 0
             },
-            {
-                "label": "Резервации",
+             {
+                "label": "Резервация",
                 "link": "/reservation",
                 "children": 0
             }
+           
         ],
         "onepage": [
             {
@@ -139,6 +142,11 @@
                 { "image": "/img/outdoor_footage/IMG_9337.webp", "alt": "Външна сграда на ресторант Делиорман" }
             ],
             "button": { "link": "/gallery", "label": "Разгледайте повече снимки" }
+        },
+        "legal": {
+            "links": [
+                { "label": "Правила и условия / Лични данни", "link": "/terms" }
+            ]
         },
         "copy": "Powered by <a href=\"https://portfolio.melihzafer.me\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"tst-color tst-anima-link\">Melih Hyusein</a> © Ресторант Делиорман. Всички права запазени."
     },
