@@ -11,9 +11,22 @@ export async function POST(request) {
     const email = formData.get('email');
     const phone = formData.get('phone');
     const message = formData.get('message');
+    const privacyConsentRaw = formData.get('privacy_consent');
 
     // Validation
     const errors = [];
+
+    const privacyConsent = (() => {
+      const v = String(privacyConsentRaw ?? '').trim().toLowerCase();
+      return v === 'true' || v === '1' || v === 'on' || v === 'yes';
+    })();
+
+    if (!privacyConsent) {
+      errors.push({
+        field: 'privacy_consent',
+        message: 'Моля, потвърдете, че сте се запознали с правилата и условията и информацията за лични данни.'
+      });
+    }
     
     if (!firstName || firstName.trim().length < 2) {
       errors.push({ field: 'first_name', message: 'Името трябва да е поне 2 символа' });
