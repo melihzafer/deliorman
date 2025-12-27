@@ -717,6 +717,7 @@ const ReservationForm = () => {
           align-items: center;
           cursor: pointer;
           user-select: none;
+          margin-bottom: 3em;
         }
 
         .tst-privacy-consent-label input {
