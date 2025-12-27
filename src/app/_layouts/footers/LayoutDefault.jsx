@@ -87,6 +87,29 @@ const DefaultFooter = () => {
 
                 <div className="tst-footer-bottom">
                     <div className="tst-text" dangerouslySetInnerHTML={{__html : AppData.footer.copy}} />
+                    {Array.isArray(AppData.footer?.legal?.links) && AppData.footer.legal.links.length > 0 && (
+                      <div className="tst-text" style={{ opacity: 0.9 }}>
+                        {AppData.footer.legal.links.map((l, idx) => (
+                          <span key={`footer-legal-${idx}`}>
+                            {l.link?.startsWith('/') ? (
+                              <Link href={l.link} className="tst-color tst-anima-link">
+                                {l.label}
+                              </Link>
+                            ) : (
+                              <a
+                                href={l.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="tst-color tst-anima-link"
+                              >
+                                {l.label}
+                              </a>
+                            )}
+                            {idx < AppData.footer.legal.links.length - 1 ? " · " : ""}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                     <a href="#tst-app" className="tst-label tst-color tst-anchor-scroll" onClick={ (e) => scrollToTop(e) }>Нагоре</a>
                 </div>
             </div>

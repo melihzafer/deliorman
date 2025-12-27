@@ -2,6 +2,7 @@
 
 import { Formik } from 'formik';
 import { useState } from 'react';
+import Link from 'next/link';
 
 const ContactForm = () => {
   const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
@@ -10,7 +11,7 @@ const ContactForm = () => {
     <>
         {/* contact form */}
         <Formik
-        initialValues = {{ email: '', phone: '', first_name: '', last_name: '', message: '' }}
+        initialValues = {{ email: '', phone: '', first_name: '', last_name: '', message: '', privacy_consent: false }}
         validate = { values => {
             const errors = {};
             
@@ -37,6 +38,10 @@ const ContactForm = () => {
             if (!values.message || values.message.trim().length < 10) {
                 errors.message = 'Съобщението трябва да е поне 10 символа';
             }
+
+            if (!values.privacy_consent) {
+                errors.privacy_consent = 'Моля, потвърдете, че сте се запознали с правилата и условията.';
+            }
             
             return errors;
         }}
@@ -49,6 +54,7 @@ const ContactForm = () => {
             data.append('email', values.email);
             data.append('phone', values.phone);
             data.append('message', values.message);
+            data.append('privacy_consent', values.privacy_consent ? 'true' : 'false');
 
             try {
                 const response = await fetch('/api/contact', {
@@ -164,6 +170,26 @@ const ContactForm = () => {
                     )}
                 </div>
             </div>
+
+            <div className="tst-privacy-consent">
+                <label className="tst-privacy-consent-label">
+                    <input
+                        type="checkbox"
+                        name="privacy_consent"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        checked={Boolean(values.privacy_consent)}
+                    />
+                    <span>
+                        Съгласен/а съм с <Link href="/terms" className="tst-color tst-anima-link">правилата и условията</Link>
+                        <span> </span>
+                        и информацията за лични данни.
+                    </span>
+                </label>
+                {errors.privacy_consent && touched.privacy_consent && (
+                    <div className="tst-field-error">{errors.privacy_consent}</div>
+                )}
+            </div>
             
             <button 
                 className="tst-btn" 
@@ -226,6 +252,26 @@ const ContactForm = () => {
                     transform: translateY(0);
                 }
             }
+
+            .tst-privacy-consent {
+                margin-top: 16px;
+                margin-bottom: 16px;
+            }
+
+                   .tst-privacy-consent-label {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .tst-privacy-consent-label input {
+          
+          width: 25px;
+          height: 25px;
+          margin: 0 3em 7px 0;
+        }
         `}</style>
     </>
   );
