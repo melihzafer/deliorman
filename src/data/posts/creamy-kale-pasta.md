@@ -2,14 +2,14 @@
 #preview
 title: 'Creamy Kale Pasta'
 date: '2022-04-02'
-image: "/img/blog/3.jpg"
+image: "/img/blog/3.webp"
 categories:
     - News of the restaurant
 tags:
     - Restaurant
     - Caffe
 author: Nguta Ithya
-authorAvatar: /img/faces/4.jpg
+authorAvatar: /img/faces/4.webp
 short: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos.
 ---
 

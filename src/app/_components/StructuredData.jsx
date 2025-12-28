@@ -22,8 +22,8 @@ export default function StructuredData() {
       'Ресторант Делиорман предлага уникално кулинарно изживяване с традиционни български и регионални ястия, приготвени с най-качествени местни продукти в уютна и автентична атмосфера.',
 
     // Prefer absolute URLs in structured data
-    image: [`${canonicalBase}/img/logo.png`],
-    logo: `${canonicalBase}/img/logo.png`,
+    image: [`${canonicalBase}/img/logo.webp`],
+    logo: `${canonicalBase}/img/logo.webp`,
 
     telephone: '+359894766273',
     email: 'restaurantdeliorman@gmail.com',

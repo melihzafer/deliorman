@@ -50,7 +50,7 @@ async function Services() {
                 }
                 image={
                  {
-                  "url": "/img/services/1.jpg",
+                  "url": "/img/services/1.webp",
                   "alt": "cover"
                  } 
                 }
@@ -75,7 +75,7 @@ async function Services() {
                 }
                 image={
                  {
-                  "url": "/img/services/2.jpg",
+                  "url": "/img/services/2.webp",
                   "alt": "cover"
                  } 
                 }
@@ -99,7 +99,7 @@ async function Services() {
                 }
                 image={
                  {
-                  "url": "/img/services/3.jpg",
+                  "url": "/img/services/3.webp",
                   "alt": "cover"
                  } 
                 }
