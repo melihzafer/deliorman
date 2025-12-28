@@ -2,14 +2,14 @@
 #preview
 title: 'Ново закуска меню'
 date: '2024-01-15'
-image: "/img/blog/3.jpg"
+image: "/img/blog/3.webp"
 categories:
     - Гастрономия
 tags:
     - Закуска
     - Рецепти
 author: Нгута Ития
-authorAvatar: /img/faces/4.jpg
+authorAvatar: /img/faces/4.webp
 short: Представяме ви нашето обновено закуска меню с традиционни български ястия и модерни интерпретации.
 ---
 

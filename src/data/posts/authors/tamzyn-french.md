@@ -1,5 +1,5 @@
 ---
 #preview
 title: Tamzyn French
-avatar: /img/faces/2.jpg
+avatar: /img/faces/2.webp
 ---

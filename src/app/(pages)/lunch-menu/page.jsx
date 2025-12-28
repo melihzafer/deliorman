@@ -175,11 +175,11 @@ const LunchMenu = () => {
               </div>
               <div className="col-lg-6">
                 <img 
-                  src="/img/menu/menu-cta.jpg" 
+                  src="/img/menu/menu-cta.webp" 
                   alt="Меню на ресторант Делиорман" 
                   className="tst-cta-image tst-fade-up"
                   onError={(e) => {
-                    e.target.src = '/img/bg.jpg';
+                    e.target.src = '/img/bg.webp';
                   }}
                 />
               </div>

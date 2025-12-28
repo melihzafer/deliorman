@@ -2,14 +2,14 @@
 #preview
 title: 'Join Us For Plant-Powered'
 date: '2022-03-02'
-image: "/img/blog/5.jpg"
+image: "/img/blog/5.webp"
 categories:
     - Service sector
 tags:
     - Services
     - Rest
 author: Tamzyn French
-authorAvatar: /img/faces/2.jpg
+authorAvatar: /img/faces/2.webp
 short: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos.
 ---
 

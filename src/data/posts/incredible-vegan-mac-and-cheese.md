@@ -2,7 +2,7 @@
 #preview
 title: 'Incredible Vegan Cheese'
 date: '2022-04-02'
-image: "/img/blog/1.jpg"
+image: "/img/blog/1.webp"
 categories:
     - Recipes
 tags:
@@ -10,7 +10,7 @@ tags:
     - Menu
     - Food
 author: Charlie Williams
-authorAvatar: /img/faces/3.jpg
+authorAvatar: /img/faces/3.webp
 short: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos.
 ---
 
