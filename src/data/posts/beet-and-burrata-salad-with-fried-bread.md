@@ -2,14 +2,14 @@
 #preview
 title: 'Салата с цвекло и бурата'
 date: '2024-03-15'
-image: "/img/blog/2.jpg"
+image: "/img/blog/2.webp"
 categories:
     - Гастрономия
 tags:
     - Гастрономия
     - Здравословно хранене
 author: Анна Тейлър
-authorAvatar: /img/faces/1.jpg
+authorAvatar: /img/faces/1.webp
 short: Освежаваща салата с печено цвекло, крем сирене бурата и хрупкави филийки хляб.
 ---
 

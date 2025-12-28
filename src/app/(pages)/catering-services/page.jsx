@@ -50,7 +50,7 @@ const CateringServices = () => {
                     justifyContent: 'center'
                   }}>
                     <img 
-                      src="/img/indoor_footage/IMG_93.png"
+                      src="/img/indoor_footage/IMG_93.webp"
                       alt="Кетъринг услуги"
                       style={{
                         width: '100%',

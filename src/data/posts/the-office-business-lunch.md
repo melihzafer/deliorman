@@ -2,14 +2,14 @@
 #preview
 title: 'The office business lunch'
 date: '2022-01-02'
-image: "/img/blog/3.jpg"
+image: "/img/blog/3.webp"
 categories:
     - Menu
 tags:
     - Menu
     - Eat
 author: Nguta Ithya
-authorAvatar: /img/faces/4.jpg
+authorAvatar: /img/faces/4.webp
 short: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos.
 ---
 

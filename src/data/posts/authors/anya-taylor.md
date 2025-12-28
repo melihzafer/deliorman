@@ -1,5 +1,5 @@
 ---
 #preview
 title: Anya Taylor
-avatar: /img/faces/1.jpg
+avatar: /img/faces/1.webp
 ---
