@@ -2,7 +2,7 @@
 #preview
 title: 'Quinoa Sweet Potato Salad'
 date: '2022-01-02'
-image: "/img/blog/6.jpg"
+image: "/img/blog/6.webp"
 categories:
     - News of the restaurant
 tags:
@@ -10,7 +10,7 @@ tags:
     - Eat
     - Caffe
 author: Anya Taylor
-authorAvatar: /img/faces/1.jpg
+authorAvatar: /img/faces/1.webp
 short: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius sequi commodi dignissimos.
 ---
 

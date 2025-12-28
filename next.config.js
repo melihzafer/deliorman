@@ -7,6 +7,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   reactStrictMode: true,
   trailingSlash: false,
+  images: {
+    qualities: [75, 85, 90],
+  },
   experimental: {
     optimizePackageImports: ['swiper'],
   },

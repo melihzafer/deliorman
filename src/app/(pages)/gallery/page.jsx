@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Image from "next/image";
 import PageBanner from "@components/PageBanner";
 
 const Gallery = () => {
@@ -197,17 +198,13 @@ const Gallery = () => {
                         e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
                       }}
                     >
-                      <img 
+                      <Image 
                         src={image.src}
                         alt={image.alt}
-                        style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="gallery-image"
+                        style={{ objectFit: 'cover' }}
                         loading="lazy"
                       />
                       {/* Overlay */}
@@ -353,17 +350,27 @@ const Gallery = () => {
           </button>
 
           {/* Image */}
-          <img 
-            src={currentImage.src}
-            alt={currentImage.alt}
+          <div 
             onClick={(e) => e.stopPropagation()}
             style={{
-              maxWidth: '90%',
-              maxHeight: '90vh',
-              objectFit: 'contain',
-              borderRadius: '8px'
+              position: 'relative',
+              width: '90vw',
+              height: '80vh',
+              maxWidth: '1200px'
             }}
-          />
+          >
+            <Image 
+              src={currentImage.src}
+              alt={currentImage.alt}
+              fill
+              sizes="90vw"
+              style={{
+                objectFit: 'contain',
+                borderRadius: '8px'
+              }}
+              priority
+            />
+          </div>
 
           {/* Image Counter */}
           <div style={{

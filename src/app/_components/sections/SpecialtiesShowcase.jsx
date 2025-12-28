@@ -50,7 +50,7 @@ const SpecialtiesShowcase = () => {
                       position: 'relative'
                     }}>
                       <img 
-                        src={`/img/menu/specialty-${index + 1}.jpg`}
+                        src={`/img/menu/specialty-${index + 1}.webp`}
                         alt={specialty.title}
                         style={{
                           width: '100%',

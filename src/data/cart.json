@@ -4,7 +4,7 @@
         {
             "title": "Козе сирене с мед",
             "description": "домати, нори, фета сирене, гъби, оризови нудъли, царевица, скариди.",
-            "image": "/img/menu/1.jpg",
+            "image": "/img/menu/1.webp",
             "quantity": 1,
             "price": "14.00",
             "currency": "лв."
@@ -12,7 +12,7 @@
         {
             "title": "Карпачо от ципура",
             "description": "домати, нори, фета сирене, гъби, оризови нудъли, царевица, скариди.",
-            "image": "/img/menu/2.jpg",
+            "image": "/img/menu/2.webp",
             "quantity": 1,
             "price": "17.99",
             "currency": "лв."
@@ -20,7 +20,7 @@
         {
             "title": "Страчатела",
             "description": "домати, нори, фета сирене, гъби, оризови нудъли, царевица, скариди.",
-            "image": "/img/menu/3.jpg",
+            "image": "/img/menu/3.webp",
             "quantity": 1,
             "price": "21.00",
             "currency": "лв."
