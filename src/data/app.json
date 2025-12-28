@@ -2,7 +2,7 @@
     "settings": {
         "siteName": "Ресторант Делиорман",
         "siteDescription": "Ресторант Делиорман предлага уникално кулинарно изживяване с традиционни български и регионални ястия, приготвени с най-качествени местни продукти в уютна и автентична атмосфера.",
-        "bgImage": "/img/bg.jpg",
+        "bgImage": "/img/bg.webp",
         "formspreeURL": "https://formspree.io/f/YOUR_FORM_ID",
         "mailchimp": {
             "url": "https://YOUR_MAILCHIMP_COMPANY.us21.list-manage.com/subscribe/post?u=YOUR_MAILCHIMP_FORM_UID&amp;id=YOUR_MAILCHIMP_FORM_ID&amp;f_id=YOUR_MAILCHIMP_FORM_FID",
@@ -25,7 +25,7 @@
     },
     "header": {
         "logo": {
-            "image": "/img/logo.png",
+            "image": "/img/logo.webp",
             "alt": "Лого на ресторант Делиорман"
         },
         "menu": [
@@ -102,7 +102,7 @@
         ]
     },
     "footer": {
-        "logo": { "url": "/img/logo.png", "alt": "Лого на ресторант Делиорман" },
+        "logo": { "url": "/img/logo.webp", "alt": "Лого на ресторант Делиорман" },
         "about": {
             "title": "За ресторант „Делиорман\"",
             "text": "Ресторант „Делиорман\" е кулинарно бижу, разположено в сърцето на с. Самуил. Нашата философия е да съчетаваме традиционни рецепти с модерни кулинарни техники, използвайки само най-пресните местни съставки. Създаваме неповторимо гастрономическо преживяване за всички наши гости.",

@@ -2,7 +2,7 @@
     "settings": {
         "siteName": "Ресторант Делиорман",
         "siteDescription": "Ресторант Делиорман предлага уникално кулинарно изживяване с местни ястия и уютна атмосфера.",
-        "bgImage": "/img/bg.jpg",
+        "bgImage": "/img/bg.webp",
         "formspreeURL": "https://formspree.io/f/YOUR_FORM_ID",
         "mailchimp": {
             "url": "https://YOUR_MAILCHIMP_COMPANY.us21.list-manage.com/subscribe/post?u=YOUR_MAILCHIMP_FORM_UID&amp;id=YOUR_MAILCHIMP_FORM_ID&amp;f_id=YOUR_MAILCHIMP_FORM_FID",
@@ -25,7 +25,7 @@
     },
     "header": {
         "logo": {
-            "image": "/img/logo.png",
+            "image": "/img/logo.webp",
             "alt": "Лого"
         },
         "menu": [
@@ -169,7 +169,7 @@
         ]
     },
     "footer": {
-        "logo": { "url": "/img/logo.png", "alt": "Делиорман" },
+        "logo": { "url": "/img/logo.webp", "alt": "Делиорман" },
         "about": {
             "title": "За нас",
             "text": "Ресторант Делиорман е мястото, където вкусът и кулинарното изкуство се срещат. Насладете се на изискани ястия, приготвени с местни продукти, в уютна атмосфера.",
@@ -187,11 +187,11 @@
         "gallery": {
             "title": "Галерия",
             "items": [
-                { "image": "/img/menu/1.jpg", "alt": "Галерия Делиорман" },
-                { "image": "/img/menu/2.jpg", "alt": "Галерия Делиорман" },
-                { "image": "/img/menu/3.jpg", "alt": "Галерия Делиорман" },
-                { "image": "/img/menu/4.jpg", "alt": "Галерия Делиорман" },
-                { "image": "/img/menu/5.jpg", "alt": "Галерия Делиорман" }
+                { "image": "/img/menu/1.webp", "alt": "Галерия Делиорман" },
+                { "image": "/img/menu/2.webp", "alt": "Галерия Делиорман" },
+                { "image": "/img/menu/3.webp", "alt": "Галерия Делиорман" },
+                { "image": "/img/menu/4.webp", "alt": "Галерия Делиорман" },
+                { "image": "/img/menu/5.webp", "alt": "Галерия Делиорман" }
             ],
             "button": { "link": "/gallery", "label": "Вижте повече" }
         },

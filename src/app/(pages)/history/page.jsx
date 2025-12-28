@@ -31,7 +31,7 @@ async function History() {
   const Timeline = [
     {
       "image": {
-        "url": "/img/history/1.jpg",
+        "url": "/img/history/1.webp",
         "alt": "img"
       },
       "title": "Our first, modest restaurant was founded",
@@ -40,7 +40,7 @@ async function History() {
     },
     {
       "image": {
-        "url": "/img/history/2.jpg",
+        "url": "/img/history/2.webp",
         "alt": "img"
       },
       "title": "Oscar Numan has started cooking <br>for you",
@@ -49,7 +49,7 @@ async function History() {
     },
     {
       "image": {
-        "url": "/img/history/3.jpg",
+        "url": "/img/history/3.webp",
         "alt": "img"
       },
       "title": "A new restaurant has been established in London",
@@ -58,7 +58,7 @@ async function History() {
     },
     {
       "image": {
-        "url": "/img/history/4.jpg",
+        "url": "/img/history/4.webp",
         "alt": "img"
       },
       "title": "A new restaurant was opened in Paris",
@@ -67,7 +67,7 @@ async function History() {
     },
     {
       "image": {
-        "url": "/img/history/5.jpg",
+        "url": "/img/history/5.webp",
         "alt": "img"
       },
       "title": "We got a <br>Michelin star",
@@ -76,7 +76,7 @@ async function History() {
     },
     {
       "image": {
-        "url": "/img/history/6.jpg",
+        "url": "/img/history/6.webp",
         "alt": "img"
       },
       "title": "Established own address delivery",

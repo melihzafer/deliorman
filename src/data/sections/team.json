@@ -4,7 +4,7 @@
     "description": "Нашият екип от професионални готвачи и сервитьори <br>ще се погрижи за вашето незабравимо изживяване.",
     "items": [
         {
-            "image": "/img/faces/c1.jpg",
+            "image": "/img/faces/c1.webp",
             "name": "Павел Трънчев",
             "role": "Главен готвач",
             "social": [
@@ -31,7 +31,7 @@
             ]
         },
         {
-            "image": "/img/faces/c2.jpg",
+            "image": "/img/faces/c2.webp",
             "name": "Осип Остров",
             "role": "Шеф готвач",
             "social": [
@@ -58,7 +58,7 @@
             ]
         },
         {
-            "image": "/img/faces/c3.jpg",
+            "image": "/img/faces/c3.webp",
             "name": "Емилия Нефтчиева",
             "role": "Помощник готвач",
             "social": [

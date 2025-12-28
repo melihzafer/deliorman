@@ -87,7 +87,7 @@ const Products = () => {
         "title": "Very tasty",
         "name": "Emma Newman",
         "rating": 5,
-        "image": "/img/faces/1.jpg",
+        "image": "/img/faces/1.webp",
         "date": "04.03.2024",
         "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi inventore possimus laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam labore, aliquam dolor harum!"
       },
@@ -95,7 +95,7 @@ const Products = () => {
         "title": "I have lunch here every day",
         "name": "Paul Trueman",
         "rating": 5,
-        "image": "/img/faces/2.jpg",
+        "image": "/img/faces/2.webp",
         "date": "02.03.2024",
         "text": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi inventore possimus laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam labore, aliquam dolor harum!"
       }
@@ -143,7 +143,7 @@ const Products = () => {
                         <div className="container">
                           <div className="row align-items-center">
                             <div className="col-lg-6">
-                              <ProductImage src={"/img/menu/4.jpg"} alt={"Saumon Gravlax"} badge={"<div className='tst-badge tst-vegan'><i className='fas fa-leaf'></i> Vegan</div>"} />
+                              <ProductImage src={"/img/menu/4.webp"} alt={"Saumon Gravlax"} badge={"<div className='tst-badge tst-vegan'><i className='fas fa-leaf'></i> Vegan</div>"} />
                             </div>
                             <div className="col-lg-6">
                               <div className="tst-product-description tst-mb-90">

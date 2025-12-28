@@ -102,7 +102,7 @@ const NewSpecialtiesCTA = () => {
                                                     alt={slide.image.alt}
                                                     className={styles.slideImage}
                                                     onError={(e) => {
-                                                        e.target.src = '/img/bg.jpg';
+                                                        e.target.src = '/img/bg.webp';
                                                     }}
                                                 />
                                                 <div className={styles.imageOverlay}></div>
