@@ -1133,6 +1133,12 @@ footer {
 		& .tst-text {
 			opacity: 0.4;
 		}
+
+		@media (max-width: 991px) {
+			flex-direction: column;
+			gap: 15px;
+			text-align: center;
+		}
 	}
 }
 /*-------------------------

@@ -342,7 +342,7 @@ export async function POST(request) {
       '',
       `📲 За набиране (копирай/тапни): ${escapeHtml(telLink)}`,
       '',
-      `<i>⏱️ Изпратено:</i> ${escapeHtml(new Date().toLocaleString('bg-BG'))}`,
+      `<i>⏱️ Изпратено:</i> ${escapeHtml(new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }))}`,
     ].join('\n');
 
     // Telegram Bot API rejects tel: URLs in inline_keyboard buttons.
