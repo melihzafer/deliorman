@@ -9,6 +9,8 @@ const nextConfig = {
   trailingSlash: false,
   images: {
     qualities: [75, 85, 90],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
   },
   experimental: {
     optimizePackageImports: ['swiper'],

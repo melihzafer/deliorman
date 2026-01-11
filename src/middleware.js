@@ -7,6 +7,7 @@ const DEFAULT_ALLOWED_ORIGINS = [
   'http://localhost:3010',
   'https://deliorman.vercel.app',
   'https://restorantdeliorman.com',
+  'https://www.restorantdeliorman.com',
 ];
 
 function getAllowedOrigins() {
