@@ -87,6 +87,11 @@
                 "label": "Резервация",
                 "link": "/reservation",
                 "children": 0
+            },
+            {
+                "label": "Поръчай сега",
+                "link": "/menu",
+                "children": 0
             }
            
         ],

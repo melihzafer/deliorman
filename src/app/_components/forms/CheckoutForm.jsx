@@ -1,272 +1,263 @@
 "use client";
 
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Formik } from 'formik';
-import AppData from "@data/app.json";
+import { motion, AnimatePresence } from 'framer-motion';
+import { useCartStore } from "@/store/cart-store";
+import { checkoutSchema } from '@/lib/validations/checkout';
+import { CustomInput } from '../ui/CustomInput';
+import { CustomButton } from '../ui/CustomButton';
+import { PaymentSelector } from './PaymentSelector';
+import { Package, CreditCard, ChevronRight, ChevronLeft } from 'lucide-react';
 
 const CheckoutForm = () => {
+
+  const router = useRouter();
+  const items = useCartStore(state => state.items);
+  const clearCart = useCartStore(state => state.clearCart);
+  const [step, setStep] = useState(1); // 1: Delivery, 2: Payment
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+
+
   return (
     <>
-        {/* contact form */}
-        <Formik
-        initialValues = {{ firstname: '', lastname: '', email: '', tel: '', company: '', country: '', city: '', state: '', address: '', postcode: '', message: '', payment_method: 1 }}
-        validate = { values => {
-            const errors = {};
-            if (!values.email) {
-                errors.email = 'Задължително поле';
-            } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-                errors.email = 'Невалиден имейл адрес';
-            }
-            return errors;
+      <div className="tst-checkout-flow-header">
+        <div className={step === 1 ? 'flow-step active' : 'flow-step'}>
+          <div className="step-number">1</div>
+          <div className="step-label">Доставка</div>
+        </div>
+        <div className="flow-divider" />
+        <div className={step === 2 ? 'flow-step active' : 'flow-step'}>
+          <div className="step-number">2</div>
+          <div className="step-label">Плащане</div>
+        </div>
+      </div>
+
+      <Formik
+        initialValues={{
+          customerName: '',
+          phone: '',
+          address: '',
+          notes: '',
+          paymentMethod: 'cash'
         }}
-        onSubmit = {( values, { setSubmitting } ) => {
-            const form = document.getElementById("checkoutForm");
-            const status = document.getElementById("checkoutFormStatus");
-            const data = new FormData();
+        validate={values => {
+          const errors = {};
+          const result = checkoutSchema.safeParse({
+            ...values,
+            items: items.map(item => ({
+              id: item.id,
+              name: item.name,
+              price: item.price,
+              quantity: item.quantity,
+            }))
+          });
 
-            data.append('firstname', values.firstname);
-            data.append('lastname', values.lastname);
-            data.append('email', values.email);
-            data.append('tel', values.tel);
-            data.append('company', values.company);
-            data.append('country', values.country);
-            data.append('city', values.city);
-            data.append('state', values.state);
-            data.append('address', values.address);
-            data.append('postcode', values.postcode);
-            data.append('message', values.message);
-            data.append('payment_method', values.payment_method);
+          if (!result.success) {
+            result.error.errors.forEach(err => {
+              const field = err.path[0];
+              if (field && field !== 'items') {
+                errors[field] = err.message;
+              }
+            });
+          }
+          return errors;
+        }}
+        onSubmit={async (values, { setSubmitting, setStatus }) => {
+          setIsSubmitting(true);
+          setStatus(null);
 
-            fetch(form.action, {
-                method: 'POST',
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    status.innerHTML = "<h5>Благодарим, вашето съобщение е изпратено успешно.</h5>";
-                    form.reset()
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-                        } else {
-                            status.innerHTML = "<h5>Oops! There was a problem submitting your form</h5>"
-                        }
-                    })
-                }
-            }).catch(error => {
-                status.innerHTML = "<h5>Oops! There was a problem submitting your form</h5>"
+          try {
+            const response = await fetch('/api/checkout', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                ...values,
+                items: items.map(item => ({
+                  id: item.id,
+                  name: item.name,
+                  price: item.price,
+                  quantity: item.quantity,
+                }))
+              }),
             });
 
-            setSubmitting(false);
-        }}
-        >
-        {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-            /* and other goodies */
-        }) => (
-        <form onSubmit={handleSubmit} id="checkoutForm" action={AppData.settings.formspreeURL} className="tst-checkout-form">
-            <div className="tst-mb-30">
-                <h5>Данни за фактуриране</h5>
-            </div>
-            <div className="row">
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Име</label>
-                    <input 
-                        type="text" 
-                        placeholder="Александър"
-                        name="firstname" 
-                        required="required" 
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.firstname} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Фамилия</label>
-                    <input 
-                        type="text" 
-                        placeholder="Петров"
-                        name="lastname" 
-                        required="required" 
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.lastname} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Фирма</label>
-                    <input 
-                        type="text" 
-                        placeholder="ОМНИ Тех ЕООД"
-                        name="company"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.company} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Държава</label>
-                    <input 
-                        type="text" 
-                        placeholder="България"
-                        name="country"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.country} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Град</label>
-                    <input 
-                        type="text" 
-                        placeholder="Самуил"
-                        name="city"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.city} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>State / Province</label>
-                    <input 
-                        type="text" 
-                        placeholder="Lazio"
-                        name="state"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.state} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Address</label>
-                    <input 
-                        type="text" 
-                        placeholder="Via Savoia 77"
-                        name="address"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.address} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Postcode</label>
-                    <input 
-                        type="text" 
-                        placeholder="00198"
-                        name="postcode"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.postcode} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Phone</label>
-                    <input 
-                        type="tel" 
-                        placeholder="1-877-111-2222"
-                        name="tel"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.tel} 
-                    />
-                </div>
-                </div>
-                <div className="col-lg-6">
-                <div className="tst-group-input">
-                    <label>Email</label>
-                    <input 
-                        type="email" 
-                        placeholder="yourEmail@gmail.com"
-                        name="email"
-                        required="required"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.email} 
-                    />
-                </div>
-                </div>
-            </div>
-            <div className="tst-mb-30">
-                <h5>Additional information</h5>
-            </div>
-            <div className="tst-group-input">
-                <label>Order notes</label>
-                <textarea 
-                    placeholder="Additional Notes"
-                    name="message" 
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.message} 
-                />
-            </div>
-            <div className="tst-mb-30">
-                <h5 className="tst-mb-30">Payment method</h5>
-                <ul>
-                    <li className="tst-radio">
-                        <input type="radio" id="option-1" name="payment_method" defaultChecked value="1" />
-                        <label htmlFor="option-1">Direct bank transfer</label>
-                        <div className="tst-check"></div>
-                    </li>
-                    <li className="tst-radio">
-                        <input type="radio" id="option-2" name="payment_method" value="2" />
-                        <label htmlFor="option-2">Check payments</label>
-                        <div className="tst-check"></div>
-                    </li>
-                    <li className="tst-radio">
-                        <input type="radio" id="option-3" name="payment_method" value="3" />
-                        <label htmlFor="option-3">Cash on delivery</label>
-                        <div className="tst-check"></div>
-                    </li>
-                </ul>
-            </div>
-            {/* button */}
-            <button type="submit" className="tst-btn tst-btn-with-icon tst-m-0">
-                <span className="tst-icon">
-                    <img src="/img/ui/icons/arrow.svg" alt="icon" />
-                </span>
-                <span>Place order</span>
-            </button>
-            {/* button end */}
+            const data = await response.json();
 
-            <div id="checkoutFormStatus" className="form-status"></div>
-        </form>
+            if (!response.ok) {
+              const errorMessage = data.errors?.map(e => e.message).join(', ') || 'Грешка при обработката.';
+              setStatus({ type: 'error', message: errorMessage });
+              setIsSubmitting(false);
+              setSubmitting(false);
+              return;
+            }
+
+            if (data.success) {
+              if (values.paymentMethod === 'cash') {
+                clearCart();
+                router.push(`/success?orderId=${data.orderId}&method=cash`);
+              } else if (data.redirectUrl) {
+                window.location.href = data.redirectUrl;
+              }
+            }
+          } catch (error) {
+            setStatus({ type: 'error', message: 'Възникна грешка. Опитайте отново.' });
+            setIsSubmitting(false);
+            setSubmitting(false);
+          }
+        }}
+      >
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          setFieldValue,
+          handleSubmit,
+          status,
+        }) => (
+          <form onSubmit={handleSubmit} className="tst-checkout-form">
+            <AnimatePresence mode="wait">
+              {step === 1 && (
+                <motion.div
+                  key="step1"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="tst-mb-30">
+                    <h5>Детайли за доставка</h5>
+                  </div>
+                  
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <CustomInput
+                        label="Име и фамилия *"
+                        name="customerName"
+                        placeholder="Вашето име"
+                        value={values.customerName}
+                        error={errors.customerName}
+                        touched={touched.customerName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </div>
+                    <div className="col-lg-12">
+                      <CustomInput
+                        label="Телефон *"
+                        name="phone"
+                        placeholder="0888 000 000"
+                        value={values.phone}
+                        error={errors.phone}
+                        touched={touched.phone}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </div>
+                    <div className="col-lg-12">
+                      <CustomInput
+                        label="Адрес за доставка *"
+                        name="address"
+                        placeholder="Град, улица, номер..."
+                        value={values.address}
+                        error={errors.address}
+                        touched={touched.address}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                    </div>
+                    <div className="col-lg-12">
+                      <div className="tst-group-input">
+                        <label>Бележки (опционално)</label>
+                        <textarea
+                          name="notes"
+                          placeholder="Бележки към ресторанта или куриера"
+                          value={values.notes}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className="tst-input"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-end mt-30">
+                    <CustomButton
+                      onClick={() => {
+                        // Mark fields as touched to show errors if any
+                        const fields = ['customerName', 'phone', 'address'];
+                        const hasErrors = fields.some(f => errors[f]);
+                        if (!hasErrors && values.customerName && values.phone && values.address) {
+                          setStep(2);
+                        } else {
+                          // Force show errors
+                          fields.forEach(f => handleBlur({ target: { name: f } }));
+                        }
+                      }}
+                      className="tst-btn-with-icon"
+                    >
+                      <span>Напред към плащане</span>
+                      <ChevronRight size={18} className="ml-10" />
+                    </CustomButton>
+                  </div>
+                </motion.div>
+              )}
+
+              {step === 2 && (
+                <motion.div
+                  key="step2"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="tst-mb-30">
+                    <h5>Метод на плащане</h5>
+                  </div>
+
+                  <PaymentSelector
+                    value={values.paymentMethod}
+                    onChange={(val) => setFieldValue('paymentMethod', val)}
+                  />
+
+                  {status && (
+                    <div className={`form-status ${status.type} text-center mt-30 p-15 rounded-md ${status.type === 'error' ? 'bg-red-500/10 text-red-500 border border-red-500/20' : ''}`}>
+                      {status.message}
+                    </div>
+                  )}
+
+                  <div className="flex justify-between items-center mt-60">
+                    <button
+                      type="button"
+                      onClick={() => setStep(1)}
+                      className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
+                    >
+                      <ChevronLeft size={18} />
+                      <span>Назад към доставка</span>
+                    </button>
+
+                    <CustomButton
+                      type="submit"
+                      loading={isSubmitting}
+                      className="tst-btn-main tst-btn-with-icon"
+                    >
+                      <Package size={18} className="mr-10" />
+                      <span>{values.paymentMethod === 'cash' ? 'Завърши поръчката' : 'Към плащане'}</span>
+                    </CustomButton>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </form>
         )}
-        </Formik>
-        {/* contact form end */}
+      </Formik>
     </>
   );
 };
+
 export default CheckoutForm;
+

@@ -830,8 +830,166 @@ table {
 }
 
 /*-------------------------
-checkout (in next update)
+custom premium enhancements
 --------------------------*/
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-color: transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  margin-bottom: 15px;
+  
+  &:hover {
+    border-color: rgba($ac, 0.3);
+    background-color: rgba($ac, 0.05);
+    transform: translateY(-2px);
+  }
+  
+  &.active {
+    border-color: $ac;
+    background-color: rgba($ac, 0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+    .icon-container {
+      background-color: rgba($ac, 0.2);
+      color: $ac;
+    }
+
+    .text-container {
+      .option-label {
+        color: #fff;
+      }
+    }
+  }
+
+  .icon-container {
+    padding: 12px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #888;
+    transition: all 0.3s ease;
+  }
+
+  .text-container {
+    .option-label {
+      font-weight: 700;
+      font-size: 16px;
+      color: #ccc;
+      transition: all 0.3s ease;
+      font-family: $pf;
+    }
+
+    .option-subtitle {
+      font-size: 13px;
+      color: #888;
+    }
+  }
+
+  .active-indicator {
+    margin-left: auto;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $ac;
+  }
+}
+
+.tst-checkout-flow-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  gap: 20px;
+
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.3;
+    transition: all 0.5s ease;
+
+    &.active {
+      opacity: 1;
+      .step-number {
+        background-color: $ac;
+        color: $dl1;
+      }
+    }
+
+    .step-number {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .step-label {
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+      font-weight: 800;
+    }
+  }
+
+  .flow-divider {
+    width: 40px;
+    height: 1px;
+    background-color: rgba(255,255,255,0.1);
+  }
+}
+
+.tst-group-input {
+  position: relative;
+  margin-bottom: 25px;
+
+  label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    color: rgba(255,255,255,0.6);
+  }
+
+  input, textarea {
+    margin-bottom: 5px;
+    background-color: rgba(255,255,255,0.03) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: $ac !important;
+      background-color: rgba(255,255,255,0.05) !important;
+      box-shadow: 0 0 15px rgba($ac, 0.1) !important;
+    }
+
+    &.error {
+      border-color: $auxc1 !important;
+    }
+  }
+
+  .error-message {
+    font-size: 11px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 5px;
+    font-weight: 600;
+  }
+}
+
 
 /***************************
 

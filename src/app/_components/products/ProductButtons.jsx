@@ -1,30 +1,50 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useCartStore } from "@/store/cart-store";
 
-import CartData from "@data/cart.json";
+const ProductButtons = ({ item }) => {
+  const addItem = useCartStore(state => state.addItem);
+  const getItemCount = useCartStore(state => state.getItemCount);
 
-const ProductButtons = () => {
-  const [cartTotal, setCartTotal] = useState(CartData.total);
   const [quantity, setQuantity] = useState(1);
   const minQuantity = 1;
   const maxQuantity = 10;
 
+  const cartTotal = getItemCount();
+
   useEffect(() => {
     const cartNumberEl = document.querySelector('.tst-cart-number');
-    cartNumberEl.innerHTML = cartTotal;
+    if (cartNumberEl) {
+      cartNumberEl.innerHTML = cartTotal.toString();
+    }
   }, [cartTotal]);
 
   const addToCart = (e) => {
     e.preventDefault();
-    const cartNumberEl = document.querySelector('.tst-cart-number');
-    setCartTotal(cartTotal + quantity);
 
-    cartNumberEl.classList.add('tst-added');
+    // Add item to cart with selected quantity
+    for (let i = 0; i < quantity; i++) {
+      addItem({
+        id: item?.id || `item-${Date.now()}`,
+        name: item?.name || 'Product',
+        price: item?.price || 0,
+        image: item?.image,
+        description: item?.description,
+      });
+    }
+
+    const cartNumberEl = document.querySelector('.tst-cart-number');
+    if (cartNumberEl) {
+      cartNumberEl.classList.add('tst-added');
+    }
+
     e.currentTarget.classList.add('tst-added');
-    
+
     setTimeout(() => {
+      if (cartNumberEl) {
         cartNumberEl.classList.remove('tst-added');
+      }
     }, 600);
   }
 

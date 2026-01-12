@@ -1,0 +1,132 @@
+/*-------------------------
+Tailwind-like Utility Classes
+--------------------------*/
+
+// Flexbox
+.flex { display: flex !important; }
+.flex-col { flex-direction: column !important; }
+.flex-row { flex-direction: row !important; }
+.flex-wrap { flex-wrap: wrap !important; }
+.items-center { align-items: center !important; }
+.items-start { align-items: flex-start !important; }
+.items-end { align-items: flex-end !important; }
+.justify-center { justify-content: center !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-start { justify-content: flex-start !important; }
+.justify-end { justify-content: flex-end !important; }
+.flex-grow { flex-grow: 1 !important; }
+.flex-shrink-0 { flex-shrink: 0 !important; }
+
+// Spacing Utilities
+@for $i from 0 through 100 {
+  // Margin
+  .m-#{$i} { margin: #{$i}px !important; }
+  .mt-#{$i} { margin-top: #{$i}px !important; }
+  .mb-#{$i} { margin-bottom: #{$i}px !important; }
+  .ml-#{$i} { margin-left: #{$i}px !important; }
+  .mr-#{$i} { margin-right: #{$i}px !important; }
+  .mx-#{$i} { margin-left: #{$i}px !important; margin-right: #{$i}px !important; }
+  .my-#{$i} { margin-top: #{$i}px !important; margin-bottom: #{$i}px !important; }
+
+  // Padding
+  .p-#{$i} { padding: #{$i}px !important; }
+  .pt-#{$i} { padding-top: #{$i}px !important; }
+  .pb-#{$i} { padding-bottom: #{$i}px !important; }
+  .pl-#{$i} { padding-left: #{$i}px !important; }
+  .pr-#{$i} { padding-right: #{$i}px !important; }
+  .px-#{$i} { padding-left: #{$i}px !important; padding-right: #{$i}px !important; }
+  .py-#{$i} { padding-top: #{$i}px !important; padding-bottom: #{$i}px !important; }
+
+  // Gap
+  .gap-#{$i} { gap: #{$i}px !important; }
+}
+
+// Display & Visibility
+.block { display: block !important; }
+.inline-block { display: inline-block !important; }
+.hidden { display: none !important; }
+.relative { position: relative !important; }
+.absolute { position: absolute !important; }
+.fixed { position: fixed !important; }
+.inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+
+// Width & Height
+.w-full { width: 100% !important; }
+.h-full { height: 100% !important; }
+.w-60 { width: 60px !important; }
+.h-60 { height: 60px !important; }
+.w-100 { width: 100px !important; }
+.h-100 { height: 100px !important; }
+
+// Text & Colors
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-left { text-align: left !important; }
+.text-xs { font-size: 12px !important; }
+.text-sm { font-size: 14px !important; }
+.text-base { font-size: 16px !important; }
+.text-lg { font-size: 18px !important; }
+.text-xl { font-size: 20px !important; }
+.font-bold { font-weight: 700 !important; }
+.uppercase { text-transform: uppercase !important; }
+.leading-tight { line-height: 1.25 !important; }
+.tracking-widest { letter-spacing: 0.1em !important; }
+.italic { font-style: italic !important; }
+
+.text-accent { color: $ac !important; }
+.text-white { color: #ffffff !important; }
+.text-white\/20 { color: rgba(255, 255, 255, 0.2) !important; }
+.text-white\/40 { color: rgba(255, 255, 255, 0.4) !important; }
+.text-red-500 { color: #ef4444 !important; }
+
+// Backgrounds
+.bg-white\/5 { background-color: rgba(255, 255, 255, 0.05) !important; }
+.bg-white\/10 { background-color: rgba(255, 255, 255, 0.1) !important; }
+.bg-black\/20 { background-color: rgba(0, 0, 0, 0.2) !important; }
+.bg-black\/40 { background-color: rgba(0, 0, 0, 0.4) !important; }
+.bg-red-500\/10 { background-color: rgba(239, 68, 68, 0.1) !important; }
+.bg-accent { background-color: $ac !important; }
+
+// Borders
+.border { border: 1px solid !important; }
+.border-b { border-bottom: 1px solid !important; }
+.border-t { border-top: 1px solid !important; }
+.border-white\/5 { border-color: rgba(255, 255, 255, 0.05) !important; }
+.rounded-md { border-radius: 0.375rem !important; }
+.rounded-full { border-radius: 9999px !important; }
+
+// Grid
+.grid { display: grid !important; }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+
+// Interaction
+.group:hover .group-hover\:opacity-100 { opacity: 1 !important; }
+.opacity-0 { opacity: 0 !important; }
+.transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.transition-colors { transition-property: background-color, border-color, color, fill, stroke; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+
+// Button Variants
+.tst-btn-main {
+  background-color: $ac !important;
+  color: #fff !important;
+}
+
+.tst-btn-secondary {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+// Animations
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

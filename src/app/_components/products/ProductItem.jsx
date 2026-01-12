@@ -1,35 +1,44 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-import CartData from "@data/cart.json";
+import { useCartStore } from "@/store/cart-store";
 
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
 const ProductItem = ({ item, index, marginBottom, moreType }) => {
-  const [cartTotal, setCartTotal] = useState(CartData.total);
-  const [quantity, setQuantity] = useState(1);
+  const addItem = useCartStore(state => state.addItem);
+  const getItemCount = useCartStore(state => state.getItemCount);
+
+  const cartTotal = getItemCount();
 
   useEffect(() => {
     const cartNumberEl = document.querySelector('.tst-cart-number');
     if (cartNumberEl) {
-      cartNumberEl.innerHTML = cartTotal;
+      cartNumberEl.innerHTML = cartTotal.toString();
     }
   }, [cartTotal]);
 
   const addToCart = (e) => {
     e.preventDefault();
-    const cartNumberEl = document.querySelector('.tst-cart-number');
-    setCartTotal(cartTotal + quantity);
 
+    // Add item to cart store
+    addItem({
+      id: item.id || `item-${Date.now()}`,
+      name: item.title,
+      price: parseFloat(item.price) || parseFloat(item.weight) || 0,
+      image: item.image,
+      description: item.short,
+    });
+
+    const cartNumberEl = document.querySelector('.tst-cart-number');
     if (cartNumberEl) {
       cartNumberEl.classList.add('tst-added');
       setTimeout(() => {
         cartNumberEl.classList.remove('tst-added');
       }, 600);
     }
-    
+
     if (e.currentTarget) {
       e.currentTarget.classList.add('tst-added');
     }
