@@ -6,10 +6,10 @@ import { Formik } from 'formik';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from "@/store/cart-store";
 import { checkoutSchema } from '@/lib/validations/checkout';
-import { CustomInput } from '../ui/CustomInput';
 import { CustomButton } from '../ui/CustomButton';
 import { PaymentSelector } from './PaymentSelector';
-import { Package, CreditCard, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Package, CreditCard, ChevronRight, ChevronLeft, MapPin, Phone, User, MessageSquare, Truck, AlertCircle } from 'lucide-react';
+import styles from '@/app/_styles/scss/Checkout.module.scss';
 
 const CheckoutForm = () => {
 
@@ -22,16 +22,21 @@ const CheckoutForm = () => {
 
 
   return (
-    <>
-      <div className="tst-checkout-flow-header">
-        <div className={step === 1 ? 'flow-step active' : 'flow-step'}>
-          <div className="step-number">1</div>
-          <div className="step-label">Доставка</div>
+    <div className={styles.checkoutContainer}>
+      {/* Step Indicator */}
+      <div className={styles.stepIndicator}>
+        <div className={step === 1 ? `${styles.step} ${styles.active}` : styles.step}>
+          <div className={styles.stepCircle}>
+            <Truck size={20} />
+          </div>
+          <div className={styles.stepLabel}>Доставка</div>
         </div>
-        <div className="flow-divider" />
-        <div className={step === 2 ? 'flow-step active' : 'flow-step'}>
-          <div className="step-number">2</div>
-          <div className="step-label">Плащане</div>
+        <div className={styles.divider} />
+        <div className={step === 2 ? `${styles.step} ${styles.active}` : styles.step}>
+          <div className={styles.stepCircle}>
+            <CreditCard size={20} />
+          </div>
+          <div className={styles.stepLabel}>Плащане</div>
         </div>
       </div>
 
@@ -56,7 +61,7 @@ const CheckoutForm = () => {
           });
 
           if (!result.success) {
-            result.error.errors.forEach(err => {
+            result.error.issues.forEach(err => {
               const field = err.path[0];
               if (field && field !== 'items') {
                 errors[field] = err.message;
@@ -119,7 +124,7 @@ const CheckoutForm = () => {
           handleSubmit,
           status,
         }) => (
-          <form onSubmit={handleSubmit} className="tst-checkout-form">
+          <form onSubmit={handleSubmit}>
             <AnimatePresence mode="wait">
               {step === 1 && (
                 <motion.div
@@ -128,65 +133,110 @@ const CheckoutForm = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.4 }}
+                  className={styles.formSection}
                 >
-                  <div className="tst-mb-30">
-                    <h5>Детайли за доставка</h5>
+                  <div className={styles.sectionTitle}>
+                    <Truck size={24} />
+                    <span>Детайли за доставка</span>
                   </div>
-                  
+
                   <div className="row">
                     <div className="col-lg-12">
-                      <CustomInput
-                        label="Име и фамилия *"
-                        name="customerName"
-                        placeholder="Вашето име"
-                        value={values.customerName}
-                        error={errors.customerName}
-                        touched={touched.customerName}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
+                      <div className={styles.inputGroup}>
+                        <label>
+                          <User size={16} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+                          Име и фамилия *
+                        </label>
+                        <input
+                          name="customerName"
+                          placeholder="Вашето име"
+                          value={values.customerName}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className={errors.customerName && touched.customerName ? 'error' : ''}
+                        />
+                        {errors.customerName && touched.customerName && (
+                          <motion.span
+                            initial={{ opacity: 0, y: -5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className={styles.errorMessage}
+                          >
+                            {errors.customerName}
+                          </motion.span>
+                        )}
+                      </div>
                     </div>
                     <div className="col-lg-12">
-                      <CustomInput
-                        label="Телефон *"
-                        name="phone"
-                        placeholder="0888 000 000"
-                        value={values.phone}
-                        error={errors.phone}
-                        touched={touched.phone}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
+                      <div className={styles.inputGroup}>
+                        <label>
+                          <Phone size={16} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+                          Телефон *
+                        </label>
+                        <input
+                          name="phone"
+                          placeholder="0888 000 000"
+                          value={values.phone}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className={errors.phone && touched.phone ? 'error' : ''}
+                        />
+                        {errors.phone && touched.phone && (
+                          <motion.span
+                            initial={{ opacity: 0, y: -5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className={styles.errorMessage}
+                          >
+                            {errors.phone}
+                          </motion.span>
+                        )}
+                      </div>
                     </div>
                     <div className="col-lg-12">
-                      <CustomInput
-                        label="Адрес за доставка *"
-                        name="address"
-                        placeholder="Град, улица, номер..."
-                        value={values.address}
-                        error={errors.address}
-                        touched={touched.address}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
+                      <div className={styles.inputGroup}>
+                        <label>
+                          <MapPin size={16} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+                          Адрес за доставка *
+                        </label>
+                        <input
+                          name="address"
+                          placeholder="Град, улица, номер..."
+                          value={values.address}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          className={errors.address && touched.address ? 'error' : ''}
+                        />
+                        {errors.address && touched.address && (
+                          <motion.span
+                            initial={{ opacity: 0, y: -5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className={styles.errorMessage}
+                          >
+                            {errors.address}
+                          </motion.span>
+                        )}
+                      </div>
                     </div>
                     <div className="col-lg-12">
-                      <div className="tst-group-input">
-                        <label>Бележки (опционално)</label>
+                      <div className={styles.inputGroup}>
+                        <label>
+                          <MessageSquare size={16} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+                          Бележки (опционално)
+                        </label>
                         <textarea
                           name="notes"
                           placeholder="Бележки към ресторанта или куриера"
                           value={values.notes}
                           onChange={handleChange}
                           onBlur={handleBlur}
-                          className="tst-input"
                         />
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex justify-end mt-30">
+                  <div className={styles.actionButtons}>
+                    <div></div>
                     <CustomButton
+                      type="button"
                       onClick={() => {
                         // Mark fields as touched to show errors if any
                         const fields = ['customerName', 'phone', 'address'];
@@ -201,7 +251,7 @@ const CheckoutForm = () => {
                       className="tst-btn-with-icon"
                     >
                       <span>Напред към плащане</span>
-                      <ChevronRight size={18} className="ml-10" />
+                      <ChevronRight size={18} style={{ marginLeft: '8px' }} />
                     </CustomButton>
                   </div>
                 </motion.div>
@@ -214,9 +264,11 @@ const CheckoutForm = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4 }}
+                  className={styles.formSection}
                 >
-                  <div className="tst-mb-30">
-                    <h5>Метод на плащане</h5>
+                  <div className={styles.sectionTitle}>
+                    <CreditCard size={24} />
+                    <span>Метод на плащане</span>
                   </div>
 
                   <PaymentSelector
@@ -225,16 +277,21 @@ const CheckoutForm = () => {
                   />
 
                   {status && (
-                    <div className={`form-status ${status.type} text-center mt-30 p-15 rounded-md ${status.type === 'error' ? 'bg-red-500/10 text-red-500 border border-red-500/20' : ''}`}>
-                      {status.message}
-                    </div>
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`${styles.statusMessage} ${status.type === 'error' ? styles.error : styles.success}`}
+                    >
+                      <AlertCircle size={18} />
+                      <span>{status.message}</span>
+                    </motion.div>
                   )}
 
-                  <div className="flex justify-between items-center mt-60">
+                  <div className={styles.actionButtons}>
                     <button
                       type="button"
                       onClick={() => setStep(1)}
-                      className="flex items-center gap-2 text-white/60 hover:text-white transition-colors"
+                      className={styles.backButton}
                     >
                       <ChevronLeft size={18} />
                       <span>Назад към доставка</span>
@@ -245,7 +302,7 @@ const CheckoutForm = () => {
                       loading={isSubmitting}
                       className="tst-btn-main tst-btn-with-icon"
                     >
-                      <Package size={18} className="mr-10" />
+                      <Package size={18} style={{ marginRight: '8px' }} />
                       <span>{values.paymentMethod === 'cash' ? 'Завърши поръчката' : 'Към плащане'}</span>
                     </CustomButton>
                   </div>
@@ -255,9 +312,8 @@ const CheckoutForm = () => {
           </form>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 
 export default CheckoutForm;
-

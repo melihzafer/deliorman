@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useCartStore } from "@/store/cart-store";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, X, Trash2, ArrowRight } from "lucide-react";
+import { ShoppingBag, X, Trash2, ArrowRight, UtensilsCrossed } from "lucide-react";
+import styles from "@/app/_styles/scss/MiniCart.module.scss";
 
 const MiniCart = () => {
     const items = useCartStore(state => state.items);
@@ -37,64 +38,78 @@ const MiniCart = () => {
     };
 
     return (
-        <div className="flex flex-col h-full">
-            <div className="tst-minicart-header">
-                <div className="flex items-center justify-center gap-2 mb-10">
-                    <ShoppingBag size={18} className="text-accent" />
-                    <h5 className="m-0">Вашата поръчка</h5>
+        <div className={styles.miniCart}>
+            {/* Header */}
+            <div className={styles.header}>
+                <div className={styles.titleWrapper}>
+                    <ShoppingBag size={20} />
+                    <h5>Вашата поръчка</h5>
                 </div>
-                <div className="tst-divider-center"></div>
+                {items.length > 0 && (
+                    <p className={styles.itemCount}>
+                        {items.length} {items.length === 1 ? 'продукт' : 'продукта'}
+                    </p>
+                )}
             </div>
 
-            <div className="flex-grow overflow-hidden relative">
-                <AnimatePresence mode="popLayout">
+            {/* Content */}
+            <div className={styles.content}>
+                <AnimatePresence mode="wait">
                     {items.length === 0 ? (
-                        <motion.div 
+                        <motion.div
                             key="empty"
-                            initial={{ opacity: 0, scale: 0.9 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            className="flex flex-col items-center justify-center h-full p-40 text-center"
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className={styles.emptyState}
                         >
-                            <div className="w-100 h-100 rounded-full bg-white/5 flex items-center justify-center mb-20">
-                                <ShoppingBag size={48} className="text-white/20" />
+                            <div className={styles.emptyIcon}>
+                                <ShoppingBag size={40} />
                             </div>
-                            <p className="tst-text mb-20">Количката е празна</p>
-                            <Link href="/menu" className="tst-btn tst-btn-2">Към менюто</Link>
+                            <p>Количката е празна</p>
+                            <Link href="/shop" className="tst-btn">
+                                Поръчай сега
+                            </Link>
                         </motion.div>
                     ) : (
-                        <motion.ul 
+                        <motion.ul
                             key="list"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            className="woocommerce-mini-cart cart_list product_list_widget p-0 m-0 overflow-y-auto max-h-[400px]"
+                            exit={{ opacity: 0 }}
+                            className={styles.cartList}
                         >
                             <AnimatePresence>
                                 {items.map((item) => (
-                                    <motion.li 
+                                    <motion.li
                                         key={item.id}
                                         layout
                                         initial={{ opacity: 0, x: -20 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        exit={{ opacity: 0, x: 20 }}
-                                        className="woocommerce-mini-cart-item relative flex items-center gap-15 p-15 border-b border-white/5 hover:bg-white/5 transition-colors group"
+                                        exit={{ opacity: 0, x: 20, height: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                        className={styles.cartItem}
                                     >
-                                        <div className="relative w-60 h-60 min-w-[60px] rounded-md overflow-hidden">
-                                            <img src={item.image || '/img/menu/1.webp'} alt={item.name} className="object-cover w-full h-full" />
-                                        </div>
-                                        
-                                        <div className="flex-grow">
-                                            <h6 className="text-sm m-0 mb-5 leading-tight">{item.name}</h6>
-                                            <span className="text-xs text-white/40">
-                                                {item.quantity} × <span className="text-accent">{item.price.toFixed(2)} лв.</span>
-                                            </span>
+                                        <div className={styles.itemIcon}>
+                                            <UtensilsCrossed size={24} />
                                         </div>
 
-                                        <button 
+                                        <div className={styles.itemDetails}>
+                                            <h6 className={styles.itemName}>{item.name}</h6>
+                                            <div className={styles.itemMeta}>
+                                                <span className={styles.quantity}>{item.quantity}</span>
+                                                {' × '}
+                                                <span className={styles.price}>{item.price.toFixed(2)} лв.</span>
+                                            </div>
+                                        </div>
+
+                                        <button
                                             onClick={(e) => removeFromCart(e, item.id)}
-                                            className="opacity-0 group-hover:opacity-100 p-8 rounded-full bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all transform scale-90 group-hover:scale-100"
+                                            className={styles.removeButton}
+                                            title="Премахни"
                                         >
-                                            <Trash2 size={14} />
+                                            <X size={16} />
                                         </button>
                                     </motion.li>
                                 ))}
@@ -104,23 +119,28 @@ const MiniCart = () => {
                 </AnimatePresence>
             </div>
 
+            {/* Footer */}
             {items.length > 0 && (
-                <div className="p-30 bg-black/20 border-t border-white/5">
-                    <div className="flex justify-between items-center mb-20">
-                        <span className="text-xs uppercase tracking-widest font-bold opacity-40">Междинна сума</span>
-                        <span className="text-xl font-bold">{subtotal.toFixed(2)} лв.</span>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={styles.footer}
+                >
+                    <div className={styles.subtotal}>
+                        <span className={styles.label}>Междинна сума</span>
+                        <span className={styles.amount}>{subtotal.toFixed(2)} лв.</span>
                     </div>
-                    
-                    <div className="grid grid-cols-2 gap-10">
-                        <Link href="/cart" className="tst-btn tst-btn-2 text-center py-15">
+
+                    <div className={styles.actions}>
+                        <Link href="/cart" className={styles.cartButton}>
                             Количка
                         </Link>
-                        <Link href="/checkout" className="tst-btn flex items-center justify-center gap-2 py-15">
+                        <Link href="/checkout" className={styles.checkoutButton}>
                             <span>Поръчай</span>
                             <ArrowRight size={16} />
                         </Link>
                     </div>
-                </div>
+                </motion.div>
             )}
         </div>
     );

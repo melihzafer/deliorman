@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-
 import AppData from "@data/app.json";
 import ScrollHint from "@layouts/scroll-hint/Index";
-
 import PageBanner from "@components/PageBanner";
 import CheckoutForm from "@components/forms/CheckoutForm";
-
 import Link from "next/link";
 import { useCartStore } from "@/store/cart-store";
+import { motion } from "framer-motion";
+import { UtensilsCrossed } from "lucide-react";
+import styles from "@/app/_styles/scss/Checkout.module.scss";
 
 const Checkout = () => {
   const items = useCartStore(state => state.items);
@@ -32,7 +32,12 @@ const Checkout = () => {
                       <section className="tst-p-90-90">
                         <div className="container" data-sticky-container>
                           {items.length === 0 ? (
-                            <div className="text-center" style={{ padding: '60px 0' }}>
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="text-center"
+                              style={{ padding: '60px 0' }}
+                            >
                               <h4>Количката е празна</h4>
                               <p className="tst-text" style={{ marginTop: '20px' }}>Добавете продукти, за да продължите с поръчката.</p>
                               <Link href="/menu" className="tst-btn tst-btn-with-icon" style={{ marginTop: '30px' }}>
@@ -41,71 +46,58 @@ const Checkout = () => {
                                 </span>
                                 <span>Разгледайте менюто</span>
                               </Link>
-                            </div>
+                            </motion.div>
                           ) : (
                             <div className="row">
                               <div className="col-lg-8">
                                 <CheckoutForm />
                               </div>
                               <div className="col-lg-4">
+                                <motion.div
+                                  initial={{ opacity: 0, x: 20 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: 0.2 }}
+                                  className={styles.orderSummary}
+                                  style={{ position: 'sticky', top: '140px' }}
+                                >
+                                  <div className={styles.summaryTitle}>Обобщение на поръчката</div>
 
-                                <div className="tst-pad-type-2 tst-sticky" data-margin-top="120">
-                                  <div className="tst-co-cart-frame">
-                                    <div className="tst-cart-table">
-                                      <div className="tst-cart-table-header">
-                                        <div className="row">
-                                          <div className="col-lg-9">Продукт</div>
-                                          <div className="col-lg-3 text-right">Общо</div>
+                                  <div style={{ marginBottom: '24px' }}>
+                                    {items.map((item) => (
+                                      <div key={item.id} className={styles.summaryItem}>
+                                        <div className={styles.itemImage}>
+                                          {item.image ? (
+                                            <img src={item.image} alt={item.name} />
+                                          ) : (
+                                            <UtensilsCrossed size={24} />
+                                          )}
+                                        </div>
+                                        <div className={styles.itemDetails}>
+                                          <div className={styles.itemName}>{item.name}</div>
+                                          <div className={styles.itemQuantity}>x{item.quantity}</div>
+                                        </div>
+                                        <div className={styles.itemPrice}>
+                                          {(item.price * item.quantity).toFixed(2)} лв.
                                         </div>
                                       </div>
+                                    ))}
+                                  </div>
 
-                                      {items.map((item) => (
-                                      <div className="tst-cart-item" key={item.id}>
-                                        <div className="row align-items-center">
-                                          <div className="col-lg-9">
-                                            <Link className="tst-product" href="/product">
-                                              <div className="tst-cover-frame">
-                                                <img src={item.image || '/img/menu/1.webp'} alt={item.name} />
-                                              </div>
-                                              <div className="tst-prod-description">
-                                                <h6 className="tst-mb-15">{item.name}</h6>
-                                                <p className="tst-text tst-text-sm">x{item.quantity}</p>
-                                              </div>
-                                            </Link>
-                                          </div>
-                                          <div className="col-lg-3 text-md-right">
-                                            <div className="tst-price-2"><span>Общо: </span>лв.{(item.price * item.quantity).toFixed(2)}</div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      ))}
-
-                                      <div className="tst-cart-total tst-cart-total-2">
-                                        <div className="tst-sum">
-                                          <div className="row">
-                                            <div className="col-6">
-                                              <div className="tst-total-title">Междинна сума:</div>
-                                            </div>
-                                            <div className="col-6">
-                                              <div className="tst-price-1 text-right">{subtotal.toFixed(2)} лв.</div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                        <div className="tst-realy-sum">
-                                          <div className="row">
-                                            <div className="col-6">
-                                              <div className="tst-total-title">Общо:</div>
-                                            </div>
-                                            <div className="col-6">
-                                              <div className="tst-price-2 text-right">{subtotal.toFixed(2)} лв.</div>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
+                                  <div className={styles.summaryTotal}>
+                                    <div className={styles.totalRow}>
+                                      <div className={styles.label}>Междинна сума:</div>
+                                      <div className={styles.value}>{subtotal.toFixed(2)} лв.</div>
+                                    </div>
+                                    <div className={styles.totalRow}>
+                                      <div className={styles.label}>Доставка:</div>
+                                      <div className={styles.value}>Безплатна</div>
+                                    </div>
+                                    <div className={`${styles.totalRow} ${styles.final}`}>
+                                      <div className={styles.label}>Общо:</div>
+                                      <div className={styles.value}>{subtotal.toFixed(2)} лв.</div>
                                     </div>
                                   </div>
-                                </div>
-
+                                </motion.div>
                               </div>
                             </div>
                           )}

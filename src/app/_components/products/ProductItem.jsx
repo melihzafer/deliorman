@@ -1,56 +1,37 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useCartStore } from "@/store/cart-store";
-
+import { Plus, Check } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-const ProductItem = ({ item, index, marginBottom, moreType }) => {
+const ProductItem = ({ item }) => {
   const addItem = useCartStore(state => state.addItem);
-  const getItemCount = useCartStore(state => state.getItemCount);
+  const [isAdded, setIsAdded] = useState(false);
+  const [img, setImg] = useState(false);
+  const [imgValue, setImgValue] = useState([]);
 
-  const cartTotal = getItemCount();
-
-  useEffect(() => {
-    const cartNumberEl = document.querySelector('.tst-cart-number');
-    if (cartNumberEl) {
-      cartNumberEl.innerHTML = cartTotal.toString();
-    }
-  }, [cartTotal]);
-
-  const addToCart = (e) => {
+  const handleAddToCart = (e) => {
     e.preventDefault();
 
-    // Add item to cart store
     addItem({
-      id: item.id || `item-${Date.now()}`,
+      id: item.id || item.title.toLowerCase().replace(/\s+/g, '-'),
       name: item.title,
-      price: parseFloat(item.price) || parseFloat(item.weight) || 0,
+      price: parseFloat(item.price) || 0,
       image: item.image,
       description: item.short,
     });
 
-    const cartNumberEl = document.querySelector('.tst-cart-number');
-    if (cartNumberEl) {
-      cartNumberEl.classList.add('tst-added');
-      setTimeout(() => {
-        cartNumberEl.classList.remove('tst-added');
-      }, 600);
-    }
-
-    if (e.currentTarget) {
-      e.currentTarget.classList.add('tst-added');
-    }
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
   }
 
-  const [img, setImg] = useState(false);
-  const [imgValue, setImgValue] = useState([]);
-  
   return (
     <>
       <div className="tst-menu-book-item">
-        <a href={item.image} data-fancybox="menu2" className="tst-item-cover-frame tst-cursor-zoom" onClick={ (e) => { e.preventDefault(); setImg(true); setImgValue( [{ "src": item.image, "alt": item.title }] ); }}>
+        <a href={item.image} className="tst-item-cover-frame tst-cursor-zoom" onClick={ (e) => { e.preventDefault(); setImg(true); setImgValue( [{ "src": item.image, "alt": item.title }] ); }}>
           <img src={item.image} alt={item.title} />
           <span className="tst-overlay"></span>
         </a>
@@ -60,17 +41,52 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
             <div className="tst-text">{item.short}</div>
             <div className="tst-spacer-sm"></div>
           </div>
-          <div className="tst-menu-book-bottom">
+          <div className="tst-menu-book-bottom flex items-center justify-between">
             <div className="tst-menu-book-price">
-              <del><span className="tst-price tst-old-price"><bdi><span className="tst-symbol">{item.currency}</span>{item.old_price}</bdi></span></del>
-              <div className="tst-price">{item.weight}</div>
+              {item.old_price && (
+                <del><span className="tst-price tst-old-price"><bdi><span className="tst-symbol">{item.currency}</span>{item.old_price}</bdi></span></del>
+              )}
+              <div className="tst-price">{item.price} <span className="text-xs uppercase opacity-70">{item.currency}</span></div>
             </div>
-            {/* <a href="#." className="tst-btn tst-cart-btn" title="add to cart" onClick={(e) => addToCart(e) }>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                <path
-                  d="M87.7,33.1l-0.8-10.8C86,10.4,76,1,64,1s-22.1,9.4-22.9,21.3l-0.8,10.8H28.8c-4.7,0-8.6,3.7-9,8.4l-5.4,75.9c0,0,0,0,0,0 c-0.2,2.5,0.7,5,2.4,6.8s4.1,2.9,6.6,2.9h81.3c2.5,0,4.9-1,6.6-2.9c1.7-1.8,2.6-4.3,2.4-6.8l-5.4-75.2c-0.4-5.1-4.6-9-9.7-9H87.7z M47.1,22.7C47.7,13.9,55.1,7,64,7s16.3,6.9,16.9,15.7l0.7,10.4H46.3L47.1,22.7z M102.3,42.6l5.4,75.2c0.1,0.8-0.2,1.6-0.8,2.3 c-0.6,0.6-1.4,1-2.2,1H23.4c-0.8,0-1.6-0.3-2.2-1s-0.9-1.4-0.8-2.3h0l5.4-75.9c0.1-1.6,1.4-2.8,3-2.8h11.1l-0.6,8 c-0.1,1.7,1.1,3.1,2.8,3.2c0.1,0,0.1,0,0.2,0c1.6,0,2.9-1.2,3-2.8l0.6-8.4h36.2l0.6,8.4c0.1,1.7,1.5,2.9,3.2,2.8 c1.7-0.1,2.9-1.5,2.8-3.2l-0.6-8h10.5C100.5,39.1,102.1,40.6,102.3,42.6z" />
-              </svg>
-            </a> */}
+
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleAddToCart}
+              className={`tst-btn flex items-center gap-8 ${isAdded ? 'tst-btn-secondary' : 'tst-btn-main'}`}
+              style={{ 
+                height: '38px', 
+                lineHeight: '38px', 
+                padding: '0 15px',
+                backgroundColor: isAdded ? '#2ecc71' : undefined
+              }}
+            >
+              <AnimatePresence mode="wait">
+                {isAdded ? (
+                  <motion.span 
+                    key="added"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="flex items-center gap-5"
+                  >
+                    <Check size={14} />
+                    <span style={{ fontSize: '10px' }}>Добавено</span>
+                  </motion.span>
+                ) : (
+                  <motion.span 
+                    key="add"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="flex items-center gap-5"
+                  >
+                    <Plus size={14} />
+                    <span style={{ fontSize: '10px' }}>Добави</span>
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </motion.button>
           </div>
         </div>
       </div>

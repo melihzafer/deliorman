@@ -43,6 +43,9 @@
       ],
       "@data/*": [
         "./src/data/*"
+      ],
+      "@store/*": [
+        "./src/store/*"
       ]
     }
   },
