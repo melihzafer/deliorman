@@ -168,6 +168,9 @@ const Layouts = ({ children }) => {
       <body
         style={{
           backgroundImage: `url(${AppData.settings.bgImage})`,
+          backgroundSize: '200%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
         }}
         suppressHydrationWarning
       >

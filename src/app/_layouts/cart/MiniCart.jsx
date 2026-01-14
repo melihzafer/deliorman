@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useCartStore } from "@/store/cart-store";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, X, Trash2, ArrowRight, UtensilsCrossed } from "lucide-react";
+import { ShoppingBag, X, Trash2, ArrowRight, UtensilsCrossed, History } from "lucide-react";
 import styles from "@/app/_styles/scss/MiniCart.module.scss";
 
 const MiniCart = ({ onClose }) => {
@@ -47,6 +47,16 @@ const MiniCart = ({ onClose }) => {
             >
                 <X size={20} />
             </button>
+
+            {/* Order History Button */}
+            <Link
+                href="/order-history"
+                className={styles.historyButton}
+                aria-label="Order history"
+                title="История на поръчките"
+            >
+                <History size={20} />
+            </Link>
 
             {/* Header */}
             <div className={styles.header}>

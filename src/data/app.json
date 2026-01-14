@@ -2,7 +2,7 @@
     "settings": {
         "siteName": "Ресторант Делиорман",
         "siteDescription": "Ресторант Делиорман предлага уникално кулинарно изживяване с традиционни български и регионални ястия, приготвени с най-качествени местни продукти в уютна и автентична атмосфера.",
-        "bgImage": "/img/bg.webp",
+        "bgImage": "/img/bg2.webp",
         "formspreeURL": "https://formspree.io/f/YOUR_FORM_ID",
         "mailchimp": {
             "url": "https://YOUR_MAILCHIMP_COMPANY.us21.list-manage.com/subscribe/post?u=YOUR_MAILCHIMP_FORM_UID&amp;id=YOUR_MAILCHIMP_FORM_ID&amp;f_id=YOUR_MAILCHIMP_FORM_FID",

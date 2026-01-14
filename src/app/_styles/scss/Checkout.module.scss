@@ -423,6 +423,68 @@
   }
 }
 
+// Auto-fill Banner
+.autoFillBanner {
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(243, 156, 18, 0.05) 100%);
+  border: 2px solid rgba(243, 156, 18, 0.2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+
+  .bannerContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: darken($ac, 10%);
+    font-size: 14px;
+    font-weight: 500;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    strong {
+      font-weight: 700;
+      color: darken($ac, 15%);
+    }
+  }
+}
+
+// Remember Checkbox
+.rememberCheckbox {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--checkout-border);
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: $ac;
+      cursor: pointer;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    span {
+      font-size: 15px;
+      color: var(--checkout-text-secondary);
+      font-weight: 500;
+      transition: color $tr-sm;
+    }
+
+    &:hover span {
+      color: var(--checkout-text-primary);
+    }
+  }
+}
+
 // Responsive
 @media (max-width: 768px) {
   .stepIndicator {

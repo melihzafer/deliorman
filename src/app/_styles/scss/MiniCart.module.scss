@@ -56,6 +56,41 @@
   }
 }
 
+// History Button
+.historyButton {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(243, 156, 18, 0.1) 0%, rgba(243, 156, 18, 0.05) 100%);
+  border: 1px solid rgba(243, 156, 18, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  color: $ac;
+  text-decoration: none;
+
+  &:hover {
+    background: linear-gradient(135deg, rgba(243, 156, 18, 0.15) 0%, rgba(243, 156, 18, 0.08) 100%);
+    border-color: rgba(243, 156, 18, 0.3);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($ac, 0.2);
+  }
+}
+
 // Header
 .header {
   padding: 24px 24px 20px;

@@ -1,14 +1,16 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Formik } from 'formik';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from "@/store/cart-store";
+import { useContactInfoStore } from "@/store/contact-info-store";
+import { useOrderHistoryStore } from "@/store/order-history-store";
 import { checkoutSchema } from '@/lib/validations/checkout';
 import { CustomButton } from '../ui/CustomButton';
 import { PaymentSelector } from './PaymentSelector';
-import { Package, CreditCard, ChevronRight, ChevronLeft, MapPin, Phone, User, MessageSquare, Truck, AlertCircle } from 'lucide-react';
+import { Package, CreditCard, ChevronRight, ChevronLeft, MapPin, Phone, User, MessageSquare, Truck, AlertCircle, Save } from 'lucide-react';
 import styles from '@/app/_styles/scss/Checkout.module.scss';
 
 const CheckoutForm = () => {
@@ -18,6 +20,20 @@ const CheckoutForm = () => {
   const clearCart = useCartStore(state => state.clearCart);
   const [step, setStep] = useState(1); // 1: Delivery, 2: Payment
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Contact info management
+  const savedContact = useContactInfoStore(state => state.savedContact);
+  const saveContact = useContactInfoStore(state => state.saveContact);
+  const hasContact = useContactInfoStore(state => state.hasContact);
+  const [rememberInfo, setRememberInfo] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  // Order history
+  const addOrder = useOrderHistoryStore(state => state.addOrder);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
 
 
@@ -42,12 +58,13 @@ const CheckoutForm = () => {
 
       <Formik
         initialValues={{
-          customerName: '',
-          phone: '',
-          address: '',
+          customerName: mounted && savedContact ? savedContact.name : '',
+          phone: mounted && savedContact ? savedContact.phone : '',
+          address: mounted && savedContact ? savedContact.address : '',
           notes: '',
           paymentMethod: 'cash'
         }}
+        enableReinitialize={true}
         validate={values => {
           const errors = {};
           const result = checkoutSchema.safeParse({
@@ -100,6 +117,37 @@ const CheckoutForm = () => {
             }
 
             if (data.success) {
+              // Save contact info if user opted in
+              if (rememberInfo) {
+                saveContact({
+                  name: values.customerName,
+                  phone: values.phone,
+                  address: values.address,
+                });
+              }
+
+              // Save order to history
+              const orderHistory = {
+                orderId: data.orderId,
+                date: new Date().toISOString(),
+                items: items.map(item => ({
+                  id: item.id,
+                  name: item.name,
+                  price: item.price,
+                  quantity: item.quantity,
+                })),
+                total: items.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                paymentMethod: values.paymentMethod,
+                status: 'pending',
+                customer: {
+                  name: values.customerName,
+                  phone: values.phone,
+                  address: values.address,
+                },
+                notes: values.notes,
+              };
+              addOrder(orderHistory);
+
               if (values.paymentMethod === 'cash') {
                 clearCart();
                 router.push(`/success?orderId=${data.orderId}&method=cash`);
@@ -139,6 +187,20 @@ const CheckoutForm = () => {
                     <Truck size={24} />
                     <span>Детайли за доставка</span>
                   </div>
+
+                  {/* Auto-fill banner */}
+                  {mounted && hasContact() && savedContact && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={styles.autoFillBanner}
+                    >
+                      <div className={styles.bannerContent}>
+                        <Save size={18} />
+                        <span>Използваме запазената информация за <strong>{savedContact.name}</strong></span>
+                      </div>
+                    </motion.div>
+                  )}
 
                   <div className="row">
                     <div className="col-lg-12">
@@ -231,6 +293,18 @@ const CheckoutForm = () => {
                         />
                       </div>
                     </div>
+                  </div>
+
+                  {/* Remember info checkbox */}
+                  <div className={styles.rememberCheckbox}>
+                    <label>
+                      <input
+                        type="checkbox"
+                        checked={rememberInfo}
+                        onChange={(e) => setRememberInfo(e.target.checked)}
+                      />
+                      <span>Запази информацията ми за следващ път</span>
+                    </label>
                   </div>
 
                   <div className={styles.actionButtons}>
