@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { checkoutSchema } from '@/lib/validations/checkout';
 import { getPaymentProvider } from '@/lib/payment';
 import { sendOrderNotification } from '@/lib/telegram';
+import { getGoogleSheetsService } from '@/lib/google-sheets';
 import { OrderData } from '@/lib/payment/types';
 
 export async function POST(request: Request) {
@@ -58,6 +59,12 @@ export async function POST(request: Request) {
         order: orderData,
         type: 'cash',
       });
+
+      // Save to Google Sheets (if configured)
+      const sheetsService = getGoogleSheetsService();
+      if (sheetsService) {
+        await sheetsService.appendOrder(orderData, 'cash');
+      }
 
       return NextResponse.json({
         success: true,

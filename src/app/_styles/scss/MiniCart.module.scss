@@ -10,10 +10,50 @@
   --minicart-text-muted: #9ca3af;
   --minicart-radius: 12px;
 
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   background: var(--minicart-bg);
+  width: 400px;
+
+  @media (max-width: 576px) {
+    width: 100%;
+  }
+}
+
+// Close Button
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--minicart-hover);
+  border: 1px solid var(--minicart-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  color: var(--minicart-text-secondary);
+
+  &:hover {
+    background: var(--minicart-border);
+    color: var(--minicart-text-primary);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($ac, 0.2);
+  }
 }
 
 // Header

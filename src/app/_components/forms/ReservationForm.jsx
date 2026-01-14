@@ -668,6 +668,7 @@ const ReservationForm = () => {
           justify-content: center;
           padding: 20px;
           z-index: 9999;
+          overflow-y: auto;
         }
 
         .tst-reservation-modal {
@@ -675,8 +676,48 @@ const ReservationForm = () => {
           max-width: 520px;
           background: #fff;
           border-radius: 14px;
-          padding: 22px;
+          padding: 32px 24px;
           box-shadow: 0 12px 34px rgba(0, 0, 0, 0.25);
+          max-height: 90vh;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        @media (max-width: 576px) {
+          .tst-reservation-modal-overlay {
+            padding: 10px;
+            align-items: flex-start;
+            padding-top: 10px;
+          }
+
+          .tst-reservation-modal {
+            padding: 20px 16px;
+            border-radius: 12px;
+            max-height: none;
+            margin: 0 auto;
+            min-height: auto;
+          }
+
+          .tst-reservation-modal h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+          }
+
+          .tst-reservation-modal h6 {
+            font-size: 16px;
+            margin-bottom: 12px;
+          }
+
+          .tst-reservation-modal p {
+            font-size: 14px;
+            line-height: 1.5;
+          }
+
+          .tst-reservation-modal .tst-btn {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 14px;
+          }
         }
 
         .tst-guests-row {
@@ -714,17 +755,35 @@ const ReservationForm = () => {
         .tst-privacy-consent-label {
           display: flex;
           gap: 10px;
-          align-items: center;
+          align-items: flex-start;
           cursor: pointer;
           user-select: none;
           margin-bottom: 3em;
         }
 
         .tst-privacy-consent-label input {
-          
           width: 25px;
           height: 25px;
           margin: 0 3em 7px 0;
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 576px) {
+          .tst-privacy-consent-label {
+            gap: 8px;
+            margin-bottom: 1.5em;
+          }
+
+          .tst-privacy-consent-label input {
+            width: 20px;
+            height: 20px;
+            margin: 2px 0 0 0;
+          }
+
+          .tst-privacy-consent-label span {
+            font-size: 13px;
+            line-height: 1.4;
+          }
         }
 
         .tst-privacy-consent-mini {
@@ -736,6 +795,15 @@ const ReservationForm = () => {
           text-decoration: underline;
           color: inherit;
           opacity: 0.85;
+          font-size: inherit;
+        }
+
+        @media (max-width: 576px) {
+          .tst-privacy-consent-mini {
+            margin-left: 4px;
+            font-size: 12px;
+            display: inline-block;
+          }
         }
 
         @media (max-width: 767px) {

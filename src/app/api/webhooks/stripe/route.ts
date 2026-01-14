@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getPaymentProvider } from '@/lib/payment';
 import { sendOrderNotification } from '@/lib/telegram';
+import { getGoogleSheetsService } from '@/lib/google-sheets';
 
 export async function POST(request: Request) {
   try {
@@ -22,6 +23,12 @@ export async function POST(request: Request) {
         order: result.orderData,
         type: 'paid',
       });
+
+      // Save to Google Sheets (if configured)
+      const sheetsService = getGoogleSheetsService();
+      if (sheetsService) {
+        await sheetsService.appendOrder(result.orderData, 'card');
+      }
 
       console.log(`Order ${result.orderId} notification sent to Telegram`);
     }

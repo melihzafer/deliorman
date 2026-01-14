@@ -19,6 +19,7 @@
     "date-fns": "^3.6.0",
     "formik": "^2.4.5",
     "framer-motion": "^12.25.0",
+    "googleapis": "^170.0.0",
     "gray-matter": "^4.0.3",
     "isotope-layout": "^3.0.6",
     "lucide-react": "^0.562.0",

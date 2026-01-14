@@ -11,7 +11,8 @@ import {
   Flame,
   Search,
   ShoppingCart,
-  Sparkles
+  Sparkles,
+  CheckCircle
 } from 'lucide-react';
 
 import { useCartStore } from '@store/cart-store';
@@ -40,6 +41,7 @@ const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
+  const [toasts, setToasts] = useState([]);
   const addItem = useCartStore((state) => state.addItem);
 
   useEffect(() => {
@@ -55,6 +57,14 @@ const Shop = () => {
       });
   }, []);
 
+  const showToast = (message, itemName) => {
+    const id = Date.now();
+    setToasts(prev => [...prev, { id, message, itemName }]);
+    setTimeout(() => {
+      setToasts(prev => prev.filter(toast => toast.id !== id));
+    }, 3000);
+  };
+
   const handleAddToCart = (item, category) => {
     addItem({
       id: `${category.slug}-${item.title}`,
@@ -64,6 +74,7 @@ const Shop = () => {
       image: null,
       quantity: 1
     });
+    showToast('Добавено в количката', item.title);
   };
 
   if (loading) {
@@ -111,6 +122,30 @@ const Shop = () => {
 
   return (
     <div className={styles.shopContainer}>
+      {/* Toast Notifications */}
+      <div className={styles.toastContainer}>
+        <AnimatePresence>
+          {toasts.map((toast) => (
+            <motion.div
+              key={toast.id}
+              className={styles.toast}
+              initial={{ opacity: 0, y: -50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+            >
+              <div className={styles.toastIcon}>
+                <CheckCircle size={20} />
+              </div>
+              <div className={styles.toastContent}>
+                <p className={styles.toastMessage}>{toast.message}</p>
+                <p className={styles.toastItem}>{toast.itemName}</p>
+              </div>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
       {/* Hero Section */}
       <motion.div
         className={styles.hero}

@@ -56,8 +56,8 @@ const SuccessContent = () => {
             >
               <div className="flex justify-center mb-40">
                 <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1, rotate: [0, 10, -10, 0] }}
+                  initial={{ scale: 0, rotate: -10 }}
+                  animate={{ scale: 1, rotate: 0 }}
                   transition={{ delay: 0.3, type: "spring", stiffness: 260, damping: 20 }}
                   className="w-120 h-120 rounded-full bg-accent/20 flex items-center justify-center border-4 border-accent"
                 >

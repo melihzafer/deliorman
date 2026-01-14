@@ -7,12 +7,83 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   padding-bottom: 60px;
+  position: relative;
+}
+
+// Toast Notifications
+.toastContainer {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+
+  @media (max-width: 640px) {
+    left: 20px;
+    right: 20px;
+    top: 80px;
+  }
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.05);
+  min-width: 300px;
+  pointer-events: auto;
+
+  @media (max-width: 640px) {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .toastIcon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  }
+
+  .toastContent {
+    flex-grow: 1;
+
+    .toastMessage {
+      margin: 0 0 4px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    .toastItem {
+      margin: 0;
+      font-size: 13px;
+      color: #6b7280;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
 }
 
 // Hero Section
 .hero {
   position: relative;
-  background: linear-gradient(135deg, $ac 0%, darken($ac, 10%) 100%);
+  background: linear-gradient(135deg, $ac 0%, #d68910 100%);
   padding: 80px 20px 60px;
   text-align: center;
   overflow: hidden;
@@ -159,6 +230,11 @@
       svg {
         transform: scale(1.1);
       }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($ac, 0.2);
     }
 
     &.active {
@@ -339,7 +415,7 @@
       align-items: center;
       gap: 8px;
       padding: 12px 20px;
-      background: linear-gradient(135deg, $ac 0%, darken($ac, 5%) 100%);
+      background: linear-gradient(135deg, $ac 0%, #d68910 100%);
       color: $dl1;
       border: none;
       border-radius: 12px;
@@ -359,6 +435,11 @@
       &:hover {
         box-shadow: 0 6px 16px rgba($ac, 0.4);
         transform: translateY(-2px);
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($ac, 0.2), 0 6px 16px rgba($ac, 0.4);
       }
 
       &:active {

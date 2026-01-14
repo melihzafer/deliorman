@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, X, Trash2, ArrowRight, UtensilsCrossed } from "lucide-react";
 import styles from "@/app/_styles/scss/MiniCart.module.scss";
 
-const MiniCart = () => {
+const MiniCart = ({ onClose }) => {
     const items = useCartStore(state => state.items);
     const removeItem = useCartStore(state => state.removeItem);
     const getItemCount = useCartStore(state => state.getItemCount);
@@ -39,6 +39,15 @@ const MiniCart = () => {
 
     return (
         <div className={styles.miniCart}>
+            {/* Close Button */}
+            <button
+                onClick={onClose}
+                className={styles.closeButton}
+                aria-label="Close cart"
+            >
+                <X size={20} />
+            </button>
+
             {/* Header */}
             <div className={styles.header}>
                 <div className={styles.titleWrapper}>
