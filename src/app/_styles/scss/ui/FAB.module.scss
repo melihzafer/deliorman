@@ -29,6 +29,15 @@
     transform: scale(0.95);
   }
 
+  &:focus {
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 4px rgba($ac, 0.3);
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // Restore normal shadow
+  }
+
   @media (max-width: 768px) {
     bottom: 20px;
     right: 20px;

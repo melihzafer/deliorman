@@ -39,8 +39,8 @@
     font-size: 16px;
     font-weight: 500;
     color: $dl1;
-    transition: all $tr-sm;
     outline: none;
+    transition: all $tr-sm;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 
     &::placeholder {
@@ -56,6 +56,7 @@
       border-color: $ac;
       box-shadow: 0 0 0 4px rgba($ac, 0.1);
       background: #ffffff;
+      outline: none;
     }
 
     &.error {
@@ -154,6 +155,11 @@
       border-radius: 12px;
       font-weight: 600;
       transition: all $tr-sm;
+
+      &:focus {
+          outline: none;
+          box-shadow: 0 0 0 4px rgba($ac, 0.2);
+      }
   }
   
   .cancelButton {
@@ -164,6 +170,12 @@
       &:hover {
           background: rgba($dl1, 0.05);
           color: $dl1;
+          border-color: rgba($dl1, 0.2);
+      }
+
+      &:focus {
+          outline: none;
+          box-shadow: 0 0 0 4px rgba($dl1, 0.05);
           border-color: rgba($dl1, 0.2);
       }
   }
