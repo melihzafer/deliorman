@@ -213,7 +213,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
       <div className={styles.actions}>
         <button
           type="submit"
-          className="tst-btn"
+          className={styles.submitButton}
           disabled={isSubmitting}
         >
           {isSubmitting ? "Изпраща се..." : "Изпрати"}

@@ -155,10 +155,37 @@
       border-radius: 12px;
       font-weight: 600;
       transition: all $tr-sm;
+      cursor: pointer;
+      border: none;
+      font-family: $sf;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 0.5px;
 
       &:focus {
           outline: none;
           box-shadow: 0 0 0 4px rgba($ac, 0.2);
+      }
+      
+      &:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+      }
+  }
+
+  .submitButton {
+      background: $ac;
+      color: $wl1;
+      box-shadow: 0 4px 12px rgba($ac, 0.2);
+
+      &:hover:not(:disabled) {
+          filter: brightness(108%);
+          transform: translateY(-1px);
+          box-shadow: 0 6px 16px rgba($ac, 0.3);
+      }
+
+      &:active:not(:disabled) {
+          transform: translateY(0);
       }
   }
   
