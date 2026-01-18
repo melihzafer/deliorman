@@ -25,6 +25,12 @@ scrollbar
 ::-webkit-scrollbar-thumb:hover {
   filter:brightness(108%);
 }
+
+#reservation-popup {
+ overflow-y: auto; 
+ overflow-x: hidden;
+}
+
 /*-------------------------
 typography
 -------------------------*/

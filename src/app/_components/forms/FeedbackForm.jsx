@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import styles from "./FeedbackForm.module.scss";
+import styles from "../../_styles/scss/ui/FeedbackForm.module.scss";
 
 const CATEGORIES = [
   { value: "", label: "Изберете категория (по избор)" },

@@ -125,6 +125,9 @@ export const FeedbackModal = ({ isOpen, onClose, onSuccess }) => {
                 </svg>
               </button>
             </div>
+            <p className={styles.modalDescription}>
+              Вашето мнение е изключително важно за нас.
+            </p>
             <FeedbackForm onSuccess={handleSuccess} onClose={onClose} />
           </motion.div>
         </motion.div>
