@@ -33,6 +33,7 @@ import StructuredData from "@components/StructuredData";
 import ClientBoot from "@components/ClientBoot";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { FeedbackFAB } from "@components/ui/FeedbackFAB";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
@@ -184,6 +185,9 @@ const Layouts = ({ children }) => {
           {children}
         </div>
         {/* app wrapper end */}
+
+        {/* Feedback FAB */}
+        <FeedbackFAB />
 
         {/* Vercel Analytics */}
         {process.env.NODE_ENV === 'production' ? (

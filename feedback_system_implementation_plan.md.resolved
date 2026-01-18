@@ -1,0 +1,90 @@
+# Anonymous Feedback System - Implementation Plan
+
+## overview
+This document outlines the architecture for an anonymous user feedback system for the Deliorman restaurant web application. The system includes a dedicated feedback page and a "Quick Action" Floating Action Button (FAB) for easy access.
+
+## Functional Requirements
+1.  **Dedicated Page (`/feedback`)**: A standalone page for submitting feedback.
+2.  **Quick Action Interface (FAB)**: A floating button in the bottom-right corner triggering a modal/pop-up.
+
+## Architecture & File Structure
+
+### 1. Route Structure
+We will create a new route in the App Router to serve the dedicated feedback page.
+
+*   **Path**: `/feedback`
+*   **File**: `src/app/(pages)/feedback/page.jsx`
+*   **Description**: This page will host the main `FeedbackForm` and provide a user-friendly interface with consistent branding (banners, headers).
+
+### 2. Components
+We will introduce new components to handle the UI logic.
+
+#### A. Feedback FAB (Quick Action)
+*   **File**: `src/app/_components/ui/FeedbackFAB.jsx`
+*   **Location**: Integrated into [src/app/layout.jsx](file:///d:/Projects/Web/deliorman/src/app/layout.jsx) to ensure global visibility (or conditionally rendered if preferred).
+*   **Behavior**: 
+    *   Fixed position (Bottom-Right).
+    *   On click: Opens `FeedbackModal`.
+    *   Responsive: Visible on mobile and desktop.
+*   **Styling**: `src/app/_styles/scss/ui/FAB.module.scss` (New file).
+
+#### B. Feedback Modal
+*   **File**: `src/app/_components/ui/FeedbackModal.jsx`
+*   **Description**: A comprehensive modal that renders the `FeedbackForm` over the current content.
+*   **Dependencies**: `framer-motion` for smooth entry/exit animations (already present in [package.json](file:///d:/Projects/Web/deliorman/package.json)).
+
+#### C. Feedback Form
+*   **File**: `src/app/_components/forms/FeedbackForm.jsx`
+*   **Description**: The core form logic handling validation and submission.
+*   **Dependencies**: 
+    *   `formik` for form state management.
+    *   `zod` for schema validation (e.g., minimum character length).
+*   **Fields**:
+    *   `message` (Textarea, required): The feedback content.
+    *   `rating` (Optional): Star rating (1-5).
+    *   `category` (Optional): Dropdown (e.g., Service, Food, Vibes).
+*   **Reuse**: Will utilize existing `CustomInput` and `CustomButton` from `src/app/_components/ui`.
+
+### 3. Styling Strategy
+We will adhere to the existing SCSS architecture.
+
+*   **Global/Common**: Use `_common.scss` for shared variables (colors, fonts).
+*   **Component Scope**: Use CSS Modules for new components to avoid side effects.
+    *   `src/app/(pages)/feedback/Feedback.module.scss` for the page layout.
+    *   `src/app/_components/ui/FAB.module.scss` for the button.
+
+### 4. API & Data Handling (Design Only)
+To support anonymous feedback without a database, we will use a serverless function to forward feedback via email or append to a Google Sheet (as hinted by existing docs).
+
+*   **API Route**: `src/app/api/feedback/route.js`
+*   **Method**: `POST`
+*   **Payload**: `{ message: string, rating?: number, category?: string }`
+*   **Action**: 
+    *   Validate payload using `zod`.
+    *   Send email alert to restaurant admin using `resend` (already in `package.json`).
+    *   Return 200 OK.
+
+## Implementation Steps (No Code Execution)
+
+1.  **Create Styles**: Set up SCSS modules for FAB and Feedback Page.
+2.  **Create Components**:
+    *   Implement `FeedbackForm.jsx` with validation.
+    *   Implement `FeedbackModal.jsx` wrapping the form.
+    *   Implement `FeedbackFAB.jsx` to toggle the modal.
+3.  **Create Page**: Add `src/app/(pages)/feedback/page.jsx` including the banner and form.
+4.  **Integrate**: Add `<FeedbackFAB />` to `src/app/layout.jsx` inside the `<body>`.
+5.  **Backend**: Create the API route handler.
+
+## Verification Plan
+
+### Automated Tests
+*   **Unit Tests**: Test `FeedbackForm` validation logic (e.g., empty message shows error).
+*   **Integration**: Ensure FAB opens the modal.
+
+### Manual Verification
+1.  **Navigate to `/feedback`**: Verify the page loads with the correct banner and form.
+2.  **Click FAB**: Verify the button appears in the bottom-right and opens the modal.
+3.  **Submit Form**: 
+    *   Test empty submission (should fail validation).
+    *   Test valid submission (should show success toast/message).
+4.  **Responsiveness**: Check UI on Mobile vs Desktop (FAB positioning).
