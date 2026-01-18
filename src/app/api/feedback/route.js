@@ -13,6 +13,14 @@ const feedbackSchema = z.object({
     .max(1000, 'Съобщението не може да надвишава 1000 символа'),
   rating: z.number().int().min(1).max(5).optional().nullable(),
   category: z.enum(['service', 'food', 'vibes', 'other']).optional().nullable(),
+  termsAccepted: z
+    .boolean({
+      required_error: 'Моля, приемете условията за ползване',
+      invalid_type_error: 'Невалидна стойност за условията',
+    })
+    .refine((val) => val === true, {
+      message: 'Моля, приемете условията за ползване преди изпращане',
+    }),
 });
 
 export async function POST(request) {

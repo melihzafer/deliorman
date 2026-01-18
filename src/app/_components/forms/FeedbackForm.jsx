@@ -29,6 +29,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
     message: "",
     rating: "",
     category: "",
+    termsAccepted: false,
   });
   const [touched, setTouched] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,8 +40,11 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
   const messageLength = values.message.length;
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setValues((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value
+    }));
   };
 
   const handleBlur = (e) => {
@@ -49,7 +53,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
   };
 
   const resetForm = () => {
-    setValues({ message: "", rating: "", category: "" });
+    setValues({ message: "", rating: "", category: "", termsAccepted: false });
     setTouched({});
     setServerErrors({});
     setSubmitError("");
@@ -59,10 +63,10 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
     e.preventDefault();
 
     // Mark all fields as touched
-    setTouched({ message: true, rating: true, category: true });
+    setTouched({ message: true, rating: true, category: true, termsAccepted: true });
 
     // Validate before submitting
-    if (messageError) {
+    if (messageError || !values.termsAccepted) {
       return;
     }
 
@@ -80,6 +84,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           message: values.message,
           rating: values.rating ? parseInt(values.rating) : undefined,
           category: values.category || undefined,
+          termsAccepted: values.termsAccepted,
         }),
       });
 
@@ -205,6 +210,36 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
             </motion.div>
         )}
       </AnimatePresence>
+
+      <div className={styles.termsGroup}>
+        <label className={styles.checkboxLabel}>
+          <input
+            type="checkbox"
+            name="termsAccepted"
+            checked={values.termsAccepted}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={touched.termsAccepted && !values.termsAccepted ? styles.error : ''}
+          />
+          <span className={styles.checkmark}></span>
+          <span className={styles.labelText}>
+            Съгласен/на съм съобщението ми да бъде изпратено анонимно и разбирам, че
+            не мога да получа отговор. <span className={styles.required}>*</span>
+          </span>
+        </label>
+        <AnimatePresence>
+          {touched.termsAccepted && !values.termsAccepted && (
+            <motion.div
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className={styles.errorMessage}
+            >
+              <span>⚠</span> Моля, приемете условията за изпращане
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
       <div className={styles.disclaimer}>
         <span>🔒</span> Всички съобщения са анонимни и се изпращат сигурно.

@@ -100,11 +100,92 @@
     margin-bottom: 8px;
     border: 1px solid rgba($dl1, 0.05);
     line-height: 1.4;
-    
+
     span {
         font-size: 18px;
         filter: grayscale(1); // Muted lock icon
         opacity: 0.7;
+    }
+}
+
+.termsGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    position: relative;
+    padding-left: 32px;
+
+    input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .checkmark {
+            background: $ac;
+            border-color: $ac;
+
+            &::after {
+                display: block;
+            }
+        }
+
+        &:focus ~ .checkmark {
+            box-shadow: 0 0 0 4px rgba($ac, 0.15);
+        }
+
+        &.error ~ .checkmark {
+            border-color: $auxc1;
+            background: rgba($auxc1, 0.05);
+        }
+    }
+
+    .checkmark {
+        position: absolute;
+        left: 0;
+        top: 2px;
+        height: 20px;
+        width: 20px;
+        background: #ffffff;
+        border: 2px solid rgba($dl1, 0.2);
+        border-radius: 6px;
+        transition: all $tr-sm;
+
+        &::after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    }
+
+    &:hover .checkmark {
+        border-color: rgba($dl1, 0.35);
+    }
+
+    .labelText {
+        font-size: 14px;
+        color: rgba($dl1, 0.7);
+        line-height: 1.5;
+
+        .required {
+            color: $ac;
+            margin-left: 2px;
+        }
     }
 }
 
