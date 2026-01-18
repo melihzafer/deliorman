@@ -9,6 +9,7 @@ const DEFAULT_ALLOWED_ORIGINS = [
   'https://deliorman.vercel.app',
   'https://restorantdeliorman.com',
   'https://www.restorantdeliorman.com',
+  'https://deliorman-git-dev-mzh-projcets.vercel.app/',
 ];
 
 function getAllowedOrigins() {
