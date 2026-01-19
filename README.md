@@ -25,6 +25,39 @@
 - **Deployment:** Vercel / Netlify
 - **Analytics:** Google Analytics (optional)
 
+## ⚙️ Environment Variables
+
+This project requires several environment variables to be configured. Create a `.env` file in the root directory based on `.env.example`.
+
+### Required Variables (Server-side)
+
+- `RESEND_API_KEY` - API key for Resend email service
+- `TELEGRAM_BOT_TOKEN` - Telegram bot token from BotFather
+- `TELEGRAM_RESERVATIONS_CHAT_ID` - Telegram chat/channel ID for reservation notifications
+- `TELEGRAM_DISABLE` - Set to `true` to disable Telegram notifications (useful for local development)
+
+### Optional Variables
+
+- `NEXT_PUBLIC_SITE_URL` - Your site's production URL (e.g., https://restorantdeliorman.com)
+- `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` - Mapbox token for map integration
+- `NEXT_PUBLIC_OPENTABLE_RESTAURANT_ID` - OpenTable restaurant ID
+- `NEXT_PUBLIC_FORMSPREE_URL` - Formspree form endpoint
+- `NEXT_PUBLIC_MAILCHIMP_URL` - Mailchimp subscription URL
+- `NEXT_PUBLIC_MAILCHIMP_KEY` - Mailchimp API key
+- `RESERVATION_RATE_WINDOW_SECONDS` - Time window for rate limiting (default: 86400)
+- `RESERVATION_RATE_MAX` - Maximum reservations per window (default: 5)
+
+### Setup Instructions
+
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Fill in your actual API keys and tokens in the `.env` file
+
+3. **Important:** Never commit the `.env` file to version control. It's already in `.gitignore` for your protection.
+
 ## 🚀 Key Sections
 
 ### Hero Section
