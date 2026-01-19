@@ -26,8 +26,18 @@ function getAllowedOrigins() {
 // IP-based Rate Limiting for Spam Protection
 // ============================================
 
-// In-memory store for rate limiting (resets on server restart)
-// For production with multiple instances, consider using Redis
+// In-memory store for rate limiting
+// LIMITATIONS:
+// - Resets on every server restart or redeployment
+// - In serverless environments (e.g., Vercel), each function instance maintains
+//   its own Map, making rate limiting ineffective across multiple instances
+// RECOMMENDATIONS:
+// - For production with multiple instances or serverless deployments, use Redis
+//   or similar persistent storage for effective rate limiting
+// - This in-memory approach works well for:
+//   * Single-instance deployments
+//   * Low-traffic scenarios
+//   * Development/testing environments
 const rateLimitStore = new Map();
 
 // Rate limit configuration per route type
