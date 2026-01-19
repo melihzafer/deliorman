@@ -29,6 +29,11 @@ function getAllowedOrigins() {
 // In-memory store for rate limiting
 // LIMITATIONS:
 // - Resets on every server restart or redeployment
+// - In serverless environments (like Vercel), each function instance maintains
+//   its own Map, making rate limiting ineffective across multiple instances
+// RECOMMENDATIONS:
+// - For production with multiple instances: Use Redis or similar persistent storage
+// - This implementation works well for:
 // - In serverless environments (e.g., Vercel), each function instance maintains
 //   its own Map, making rate limiting ineffective across multiple instances
 // RECOMMENDATIONS:
