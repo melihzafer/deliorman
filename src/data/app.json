@@ -33,10 +33,7 @@
                 "label": "Начало",
                 "link": "/",
                 "children": [
-                    {
-                        "label": "Начален екран",
-                        "link": "/"
-                    }
+                 
                 ]
             },
             
@@ -76,17 +73,22 @@
             {
                 "label": "Галерия",
                 "link": "/gallery",
-                "children": 0
+                "children": []
             },
             {
                 "label": "Контакти",
                 "link": "/contact",
-                "children": 0
+                "children": []
             },
              {
                 "label": "Резервация",
                 "link": "/reservation",
-                "children": 0
+                "children": []
+            },
+             {
+                "label": "Отзив",
+                "link": "/feedback",
+                "children": []
             }
            
         ],

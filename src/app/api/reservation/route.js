@@ -1,5 +1,13 @@
 import { NextResponse } from 'next/server';
+import { getClientIp } from '@library/client-ip';
 
+export const runtime = 'nodejs';
+
+/**
+ * Normalize Bulgarian phone number to E.164 format
+ * @param {string|number} input - The raw phone number input
+ * @returns {string} - Normalized phone number in E.164 format
+ */
 function normalizeBgPhone(input) {
   const raw = String(input ?? '').trim();
   if (!raw) return '';
@@ -18,6 +26,11 @@ function normalizeBgPhone(input) {
   return s;
 }
 
+/**
+ * Validate Bulgarian phone number
+ * @param {string|number} input - The raw phone number input
+ * @returns {Object} - Validation result { ok, normalized, message }
+ */
 function validateBgPhone(input) {
   const normalized = normalizeBgPhone(input);
   if (!normalized) {
@@ -40,6 +53,11 @@ function validateBgPhone(input) {
   return { ok: true, normalized, message: '' };
 }
 
+/**
+ * Escape HTML special characters in a string
+ * @param {string} text - The input text
+ * @returns {string} - The text with escaped HTML characters
+ */
 function escapeHtml(text) {
   return String(text ?? '')
     .replace(/&/g, '&amp;')
@@ -47,14 +65,20 @@ function escapeHtml(text) {
     .replace(/>/g, '&gt;');
 }
 
+/**
+ * Send reservation details to Telegram via bot
+ * @param {Object} params - Parameters for sending Telegram message
+ * @param {string} params.text - The message text
+ * @param {Object} [params.replyMarkup] - Optional reply markup (inline keyboard)
+ * @returns {Promise<Object>} - Telegram API response
+ */
 async function sendTelegramReservation({ text, replyMarkup }) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_RESERVATIONS_CHAT_ID;
   const isTelegramDisabled = String(process.env.TELEGRAM_DISABLE || '').toLowerCase() === 'true';
 
   if (isTelegramDisabled) {
-    console.log('[reservation] TELEGRAM_DISABLE=true -> skipping Telegram send');
-    console.log(text);
+    // Intentionally do nothing when Telegram is disabled.
     return { ok: true, skipped: true };
   }
 
@@ -84,6 +108,12 @@ async function sendTelegramReservation({ text, replyMarkup }) {
   return payload;
 }
 
+/**
+ * Parse date and time from separate strings to JavaScript Date object
+ * @param {string} dateStr - Date string (YYYY-MM-DD)
+ * @param {string} timeStr - Time string (HH:mm)
+ * @returns {Date|null} - Parsed Date object or null if invalid
+ */
 function parseDateTimeLocal(dateStr, timeStr) {
   // dateStr: YYYY-MM-DD, timeStr: HH:mm
   if (!dateStr || !timeStr) return null;
@@ -93,6 +123,11 @@ function parseDateTimeLocal(dateStr, timeStr) {
   return new Date(y, m - 1, d, hh, mm, 0, 0);
 }
 
+/**
+ * Round up a date to the next hour
+ * @param {Date} date - The input date
+ * @returns {Date} - The rounded date
+ */
 function roundUpToNextHour(date) {
   const d = new Date(date);
   d.setMinutes(0, 0, 0);
@@ -110,18 +145,15 @@ const RATE_LIMIT_MAX = Number(process.env.RESERVATION_RATE_MAX || 5);
 // In-memory rate limiter (per process)
 const memoryRate = globalThis.__reservationRate || (globalThis.__reservationRate = new Map());
 
-function getClientId(request) {
-  // Best-effort identifier for rate limiting only.
-  const xff = request.headers.get('x-forwarded-for');
-  const first = xff ? xff.split(',')[0].trim() : '';
-  const xri = (request.headers.get('x-real-ip') || '').trim();
-  return first || xri || 'unknown';
-}
-
+/**
+ * Check if the request is rate limited
+ * @param {Request} request - The incoming request object
+ * @returns {Promise<boolean>} - True if rate limited, false otherwise
+ */
 async function isRateLimited(request) {
-  // Memory only
-  const clientId = getClientId(request);
-  const keyBase = `reservation:rate:${clientId}`;
+  // Memory only - using IP as identifier
+  const { ip: clientIp } = getClientIp(request);
+  const keyBase = `reservation:rate:${clientIp}`;
   const now = Date.now();
   const windowMs = RATE_LIMIT_WINDOW_SECONDS * 1000;
   const entry = memoryRate.get(keyBase) || { count: 0, resetAt: now + windowMs };
@@ -172,6 +204,10 @@ export function OPTIONS() {
 
 export async function POST(request) {
   try {
+    // Capture client IP for security/audit purposes
+    const ipInfo = getClientIp(request);
+    const clientIp = ipInfo.ip;
+
     // Basic rate limit
     if (await isRateLimited(request)) {
       return NextResponse.json(
@@ -338,12 +374,18 @@ export async function POST(request) {
       '<b>📝 Съобщение:</b>',
       safeMessage ? safeMessage : '—',
       '',
+      '━━━━━━━━━━━━━━━━━━━━━━━',
+      '<b>🔒 Информация за сигурност:</b>',
+      `<b>🌐 IP адрес:</b> <code>${escapeHtml(clientIp)}</code>`,
+      '',
       `<b>⚠️ Статус:</b> <b>НЕПОТВЪРДЕНА</b> (очаква обаждане)`,
       '',
       `📲 За набиране (копирай/тапни): ${escapeHtml(telLink)}`,
       '',
       `<i>⏱️ Изпратено:</i> ${escapeHtml(new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }))}`,
     ].join('\n');
+
+    // Reservations are sent to Telegram only (no email).
 
     // Telegram Bot API rejects tel: URLs in inline_keyboard buttons.
     await sendTelegramReservation({ text: telegramText });
@@ -355,8 +397,6 @@ export async function POST(request) {
     });
 
   } catch (error) {
-    console.error('Reservation form error:', error);
-
     const detail = typeof error?.message === 'string' ? error.message : '';
     const extraHelp = detail.includes('Telegram send failed')
       ? 'Проверете TELEGRAM_BOT_TOKEN, TELEGRAM_RESERVATIONS_CHAT_ID и дали ботът е admin в канала.'

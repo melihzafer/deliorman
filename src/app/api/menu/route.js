@@ -7,11 +7,10 @@ export async function GET() {
       success: true,
       data: menuData
     });
-  } catch (error) {
-    console.error('Menu API error:', error);
+  } catch {
     return NextResponse.json(
-      { 
-        success: false, 
+      {
+        success: false,
         error: 'Failed to fetch menu data'
       },
       { status: 500 }
