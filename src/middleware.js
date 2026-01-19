@@ -34,6 +34,12 @@ function getAllowedOrigins() {
 // RECOMMENDATIONS:
 // - For production with multiple instances: Use Redis or similar persistent storage
 // - This implementation works well for:
+// - In serverless environments (e.g., Vercel), each function instance maintains
+//   its own Map, making rate limiting ineffective across multiple instances
+// RECOMMENDATIONS:
+// - For production with multiple instances or serverless deployments, use Redis
+//   or similar persistent storage for effective rate limiting
+// - This in-memory approach works well for:
 //   * Single-instance deployments
 //   * Low-traffic scenarios
 //   * Development/testing environments
