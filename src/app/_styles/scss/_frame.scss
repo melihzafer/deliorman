@@ -606,17 +606,7 @@ menu
               padding-bottom: 5px;
             }
 
-            // Keep hover support for devices that have it
-            &:hover {
-              & ul {
-                max-height: 300px;
-                // background-color: rgba(0, 0, 0, 0.02);
-                border-radius: 5px;
-                margin-top: 5px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-              }
-            }
+            // Note: Removed :hover rule for mobile - using click toggle only
           }
         }
       }
