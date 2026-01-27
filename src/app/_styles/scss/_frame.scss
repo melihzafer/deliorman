@@ -508,7 +508,7 @@ menu
     }
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 1100px) {
   .tst-menu-frame {
     width: 100%;
     padding: 0;
@@ -587,7 +587,7 @@ menu
               overflow: hidden;
               box-shadow: none;
               height: auto;
-              transition: $tr-lg;
+              transition: max-height 0.4s ease-in-out;
 
               & li {
                 &:first-child {
@@ -596,9 +596,25 @@ menu
               }
             }
 
+            // Mobile click-to-expand (touch devices)
+            & ul.tst-active {
+              max-height: 300px;
+              // background-color: rgba(0, 0, 0, 0.02);
+              border-radius: 5px;
+              margin-top: 5px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+            }
+
+            // Keep hover support for devices that have it
             &:hover {
               & ul {
                 max-height: 300px;
+                // background-color: rgba(0, 0, 0, 0.02);
+                border-radius: 5px;
+                margin-top: 5px;
+                padding-top: 5px;
+                padding-bottom: 5px;
               }
             }
           }

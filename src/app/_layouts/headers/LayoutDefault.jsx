@@ -98,6 +98,8 @@ const DefaultHeader = () => {
                       {item.children && item.children.length > 0 && (
                         <ul
                           className={openSubMenu === index ? "tst-active" : ""}
+                          aria-expanded={openSubMenu === index}
+                          aria-hidden={openSubMenu !== index}
                         >
                           {item.children.map((subitem, subIndex) => (
                             <li
