@@ -191,7 +191,6 @@ menu
             transition: $tr-sm;
           }
 
-
           &.current-menu-item {
             &:after {
               content: "";
@@ -202,17 +201,6 @@ menu
               left: 10%;
               border-radius: 2px 2px 0 0;
             }
-          }
-
-          // Separator
-          &:not(:last-child):before {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 25px; 
-            height: 30px;
-            width: 1px;
-            background-color: rgba(0,0,0,0.05);
           }
 
           &.menu-item-has-children {
@@ -232,8 +220,7 @@ menu
             border-radius: 5px;
             background-color: white;
             flex-direction: column;
-            box-shadow: 0 10px 30px 0 rgba(26, 47, 51, 0.1); // Softened shadow
-            border: 1px solid rgba(0,0,0,0.05); // Subtle border
+            box-shadow: 0 3px 5px 0 rgba(26, 47, 51, 0.2);
             transition: $tr-sm;
 
             &:before {
@@ -269,16 +256,6 @@ menu
                 display: block;
                 line-height: 20px;
                 padding: 0;
-                color: $dl1; // Ensure text color
-                transition: $tr-sm;
-              }
-
-              &:hover {
-                 background-color: rgba(243,156,18,0.05); // Very subtle accent bg on hover
-                 
-                 & a {
-                    color: $ac;
-                 }
               }
 
               & ul {
@@ -385,7 +362,7 @@ menu
       & .tst-res-btn.tst-btn-icon {
         width: 44px;
         height: 44px;
-        padding: 0 0 3px 0;
+        padding: 0 0 2px 0;
         margin-right: 0;
         border-radius: 25%;
         color: #F39C12 !important;
@@ -600,8 +577,6 @@ menu
               }
             }
 
-            }
-            
             & ul {
               opacity: 1;
               top: auto;
@@ -613,17 +588,10 @@ menu
               box-shadow: none;
               height: auto;
               transition: $tr-lg;
-              background-color: rgba(0,0,0,0.02); // Subtle background for mobile nested items
-              border-radius: 5px;
-              margin-top: 5px;
 
               & li {
-                padding-left: 20px; // Indent nested items
                 &:first-child {
                   margin-top: 15px;
-                }
-                &:last-child {
-                    margin-bottom: 15px;
                 }
               }
             }
@@ -636,8 +604,8 @@ menu
           }
         }
       }
-    
-    // ANCHOR FOR RIGHT MENU ADJUSTMENTS
+    }
+  // ANCHOR FOR RIGHT MENU ADJUSTMENTS
     & .tst-menu-right {
       width: auto;
       // margin-left: 2em;
