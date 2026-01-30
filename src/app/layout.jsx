@@ -173,6 +173,11 @@ const Layouts = ({ children }) => {
         }}
         suppressHydrationWarning
       >
+        {/* Skip to main content link for keyboard/screen reader users */}
+        <a href="#main-content" className="tst-skip-link">
+          Прескочи към съдържанието
+        </a>
+
         {/* Structured data (JSON-LD). This can be safely included in the body. */}
         <StructuredData />
 
@@ -184,7 +189,9 @@ const Layouts = ({ children }) => {
         {/* app wrapper */}
         <div id="tst-app" className="tst-app">
           <CartProvider>
-            {children}
+            <main id="main-content">
+              {children}
+            </main>
           </CartProvider>
         </div>
         {/* app wrapper end */}

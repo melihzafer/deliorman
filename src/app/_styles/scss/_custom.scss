@@ -365,3 +365,91 @@ mapbox
     display: none;
   }
 }
+
+/*-------------------------
+Accessibility - Skip Link
+--------------------------*/
+.tst-skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999999;
+  background-color: $dl1;
+  color: $wl1;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0 0 8px 8px;
+  transition: top 0.2s ease-in-out;
+  
+  &:focus {
+    top: 0;
+    outline: 2px solid $ac;
+    outline-offset: 2px;
+  }
+}
+
+/*-------------------------
+Accessibility - Focus Visibility
+--------------------------*/
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid $ac !important;
+  outline-offset: 2px !important;
+}
+
+// Remove outline for mouse users, keep for keyboard
+:focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+/*-------------------------
+Reduced Motion Support
+--------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  // Disable parallax effects
+  .tst-parallax {
+    transform: none !important;
+  }
+  
+  // Disable page transitions
+  .tst-dynamic-banner,
+  .tst-dynamic-content,
+  .tst-dynamic-menu,
+  footer .container {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  
+  // Disable slider autoplay visually
+  .swiper-wrapper {
+    transition-duration: 0ms !important;
+  }
+  
+  // Disable marker animation
+  .mapboxgl-marker svg {
+    animation: none !important;
+  }
+  
+  // Disable hover scale effects
+  .tst-slider-btn:hover,
+  .swiper-pagination-bullet:hover {
+    transform: none !important;
+  }
+}
