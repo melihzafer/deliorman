@@ -31,10 +31,22 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
     category: "",
     termsAccepted: false,
   });
-  const [touched, setTouched] = useState({});
+  // Monomorphic: always same shape to prevent V8 de-optimization
+  const [touched, setTouched] = useState({
+    message: false,
+    rating: false,
+    category: false,
+    termsAccepted: false,
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-  const [serverErrors, setServerErrors] = useState({});
+  // Monomorphic: always same shape to prevent V8 de-optimization
+  const [serverErrors, setServerErrors] = useState({
+    message: "",
+    rating: "",
+    category: "",
+    termsAccepted: "",
+  });
 
   const messageError = validateMessage(values.message);
   const messageLength = values.message.length;
@@ -54,8 +66,9 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
 
   const resetForm = () => {
     setValues({ message: "", rating: "", category: "", termsAccepted: false });
-    setTouched({});
-    setServerErrors({});
+    // Reset to stable shape, not empty object
+    setTouched({ message: false, rating: false, category: false, termsAccepted: false });
+    setServerErrors({ message: "", rating: "", category: "", termsAccepted: "" });
     setSubmitError("");
   };
 
@@ -92,9 +105,10 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
 
       if (!response.ok) {
         if (data.errors && Array.isArray(data.errors)) {
-          const errorMap = {};
+          // Start with stable shape, then populate
+          const errorMap = { message: "", rating: "", category: "", termsAccepted: "" };
           data.errors.forEach((err) => {
-            if (err.field) {
+            if (err.field && err.field in errorMap) {
               errorMap[err.field] = err.message;
             } else {
               setSubmitError(err.message);

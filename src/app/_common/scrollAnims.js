@@ -4,6 +4,8 @@ import Sticky from "sticky-js";
 
 // Global scroll animation listener - only attached once
 let scrollListenerAttached = false;
+let fadeObserver = null;
+let counterObserver = null;
 
 const numberAnimate = (render, from, to, duration, timeFx) => {
     let startTime = performance.now();
@@ -17,62 +19,93 @@ const numberAnimate = (render, from, to, duration, timeFx) => {
     });
 }
 
+// Initialize IntersectionObserver for fade animations (replaces scroll-based checks)
+const initFadeObserver = () => {
+    if (fadeObserver) return;
+    
+    fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !entry.target.classList.contains('tst-active')) {
+                entry.target.classList.add('tst-active');
+                // Once activated, no need to observe anymore
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        rootMargin: '0px 0px -200px 0px', // Trigger 200px before entering viewport
+        threshold: 0
+    });
+    
+    // Observe initial elements
+    const observeFadeElements = () => {
+        document.querySelectorAll('.tst-fade-up:not(.tst-active)').forEach((el) => {
+            fadeObserver.observe(el);
+        });
+    };
+    
+    // Initial observation + delayed for dynamic content
+    observeFadeElements();
+    setTimeout(observeFadeElements, 500);
+    setTimeout(observeFadeElements, 1000);
+};
+
+// Initialize IntersectionObserver for counters
+const initCounterObserver = () => {
+    if (counterObserver) return;
+    
+    counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !entry.target.classList.contains('tst-counted')) {
+                entry.target.classList.add('tst-counted');
+                const countTo = entry.target.getAttribute('data-count');
+                numberAnimate(function(newValue) {
+                    entry.target.innerText = Math.floor(newValue);
+                }, 0, countTo, 3000, x => x);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        rootMargin: '0px 0px -200px 0px',
+        threshold: 0
+    });
+    
+    const observeCounters = () => {
+        document.querySelectorAll('.tst-number:not(.tst-counted)').forEach((el) => {
+            counterObserver.observe(el);
+        });
+    };
+    
+    observeCounters();
+    setTimeout(observeCounters, 500);
+};
+
 // Initialize scroll animations (safely - only once)
 const initScrollListeners = () => {
     if (scrollListenerAttached) return; // Prevent duplicate listeners
     scrollListenerAttached = true;
 
-    // Cache elements to avoid repeated DOM queries
-    let cachedAnimatedElements = null;
+    // Use IntersectionObserver for fade and counter animations (much more efficient)
+    initFadeObserver();
+    initCounterObserver();
+
+    // Cache elements for scroll-based animations (only parallax, slider, menu)
     let cachedMainSliderElements = null;
     let cachedParallaxElements = null;
     let cachedMenu = null;
-    let cachedCounters = null;
     
     // Refresh cache when needed
     const refreshCache = () => {
-        cachedAnimatedElements = document.querySelectorAll('.tst-fade-up');
         cachedMainSliderElements = document.querySelectorAll(".tst-main-title , .tst-main-slider-nav , .tst-main-pagination");
         cachedParallaxElements = document.querySelectorAll(".tst-parallax");
         cachedMenu = document.querySelector(".tst-menu-frame");
-        cachedCounters = document.querySelectorAll(".tst-number");
     };
     
     // Initial cache and periodic refresh for dynamic content
     setTimeout(refreshCache, 100);
-    setTimeout(refreshCache, 500);  // Additional refresh for slower loading content
-    setTimeout(refreshCache, 1000); // Final refresh
-
-    // scrolling fade - optimized with will-change hint
-    const handleScrollFade = () => {
-        // Re-cache if elements are missing (handles dynamic content)
-        if (!cachedAnimatedElements || cachedAnimatedElements.length === 0) {
-            refreshCache();
-        }
-        if (!cachedAnimatedElements || cachedAnimatedElements.length === 0) return;
-        
-        const windowHeight = window.innerHeight;
-        const scrollY = window.scrollY;
-        
-        cachedAnimatedElements.forEach((element) => {
-            const rect = element.getBoundingClientRect();
-            const elementTop = rect.top + scrollY;
-            const bottom_of_object = elementTop - 200 + rect.height;
-            const bottom_of_window = scrollY + windowHeight;
-            
-            if (bottom_of_window > bottom_of_object) {
-                if (!element.classList.contains('tst-active')) {
-                    element.classList.add('tst-active');
-                }
-            }
-        });
-    };
+    setTimeout(refreshCache, 500);
 
     // scrolling main slider - with GPU acceleration
     const handleScrollSlider = () => {
-        if (!cachedMainSliderElements || cachedMainSliderElements.length === 0) {
-            refreshCache();
-        }
         if (!cachedMainSliderElements || cachedMainSliderElements.length === 0) return;
         
         const opacity = Math.max(0, 1 - window.scrollY / 500);
@@ -83,9 +116,6 @@ const initScrollListeners = () => {
 
     // scrolling parallax - optimized with transform3d for GPU
     const handleScrollParallax = () => {
-        if (!cachedParallaxElements || cachedParallaxElements.length === 0) {
-            refreshCache();
-        }
         if (!cachedParallaxElements || cachedParallaxElements.length === 0) return;
         
         const translateY = window.scrollY * 0.3;
@@ -109,42 +139,16 @@ const initScrollListeners = () => {
         }
     };
 
-    // scrolling counters
-    const handleScrollCounters = () => {
-        if (!cachedCounters || cachedCounters.length === 0) {
-            refreshCache();
-        }
-        if (!cachedCounters || cachedCounters.length === 0) return;
-        
-        const windowHeight = window.innerHeight;
-        const scrollY = window.scrollY;
-        
-        cachedCounters.forEach((element) => {
-            if (!element.classList.contains('tst-counted')) {
-                let bottom_of_object = element.offsetTop - 200;
-                let bottom_of_window = scrollY + windowHeight;
-                if (bottom_of_window > bottom_of_object) {
-                    element.classList.add('tst-counted');
-                    var countTo = element.getAttribute('data-count');
-                    numberAnimate(function(newValue) {
-                        element.innerText = Math.floor(newValue);
-                    }, 0, countTo, 3000, x => x);
-                }
-            }
-        });
-    };
-
     // Combined scroll handler with requestAnimationFrame for smooth 60fps
+    // Only parallax, slider opacity, and menu need per-frame updates
     let ticking = false;
     
     const scrollHandler = () => {
         if (!ticking) {
             window.requestAnimationFrame(() => {
-                handleScrollFade();
                 handleScrollSlider();
                 handleScrollParallax();
                 handleScrollMenu();
-                handleScrollCounters();
                 ticking = false;
             });
             ticking = true;

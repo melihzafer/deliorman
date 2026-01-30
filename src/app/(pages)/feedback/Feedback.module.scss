@@ -1,4 +1,4 @@
-@import '../../_styles/scss/variables';
+@use '../../_styles/scss/variables' as *;
 
 .feedbackPage {
   padding-top: 60px;

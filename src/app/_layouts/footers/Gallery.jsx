@@ -3,7 +3,7 @@
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
@@ -11,18 +11,16 @@ import Link from "next/link";
 
 const FooterGalleryModule = ( { items, button } ) => {
   const [img, setImg] = useState(false);
-  const [imgValue, setImgValue] = useState([]);
   const [initialIndex, setInitialIndex] = useState(0);
 
-  // Prepare all images for lightbox
-  const allImages = items.map(item => ({ src: item.image, alt: item.alt }));
+  // Monomorphic: derive slides from props using useMemo (no empty→filled transition)
+  const slides = useMemo(() => items.map(item => ({ src: item.image, alt: item.alt })), [items]);
 
-  const handleImageClick = (e, index) => {
+  const handleImageClick = useCallback((e, index) => {
     e.preventDefault();
     setInitialIndex(index);
-    setImgValue(allImages);
     setImg(true);
-  };
+  }, []);
 
   return (
     <>
@@ -52,9 +50,10 @@ const FooterGalleryModule = ( { items, button } ) => {
         <Lightbox
             open={img}
             close={() => setImg(false)}
-            slides={imgValue}
+            slides={slides}
             index={initialIndex}
             styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
+            controller={{ closeOnBackdropClick: true }}
         />
         {/* footer gallery end */}
     </>

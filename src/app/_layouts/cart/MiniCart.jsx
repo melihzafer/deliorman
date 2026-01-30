@@ -1,29 +1,26 @@
 "use client";
 
-import CartData from "@data/cart.json";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
+import { useCart } from "@library/CartContext";
+import CartData from "@data/cart.json";
 
+/**
+ * MiniCart - Uses CartContext for reactive cart updates
+ * Eliminates DOM queries for cart number updates
+ */
 const MiniCart = () => {
-    const [cartTotal, setCartTotal] = useState(CartData.total);
+    const { removeFromCart } = useCart();
+    const [items, setItems] = useState(CartData.items);
 
-    useEffect(() => {
-        const cartNumberEl = document.querySelector('.tst-cart-number');
-        cartNumberEl.innerHTML = cartTotal;
-    }, [cartTotal]);
-
-    const removeFromCart = (e, key) => {
+    const handleRemoveFromCart = useCallback((e, index) => {
         e.preventDefault();
-        const cartNumberEl = document.querySelector('.tst-cart-number');
-        setCartTotal(cartTotal - 1);
-
-        cartNumberEl.classList.add('tst-added');
-        
-        setTimeout(() => {
-            cartNumberEl.classList.remove('tst-added');
-            document.querySelector('.mini-cart-item-'+key).remove();
-        }, 600);
-    }
+        const item = items[index];
+        if (item) {
+            removeFromCart(item.quantity || 1);
+            setItems(prev => prev.filter((_, i) => i !== index));
+        }
+    }, [items, removeFromCart]);
 
     return (
         <>
@@ -32,9 +29,9 @@ const MiniCart = () => {
                 <h5>Вашата поръчка!</h5>
             </div>
             <ul className="woocommerce-mini-cart cart_list product_list_widget">
-                {CartData.items.map((item, key) => (
-                <li className={`woocommerce-mini-cart-item mini_cart_item mini-cart-item-${key}`}>
-                    <a href="#." className="remove remove_from_cart_button" aria-label="Remove this item" onClick={(e) => removeFromCart(e, key) }>×</a>
+                {items.map((item, index) => (
+                <li key={`mini-cart-item-${index}`} className={`woocommerce-mini-cart-item mini_cart_item mini-cart-item-${index}`}>
+                    <a href="#." className="remove remove_from_cart_button" aria-label="Remove this item" onClick={(e) => handleRemoveFromCart(e, index)}>×</a>
                     <Link href="/product">
                         <img src={item.image} alt={item.title} className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" />
                         {item.title}

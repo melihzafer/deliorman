@@ -19,6 +19,8 @@ const ContactForm = () => {
           message: "",
           privacy_consent: false,
         }}
+        validateOnChange={false}
+        validateOnBlur={true}
         validate={(values) => {
           const errors = {};
 

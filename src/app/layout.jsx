@@ -11,7 +11,7 @@ const josefin_sans = Josefin_Sans({
 })
 
 const playfair_display = Playfair_Display({
-  weight: ['400', '500', '600', '700', '800', '900', '700'],
+  weight: ['400', '500', '600', '700', '800', '900'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   variable: '--font-playfair_display',
@@ -33,6 +33,7 @@ import StructuredData from "@components/StructuredData";
 import ClientBoot from "@components/ClientBoot";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { CartProvider } from "@library/CartContext";
 import { FeedbackFAB } from "@components/ui/FeedbackFAB";
 
 // IMPORTANT: This must match the real canonical domain used in production.
@@ -182,7 +183,9 @@ const Layouts = ({ children }) => {
 
         {/* app wrapper */}
         <div id="tst-app" className="tst-app">
-          {children}
+          <CartProvider>
+            {children}
+          </CartProvider>
         </div>
         {/* app wrapper end */}
 

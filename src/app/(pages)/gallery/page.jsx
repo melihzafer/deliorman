@@ -1,13 +1,219 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import Image from "next/image";
 import PageBanner from "@components/PageBanner";
+
+// ==========================================
+// EXTRACTED STYLES - Module-scoped constants
+// Prevents V8 de-optimization from per-render object allocation
+// ==========================================
+
+/** @type {React.CSSProperties} */
+const EMPTY_IMAGE = { src: '', alt: '', category: '' };
+
+/** @type {React.CSSProperties} */
+const STYLE_FILTER_CONTAINER = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '15px',
+  justifyContent: 'center'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_FILTER_BTN_BASE = {
+  padding: '12px 30px',
+  border: '2px solid #e8e8e8',
+  borderRadius: '8px',
+  fontSize: '15px',
+  fontWeight: '600',
+  cursor: 'pointer',
+  transition: 'all 0.3s ease',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '8px'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_FILTER_BTN_ACTIVE = {
+  ...STYLE_FILTER_BTN_BASE,
+  backgroundColor: '#05232B',
+  color: 'white',
+  border: '2px solid #05232B'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_FILTER_BTN_INACTIVE = {
+  ...STYLE_FILTER_BTN_BASE,
+  backgroundColor: '#f8f9fa',
+  color: '#05232B',
+  border: '2px solid #e8e8e8'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_BADGE_ACTIVE = {
+  backgroundColor: '#f39c12',
+  color: 'white',
+  padding: '2px 8px',
+  borderRadius: '12px',
+  fontSize: '12px',
+  fontWeight: 'bold'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_BADGE_INACTIVE = {
+  backgroundColor: '#05232B',
+  color: 'white',
+  padding: '2px 8px',
+  borderRadius: '12px',
+  fontSize: '12px',
+  fontWeight: 'bold'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_GALLERY_ITEM = {
+  position: 'relative',
+  paddingBottom: '75%',
+  overflow: 'hidden',
+  borderRadius: '12px',
+  cursor: 'pointer',
+  boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
+  transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_GALLERY_OVERLAY = {
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: 'rgba(0,0,0,0)',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  transition: 'background-color 0.3s ease',
+  pointerEvents: 'none'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_GALLERY_ICON = {
+  fontSize: '32px',
+  color: 'white',
+  opacity: 0,
+  transition: 'opacity 0.3s ease'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_LIGHTBOX_BACKDROP = {
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: 'rgba(0,0,0,0.95)',
+  zIndex: 9999,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '20px'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_LIGHTBOX_BTN = {
+  width: '50px',
+  height: '50px',
+  backgroundColor: 'rgba(255,255,255,0.1)',
+  border: '2px solid white',
+  borderRadius: '50%',
+  color: 'white',
+  fontSize: '24px',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s ease',
+  zIndex: 10001
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_LIGHTBOX_CLOSE = {
+  ...STYLE_LIGHTBOX_BTN,
+  position: 'absolute',
+  top: '20px',
+  right: '20px'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_LIGHTBOX_PREV = {
+  ...STYLE_LIGHTBOX_BTN,
+  position: 'absolute',
+  left: '20px'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_LIGHTBOX_NEXT = {
+  ...STYLE_LIGHTBOX_BTN,
+  position: 'absolute',
+  right: '20px'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_LIGHTBOX_IMAGE_CONTAINER = {
+  position: 'relative',
+  width: '90vw',
+  height: '80vh',
+  maxWidth: '1200px'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_LIGHTBOX_IMAGE = {
+  objectFit: 'contain',
+  borderRadius: '8px'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_LIGHTBOX_COUNTER = {
+  position: 'absolute',
+  bottom: '20px',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  backgroundColor: 'rgba(255,255,255,0.1)',
+  padding: '10px 20px',
+  borderRadius: '20px',
+  color: 'white',
+  fontSize: '14px',
+  fontWeight: '600'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_NO_RESULTS_ICON = {
+  fontSize: '64px',
+  color: '#e8e8e8',
+  marginBottom: '20px'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_NO_RESULTS_HEADING = {
+  color: '#04161B'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_SUPTITLE = {
+  color: '#f39c12'
+};
+
+/** @type {React.CSSProperties} */
+const STYLE_SUPTITLE_ICON = {
+  marginRight: '8px'
+};
+
+// ==========================================
+// COMPONENT
+// ==========================================
 
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState(null);
+  // Monomorphic: always same shape, never null
+  const [currentImage, setCurrentImage] = useState(EMPTY_IMAGE);
 
   // Gallery images organized by category
   const galleryImages = useMemo(() => ({
@@ -47,19 +253,20 @@ const Gallery = () => {
     return galleryImages[activeFilter] || [];
   }, [activeFilter, allImages, galleryImages]);
 
-  const openLightbox = (image) => {
+  const openLightbox = useCallback((image) => {
     setCurrentImage(image);
     setLightboxOpen(true);
     document.body.style.overflow = 'hidden';
-  };
+  }, []);
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightboxOpen(false);
-    setCurrentImage(null);
+    // Reset to empty shape, not null (maintains monomorphism)
+    setCurrentImage(EMPTY_IMAGE);
     document.body.style.overflow = 'auto';
-  };
+  }, []);
 
-  const navigateImage = (direction) => {
+  const navigateImage = useCallback((direction) => {
     const currentIndex = filteredImages.findIndex(img => img.src === currentImage.src);
     let newIndex;
     
@@ -70,7 +277,36 @@ const Gallery = () => {
     }
     
     setCurrentImage(filteredImages[newIndex]);
-  };
+  }, [filteredImages, currentImage.src]);
+
+  // Memoized event handlers to prevent per-render function allocation
+  const handleGalleryItemHoverEnter = useCallback((e) => {
+    e.currentTarget.style.transform = 'translateY(-5px)';
+    e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
+  }, []);
+
+  const handleGalleryItemHoverLeave = useCallback((e) => {
+    e.currentTarget.style.transform = 'translateY(0)';
+    e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+  }, []);
+
+  const handleLightboxBtnHoverEnter = useCallback((e) => {
+    e.target.style.backgroundColor = 'rgba(255,255,255,0.2)';
+  }, []);
+
+  const handleLightboxBtnHoverLeave = useCallback((e) => {
+    e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
+  }, []);
+
+  const handleNavigatePrev = useCallback((e) => {
+    e.stopPropagation();
+    navigateImage('prev');
+  }, [navigateImage]);
+
+  const handleNavigateNext = useCallback((e) => {
+    e.stopPropagation();
+    navigateImage('next');
+  }, [navigateImage]);
 
   const filters = [
     { key: 'all', label: 'Всички', icon: 'fa-images' },
@@ -98,8 +334,8 @@ const Gallery = () => {
               <div className="row justify-content-center tst-mb-60">
                 <div className="col-lg-8">
                   <div className="text-center">
-                    <div className="tst-suptitle tst-suptitle-center tst-mb-15" style={{color: '#f39c12'}}>
-                      <i className="fas fa-camera" style={{marginRight: '8px'}}></i>
+                    <div className="tst-suptitle tst-suptitle-center tst-mb-15" style={STYLE_SUPTITLE}>
+                      <i className="fas fa-camera" style={STYLE_SUPTITLE_ICON}></i>
                       Нашите пространства
                     </div>
                     <h3 className="tst-mb-30">Открийте атмосферата на Делиорман</h3>
@@ -113,53 +349,17 @@ const Gallery = () => {
               {/* Filter Buttons */}
               <div className="row justify-content-center tst-mb-60">
                 <div className="col-lg-8">
-                  <div style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '15px',
-                    justifyContent: 'center'
-                  }}>
+                  <div style={STYLE_FILTER_CONTAINER}>
                     {filters.map((filter) => (
                       <button
                         key={filter.key}
                         onClick={() => setActiveFilter(filter.key)}
-                        style={{
-                          padding: '12px 30px',
-                          backgroundColor: activeFilter === filter.key ? '#05232B' : '#f8f9fa',
-                          color: activeFilter === filter.key ? 'white' : '#05232B',
-                          border: `2px solid ${activeFilter === filter.key ? '#05232B' : '#e8e8e8'}`,
-                          borderRadius: '8px',
-                          fontSize: '15px',
-                          fontWeight: '600',
-                          cursor: 'pointer',
-                          transition: 'all 0.3s ease',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '8px'
-                        }}
-                        onMouseEnter={(e) => {
-                          if (activeFilter !== filter.key) {
-                            e.target.style.backgroundColor = '#05232B';
-                            e.target.style.color = 'white';
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (activeFilter !== filter.key) {
-                            e.target.style.backgroundColor = '#f8f9fa';
-                            e.target.style.color = '#05232B';
-                          }
-                        }}
+                        style={activeFilter === filter.key ? STYLE_FILTER_BTN_ACTIVE : STYLE_FILTER_BTN_INACTIVE}
+                        className="gallery-filter-btn"
                       >
                         <i className={`fas ${filter.icon}`}></i>
                         {filter.label}
-                        <span style={{
-                          backgroundColor: activeFilter === filter.key ? '#f39c12' : '#05232B',
-                          color: 'white',
-                          padding: '2px 8px',
-                          borderRadius: '12px',
-                          fontSize: '12px',
-                          fontWeight: 'bold'
-                        }}>
+                        <span style={activeFilter === filter.key ? STYLE_BADGE_ACTIVE : STYLE_BADGE_INACTIVE}>
                           {filter.key === 'all' ? allImages.length : galleryImages[filter.key]?.length || 0}
                         </span>
                       </button>
@@ -172,31 +372,14 @@ const Gallery = () => {
               <div className="row">
                 {filteredImages.map((image, index) => (
                   <div 
-                    className="col-lg-4 col-md-6 tst-mb-30" 
+                    className="col-lg-4 col-md-6 tst-mb-30 gallery-fade-in" 
                     key={`${image.category}-${index}`}
-                    style={{
-                      animation: 'fadeIn 0.5s ease-in-out'
-                    }}
                   >
                     <div 
                       onClick={() => openLightbox(image)}
-                      style={{
-                        position: 'relative',
-                        paddingBottom: '75%',
-                        overflow: 'hidden',
-                        borderRadius: '12px',
-                        cursor: 'pointer',
-                        boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                        transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateY(-5px)';
-                        e.currentTarget.style.boxShadow = '0 8px 25px rgba(0,0,0,0.15)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'translateY(0)';
-                        e.currentTarget.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-                      }}
+                      style={STYLE_GALLERY_ITEM}
+                      onMouseEnter={handleGalleryItemHoverEnter}
+                      onMouseLeave={handleGalleryItemHoverLeave}
                     >
                       <Image 
                         src={image.src}
@@ -208,29 +391,10 @@ const Gallery = () => {
                         loading="lazy"
                       />
                       {/* Overlay */}
-                      <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: 'rgba(0,0,0,0)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        transition: 'background-color 0.3s ease',
-                        pointerEvents: 'none'
-                      }}
-                      className="gallery-overlay"
-                      >
+                      <div style={STYLE_GALLERY_OVERLAY} className="gallery-overlay">
                         <i 
                           className="fas fa-search-plus gallery-icon" 
-                          style={{
-                            fontSize: '32px',
-                            color: 'white',
-                            opacity: 0,
-                            transition: 'opacity 0.3s ease'
-                          }}
+                          style={STYLE_GALLERY_ICON}
                         ></i>
                       </div>
                     </div>
@@ -243,8 +407,8 @@ const Gallery = () => {
                 <div className="row">
                   <div className="col-12">
                     <div className="text-center tst-p-60-60">
-                      <i className="fas fa-images" style={{fontSize: '64px', color: '#e8e8e8', marginBottom: '20px'}}></i>
-                      <h5 style={{color: '#04161B'}}>Няма снимки в тази категория</h5>
+                      <i className="fas fa-images" style={STYLE_NO_RESULTS_ICON}></i>
+                      <h5 style={STYLE_NO_RESULTS_HEADING}>Няма снимки в тази категория</h5>
                     </div>
                   </div>
                 </div>
@@ -256,95 +420,37 @@ const Gallery = () => {
       </div>
 
       {/* Lightbox */}
-      {lightboxOpen && currentImage && (
+      {lightboxOpen && currentImage.src && (
         <div 
           onClick={closeLightbox}
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0,0,0,0.95)',
-            zIndex: 9999,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '20px'
-          }}
+          style={STYLE_LIGHTBOX_BACKDROP}
         >
           {/* Close Button */}
           <button
             onClick={closeLightbox}
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              width: '50px',
-              height: '50px',
-              backgroundColor: 'rgba(255,255,255,0.1)',
-              border: '2px solid white',
-              borderRadius: '50%',
-              color: 'white',
-              fontSize: '24px',
-              cursor: 'pointer',
-              transition: 'background-color 0.3s ease',
-              zIndex: 10001
-            }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.2)'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+            style={STYLE_LIGHTBOX_CLOSE}
+            onMouseEnter={handleLightboxBtnHoverEnter}
+            onMouseLeave={handleLightboxBtnHoverLeave}
           >
             <i className="fas fa-times"></i>
           </button>
 
           {/* Previous Button */}
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              navigateImage('prev');
-            }}
-            style={{
-              position: 'absolute',
-              left: '20px',
-              width: '50px',
-              height: '50px',
-              backgroundColor: 'rgba(255,255,255,0.1)',
-              border: '2px solid white',
-              borderRadius: '50%',
-              color: 'white',
-              fontSize: '24px',
-              cursor: 'pointer',
-              transition: 'background-color 0.3s ease',
-              zIndex: 10001
-            }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.2)'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+            onClick={handleNavigatePrev}
+            style={STYLE_LIGHTBOX_PREV}
+            onMouseEnter={handleLightboxBtnHoverEnter}
+            onMouseLeave={handleLightboxBtnHoverLeave}
           >
             <i className="fas fa-chevron-left"></i>
           </button>
 
           {/* Next Button */}
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              navigateImage('next');
-            }}
-            style={{
-              position: 'absolute',
-              right: '20px',
-              width: '50px',
-              height: '50px',
-              backgroundColor: 'rgba(255,255,255,0.1)',
-              border: '2px solid white',
-              borderRadius: '50%',
-              color: 'white',
-              fontSize: '24px',
-              cursor: 'pointer',
-              transition: 'background-color 0.3s ease',
-              zIndex: 10001
-            }}
-            onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.2)'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = 'rgba(255,255,255,0.1)'}
+            onClick={handleNavigateNext}
+            style={STYLE_LIGHTBOX_NEXT}
+            onMouseEnter={handleLightboxBtnHoverEnter}
+            onMouseLeave={handleLightboxBtnHoverLeave}
           >
             <i className="fas fa-chevron-right"></i>
           </button>
@@ -352,39 +458,20 @@ const Gallery = () => {
           {/* Image */}
           <div 
             onClick={(e) => e.stopPropagation()}
-            style={{
-              position: 'relative',
-              width: '90vw',
-              height: '80vh',
-              maxWidth: '1200px'
-            }}
+            style={STYLE_LIGHTBOX_IMAGE_CONTAINER}
           >
             <Image 
               src={currentImage.src}
               alt={currentImage.alt}
               fill
               sizes="90vw"
-              style={{
-                objectFit: 'contain',
-                borderRadius: '8px'
-              }}
+              style={STYLE_LIGHTBOX_IMAGE}
               priority
             />
           </div>
 
           {/* Image Counter */}
-          <div style={{
-            position: 'absolute',
-            bottom: '20px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            backgroundColor: 'rgba(255,255,255,0.1)',
-            padding: '10px 20px',
-            borderRadius: '20px',
-            color: 'white',
-            fontSize: '14px',
-            fontWeight: '600'
-          }}>
+          <div style={STYLE_LIGHTBOX_COUNTER}>
             {filteredImages.findIndex(img => img.src === currentImage.src) + 1} / {filteredImages.length}
           </div>
         </div>
@@ -402,12 +489,21 @@ const Gallery = () => {
           }
         }
         
+        .gallery-fade-in {
+          animation: fadeIn 0.5s ease-in-out;
+        }
+        
         .gallery-overlay:hover {
           background-color: rgba(0,0,0,0.5) !important;
         }
         
         .gallery-overlay:hover .gallery-icon {
           opacity: 1 !important;
+        }
+        
+        .gallery-filter-btn:hover {
+          background-color: #05232B !important;
+          color: white !important;
         }
       `}</style>
     </>

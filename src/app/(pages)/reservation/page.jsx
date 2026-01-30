@@ -13,7 +13,12 @@ export const metadata = {
     title: {
         default: "Резервация",
     },
-    description: AppData.settings.siteDescription,
+    description: "Резервирайте маса в ресторант Делиорман онлайн или по телефон. Идеално място за семейни празненства, фирмени събития и романтични вечери в Самуил.",
+    openGraph: {
+        title: "Резервация на маса | Ресторант Делиорман",
+        description: "Запазете маса в ресторант Делиорман за незабравимо кулинарно изживяване в село Самуил.",
+        type: "website",
+    },
 }
 
 const Reservation = () => {

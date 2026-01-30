@@ -15,9 +15,14 @@ import SubscribeSection from "@components/sections/Subscribe";
 
 export const metadata = {
   title: {
-		default: "Services",
+		default: "Услуги",
 	},
-  description: AppData.settings.siteDescription,
+  description: "Кетъринг, организиране на събития, сватби и фирмени партита в ресторант Делиорман, село Самуил. Професионално обслужване за всякакви поводи.",
+  openGraph: {
+    title: "Услуги | Ресторант Делиорман",
+    description: "Кетъринг и организиране на събития - сватби, кръщенета, фирмени партита в ресторант Делиорман.",
+    type: "website",
+  },
 }
 
 async function Services() {
