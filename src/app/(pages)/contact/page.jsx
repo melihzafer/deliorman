@@ -13,7 +13,12 @@ export const metadata = {
     title: {
         default: "Контакти",
     },
-    description: AppData.settings.siteDescription,
+    description: "Свържете се с ресторант Делиорман в село Самуил, Разград. Телефон, адрес, работно време и карта за лесно намиране.",
+    openGraph: {
+        title: "Контакти | Ресторант Делиорман",
+        description: "Намерете ни в село Самуил - телефон за резервации, адрес и работно време на ресторант Делиорман.",
+        type: "website",
+    },
 }
 
 const Contact = () => {

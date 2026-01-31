@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
@@ -57,7 +58,15 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
         </div>
         ) : (
         <div className="tst-cover-frame"> 
-          <img src="/img/outdoor_footage/IMG_9339.webp" alt="cover" className="tst-cover tst-parallax" />
+          <Image 
+            src="/img/outdoor_footage/IMG_9339.webp" 
+            alt="Ресторант Делиорман - външен изглед" 
+            fill
+            priority
+            sizes="100vw"
+            className="tst-cover tst-parallax"
+            style={{ objectFit: 'cover' }}
+          />
           <div className="tst-overlay"></div>
         </div>
         )}

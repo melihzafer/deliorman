@@ -57,11 +57,11 @@ p.s. I am available for Freelance hire (UI design, web development). mail: mille
 
 
 --------------------------------------------*/
-@import 'variables';
-@import 'transitions';
-@import 'common';
-@import 'frame';
-@import 'content';
-@import 'menu';
-@import 'shop';
-@import 'custom';
+@use 'variables' as *;
+@use 'transitions';
+@use 'common';
+@use 'frame';
+@use 'content';
+@use 'menu';
+@use 'shop';
+@use 'custom';

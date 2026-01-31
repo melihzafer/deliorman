@@ -139,10 +139,7 @@ const DecorationGallery = () => {
         slides={lightboxSlides}
         index={currentImageIndex}
         styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
-        render={{
-          buttonPrev: currentImageIndex <= 0 ? () => null : undefined,
-          buttonNext: currentImageIndex >= images.length - 1 ? () => null : undefined,
-        }}
+        controller={{ closeOnBackdropClick: true }}
       />
     </>
   );

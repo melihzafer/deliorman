@@ -1,47 +1,44 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
-import CartData from "@data/cart.json";
+import { memo, useState, useCallback, useMemo } from "react";
+import { useCart } from "@library/CartContext";
 
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-const ProductItem = ({ item, index, marginBottom, moreType }) => {
-  const [cartTotal, setCartTotal] = useState(CartData.total);
+/**
+ * ProductItem - Memoized to prevent re-renders when sibling items change
+ * Uses CartContext for reactive cart updates (eliminates DOM queries)
+ */
+const ProductItem = memo(function ProductItem({ item, index, marginBottom, moreType }) {
+  const { addToCart: addToCartContext } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const [buttonAdded, setButtonAdded] = useState(false);
 
-  useEffect(() => {
-    const cartNumberEl = document.querySelector('.tst-cart-number');
-    if (cartNumberEl) {
-      cartNumberEl.innerHTML = cartTotal;
-    }
-  }, [cartTotal]);
-
-  const addToCart = (e) => {
+  const handleAddToCart = useCallback((e) => {
     e.preventDefault();
-    const cartNumberEl = document.querySelector('.tst-cart-number');
-    setCartTotal(cartTotal + quantity);
-
-    if (cartNumberEl) {
-      cartNumberEl.classList.add('tst-added');
-      setTimeout(() => {
-        cartNumberEl.classList.remove('tst-added');
-      }, 600);
-    }
+    addToCartContext(quantity);
     
+    setButtonAdded(true);
     if (e.currentTarget) {
       e.currentTarget.classList.add('tst-added');
     }
-  }
+    setTimeout(() => setButtonAdded(false), 600);
+  }, [addToCartContext, quantity]);
 
   const [img, setImg] = useState(false);
-  const [imgValue, setImgValue] = useState([]);
+  // Monomorphic: derive slides from props using useMemo (no empty→filled transition)
+  const slides = useMemo(() => [{ src: item.image, alt: item.title }], [item.image, item.title]);
+
+  const handleImageClick = useCallback((e) => {
+    e.preventDefault();
+    setImg(true);
+  }, []);
   
   return (
     <>
       <div className="tst-menu-book-item">
-        <a href={item.image} data-fancybox="menu2" className="tst-item-cover-frame tst-cursor-zoom" onClick={ (e) => { e.preventDefault(); setImg(true); setImgValue( [{ "src": item.image, "alt": item.title }] ); }}>
+        <a href={item.image} data-fancybox="menu2" className="tst-item-cover-frame tst-cursor-zoom" onClick={handleImageClick}>
           <img src={item.image} alt={item.title} />
           <span className="tst-overlay"></span>
         </a>
@@ -69,14 +66,11 @@ const ProductItem = ({ item, index, marginBottom, moreType }) => {
       <Lightbox
         open={img}
         close={() => setImg(false)}
-        slides={imgValue}
+        slides={slides}
         styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
-        render={{
-          buttonPrev: imgValue.length <= 1 ? () => null : undefined,
-          buttonNext: imgValue.length <= 1 ? () => null : undefined,
-        }}
+        controller={{ closeOnBackdropClick: true }}
       />
     </>
   );
-};
+});
 export default ProductItem;

@@ -17,7 +17,12 @@ export const metadata = {
   title: {
 		default: "Меню",
 	},
-  description: AppData.settings.siteDescription,
+  description: "Разгледайте менюто на ресторант Делиорман - традиционни български ястия, грил специалитети, пици, салати и десерти в село Самуил, Разград.",
+  openGraph: {
+    title: "Меню | Ресторант Делиорман",
+    description: "Открийте автентична българска кухня и международни специалитети в ресторант Делиорман.",
+    type: "website",
+  },
 }
 
 const Menu1 = () => {

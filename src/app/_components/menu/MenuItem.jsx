@@ -1,37 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { memo, useState, useCallback } from "react";
+import { useCart } from "@library/CartContext";
 
-import CartData from "@data/cart.json";
+/**
+ * MenuItem - Memoized to prevent re-renders when sibling items change
+ * Uses CartContext for reactive cart updates (eliminates DOM queries)
+ */
+const MenuItem = memo(function MenuItem({ item }) {
+  const { addToCart: addToCartContext } = useCart();
+  const [buttonAdded, setButtonAdded] = useState(false);
 
-const MenuItem = ({ item }) => {  
-  const [cartTotal, setCartTotal] = useState(CartData.total);
-  const [quantity, setQuantity] = useState(1);
-
-  useEffect(() => {
-    const cartNumberEl = document.querySelector('.tst-cart-number');
-    if (cartNumberEl) {
-      cartNumberEl.innerHTML = cartTotal;
-    }
-  }, [cartTotal]);
-
-  const addToCart = (e) => {
+  const handleAddToCart = useCallback((e) => {
     e.preventDefault();
-    const cartNumberEl = document.querySelector('.tst-cart-number');
-    setCartTotal(cartTotal + quantity);
-    console.log(cartTotal + quantity);
-
-    if (cartNumberEl) {
-      cartNumberEl.classList.add('tst-added');
-      setTimeout(() => {
-        cartNumberEl.classList.remove('tst-added');
-      }, 600);
-    }
+    addToCartContext(1);
     
-    if (e.currentTarget) {
-      e.currentTarget.classList.add('tst-added');
-    }
-  }
+    // Handle button animation state
+    setButtonAdded(true);
+    setTimeout(() => setButtonAdded(false), 600);
+  }, [addToCartContext]);
 
   return (
     <>
@@ -60,5 +47,5 @@ const MenuItem = ({ item }) => {
       </div>
     </>
   );
-};
+});
 export default MenuItem;
