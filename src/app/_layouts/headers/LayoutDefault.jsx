@@ -1,51 +1,106 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useEffect, useState, useTransition, useCallback, memo } from "react";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 
 import { OnePageMenu } from "@common/onepageMenu";
-
 import AppData from "@data/app.json";
-import CartData from "@data/cart.json";
 
-import MiniCart from "@layouts/cart/MiniCart";
-import ReservationForm from "@components/forms/ReservationForm";
+/**
+ * Lazy load ReservationForm - only loaded when popup opens
+ * This prevents the form's JavaScript from blocking the main thread
+ */
+const ReservationForm = dynamic(
+  () => import("@components/forms/ReservationForm"),
+  {
+    ssr: false,
+    loading: () => (
+      <div style={{ textAlign: "center", padding: "40px" }}>
+        <div
+          style={{
+            width: "40px",
+            height: "40px",
+            border: "3px solid rgba(243, 156, 18, 0.3)",
+            borderTop: "3px solid #f39c12",
+            borderRadius: "50%",
+            margin: "0 auto 15px",
+            animation: "spin 1s linear infinite",
+          }}
+        />
+        <p style={{ color: "#666" }}>Зареждане...</p>
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    ),
+  }
+);
 
-const DefaultHeader = () => {
+/**
+ * DefaultHeader - Optimized header component
+ * Uses useTransition for non-blocking state updates and lazy loading for popups
+ */
+const DefaultHeader = memo(() => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
   const [miniCart, setMiniCart] = useState(false);
   const [reservationPopup, setReservationPopup] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const asPath = usePathname();
 
-  const isPathActive = (path) => {
-    return (asPath.endsWith(path) == 1 && path !== "/") || asPath === path;
-  };
+  // Memoized path check function
+  const isPathActive = useCallback(
+    (path) => {
+      return (asPath.endsWith(path) == 1 && path !== "/") || asPath === path;
+    },
+    [asPath]
+  );
 
-  const handleSubMenuClick = (index, e) => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth <= 992) {
-        e.preventDefault();
-        e.stopPropagation();
+  // Memoized handlers with useTransition for non-blocking updates
+  const handleMobileMenuToggle = useCallback(() => {
+    startTransition(() => {
+      setMobileMenu((prev) => !prev);
+    });
+  }, []);
+
+  const handleReservationToggle = useCallback((e) => {
+    e.preventDefault();
+    startTransition(() => {
+      setReservationPopup((prev) => !prev);
+    });
+  }, []);
+
+  const handleReservationClose = useCallback(() => {
+    startTransition(() => {
+      setReservationPopup(false);
+    });
+  }, []);
+
+  const handleSubMenuClick = useCallback((index, e) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 992) {
+      e.preventDefault();
+      e.stopPropagation();
+      startTransition(() => {
         setOpenSubMenu((prev) => (prev === index ? false : index));
-      }
+      });
     }
-  };
+  }, []);
 
+  // Reset menu states on route change
   useEffect(() => {
-    // close mobile menu
     setMobileMenu(false);
     setMiniCart(false);
     setReservationPopup(false);
     setOpenSubMenu(false);
   }, [asPath]);
 
+  // Initialize onepage menu if needed
   useEffect(() => {
     if (isPathActive("onepage")) {
       OnePageMenu();
     }
-  }, []);
+  }, [isPathActive]);
 
   return (
     <>
@@ -54,12 +109,15 @@ const DefaultHeader = () => {
         {/* top bar */}
         <div className="tst-dynamic-menu" id="tst-dynamic-menu">
           <div className="tst-menu">
-            {/* logo */}
+            {/* logo - Using Next.js Image for optimization */}
             <Link href="/">
-              <img
+              <Image
                 src={AppData.header.logo.image}
                 className="tst-logo"
                 alt={AppData.header.logo.alt}
+                width={120}
+                height={40}
+                priority
               />
             </Link>
             {/* menu */}
@@ -82,7 +140,9 @@ const DefaultHeader = () => {
                   {AppData.header.menu.map((item, index) => (
                     <li
                       className={`${
-                        item.children && item.children.length > 0 ? "menu-item-has-children" : ""
+                        item.children && item.children.length > 0
+                          ? "menu-item-has-children"
+                          : ""
                       } ${isPathActive(item.link) ? "current-menu-item" : ""}`}
                       key={`header-menu-item-${index}`}
                     >
@@ -132,7 +192,7 @@ const DefaultHeader = () => {
               <div className="tst-menu-button-frame">
                 <div
                   className={`tst-menu-btn ${mobileMenu ? "tst-active" : ""}`}
-                  onClick={() => setMobileMenu(!mobileMenu)}
+                  onClick={handleMobileMenuToggle}
                 >
                   <div className="tst-burger">
                     <span></span>
@@ -150,10 +210,7 @@ const DefaultHeader = () => {
                 aria-controls="reservation-popup"
                 aria-expanded={reservationPopup ? "true" : "false"}
                 aria-label="Резервации"
-                onClick={(e) => {
-                  setReservationPopup(!reservationPopup);
-                  e.preventDefault();
-                }}
+                onClick={handleReservationToggle}
                 data-no-swup
               >
                 <span className="tst-icon" aria-hidden="true">
@@ -161,22 +218,6 @@ const DefaultHeader = () => {
                 </span>
                 <span className="sr-only">Резервации</span>
               </a>
-              {/* <div className="tst-minicart"> */}
-              {/* minicart button */}
-              {/* <a href="#." className={`tst-cart ${miniCart ? "tst-active" : ""}`} onClick={(e) => { setMiniCart(!miniCart); e.preventDefault(); }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                        <path
-                            d="M87.7,33.1l-0.8-10.8C86,10.4,76,1,64,1s-22.1,9.4-22.9,21.3l-0.8,10.8H28.8c-4.7,0-8.6,3.7-9,8.4l-5.4,75.9c0,0,0,0,0,0 c-0.2,2.5,0.7,5,2.4,6.8s4.1,2.9,6.6,2.9h81.3c2.5,0,4.9-1,6.6-2.9c1.7-1.8,2.6-4.3,2.4-6.8l-5.4-75.2c-0.4-5.1-4.6-9-9.7-9H87.7z M47.1,22.7C47.7,13.9,55.1,7,64,7s16.3,6.9,16.9,15.7l0.7,10.4H46.3L47.1,22.7z M102.3,42.6l5.4,75.2c0.1,0.8-0.2,1.6-0.8,2.3 c-0.6,0.6-1.4,1-2.2,1H23.4c-0.8,0-1.6-0.3-2.2-1s-0.9-1.4-0.8-2.3h0l5.4-75.9c0.1-1.6,1.4-2.8,3-2.8h11.1l-0.6,8 c-0.1,1.7,1.1,3.1,2.8,3.2c0.1,0,0.1,0,0.2,0c1.6,0,2.9-1.2,3-2.8l0.6-8.4h36.2l0.6,8.4c0.1,1.7,1.5,2.9,3.2,2.8 c1.7-0.1,2.9-1.5,2.8-3.2l-0.6-8h10.5C100.5,39.1,102.1,40.6,102.3,42.6z" />
-                        </svg>
-                        <div className="tst-cart-number">{CartData.total}</div>
-                    </a> */}
-              {/* minicart button end */}
-              {/* minicart */}
-              {/* <div className={`tst-minicart-window ${miniCart ? "tst-active" : "" }`}>
-                        <MiniCart />
-                    </div>
-                    </div> */}
-              {/* minicart end */}
             </div>
             {/* top bar right end  */}
           </div>
@@ -192,10 +233,7 @@ const DefaultHeader = () => {
       >
         <div className="tst-popup-frame">
           <div className="tst-popup-body">
-            <div
-              className="tst-close-popup"
-              onClick={() => setReservationPopup(!reservationPopup)}
-            >
+            <div className="tst-close-popup" onClick={handleReservationClose}>
               <i className="fas fa-times"></i>
             </div>
 
@@ -206,12 +244,16 @@ const DefaultHeader = () => {
             </div>
             {/* title end */}
 
-            <ReservationForm />
+            {/* Only render form when popup is open - prevents unnecessary loading */}
+            {reservationPopup && <ReservationForm />}
           </div>
         </div>
       </div>
       {/* popup end */}
     </>
   );
-};
+});
+
+DefaultHeader.displayName = "DefaultHeader";
+
 export default DefaultHeader;

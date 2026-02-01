@@ -1,0 +1,2 @@
+/* Lazy-loaded Lightbox styles - imported dynamically to reduce main bundle */
+@import "yet-another-react-lightbox/styles.css";

@@ -15,6 +15,16 @@ const NewSpecialtiesCTA = () => {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
 
+    // Initialize navigation when Swiper mounts
+    const handleSwiper = (swiper) => {
+        if (swiper.params.navigation && prevRef.current && nextRef.current) {
+            swiper.params.navigation.prevEl = prevRef.current;
+            swiper.params.navigation.nextEl = nextRef.current;
+            swiper.navigation.init();
+            swiper.navigation.update();
+        }
+    };
+
     return (
         <>
             {/* New Specialties Slider */}
@@ -49,10 +59,7 @@ const NewSpecialtiesCTA = () => {
                             prevEl: prevRef.current,
                             nextEl: nextRef.current,
                         }}
-                        onBeforeInit={(swiper) => {
-                            swiper.params.navigation.prevEl = prevRef.current;
-                            swiper.params.navigation.nextEl = nextRef.current;
-                        }}
+                        onSwiper={handleSwiper}
                         loop={true}
                         className={styles.swiperContainer}
                     >

@@ -9,7 +9,7 @@ import AboutSection from "@components/sections/About";
 import FeaturesSection from "@components/sections/Features";
 import ScheduleSection from "@components/sections/Schedule";
 import CountersSection from "@components/sections/Counters";
-import NewSpecialtiesCTA from "../_components/sections/NewSpecialtiesCTA";
+import NewSpecialtiesCTA from "../_components/sections/NewSpecialtiesCTALazy";
 import HeroSlider from "../_components/sliders/Hero";
 
 /** @type {import('next').Metadata} */

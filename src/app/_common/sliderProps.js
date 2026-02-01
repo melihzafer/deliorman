@@ -28,6 +28,7 @@ SwiperCore.use([
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 export const SliderProps = {
   heroSlider: {
@@ -131,6 +132,28 @@ export const SliderProps = {
       0: {
         slidesPerView: 1,
       },
+    },
+  },
+  newSpecialtiesSlider: {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    speed: 800,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.tst-specialties-pagination',
+      clickable: true,
+    },
+    navigation: {
+      prevEl: '.tst-specialties-prev',
+      nextEl: '.tst-specialties-next',
     },
   }
 };

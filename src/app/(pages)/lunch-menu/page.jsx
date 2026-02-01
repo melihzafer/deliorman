@@ -9,7 +9,7 @@ import DarkSection from "@components/DarkSection";
 import CallToActionFourSection from "../../_components/sections/CallToActionFour";
 import CallToActionThreeSection from "../../_components/sections/CallToActionThree";
 import SpecialtiesShowcase from "../../_components/sections/SpecialtiesShowcase";
-import NewSpecialtiesCTA from "../../_components/sections/NewSpecialtiesCTA";
+import NewSpecialtiesCTA from "../../_components/sections/NewSpecialtiesCTALazy";
 
 const LunchMenu = () => {
   return (
