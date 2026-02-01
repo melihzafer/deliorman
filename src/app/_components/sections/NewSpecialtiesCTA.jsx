@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
+import Link from "next/link";
 import Data from "@data/sections/new-specialties-cta.json";
 import styles from "../../_styles/scss/NewSpecialtiesCTA.module.scss";
 
@@ -94,10 +95,10 @@ const NewSpecialtiesCTA = () => {
                                                     ))}
                                                 </div>
 
-                                                <a href={slide.button.link} className={styles.ctaBtn}>
+                                                <Link href={slide.button.link} className={styles.ctaBtn}>
                                                     <i className={slide.button.icon}></i>
                                                     {slide.button.label}
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                         
