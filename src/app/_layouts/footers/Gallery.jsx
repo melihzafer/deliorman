@@ -3,10 +3,7 @@
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { useState, useMemo, useCallback } from "react";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
-
+import { useState, useMemo, useCallback, lazy, Suspense, startTransition, useRef } from "react";
 import Link from "next/link";
 
 // Lazy load Lightbox - only load when user clicks (reduces initial INP impact)
@@ -50,10 +47,31 @@ const FooterGalleryModule = ( { items, button } ) => {
   // Monomorphic: derive slides from props using useMemo (no empty→filled transition)
   const slides = useMemo(() => items.map(item => ({ src: item.image, alt: item.alt })), [items]);
 
-  const handleImageClick = useCallback((e, index) => {
-    e.preventDefault();
-    setInitialIndex(index);
-    setImg(true);
+  // Event delegation: immediate preventDefault, use startTransition for non-blocking updates
+  const handleGalleryClick = useCallback((e) => {
+    const overlay = e.target.closest('.tst-overlay');
+    if (overlay) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const slide = overlay.closest('.swiper-slide');
+      const index = Array.from(slide.parentElement.children).indexOf(slide);
+
+      // Synchronous feedback first
+      overlay.style.opacity = '0.7';
+
+      // Use startTransition for non-blocking state updates (reduces INP)
+      startTransition(() => {
+        setInitialIndex(index);
+        setLightboxReady(true);
+        setImg(true);
+      });
+
+      // Reset opacity after transition starts
+      requestAnimationFrame(() => {
+        overlay.style.opacity = '';
+      });
+    }
   }, []);
 
   return (
@@ -70,9 +88,9 @@ const FooterGalleryModule = ( { items, button } ) => {
             {items.map((item, key) => (
             <SwiperSlide key={`footer-gallery-item-${key}`}>
                 <div className="tst-footer-gal-item">
-                    <img 
-                        src={item.image} 
-                        alt={item.alt} 
+                    <img
+                        src={item.image}
+                        alt={item.alt}
                         loading="lazy"
                         width="300"
                         height="300"
@@ -91,14 +109,19 @@ const FooterGalleryModule = ( { items, button } ) => {
                 <div className="tst-slider-btn tst-fg-next"><i className="fas fa-arrow-right"></i></div>
             </div>
         </div>
-        <Lightbox
-            open={img}
-            close={() => setImg(false)}
-            slides={slides}
-            index={initialIndex}
-            styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
-            controller={{ closeOnBackdropClick: true }}
-        />
+        {/* Lazy load Lightbox only after first click - prevents INP penalty on initial load */}
+        {lightboxReady && (
+          <Suspense fallback={null}>
+            <Lightbox
+                open={img}
+                close={() => setImg(false)}
+                slides={slides}
+                index={initialIndex}
+                styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
+                controller={{ closeOnBackdropClick: true }}
+            />
+          </Suspense>
+        )}
         {/* footer gallery end */}
     </>
   );
