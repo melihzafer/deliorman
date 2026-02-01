@@ -33,7 +33,7 @@ import "swiper/css/effect-fade";
 export const SliderProps = {
   heroSlider: {
     slidesPerView: 1,
-    speed: 800,
+    speed: 400,
     effect: 'fade',
     fadeEffect: {
       crossFade: true
@@ -134,7 +134,7 @@ export const SliderProps = {
   newSpecialtiesSlider: {
     slidesPerView: 1,
     spaceBetween: 30,
-    speed: 800,
+    speed: 400,
     effect: 'fade',
     fadeEffect: {
       crossFade: true

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, startTransition } from "react";
 import styles from "../../_styles/scss/ui/FeedbackForm.module.scss";
 
 const CATEGORIES = [
@@ -53,10 +53,12 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setValues((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value
-    }));
+    startTransition(() => {
+      setValues((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value
+      }));
+    });
   };
 
   const handleBlur = (e) => {

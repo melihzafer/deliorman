@@ -75,8 +75,8 @@ const HeroSlider = () => {
             <div className="tst-main-pagination" suppressHydrationWarning></div>
 
             <div className="tst-main-slider-nav" suppressHydrationWarning>
-              <div className="tst-slider-btn tst-main-prev"><i className="fas fa-arrow-left"></i></div>
-              <div className="tst-slider-btn tst-main-next"><i className="fas fa-arrow-right"></i></div>
+              <button type="button" className="tst-slider-btn tst-main-prev" aria-label="Previous slide"><i className="fas fa-arrow-left"></i></button>
+              <button type="button" className="tst-slider-btn tst-main-next" aria-label="Next slide"><i className="fas fa-arrow-right"></i></button>
             </div>
 
           </div>

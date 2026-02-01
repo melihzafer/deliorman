@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
+import { useState, useMemo, useCallback, lazy, Suspense, startTransition } from "react";
+
+// Lazy load Lightbox - only load when user clicks (reduces INP)
+const Lightbox = lazy(() => import("yet-another-react-lightbox"));
 
 const DecorationGallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [lightboxReady, setLightboxReady] = useState(false);
 
   // Decoration images from decoration_footage folder
   const images = useMemo(() => [
@@ -22,10 +24,13 @@ const DecorationGallery = () => {
     alt: img.alt,
   }));
 
-  const handleImageClick = (index) => {
-    setCurrentImageIndex(index);
-    setIsOpen(true);
-  };
+  const handleImageClick = useCallback((index) => {
+    startTransition(() => {
+      setCurrentImageIndex(index);
+      setLightboxReady(true);
+      setIsOpen(true);
+    });
+  }, []);
 
   return (
     <>
@@ -132,15 +137,19 @@ const DecorationGallery = () => {
         </div>
       </div>
 
-      {/* Lightbox */}
-      <Lightbox
-        open={isOpen}
-        close={() => setIsOpen(false)}
-        slides={lightboxSlides}
-        index={currentImageIndex}
-        styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
-        controller={{ closeOnBackdropClick: true }}
-      />
+      {/* Lightbox - Lazy loaded only after first click */}
+      {lightboxReady && (
+        <Suspense fallback={null}>
+          <Lightbox
+            open={isOpen}
+            close={() => setIsOpen(false)}
+            slides={lightboxSlides}
+            index={currentImageIndex}
+            styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
+            controller={{ closeOnBackdropClick: true }}
+          />
+        </Suspense>
+      )}
     </>
   );
 };
