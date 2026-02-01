@@ -12,7 +12,12 @@ import { ScrollAnimation } from "@common/scrollAnims";
 
 const HeroSlider = () => {
   useEffect(() => {
-    ScrollAnimation();
+    // Defer ScrollAnimation to avoid blocking initial render
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => ScrollAnimation());
+    } else {
+      setTimeout(() => ScrollAnimation(), 100);
+    }
   }, []);
   
   return (
@@ -29,17 +34,14 @@ const HeroSlider = () => {
             {/* banner */}
             <div className="tst-banner">
               <div className="tst-cover-frame">
-                <Image 
-                  src={item.image.url} 
-                  alt={item.image.alt} 
+                <Image
+                  src={item.image.url}
+                  alt={item.image.alt}
                   fill
                   priority={key === 0}
                   quality={90}
                   sizes="100vw"
-                  className="tst-cover tst-parallax" 
-                  data-swiper-parallax-y="120" 
-                  data-swiper-parallax-scale="1.2" 
-                  data-swiper-parallax-duration="1000"
+                  className="tst-cover"
                   style={{ objectFit: 'cover' }}
                   suppressHydrationWarning
                 />
@@ -48,11 +50,8 @@ const HeroSlider = () => {
               <div className="tst-banner-content-frame">
                 <div className="container">
                   <div className="tst-main-title-frame">
-                    <div 
-                      className="tst-main-title" 
-                      data-swiper-parallax-y="200" 
-                      data-swiper-parallax-scale=".8" 
-                      data-swiper-parallax-duration="800"
+                    <div
+                      className="tst-main-title"
                       suppressHydrationWarning
                     >
                       <div className="tst-suptitle tst-suptitle-mobile-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : item.subtitle}}  />

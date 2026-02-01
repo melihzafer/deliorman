@@ -35,7 +35,12 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
   }
   
   useEffect(() => {
-    ScrollAnimation();
+    // Defer ScrollAnimation to avoid blocking initial render
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => ScrollAnimation());
+    } else {
+      setTimeout(() => ScrollAnimation(), 100);
+    }
 
     if ( showMap ) {
       mapboxInit();
@@ -58,14 +63,15 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
         </div>
         ) : (
         <div className="tst-cover-frame"> 
-          <Image 
-            src="/img/outdoor_footage/IMG_9339.webp" 
-            alt="Ресторант Делиорман - външен изглед" 
+          <Image
+            src="/img/outdoor_footage/IMG_9339.webp"
+            alt="Ресторант Делиорман - външен изглед"
             fill
             priority
             sizes="100vw"
-            className="tst-cover tst-parallax"
+            className="tst-cover"
             style={{ objectFit: 'cover' }}
+            suppressHydrationWarning
           />
           <div className="tst-overlay"></div>
         </div>

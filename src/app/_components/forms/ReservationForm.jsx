@@ -1,7 +1,7 @@
 "use client";
 
 import { Formik } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 
 function normalizeBgPhone(input) {
@@ -97,6 +97,43 @@ const ReservationForm = () => {
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
   const [successModal, setSuccessModal] = useState({ open: false, phone: "" });
   const [termsModalOpen, setTermsModalOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState("");
+
+  // Memoize modal handlers to prevent recreation on every render
+  const closeSuccessModal = useCallback(() => {
+    setSuccessModal({ open: false, phone: "" });
+  }, []);
+
+  const closeTermsModal = useCallback(() => {
+    setTermsModalOpen(false);
+  }, []);
+
+  const openTermsModal = useCallback(() => {
+    setTermsModalOpen(true);
+  }, []);
+
+  // Memoize filtered time options based on selected date
+  const filteredTimeOptions = useMemo(() => {
+    if (!selectedDate) return TIME_OPTIONS;
+    const now = new Date();
+    const minAllowed = new Date(now.getTime() + 4 * 60 * 60 * 1000);
+    return TIME_OPTIONS.filter((t) => {
+      const dt = parseDateTimeLocal(selectedDate, t);
+      return dt && dt.getTime() >= minAllowed.getTime();
+    });
+  }, [selectedDate]);
+
+  // Memoize date constraints (only changes once per day)
+  const { minDateStr, maxDateStr } = useMemo(() => {
+    const today = new Date();
+    const maxDate = new Date(today);
+    maxDate.setMonth(today.getMonth() + 1);
+    if (today.getDate() !== maxDate.getDate()) {
+      maxDate.setDate(0);
+    }
+    const toStr = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    return { minDateStr: toStr(today), maxDateStr: toStr(maxDate) };
+  }, []);
 
   // Close modal on ESC
   useEffect(() => {
@@ -373,38 +410,11 @@ const ReservationForm = () => {
           handleSubmit,
           isSubmitting,
         }) => {
-          const filteredTimeOptions = (() => {
-            // If no date selected, show full list.
-            if (!values.date) return TIME_OPTIONS;
-
-            const now = new Date();
-            const minAllowed = new Date(now.getTime() + 4 * 60 * 60 * 1000);
-
-            return TIME_OPTIONS.filter((t) => {
-              const dt = parseDateTimeLocal(values.date, t);
-              if (!dt) return false;
-              return dt.getTime() >= minAllowed.getTime();
-            });
-          })();
-
-          // Calculate min/max dates for the date picker
-          const today = new Date();
-          const maxDate = new Date(today);
-          maxDate.setMonth(today.getMonth() + 1);
-          // Handle month overflow (e.g. Jan 31 -> Feb 28/29)
-          if (today.getDate() !== maxDate.getDate()) {
-            maxDate.setDate(0);
-          }
-
-          const toDateInputStr = (d) => {
-            const y = d.getFullYear();
-            const m = String(d.getMonth() + 1).padStart(2, "0");
-            const day = String(d.getDate()).padStart(2, "0");
-            return `${y}-${m}-${day}`;
+          // Custom handler for date input that syncs with our memoized state
+          const handleDateChange = (e) => {
+            handleChange(e);
+            setSelectedDate(e.target.value);
           };
-
-          const minDateStr = toDateInputStr(today);
-          const maxDateStr = toDateInputStr(maxDate);
 
           return (
             <form onSubmit={handleSubmit} id="reservationForm">
@@ -485,10 +495,10 @@ const ReservationForm = () => {
                   </div>
                 </div>
                 <div className="col-6 col-md-6">
-                  <input
+                <input
                     type="date"
                     name="date"
-                    onChange={handleChange}
+                    onChange={handleDateChange}
                     onBlur={handleBlur}
                     value={values.date}
                     className={errors.date && touched.date ? "error" : ""}

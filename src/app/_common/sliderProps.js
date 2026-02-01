@@ -42,7 +42,6 @@ export const SliderProps = {
       el: '.tst-main-pagination',
       clickable: true,
     },
-    parallax: true,
     autoplay: {
       delay: 5000,
     },
@@ -89,9 +88,7 @@ export const SliderProps = {
   },
   menuSlider: {
     effect: 'fade',
-    parallax: true,
     speed: 600,
-    autoHeight: true,
     fadeEffect: {
       crossFade: true
     },
