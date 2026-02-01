@@ -88,9 +88,9 @@ const FooterGalleryModule = ( { items, button } ) => {
             {items.map((item, key) => (
             <SwiperSlide key={`footer-gallery-item-${key}`}>
                 <div className="tst-footer-gal-item">
-                    <img
-                        src={item.image}
-                        alt={item.alt}
+                    <img 
+                        src={item.image} 
+                        alt={item.alt} 
                         loading="lazy"
                         width="300"
                         height="300"
