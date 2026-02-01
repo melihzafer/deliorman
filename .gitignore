@@ -3,3 +3,4 @@
 node_modules
 /studio
 .env
+/performance-reports

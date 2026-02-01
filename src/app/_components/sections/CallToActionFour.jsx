@@ -14,16 +14,16 @@ const CallToActionFourSection = () => {
                 {/* text */}
                 <div className="tst-cta-frame">
                     <div className="tst-cta">
-                    <div className="tst-fade-up">
+                    <div className="tst-fade-up" suppressHydrationWarning>
                         <div className="tst-suptitle tst-suptitle-mobile-md-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : Data.subtitle}} />
                     </div>
-                    <h2 className="tst-white-2 tst-text-shadow tst-mb-30 tst-fade-up" dangerouslySetInnerHTML={{__html : Data.title}} />
-                    <div className="tst-fade-up tst-mb-30">
+                    <h2 className="tst-white-2 tst-text-shadow tst-mb-30 tst-fade-up" suppressHydrationWarning dangerouslySetInnerHTML={{__html : Data.title}} />
+                    <div className="tst-fade-up tst-mb-30" suppressHydrationWarning>
                         <div className="tst-text tst-text-lg tst-text-shadow tst-white-2" dangerouslySetInnerHTML={{__html : Data.description}} />
                     </div>
-                   
+
                     <Link href={Data.button1.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up tst-res-btn tst-mr-30">{Data.button1.label}</Link>
-                    <div style={{display: 'flex', width: '1em', height: '1em'}}></div>                                   
+                    <div style={{display: 'flex', width: '1em', height: '1em'}}></div>
                     <Link href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up tst-res-btn tst-white-2 tst-fade-up">{Data.button2.label}</Link>
                     </div>
                 </div>
@@ -33,7 +33,7 @@ const CallToActionFourSection = () => {
                 <div className="col-lg-6">
 
                 {/* icon */}
-                <div className="tst-cta-icon-wrapper tst-fade-up" style={{textAlign: 'center', padding: '60px 0'}}>
+                <div className="tst-cta-icon-wrapper tst-fade-up" suppressHydrationWarning style={{textAlign: 'center', padding: '60px 0'}}>
                     {/* <i className={Data.icon} style={{fontSize: '120px', color: '#f39c12', textShadow: '0 0 30px rgba(243, 156, 18, 0.3)'}}></i> */}
                     <img src={Data.image.url} alt={Data.image.alt} style={{maxWidth: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)'}} />
                 </div>

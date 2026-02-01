@@ -9,7 +9,7 @@ import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
 import CallToActionTwoSection from "@components/sections/CallToActionTwo";
-import NewSpecialtiesCTA from "@components/sections/NewSpecialtiesCTA";
+import NewSpecialtiesCTA from "@components/sections/NewSpecialtiesCTALazy";
 import MenuFiltered from "@components/menu/MenuFiltered";
 import ProductsSlider from "@components/sliders/Products";
 

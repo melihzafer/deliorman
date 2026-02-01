@@ -22,7 +22,7 @@ const MenuItem = memo(function MenuItem({ item }) {
 
   return (
     <>
-      <div className="tst-menu-book-item tst-mbi-3" data-swiper-parallax-y="60" data-swiper-parallax-opacity="0" data-swiper-parallax-duration="1000">
+      <div className="tst-menu-book-item tst-mbi-3">
         <div className="tst-menu-book-descr">
             <div className="tst-menu-book-name" style={{maxWidth: '80%'}}>
             <h5 className="tst-mb-15">{item.title}</h5>

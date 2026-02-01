@@ -35,7 +35,12 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
   }
   
   useEffect(() => {
-    ScrollAnimation();
+    // Defer ScrollAnimation to avoid blocking initial render
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => ScrollAnimation());
+    } else {
+      setTimeout(() => ScrollAnimation(), 100);
+    }
 
     if ( showMap ) {
       mapboxInit();

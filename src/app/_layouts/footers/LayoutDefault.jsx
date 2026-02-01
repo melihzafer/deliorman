@@ -1,32 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
-import dynamic from "next/dynamic";
 import Link from "next/link";
-
+import FooterGallery from "@layouts/footers/Gallery";
 import AppData from "@data/app.json";
 
-const FooterGallery = dynamic( () => import("@layouts/footers/Gallery"), { ssr: false } );
-
 const DefaultFooter = () => {
-  useEffect(() => {
-    // Simple fade-in on mount (no scroll animation for footer)
-    const footer = document.querySelector('footer');
-    if (footer && window.innerWidth >= 992) {
-      // Use requestAnimationFrame for smooth initial animation
-      requestAnimationFrame(() => {
-        footer.style.opacity = '0';
-        footer.style.transform = 'translateY(30px)';
-        footer.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        
-        requestAnimationFrame(() => {
-          footer.style.opacity = '1';
-          footer.style.transform = 'translateY(0)';
-        });
-      });
-    }
-  }, []);
-
   const scrollToTop = (e) => {
     window.scrollTo({top: 0, behavior: 'smooth'});
     e.preventDefault();
@@ -35,7 +13,7 @@ const DefaultFooter = () => {
   return (
     <>
         {/* footer */}
-        <footer className="tst-white">
+        <footer className="tst-white" style={{ minHeight: '600px' }}>
             <div className="container">
                 <div className="tst-footer-top">
                     <div className="tst-white-circle-as-bg">
