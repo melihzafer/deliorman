@@ -3,7 +3,10 @@
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { useState, useMemo, useCallback, lazy, Suspense, startTransition, useEffect, useRef } from "react";
+import { useState, useMemo, useCallback } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
 import Link from "next/link";
 
 // Lazy load Lightbox - only load when user clicks (reduces initial INP impact)
@@ -47,27 +50,10 @@ const FooterGalleryModule = ( { items, button } ) => {
   // Monomorphic: derive slides from props using useMemo (no empty→filled transition)
   const slides = useMemo(() => items.map(item => ({ src: item.image, alt: item.alt })), [items]);
 
-  // Event delegation: immediate preventDefault, debounced state update
-  const handleGalleryClick = useCallback((e) => {
-    const overlay = e.target.closest('.tst-overlay');
-    if (overlay) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      const slide = overlay.closest('.swiper-slide');
-      const index = Array.from(slide.parentElement.children).indexOf(slide);
-      
-      // Synchronous feedback first
-      overlay.style.opacity = '0.7';
-      
-      // Async state update
-      requestAnimationFrame(() => {
-        setInitialIndex(index);
-        setLightboxReady(true);
-        setImg(true);
-        overlay.style.opacity = '';
-      });
-    }
+  const handleImageClick = useCallback((e, index) => {
+    e.preventDefault();
+    setInitialIndex(index);
+    setImg(true);
   }, []);
 
   return (
@@ -105,19 +91,14 @@ const FooterGalleryModule = ( { items, button } ) => {
                 <div className="tst-slider-btn tst-fg-next"><i className="fas fa-arrow-right"></i></div>
             </div>
         </div>
-        {/* Lazy load Lightbox only after first click - prevents INP penalty on initial load */}
-        {lightboxReady && (
-          <Suspense fallback={null}>
-            <Lightbox
-                open={img}
-                close={() => setImg(false)}
-                slides={slides}
-                index={initialIndex}
-                styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
-                controller={{ closeOnBackdropClick: true }}
-            />
-          </Suspense>
-        )}
+        <Lightbox
+            open={img}
+            close={() => setImg(false)}
+            slides={slides}
+            index={initialIndex}
+            styles={{ container: { backgroundColor: "rgba(26, 47, 51, .85)" } }}
+            controller={{ closeOnBackdropClick: true }}
+        />
         {/* footer gallery end */}
     </>
   );

@@ -63,15 +63,14 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
         </div>
         ) : (
         <div className="tst-cover-frame"> 
-          <Image
-            src="/img/outdoor_footage/IMG_9339.webp"
-            alt="Ресторант Делиорман - външен изглед"
+          <Image 
+            src="/img/outdoor_footage/IMG_9339.webp" 
+            alt="Ресторант Делиорман - външен изглед" 
             fill
             priority
             sizes="100vw"
-            className="tst-cover"
+            className="tst-cover tst-parallax"
             style={{ objectFit: 'cover' }}
-            suppressHydrationWarning
           />
           <div className="tst-overlay"></div>
         </div>

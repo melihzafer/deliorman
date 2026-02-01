@@ -18,15 +18,13 @@ const MenuFiltered = ({ heading = 0, categories }) => {
 
   // Handle category click - wrapped in useTransition for non-blocking UI
   const handleCategoryClick = useCallback((index) => {
+    // Immediately update swiper (visual feedback)
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(index);
+    }
     // Defer state update to not block the main thread
     startTransition(() => {
       setActiveCategory(index);
-    });
-    // Defer Swiper animation to next frame - prevents blocking main thread
-    requestAnimationFrame(() => {
-      if (swiperRef.current?.swiper) {
-        swiperRef.current.swiper.slideTo(index);
-      }
     });
   }, []);
 
