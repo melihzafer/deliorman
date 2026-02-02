@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls -la:*)"
+      "Bash(ls -la:*)",
+      "Bash(git push:*)"
     ]
   }
 }
