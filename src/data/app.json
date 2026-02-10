@@ -48,6 +48,10 @@
                     {
                         "label": "Обедно меню",
                         "link": "/lunch-menu"
+                    },
+                    {
+                        "label": "QR Меню",
+                        "link": "/menu/qr"
                     }
                 ]
             },

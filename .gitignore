@@ -1,6 +1,39 @@
-/.DS_Store
-/.next
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
 node_modules
-/studio
+
+# Next.js
+.next
+
+# Environment
 .env
+.env.*
+
+# Claude Code
+.claude/
+.ai-context/
+
+# Auto-generated docs (keep README.md)
+API_DOCUMENTATION.md
+AUDIT_REPORT.md
+FEEDBACK_*.md
+GITHUB_ISSUES_FIX_SUMMARY.md
+IMAGE_REPLACEMENT_SUMMARY.md
+IMPLEMENTATION_*.md
+MENU_NAVIGATION_DOCS.md
+QUICK_CHECKLIST.md
+README_NEW.md
+SECURITY.md
+SECURITY_AUDIT.md
+SWIPER_TECHNICAL_POSTMORTEM.md
+trace-analysis-for-claude-code.md
+/docs/performance/
+
+# Sanity Studio
+/studio
+
+# Reports
 /performance-reports

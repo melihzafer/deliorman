@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Лудогорието — Меню</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #E8A020;
+    --gold-light: #F2C668;
+    --gold-dark: #C4861A;
+    --ink: #2A2018;
+    --charcoal: #3D3528;
+    --warm-gray: #7A7264;
+    --light-gray: #B8B0A4;
+    --cream: #FAF6F0;
+    --paper: #F5F0E8;
+    --paper-dark: #EDE6D8;
+    --white: #FFFDF9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #E8E2D8;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-image: 
+      radial-gradient(ellipse at 20% 50%, rgba(232,160,32,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 50%, rgba(232,160,32,0.04) 0%, transparent 50%);
+  }
+
+  /* ─── MAGAZINE HEADER ─── */
+  .magazine-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeDown 0.8s ease-out;
+  }
+
+  .magazine-header .eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .magazine-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .magazine-header .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--warm-gray);
+    font-weight: 300;
+  }
+
+  .gold-rule {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 16px auto;
+  }
+
+  /* ─── CATEGORY TABS ─── */
+  .category-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+    max-width: 900px;
+    animation: fadeDown 0.8s ease-out 0.15s both;
+  }
+
+  .cat-tab {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border: 1.5px solid var(--light-gray);
+    border-radius: 100px;
+    background: transparent;
+    color: var(--charcoal);
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cat-tab:hover {
+    border-color: var(--gold);
+    color: var(--gold-dark);
+    background: rgba(232,160,32,0.06);
+  }
+
+  .cat-tab.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(232,160,32,0.3);
+  }
+
+  /* ─── THE MAGAZINE SPREAD ─── */
+  .magazine {
+    width: 100%;
+    max-width: 1200px;
+    perspective: 2000px;
+    animation: fadeUp 1s ease-out 0.3s both;
+  }
+
+  .spread {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--white);
+    border-radius: 4px;
+    box-shadow:
+      0 2px 8px rgba(0,0,0,0.06),
+      0 20px 60px rgba(0,0,0,0.1),
+      0 40px 80px rgba(0,0,0,0.05),
+      inset 0 0 100px rgba(0,0,0,0.015);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Spine / center crease */
+  .spread::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0,0,0,0.04) 35%,
+      rgba(0,0,0,0.08) 50%,
+      rgba(0,0,0,0.04) 65%,
+      transparent 100%
+    );
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* Page texture overlay */
+  .spread::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* ─── LEFT PAGE ─── */
+  .page {
+    padding: 48px 40px;
+    position: relative;
+    min-height: 700px;
+  }
+
+  .page-left {
+    background: 
+      linear-gradient(135deg, rgba(245,240,232,0.4) 0%, transparent 60%),
+      var(--white);
+    border-right: 1px solid rgba(0,0,0,0.03);
+  }
+
+  .page-right {
+    background:
+      linear-gradient(225deg, rgba(245,240,232,0.3) 0%, transparent 60%),
+      var(--white);
+  }
+
+  /* Page number */
+  .page-num {
+    position: absolute;
+    bottom: 24px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--light-gray);
+  }
+
+  .page-left .page-num { left: 40px; }
+  .page-right .page-num { right: 40px; }
+
+  /* ─── SECTION HEADERS ─── */
+  .section-header {
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .section-header .section-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .section-header .section-line {
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin-top: 12px;
+  }
+
+  /* ─── FEATURED HERO DISH ─── */
+  .hero-dish {
+    margin-bottom: 32px;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    background: var(--paper);
+    cursor: pointer;
+  }
+
+  .hero-dish img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero-dish:hover img {
+    transform: scale(1.04);
+  }
+
+  .hero-dish .hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(30,22,12,0.85) 0%, transparent 100%);
+  }
+
+  .hero-dish .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .hero-dish .hero-price {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-top: 4px;
+  }
+
+  .hero-dish .hero-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--gold);
+    color: #fff;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+
+  /* ─── MENU ITEMS ─── */
+  .menu-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .menu-item:last-child { border-bottom: none; }
+
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    transform: scaleY(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: bottom;
+  }
+
+  .menu-item:hover::before {
+    transform: scaleY(1);
+  }
+
+  .menu-item:hover {
+    padding-left: 4px;
+  }
+
+  .menu-item-thumb {
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--paper);
+  }
+
+  .menu-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .menu-item:hover .menu-item-thumb img {
+    transform: scale(1.08);
+  }
+
+  .menu-item-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .menu-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .menu-item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--ink);
+    transition: color 0.3s;
+  }
+
+  .menu-item:hover .menu-item-name {
+    color: var(--gold-dark);
+  }
+
+  .menu-item-dots {
+    flex: 1;
+    border-bottom: 1.5px dotted var(--light-gray);
+    margin: 0 4px;
+    min-width: 20px;
+    opacity: 0.5;
+    align-self: center;
+    margin-bottom: 3px;
+  }
+
+  .menu-item-price {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .menu-item-desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--warm-gray);
+    line-height: 1.5;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .menu-item-meta {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+
+  .meta-tag {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    background: rgba(232,160,32,0.08);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  /* ─── TEXT-ONLY ITEMS (no image) ─── */
+  .menu-item.compact {
+    gap: 0;
+  }
+
+  /* ─── DRINKS COLUMN ─── */
+  .drinks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+  }
+
+  .drink-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .drink-item:hover .drink-name {
+    color: var(--gold-dark);
+  }
+
+  .drink-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--charcoal);
+    transition: color 0.3s;
+  }
+
+  .drink-detail {
+    font-size: 12px;
+    color: var(--light-gray);
+    font-style: italic;
+  }
+
+  .drink-price {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ─── PULL QUOTE ─── */
+  .pull-quote {
+    margin: 28px 0;
+    padding: 20px 24px;
+    border-left: 3px solid var(--gold);
+    background: linear-gradient(135deg, rgba(232,160,32,0.04), transparent);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .pull-quote p {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+
+  .pull-quote cite {
+    display: block;
+    margin-top: 8px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  /* ─── DECORATIVE ELEMENTS ─── */
+  .corner-flourish {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0.15;
+  }
+
+  .corner-flourish.top-left {
+    top: 20px;
+    left: 20px;
+    border-top: 2px solid var(--gold);
+    border-left: 2px solid var(--gold);
+  }
+
+  .corner-flourish.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    border-bottom: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+  }
+
+  .divider-ornament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    color: var(--gold);
+    opacity: 0.4;
+  }
+
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .divider-ornament span {
+    font-size: 14px;
+  }
+
+  /* ─── FOOTER STRIP ─── */
+  .magazine-footer {
+    margin-top: 40px;
+    text-align: center;
+    animation: fadeUp 1s ease-out 0.5s both;
+  }
+
+  .magazine-footer p {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--light-gray);
+  }
+
+  .page-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .page-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--light-gray);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+
+  .page-dot.active {
+    background: var(--gold);
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .stagger-1 { animation: fadeUp 0.6s ease-out 0.4s both; }
+  .stagger-2 { animation: fadeUp 0.6s ease-out 0.5s both; }
+  .stagger-3 { animation: fadeUp 0.6s ease-out 0.6s both; }
+  .stagger-4 { animation: fadeUp 0.6s ease-out 0.7s both; }
+  .stagger-5 { animation: fadeUp 0.6s ease-out 0.8s both; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .spread {
+      grid-template-columns: 1fr;
+    }
+
+    .spread::before { display: none; }
+
+    .page {
+      padding: 32px 24px;
+      min-height: auto;
+    }
+
+    .page-left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+    .drinks-grid { grid-template-columns: 1fr; }
+
+    body { padding: 20px 12px; }
+  }
+
+  @media (max-width: 500px) {
+    .menu-item-thumb {
+      width: 56px;
+      height: 56px;
+    }
+
+    .section-header h2 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="magazine-header">
+  <div class="eyebrow">Ресторант Лудогорието</div>
+  <h1>Нашето Меню</h1>
+  <div class="gold-rule"></div>
+  <div class="subtitle">Автентична българска кухня в сърцето на Лудогорието</div>
+</header>
+
+<!-- ─── CATEGORY TABS ─── -->
+<nav class="category-nav">
+  <button class="cat-tab active">Скара</button>
+  <button class="cat-tab">Салати</button>
+  <button class="cat-tab">Супи</button>
+  <button class="cat-tab">Аламинути</button>
+  <button class="cat-tab">Пици</button>
+  <button class="cat-tab">Десерти</button>
+  <button class="cat-tab">Напитки</button>
+</nav>
+
+<!-- ─── MAGAZINE SPREAD ─── -->
+<div class="magazine">
+  <div class="spread">
+
+    <!-- ════════ LEFT PAGE ════════ -->
+    <div class="page page-left">
+      <div class="corner-flourish top-left"></div>
+
+      <div class="section-header stagger-1">
+        <div class="section-label">От скарата</div>
+        <h2>Скара и<br>Специалитети</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Hero Dish -->
+      <div class="hero-dish stagger-2">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=380&fit=crop&q=80" alt="Deliorman Kebab">
+        <div class="hero-badge">Препоръчано</div>
+        <div class="hero-overlay">
+          <div class="hero-name">Делиорман Кебап</div>
+          <div class="hero-price">18.90 лв.</div>
+        </div>
+      </div>
+
+      <!-- Menu Items with thumbnails -->
+      <div class="menu-item stagger-3">
+        <div class="menu-item-thumb">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=150&h=150&fit=crop&q=80" alt="">
+        </div>
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Пилешка пържола</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">14.50 лв.</span>
+          </div>
+          <div class="menu-item-desc">Мариновано пилешко бутче на скара, поднесено с пресни зеленчуци</div>
+          <div class="menu-item-meta">
+            <span class="meta-tag">350 гр</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item stagger-4">
+        <div class="menu-item-thumb">
+          <img src="https://images.unsplash.com/photo-1529694157872-4e0c0f3b238b?w=150&h=150&fit=crop&q=80" alt="">
+        </div>
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Свинска вратна пържола</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">16.90 лв.</span>
+          </div>
+          <div class="menu-item-desc">Сочна свинска вратна на дървени въглища със специалитет от къщата</div>
+          <div class="menu-item-meta">
+            <span class="meta-tag">400 гр</span>
+            <span class="meta-tag">🔥 Популярно</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item stagger-5">
+        <div class="menu-item-thumb">
+          <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=150&h=150&fit=crop&q=80" alt="">
+        </div>
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Кюфтета от кайма</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">12.90 лв.</span>
+          </div>
+          <div class="menu-item-desc">Домашни кюфтета по рецепта на баба, поднесени с лютеница</div>
+          <div class="menu-item-meta">
+            <span class="meta-tag">300 гр</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-item-thumb">
+          <img src="https://images.unsplash.com/photo-1432139509613-5c4255a1d846?w=150&h=150&fit=crop&q=80" alt="">
+        </div>
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Наденица на скара</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">11.50 лв.</span>
+          </div>
+          <div class="menu-item-desc">Пресна домашна наденица, печена на жарава</div>
+          <div class="menu-item-meta">
+            <span class="meta-tag">250 гр</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Кебапчета (порция)</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">10.90 лв.</span>
+          </div>
+          <div class="menu-item-desc">Класически български кебапчета, 5 броя</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Шишче пилешко</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">13.50 лв.</span>
+          </div>
+          <div class="menu-item-desc">Маринован пилешки бут на шиш с чушки и лук</div>
+        </div>
+      </div>
+
+      <span class="page-num">02</span>
+      <div class="corner-flourish bottom-right"></div>
+    </div>
+
+    <!-- ════════ RIGHT PAGE ════════ -->
+    <div class="page page-right">
+      <div class="corner-flourish top-left" style="left:auto;right:20px;border-left:none;border-right:2px solid var(--gold);"></div>
+
+      <div class="section-header stagger-1">
+        <div class="section-label">Традиция и вкус</div>
+        <h2>Специалитети<br>на къщата</h2>
+        <div class="section-line"></div>
+      </div>
+
+      <!-- Hero Dish -->
+      <div class="hero-dish stagger-2">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=380&fit=crop&q=80" alt="Гювеч">
+        <div class="hero-badge">Шеф избор</div>
+        <div class="hero-overlay">
+          <div class="hero-name">Лудогорски Гювеч</div>
+          <div class="hero-price">22.50 лв.</div>
+        </div>
+      </div>
+
+      <div class="menu-item stagger-3">
+        <div class="menu-item-thumb">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=150&h=150&fit=crop&q=80" alt="">
+        </div>
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Каварма по селски</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">17.90 лв.</span>
+          </div>
+          <div class="menu-item-desc">Задушено свинско с гъби, лук и чушки в глинен съд</div>
+          <div class="menu-item-meta">
+            <span class="meta-tag">350 гр</span>
+            <span class="meta-tag">🏺 В гювече</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item stagger-4">
+        <div class="menu-item-thumb">
+          <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=150&h=150&fit=crop&q=80" alt="">
+        </div>
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Мусака</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">14.90 лв.</span>
+          </div>
+          <div class="menu-item-desc">Класическа българска мусака с картофи и кайма, запечена със заливка</div>
+        </div>
+      </div>
+
+      <div class="divider-ornament"><span>◆</span></div>
+
+      <!-- Pull quote -->
+      <div class="pull-quote stagger-5">
+        <p>„Готвим с любов, поднасяме с гордост — всяко ястие разказва история от Лудогорието."</p>
+        <cite>— Шеф Готвач Николай</cite>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Сач Лудогорието</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">28.90 лв.</span>
+          </div>
+          <div class="menu-item-desc">Микс от три вида месо с гъби, чушки и домати на сач</div>
+          <div class="menu-item-meta">
+            <span class="meta-tag">За двама</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Пълнени чушки</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">13.50 лв.</span>
+          </div>
+          <div class="menu-item-desc">Чушки, пълнени с ориз и кайма, запечени в доматен сос</div>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <div class="menu-item-top">
+            <span class="menu-item-name">Агнешко по шопски</span>
+            <span class="menu-item-dots"></span>
+            <span class="menu-item-price">24.90 лв.</span>
+          </div>
+          <div class="menu-item-desc">Бавно печено агнешко бутче с билки и картофки</div>
+          <div class="menu-item-meta">
+            <span class="meta-tag">450 гр</span>
+            <span class="meta-tag">⭐ Нов</span>
+          </div>
+        </div>
+      </div>
+
+      <span class="page-num">03</span>
+      <div class="corner-flourish bottom-right" style="right:20px;"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── PAGE DOTS ─── -->
+<div class="magazine-footer">
+  <p>Плъзни за да разгледаш категориите</p>
+  <div class="page-dots">
+    <button class="page-dot"></button>
+    <button class="page-dot active"></button>
+    <button class="page-dot"></button>
+    <button class="page-dot"></button>
+  </div>
+</div>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelector('.cat-tab.active').classList.remove('active');
+      tab.classList.add('active');
+    });
+  });
+
+  // Page dot switching
+  document.querySelectorAll('.page-dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      document.querySelector('.page-dot.active').classList.remove('active');
+      dot.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

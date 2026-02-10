@@ -5,6 +5,7 @@ import ProductsData from "@data/products.json";
 import MenuData from "@data/menu.json";
 import Specialties from "@data/specialties.json";
 
+import Link from "next/link";
 import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
@@ -35,11 +36,22 @@ const Menu1 = () => {
           breadTitle={"Меню"} 
         />
       </div>
-      
+
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-0">
+              <div className="text-center mb-4">
+                <Link
+                  href="/menu/qr"
+                  className="tst-btn"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
+                >
+                  <i className="fas fa-qrcode" />
+                  <span>QR Меню</span>
+                </Link>
+              </div>
+
               <ScrollHint />
 
               <MenuFiltered
