@@ -15,7 +15,7 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   experimental: {
-    optimizePackageImports: ['swiper'],
+    optimizePackageImports: ['swiper', 'framer-motion', 'date-fns', 'yet-another-react-lightbox', 'react-modal-video'],
   },
   // Turbopack configuration (empty to acknowledge and silence warning)
   turbopack: {},

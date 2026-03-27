@@ -8,7 +8,7 @@ const Lightbox = lazy(() => import("yet-another-react-lightbox"));
 const DecorationGallery = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [lightboxReady, setLightboxReady] = useState(false);
+  const [failedImages, setFailedImages] = useState(new Set());
 
   // Decoration images from decoration_footage folder
   const images = useMemo(() => [
@@ -27,7 +27,6 @@ const DecorationGallery = () => {
   const handleImageClick = useCallback((index) => {
     startTransition(() => {
       setCurrentImageIndex(index);
-      setLightboxReady(true);
       setIsOpen(true);
     });
   }, []);
@@ -77,23 +76,20 @@ const DecorationGallery = () => {
               }}
               onClick={() => handleImageClick(index)}
             >
-              <img
-                src={image.url}
-                alt={image.alt}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                }}
-                onError={(e) => {
-                  e.target.style.display = "none";
-                  e.target.parentElement.innerHTML = `
-                    <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #f39c12, #d4a373);">
-                      <i class="fas fa-image" style="font-size: 64px; color: white; opacity: 0.3;"></i>
-                    </div>
-                  `;
-                }}
-              />
+              {failedImages.has(index) ? (
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', background: 'linear-gradient(135deg, #f39c12, #d4a373)' }}>
+                  <i className="fas fa-image" style={{ fontSize: '64px', color: 'white', opacity: 0.3 }}></i>
+                </div>
+              ) : (
+                <Image
+                  src={image.url}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  style={{ objectFit: 'cover' }}
+                  onError={() => setFailedImages(prev => new Set([...prev, index]))}
+                />
+              )}
 
               {/* Hover Overlay */}
               <div
@@ -138,7 +134,7 @@ const DecorationGallery = () => {
       </div>
 
       {/* Lightbox - Lazy loaded only after first click */}
-      {lightboxReady && (
+      {isOpen && (
         <Suspense fallback={null}>
           <Lightbox
             open={isOpen}

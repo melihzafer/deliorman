@@ -1,19 +1,18 @@
 import { Josefin_Sans, Playfair_Display } from 'next/font/google'
 
 const josefin_sans = Josefin_Sans({
-  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   variable: '--font-josefin_sans',
   display: 'swap',
-  // Use Next.js default font fallback generation (matches previous behavior)
   adjustFontFallback: true,
 })
 
 const playfair_display = Playfair_Display({
   weight: ['400', '500', '600', '700', '800', '900'],
   style: ['normal', 'italic'],
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext', 'cyrillic'],
   variable: '--font-playfair_display',
   display: 'swap',
   adjustFontFallback: true,
@@ -34,9 +33,7 @@ import ClientBoot from "@components/ClientBoot";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CartProvider } from "@library/CartContext";
-import { FeedbackFAB } from "@components/ui/FeedbackFAB";
-import ScrollProgress from "@components/common/ScrollProgress";
-import BackToTop from "@components/common/BackToTop";
+import LazyLayoutWidgets from "@components/common/LazyLayoutWidgets";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
@@ -170,8 +167,12 @@ const Layouts = ({ children }) => {
       suppressHydrationWarning
     >
       <head>
+        {/* Preconnect to critical third-party origins */}
         <link rel="preconnect" href="https://api.mapbox.com" />
         <link rel="preconnect" href="https://events.mapbox.com" />
+        {/* DNS prefetch for analytics (loaded conditionally in production) */}
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+        <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
       </head>
       <body
         style={{
@@ -179,7 +180,8 @@ const Layouts = ({ children }) => {
         }}
         suppressHydrationWarning
       >
-        <ScrollProgress />
+        {/* Lazy-loaded non-critical UI widgets (scroll progress, back-to-top, feedback) */}
+        <LazyLayoutWidgets />
 
         {/* Skip to main content link for keyboard/screen reader users */}
         <a href="#main-content" className="tst-skip-link">
@@ -203,12 +205,6 @@ const Layouts = ({ children }) => {
           </CartProvider>
         </div>
         {/* app wrapper end */}
-
-        {/* Feedback FAB */}
-        <FeedbackFAB />
-
-        {/* Back to Top */}
-        <BackToTop />
 
         {/* Vercel Analytics */}
         {process.env.NODE_ENV === 'production' ? (

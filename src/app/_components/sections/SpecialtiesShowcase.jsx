@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
 import SpecialtiesData from "@data/specialties.json";
 
 const SpecialtiesShowcase = () => {
   const specialties = SpecialtiesData.categories[0]?.items || [];
+  const [failedImages, setFailedImages] = useState(new Set());
 
   return (
     <>
@@ -49,23 +51,20 @@ const SpecialtiesShowcase = () => {
                       overflow: 'hidden',
                       position: 'relative'
                     }}>
-                      <img 
-                        src={`/img/menu/specialty-${index + 1}.webp`}
-                        alt={specialty.title}
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          objectFit: 'cover'
-                        }}
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentElement.innerHTML = `
-                            <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: linear-gradient(135deg, #f39c12, #d4a373);">
-                              <i class="fas fa-utensils" style="font-size: 64px; color: white; opacity: 0.3;"></i>
-                            </div>
-                          `;
-                        }}
-                      />
+                      {failedImages.has(index) ? (
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', background: 'linear-gradient(135deg, #f39c12, #d4a373)' }}>
+                          <i className="fas fa-utensils" style={{ fontSize: '64px', color: 'white', opacity: 0.3 }}></i>
+                        </div>
+                      ) : (
+                        <Image 
+                          src={`/img/menu/specialty-${index + 1}.webp`}
+                          alt={specialty.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: 'cover' }}
+                          onError={() => setFailedImages(prev => new Set([...prev, index]))}
+                        />
+                      )}
                       {/* Price Badge */}
                       <div style={{
                         position: 'absolute',
