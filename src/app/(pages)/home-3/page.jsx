@@ -24,6 +24,7 @@ export const metadata = {
 		default: "Home 3",
 	},
   description: AppData.settings.siteDescription,
+  robots: { index: false, follow: false },
 }
 
 async function Home3() {

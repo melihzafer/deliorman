@@ -32,6 +32,7 @@ export const metadata = {
 		default: "Home Onepage",
 	},
   description: AppData.settings.siteDescription,
+  robots: { index: false, follow: false },
 }
 
 async function HomeOnePage() {

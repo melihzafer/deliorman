@@ -25,6 +25,7 @@ export const metadata = {
 		template: "%s | " + AppData.settings.siteName,
 	},
   description: AppData.settings.siteDescription,
+  robots: { index: false, follow: false },
 }
 
 async function Home2() {

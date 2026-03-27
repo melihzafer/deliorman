@@ -14,6 +14,7 @@ export const metadata = {
         default: "Reservation OpenTable",
     },
     description: AppData.settings.siteDescription,
+    robots: { index: false, follow: false },
 }
 
 const Reservation2 = () => {
