@@ -35,6 +35,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CartProvider } from "@library/CartContext";
 import { FeedbackFAB } from "@components/ui/FeedbackFAB";
+import ScrollProgress from "@components/common/ScrollProgress";
+import BackToTop from "@components/common/BackToTop";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
@@ -167,12 +169,18 @@ const Layouts = ({ children }) => {
       className={`${josefin_sans.variable} ${playfair_display.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <link rel="preconnect" href="https://api.mapbox.com" />
+        <link rel="preconnect" href="https://events.mapbox.com" />
+      </head>
       <body
         style={{
           backgroundImage: `url(${AppData.settings.bgImage})`,
         }}
         suppressHydrationWarning
       >
+        <ScrollProgress />
+
         {/* Skip to main content link for keyboard/screen reader users */}
         <a href="#main-content" className="tst-skip-link">
           Прескочи към съдържанието
@@ -198,6 +206,9 @@ const Layouts = ({ children }) => {
 
         {/* Feedback FAB */}
         <FeedbackFAB />
+
+        {/* Back to Top */}
+        <BackToTop />
 
         {/* Vercel Analytics */}
         {process.env.NODE_ENV === 'production' ? (

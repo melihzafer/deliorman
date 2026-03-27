@@ -15,10 +15,13 @@ import CountersSection from "@components/sections/Counters";
 import CallToActionFourSection from "@components/sections/CallToActionFour";
 
 export const metadata = {
-  title: {
-    default: "За нас",
+  title: 'За Нас | Историята на Ресторант Делиорман',
+  description: 'Научете повече за Ресторант Делиорман в Самуил, обл. Разград. Нашата история, екип и страст към автентичната българска кухня и традиционни рецепти.',
+  openGraph: {
+    title: 'За Нас | Ресторант Делиорман',
+    description: 'Историята на ресторант Делиорман — традиция, качество и страст към българската кухня в село Самуил.',
+    type: 'website',
   },
-  description: AppData.settings.siteDescription,
 };
 
 async function About() {
