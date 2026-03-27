@@ -10,7 +10,7 @@ const CallToActionThreeSection = () => {
   const [mapLock, setMapLock] = useState(false);
 
   useEffect(() => {
-    mapboxInit();
+    mapboxInit().catch(console.error);
   }, []);
 
   return (

@@ -43,7 +43,7 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
     }
 
     if ( showMap ) {
-      mapboxInit();
+      mapboxInit().catch(console.error);
     }
   }, []);
   
