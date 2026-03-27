@@ -1,31 +1,94 @@
-.tst-menu nav ul li a,
-.tst-menu nav ul li ul li a {
-  color: #7e2010 !important;
+/* ===========================
+   CSS Custom Properties
+   (mirrors _variables.scss for theming / future dark-mode)
+   =========================== */
+:root {
+  /* palette – accent */
+  --color-accent: #f39c12;
+  --color-accent-hover: #e67e22;
+  --color-accent-aux1: #e74c3c;
+  --color-accent-aux2: #2ecc71;
+  --color-accent-aux3: #3498db;
+
+  /* palette – neutrals */
+  --color-dark: #1a2f33;
+  --color-dark-deep: #04191d;
+  --color-bg: #fcfcfc;
+  --color-text: #1a2f33;
+  --color-text-light: rgba(26, 47, 51, 0.7);
+  --color-card: #ffffff;
+  --color-border: #e5ebef;
+  --color-white-l1: #f2f6f7;
+  --color-white-l2: #e5ebef;
+
+  /* radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+  /* transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
 }
 
-.tst-menu nav ul li a:hover,
-.tst-menu nav ul li ul li a:hover {
-  color: #7e2010 !important;
+/* ===========================
+   Brand-color overrides
+   (higher specificity replaces !important)
+   =========================== */
+html body .tst-menu nav ul li a,
+html body .tst-menu nav ul li ul li a {
+  color: #7e2010;
 }
 
-.tst-btn,
-.tst-res-btn,
-.tst-menu-right a,
-.tst-cart,
-a.tst-btn {
-  color: #7e2010 !important;
-  border-color: #7e2010 !important;
+html body .tst-menu nav ul li a:hover,
+html body .tst-menu nav ul li ul li a:hover {
+  color: #7e2010;
 }
+
+html body .tst-btn,
+html body .tst-res-btn,
+html body .tst-menu-right a,
+html body .tst-cart,
+html body a.tst-btn {
+  color: #7e2010;
+  border-color: #7e2010;
+}
+
 a {
   color: #7e2010;
 }
 a:hover {
   color: #a52815;
 }
-a.light {
-}
-.tst-menu nav ul li.current-menu-item > a,
-.tst-menu nav ul li.tst-active > a {
+
+html body .tst-menu nav ul li.current-menu-item > a,
+html body .tst-menu nav ul li.tst-active > a {
   font-weight: bold;
-  color: #7e2010 !important;
+  color: #7e2010;
+}
+
+/* ===========================
+   Focus visibility (a11y)
+   =========================== */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
