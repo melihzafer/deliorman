@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import Data from "@data/sections/schedule.json";
 import Link from "next/link";
 import DividerModule from "../../_layouts/divider/Index";
@@ -11,7 +10,7 @@ const ScheduleSection = () => {
                   <div className="tst-banner-sm">
 
                     <div className="tst-cover-frame">
-                    <img src={Data.image.url} alt={Data.image.alt} className="tst-cover" />
+                    <Image src={Data.image.url} alt={Data.image.alt} className="tst-cover" fill sizes="100vw" style={{ objectFit: 'cover' }} />
                     <div className="tst-overlay" style={{background: "#000000d0"}}></div>
                     </div>
 

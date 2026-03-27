@@ -1,6 +1,5 @@
 import React from "react";
 
-import AppData from "@data/app.json";
 import MenuData from "@data/menu.json";
 
 import ScrollHint from "@layouts/scroll-hint/Index";

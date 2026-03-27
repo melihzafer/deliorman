@@ -1,14 +1,6 @@
-"use client";
-
-import { useState } from 'react';
-
 import Data from "@data/sections/promo-video.json";
 
-import ModalVideo from 'react-modal-video'
-import 'react-modal-video/css/modal-video.css'
-
 const PromoVideoSection = () => {
-  const [isOpen, setOpen] = useState(false);
 
   return (
     <>

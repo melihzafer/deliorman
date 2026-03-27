@@ -1,10 +1,8 @@
-"use client";
-
-import React from "react";
 import styles from "../_styles/scss/DarkSection.module.scss";
 
 /**
  * DarkSection Component
+ * Server Component - pure UI wrapper
  * 
  * A responsive wrapper for dark-themed sections with mobile-first design.
  * - Mobile: minimal padding (30px 1em), no border-radius

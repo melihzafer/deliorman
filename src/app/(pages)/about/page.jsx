@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 
 import { getSortedPostsData } from "@library/posts";
 
@@ -8,16 +8,11 @@ import ScrollHint from "@layouts/scroll-hint/Index";
 import Divider from "@layouts/divider/Index";
 
 import PageBanner from "@components/PageBanner";
-import AwardsSection from "@components/sections/Awards";
 import PromoVideoSection from "@components/sections/PromoVideo";
 import FeaturesSection from "@components/sections/Features";
-import TeamSection from "@components/sections/Team";
 import ScheduleSection from "@components/sections/Schedule";
 import CountersSection from "@components/sections/Counters";
 import CallToActionFourSection from "@components/sections/CallToActionFour";
-import LatestPostsSection from "@components/sections/LatestPosts";
-import SubscribeSection from "@components/sections/Subscribe";
-import TestimonialSlider from "@components/sliders/Testimonial";
 
 export const metadata = {
   title: {

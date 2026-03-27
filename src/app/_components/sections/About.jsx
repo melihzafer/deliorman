@@ -1,16 +1,9 @@
-"use client";
-
+import Image from "next/image";
 import AppData from "@data/app.json";
 import Data from "@data/sections/about.json";
 import Link from "next/link";
 
-import { useState } from 'react';
-
-import ModalVideo from 'react-modal-video'
-import 'react-modal-video/css/modal-video.css'
-
 const AboutSection = () => {
-    const [isOpen, setOpen] = useState(false);
 
     return (
         <>
@@ -39,7 +32,7 @@ const AboutSection = () => {
 
                 {/* about image */}
                 <div className="tst-about-cover tst-mb-60">
-                  <img src={Data.image.url} alt={Data.image.alt} className="tst-cover" />
+                  <Image src={Data.image.url} alt={Data.image.alt} className="tst-cover" fill sizes="(max-width: 768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
                   <div className="tst-overlay"></div>
                   {/* Video button commented out - now showing static image */}
                   {/* <div className="tst-btn-animation"></div>

@@ -1,5 +1,3 @@
-"use client";
-
 import BlogItem from "@components/blog/BlogItem";
 import Link from "next/link";
 

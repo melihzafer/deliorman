@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
 import Date from '@library/date';
 
@@ -9,7 +8,7 @@ const BlogItem = ({ item, popular }) => {
       {/* blog card */}
       <div className="tst-blog-card tst-mb-60">
         <Link href={`/blog/${item.id}`} className="tst-cover-frame tst-anima-link">
-          <img src={item.image} alt={item.title} />
+          <Image src={item.image} alt={item.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{ objectFit: 'cover' }} />
           {popular == 1 ? (
           <div className="tst-card-badge tst-auxiliary-color-1">Popular</div>
           ) : (
@@ -22,7 +21,7 @@ const BlogItem = ({ item, popular }) => {
           <div className="tst-spacer-sm"></div>
           <div className="tst-post-bottom">
             <div className="tst-post-author">
-              <img src={item.authorAvatar} alt={item.author} /> 
+              <Image src={item.authorAvatar} alt={item.author} width={40} height={40} /> 
               <h6>{item.author}</h6>
             </div>
             <div className="tst-date"><Date dateString={item.date} /></div>

@@ -1,14 +1,7 @@
-"use client";
-
 import React from "react";
-
-import AppData from "@data/app.json";
 
 import PageBanner from "@components/PageBanner";
 import DarkSection from "@components/DarkSection";
-import CallToActionFourSection from "../../_components/sections/CallToActionFour";
-import CallToActionThreeSection from "../../_components/sections/CallToActionThree";
-import SpecialtiesShowcase from "../../_components/sections/SpecialtiesShowcase";
 import NewSpecialtiesCTA from "../../_components/sections/NewSpecialtiesCTALazy";
 
 const LunchMenu = () => {

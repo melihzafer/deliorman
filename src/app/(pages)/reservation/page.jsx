@@ -1,7 +1,5 @@
 import React from "react";
 
-import AppData from "@data/app.json";
-
 import ScrollHint from "@layouts/scroll-hint/Index";
 import Divider from "@layouts/divider/Index";
 
