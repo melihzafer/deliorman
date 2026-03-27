@@ -1,20 +1,9 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { getClientIp } from '@library/client-ip';
+import { escapeHtml } from '@library/htmlUtils';
 
 export const runtime = 'nodejs';
-
-/**
- * Escape HTML special characters in a string
- * @param {string} text - The input string
- * @returns {string} - The escaped string
- */
-function escapeHtml(text) {
-  return String(text ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
 
 export async function POST(request) {
   try {

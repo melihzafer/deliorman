@@ -3,58 +3,7 @@
 import { Formik } from "formik";
 import { useEffect, useState, useMemo, useCallback } from "react";
 import Link from "next/link";
-
-function normalizeBgPhone(input) {
-  const raw = String(input ?? "").trim();
-  if (!raw) return "";
-
-  let s = raw.replace(/[\s\-()]/g, "");
-
-  // 00359... -> +359...
-  if (s.startsWith("00")) s = `+${s.slice(2)}`;
-
-  // 359... -> +359...
-  if (s.startsWith("359")) s = `+${s}`;
-
-  // 08XXXXXXXXX -> +3598XXXXXXXX
-  if (s.startsWith("08")) s = `+359${s.slice(1)}`;
-
-  return s;
-}
-
-function validateBgPhone(input) {
-  const normalized = normalizeBgPhone(input);
-  if (!normalized) {
-    return { ok: false, normalized: "", message: "Задължително поле" };
-  }
-
-  if (!/^\+\d+$/.test(normalized)) {
-    return {
-      ok: false,
-      normalized,
-      message: "Невалиден телефон. Пример: +359888123456 или 0888123456.",
-    };
-  }
-
-  if (!normalized.startsWith("+359")) {
-    return {
-      ok: false,
-      normalized,
-      message: "Невалиден телефон. Пример: +359888123456 или 0888123456.",
-    };
-  }
-
-  // Common BG mobile length: +359 + 9 digits
-  if (normalized.length !== 13) {
-    return {
-      ok: false,
-      normalized,
-      message: "Невалиден телефон. Пример: +359888123456 или 0888123456.",
-    };
-  }
-
-  return { ok: true, normalized, message: "" };
-}
+import { validateBgPhone } from "@library/bgPhoneUtils";
 
 function parseDateTimeLocal(dateStr, timeStr) {
   if (!dateStr || !timeStr) return null;
@@ -259,7 +208,7 @@ const ReservationForm = () => {
             errors.last_name = "Фамилията трябва да е поне 2 символа";
           }
 
-          const phoneCheck = validateBgPhone(values.phone);
+          const phoneCheck = validateBgPhone(values.phone, { emptyMessage: "Задължително поле" });
           if (!phoneCheck.ok) {
             errors.phone = phoneCheck.message;
           }
@@ -345,7 +294,7 @@ const ReservationForm = () => {
         onSubmit={async (values, { setSubmitting, resetForm }) => {
           setSubmitStatus({ type: "", message: "" });
 
-          const phoneCheck = validateBgPhone(values.phone);
+          const phoneCheck = validateBgPhone(values.phone, { emptyMessage: "Задължително поле" });
           if (!phoneCheck.ok) {
             setSubmitStatus({ type: "error", message: phoneCheck.message });
             setSubmitting(false);

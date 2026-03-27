@@ -1,69 +1,9 @@
 import { NextResponse } from 'next/server';
 import { getClientIp } from '@library/client-ip';
+import { validateBgPhone } from '@library/bgPhoneUtils';
+import { escapeHtml } from '@library/htmlUtils';
 
 export const runtime = 'nodejs';
-
-/**
- * Normalize Bulgarian phone number to E.164 format
- * @param {string|number} input - The raw phone number input
- * @returns {string} - Normalized phone number in E.164 format
- */
-function normalizeBgPhone(input) {
-  const raw = String(input ?? '').trim();
-  if (!raw) return '';
-
-  let s = raw.replace(/[\s\-()]/g, '');
-
-  // 00359... -> +359...
-  if (s.startsWith('00')) s = `+${s.slice(2)}`;
-
-  // 359... -> +359...
-  if (s.startsWith('359')) s = `+${s}`;
-
-  // 08XXXXXXXXX -> +3598XXXXXXXX
-  if (s.startsWith('08')) s = `+359${s.slice(1)}`;
-
-  return s;
-}
-
-/**
- * Validate Bulgarian phone number
- * @param {string|number} input - The raw phone number input
- * @returns {Object} - Validation result { ok, normalized, message }
- */
-function validateBgPhone(input) {
-  const normalized = normalizeBgPhone(input);
-  if (!normalized) {
-    return { ok: false, normalized: '', message: 'Моля въведете телефонен номер' };
-  }
-
-  if (!/^\+\d+$/.test(normalized)) {
-    return { ok: false, normalized, message: 'Невалиден телефон. Пример: +359888123456 или 0888123456.' };
-  }
-
-  if (!normalized.startsWith('+359')) {
-    return { ok: false, normalized, message: 'Невалиден телефон. Пример: +359888123456 или 0888123456.' };
-  }
-
-  // Common BG mobile length
-  if (normalized.length !== 13) {
-    return { ok: false, normalized, message: 'Невалиден телефон. Пример: +359888123456 или 0888123456.' };
-  }
-
-  return { ok: true, normalized, message: '' };
-}
-
-/**
- * Escape HTML special characters in a string
- * @param {string} text - The input text
- * @returns {string} - The text with escaped HTML characters
- */
-function escapeHtml(text) {
-  return String(text ?? '')
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
 
 /**
  * Send reservation details to Telegram via bot
