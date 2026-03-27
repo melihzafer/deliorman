@@ -6,6 +6,7 @@ import { useEffect, useState, useTransition, useCallback, memo } from "react";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 
+import { useTranslations } from "next-intl";
 import { OnePageMenu } from "@common/onepageMenu";
 import AppData from "@data/app.json";
 
@@ -30,7 +31,7 @@ const ReservationForm = dynamic(
             animation: "spin 1s linear infinite",
           }}
         />
-        <p style={{ color: "#666" }}>Зареждане...</p>
+        <p style={{ color: "#666" }}>...</p>
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     ),
@@ -41,6 +42,23 @@ const ReservationForm = dynamic(
  * DefaultHeader - Optimized header component
  * Uses useTransition for non-blocking state updates and lazy loading for popups
  */
+const NAV_KEY_MAP = {
+  '/': 'home',
+  '/menu': 'menu',
+  '/about': 'about',
+  '/gallery': 'gallery',
+  '/contact': 'contact',
+  '/reservation': 'reservation',
+  '/feedback': 'feedback',
+};
+const SUB_NAV_KEY_MAP = {
+  '/menu': 'classicMenu',
+  '/lunch-menu': 'lunchMenu',
+  '/about': 'aboutRestaurant',
+  '/special-days': 'specialDays',
+  '/catering-services': 'services',
+};
+
 const DefaultHeader = memo(() => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
@@ -48,6 +66,8 @@ const DefaultHeader = memo(() => {
   const [reservationPopup, setReservationPopup] = useState(false);
   const [isPending, startTransition] = useTransition();
   const asPath = usePathname();
+  const t = useTranslations("nav");
+  const tc = useTranslations("common");
 
   // Memoized path check function
   const isPathActive = useCallback(
@@ -95,6 +115,16 @@ const DefaultHeader = memo(() => {
     setOpenSubMenu(false);
   }, [asPath]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenu) {
+      document.body.classList.add("mobile-menu-open");
+    } else {
+      document.body.classList.remove("mobile-menu-open");
+    }
+    return () => document.body.classList.remove("mobile-menu-open");
+  }, [mobileMenu]);
+
   // Initialize onepage menu if needed
   useEffect(() => {
     if (isPathActive("onepage")) {
@@ -121,7 +151,7 @@ const DefaultHeader = memo(() => {
               />
             </Link>
             {/* menu */}
-            <nav className={`${mobileMenu ? "tst-active" : ""}`}>
+            <nav role="navigation" aria-label={t("mainNavigation")} className={`${mobileMenu ? "tst-active" : ""}`}>
               {isPathActive("onepage") ? (
                 <ul>
                   {AppData.header.onepage.map((item, index) => (
@@ -154,7 +184,7 @@ const DefaultHeader = memo(() => {
                             : null
                         }
                       >
-                        {item.label}
+                        {NAV_KEY_MAP[item.link] ? t(NAV_KEY_MAP[item.link]) : item.label}
                       </Link>
                       {item.children && item.children.length > 0 && (
                         <ul
@@ -171,10 +201,10 @@ const DefaultHeader = memo(() => {
                             >
                               {subitem.link == "/onepage" ? (
                                 <a href={subitem.link} target="_blank">
-                                  {subitem.label}
+                                  {SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}
                                 </a>
                               ) : (
-                                <Link href={subitem.link}>{subitem.label}</Link>
+                                <Link href={subitem.link}>{SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}</Link>
                               )}
                             </li>
                           ))}
@@ -209,14 +239,14 @@ const DefaultHeader = memo(() => {
                 }`}
                 aria-controls="reservation-popup"
                 aria-expanded={reservationPopup ? "true" : "false"}
-                aria-label="Резервации"
+                aria-label={tc("reservations")}
                 onClick={handleReservationToggle}
                 data-no-swup
               >
                 <span className="tst-icon" aria-hidden="true">
                   <i className="fas fa-calendar-check"></i>
                 </span>
-                <span className="sr-only">Резервации</span>
+                <span className="sr-only">{tc("reservations")}</span>
               </a>
             </div>
             {/* top bar right end  */}
@@ -240,7 +270,7 @@ const DefaultHeader = memo(() => {
             {/* title */}
             <div className="text-center">
               <div className="tst-suptitle tst-suptitle-center"></div>
-              <h4 className="tst-mb-60">Резервация на маса</h4>
+              <h4 className="tst-mb-60">{tc("reserveTable")}</h4>
             </div>
             {/* title end */}
 

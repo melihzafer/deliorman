@@ -34,6 +34,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CartProvider } from "@library/CartContext";
 import LazyLayoutWidgets from "@components/common/LazyLayoutWidgets";
+import MobileBottomNav from "@components/common/MobileBottomNav";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
@@ -205,6 +206,8 @@ const Layouts = ({ children }) => {
           </CartProvider>
         </div>
         {/* app wrapper end */}
+
+        <MobileBottomNav />
 
         {/* Vercel Analytics */}
         {process.env.NODE_ENV === 'production' ? (
