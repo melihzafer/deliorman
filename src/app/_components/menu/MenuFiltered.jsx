@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useTransition, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MenuItem from "@components/menu/MenuItem";
@@ -15,6 +16,13 @@ const MenuFiltered = ({ heading = 0, categories }) => {
   const [isPending, startTransition] = useTransition();
   const swiperRef = useRef(null);
   const navRef = useRef(null);
+  const t = useTranslations("menu");
+  const translatedCategories = t.raw("categories");
+
+  const getCategoryLabel = useCallback(
+    (category) => translatedCategories?.[category.slug] || category.name,
+    [translatedCategories]
+  );
 
   // Handle category click - wrapped in useTransition for non-blocking UI
   const handleCategoryClick = useCallback((index) => {
@@ -90,16 +98,18 @@ const MenuFiltered = ({ heading = 0, categories }) => {
                   className={`${styles.menuNavBtn} ${
                     activeCategory === key ? styles.active : ""
                   }`}
+                  type="button"
                   onClick={() => handleCategoryClick(key)}
                   data-category={category.slug}
+                  aria-pressed={activeCategory === key}
                 >
-                  <span className={styles.categoryName}>{category.name}</span>
+                  <span className={styles.categoryName}>{getCategoryLabel(category)}</span>
                 </button>
                   ))}
                 </div>
               </div>
               <p className="tst-text tst-mb-15" style={{ textAlign: 'center', fontSize: '14px', opacity: 0.7 }}>
-                Плъзни за да разгледаш категориите
+                {t("swipeHint")}
               </p>
               <div className="tst-spacer tst-spacer-only-bottom-space"></div>
             </div>

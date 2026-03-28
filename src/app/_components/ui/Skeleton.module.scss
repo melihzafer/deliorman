@@ -1,0 +1,44 @@
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(26, 47, 51, 0.06) 25%,
+    rgba(26, 47, 51, 0.12) 50%,
+    rgba(26, 47, 51, 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+
+  &.text {
+    height: 14px;
+    border-radius: 4px;
+  }
+
+  &.circle {
+    border-radius: 50%;
+  }
+
+  &.rect {
+    border-radius: 4px;
+  }
+
+  &.card {
+    border-radius: 8px;
+    min-height: 120px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

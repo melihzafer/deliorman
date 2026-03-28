@@ -38,18 +38,44 @@ const ProductButtons = () => {
     <>
       <div className="tst-buttons-frame">
         <div className="tst-input-number-frame">
-            <div className="tst-input-number-btn tst-sub" onClick={decreaseQuantity}>-</div>
-            <input type="number" readOnly value={quantity} min={minQuantity} max={maxQuantity} />
-            <div className="tst-input-number-btn tst-add" onClick={increaseQuantity}>+</div>
+            <button
+              type="button"
+              className="tst-input-number-btn tst-sub"
+              onClick={decreaseQuantity}
+              aria-label="Decrease quantity"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              readOnly
+              value={quantity}
+              min={minQuantity}
+              max={maxQuantity}
+              aria-label="Quantity"
+            />
+            <button
+              type="button"
+              className="tst-input-number-btn tst-add"
+              onClick={increaseQuantity}
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
         </div>
         {/* button */}
-        <a href="#." className="tst-btn tst-btn-with-icon tst-atc" onClick={handleAddToCart}>
-            <span className="tst-icon">
-                <img src="/img/ui/icons/cart.svg" alt="icon" />
+        <button
+          type="button"
+          className="tst-btn tst-btn-with-icon tst-atc"
+          onClick={handleAddToCart}
+          aria-label={buttonAdded ? "Added to cart" : "Add to cart"}
+        >
+            <span className="tst-icon" aria-hidden="true">
+                <img src="/img/ui/icons/cart.svg" alt="" />
             </span>
             <span className="tst-add-to-cart-text">Add to cart</span>
             <span className="tst-added-text">Added</span>
-        </a>
+        </button>
         {/* button end */}
       </div>
     </>

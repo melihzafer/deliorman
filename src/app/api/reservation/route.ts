@@ -5,14 +5,64 @@ import { escapeHtml } from '@library/htmlUtils';
 
 export const runtime = 'nodejs';
 
+type ReservationField = 'first_name' | 'last_name' | 'phone' | 'person' | 'date' | 'time' | 'message' | 'privacy_consent';
+
+interface ReservationError {
+  field?: ReservationField;
+  message: string;
+  detail?: string;
+}
+
+interface ReservationErrorResponse {
+  success: false;
+  errors: ReservationError[];
+}
+
+interface ReservationMethodNotAllowedResponse {
+  success: false;
+  error: string;
+}
+
+interface ReservationSuccessResponse {
+  success: true;
+  message?: string;
+  data?: {
+    phone: string;
+  };
+}
+
+type ReservationRouteResponse =
+  | ReservationSuccessResponse
+  | ReservationErrorResponse
+  | ReservationMethodNotAllowedResponse;
+
+interface TelegramReplyMarkup {
+  [key: string]: unknown;
+}
+
+interface TelegramSendParams {
+  text: string;
+  replyMarkup?: TelegramReplyMarkup;
+}
+
+interface TelegramApiResponse {
+  ok?: boolean;
+  description?: string;
+}
+
+interface RateLimitEntry {
+  count: number;
+  resetAt: number;
+}
+
+declare global {
+  var __reservationRate: Map<string, RateLimitEntry> | undefined;
+}
+
 /**
  * Send reservation details to Telegram via bot
- * @param {Object} params - Parameters for sending Telegram message
- * @param {string} params.text - The message text
- * @param {Object} [params.replyMarkup] - Optional reply markup (inline keyboard)
- * @returns {Promise<Object>} - Telegram API response
  */
-async function sendTelegramReservation({ text, replyMarkup }) {
+async function sendTelegramReservation({ text, replyMarkup }: TelegramSendParams): Promise<TelegramApiResponse | { ok: true; skipped: true }> {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_RESERVATIONS_CHAT_ID;
   const isTelegramDisabled = String(process.env.TELEGRAM_DISABLE || '').toLowerCase() === 'true';
@@ -38,7 +88,7 @@ async function sendTelegramReservation({ text, replyMarkup }) {
     }),
   });
 
-  const payload = await res.json().catch(() => null);
+  const payload = (await res.json().catch(() => null)) as TelegramApiResponse | null;
   if (!res.ok || !payload?.ok) {
     const desc = payload?.description || `Telegram API error (${res.status})`;
     // Don't leak token/chat id; provide actionable message
@@ -50,11 +100,8 @@ async function sendTelegramReservation({ text, replyMarkup }) {
 
 /**
  * Parse date and time from separate strings to JavaScript Date object
- * @param {string} dateStr - Date string (YYYY-MM-DD)
- * @param {string} timeStr - Time string (HH:mm)
- * @returns {Date|null} - Parsed Date object or null if invalid
  */
-function parseDateTimeLocal(dateStr, timeStr) {
+function parseDateTimeLocal(dateStr: string | null, timeStr: string | null): Date | null {
   // dateStr: YYYY-MM-DD, timeStr: HH:mm
   if (!dateStr || !timeStr) return null;
   const [y, m, d] = String(dateStr).split('-').map(Number);
@@ -65,10 +112,8 @@ function parseDateTimeLocal(dateStr, timeStr) {
 
 /**
  * Round up a date to the next hour
- * @param {Date} date - The input date
- * @returns {Date} - The rounded date
  */
-function roundUpToNextHour(date) {
+function roundUpToNextHour(date: Date): Date {
   const d = new Date(date);
   d.setMinutes(0, 0, 0);
   if (date.getMinutes() !== 0 || date.getSeconds() !== 0 || date.getMilliseconds() !== 0) {
@@ -83,14 +128,12 @@ const RATE_LIMIT_WINDOW_SECONDS = Number(process.env.RESERVATION_RATE_WINDOW_SEC
 const RATE_LIMIT_MAX = Number(process.env.RESERVATION_RATE_MAX || 5);
 
 // In-memory rate limiter (per process)
-const memoryRate = globalThis.__reservationRate || (globalThis.__reservationRate = new Map());
+const memoryRate = globalThis.__reservationRate ?? (globalThis.__reservationRate = new Map<string, RateLimitEntry>());
 
 /**
  * Check if the request is rate limited
- * @param {Request} request - The incoming request object
- * @returns {Promise<boolean>} - True if rate limited, false otherwise
  */
-async function isRateLimited(request) {
+async function isRateLimited(request: Request): Promise<boolean> {
   // Memory only - using IP as identifier
   const { ip: clientIp } = getClientIp(request);
   const keyBase = `reservation:rate:${clientIp}`;
@@ -106,31 +149,31 @@ async function isRateLimited(request) {
   return entry.count > RATE_LIMIT_MAX;
 }
 
-export function GET() {
-  return NextResponse.json(
+export function GET(): NextResponse<ReservationMethodNotAllowedResponse> {
+  return NextResponse.json<ReservationMethodNotAllowedResponse>(
     {
       success: false,
-      error: 'Method Not Allowed. Use POST to submit a reservation.'
+      error: 'Method Not Allowed. Use POST to submit a reservation.',
     },
     {
       status: 405,
       headers: {
-        Allow: 'POST, OPTIONS'
-      }
-    }
+        Allow: 'POST, OPTIONS',
+      },
+    },
   );
 }
 
-export function HEAD() {
+export function HEAD(): NextResponse {
   return new NextResponse(null, {
     status: 405,
     headers: {
-      Allow: 'POST, OPTIONS'
-    }
+      Allow: 'POST, OPTIONS',
+    },
   });
 }
 
-export function OPTIONS() {
+export function OPTIONS(): NextResponse {
   // Helps with CORS preflight (even though same-origin usually doesn't need it).
   return new NextResponse(null, {
     status: 204,
@@ -138,11 +181,11 @@ export function OPTIONS() {
       Allow: 'POST, OPTIONS',
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
-    }
+    },
   });
 }
 
-export async function POST(request) {
+export async function POST(request: Request): Promise<NextResponse<ReservationRouteResponse>> {
   try {
     // Capture client IP for security/audit purposes
     const ipInfo = getClientIp(request);
@@ -165,17 +208,17 @@ export async function POST(request) {
     }
 
     // Extract form data
-    const firstName = formData.get('first_name');
-    const lastName = formData.get('last_name');
-    const phoneRaw = formData.get('phone');
-    const person = formData.get('person');
-    const date = formData.get('date');
-    const time = formData.get('time');
-    const message = formData.get('message') || 'Няма допълнително съобщение';
-    const privacyConsentRaw = formData.get('privacy_consent');
+    const firstName = formData.get('first_name') as string | null;
+    const lastName = formData.get('last_name') as string | null;
+    const phoneRaw = formData.get('phone') as string | null;
+    const person = formData.get('person') as string | null;
+    const date = formData.get('date') as string | null;
+    const time = formData.get('time') as string | null;
+    const message = (formData.get('message') as string | null) || 'Няма допълнително съобщение';
+    const privacyConsentRaw = formData.get('privacy_consent') as string | null;
 
     // Validation
-    const errors = [];
+    const errors: ReservationError[] = [];
 
     const privacyConsent = (() => {
       const v = String(privacyConsentRaw ?? '').trim().toLowerCase();
@@ -278,26 +321,31 @@ export async function POST(request) {
     }
 
     if (errors.length > 0) {
-      return NextResponse.json({ success: false, errors }, { status: 400 });
+      return NextResponse.json<ReservationErrorResponse>({ success: false, errors }, { status: 400 });
     }
 
+    const validatedFirstName = firstName as string;
+    const validatedLastName = lastName as string;
+    const validatedPerson = person as string;
+    const validatedDate = date as string;
+    const validatedTime = time as string;
     const phone = phoneCheck.normalized;
 
     const dateBg = (() => {
       try {
-        return new Date(date).toLocaleDateString('bg-BG', {
+        return new Date(validatedDate).toLocaleDateString('bg-BG', {
           weekday: 'long',
           year: 'numeric',
           month: 'long',
           day: 'numeric'
         });
       } catch {
-        return date;
+        return validatedDate;
       }
     })();
 
     const safeMessage = escapeHtml(message);
-    const safeName = escapeHtml(`${firstName} ${lastName}`);
+    const safeName = escapeHtml(`${validatedFirstName} ${validatedLastName}`);
 
     const telLink = `${phone}`;
 
@@ -307,9 +355,9 @@ export async function POST(request) {
       '',
       `<b>👤 Име:</b> ${safeName}`,
       `<b>📞 Телефон:</b> <code>${escapeHtml(phone)}</code>`,
-      `<b>👥 Гости:</b> ${escapeHtml(person)}`,
+      `<b>👥 Гости:</b> ${escapeHtml(validatedPerson)}`,
       `<b>📅 Дата:</b> ${escapeHtml(dateBg)}`,
-      `<b>🕒 Час:</b> <b>${escapeHtml(time)}</b>`,
+      `<b>🕒 Час:</b> <b>${escapeHtml(validatedTime)}</b>`,
       '',
       '<b>📝 Съобщение:</b>',
       safeMessage ? safeMessage : '—',
@@ -330,19 +378,19 @@ export async function POST(request) {
     // Telegram Bot API rejects tel: URLs in inline_keyboard buttons.
     await sendTelegramReservation({ text: telegramText });
 
-    return NextResponse.json({
+    return NextResponse.json<ReservationSuccessResponse>({
       success: true,
       message: 'Заявката за резервация е изпратена. Очаквайте обаждане за потвърждение.',
-      data: { phone }
+      data: { phone },
     });
 
-  } catch (error) {
-    const detail = typeof error?.message === 'string' ? error.message : '';
+  } catch (error: unknown) {
+    const detail = error instanceof Error ? error.message : '';
     const extraHelp = detail.includes('Telegram send failed')
       ? 'Проверете TELEGRAM_BOT_TOKEN, TELEGRAM_RESERVATIONS_CHAT_ID и дали ботът е admin в канала.'
       : '';
 
-    return NextResponse.json(
+    return NextResponse.json<ReservationErrorResponse>(
       {
         success: false,
         errors: [
@@ -351,10 +399,10 @@ export async function POST(request) {
               `Възникна грешка при обработката на резервацията. ${extraHelp}`.trim() ||
               'Възникна грешка при обработката на резервацията. Моля, опитайте отново или се обадете на +359 89 4766273.',
             ...(process.env.NODE_ENV !== 'production' && detail ? { detail } : {})
-          }
-        ]
+          },
+        ],
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

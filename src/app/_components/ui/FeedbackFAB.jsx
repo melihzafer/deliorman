@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, startTransition } from "react";
+import { useTranslations } from "next-intl";
 import { FeedbackModal } from "./FeedbackModal";
 import styles from "../../_styles/scss/ui/FAB.module.scss";
 
 export const FeedbackFAB = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const tFeedback = useTranslations("feedback");
+  const tFeedbackPage = useTranslations("feedbackPage");
 
   const handleSuccess = () => {
     startTransition(() => {
@@ -18,11 +21,11 @@ export const FeedbackFAB = () => {
   return (
     <>
       <button
-        className={styles.fab}
+        className={`tst-feedback-fab ${styles.fab}`}
         onClick={() => startTransition(() => setIsModalOpen(true))}
-        aria-label="Обратна връзка"
+        aria-label={tFeedback("widgetLabel")}
         aria-expanded={isModalOpen}
-        title="Споделете вашето мнение"
+        title={tFeedback("widgetTitle")}
       >
         <svg
           width="24"
@@ -49,10 +52,10 @@ export const FeedbackFAB = () => {
           <span style={{ fontSize: "24px" }}>✓</span>
           <div>
             <div style={{ fontWeight: 600, marginBottom: "4px" }}>
-              Благодарим Ви!
+              {tFeedbackPage("successTitle")}
             </div>
             <div style={{ fontSize: "14px", opacity: 0.9 }}>
-              Вашата обратна връзка е изпратена успешно
+              {tFeedbackPage("successMessage")}
             </div>
           </div>
         </div>

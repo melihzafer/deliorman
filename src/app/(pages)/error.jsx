@@ -8,10 +8,16 @@
  */
 
 import { useEffect } from "react";
-import Link from "next/link";
+import { useLocale } from "next-intl";
+
+import { Link } from "@/src/i18n/navigation";
+import { getLocaleSurfaceCopy } from "@/src/app/[locale]/(pages)/pageCopy";
 import styles from "./error.module.css";
 
 export default function Error({ error, reset }) {
+  const locale = useLocale();
+  const copy = getLocaleSurfaceCopy("error", locale);
+
   useEffect(() => {
     // Log error to console in development
     console.error("Page error:", error);
@@ -26,11 +32,11 @@ export default function Error({ error, reset }) {
         </div>
 
         {/* Error message */}
-        <h2 className={styles.title}>Нещо се обърка</h2>
+        <h2 className={styles.title}>{copy.title}</h2>
         <p className={styles.description}>
-          Съжаляваме, възникна проблем при зареждането на страницата.
+          {copy.description}
           <br />
-          Моля, опитайте отново или се върнете към началната страница.
+          {copy.hint}
         </p>
 
         {/* Action buttons */}
@@ -41,12 +47,12 @@ export default function Error({ error, reset }) {
             type="button"
           >
             <i className="fas fa-redo"></i>
-            Опитай отново
+            {copy.retry}
           </button>
           
           <Link href="/" className={styles.btnSecondary}>
             <i className="fas fa-home"></i>
-            Към началото
+            {copy.home}
           </Link>
         </div>
       </div>

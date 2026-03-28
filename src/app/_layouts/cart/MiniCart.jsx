@@ -1,51 +1,78 @@
 "use client";
 
-import Link from "next/link";
-import { useState, useCallback } from "react";
-import { useCart } from "@library/CartContext";
-import CartData from "@data/cart.json";
+import { Link } from "@/src/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { useOrder } from "@library/CartContext";
 
 /**
- * MiniCart - Uses CartContext for reactive cart updates
- * Eliminates DOM queries for cart number updates
+ * MiniCart - Legacy popup adapted to the menu ordering flow.
  */
 const MiniCart = () => {
-    const { removeFromCart } = useCart();
-    const [items, setItems] = useState(CartData.items);
+    const { orderItems, totalCount, removeItem, clearOrder, generateWhatsAppLink } = useOrder();
+    const t = useTranslations("orderFlow");
 
-    const handleRemoveFromCart = useCallback((e, index) => {
-        e.preventDefault();
-        const item = items[index];
-        if (item) {
-            removeFromCart(item.quantity || 1);
-            setItems(prev => prev.filter((_, i) => i !== index));
-        }
-    }, [items, removeFromCart]);
+    if (orderItems.length === 0) {
+        return (
+            <>
+                <div className="tst-minicart-header">
+                    <div className="tst-suptitle tst-suptitle-center"></div>
+                    <h5>{t("emptyTitle")}</h5>
+                </div>
+                <p className="tst-text text-center" style={{ padding: "0 15px 15px" }}>
+                    {t("emptyDescription")}
+                </p>
+                <p className="woocommerce-mini-cart__buttons buttons">
+                    <Link href="/menu" className="tst-btn">{t("menuButton")}</Link>
+                </p>
+            </>
+        );
+    }
 
     return (
         <>
             <div className="tst-minicart-header">
                 <div className="tst-suptitle tst-suptitle-center"></div>
-                <h5>Вашата поръчка!</h5>
+                <h5>{t("currentOrderTitle")}</h5>
             </div>
             <ul className="woocommerce-mini-cart cart_list product_list_widget">
-                {items.map((item, index) => (
+                {orderItems.map((item, index) => (
                 <li key={`mini-cart-item-${index}`} className={`woocommerce-mini-cart-item mini_cart_item mini-cart-item-${index}`}>
-                    <a href="#." className="remove remove_from_cart_button" aria-label="Remove this item" onClick={(e) => handleRemoveFromCart(e, index)}>×</a>
-                    <Link href="/product">
-                        <img src={item.image} alt={item.title} className="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" />
+                    <button
+                        type="button"
+                        className="remove remove_from_cart_button"
+                        aria-label={t("removeItem")}
+                        onClick={() => removeItem(item.title, item.amount)}
+                    >
+                        ×
+                    </button>
+                    <Link href="/menu">
                         {item.title}
                     </Link>
-                    <span className="quantity">{item.quantity} × <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">{item.currency}</span>{item.price}</bdi></span></span>
+                    <span className="quantity">
+                        {item.quantity} × <span className="woocommerce-Price-amount amount"><bdi>{item.amount || t("itemFallback")}</bdi></span>
+                    </span>
                 </li>
                 ))}
             </ul>
             <p className="woocommerce-mini-cart__total total">
-                <strong>Междинна сума:</strong> <span className="woocommerce-Price-amount amount"><bdi><span className="woocommerce-Price-currencySymbol">лв.</span>52.00</bdi></span>
+                <strong>{t("totalItems")}</strong> <span className="woocommerce-Price-amount amount"><bdi>{totalCount}</bdi></span>
             </p>
             <p className="woocommerce-mini-cart__buttons buttons">
-                <Link href="/cart" className="tst-btn tst-btn-2">Виж количката</Link>
-                <Link href="/checkout" className="tst-btn">Поръчай</Link>
+                <Link href="/menu" className="tst-btn tst-btn-2">{t("menuButton")}</Link>
+                <a
+                  href={generateWhatsAppLink({
+                    introText: t("whatsappIntro"),
+                    thanksText: t("whatsappThanks"),
+                  })}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="tst-btn"
+                >
+                  {t("whatsappButton")}
+                </a>
+            </p>
+            <p className="woocommerce-mini-cart__buttons buttons">
+                <button type="button" className="tst-btn tst-btn-2" onClick={clearOrder}>{t("clearButton")}</button>
             </p>
         </>
     );

@@ -1,9 +1,12 @@
 "use client";
 
 import { Formik } from 'formik';
+import { useTranslations } from 'next-intl';
 import AppData from "@data/app.json";
 
 const CheckoutForm = () => {
+  const t = useTranslations('components.checkout');
+  
   return (
     <>
         {/* contact form */}
@@ -12,11 +15,11 @@ const CheckoutForm = () => {
         validate = { values => {
             const errors = {};
             if (!values.email) {
-                errors.email = 'Задължително поле';
+                errors.email = t('requiredField');
             } else if (
                 !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
-                errors.email = 'Невалиден имейл адрес';
+                errors.email = t('invalidEmail');
             }
             return errors;
         }}
@@ -46,7 +49,7 @@ const CheckoutForm = () => {
                 }
             }).then(response => {
                 if (response.ok) {
-                    status.innerHTML = "<h5>Благодарим, вашето съобщение е изпратено успешно.</h5>";
+                    status.innerHTML = `<h5>${t('successMessage')}</h5>`;
                     form.reset()
                 } else {
                     response.json().then(data => {
@@ -76,15 +79,15 @@ const CheckoutForm = () => {
         }) => (
         <form onSubmit={handleSubmit} id="checkoutForm" action={AppData.settings.formspreeURL} className="tst-checkout-form">
             <div className="tst-mb-30">
-                <h5>Данни за фактуриране</h5>
+                <h5>{t('billingDetails')}</h5>
             </div>
             <div className="row">
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Име</label>
+                    <label>{t('firstName')}</label>
                     <input 
                         type="text" 
-                        placeholder="Александър"
+                        placeholder={t('firstNamePlaceholder')}
                         name="firstname" 
                         required="required" 
                         onChange={handleChange}
@@ -95,10 +98,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Фамилия</label>
+                    <label>{t('lastName')}</label>
                     <input 
                         type="text" 
-                        placeholder="Петров"
+                        placeholder={t('lastNamePlaceholder')}
                         name="lastname" 
                         required="required" 
                         onChange={handleChange}
@@ -109,10 +112,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Фирма</label>
+                    <label>Company</label>
                     <input 
                         type="text" 
-                        placeholder="ОМНИ Тех ЕООД"
+                        placeholder="Company name"
                         name="company"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -122,10 +125,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Държава</label>
+                    <label>{t('country')}</label>
                     <input 
                         type="text" 
-                        placeholder="България"
+                        placeholder="Bulgaria"
                         name="country"
                         required="required"
                         onChange={handleChange}
@@ -136,10 +139,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Град</label>
+                    <label>{t('city')}</label>
                     <input 
                         type="text" 
-                        placeholder="Самуил"
+                        placeholder="Samuil"
                         name="city"
                         required="required"
                         onChange={handleChange}
@@ -153,7 +156,7 @@ const CheckoutForm = () => {
                     <label>State / Province</label>
                     <input 
                         type="text" 
-                        placeholder="Lazio"
+                        placeholder="Razgrad"
                         name="state"
                         required="required"
                         onChange={handleChange}
@@ -164,10 +167,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Address</label>
+                    <label>{t('address')}</label>
                     <input 
                         type="text" 
-                        placeholder="Via Savoia 77"
+                        placeholder="Your address"
                         name="address"
                         required="required"
                         onChange={handleChange}
@@ -192,10 +195,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Phone</label>
+                    <label>{t('phone')}</label>
                     <input 
                         type="tel" 
-                        placeholder="1-877-111-2222"
+                        placeholder="+359 89 1234567"
                         name="tel"
                         required="required"
                         onChange={handleChange}
@@ -206,7 +209,7 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Email</label>
+                    <label>{t('email')}</label>
                     <input 
                         type="email" 
                         placeholder="yourEmail@gmail.com"
@@ -220,12 +223,12 @@ const CheckoutForm = () => {
                 </div>
             </div>
             <div className="tst-mb-30">
-                <h5>Additional information</h5>
+                <h5>{t('notes')}</h5>
             </div>
             <div className="tst-group-input">
-                <label>Order notes</label>
+                <label>{t('notes')}</label>
                 <textarea 
-                    placeholder="Additional Notes"
+                    placeholder={t('notesPlaceholder')}
                     name="message" 
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -257,7 +260,7 @@ const CheckoutForm = () => {
                 <span className="tst-icon">
                     <img src="/img/ui/icons/arrow.svg" alt="icon" />
                 </span>
-                <span>Place order</span>
+                <span>{t('placeOrder')}</span>
             </button>
             {/* button end */}
 

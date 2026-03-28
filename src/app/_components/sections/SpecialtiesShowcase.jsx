@@ -2,9 +2,12 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 import SpecialtiesData from "@data/specialties.json";
 
 const SpecialtiesShowcase = () => {
+  const t = useTranslations("components.specialtiesShowcase");
   const specialties = SpecialtiesData.categories[0]?.items || [];
   const [failedImages, setFailedImages] = useState(new Set());
 
@@ -19,11 +22,11 @@ const SpecialtiesShowcase = () => {
                 <div className="text-center">
                   <div className="tst-suptitle tst-suptitle-center tst-mb-15" style={{color: '#f39c12'}}>
                     <i className="fas fa-star" style={{marginRight: '8px'}}></i>
-                    Нови Специалитети
+                    {t("subtitle")}
                   </div>
-                  <h2 className="tst-mb-30">Изпробвайте нашите нови ястия</h2>
+                  <h2 className="tst-mb-30">{t("title")}</h2>
                   <p className="tst-text tst-text-lg">
-                    Свежо приготвени специалитети, вдъхновени от традиционната българска кухня с модерен подход.
+                    {t("description")}
                   </p>
                 </div>
               </div>
@@ -116,7 +119,7 @@ const SpecialtiesShowcase = () => {
 
                       {/* Links */}
                       <div style={{display: 'flex', gap: '10px'}}>
-                        <a 
+                        <Link 
                           href="/menu" 
                           style={{
                             flex: 1,
@@ -132,13 +135,13 @@ const SpecialtiesShowcase = () => {
                             border: 'none',
                             cursor: 'pointer'
                           }}
-                          onMouseEnter={(e) => e.target.style.backgroundColor = '#ff9100ff'}
-                          onMouseLeave={(e) => e.target.style.backgroundColor = '#f39c12'}
+                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ff9100ff'}
+                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f39c12'}
                         >
                           <i className="fas fa-list" style={{marginRight: '6px'}}></i>
-                          Меню
-                        </a>
-                        <a 
+                          {t("menuButton")}
+                        </Link>
+                        <Link 
                           href="/reservation"
                           style={{
                             flex: 1,
@@ -154,12 +157,12 @@ const SpecialtiesShowcase = () => {
                             border: 'none',
                             cursor: 'pointer'
                           }}
-                          onMouseEnter={(e) => e.target.style.backgroundColor = '#6b3c1a'}
-                          onMouseLeave={(e) => e.target.style.backgroundColor = '#05232B'}
+                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6b3c1a'}
+                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#05232B'}
                         >
                           <i className="fas fa-calendar" style={{marginRight: '6px'}}></i>
-                          Резервация
-                        </a>
+                          {t("reservationButton")}
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -170,7 +173,7 @@ const SpecialtiesShowcase = () => {
             {/* Bottom CTA Button */}
             <div className="row justify-content-center">
               <div className="col-lg-6">
-                <a 
+                <Link 
                   href="/reservation"
                   className="tst-btn tst-btn-lg tst-btn-shadow"
                   style={{
@@ -185,12 +188,11 @@ const SpecialtiesShowcase = () => {
                     fontSize: '16px',
                     transition: 'background-color 0.3s ease'
                   }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#6b3c1a'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#05232B'}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6b3c1a'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#05232B'}
                 >
-                  {/* <i className="fas fa-phone" style={{marginRight: '10px'}}></i> */}
-                  Резервирайте вашата маса сега
-                </a>
+                  {t("ctaButton")}
+                </Link>
               </div>
             </div>
           </div>

@@ -1,8 +1,12 @@
 import Image from "next/image";
 import Data from "@data/sections/call-to-action-4.json";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 
 const CallToActionFourSection = () => {
+  const t = useTranslations("aboutSections");
+  const content = t.raw("cta");
+
   return (
     <>
         {/* call to action 4 */}
@@ -16,16 +20,16 @@ const CallToActionFourSection = () => {
                 <div className="tst-cta-frame">
                     <div className="tst-cta">
                     <div className="tst-fade-up">
-                        <div className="tst-suptitle tst-suptitle-mobile-md-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : Data.subtitle}} />
+                        <div className="tst-suptitle tst-suptitle-mobile-md-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : content.subtitle}} />
                     </div>
-                    <h2 className="tst-white-2 tst-text-shadow tst-mb-30 tst-fade-up" dangerouslySetInnerHTML={{__html : Data.title}} />
+                    <h2 className="tst-white-2 tst-text-shadow tst-mb-30 tst-fade-up" dangerouslySetInnerHTML={{__html : content.title}} />
                     <div className="tst-fade-up tst-mb-30">
-                        <div className="tst-text tst-text-lg tst-text-shadow tst-white-2" dangerouslySetInnerHTML={{__html : Data.description}} />
+                        <div className="tst-text tst-text-lg tst-text-shadow tst-white-2" dangerouslySetInnerHTML={{__html : content.description}} />
                     </div>
 
-                    <Link href={Data.button1.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up tst-res-btn tst-mr-30">{Data.button1.label}</Link>
+                    <Link href={Data.button1.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up tst-res-btn tst-mr-30">{content.button1Label}</Link>
                     <div style={{display: 'flex', width: '1em', height: '1em'}}></div>
-                    <Link href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up tst-res-btn tst-white-2 tst-fade-up">{Data.button2.label}</Link>
+                    <Link href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-fade-up tst-res-btn tst-white-2 tst-fade-up">{content.button2Label}</Link>
                     </div>
                 </div>
                 {/* text end */}

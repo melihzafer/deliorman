@@ -1,4 +1,6 @@
 import { Josefin_Sans, Playfair_Display } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages, getTranslations } from 'next-intl/server'
 
 const josefin_sans = Josefin_Sans({
   weight: ['300', '400', '500', '600', '700'],
@@ -35,6 +37,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CartProvider } from "@library/CartContext";
 import LazyLayoutWidgets from "@components/common/LazyLayoutWidgets";
 import MobileBottomNav from "@components/common/MobileBottomNav";
+import OrderSummary from "@components/order/OrderSummary";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
@@ -160,10 +163,14 @@ export const viewport = {
   themeColor: '#F39C12',
 }
 
-const Layouts = ({ children }) => {
+const Layouts = async ({ children }) => {
+  const locale = await getLocale();
+  const messages = await getMessages();
+  const t = await getTranslations('common');
+
   return (
     <html
-      lang="bg"
+      lang={locale}
       className={`${josefin_sans.variable} ${playfair_display.variable}`}
       suppressHydrationWarning
     >
@@ -181,12 +188,9 @@ const Layouts = ({ children }) => {
         }}
         suppressHydrationWarning
       >
-        {/* Lazy-loaded non-critical UI widgets (scroll progress, back-to-top, feedback) */}
-        <LazyLayoutWidgets />
-
         {/* Skip to main content link for keyboard/screen reader users */}
         <a href="#main-content" className="tst-skip-link">
-          Прескочи към съдържанието
+          {t('skipToContent')}
         </a>
 
         {/* Structured data (JSON-LD). This can be safely included in the body. */}
@@ -199,15 +203,19 @@ const Layouts = ({ children }) => {
 
         {/* app wrapper */}
         <div id="tst-app" className="tst-app">
-          <CartProvider>
-            <main id="main-content">
-              {children}
-            </main>
-          </CartProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {/* Lazy-loaded non-critical UI widgets (scroll progress, back-to-top, feedback) */}
+            <LazyLayoutWidgets />
+            <CartProvider>
+              <main id="main-content" tabIndex={-1}>
+                {children}
+              </main>
+              <OrderSummary />
+            </CartProvider>
+            <MobileBottomNav />
+          </NextIntlClientProvider>
         </div>
         {/* app wrapper end */}
-
-        <MobileBottomNav />
 
         {/* Vercel Analytics */}
         {process.env.NODE_ENV === 'production' ? (

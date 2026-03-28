@@ -4,49 +4,63 @@ import { z } from 'zod';
 
 const feedbackSchema = z.object({
   message: z
-    .string({
-      required_error: 'Моля, въведете съобщение',
-      invalid_type_error: 'Моля, въведете съобщение',
-    })
+    .string()
     .trim()
+    .min(1, 'Моля, въведете съобщение')
     .min(10, 'Съобщението трябва да съдържа поне 10 символа')
     .max(1000, 'Съобщението не може да надвишава 1000 символа'),
   rating: z.number().int().min(1).max(5).optional().nullable(),
   category: z.enum(['service', 'food', 'vibes', 'other']).optional().nullable(),
   termsAccepted: z
-    .boolean({
-      required_error: 'Моля, приемете условията за ползване',
-      invalid_type_error: 'Невалидна стойност за условията',
-    })
+    .boolean()
     .refine((val) => val === true, {
       message: 'Моля, приемете условията за ползване преди изпращане',
     }),
-});
+  });
 
-export async function POST(request) {
+type FeedbackError = {
+  field?: string;
+  message: string;
+};
+
+interface FeedbackErrorResponse {
+  success: false;
+  errors: FeedbackError[];
+}
+
+interface FeedbackSuccessResponse {
+  success: true;
+  message: string;
+}
+
+type FeedbackRouteResponse = FeedbackSuccessResponse | FeedbackErrorResponse;
+type FeedbackPayload = z.infer<typeof feedbackSchema>;
+type FeedbackCategory = NonNullable<FeedbackPayload['category']>;
+
+export async function POST(request: Request): Promise<NextResponse<FeedbackRouteResponse>> {
   try {
-    const body = await request.json();
+    const body: unknown = await request.json();
 
     // Validate the request body
     const validation = feedbackSchema.safeParse(body);
 
     if (!validation.success) {
-      return NextResponse.json(
+      return NextResponse.json<FeedbackErrorResponse>(
         {
           success: false,
-          errors: validation.error.errors.map((err) => ({
-            field: err.path.join('.'),
-            message: err.message,
+          errors: validation.error.issues.map((issue) => ({
+            field: issue.path.join('.'),
+            message: issue.message,
           })),
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const { message, rating, category } = validation.data;
 
     // Prepare email content
-    const categoryLabels = {
+    const categoryLabels: Record<FeedbackCategory, string> = {
       service: 'Обслужване',
       food: 'Храна',
       vibes: 'Атмосфера',
@@ -200,16 +214,17 @@ ${message}
     // Send email using Resend
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY not configured. Cannot send email.');
-      return NextResponse.json(
+      return NextResponse.json<FeedbackErrorResponse>(
         {
           success: false,
           errors: [{ message: 'Системата за обратна връзка не е конфигурирана. Моля, свържете се с нас директно.' }],
         },
-        { status: 503 }
+        { status: 503 },
       );
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const resend = new Resend(resendApiKey);
     const recipientEmail = process.env.FEEDBACK_EMAIL || 'restaurantdeliorman@gmail.com';
     const senderEmail = process.env.FEEDBACK_SENDER_EMAIL || 'Deliorman Feedback <onboarding@resend.dev>';
 
@@ -221,30 +236,30 @@ ${message}
         text: emailContent,
         html: emailHtml,
       });
-    } catch (emailError) {
+    } catch (emailError: unknown) {
       console.error('Email sending failed:', emailError);
-      return NextResponse.json(
+      return NextResponse.json<FeedbackErrorResponse>(
         {
           success: false,
           errors: [{ message: 'Грешка при изпращане на обратната връзка. Моля, опитайте отново.' }],
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
-    return NextResponse.json({
+    return NextResponse.json<FeedbackSuccessResponse>({
       success: true,
       message: 'Благодарим за вашата обратна връзка! Вашето мнение е важно за нас.',
     });
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Feedback submission error:', error);
-    return NextResponse.json(
+    return NextResponse.json<FeedbackErrorResponse>(
       {
         success: false,
         errors: [{ message: 'Възникна грешка при обработката на формата. Моля, опитайте отново.' }],
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

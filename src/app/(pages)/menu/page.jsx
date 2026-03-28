@@ -1,31 +1,43 @@
 import React from "react";
+import { getLocale, getTranslations } from "next-intl/server";
 
-import MenuData from "@data/menu.json";
+import { getLocalizedMenuData } from "@data/getLocalizedMenuData";
 
 import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
 import NewSpecialtiesCTA from "@components/sections/NewSpecialtiesCTALazy";
 import MenuFiltered from "@components/menu/MenuFiltered";
+import { buildAlternates } from "@/src/i18n/seo";
 
-export const metadata = {
-  title: 'Меню | Традиционна Българска Кухня',
-  description: 'Разгледайте менюто на Ресторант Делиорман в Разград. Традиционни български ястия, салати, грил специалитети, пици, сач и десерти на достъпни цени.',
-  openGraph: {
-    title: 'Меню | Ресторант Делиорман',
-    description: 'Традиционна българска кухня — салати, скара, пици, сач, десерти. Свежи продукти и автентични рецепти в село Самуил.',
-    type: 'website',
-  },
+export async function generateMetadata() {
+  const t = await getTranslations("meta");
+  return {
+    title: t("menuTitle"),
+    description: t("menuDescription"),
+    alternates: buildAlternates("/menu"),
+    openGraph: {
+      title: t("menuTitle"),
+      description: t("menuDescription"),
+      type: "website",
+    },
+  };
 }
 
-const Menu1 = () => {
+const Menu1 = async () => {
+  const [t, locale] = await Promise.all([
+    getTranslations("menu"),
+    getLocale(),
+  ]);
+  const menuData = getLocalizedMenuData(locale);
+
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner 
-          pageTitle={"Открийте нашето меню"} 
-          description={"Насладете се на автентична българска кухня и <br>международни специалитети в сърцето на Лудогоритето."} 
-          breadTitle={"Меню"} 
+          pageTitle={t("pageTitle")} 
+          description={t("pageDescription")} 
+          breadTitle={t("breadTitle")} 
         />
       </div>
       
@@ -36,7 +48,7 @@ const Menu1 = () => {
               <ScrollHint />
 
               <MenuFiltered
-                categories={MenuData.categories} 
+                categories={menuData.categories} 
               />
 
             </div>

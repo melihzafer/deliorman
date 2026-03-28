@@ -1,4 +1,7 @@
 import React from "react";
+import { getTranslations } from "next-intl/server";
+
+import { buildAlternates } from "@/src/i18n/seo";
 
 import ScrollHint from "@layouts/scroll-hint/Index";
 import Divider from "@layouts/divider/Index";
@@ -7,21 +10,26 @@ import PageBanner from "@components/PageBanner";
 import ContactInfoSection from "@components/sections/ContactInfo";
 import ContactFormSection from "@components/sections/ContactForm";
 
-export const metadata = {
-    title: 'Контакти | Адрес, Телефон и Работно Време',
-    description: 'Свържете се с Ресторант Делиорман — ул. „Хаджи Димитър" №6, Самуил, обл. Разград. Телефон +359 89 4766273. Работно време и карта за навигация.',
+export async function generateMetadata() {
+  const t = await getTranslations("meta");
+  return {
+    title: t("contactTitle"),
+    description: t("contactDescription"),
+    alternates: buildAlternates("/contact"),
     openGraph: {
-        title: 'Контакти | Ресторант Делиорман',
-        description: 'Намерете ни в село Самуил — телефон за резервации, адрес и работно време на ресторант Делиорман.',
-        type: 'website',
+      title: t("contactTitle"),
+      description: t("contactDescription"),
+      type: "website",
     },
+  };
 }
 
-const Contact = () => {
+const Contact = async () => {
+  const t = await getTranslations("contact");
   return (
     <>
         <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-            <PageBanner pageTitle={"Свържете се с нас"} description={"Ресторант Делиорман ви очаква с топло гостоприемство <br>и незабравими кулинарни изживявания в село Самуил."} breadTitle={"Контакти"} showMap={1} />
+            <PageBanner pageTitle={t("pageTitle")} description={t("pageDescription")} breadTitle={t("breadTitle")} showMap={1} />
         </div>
         <div id="tst-dynamic-content" className="tst-dynamic-content">
             <div className="tst-content-frame">

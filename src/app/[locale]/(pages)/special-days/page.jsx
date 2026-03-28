@@ -2,18 +2,24 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { useLocale } from "next-intl";
+
+import { Link } from "@/src/i18n/navigation";
 import PageBanner from "@components/PageBanner";
 import DarkSection from "@components/DarkSection";
+import { getLegacyPageCopy } from "../pageCopy";
 
 const SpecialDays = () => {
+  const locale = useLocale();
+  const copy = getLegacyPageCopy("specialDays", locale);
   const [imageError, setImageError] = useState(false);
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner 
-          pageTitle={"Специални дни"} 
-          description={"Празнувайте вашите специални моменти с нас"} 
-          breadTitle={"Специални дни"} 
+          pageTitle={copy.pageTitle}
+          description={copy.pageDescription}
+          breadTitle={copy.breadTitle}
         />
       </div>
       
@@ -281,7 +287,7 @@ const SpecialDays = () => {
 
                     {/* Contact Button */}
                     <div className="text-center">
-                      <a 
+                      <Link 
                         href="/reservation"
                         style={{
                           display: 'inline-block',
@@ -294,12 +300,12 @@ const SpecialDays = () => {
                           fontSize: '16px',
                           transition: 'background-color 0.3s ease'
                         }}
-                        onMouseEnter={(e) => e.target.style.backgroundColor = '#d4a373'}
-                        onMouseLeave={(e) => e.target.style.backgroundColor = '#f39c12'}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#d4a373'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f39c12'}
                       >
                         <i className="fas fa-calendar" style={{marginRight: '10px'}}></i>
                         Резервирайте маса
-                      </a>
+                      </Link>
                       
                       <p className="tst-text tst-white-2 mt-3" style={{opacity: 0.8}}>
                         <i className="fas fa-phone" style={{marginRight: '8px'}}></i>

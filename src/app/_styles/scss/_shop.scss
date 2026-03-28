@@ -1527,3 +1527,191 @@ tabs
     }
   }
 }
+/*-------------------------
+menu order summary
+--------------------------*/
+.tst-order-summary {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 24px;
+  width: min(440px, calc(100% - 32px));
+  margin: 0 auto;
+  z-index: 1200;
+}
+
+.tst-order-summary-bar {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, $dl1 0%, #0d3944 100%);
+  color: white;
+  padding: 14px 18px;
+  box-shadow: 0 18px 40px rgba(5, 35, 43, 0.25);
+}
+
+.tst-order-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tst-order-badge {
+  min-width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $ac;
+  color: $dl1;
+  font-weight: 700;
+}
+
+.tst-order-label,
+.tst-order-cta {
+  font-weight: 600;
+}
+
+.tst-order-chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tst-order-panel {
+  margin-top: 12px;
+  background-color: $card;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(5, 35, 43, 0.16);
+}
+
+.tst-order-panel-inner {
+  padding: 22px 20px 18px;
+}
+
+.tst-order-panel-title {
+  margin-bottom: 15px;
+}
+
+.tst-order-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.tst-order-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background-color: rgba(5, 35, 43, 0.04);
+}
+
+.tst-order-item-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.tst-order-item-name {
+  font-weight: 600;
+  color: $dl1;
+}
+
+.tst-order-item-amount {
+  color: rgba(26, 47, 51, 0.65);
+}
+
+.tst-order-item-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tst-qty-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(5, 35, 43, 0.08);
+  color: $dl1;
+  font-weight: 700;
+}
+
+.tst-qty-value {
+  min-width: 18px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.tst-order-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.tst-order-action-btn {
+  min-height: 50px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.tst-whatsapp-btn {
+  background-color: #25d366;
+  color: white;
+}
+
+.tst-phone-btn {
+  background-color: $ac;
+  color: $dl1;
+}
+
+.tst-order-clear {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: rgba(26, 47, 51, 0.72);
+  font-weight: 600;
+  padding: 6px 0 0;
+}
+
+@media (max-width: 576px) {
+  .tst-order-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .tst-order-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tst-order-item-controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}

@@ -1,0 +1,171 @@
+.testimonials {
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.swiperContainer {
+  padding: 10px 0 60px;
+
+  :global(.swiper-slide) {
+    height: auto;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+  }
+
+  :global(.swiper-slide-active) {
+    opacity: 1;
+  }
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 252, 246, 0.98), rgba(250, 244, 232, 0.98));
+  border: 1px solid rgba(243, 156, 18, 0.24);
+  border-radius: 16px;
+  padding: 35px 30px 30px;
+  position: relative;
+  transition: all 0.4s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: rgba(243, 156, 18, 0.45);
+    background: linear-gradient(180deg, rgba(255, 252, 246, 1), rgba(250, 244, 232, 1));
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.quoteIcon {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 48px;
+  color: rgba(243, 156, 18, 0.18);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 18px;
+}
+
+.starFilled {
+  color: #f39c12;
+  font-size: 15px;
+}
+
+.starEmpty {
+  color: rgba(5, 35, 43, 0.2);
+  font-size: 15px;
+}
+
+.reviewText {
+  color: #20343b;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  flex: 1;
+  font-style: italic;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(5, 35, 43, 0.1);
+  padding-top: 18px;
+  margin-top: auto;
+}
+
+.authorName {
+  font-weight: 600;
+  font-size: 15px;
+  color: #05232b;
+}
+
+.date {
+  font-size: 13px;
+  color: rgba(32, 52, 59, 0.7);
+}
+
+// Navigation
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.navBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(243, 156, 18, 0.15);
+  border: 1px solid rgba(243, 156, 18, 0.3);
+  color: #f39c12;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(243, 156, 18, 0.9);
+    color: white;
+    border-color: #f39c12;
+  }
+
+  &:global(.swiper-button-disabled) {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  :global(.swiper-pagination-bullet) {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    opacity: 1;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    width: 24px;
+    border-radius: 4px;
+    background: #f39c12;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 40px 0;
+  }
+
+  .card {
+    padding: 25px 20px 22px;
+  }
+
+  .reviewText {
+    font-size: 14px;
+  }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { getTranslations } from "next-intl/server";
 
 import { getSortedPostsData } from "@library/posts";
 
@@ -13,34 +14,33 @@ import FeaturesSection from "@components/sections/Features";
 import ScheduleSection from "@components/sections/Schedule";
 import CountersSection from "@components/sections/Counters";
 import CallToActionFourSection from "@components/sections/CallToActionFour";
+import { buildAlternates } from "@/src/i18n/seo";
 
-export const metadata = {
-  title: 'За Нас | Историята на Ресторант Делиорман',
-  description: 'Научете повече за Ресторант Делиорман в Самуил, обл. Разград. Нашата история, екип и страст към автентичната българска кухня и традиционни рецепти.',
-  openGraph: {
-    title: 'За Нас | Ресторант Делиорман',
-    description: 'Историята на ресторант Делиорман — традиция, качество и страст към българската кухня в село Самуил.',
-    type: 'website',
-  },
-};
+export async function generateMetadata() {
+  const t = await getTranslations("meta");
+  return {
+    title: t("aboutTitle"),
+    description: t("aboutDescription"),
+    alternates: buildAlternates("/about"),
+    openGraph: {
+      title: t("aboutTitle"),
+      description: t("aboutDescription"),
+      type: "website",
+    },
+  };
+}
 
 async function About() {
   const posts = await getAllPosts();
-
-  const Content = {
-    subtitle: "За нас",
-    title: "Каним ви да<br> посетите нашия ресторант",
-    description:
-      "Добре дошли в нашия уютен ресторант, където традицията се среща с модерността. Вече повече от няколко години ние сервираме автентични български ястия, приготвени с любов и внимание към детайла. Нашият екип от опитни готвачи използва само най-свежите съставки и традиционни рецепти, предавани от поколение на поколение. Тук ще откриете топла атмосфера, отлично обслужване и незабравими вкусове, които ще ви пренесат в сърцето на българската кулинарна традиция.",
-  };
+  const t = await getTranslations("about");
 
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner
-          pageTitle={"Историята на нашия ресторант"}
-          description={"Открийте нашата страст към българската кухня и традиции"}
-          breadTitle={"За нас"}
+          pageTitle={t("pageTitle")}
+          description={t("pageDescription")}
+          breadTitle={t("breadTitle")}
         />
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
@@ -55,10 +55,10 @@ async function About() {
                   <div className="tst-mb-60 text-center">
                     <div
                       className="tst-suptitle tst-suptitle-center tst-mb-15"
-                      dangerouslySetInnerHTML={{ __html: Content.subtitle }}
+                      dangerouslySetInnerHTML={{ __html: t.raw("subtitle") }}
                     />
-                    <h3 className="tst-mb-30" dangerouslySetInnerHTML={{ __html: Content.title }} />
-                    <p className="tst-text tst-mb-30" dangerouslySetInnerHTML={{ __html: Content.description }} />
+                    <h3 className="tst-mb-30" dangerouslySetInnerHTML={{ __html: t.raw("title") }} />
+                    <p className="tst-text tst-mb-30" dangerouslySetInnerHTML={{ __html: t.raw("description") }} />
 
                     {AppData.social.map((item, key) => (
                       <a

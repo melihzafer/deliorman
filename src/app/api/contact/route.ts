@@ -5,7 +5,26 @@ import { escapeHtml } from '@library/htmlUtils';
 
 export const runtime = 'nodejs';
 
-export async function POST(request) {
+type ContactField = 'first_name' | 'last_name' | 'email' | 'phone' | 'message' | 'privacy_consent';
+
+interface ContactError {
+  field?: ContactField;
+  message: string;
+}
+
+interface ContactErrorResponse {
+  success: false;
+  errors: ContactError[];
+}
+
+interface ContactSuccessResponse {
+  success: true;
+  message: string;
+}
+
+type ContactRouteResponse = ContactSuccessResponse | ContactErrorResponse;
+
+export async function POST(request: Request): Promise<NextResponse<ContactRouteResponse>> {
   try {
     // Capture client IP for security/audit purposes
     const ipInfo = getClientIp(request);
@@ -14,15 +33,15 @@ export async function POST(request) {
     const formData = await request.formData();
 
     // Extract form data
-    const firstName = formData.get('first_name');
-    const lastName = formData.get('last_name');
-    const email = formData.get('email');
-    const phone = formData.get('phone');
-    const message = formData.get('message');
-    const privacyConsentRaw = formData.get('privacy_consent');
+    const firstName = formData.get('first_name') as string | null;
+    const lastName = formData.get('last_name') as string | null;
+    const email = formData.get('email') as string | null;
+    const phone = formData.get('phone') as string | null;
+    const message = formData.get('message') as string | null;
+    const privacyConsentRaw = formData.get('privacy_consent') as string | null;
 
     // Validation
-    const errors = [];
+    const errors: ContactError[] = [];
 
     const privacyConsent = (() => {
       const v = String(privacyConsentRaw ?? '').trim().toLowerCase();
@@ -32,7 +51,7 @@ export async function POST(request) {
     if (!privacyConsent) {
       errors.push({
         field: 'privacy_consent',
-        message: 'Моля, потвърдете, че сте се запознали с правилата и условията и информацията за лични данни.'
+        message: 'Моля, потвърдете, че сте се запознали с правилата и условията и информацията за лични данни.',
       });
     }
 
@@ -57,11 +76,17 @@ export async function POST(request) {
     }
 
     if (errors.length > 0) {
-      return NextResponse.json(
+      return NextResponse.json<ContactErrorResponse>(
         { success: false, errors },
-        { status: 400 }
+        { status: 400 },
       );
     }
+
+    const validatedFirstName = firstName as string;
+    const validatedLastName = lastName as string;
+    const validatedEmail = email as string;
+    const validatedPhone = phone as string;
+    const validatedMessage = message as string;
 
     // Prepare email content with Client IP
     const emailContent = `
@@ -69,12 +94,12 @@ export async function POST(request) {
 📧 НОВО КОНТАКТНО СЪОБЩЕНИЕ
 ═══════════════════════════════════════
 
-👤 ИМЕ: ${firstName} ${lastName}
-📧 ИМЕЙЛ: ${email}
-📞 ТЕЛЕФОН: ${phone}
+👤 ИМЕ: ${validatedFirstName} ${validatedLastName}
+📧 ИМЕЙЛ: ${validatedEmail}
+📞 ТЕЛЕФОН: ${validatedPhone}
 
 💬 СЪОБЩЕНИЕ:
-${message}
+${validatedMessage}
 
 ═══════════════════════════════════════
 🔒 ИНФОРМАЦИЯ ЗА СИГУРНОСТ
@@ -88,12 +113,12 @@ ${message}
     const telegramText = [
       '📧 <b>НОВО КОНТАКТНО СЪОБЩЕНИЕ</b>',
       '',
-      `<b>👤 Име:</b> ${escapeHtml(`${firstName} ${lastName}`)}`,
-      `<b>📧 Имейл:</b> <code>${escapeHtml(email)}</code>`,
-      `<b>📞 Телефон:</b> <code>${escapeHtml(phone)}</code>`,
+      `<b>👤 Име:</b> ${escapeHtml(`${validatedFirstName} ${validatedLastName}`)}`,
+      `<b>📧 Имейл:</b> <code>${escapeHtml(validatedEmail)}</code>`,
+      `<b>📞 Телефон:</b> <code>${escapeHtml(validatedPhone)}</code>`,
       '',
       '<b>💬 Съобщение:</b>',
-      escapeHtml(message),
+      escapeHtml(validatedMessage),
       '',
       '━━━━━━━━━━━━━━━━━━━━━━━',
       '<b>🔒 Информация за сигурност:</b>',
@@ -102,11 +127,11 @@ ${message}
     ].join('\n');
 
     // Send email via Resend
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    const resend = new Resend(process.env.RESEND_API_KEY as string);
     await resend.emails.send({
       from: 'Deliorman Contact <onboarding@resend.dev>',
       to: 'restaurantdeliorman@gmail.com',
-      subject: `Ново съобщение от ${firstName} ${lastName}`,
+      subject: `Ново съобщение от ${validatedFirstName} ${validatedLastName}`,
       text: emailContent,
     });
 
@@ -129,18 +154,17 @@ ${message}
       }).catch(() => undefined);
     }
 
-    return NextResponse.json({
+    return NextResponse.json<ContactSuccessResponse>({
       success: true,
-      message: 'Благодарим за вашето съобщение! Ще се свържем с вас скоро.'
+      message: 'Благодарим за вашето съобщение! Ще се свържем с вас скоро.',
     });
-
-  } catch (error) {
-    return NextResponse.json(
+  } catch (error: unknown) {
+    return NextResponse.json<ContactErrorResponse>(
       {
         success: false,
-        errors: [{ message: 'Възникна грешка при обработката на формата. Моля, опитайте отново.' }]
+        errors: [{ message: 'Възникна грешка при обработката на формата. Моля, опитайте отново.' }],
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

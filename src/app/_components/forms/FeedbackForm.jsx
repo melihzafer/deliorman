@@ -2,29 +2,31 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, startTransition } from "react";
+import { useTranslations } from "next-intl";
 import styles from "../../_styles/scss/ui/FeedbackForm.module.scss";
 
-const CATEGORIES = [
-  { value: "", label: "Изберете категория (по избор)" },
-  { value: "service", label: "Обслужване" },
-  { value: "food", label: "Храна" },
-  { value: "vibes", label: "Атмосфера" },
-  { value: "other", label: "Друго" },
-];
-
-// Validation function
-const validateMessage = (message) => {
-  if (!message || message.trim() === "") {
-    return "Моля, въведете съобщение";
-  } else if (message.trim().length < 10) {
-    return "Съобщението трябва да съдържа поне 10 символа";
-  } else if (message.length > 1000) {
-    return "Съобщението не може да надвишава 1000 символа";
-  }
-  return null;
-};
-
 export const FeedbackForm = ({ onSuccess, onClose }) => {
+  const t = useTranslations("feedback");
+
+  const CATEGORIES = [
+    { value: "", label: t("categoryPlaceholder") },
+    { value: "service", label: t("categoryService") },
+    { value: "food", label: t("categoryFood") },
+    { value: "vibes", label: t("categoryVibes") },
+    { value: "other", label: t("categoryOther") },
+  ];
+
+  const validateMessage = (message) => {
+    if (!message || message.trim() === "") {
+      return t("messageRequired");
+    } else if (message.trim().length < 10) {
+      return t("messageMinLength");
+    } else if (message.length > 1000) {
+      return t("messageMaxLength");
+    }
+    return null;
+  };
+
   const [values, setValues] = useState({
     message: "",
     rating: "",
@@ -118,7 +120,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           });
           setServerErrors(errorMap);
         } else {
-          throw new Error("Грешка при изпращане на обратна връзка");
+          throw new Error(t("submitError"));
         }
         return;
       }
@@ -129,9 +131,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
       }
     } catch (error) {
       console.error("Feedback submission error:", error);
-      setSubmitError(
-        "Възникна грешка при изпращане на вашето съобщение. Моля, опитайте отново."
-      );
+      setSubmitError(t("generalError"));
     } finally {
       setIsSubmitting(false);
     }
@@ -141,7 +141,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
     <form onSubmit={handleSubmit} className={styles.formContainer}>
       <div className={styles.groupInput}>
         <label htmlFor="category">
-          Категория
+          {t("categoryLabel")}
         </label>
         <select
           id="category"
@@ -160,7 +160,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
 
       <div className={styles.groupInput}>
         <label htmlFor="rating">
-          Оценка (по избор)
+          {t("ratingLabel")}
         </label>
         <select
           id="rating"
@@ -169,24 +169,24 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           onChange={handleChange}
           onBlur={handleBlur}
         >
-          <option value="">Без оценка</option>
-          <option value="5">⭐⭐⭐⭐⭐ Отлично</option>
-          <option value="4">⭐⭐⭐⭐ Много добро</option>
-          <option value="3">⭐⭐⭐ Добро</option>
-          <option value="2">⭐⭐ Приемливо</option>
-          <option value="1">⭐ Нуждае се от подобрение</option>
+          <option value="">{t("ratingNone")}</option>
+          <option value="5">{t("ratingExcellent")}</option>
+          <option value="4">{t("ratingVeryGood")}</option>
+          <option value="3">{t("ratingGood")}</option>
+          <option value="2">{t("ratingAcceptable")}</option>
+          <option value="1">{t("ratingNeedsImprovement")}</option>
         </select>
       </div>
 
       <div className={styles.groupInput}>
         <label htmlFor="message">
-          Вашето съобщение <span className={styles.required}>*</span>
+          {t("messageLabel")} <span className={styles.required}>*</span>
         </label>
         <textarea
           id="message"
           name="message"
           rows="5"
-          placeholder="Споделете вашите мисли..."
+          placeholder={t("messagePlaceholder")}
           value={values.message}
           onChange={handleChange}
           onBlur={handleBlur}
@@ -239,8 +239,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           />
           <span className={styles.checkmark}></span>
           <span className={styles.labelText}>
-            Съгласен/на съм съобщението ми да бъде изпратено анонимно и разбирам, че
-            не мога да получа отговор. <span className={styles.required}>*</span>
+            {t("termsLabel")} <span className={styles.required}>*</span>
           </span>
         </label>
         <AnimatePresence>
@@ -251,14 +250,14 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
               exit={{ opacity: 0, y: -5 }}
               className={styles.errorMessage}
             >
-              <span>⚠</span> Моля, приемете условията за изпращане
+              <span>⚠</span> {t("termsError")}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
       <div className={styles.disclaimer}>
-        <span>🔒</span> Всички съобщения са анонимни и се изпращат сигурно.
+        <span>🔒</span> {t("disclaimer")}
       </div>
 
       <div className={styles.actions}>
@@ -267,7 +266,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           className={styles.submitButton}
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Изпраща се..." : "Изпрати"}
+          {isSubmitting ? t("submitting") : t("submit")}
         </button>
         {onClose && (
           <button
@@ -276,7 +275,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
             className={styles.cancelButton}
             disabled={isSubmitting}
           >
-            Затвори
+            {t("close")}
           </button>
         )}
       </div>

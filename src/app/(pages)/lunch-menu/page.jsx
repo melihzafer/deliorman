@@ -3,8 +3,12 @@ import React from "react";
 import PageBanner from "@components/PageBanner";
 import DarkSection from "@components/DarkSection";
 import NewSpecialtiesCTA from "../../_components/sections/NewSpecialtiesCTALazy";
+import { getRestaurantPhoneDisplay, getRestaurantPhoneHref } from "@library/siteContact";
 
 const LunchMenu = () => {
+  const restaurantPhone = getRestaurantPhoneDisplay();
+  const restaurantPhoneHref = getRestaurantPhoneHref();
+
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
@@ -20,7 +24,6 @@ const LunchMenu = () => {
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
               
-              {/* Info Section */}
               <div className="row justify-content-center">
                 <div className="col-lg-8">
                   <div className="text-center tst-mb-60">
@@ -35,7 +38,6 @@ const LunchMenu = () => {
                 </div>
               </div>
 
-              {/* Facebook CTA Card */}
               <div className="row justify-content-center tst-mb-60">
                 <div className="col-lg-10">
                   <DarkSection>
@@ -79,7 +81,6 @@ const LunchMenu = () => {
                 </div>
               </div>
 
-              {/* Features */}
               <div className="row">
                 <div className="col-lg-4">
                   <div className="tst-icon-box tst-mb-60 text-center">
@@ -116,7 +117,6 @@ const LunchMenu = () => {
                 </div>
               </div>
 
-              {/* Additional Info */}
               <div className="row justify-content-center">
                 <div className="col-lg-8">
                   <div className="text-center">
@@ -126,7 +126,7 @@ const LunchMenu = () => {
                       Понеделник - Неделя: 12:00 - 15:00
                     </p>
                     <p className="tst-text">
-                      За резервации: <a href="/reservation" style={{color: '#05232B', fontWeight: '600'}}>+359 89 4766273</a>
+                      За резервации: <a href={restaurantPhoneHref} style={{color: '#05232B', fontWeight: '600'}}>{restaurantPhone}</a>
                     </p>
                   </div>
                 </div>
@@ -135,51 +135,7 @@ const LunchMenu = () => {
             </div>
           </div>
         </div>
-
-        {/* New Specialties Showcase Section */}
-      
-            
-        {/* Call to Action - View Full Menu */}
-        {/* <div className="tst-call-to-action" style={{backgroundColor: '#f8f9fa10'}}>
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-lg-6">
-                <div className="tst-cta-frame">
-                  <div className="tst-cta">
-                    <div className="tst-fade-up">
-                      <div className="tst-suptitle tst-suptitle-mobile-md-center tst-text-shadow tst-white-2 tst-mb-15">
-                        Нашето пълно меню
-                      </div>
-                    </div>
-                    <h2 className="tst-white-2 tst-text-shadow tst-mb-30 tst-fade-up">
-                      Разгледайте пълното<br/>ни меню
-                    </h2>
-                    <div className="tst-fade-up">
-                      <div className="tst-text tst-text-lg tst-text-shadow tst-white-2">
-                        Освен обедното меню, разполагаме с богато основно меню със специалитети от скара, 
-                        пици, салати, супи и много други вкусни ястия.
-                      </div>
-                    </div>
-                    <a href="/menu" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-fade-up">
-                      Вижте менюто
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6">
-                <img 
-                  src="/img/menu/menu-cta.webp" 
-                  alt="Меню на ресторант Делиорман" 
-                  className="tst-cta-image tst-fade-up"
-                  onError={(e) => {
-                    e.target.src = '/img/bg.webp';
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-        </div> */}
-                      <NewSpecialtiesCTA />
+        <NewSpecialtiesCTA />
       </div>
     </>
   );

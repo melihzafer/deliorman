@@ -20,9 +20,16 @@ const ProductImage = ({ src, alt, badge }) => {
         <img src={src} alt={alt} />
 
         {/* button */}
-        <a data-fancybox="menu" data-no-swup href={src} className="tst-btn tst-btn-2 tst-btn-icon tst-btn-gray tst-zoom" onClick={handleImageClick}>
+        <a
+          data-fancybox="menu"
+          data-no-swup
+          href={src}
+          className="tst-btn tst-btn-2 tst-btn-icon tst-btn-gray tst-zoom"
+          onClick={handleImageClick}
+          aria-label={alt ? `Отвори изображението в голям размер: ${alt}` : 'Отвори изображението в голям размер'}
+        >
             <span className="tst-icon">
-                <img src="/img/ui/icons/zoom.svg" alt="icon" />
+                <img src="/img/ui/icons/zoom.svg" alt="" aria-hidden="true" />
             </span>
         </a>
         {/* button end */}

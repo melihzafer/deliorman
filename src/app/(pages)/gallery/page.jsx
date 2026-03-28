@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import PageBanner from "@components/PageBanner";
 
@@ -73,9 +73,16 @@ const STYLE_BADGE_INACTIVE = {
 /** @type {React.CSSProperties} */
 const STYLE_GALLERY_ITEM = {
   position: 'relative',
-  paddingBottom: '75%',
+  display: 'block',
+  width: '100%',
+  padding: 0,
+  aspectRatio: '4 / 3',
+  minHeight: '280px',
   overflow: 'hidden',
   borderRadius: '12px',
+  border: 'none',
+  background: 'transparent',
+  textAlign: 'inherit',
   cursor: 'pointer',
   boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
   transition: 'transform 0.3s ease, box-shadow 0.3s ease'
@@ -214,6 +221,8 @@ const Gallery = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   // Monomorphic: always same shape, never null
   const [currentImage, setCurrentImage] = useState(EMPTY_IMAGE);
+  const closeButtonRef = useRef(null);
+  const triggerButtonRef = useRef(null);
 
   // Gallery images organized by category
   const galleryImages = useMemo(() => ({
@@ -253,17 +262,26 @@ const Gallery = () => {
     return galleryImages[activeFilter] || [];
   }, [activeFilter, allImages, galleryImages]);
 
-  const openLightbox = useCallback((image) => {
+  const openLightbox = useCallback((image, triggerButton) => {
+    triggerButtonRef.current = triggerButton || document.activeElement;
     setCurrentImage(image);
     setLightboxOpen(true);
     document.body.style.overflow = 'hidden';
   }, []);
 
   const closeLightbox = useCallback(() => {
+    const triggerButton = triggerButtonRef.current;
+
     setLightboxOpen(false);
     // Reset to empty shape, not null (maintains monomorphism)
     setCurrentImage(EMPTY_IMAGE);
     document.body.style.overflow = 'auto';
+
+    if (triggerButton && typeof window !== 'undefined') {
+      window.requestAnimationFrame(() => {
+        triggerButton.focus?.();
+      });
+    }
   }, []);
 
   const navigateImage = useCallback((direction) => {
@@ -279,6 +297,38 @@ const Gallery = () => {
     setCurrentImage(filteredImages[newIndex]);
   }, [filteredImages, currentImage.src]);
 
+  useEffect(() => {
+    if (!lightboxOpen) return undefined;
+
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeLightbox();
+        return;
+      }
+
+      if (!filteredImages.length) return;
+
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        navigateImage('prev');
+      }
+
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        navigateImage('next');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxOpen, filteredImages.length, navigateImage, closeLightbox]);
+
   // Memoized event handlers to prevent per-render function allocation
   const handleGalleryItemHoverEnter = useCallback((e) => {
     e.currentTarget.style.transform = 'translateY(-5px)';
@@ -291,11 +341,11 @@ const Gallery = () => {
   }, []);
 
   const handleLightboxBtnHoverEnter = useCallback((e) => {
-    e.target.style.backgroundColor = 'rgba(255,255,255,0.2)';
+    e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.2)';
   }, []);
 
   const handleLightboxBtnHoverLeave = useCallback((e) => {
-    e.target.style.backgroundColor = 'rgba(255,255,255,0.1)';
+    e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.1)';
   }, []);
 
   const handleNavigatePrev = useCallback((e) => {
@@ -375,11 +425,14 @@ const Gallery = () => {
                     className="col-lg-4 col-md-6 tst-mb-30 gallery-fade-in" 
                     key={`${image.category}-${index}`}
                   >
-                    <div 
-                      onClick={() => openLightbox(image)}
+                    <button
+                      type="button"
+                      className="gallery-trigger"
+                      onClick={(event) => openLightbox(image, event.currentTarget)}
                       style={STYLE_GALLERY_ITEM}
                       onMouseEnter={handleGalleryItemHoverEnter}
                       onMouseLeave={handleGalleryItemHoverLeave}
+                      aria-label={image.alt ? `Отвори изображение: ${image.alt}` : 'Отвори изображение в галерията'}
                     >
                       <Image 
                         src={image.src}
@@ -395,9 +448,10 @@ const Gallery = () => {
                         <i 
                           className="fas fa-search-plus gallery-icon" 
                           style={STYLE_GALLERY_ICON}
+                          aria-hidden="true"
                         ></i>
                       </div>
-                    </div>
+                    </button>
                   </div>
                 ))}
               </div>
@@ -424,35 +478,48 @@ const Gallery = () => {
         <div 
           onClick={closeLightbox}
           style={STYLE_LIGHTBOX_BACKDROP}
+          role="dialog"
+          aria-modal="true"
+          aria-label={currentImage.alt ? `Преглед на изображение: ${currentImage.alt}` : 'Преглед на изображение'}
         >
           {/* Close Button */}
           <button
+            type="button"
+            ref={closeButtonRef}
             onClick={closeLightbox}
             style={STYLE_LIGHTBOX_CLOSE}
+            className="gallery-lightbox-btn"
             onMouseEnter={handleLightboxBtnHoverEnter}
             onMouseLeave={handleLightboxBtnHoverLeave}
+            aria-label="Затвори изображението"
           >
-            <i className="fas fa-times"></i>
+            <i className="fas fa-times" aria-hidden="true"></i>
           </button>
 
           {/* Previous Button */}
           <button
+            type="button"
             onClick={handleNavigatePrev}
             style={STYLE_LIGHTBOX_PREV}
+            className="gallery-lightbox-btn"
             onMouseEnter={handleLightboxBtnHoverEnter}
             onMouseLeave={handleLightboxBtnHoverLeave}
+            aria-label="Покажи предишното изображение"
           >
-            <i className="fas fa-chevron-left"></i>
+            <i className="fas fa-chevron-left" aria-hidden="true"></i>
           </button>
 
           {/* Next Button */}
           <button
+            type="button"
             onClick={handleNavigateNext}
             style={STYLE_LIGHTBOX_NEXT}
+            className="gallery-lightbox-btn"
             onMouseEnter={handleLightboxBtnHoverEnter}
             onMouseLeave={handleLightboxBtnHoverLeave}
+            aria-label="Покажи следващото изображение"
           >
-            <i className="fas fa-chevron-right"></i>
+            <i className="fas fa-chevron-right" aria-hidden="true"></i>
           </button>
 
           {/* Image */}
@@ -471,7 +538,7 @@ const Gallery = () => {
           </div>
 
           {/* Image Counter */}
-          <div style={STYLE_LIGHTBOX_COUNTER}>
+          <div style={STYLE_LIGHTBOX_COUNTER} aria-live="polite">
             {filteredImages.findIndex(img => img.src === currentImage.src) + 1} / {filteredImages.length}
           </div>
         </div>
@@ -493,12 +560,23 @@ const Gallery = () => {
           animation: fadeIn 0.5s ease-in-out;
         }
         
-        .gallery-overlay:hover {
+        .gallery-trigger:hover .gallery-overlay,
+        .gallery-trigger:focus-visible .gallery-overlay {
           background-color: rgba(0,0,0,0.5) !important;
         }
         
-        .gallery-overlay:hover .gallery-icon {
+        .gallery-trigger:hover .gallery-icon,
+        .gallery-trigger:focus-visible .gallery-icon {
           opacity: 1 !important;
+        }
+
+        .gallery-lightbox-btn:hover,
+        .gallery-lightbox-btn:focus-visible {
+          background-color: rgba(255,255,255,0.2) !important;
+        }
+
+        .gallery-lightbox-btn:focus-visible {
+          outline-offset: 4px;
         }
         
         .gallery-filter-btn:hover {

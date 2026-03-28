@@ -1,34 +1,38 @@
 import { Suspense } from "react";
-
-import AppData from "@data/app.json";
+import { promises as fs } from 'fs';
+import { getTranslations } from "next-intl/server";
 
 import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
 import Sidebar from "@components/Sidebar";
 import BlogFiltered from '@components/blog/BlogFiltered';
+import { buildAlternates } from "@/src/i18n/seo";
 
-import { generateJsonPostsData } from "@library/posts";
-
-export const metadata = {
-  title: {
-		default: "Търсене",
-	},
-  description: AppData.settings.siteDescription,
+export async function generateMetadata() {
+  const t = await getTranslations("meta");
+  return {
+    title: t("searchTitle"),
+    description: t("searchDescription"),
+    alternates: buildAlternates("/search"),
+    openGraph: {
+      title: t("searchTitle"),
+      description: t("searchDescription"),
+      type: "website",
+    },
+  };
 }
 
-import { promises as fs } from 'fs';
-
 async function Search() {
-  const generateJsonPosts = await generateJsonPostsData();
+  const t = await getTranslations("searchPage");
   const file = await fs.readFile(process.cwd() + '/src/data/.json/posts.json', 'utf8');
   const posts = JSON.parse(file);
 
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <Suspense fallback={<div>Зареждане...</div>}>
-          <PageBanner pageTitle={"Търсене: %s"} description={"Резултати от търсенето в блога и менюто <br>на ресторант Делиорман."} breadTitle={"Търсене"} />
+        <Suspense fallback={<div>{t("loading")}</div>}>
+          <PageBanner pageTitle={t("pageTitleTemplate")} description={t("pageDescription")} breadTitle={t("breadTitle")} />
         </Suspense>
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
@@ -41,7 +45,7 @@ async function Search() {
 
                 <div className="col-lg-8">
 
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>{t("loading")}</div>}>
                   <BlogFiltered
                     items={posts}
                     columns={2}

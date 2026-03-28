@@ -1,10 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay, EffectFade } from "swiper";
-import Link from "next/link";
-import Data from "@data/sections/new-specialties-cta.json";
+import { Link } from "@/src/i18n/navigation";
 import styles from "../../_styles/scss/NewSpecialtiesCTA.module.scss";
 
 import "swiper/css";
@@ -13,6 +13,8 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
 const NewSpecialtiesCTA = () => {
+    const t = useTranslations("menu");
+    const slides = t.raw("specialtiesSlides");
     const prevRef = useRef(null);
     const nextRef = useRef(null);
 
@@ -33,10 +35,10 @@ const NewSpecialtiesCTA = () => {
                 <div className="container">
                     {/* Navigation Buttons */}
                     <div className={styles.navButtons}>
-                        <button ref={prevRef} className={styles.navBtn} aria-label="Previous specialty">
+                        <button ref={prevRef} className={styles.navBtn} aria-label={t("previousSpecialty")}>
                             <i className="fas fa-chevron-left"></i>
                         </button>
-                        <button ref={nextRef} className={styles.navBtn} aria-label="Next specialty">
+                        <button ref={nextRef} className={styles.navBtn} aria-label={t("nextSpecialty")}>
                             <i className="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -64,7 +66,7 @@ const NewSpecialtiesCTA = () => {
                         loop={true}
                         className={styles.swiperContainer}
                     >
-                        {Data.slides.map((slide, slideIndex) => (
+                        {slides.map((slide, slideIndex) => (
                             <SwiperSlide key={`slide-${slideIndex}`}>
                                 <div className={styles.slideContent}>
                                     <div className="row align-items-center">

@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "start": "next start --webpack",
+    "start": "next start",
     "lint": "eslint .",
     "analyze": "ANALYZE=true npm run build",
+    "test:e2e": "playwright test tests/e2e",
     "test:perf": "playwright test tests/performance/vitals.spec.js"
   },
   "dependencies": {

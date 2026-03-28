@@ -2,7 +2,7 @@
  * Shared Bulgarian phone number validation and normalization utilities.
  *
  * Used by:
- *  - src/app/api/reservation/route.js
+ *  - src/app/api/reservation/route.ts
  *  - src/app/_components/forms/ReservationForm.jsx
  */
 

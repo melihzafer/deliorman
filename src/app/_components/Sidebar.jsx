@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
 
 import Link from "next/link";
 
@@ -10,6 +11,7 @@ import { getSortedTagsData } from "@library/tags";
 import { getSortedAuthorsData } from "@library/authors";
 
 async function Sidebar() {
+  const t = await getTranslations("searchPage");
   const archives = await getAllArchives();
   const categories = await getAllCategories();
   const tags = await getAllTags();
@@ -20,15 +22,15 @@ async function Sidebar() {
         {/* sidebar */}
         <div className="tst-sidebar">
             <div className="tst-ib-title-frame tst-mb-30">
-                <h4>Търсене</h4>
+                <h4>{t("searchSectionTitle")}</h4>
                 <i className="fas fa-arrow-down" />
             </div>
-            <Suspense fallback={<div>Зареждане...</div>}>
+            <Suspense fallback={<div>{t("loading")}</div>}>
                 <SearchBarModule />
             </Suspense>
 
             <div className="tst-ib-title-frame tst-mb-30">
-                <h4>Категории</h4>
+                <h4>{t("categoriesTitle")}</h4>
                 <i className="fas fa-arrow-down" />
             </div>
             <ul className="tst-list tst-mb-30">
@@ -38,7 +40,7 @@ async function Sidebar() {
             </ul>
 
             <div className="tst-ib-title-frame tst-mb-30">
-                <h4>Архив</h4>
+                <h4>{t("archivesTitle")}</h4>
                 <i className="fas fa-arrow-down" />
             </div>
             <ul className="tst-list tst-mb-30">
@@ -48,7 +50,7 @@ async function Sidebar() {
             </ul>
 
             <div className="tst-ib-title-frame tst-mb-30">
-                <h4>Автори</h4>
+                <h4>{t("authorsTitle")}</h4>
                 <i className="fas fa-arrow-down" />
             </div>
             <ul className="tst-list tst-mb-30">
@@ -58,7 +60,7 @@ async function Sidebar() {
             </ul>
 
             <div className="tst-ib-title-frame tst-mb-30">
-                <h4>Ключови думи</h4>
+                <h4>{t("keywordsTitle")}</h4>
                 <i className="fas fa-arrow-down" />
             </div>
             <ul className="tst-keywords">

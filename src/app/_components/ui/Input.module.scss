@@ -1,0 +1,121 @@
+$ac: rgba(243, 156, 18, 1);
+$auxc1: rgba(231, 76, 60, 1);
+$dl1: rgba(26, 47, 51, 1);
+$dl1t: rgba(26, 47, 51, 0.7);
+$wl1: rgba(242, 246, 247, 1);
+$wl2: rgba(229, 235, 239, 1);
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  padding: 18px 16px 6px;
+  border: 2px solid $wl2;
+  border-radius: 6px;
+  background-color: #fff;
+  font-family: var(--font-josefin_sans), sans-serif;
+  font-size: 14px;
+  color: $dl1;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 5px 0 rgba(26, 47, 51, 0.06);
+
+  &::placeholder {
+    color: transparent;
+  }
+
+  &:focus {
+    border-color: $ac;
+    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.12);
+  }
+
+  /* Float the label when focused or has value */
+  &:focus ~ .label,
+  &:not(:placeholder-shown) ~ .label {
+    top: 6px;
+    font-size: 10px;
+    color: $dl1t;
+  }
+
+  &:focus ~ .label {
+    color: $ac;
+  }
+
+  /* With icon: add left padding */
+  &.hasIcon {
+    padding-left: 42px;
+  }
+}
+
+.label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-josefin_sans), sans-serif;
+  font-size: 14px;
+  color: $dl1t;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  line-height: 1;
+
+  .hasIcon ~ & {
+    left: 42px;
+  }
+}
+
+.iconEl {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $dl1t;
+  font-size: 16px;
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.required {
+  color: $auxc1;
+  margin-left: 2px;
+}
+
+/* Error state */
+.errorState {
+  .input {
+    border-color: $auxc1;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.12);
+    }
+  }
+
+  .label {
+    color: $auxc1;
+  }
+}
+
+.errorMsg {
+  margin-top: 4px;
+  font-size: 12px;
+  color: $auxc1;
+  font-family: var(--font-josefin_sans), sans-serif;
+}
+
+.helperText {
+  margin-top: 4px;
+  font-size: 12px;
+  color: $dl1t;
+  font-family: var(--font-josefin_sans), sans-serif;
+}

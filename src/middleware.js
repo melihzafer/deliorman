@@ -1,5 +1,34 @@
 import { NextResponse } from 'next/server';
 
+const DEFAULT_LOCALE = 'bg';
+const SUPPORTED_LOCALES = ['bg', 'en', 'tr'];
+const LOCALE_COOKIE = 'NEXT_LOCALE';
+const LOCALIZED_PATH_PREFIXES = [
+  '/about',
+  '/menu',
+  '/menu-2',
+  '/lunch-menu',
+  '/reservation',
+  '/reservation-2',
+  '/terms',
+  '/gallery',
+  '/history',
+  '/catering-services',
+  '/services',
+  '/special-days',
+  '/contact',
+  '/shop',
+  '/products',
+  '/product',
+  '/feedback',
+  '/cart',
+  '/checkout',
+  '/search',
+  '/home-2',
+  '/home-3',
+  '/onepage',
+];
+
 // Comma-separated list of allowed origins, e.g.
 // ALLOWED_ORIGINS=https://deliorman.bg,https://www.deliorman.bg
 const DEFAULT_ALLOWED_ORIGINS = [
@@ -12,6 +41,7 @@ const DEFAULT_ALLOWED_ORIGINS = [
   'https://deliorman-git-dev-mzh-projcets.vercel.app',
   'https://www.deliorman-git-dev-mzh-projcets.vercel.app',
 ];
+const NEXT_INTL_LOCALE_HEADER = 'X-NEXT-INTL-LOCALE';
 
 function getAllowedOrigins() {
   const raw = process.env.ALLOWED_ORIGINS || '';
@@ -20,6 +50,38 @@ function getAllowedOrigins() {
     .map((s) => s.trim())
     .filter(Boolean);
   return [...new Set([...DEFAULT_ALLOWED_ORIGINS, ...fromEnv])];
+}
+
+function getLocaleFromPathname(pathname) {
+  const locale = pathname.split('/')[1];
+  return SUPPORTED_LOCALES.includes(locale) ? locale : null;
+}
+
+function removeDefaultLocalePrefix(pathname) {
+  const updatedPath = pathname.replace(/^\/bg(?=\/|$)/, '');
+  return updatedPath || '/';
+}
+
+function getLocalizedPathname(pathname, locale) {
+  if (locale === DEFAULT_LOCALE) return pathname;
+  return pathname === '/' ? `/${locale}` : `/${locale}${pathname}`;
+}
+
+function hasLocalizedVariant(pathname) {
+  return LOCALIZED_PATH_PREFIXES.some((prefix) =>
+    pathname === prefix || pathname.startsWith(`${prefix}/`)
+  );
+}
+
+function nextWithLocale(request, locale) {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set(NEXT_INTL_LOCALE_HEADER, locale);
+
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 }
 
 // ============================================
@@ -168,6 +230,7 @@ function validateOrigin(request) {
 
 export function middleware(request) {
   const { pathname } = request.nextUrl;
+  const pathLocale = getLocaleFromPathname(pathname);
 
   // Determine which route type we're handling
   let routeType = null;
@@ -179,9 +242,48 @@ export function middleware(request) {
     routeType = 'reservation';
   }
 
-  // Skip middleware for non-protected routes
+  // Handle localized page routing and locale persistence for non-API routes
   if (!routeType) {
-    return NextResponse.next();
+    if (pathLocale === DEFAULT_LOCALE) {
+      const url = request.nextUrl.clone();
+      url.pathname = removeDefaultLocalePrefix(pathname);
+
+      const response = NextResponse.redirect(url);
+      response.cookies.set(LOCALE_COOKIE, DEFAULT_LOCALE, {
+        maxAge: 60 * 60 * 24 * 365,
+        path: '/',
+        sameSite: 'lax',
+      });
+
+      return response;
+    }
+
+    if (pathLocale) {
+      const response = nextWithLocale(request, pathLocale);
+      response.cookies.set(LOCALE_COOKIE, pathLocale, {
+        maxAge: 60 * 60 * 24 * 365,
+        path: '/',
+        sameSite: 'lax',
+      });
+
+      return response;
+    }
+
+    const preferredLocale = request.cookies.get(LOCALE_COOKIE)?.value;
+
+    if (
+      preferredLocale &&
+      SUPPORTED_LOCALES.includes(preferredLocale) &&
+      preferredLocale !== DEFAULT_LOCALE &&
+      pathname !== '/' &&
+      hasLocalizedVariant(pathname)
+    ) {
+      const url = request.nextUrl.clone();
+      url.pathname = getLocalizedPathname(pathname, preferredLocale);
+      return NextResponse.redirect(url);
+    }
+
+    return nextWithLocale(request, DEFAULT_LOCALE);
   }
 
   // Only apply rate limiting and validation to POST requests
@@ -230,5 +332,5 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/api/reservation/:path*', '/api/feedback/:path*', '/api/contact/:path*'],
+  matcher: ['/((?!_next|.*\\..*).*)'],
 };

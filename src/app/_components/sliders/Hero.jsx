@@ -6,11 +6,14 @@ import { useEffect } from "react";
 import Image from "next/image";
 
 import Data from '@data/sliders/hero';
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 import { ScrollAnimation } from "@common/scrollAnims";
 
 const HeroSlider = () => {
+  const tMenu = useTranslations("menu");
+
   useEffect(() => {
     // Defer ScrollAnimation to avoid blocking initial render
     if ('requestIdleCallback' in window) {
@@ -19,6 +22,14 @@ const HeroSlider = () => {
       setTimeout(() => ScrollAnimation(), 100);
     }
   }, []);
+
+  const getButtonLabel = (button) => {
+    if (button.link === "/menu") {
+      return tMenu("orderFromMenuCta");
+    }
+
+    return button.label;
+  };
   
   return (
     <>
@@ -53,8 +64,8 @@ const HeroSlider = () => {
                       <div className="tst-suptitle tst-suptitle-mobile-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : item.subtitle}}  />
                       <h1 className="tst-white-2 tst-text-shadow tst-mb-30" dangerouslySetInnerHTML={{__html : item.title}}  />
                       <div className="tst-text tst-text-shadow tst-text-lg tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : item.text}}  />
-                      <Link href={item.button1.link} className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-mr-30">{item.button1.label}</Link>
-                      <Link href={item.button2.link} className="tst-label tst-white-2">{item.button2.label}</Link>
+                      <Link href={item.button1.link} className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-mr-30">{getButtonLabel(item.button1)}</Link>
+                      <Link href={item.button2.link} className="tst-label tst-white-2">{getButtonLabel(item.button2)}</Link>
                     </div>
                   </div>
                 </div>

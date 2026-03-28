@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
 import Image from "next/image";
 import { useEffect, useState, useTransition, useCallback, memo } from "react";
 import { usePathname } from "next/navigation";
@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { OnePageMenu } from "@common/onepageMenu";
 import AppData from "@data/app.json";
+import LanguageSwitcher from "@components/common/LanguageSwitcher";
 
 /**
  * Lazy load ReservationForm - only loaded when popup opens
@@ -76,6 +77,7 @@ const DefaultHeader = memo(() => {
     },
     [asPath]
   );
+  const showLanguageSwitcher = !isPathActive("onepage");
 
   // Memoized handlers with useTransition for non-blocking updates
   const handleMobileMenuToggle = useCallback(() => {
@@ -138,18 +140,18 @@ const DefaultHeader = memo(() => {
       <div className="tst-menu-frame">
         {/* top bar */}
         <div className="tst-dynamic-menu" id="tst-dynamic-menu">
-          <div className="tst-menu">
-            {/* logo - Using Next.js Image for optimization */}
-            <Link href="/">
-              <Image
-                src={AppData.header.logo.image}
-                className="tst-logo"
-                alt={AppData.header.logo.alt}
-                width={120}
-                height={40}
-                priority
-              />
-            </Link>
+            <div className="tst-menu">
+              {/* logo - Using Next.js Image for optimization */}
+              <Link href="/">
+                <Image
+                  src={AppData.header.logo.image}
+                  className="tst-logo"
+                  alt={AppData.header.logo.alt}
+                  width={120}
+                  height={40}
+                  priority
+                />
+              </Link>
             {/* menu */}
             <nav role="navigation" aria-label={t("mainNavigation")} className={`${mobileMenu ? "tst-active" : ""}`}>
               {isPathActive("onepage") ? (
@@ -166,58 +168,65 @@ const DefaultHeader = memo(() => {
                   ))}
                 </ul>
               ) : (
-                <ul>
-                  {AppData.header.menu.map((item, index) => (
-                    <li
-                      className={`${
-                        item.children && item.children.length > 0
-                          ? "menu-item-has-children"
-                          : ""
-                      } ${isPathActive(item.link) ? "current-menu-item" : ""}`}
-                      key={`header-menu-item-${index}`}
-                    >
-                      <Link
-                        href={item.link}
-                        onClick={
+                <>
+                  <ul>
+                    {AppData.header.menu.map((item, index) => (
+                      <li
+                        className={`${
                           item.children && item.children.length > 0
-                            ? (e) => handleSubMenuClick(index, e)
-                            : null
-                        }
+                            ? "menu-item-has-children"
+                            : ""
+                        } ${isPathActive(item.link) ? "current-menu-item" : ""}`}
+                        key={`header-menu-item-${index}`}
                       >
-                        {NAV_KEY_MAP[item.link] ? t(NAV_KEY_MAP[item.link]) : item.label}
-                      </Link>
-                      {item.children && item.children.length > 0 && (
-                        <ul
-                          className={openSubMenu === index ? "tst-active" : ""}
-                          aria-expanded={openSubMenu === index}
-                          aria-hidden={openSubMenu !== index}
+                        <Link
+                          href={item.link}
+                          onClick={
+                            item.children && item.children.length > 0
+                              ? (e) => handleSubMenuClick(index, e)
+                              : null
+                          }
                         >
-                          {item.children.map((subitem, subIndex) => (
-                            <li
-                              key={`header-submenu-item-${subIndex}`}
-                              className={
-                                isPathActive(subitem.link) ? "tst-active" : ""
-                              }
-                            >
-                              {subitem.link == "/onepage" ? (
-                                <a href={subitem.link} target="_blank">
-                                  {SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}
-                                </a>
-                              ) : (
-                                <Link href={subitem.link}>{SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}</Link>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                          {NAV_KEY_MAP[item.link] ? t(NAV_KEY_MAP[item.link]) : item.label}
+                        </Link>
+                        {item.children && item.children.length > 0 && (
+                          <ul
+                            className={openSubMenu === index ? "tst-active" : ""}
+                            aria-expanded={openSubMenu === index}
+                            aria-hidden={openSubMenu !== index}
+                          >
+                            {item.children.map((subitem, subIndex) => (
+                              <li
+                                key={`header-submenu-item-${subIndex}`}
+                                className={
+                                  isPathActive(subitem.link) ? "tst-active" : ""
+                                }
+                              >
+                                {subitem.link == "/onepage" ? (
+                                  <a href={subitem.link} target="_blank">
+                                    {SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}
+                                  </a>
+                                ) : (
+                                  <Link href={subitem.link}>{SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}</Link>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </>
               )}
             </nav>
             {/* menu end */}
             {/* top bar right */}
             <div className="tst-menu-right">
+              {showLanguageSwitcher && (
+                <div style={{ alignItems: "center", display: "flex", marginRight: "16px", flexShrink: 0 }}>
+                  <LanguageSwitcher />
+                </div>
+              )}
               {/* menu button */}
               <div className="tst-menu-button-frame">
                 <div

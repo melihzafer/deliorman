@@ -1,0 +1,64 @@
+$ac: rgba(243, 156, 18, 1);
+$auxc1: rgba(231, 76, 60, 1);
+$auxc2: rgba(46, 204, 113, 1);
+$auxc3: rgba(52, 152, 219, 1);
+$dl1: rgba(26, 47, 51, 1);
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-josefin_sans), sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1;
+
+  /* Sizes */
+  &.sm {
+    padding: 3px 6px;
+    font-size: 9px;
+  }
+
+  &.md {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+
+  &.lg {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  /* Variants */
+  &.default {
+    background-color: rgba(26, 47, 51, 0.1);
+    color: $dl1;
+  }
+
+  &.success {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: darken($auxc2, 15%);
+  }
+
+  &.warning {
+    background-color: rgba(243, 156, 18, 0.15);
+    color: darken($ac, 10%);
+  }
+
+  &.new {
+    background-color: $auxc3;
+    color: #fff;
+  }
+
+  &.popular {
+    background-color: $ac;
+    color: #fff;
+  }
+
+  &.spicy {
+    background-color: $auxc1;
+    color: #fff;
+  }
+}

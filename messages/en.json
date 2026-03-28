@@ -1,0 +1,773 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "classicMenu": "Classic Menu",
+    "lunchMenu": "Lunch Menu",
+    "about": "About",
+    "aboutRestaurant": "About the Restaurant",
+    "specialDays": "Special Days",
+    "services": "Services",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "reservation": "Reservation",
+    "feedback": "Feedback",
+    "mainNavigation": "Main Navigation",
+    "menuLabel": "Menu",
+    "blog": "Blog",
+    "shop": "Shop",
+    "products": "Products",
+    "call": "Call"
+  },
+  "common": {
+    "readMore": "Read More",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "skipToContent": "Skip to content",
+    "reservations": "Reservations",
+    "reserveTable": "Reserve a Table",
+    "requiredField": "Required field",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "mobileNavigation": "Mobile navigation",
+    "openZoomedImage": "Open enlarged image",
+    "openZoomedImageWithAlt": "Open enlarged image: {alt}",
+    "previousPhotos": "Show previous photos",
+    "nextPhotos": "Show next photos",
+    "bannerImageAlt": "Deliorman Restaurant - exterior view"
+  },
+  "reservation": {
+    "title": "Reserve a Table",
+    "subtitle": "Reservation",
+    "description": "CALL +359 89 4766273 OR FILL OUT THE FORM BELOW",
+    "pageTitle": "Reservation",
+    "pageDescription": "Reserve a table at Restaurant Deliorman and enjoy  exquisite cuisine and cozy atmosphere in the village of Samuil.",
+    "breadTitle": "Table Reservation",
+    "firstName": "First Name *",
+    "lastName": "Last Name *",
+    "phone": "Phone *",
+    "email": "Email",
+    "date": "Date *",
+    "time": "Time *",
+    "guests": "Number of Guests *",
+    "message": "Message",
+    "submit": "Reserve",
+    "submitting": "Submitting...",
+    "success": "Reservation sent successfully!",
+    "error": "Error submitting. Please try again or call +359 89 4766273.",
+    "privacyConsent": "I agree with the",
+    "termsLink": "terms and conditions",
+    "privacyInfo": "and personal data policy.",
+    "privacyError": "Please confirm that you have read the terms and conditions.",
+    "nameMinLength": "Name must be at least 2 characters",
+    "lastNameMinLength": "Last name must be at least 2 characters",
+    "invalidPhone": "Invalid phone number",
+    "invalidEmail": "Invalid email address",
+    "guestsRequired": "Please select number of guests",
+    "dateRequired": "Please select a date",
+    "timeRequired": "Please select a time",
+    "guestsPlaceholder": "Guests *",
+    "guestsInvalid": "Please enter a valid number of guests",
+    "guestsMinimum": "Number of guests must be at least 1",
+    "guestsMaximum": "Maximum number of guests is 100",
+    "datePast": "Cannot reserve for a past date",
+    "dateMaxFuture": "Reservations can only be made up to 1 month ahead",
+    "timePast": "Please select a future time",
+    "timeMinAdvance": "Reservation can be made at the earliest in 4 hours (after {datetime})",
+    "largeGroupMessage": "For groups over 20, please write a brief comment (occasion, event type, requirements).",
+    "noAvailableTimes": "No available times (select a different date)",
+    "messagePlaceholder": "Additional message (optional)",
+    "problemOccurred": "A problem occurred",
+    "readTermsSummary": "Read summary",
+    "submitButton": "Reserve a Table",
+    "successModalTitle": "Request has been sent",
+    "successModalSubtitle": "Await a call",
+    "successModalMessage": "We will call {phone} for confirmation.",
+    "successModalNote": "Please wait for a call from the restaurant. The reservation is not valid until confirmed by phone.",
+    "successModalClose": "Understood",
+    "termsModalTitle": "Personal Data for Reservation",
+    "termsModalText1": "To process your request, we collect your name, surname, and phone number, as well as date/time and number of guests. We use the data solely for confirmation and organization of the reservation.",
+    "termsModalText2": "The full text with rules and information about personal data processing can be read here:",
+    "termsModalLink": "Terms and Conditions / Privacy",
+    "dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "dayNamesShort": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+    "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "stepLabels": ["Date and Time", "Guests and Contact", "Confirmation"],
+    "calendarSummary": "Deliorman Reservation - {guests} guests",
+    "calendarDescription": "Reservation for {firstName} {lastName}\\nPhone: {phone}\\nGuests: {guests}",
+    "calendarLocation": "Deliorman Restaurant",
+    "previousMonth": "Previous month",
+    "nextMonth": "Next month",
+    "legendToday": "today",
+    "legendClosed": "closed",
+    "selectTime": "Select time:",
+    "noSlotsAvailable": "No available times for this date. Please choose another.",
+    "selectTimeSlot": "Select time {time}",
+    "step1Title": "Select date and time",
+    "step2Title": "Guests and contact details",
+    "step3Title": "Review and confirmation",
+    "guestCount": "Number of guests",
+    "decreaseGuests": "Decrease guests",
+    "increaseGuests": "Increase guests",
+    "firstNamePlaceholder": "First name *",
+    "lastNamePlaceholder": "Last name *",
+    "phonePlaceholder": "Phone * (e.g. 0888123456)",
+    "emailPlaceholder": "Email (optional)",
+    "specialRequestsPlaceholder": "Special requests (optional)",
+    "confirmationWaitMessage": "Expect a confirmation call within 30 minutes (during working hours).",
+    "agreeWithTerms": "I agree with the",
+    "termsAndConditions": "terms and conditions",
+    "andPrivacyInfo": "and privacy policy.",
+    "readSummary": "Read summary",
+    "backButton": "← Back",
+    "nextButton": "Next →",
+    "submitButtonSending": "Sending...",
+    "submitButtonText": "Submit reservation",
+    "successTitle": "Request submitted!",
+    "successSubtitle": "Wait for confirmation call",
+    "hoursLabel": "h",
+    "guestSingular": "guest",
+    "guestPlural": "guests",
+    "confirmationCallNote": "We will call the provided phone for confirmation. The reservation is not valid until confirmed by phone.",
+    "addToCalendar": "📥 Add to calendar",
+    "newReservation": "New reservation",
+    "forChanges": "For changes:",
+    "reviewDate": "Date",
+    "reviewTime": "Time",
+    "reviewGuests": "Guests",
+    "reviewName": "Name",
+    "reviewPhone": "Phone",
+    "reviewEmail": "Email",
+    "closeButton": "Close"
+  },
+  "contact": {
+    "title": "Send Us a Message",
+    "subtitle": "Contact",
+    "description": "Share your questions, suggestions, or special requests for your visit to Restaurant Deliorman!",
+    "pageTitle": "Contact Us",
+    "pageDescription": "Restaurant Deliorman awaits you with warm hospitality  and unforgettable culinary experiences in the village of Samuil.",
+    "breadTitle": "Contact",
+    "firstName": "First Name *",
+    "lastName": "Last Name *",
+    "phone": "Phone *",
+    "email": "Email *",
+    "message": "Message (minimum 10 characters) *",
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "success": "Thank you for your message! We will contact you soon.",
+    "error": "Error sending. Please try again or call +359 89 4766273.",
+    "nameMinLength": "Name must be at least 2 characters",
+    "lastNameMinLength": "Last name must be at least 2 characters",
+    "invalidPhone": "Invalid phone number",
+    "invalidEmail": "Invalid email address",
+    "messageMinLength": "Message must be at least 10 characters",
+    "privacyConsent": "I agree with the",
+    "termsLink": "terms and conditions",
+    "privacyInfo": "and personal data policy.",
+    "privacyError": "Please confirm that you have read the terms and conditions.",
+    "problemOccurred": "A problem occurred",
+    "requiredField": "Required field",
+    "infoSubtitle": "Have questions?",
+    "infoTitle": "Get in touch with us",
+    "infoDescription": "Restaurant Deliorman welcomes you with warm hospitality and unforgettable culinary experiences in the heart of the village of Samuil.",
+    "reservationPhoneTitle": "Reservations phone",
+    "workingHours": "Working hours: 08:00 - 23:00",
+    "emailInquiriesTitle": "Email for inquiries",
+    "emailResponseTime": "We respond within 24 hours",
+    "addressTitle": "Address",
+    "addressLine1": "Samuil, 6 Hadji Dimitar St.",
+    "addressLine2": "Razgrad District",
+    "parkingAvailable": "Parking available"
+  },
+  "footer": {
+    "aboutTitle": "About Restaurant \"Deliorman\"",
+    "aboutText": "Restaurant \"Deliorman\" is a culinary gem located in the heart of the village of Samuil. Our philosophy is to combine traditional recipes with modern culinary techniques, using only the freshest local ingredients. We create a unique gastronomic experience for all our guests.",
+    "viewMenu": "View the Menu",
+    "contactTitle": "Contact Information",
+    "phoneLabel": "Phone \n for reservations",
+    "emailLabel": "Email",
+    "addressLabel": "Address",
+    "phoneValue": "+359 89 4766273",
+    "emailValue": "restaurantdeliorman@gmail.com",
+    "addressValue": "Samuil, 6 Hadji Dimitar St., Razgrad District",
+    "reserveTable": "Reserve a Table",
+    "galleryTitle": "Gallery from Our Restaurant",
+    "viewMorePhotos": "View More Photos",
+    "termsLink": "Terms & Conditions / Privacy",
+    "copyright": "Powered by <a href=\"https://portfolio.melihzafer.me\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"tst-color tst-anima-link\">Melih Hyusein</a> © Restaurant Deliorman. All rights reserved.",
+    "toTop": "To Top"
+  },
+  "meta": {
+    "siteName": "Restaurant Deliorman",
+    "homeTitle": "Restaurant Deliorman – Samuil (Razgrad District)",
+    "homeDescription": "Restaurant Deliorman offers a unique culinary experience with traditional Bulgarian and regional dishes, prepared with the highest quality local products in a cozy and authentic atmosphere.",
+    "menuTitle": "Menu",
+    "menuDescription": "Browse the menu of Restaurant Deliorman",
+    "galleryPageTitle": "Gallery | Interior, Exterior and Decoration",
+    "galleryPageDescription": "Browse the gallery of Restaurant Deliorman — cosy interiors, a beautiful garden and special decorations for your celebrations in Samuil, Razgrad.",
+    "contactTitle": "Contact | Address, Phone and Working Hours",
+    "contactDescription": "Contact Restaurant Deliorman — 6 Hadji Dimitar St., Samuil, Razgrad District. Phone +359 89 4766273.",
+    "searchTitle": "Search",
+    "searchDescription": "Search results in the blog and menu of Restaurant Deliorman.",
+    "reservationTitle": "Table Reservation | Online and by Phone",
+    "reservationDescription": "Reserve a table at Restaurant Deliorman online or at +359 89 4766273.",
+    "aboutTitle": "About Us | The Story of Deliorman Restaurant",
+    "aboutDescription": "Learn more about Deliorman Restaurant in Samuil, Razgrad region. Our story, team and passion for authentic Bulgarian cuisine and traditional recipes.",
+    "feedbackTitle": "Feedback | Share Your Opinion",
+    "feedbackDescription": "Send anonymous feedback, suggestions or comments to Restaurant Deliorman."
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "bg": "BG",
+    "en": "EN",
+    "tr": "TR",
+    "switchTo": "Switch to {language}",
+    "currentLanguage": "Current language: {language}",
+    "bgName": "Bulgarian",
+    "enName": "English",
+    "trName": "Turkish"
+  },
+  "searchPage": {
+    "pageTitleTemplate": "Search: %s",
+    "pageDescription": "Search results in the blog and menu  of Restaurant Deliorman.",
+    "breadTitle": "Search",
+    "searchSectionTitle": "Search",
+    "inputPlaceholder": "What are you looking for?",
+    "submitLabel": "Search",
+    "iconAlt": "Search icon",
+    "categoriesTitle": "Categories",
+    "archivesTitle": "Archive",
+    "authorsTitle": "Authors",
+    "keywordsTitle": "Keywords",
+    "loading": "Loading..."
+  },
+  "about": {
+    "pageTitle": "The Story of Our Restaurant",
+    "pageDescription": "Discover our passion for Bulgarian cuisine and traditions",
+    "breadTitle": "About Us",
+    "subtitle": "About Us",
+    "title": "We invite you to  visit our restaurant",
+    "description": "Welcome to our cozy restaurant, where tradition meets modernity. For several years now, we have been serving authentic Bulgarian dishes, prepared with love and attention to detail. Our team of experienced chefs uses only the freshest ingredients and traditional recipes, passed down from generation to generation. Here you will find a warm atmosphere, excellent service, and unforgettable flavors that will transport you to the heart of Bulgarian culinary tradition."
+  },
+  "menu": {
+    "pageTitle": "Discover Our Menu",
+    "pageDescription": "Enjoy authentic Bulgarian cuisine and  international specialties in the heart of Ludogorie.",
+    "breadTitle": "Menu",
+    "swipeHint": "Swipe to browse the categories",
+    "addToOrder": "Add to order",
+    "addSpecificItem": "Add {item} to the order",
+    "previousSpecialty": "Previous specialty",
+    "nextSpecialty": "Next specialty",
+    "orderFromMenuCta": "Order from the menu",
+    "categories": {
+      "soft-drinks-beverages": "Soft Drinks & Hot Beverages",
+      "salads": "Salads",
+      "hot-appetizers": "Hot Dishes",
+      "soups-fish-sandwiches": "Soups, Fish & Sandwiches",
+      "pizzas": "Pizzas",
+      "grill-and-specialties": "Grill & Specialties",
+      "sach-cold-appetizers-sides": "Saj Platters, Cold Appetizers & Sides",
+      "new-specialties": "New Specialties",
+      "desserts": "Desserts",
+      "beer": "Beer",
+      "rakia": "Rakia",
+      "wines": "White & Red Wines",
+      "vodka-other-spirits": "Vodka & Other Spirits",
+      "whiskey-and-nuts": "Whisky & Nuts"
+    },
+    "specialtiesSlides": [
+      {
+        "subtitle": "New on the menu",
+        "title": "Deliorman Skewer<br/>Chef's specialty",
+        "description": "Finely sliced meat marinated in our signature spice blend and slowly grilled until perfectly tender. Served with a distinctive spicy sauce that adds bold flavour.",
+        "image": {
+          "url": "/img/menuCategorised/newSpecialties/shish_deliorman.webp",
+          "alt": "Deliorman skewer - signature specialty at Restaurant Deliorman"
+        },
+        "button": {
+          "link": "/menu",
+          "label": "View the menu",
+          "icon": "fas fa-arrow-right"
+        },
+        "features": [
+          {
+            "icon": "fas fa-award",
+            "title": "Signature recipe",
+            "text": "A unique marinade created by our head chef"
+          },
+          {
+            "icon": "fas fa-fire",
+            "title": "Grilled to perfection",
+            "text": "Prepared traditionally over the grill"
+          },
+          {
+            "icon": "fas fa-star",
+            "title": "Best seller",
+            "text": "A favourite dish among our guests"
+          }
+        ]
+      },
+      {
+        "subtitle": "New specialty",
+        "title": "Lamb Skewer<br/>Tenderness and flavour",
+        "description": "Tender lamb marinated in a special sauce and slowly cooked to preserve its juiciness and elegant aroma. Served with roasted seasonal vegetables.",
+        "image": {
+          "url": "/img/menuCategorised/newSpecialties/agneshki.webp",
+          "alt": "Lamb skewer - fresh Deliorman specialty"
+        },
+        "button": {
+          "link": "/reservation",
+          "label": "Reserve a table",
+          "icon": "fas fa-calendar-alt"
+        },
+        "features": [
+          {
+            "icon": "fas fa-leaf",
+            "title": "Naturally sourced meat",
+            "text": "From certified local farms"
+          },
+          {
+            "icon": "fas fa-heart",
+            "title": "Balanced choice",
+            "text": "Rich in protein and lighter in calories"
+          },
+          {
+            "icon": "fas fa-clock",
+            "title": "Slow cooked",
+            "text": "For maximum tenderness and flavour"
+          }
+        ]
+      },
+      {
+        "subtitle": "Seasonal favourite",
+        "title": "Roast beef<br/>Tradition and quality",
+        "description": "Classic roast beef prepared with an authentic Bulgarian recipe. Slow roasted in its own juices until golden brown, preserving its juiciness and depth of flavour.",
+        "image": {
+          "url": "/img/menuCategorised/newSpecialties/teleshko.webp",
+          "alt": "Roast beef - traditional Deliorman specialty"
+        },
+        "button": {
+          "link": "/reservation",
+          "label": "Reserve now",
+          "icon": "fas fa-calendar"
+        },
+        "features": [
+          {
+            "icon": "fas fa-drumstick-bite",
+            "title": "Premium meat",
+            "text": "Fresh high-quality beef"
+          },
+          {
+            "icon": "fas fa-mortar-pestle",
+            "title": "Traditional recipe",
+            "text": "Prepared following an old Bulgarian method"
+          },
+          {
+            "icon": "fas fa-pepper-hot",
+            "title": "Rich flavour",
+            "text": "A balanced blend of spices and herbs"
+          }
+        ]
+      }
+    ]
+  },
+  "feedback": {
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Select a category (optional)",
+    "categoryService": "Service",
+    "categoryFood": "Food",
+    "categoryVibes": "Atmosphere",
+    "categoryOther": "Other",
+    "ratingLabel": "Rating (optional)",
+    "ratingNone": "No rating",
+    "ratingExcellent": "⭐⭐⭐⭐⭐ Excellent",
+    "ratingVeryGood": "⭐⭐⭐⭐ Very Good",
+    "ratingGood": "⭐⭐⭐ Good",
+    "ratingAcceptable": "⭐⭐ Acceptable",
+    "ratingNeedsImprovement": "⭐ Needs Improvement",
+    "messageLabel": "Your Message",
+    "messagePlaceholder": "Share your thoughts...",
+    "messageRequired": "Please enter a message",
+    "messageMinLength": "Message must contain at least 10 characters",
+    "messageMaxLength": "Message cannot exceed 1000 characters",
+    "termsLabel": "I agree that my message will be sent anonymously and I understand that I cannot receive a reply.",
+    "termsError": "Please accept the terms for sending",
+    "disclaimer": "All messages are anonymous and sent securely.",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "close": "Close",
+    "submitError": "Error submitting feedback",
+    "generalError": "An error occurred while sending your message. Please try again.",
+    "required": "*",
+    "widgetLabel": "Feedback",
+    "widgetTitle": "Share your opinion",
+    "modalTitle": "Feedback",
+    "modalDescription": "Your opinion matters a lot to us."
+  },
+  "feedbackPage": {
+    "pageTitle": "Your Opinion Matters",
+    "pageDescription": "Share your thoughts, suggestions or comments",
+    "breadTitle": "Feedback",
+    "subtitle": "Feedback",
+    "title": "How can we improve your experience?",
+    "description": "Your opinion matters greatly to us. Whether you would like to share a compliment, a suggestion or constructive criticism, we are here to listen. Every piece of feedback helps us improve and deliver even better service.",
+    "successTitle": "Thank you!",
+    "successMessage": "Your feedback was sent successfully. Your opinion matters to us!"
+  },
+  "googleReviews": {
+    "title": "See us on Google Maps",
+    "reviewCount": "({count}+ reviews)"
+  },
+  "aboutSections": {
+    "features": {
+      "subtitle": "Our strengths",
+      "title": "Why do people choose us?",
+      "description": "Quality, flavour and freshness – all in one place!",
+      "items": [
+        {
+          "title": "A menu for every taste",
+          "text": "A rich selection of traditional and modern dishes prepared with care"
+        },
+        {
+          "title": "Always fresh ingredients",
+          "text": "We use only the finest fresh products for incomparable flavour"
+        },
+        {
+          "title": "Experienced chefs",
+          "text": "Our skilled chefs create true culinary masterpieces"
+        }
+      ]
+    },
+    "schedule": {
+      "subtitle": "Opening hours",
+      "title": "Come and visit us",
+      "description": "Enjoy authentic cuisine and warm hospitality at Restaurant Deliorman. We are open every day to welcome you with a smile and delicious food.",
+      "buttonLabel": "Contact us",
+      "items": [
+        {
+          "label": "Monday - Wednesday"
+        },
+        {
+          "label": "Thursday - Sunday"
+        }
+      ]
+    },
+    "counters": {
+      "items": [
+        {
+          "label": "Guests per day"
+        },
+        {
+          "label": "Catering services per month"
+        },
+        {
+          "label": "Positive reviews"
+        },
+        {
+          "label": "Awards & recognitions"
+        }
+      ]
+    },
+    "cta": {
+      "subtitle": "Reservation",
+      "title": "Tonight  will be unforgettable!",
+      "description": "Reserve a table at Restaurant Deliorman and enjoy  refined cuisine and a cosy atmosphere in the village of Samuil.",
+      "button1Label": "Reserve now",
+      "button2Label": "Menu"
+    }
+  },
+  "galleryPage": {
+    "pageTitle": "Gallery",
+    "pageDescription": "Explore our restaurant and its atmosphere",
+    "breadTitle": "Gallery",
+    "introSuptitle": "Our spaces",
+    "introTitle": "Discover the atmosphere of Deliorman",
+    "introDescription": "Take a look at our cosy interior, beautiful outdoor garden and special decorations for your celebrations.",
+    "filters": {
+      "all": "All",
+      "indoor": "Interior",
+      "outdoor": "Exterior",
+      "decoration": "Decoration"
+    },
+    "showCategory": "Show category {category}",
+    "openImageLabel": "Open image: {image}",
+    "openImageFallback": "Open image in the gallery",
+    "noResults": "There are no photos in this category",
+    "dialogLabel": "Viewing image: {image}",
+    "dialogLabelFallback": "Viewing image",
+    "closeImage": "Close image",
+    "previousImage": "Show previous image",
+    "nextImage": "Show next image",
+    "imageAlt": {
+      "indoor": "Restaurant interior",
+      "outdoor": "Restaurant exterior",
+      "decoration": "Decoration for special events"
+    }
+  },
+  "orderFlow": {
+    "pageTitle": "Order from the menu",
+    "breadTitle": "Order",
+    "cartPageDescription": "Online orders are now placed directly from the menu page.",
+    "checkoutPageDescription": "Choose dishes from the menu and complete your order via WhatsApp or phone.",
+    "cartNoticeTitle": "The cart is no longer used",
+    "cartNoticeDescription": "To place an order, add dishes from the menu page and use the floating bar at the bottom of the screen.",
+    "checkoutNoticeTitle": "The checkout form has been replaced with direct ordering",
+    "checkoutNoticeDescription": "Orders are now completed from the menu page through the floating WhatsApp or phone bar.",
+    "legacyLead": "Add dishes directly from the menu page and complete the order through the floating WhatsApp or phone bar.",
+    "menuButton": "Go to menu",
+    "whatsappButton": "WhatsApp",
+    "whatsappIntro": "Hello! I would like to place an order from the menu.",
+    "whatsappThanks": "Thank you!",
+    "emptyTitle": "Add dishes from the menu",
+    "emptyDescription": "Choose dishes from the menu page to order via WhatsApp or phone.",
+    "currentOrderTitle": "Your order!",
+    "removeItem": "Remove item",
+    "itemSingular": "item",
+    "itemPlural": "items",
+    "itemFallback": "item",
+    "totalItems": "Total items:",
+    "reviewOrder": "Review your order",
+    "showOrder": "Order",
+    "hideOrder": "Hide",
+    "yourOrder": "Your order",
+    "decreaseQty": "Decrease",
+    "increaseQty": "Add",
+    "orderByWhatsApp": "Order via WhatsApp",
+    "callButton": "Call: {phone}",
+    "clearButton": "Clear",
+    "clearOrder": "Clear order"
+  },
+  "structuredData": {
+    "restaurantDescription": "Restaurant Deliorman offers a distinctive culinary experience with traditional Bulgarian and regional dishes prepared with quality local ingredients in a cosy and authentic setting.",
+    "areaServed": "Razgrad, Bulgaria",
+    "menuName": "Restaurant Deliorman Menu",
+    "breadcrumbs": {
+      "home": "Home",
+      "menu": "Menu",
+      "about": "About Us",
+      "gallery": "Gallery",
+      "reservation": "Reservation",
+      "contact": "Contact"
+    },
+    "faq": [
+      {
+        "question": "What are the opening hours of Restaurant Deliorman?",
+        "answer": "Restaurant Deliorman is open from Monday to Wednesday from 07:00 to 17:00, and from Thursday to Sunday from 07:00 to 23:00."
+      },
+      {
+        "question": "How can I make a reservation at Restaurant Deliorman?",
+        "answer": "You can reserve online through our Reservation page or by phone at +359 89 4766273. We recommend booking ahead for groups larger than 6 and for weekends."
+      },
+      {
+        "question": "Is there parking near Restaurant Deliorman?",
+        "answer": "Yes, the restaurant provides free parking for guests. The parking area is located right next to the entrance in the village of Samuil, Razgrad region."
+      },
+      {
+        "question": "Do you offer catering services?",
+        "answer": "Yes, we provide professional catering for weddings, baptisms, corporate parties and family celebrations. Contact us for a tailored offer."
+      }
+    ]
+  },
+  "components": {
+    "openStatus": {
+      "open": "Open",
+      "closedOpensAt": "Closed · Opens at {time}"
+    },
+    "themeToggle": {
+      "switchToDark": "Switch to dark theme",
+      "switchToLight": "Switch to light theme",
+      "dark": "Dark theme",
+      "light": "Light theme"
+    },
+    "lightbox": {
+      "viewImage": "View image",
+      "closeImage": "Close image",
+      "showPrevious": "Show previous image",
+      "showNext": "Show next image",
+      "enlargedImage": "Enlarged image"
+    },
+    "testimonials": {
+      "title": "Customer Reviews",
+      "previousReview": "Previous review",
+      "nextReview": "Next review"
+    },
+    "trustIndicators": {
+      "freshProducts": "Fresh Products",
+      "freshProductsDesc": "Daily from local suppliers",
+      "homeRecipes": "Home Recipes",
+      "homeRecipesDesc": "Traditional Bulgarian cuisine",
+      "fastDelivery": "Fast Delivery",
+      "fastDeliveryDesc": "Catering for your event",
+      "familyRestaurant": "Family Restaurant",
+      "familyRestaurantDesc": "Warm and friendly welcome"
+    },
+    "statsCounter": {
+      "yearsExperience": "Years of Experience",
+      "happyClients": "Happy Clients",
+      "menuDishes": "Menu Dishes",
+      "eventsHosted": "Events Hosted"
+    },
+    "dailySpecial": {
+      "dailyOffer": "Daily Special",
+      "chickenSoup": "Chicken Soup",
+      "chickenSoupDesc": "Homemade chicken soup with noodles",
+      "moussaka": "Moussaka",
+      "moussakaDesc": "Traditional Bulgarian moussaka",
+      "kebapcheta": "Kebapcheta",
+      "kebapchetaDesc": "pcs, with side of your choice",
+      "tripe": "Tripe Soup",
+      "tripeDesc": "Authentic recipe",
+      "grilledFish": "Grilled Fish",
+      "grilledFishDesc": "Trout with salad",
+      "mixedGrill": "Mixed Grill",
+      "mixedGrillDesc": "For two with sides",
+      "roastLamb": "Roast Lamb",
+      "roastLambDesc": "Slow roasted lamb"
+    },
+    "checkout": {
+      "requiredField": "Required field",
+      "invalidEmail": "Invalid email address",
+      "successMessage": "Thank you, your message has been sent successfully.",
+      "billingDetails": "Billing Details",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Your last name",
+      "phone": "Phone",
+      "email": "Email",
+      "country": "Country",
+      "city": "City",
+      "address": "Address",
+      "notes": "Notes",
+      "notesPlaceholder": "Notes about your order",
+      "yourOrder": "Your Order",
+      "product": "Product",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "freeShipping": "Free",
+      "grandTotal": "Grand Total",
+      "placeOrder": "Place Order",
+      "orderSuccess": "Order Successful",
+      "orderNumber": "Order Number",
+      "orderConfirmation": "Your order has been received. A confirmation email has been sent."
+    },
+    "subscribe": {
+      "subtitle": "Newsletter",
+      "title": "Stay updated with the news",
+      "description": "Subscribe to our newsletter for updates and special offers",
+      "emailPlaceholder": "Enter your email",
+      "subscribeButton": "Subscribe"
+    },
+    "specialtiesShowcase": {
+      "subtitle": "New Specialties",
+      "title": "Try our new dishes",
+      "description": "Freshly prepared specialties inspired by traditional Bulgarian cuisine with a modern approach.",
+      "menuButton": "Menu",
+      "reservationButton": "Reservation",
+      "ctaButton": "Reserve your table now"
+    },
+    "specialDays": {
+      "pageTitle": "Special Days",
+      "pageDescription": "Celebrate your special moments with us",
+      "breadTitle": "Special Days",
+      "subtitle": "Celebrations and Events",
+      "title": "Your special moments are our priority",
+      "description": "At Deliorman Restaurant, we organize unforgettable celebrations for all your special days - birthdays, engagements, family gatherings and corporate events.",
+      "features": {
+        "privateDining": "Private Dining Area",
+        "privateDiningDesc": "Capacity up to 50 guests",
+        "customMenu": "Custom Menu",
+        "customMenuDesc": "Menu tailored to your wishes",
+        "decoration": "Decoration",
+        "decorationDesc": "Professional decoration service",
+        "entertainment": "Entertainment",
+        "entertainmentDesc": "Live music and DJ options"
+      },
+      "reserveButton": "Reserve a Table",
+      "events": {
+        "birthdays": "Birthdays",
+        "birthdaysDesc": "Make your birthday unforgettable with our special menu and atmosphere",
+        "engagements": "Engagements & Weddings",
+        "engagementsDesc": "Celebrate your love with perfect organization and exquisite menu",
+        "family": "Family Celebrations",
+        "familyDesc": "Gather the whole family for special moments in a warm and cozy atmosphere",
+        "corporate": "Corporate Events",
+        "corporateDesc": "Professional service for business meetings, team buildings and cocktails",
+        "graduation": "Graduations & Proms",
+        "graduationDesc": "Celebrate achievements with friends and family in a stylish setting",
+        "religious": "Religious Holidays",
+        "religiousDesc": "Special menus for Mevlid and other important religious days"
+      },
+      "decorationSection": {
+        "subtitle": "Decoration",
+        "title": "The perfect atmosphere for your event",
+        "description": "Decoration is on us! Our team takes care of the complete decoration of the space according to your preferences and event theme.",
+        "balloons": "Balloons and flower arrangements",
+        "themed": "Themed decoration on request",
+        "lighting": "Special lighting",
+        "tables": "Personalized table decorations",
+        "imageAlt": "Decoration for special days"
+      },
+      "mevlid": {
+        "subtitle": "Special Menu",
+        "title": "Mevlid and Religious Holidays",
+        "description": "We organize special portions for Mevlid and other religious days with traditional menu and professional service",
+        "chickenLeg": "Chicken Leg with Garnish",
+        "chickenLegDesc": "Juicy chicken leg with rice, boiled potatoes, pepper and pita",
+        "chickenSteak": "Chicken Steak with Garnish",
+        "chickenSteakDesc": "Chicken steak with rice, boiled potatoes, pepper and pita",
+        "customNote": "The menu can be modified according to the customer's preferences"
+      }
+    },
+    "services": {
+      "pageTitle": "Services",
+      "pageDescription": "Discover the services we offer",
+      "breadTitle": "Services"
+    },
+    "history": {
+      "pageTitle": "Our History",
+      "pageDescription": "Discover the history of our restaurant",
+      "breadTitle": "History"
+    },
+    "backToTop": {
+      "label": "Back to top"
+    },
+    "mobileNav": {
+      "home": "Home",
+      "menu": "Menu",
+      "reservation": "Reservation",
+      "contact": "Contact"
+    },
+    "days": {
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday"
+    },
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    }
+  }
+}

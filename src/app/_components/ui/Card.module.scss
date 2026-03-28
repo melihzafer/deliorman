@@ -1,0 +1,37 @@
+$dl1: rgba(26, 47, 51, 1);
+$card: rgba(255, 255, 255, 1);
+
+.card {
+  background-color: $card;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  /* Padding options */
+  &.padNone {
+    padding: 0;
+  }
+  &.padSm {
+    padding: 16px;
+  }
+  &.padMd {
+    padding: 24px;
+  }
+  &.padLg {
+    padding: 32px;
+  }
+
+  /* Variants */
+  &.default {
+    box-shadow: 0 2px 5px 0 rgba(26, 47, 51, 0.11);
+  }
+
+  &.elevated {
+    box-shadow: 0 8px 24px rgba(26, 47, 51, 0.14);
+  }
+
+  &.outlined {
+    box-shadow: none;
+    border: 1px solid rgba(26, 47, 51, 0.12);
+  }
+}

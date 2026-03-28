@@ -1,0 +1,52 @@
+.banner {
+  background: linear-gradient(135deg, #1a2f33, #264348);
+  color: white;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.name {
+  color: #f39c12;
+  font-weight: 700;
+}
+
+.desc {
+  opacity: 0.8;
+}
+
+.price {
+  background: rgba(243, 156, 18, 0.2);
+  color: #f39c12;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.dismiss {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18px;
+  cursor: pointer;
+  margin-left: 8px;
+  padding: 0 4px;
+
+  &:hover {
+    color: white;
+  }
+}

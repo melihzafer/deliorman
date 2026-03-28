@@ -2,12 +2,26 @@
 
 import AppData from "@data/app.json";
 
+const MAPBOX_STYLESHEET_HREF = "https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css";
+
+function ensureMapboxStylesheet() {
+  if (document.querySelector(`link[href="${MAPBOX_STYLESHEET_HREF}"]`)) {
+    return;
+  }
+
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = MAPBOX_STYLESHEET_HREF;
+  link.setAttribute("data-mapbox-gl-styles", "true");
+  document.head.appendChild(link);
+}
+
 export const mapboxInit = async () => {
   const mapContainer = document.querySelector('#map');
 
   if (mapContainer !== undefined && mapContainer !== null) {
     const mapboxgl = (await import('mapbox-gl')).default;
-    await import('mapbox-gl/dist/mapbox-gl.css');
+    ensureMapboxStylesheet();
 
     mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || '';
     const map = new mapboxgl.Map({

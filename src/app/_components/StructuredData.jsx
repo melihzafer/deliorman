@@ -2,10 +2,23 @@
  * Structured Data (JSON-LD) Component
  * Provides rich snippets for search engines
  */
-import MenuData from '@data/menu.json'
+import { getLocalizedMenuData } from '@data/getLocalizedMenuData'
+import { getRestaurantPhoneDisplay, getRestaurantPhoneNormalized } from '@library/siteContact'
+import { getLocale, getTranslations } from 'next-intl/server'
+import { getLocalizedUrl } from '@/src/i18n/seo'
 
-export default function StructuredData() {
+export default async function StructuredData() {
+  const locale = await getLocale()
+  const menuData = getLocalizedMenuData(locale)
+  const tMeta = await getTranslations('meta')
+  const tMenu = await getTranslations('menu')
+  const tStructured = await getTranslations('structuredData')
   const canonicalBase = 'https://restorantdeliorman.com'
+  const restaurantPhoneDisplay = getRestaurantPhoneDisplay()
+  const restaurantPhoneNormalized = getRestaurantPhoneNormalized()
+  const categoryLabels = tMenu.raw('categories')
+  const faqContent = tStructured.raw('faq')
+  const breadcrumbLabels = tStructured.raw('breadcrumbs')
 
   // A stable Google Maps place/search URL helps Google connect the entity.
   const googleMapsUrl =
@@ -15,15 +28,14 @@ export default function StructuredData() {
     '@context': 'https://schema.org',
     '@type': ['Restaurant', 'FoodEstablishment'],
     '@id': `${canonicalBase}/#restaurant`,
-    name: 'Ресторант Делиорман',
+    name: tMeta('siteName'),
     url: canonicalBase,
-    description:
-      'Ресторант Делиорман предлага уникално кулинарно изживяване с традиционни български и регионални ястия, приготвени с най-качествени местни продукти в уютна и автентична атмосфера.',
+    description: tStructured('restaurantDescription'),
 
     image: [`${canonicalBase}/img/logo.webp`],
     logo: `${canonicalBase}/img/logo.webp`,
 
-    telephone: '+359894766273',
+    telephone: restaurantPhoneNormalized,
     email: 'restaurantdeliorman@gmail.com',
     priceRange: '$$',
 
@@ -61,20 +73,20 @@ export default function StructuredData() {
 
     servesCuisine: ['Bulgarian', 'Traditional', 'European'],
     acceptsReservations: true,
-    menu: `${canonicalBase}/menu`,
+    menu: getLocalizedUrl('/menu', locale),
 
     areaServed: {
       '@type': 'AdministrativeArea',
-      name: 'Разград, България',
+      name: tStructured('areaServed'),
     },
     paymentAccepted: ['Cash', 'Card'],
 
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+359894766273',
+        telephone: restaurantPhoneNormalized,
         contactType: 'reservations',
-        availableLanguage: ['bg'],
+        availableLanguage: ['bg', 'en', 'tr'],
       },
     ],
 
@@ -91,8 +103,8 @@ export default function StructuredData() {
     '@type': 'WebSite',
     '@id': `${canonicalBase}/#website`,
     url: canonicalBase,
-    name: 'Ресторант Делиорман',
-    inLanguage: 'bg',
+    name: tMeta('siteName'),
+    inLanguage: locale,
     potentialAction: {
       '@type': 'SearchAction',
       target: `${canonicalBase}/search?term={search_term_string}`,
@@ -100,18 +112,22 @@ export default function StructuredData() {
     },
   }
 
-  // --- Menu schema built from actual menu data ---
-  const foodCategories = [
-    'Салати', 'Аламинути', 'Супи, Риба и Сандвичи', 'Пици',
-    'Скара и Специалитети', 'Сач, Студени Мезета и Гарнитури',
-    'Нови Специалитети', 'Десерти',
+  const foodCategorySlugs = [
+    'salads',
+    'hot-appetizers',
+    'soups-fish-sandwiches',
+    'pizzas',
+    'grill-and-specialties',
+    'sach-cold-appetizers-sides',
+    'new-specialties',
+    'desserts',
   ]
 
-  const menuSections = MenuData.categories
-    .filter((cat) => foodCategories.includes(cat.name))
+  const menuSections = menuData.categories
+    .filter((cat) => foodCategorySlugs.includes(cat.slug))
     .map((cat) => ({
       '@type': 'MenuSection',
-      name: cat.name,
+      name: categoryLabels?.[cat.slug] || cat.name,
       hasMenuItem: cat.items.slice(0, 6).map((item) => ({
         '@type': 'MenuItem',
         name: item.title,
@@ -127,64 +143,36 @@ export default function StructuredData() {
   const menu = {
     '@type': 'Menu',
     '@id': `${canonicalBase}/#menu`,
-    name: 'Меню на Ресторант Делиорман',
-    url: `${canonicalBase}/menu`,
-    inLanguage: 'bg',
+    name: tStructured('menuName'),
+    url: getLocalizedUrl('/menu', locale),
+    inLanguage: locale,
     hasMenuSection: menuSections,
   }
 
-  // --- BreadcrumbList schema ---
   const breadcrumbs = {
     '@type': 'BreadcrumbList',
     '@id': `${canonicalBase}/#breadcrumb`,
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Начало', item: canonicalBase },
-      { '@type': 'ListItem', position: 2, name: 'Меню', item: `${canonicalBase}/menu` },
-      { '@type': 'ListItem', position: 3, name: 'За нас', item: `${canonicalBase}/about` },
-      { '@type': 'ListItem', position: 4, name: 'Галерия', item: `${canonicalBase}/gallery` },
-      { '@type': 'ListItem', position: 5, name: 'Резервация', item: `${canonicalBase}/reservation` },
-      { '@type': 'ListItem', position: 6, name: 'Контакти', item: `${canonicalBase}/contact` },
+      { '@type': 'ListItem', position: 1, name: breadcrumbLabels.home, item: canonicalBase },
+      { '@type': 'ListItem', position: 2, name: breadcrumbLabels.menu, item: getLocalizedUrl('/menu', locale) },
+      { '@type': 'ListItem', position: 3, name: breadcrumbLabels.about, item: getLocalizedUrl('/about', locale) },
+      { '@type': 'ListItem', position: 4, name: breadcrumbLabels.gallery, item: getLocalizedUrl('/gallery', locale) },
+      { '@type': 'ListItem', position: 5, name: breadcrumbLabels.reservation, item: getLocalizedUrl('/reservation', locale) },
+      { '@type': 'ListItem', position: 6, name: breadcrumbLabels.contact, item: getLocalizedUrl('/contact', locale) },
     ],
   }
 
-  // --- FAQPage schema ---
   const faq = {
     '@type': 'FAQPage',
     '@id': `${canonicalBase}/#faq`,
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'Какво е работното време на Ресторант Делиорман?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Ресторант Делиорман работи от понеделник до петък от 07:00 до 23:00 часа, а в събота и неделя от 07:00 до 00:00 часа.',
-        },
+    mainEntity: faqContent.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer.replace('{phone}', restaurantPhoneDisplay),
       },
-      {
-        '@type': 'Question',
-        name: 'Как мога да направя резервация в Ресторант Делиорман?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Можете да направите резервация онлайн чрез нашия уебсайт на страница „Резервация" или по телефон на +359 89 4766273. Препоръчваме резервация за групи над 6 човека и за уикенди.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Има ли паркинг до Ресторант Делиорман?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Да, ресторантът разполага с безплатен паркинг за гостите си. Паркингът се намира непосредствено до входа на заведението в село Самуил, област Разград.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: 'Предлагате ли кетъринг услуги?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Да, предлагаме професионален кетъринг за всякакви събития — сватби, кръщенета, фирмени партита и семейни тържества. Минималната поръчка е от 10 порции. Свържете се с нас за индивидуална оферта.',
-        },
-      },
-    ],
+    })),
   }
 
   const payload = {

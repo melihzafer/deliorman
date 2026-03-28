@@ -2,8 +2,8 @@
  * Shared HTML escaping utilities.
  *
  * Used by:
- *  - src/app/api/reservation/route.js
- *  - src/app/api/contact/route.js
+ *  - src/app/api/reservation/route.ts
+ *  - src/app/api/contact/route.ts
  */
 
 /**

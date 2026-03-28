@@ -4,12 +4,14 @@ import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { useState, useMemo, useCallback, lazy, Suspense, startTransition, useRef } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 
 // Lazy load Lightbox - only load when user clicks (reduces initial INP impact)
 const Lightbox = lazy(() => import("yet-another-react-lightbox"));
 
-const FooterGalleryModule = ( { items, button } ) => {
+const FooterGalleryModule = ( { items, button, buttonLabel } ) => {
+  const t = useTranslations("common");
   const [img, setImg] = useState(false);
   const [initialIndex, setInitialIndex] = useState(0);
   const [lightboxReady, setLightboxReady] = useState(false);
@@ -95,18 +97,41 @@ const FooterGalleryModule = ( { items, button } ) => {
                         width="300"
                         height="300"
                     />
-                    <a data-fancybox="gal" href={item.image} className="tst-overlay">
-                        <i className="fas fa-search-plus"></i>
+                    <a
+                        data-fancybox="gal"
+                        href={item.image}
+                        className="tst-overlay"
+                        aria-label={
+                          item.alt
+                            ? t("openZoomedImageWithAlt", { alt: item.alt })
+                            : t("openZoomedImage")
+                        }
+                    >
+                        <i className="fas fa-search-plus" aria-hidden="true"></i>
                     </a>
                 </div>
             </SwiperSlide>
             ))}
         </Swiper>
         <div className="tst-gallery-nav">
-            <Link href={button.link} className="tst-label tst-color tst-anima-link">{button.label}</Link>
+            <Link href={button.link} className="tst-label tst-color tst-anima-link">{buttonLabel || button.label}</Link>
             <div className="tst-fg-nav">
-                <div className="tst-slider-btn tst-fg-prev"><i className="fas fa-arrow-left"></i></div>
-                <div className="tst-slider-btn tst-fg-next"><i className="fas fa-arrow-right"></i></div>
+                <button
+                    type="button"
+                    className="tst-slider-btn tst-fg-prev"
+                    aria-label={t("previousPhotos")}
+                    style={{ background: 'none', border: 'none', padding: 0 }}
+                >
+                    <i className="fas fa-arrow-left" aria-hidden="true"></i>
+                </button>
+                <button
+                    type="button"
+                    className="tst-slider-btn tst-fg-next"
+                    aria-label={t("nextPhotos")}
+                    style={{ background: 'none', border: 'none', padding: 0 }}
+                >
+                    <i className="fas fa-arrow-right" aria-hidden="true"></i>
+                </button>
             </div>
         </div>
         {/* Lazy load Lightbox only after first click - prevents INP penalty on initial load */}

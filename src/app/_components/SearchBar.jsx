@@ -2,9 +2,11 @@
 
 import { useCallback, useState } from "react";
 import { useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/navigation'
+import { useTranslations } from "next-intl";
+import { useRouter } from '@/src/i18n/navigation'
 
 const SearchBarModule = () => {
+    const t = useTranslations("searchPage");
     const router = useRouter()
     const searchParams = useSearchParams()
     
@@ -15,7 +17,13 @@ const SearchBarModule = () => {
     const createQueryString = useCallback(
         (name, value) => {
             const params = new URLSearchParams(searchParams)
-            params.set(name, value)
+            const normalizedValue = value.trim()
+
+            if (normalizedValue) {
+                params.set(name, normalizedValue)
+            } else {
+                params.delete(name)
+            }
         
             return params.toString()
         },
@@ -28,7 +36,8 @@ const SearchBarModule = () => {
 
     const searchPressHandler = event => {
         if (event.key === 'Enter' || event.keyCode === 13) {
-            router.push("/search" + '?' + createQueryString('key', search))
+            const queryString = createQueryString('key', search)
+            router.push(queryString ? `/search?${queryString}` : "/search")
         }
     };
 
@@ -41,14 +50,16 @@ const SearchBarModule = () => {
                 onKeyDown={searchPressHandler}
                 required
                 id="searchField"
-                placeholder="Какво търсите?"
+                placeholder={t("inputPlaceholder")}
             />
             <button 
                 onClick={() => {
-                    router.push("/search" + '?' + createQueryString('key', search))
+                    const queryString = createQueryString('key', search)
+                    router.push(queryString ? `/search?${queryString}` : "/search")
                 }}
+                aria-label={t("submitLabel")}
             >
-                <img src="/img/ui/icons/search.svg" alt="search" />
+                <img src="/img/ui/icons/search.svg" alt={t("iconAlt")} />
             </button>
         </div>
     )
