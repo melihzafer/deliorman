@@ -1,0 +1,552 @@
+{
+  "timestamp": "2026-02-01T20:26:14.108Z",
+  "device": "iPhone 14 Pro Max",
+  "baseURL": "http://localhost:3000",
+  "pages": [
+    {
+      "name": "Homepage",
+      "url": "/",
+      "navigationTime": 2304,
+      "interactions": [
+        {
+          "name": "Menu Toggle Open",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "type": "wait",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Menu Toggle Close",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Reservation Popup Open",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "type": "wait",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Close Popup",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Scroll to Specialties",
+          "type": "scroll",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Swiper Pagination",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        }
+      ],
+      "metrics": {
+        "lcp": {
+          "value": 1606,
+          "rating": "good",
+          "passed": true
+        },
+        "cls": {
+          "value": null,
+          "rating": null,
+          "passed": false
+        },
+        "inp": {
+          "value": 152,
+          "rating": "good",
+          "passed": true,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "startTime": 6357,
+              "duration": 152,
+              "processingStart": 6359,
+              "processingEnd": 6359
+            },
+            {
+              "name": "pointerup",
+              "startTime": 6357,
+              "duration": 152,
+              "processingStart": 6360,
+              "processingEnd": 6360
+            },
+            {
+              "name": "click",
+              "startTime": 6357,
+              "duration": 152,
+              "processingStart": 6361,
+              "processingEnd": 6363
+            }
+          ]
+        },
+        "fcp": {
+          "value": 1102,
+          "rating": "good",
+          "passed": true
+        },
+        "ttfb": {
+          "value": 852,
+          "rating": "needs-improvement",
+          "passed": false
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Menu",
+      "url": "/menu",
+      "navigationTime": 1464,
+      "interactions": [
+        {
+          "name": "Menu Toggle",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "type": "wait",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Menu Toggle Close",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Scroll Down",
+          "type": "scroll",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Filter/Button Click",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        }
+      ],
+      "metrics": {
+        "lcp": {
+          "value": 1320,
+          "rating": "good",
+          "passed": true
+        },
+        "cls": {
+          "value": null,
+          "rating": null,
+          "passed": false
+        },
+        "inp": {
+          "value": 104,
+          "rating": "good",
+          "passed": true,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "startTime": 5609,
+              "duration": 104,
+              "processingStart": 5612,
+              "processingEnd": 5612
+            },
+            {
+              "name": "pointerup",
+              "startTime": 5609,
+              "duration": 104,
+              "processingStart": 5613,
+              "processingEnd": 5613
+            },
+            {
+              "name": "click",
+              "startTime": 5609,
+              "duration": 104,
+              "processingStart": 5614,
+              "processingEnd": 5617
+            }
+          ]
+        },
+        "fcp": {
+          "value": 608,
+          "rating": "good",
+          "passed": true
+        },
+        "ttfb": {
+          "value": 424,
+          "rating": "good",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Gallery",
+      "url": "/gallery",
+      "navigationTime": 1102,
+      "interactions": [
+        {
+          "name": "Menu Toggle",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "type": "wait",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Menu Toggle Close",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Scroll to Gallery",
+          "type": "scroll",
+          "success": true,
+          "skipped": false
+        }
+      ],
+      "metrics": {
+        "lcp": {
+          "value": 377,
+          "rating": "good",
+          "passed": true
+        },
+        "cls": {
+          "value": null,
+          "rating": null,
+          "passed": false
+        },
+        "inp": {
+          "value": 8,
+          "rating": "good",
+          "passed": true,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "startTime": 3316.0000000000005,
+              "duration": 8,
+              "processingStart": 3318,
+              "processingEnd": 3318
+            }
+          ]
+        },
+        "fcp": {
+          "value": 233,
+          "rating": "good",
+          "passed": true
+        },
+        "ttfb": {
+          "value": 113,
+          "rating": "good",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Reservation",
+      "url": "/reservation",
+      "navigationTime": 1044,
+      "interactions": [
+        {
+          "name": "Menu Toggle",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "type": "wait",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Menu Toggle Close",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Scroll to Form",
+          "type": "scroll",
+          "success": true,
+          "skipped": false
+        }
+      ],
+      "metrics": {
+        "lcp": {
+          "value": 393,
+          "rating": "good",
+          "passed": true
+        },
+        "cls": {
+          "value": null,
+          "rating": null,
+          "passed": false
+        },
+        "inp": {
+          "value": 240,
+          "rating": "needs-improvement",
+          "passed": false,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "startTime": 4929,
+              "duration": 240,
+              "processingStart": 4998,
+              "processingEnd": 4998
+            },
+            {
+              "name": "pointerup",
+              "startTime": 4929,
+              "duration": 240,
+              "processingStart": 5000,
+              "processingEnd": 5000
+            },
+            {
+              "name": "click",
+              "startTime": 4929,
+              "duration": 240,
+              "processingStart": 5001,
+              "processingEnd": 5004
+            }
+          ]
+        },
+        "fcp": {
+          "value": 237.00000000000003,
+          "rating": "good",
+          "passed": true
+        },
+        "ttfb": {
+          "value": 120,
+          "rating": "good",
+          "passed": true
+        }
+      },
+      "passed": false
+    },
+    {
+      "name": "Contact",
+      "url": "/contact",
+      "navigationTime": 1036,
+      "interactions": [
+        {
+          "name": "Menu Toggle",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "type": "wait",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Menu Toggle Close",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Scroll Down",
+          "type": "scroll",
+          "success": true,
+          "skipped": false
+        }
+      ],
+      "metrics": {
+        "lcp": {
+          "value": 407,
+          "rating": "good",
+          "passed": true
+        },
+        "cls": {
+          "value": null,
+          "rating": null,
+          "passed": false
+        },
+        "inp": {
+          "value": 192,
+          "rating": "good",
+          "passed": true,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "startTime": 4950,
+              "duration": 192,
+              "processingStart": 4952,
+              "processingEnd": 4953
+            }
+          ]
+        },
+        "fcp": {
+          "value": 256,
+          "rating": "good",
+          "passed": true
+        },
+        "ttfb": {
+          "value": 112,
+          "rating": "good",
+          "passed": true
+        }
+      },
+      "passed": true
+    },
+    {
+      "name": "Lunch Menu",
+      "url": "/lunch-menu",
+      "navigationTime": 1159,
+      "interactions": [
+        {
+          "name": "Menu Toggle",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "type": "wait",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Menu Toggle Close",
+          "type": "click",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Scroll Down",
+          "type": "scroll",
+          "success": true,
+          "skipped": false
+        },
+        {
+          "name": "Filter Click",
+          "type": "click",
+          "success": false,
+          "skipped": true
+        }
+      ],
+      "metrics": {
+        "lcp": {
+          "value": 443,
+          "rating": "good",
+          "passed": true
+        },
+        "cls": {
+          "value": null,
+          "rating": null,
+          "passed": false
+        },
+        "inp": {
+          "value": 56,
+          "rating": "good",
+          "passed": true,
+          "entries": [
+            {
+              "name": "pointerdown",
+              "startTime": 3343,
+              "duration": 56,
+              "processingStart": 3345,
+              "processingEnd": 3345
+            },
+            {
+              "name": "pointerdown",
+              "startTime": 3343,
+              "duration": 56,
+              "processingStart": 3345,
+              "processingEnd": 3345
+            },
+            {
+              "name": "pointerup",
+              "startTime": 3343,
+              "duration": 56,
+              "processingStart": 3346,
+              "processingEnd": 3346
+            },
+            {
+              "name": "click",
+              "startTime": 3343,
+              "duration": 56,
+              "processingStart": 3347,
+              "processingEnd": 3358
+            }
+          ]
+        },
+        "fcp": {
+          "value": 242,
+          "rating": "good",
+          "passed": true
+        },
+        "ttfb": {
+          "value": 107,
+          "rating": "good",
+          "passed": true
+        }
+      },
+      "passed": true
+    }
+  ],
+  "summary": {
+    "totalPages": 6,
+    "passedCount": 5,
+    "failedCount": 1,
+    "passedPages": [
+      "Homepage",
+      "Menu",
+      "Gallery",
+      "Contact",
+      "Lunch Menu"
+    ],
+    "failedPages": [
+      "Reservation"
+    ],
+    "worstINP": {
+      "page": "Reservation",
+      "value": 240
+    },
+    "worstLCP": {
+      "page": "Homepage",
+      "value": 1606
+    }
+  },
+  "thresholds": {
+    "lcp": [
+      2500,
+      4000
+    ],
+    "inp": [
+      200,
+      500
+    ],
+    "cls": [
+      0.1,
+      0.25
+    ],
+    "fcp": [
+      1800,
+      3000
+    ],
+    "ttfb": [
+      800,
+      1800
+    ]
+  }
+}
