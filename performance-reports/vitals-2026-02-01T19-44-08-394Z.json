@@ -1,0 +1,62 @@
+{
+  "url": "http://localhost:3000",
+  "timestamp": "2026-02-01T19:44:08.394Z",
+  "metrics": {
+    "lcp": {
+      "value": 795,
+      "rating": "good"
+    },
+    "cls": {
+      "value": null,
+      "rating": null
+    },
+    "inp": {
+      "value": 96,
+      "rating": "good",
+      "entries": [
+        {
+          "name": "pointerdown",
+          "startTime": 5006,
+          "duration": 96,
+          "processingStart": 5009,
+          "processingEnd": 5010
+        },
+        {
+          "name": "pointerdown",
+          "startTime": 5006,
+          "duration": 96,
+          "processingStart": 5009,
+          "processingEnd": 5010
+        },
+        {
+          "name": "pointerup",
+          "startTime": 5006,
+          "duration": 96,
+          "processingStart": 5011,
+          "processingEnd": 5012
+        },
+        {
+          "name": "click",
+          "startTime": 5006,
+          "duration": 96,
+          "processingStart": 5012,
+          "processingEnd": 5013
+        }
+      ]
+    }
+  },
+  "thresholds": {
+    "lcp": [
+      2500,
+      4000
+    ],
+    "inp": [
+      200,
+      500
+    ],
+    "cls": [
+      0.1,
+      0.25
+    ]
+  }
+}
