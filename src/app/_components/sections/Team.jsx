@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Data from "@data/sections/team.json";
 
 const TeamSection = ( { items } ) => {
@@ -24,7 +25,9 @@ const TeamSection = ( { items } ) => {
                 {/* team member */}
                 <div className="tst-team-member">
                     <div className="tst-member-portrait-frame tst-anima-link">
-                        <img src={item.image} alt={item.name} />
+                        <div style={{ position: "relative", width: "100%", aspectRatio: "1", overflow: "hidden" }}>
+                          <Image src={item.image} alt={item.name} fill style={{ objectFit: "cover" }} />
+                        </div>
                     </div>
                     <div className="tst-member-descr">
                         <h5 className="tst-mb-15">{item.name}</h5>

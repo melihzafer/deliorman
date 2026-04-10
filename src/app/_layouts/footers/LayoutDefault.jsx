@@ -22,7 +22,7 @@ const DefaultFooter = () => {
             <div className="container">
                 <div className="tst-footer-top">
                     <div className="tst-white-circle-as-bg">
-                    <img src={AppData.footer.logo.url} alt={AppData.footer.logo.alt} className="tst-logo" />
+                    <Image src={AppData.footer.logo.url} alt={AppData.footer.logo.alt} className="tst-logo" width={180} height={60} />
 </div>
                     <div className="tst-social">
                         {AppData.social.map((item, key) => (

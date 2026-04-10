@@ -3,9 +3,9 @@ import { Link } from "@/src/i18n/navigation";
 import { getRestaurantPhoneDisplay } from "@library/siteContact";
 
 const CONTACT_INFO_ICONS = [
-  "/img/icons/5.svg",
-  "/img/icons/4.svg",
-  "/img/icons/6.svg",
+  "fas fa-phone",
+  "fas fa-envelope",
+  "fas fa-location-dot",
 ];
 
 const ContactInfoSection = async () => {
@@ -78,7 +78,7 @@ const ContactInfoSection = async () => {
 
             {/* icon box */}
             <div className="tst-icon-box tst-mb-60">
-                <img src={item.icon} alt={item.title} className="tst-mb-30" />
+                <i className={`${item.icon} tst-mb-30`} style={{ fontSize: "2rem" }} aria-hidden="true"></i>
                 <h5 className="tst-mb-30">{item.title}</h5>
                 <div className="tst-text">{item.content}</div>
             </div>

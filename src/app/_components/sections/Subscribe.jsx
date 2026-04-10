@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import Data from "@data/sections/subscribe.json";
 import AppData from "@data/app.json";
@@ -12,7 +13,7 @@ const SubscribeSection = () => {
         {/* subscribe */}
         <div className="tst-banner-sm">
             <div className="tst-cover-frame">
-                <img src={Data.image.url} alt={Data.image.alt} className="tst-cover" />
+                <Image src={Data.image.url} alt={Data.image.alt} fill className="tst-cover" />
                 <div className="tst-overlay"></div>
             </div>
             <div className="row align-items-center">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Formik } from 'formik';
 import AppData from "@data/app.json";
 
@@ -115,7 +116,7 @@ const OpenTableForm = () => {
                 <button className="tst-btn" type="submit" name="button">Reserve a table</button>
                 <p className="tst-powered d-center tst-p-15-0">
                     * Powered by 
-                    <img src="/img/ui/icons/opentable.svg" alt="opentable" />
+                    <Image src="/img/ui/icons/opentable.svg" alt="OpenTable" width={80} height={20} />
                 </p>
             </div>
             

@@ -5,18 +5,27 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/src/i18n/navigation";
 import SpecialtiesData from "@data/specialties.json";
+import styles from "./SpecialtiesShowcase.module.scss";
 
 const SpecialtiesShowcase = () => {
   const t = useTranslations("components.specialtiesShowcase");
-  const specialties = SpecialtiesData.categories[0]?.items || [];
+  const tSpec = useTranslations("specialties");
+  const specialties = tSpec.raw("items") || [];
   const [failedImages, setFailedImages] = useState(new Set());
+
+  const getImageSrc = (index) => {
+    const item = specialties[index];
+    if (item?.image) return item.image;
+    const fallback = SpecialtiesData?.categories?.[0]?.items?.[index];
+    if (fallback?.image) return fallback.image;
+    return `/img/menu/menu${index + 1}.webp`;
+  };
 
   return (
     <>
       <div className="tst-content-frame">
         <div className="tst-content-box">
           <div className="container tst-p-60-60">
-            {/* Section Header */}
             <div className="row justify-content-center tst-mb-60">
               <div className="col-lg-8">
                 <div className="text-center">
@@ -32,35 +41,18 @@ const SpecialtiesShowcase = () => {
               </div>
             </div>
 
-            {/* Specialties Grid */}
             <div className="row">
               {specialties.map((specialty, index) => (
                 <div className="col-lg-4 col-md-6 tst-mb-40" key={`specialty-${index}`}>
-                  <div className="tst-product-card tst-fade-up" style={{
-                    backgroundColor: '#fff',
-                    borderRadius: '12px',
-                    overflow: 'hidden',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.1)',
-                    transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    cursor: 'pointer'
-                  }}>
-                    {/* Card Image */}
-                    <div style={{
-                      height: '250px',
-                      backgroundColor: '#f8f9fa',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      overflow: 'hidden',
-                      position: 'relative'
-                    }}>
+                  <div className={styles.card}>
+                    <div className={styles.cardImage}>
                       {failedImages.has(index) ? (
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', background: 'linear-gradient(135deg, #f39c12, #d4a373)' }}>
-                          <i className="fas fa-utensils" style={{ fontSize: '64px', color: 'white', opacity: 0.3 }}></i>
+                        <div className={styles.cardFallback}>
+                          <i className="fas fa-utensils"></i>
                         </div>
                       ) : (
                         <Image 
-                          src={`/img/menu/specialty-${index + 1}.webp`}
+                          src={getImageSrc(index)}
                           alt={specialty.title}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -68,97 +60,38 @@ const SpecialtiesShowcase = () => {
                           onError={() => setFailedImages(prev => new Set([...prev, index]))}
                         />
                       )}
-                      {/* Price Badge */}
-                      <div style={{
-                        position: 'absolute',
-                        top: '15px',
-                        right: '15px',
-                        backgroundColor: '#f39c12',
-                        color: 'white',
-                        padding: '8px 15px',
-                        borderRadius: '25px',
-                        fontSize: '14px',
-                        fontWeight: 'bold'
-                      }}>
+                      <div className={styles.priceBadge}>
                         {specialty.price}
                       </div>
                     </div>
 
-                    {/* Card Content */}
-                    <div style={{padding: '25px'}}>
-                      <h4 style={{
-                        color: '#05232B',
-                        marginBottom: '10px',
-                        fontSize: '18px',
-                        fontWeight: '600'
-                      }}>
+                    <div className={styles.cardContent}>
+                      <h4 className={styles.cardTitle}>
                         {specialty.title}
                       </h4>
                       
-                      <p style={{
-                        color: '#666',
-                        marginBottom: '15px',
-                        fontSize: '14px',
-                        lineHeight: '1.5'
-                      }}>
+                      <p className={styles.cardText}>
                         {specialty.text}
                       </p>
 
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginBottom: '20px',
-                        paddingBottom: '15px',
-                        borderBottom: '1px solid #e8e8e8'
-                      }}>
+                      <div className={styles.cardWeight}>
                         <i className="fas fa-weight" style={{color: '#f39c12', marginRight: '8px'}}></i>
-                        <span style={{color: '#05232B', fontWeight: '600', fontSize: '14px'}}>
+                        <span className={styles.cardWeightValue}>
                           {specialty.weight}
                         </span>
                       </div>
 
-                      {/* Links */}
-                      <div style={{display: 'flex', gap: '10px'}}>
+                      <div className={styles.cardLinks}>
                         <Link 
                           href="/menu" 
-                          style={{
-                            flex: 1,
-                            padding: '12px 15px',
-                            backgroundColor: '#f39c12',
-                            color: 'white',
-                            textAlign: 'center',
-                            borderRadius: '6px',
-                            textDecoration: 'none',
-                            fontSize: '14px',
-                            fontWeight: '600',
-                            transition: 'background-color 0.3s ease',
-                            border: 'none',
-                            cursor: 'pointer'
-                          }}
-                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#ff9100ff'}
-                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f39c12'}
+                          className={styles.menuLink}
                         >
                           <i className="fas fa-list" style={{marginRight: '6px'}}></i>
                           {t("menuButton")}
                         </Link>
                         <Link 
                           href="/reservation"
-                          style={{
-                            flex: 1,
-                            padding: '12px 15px',
-                            backgroundColor: '#05232B',
-                            color: 'white',
-                            textAlign: 'center',
-                            borderRadius: '6px',
-                            textDecoration: 'none',
-                            fontSize: '14px',
-                            fontWeight: '600',
-                            transition: 'background-color 0.3s ease',
-                            border: 'none',
-                            cursor: 'pointer'
-                          }}
-                          onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6b3c1a'}
-                          onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#05232B'}
+                          className={styles.reservationLink}
                         >
                           <i className="fas fa-calendar" style={{marginRight: '6px'}}></i>
                           {t("reservationButton")}
@@ -170,26 +103,11 @@ const SpecialtiesShowcase = () => {
               ))}
             </div>
 
-            {/* Bottom CTA Button */}
             <div className="row justify-content-center">
               <div className="col-lg-6">
                 <Link 
                   href="/reservation"
-                  className="tst-btn tst-btn-lg tst-btn-shadow"
-                  style={{
-                    width: '100%',
-                    display: 'block',
-                    textAlign: 'center',
-                    backgroundColor: '#05232B',
-                    color: 'white !important',
-                    textDecoration: 'none',
-                    borderRadius: '8px',
-                    fontWeight: '600',
-                    fontSize: '16px',
-                    transition: 'background-color 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#6b3c1a'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#05232B'}
+                  className="tst-btn tst-btn-lg tst-btn-shadow tst-reserve-cta"
                 >
                   {t("ctaButton")}
                 </Link>

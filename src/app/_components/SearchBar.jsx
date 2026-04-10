@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect, useRef } from "react";
 import { useSearchParams } from 'next/navigation'
 import { useTranslations } from "next-intl";
 import { useRouter } from '@/src/i18n/navigation'
@@ -11,8 +11,14 @@ const SearchBarModule = () => {
     const searchParams = useSearchParams()
     
     const query = searchParams.get('key') || '';
-
     const [search, setSearch] = useState(query);
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
 
     const createQueryString = useCallback(
         (name, value) => {
@@ -41,9 +47,15 @@ const SearchBarModule = () => {
         }
     };
 
+    const handleSubmit = () => {
+        const queryString = createQueryString('key', search)
+        router.push(queryString ? `/search?${queryString}` : "/search")
+    };
+
     return (
         <div className="tst-group-input tst-group-with-btn">
             <input 
+                ref={inputRef}
                 type="text"
                 value={search}
                 onChange={searchChangeHandler}
@@ -53,13 +65,10 @@ const SearchBarModule = () => {
                 placeholder={t("inputPlaceholder")}
             />
             <button 
-                onClick={() => {
-                    const queryString = createQueryString('key', search)
-                    router.push(queryString ? `/search?${queryString}` : "/search")
-                }}
+                onClick={handleSubmit}
                 aria-label={t("submitLabel")}
             >
-                <img src="/img/ui/icons/search.svg" alt={t("iconAlt")} />
+                <i className="fas fa-search"></i>
             </button>
         </div>
     )

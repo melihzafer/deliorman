@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Data from "@data/sections/promo-video.json";
 
 const PromoVideoSection = () => {
@@ -11,7 +12,7 @@ const PromoVideoSection = () => {
 
             {/* about video */}
             <div className="tst-about-cover tst-video-cover tst-mb-60">
-                <img src={Data.image.url} alt={Data.image.alt} className="tst-cover animateme" data-when="span" data-from="-1" data-to="2" data-easing="easeinout" data-scale="1.2" />
+                <Image src={Data.image.url} alt={Data.image.alt} fill className="tst-cover animateme" />
                 {/* <div className="tst-overlay"></div>
                 <div className="tst-btn-animation"></div>
                 <a className="tst-play-button" data-fancybox onClick={() => setOpen(true)} style={{ "cursor" : "pointer" }} data-width="1000" data-height="600">

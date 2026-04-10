@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const ReviewItem = ({ item, index }) => {
   const stars = [ '', '', '', '', '' ];
     
@@ -15,7 +17,9 @@ const ReviewItem = ({ item, index }) => {
         <div className="tst-spacer-sm"></div>
         <div className="tst-testimonial-bottom">
           <div className="tst-visitor">
-            <img src={item.image} alt={item.name} />
+            <div style={{ position: "relative", width: 60, height: 60, borderRadius: "50%", overflow: "hidden" }}>
+              <Image src={item.image} alt={item.name} fill style={{ objectFit: "cover" }} />
+            </div>
             <h6>{item.name}</h6>
           </div>
           <div className="tst-date">{item.date}</div>

@@ -1,5 +1,4 @@
 import { MetadataRoute } from 'next'
-import { getSortedPostsData } from '@library/posts'
 import { routing } from '@/src/i18n/routing'
 import {
   SITE_URL,
@@ -8,9 +7,6 @@ import {
 } from '@/src/i18n/seo'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // Get all blog posts
-  const posts = getSortedPostsData()
-
   const localizedPages = [
     '/about',
     '/menu',
@@ -23,9 +19,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/services',
     '/special-days',
     '/contact',
-    '/shop',
-    '/products',
     '/feedback',
+    '/search',
   ]
 
   const staticUrls: MetadataRoute.Sitemap = [
@@ -50,21 +45,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return allEntries.findIndex(({ url }) => url === entry.url) === index
   })
 
-  const postUrls: MetadataRoute.Sitemap = posts.map((post: any) => ({
-    url: `${SITE_URL}/blog/${post.id}`,
-    lastModified: post.date ? new Date(post.date) : new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
-  }))
-
-  const blogIndexUrl: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-  ]
-
-  return [...staticUrls, ...blogIndexUrl, ...postUrls]
+  return [...staticUrls]
 }

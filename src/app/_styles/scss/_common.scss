@@ -481,16 +481,6 @@ buttons
     transform: translateY(3px);
   }
 
-  &.tst-cart-btn {
-    padding: 0;
-    width: 60px;
-    text-align: center;
-
-    & svg {
-      width: 15px;
-      transform: translateY(-2px);
-    }
-  }
   &.tst-btn-gray {
     background-color: transparent;
   }
@@ -556,31 +546,6 @@ buttons
       &:before {
         bottom: -5px;
         transform: scale(.95);
-      }
-    }
-  }
-
-  &.tst-atc {
-    .tst-add-to-cart-text {
-      position: relative;
-      top: 1px;
-    }
-    .tst-added-text {
-      position: absolute !important;
-      opacity: 0;
-      top: 1px !important;
-      right: -100%;
-      pointer-events: none;
-    }
-    &.tst-added {
-      .tst-add-to-cart-text {
-        opacity: 0;
-      }
-
-      .tst-added-text {
-        opacity: 1;
-        right: 33%;
-        pointer-events: all;
       }
     }
   }

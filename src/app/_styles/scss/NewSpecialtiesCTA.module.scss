@@ -376,6 +376,8 @@
     0 10px 30px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
+  aspect-ratio: 4 / 3;
+  width: 100%;
 
   &:hover {
     transform: scale(1.02) rotateY(2deg);
@@ -403,15 +405,12 @@
 }
 
 .slideImage {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 4/3;
-  object-fit: cover;
   transition: transform 0.6s ease;
 
   @media (max-width: 576px) {
-    aspect-ratio: 16/9;
+    :global(.swiper-slide) & {
+      // keep aspect ratio on mobile
+    }
   }
 }
 

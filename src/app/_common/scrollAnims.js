@@ -1,7 +1,5 @@
 "use client";
 
-import Sticky from "sticky-js";
-
 // Global scroll animation listener - only attached once
 let scrollListenerAttached = false;
 let fadeObserver = null;

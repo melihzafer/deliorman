@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Data from "@data/sections/hero.json";
 import Link from "next/link";
 import { useEffect } from "react";
@@ -21,7 +22,7 @@ const Hero = ( { bgType } ) => {
                         <source src={Data.video.url} />
                     </video>
                     ) : (
-                    <img src={Data.image.url} alt={Data.image.alt} className="tst-cover tst-parallax" />
+                    <Image src={Data.image.url} alt={Data.image.alt} fill className="tst-cover tst-parallax" />
                     )}
                     <div className="tst-overlay"></div>
                 </div>

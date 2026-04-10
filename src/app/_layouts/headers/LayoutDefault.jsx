@@ -10,11 +10,8 @@ import { useTranslations } from "next-intl";
 import { OnePageMenu } from "@common/onepageMenu";
 import AppData from "@data/app.json";
 import LanguageSwitcher from "@components/common/LanguageSwitcher";
+import SearchOverlay from "@components/search/SearchOverlay";
 
-/**
- * Lazy load ReservationForm - only loaded when popup opens
- * This prevents the form's JavaScript from blocking the main thread
- */
 const ReservationForm = dynamic(
   () => import("@components/forms/ReservationForm"),
   {
@@ -39,10 +36,6 @@ const ReservationForm = dynamic(
   }
 );
 
-/**
- * DefaultHeader - Optimized header component
- * Uses useTransition for non-blocking state updates and lazy loading for popups
- */
 const NAV_KEY_MAP = {
   '/': 'home',
   '/menu': 'menu',
@@ -63,23 +56,22 @@ const SUB_NAV_KEY_MAP = {
 const DefaultHeader = memo(() => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
-  const [miniCart, setMiniCart] = useState(false);
   const [reservationPopup, setReservationPopup] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const asPath = usePathname();
   const t = useTranslations("nav");
   const tc = useTranslations("common");
 
-  // Memoized path check function
   const isPathActive = useCallback(
     (path) => {
-      return (asPath.endsWith(path) == 1 && path !== "/") || asPath === path;
+      if (path === "/") return asPath === "/" || asPath === `/${asPath.split("/")[1]}`;
+      return asPath === path || asPath.startsWith(path + "/");
     },
     [asPath]
   );
   const showLanguageSwitcher = !isPathActive("onepage");
 
-  // Memoized handlers with useTransition for non-blocking updates
   const handleMobileMenuToggle = useCallback(() => {
     startTransition(() => {
       setMobileMenu((prev) => !prev);
@@ -109,15 +101,21 @@ const DefaultHeader = memo(() => {
     }
   }, []);
 
-  // Reset menu states on route change
+  const handleSearchOpen = useCallback(() => {
+    setSearchOpen(true);
+  }, []);
+
+  const handleSearchClose = useCallback(() => {
+    setSearchOpen(false);
+  }, []);
+
   useEffect(() => {
     setMobileMenu(false);
-    setMiniCart(false);
     setReservationPopup(false);
     setOpenSubMenu(false);
+    setSearchOpen(false);
   }, [asPath]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenu) {
       document.body.classList.add("mobile-menu-open");
@@ -127,7 +125,6 @@ const DefaultHeader = memo(() => {
     return () => document.body.classList.remove("mobile-menu-open");
   }, [mobileMenu]);
 
-  // Initialize onepage menu if needed
   useEffect(() => {
     if (isPathActive("onepage")) {
       OnePageMenu();
@@ -136,30 +133,31 @@ const DefaultHeader = memo(() => {
 
   return (
     <>
-      {/* top bar frame */}
       <div className="tst-menu-frame">
-        {/* top bar */}
         <div className="tst-dynamic-menu" id="tst-dynamic-menu">
             <div className="tst-menu">
-              {/* logo - Using Next.js Image for optimization */}
               <Link href="/">
                 <Image
                   src={AppData.header.logo.image}
                   className="tst-logo"
                   alt={AppData.header.logo.alt}
-                  width={120}
-                  height={40}
+                  width={70}
+                  height={24}
                   priority
                 />
               </Link>
-            {/* menu */}
             <nav role="navigation" aria-label={t("mainNavigation")} className={`${mobileMenu ? "tst-active" : ""}`}>
+              {mobileMenu && (
+                <div className="tst-close-menu d-lg-none" onClick={handleMobileMenuToggle} style={{ position: 'absolute', top: '20px', right: '20px', cursor: 'pointer', zIndex: 12 }}>
+                  <i className="fas fa-times" style={{ fontSize: '32px', color: '#F39C12' }}></i>
+                </div>
+              )}
               {isPathActive("onepage") ? (
                 <ul>
                   {AppData.header.onepage.map((item, index) => (
                     <li
                       key={`header-menu-onepage-item-${index}`}
-                      className={index == 0 ? "current-menu-item" : ""}
+                      className={index === 0 ? "current-menu-item" : ""}
                     >
                       <a data-no-swup href={item.link}>
                         {item.label}
@@ -184,7 +182,7 @@ const DefaultHeader = memo(() => {
                           onClick={
                             item.children && item.children.length > 0
                               ? (e) => handleSubMenuClick(index, e)
-                              : null
+                              : undefined
                           }
                         >
                           {NAV_KEY_MAP[item.link] ? t(NAV_KEY_MAP[item.link]) : item.label}
@@ -202,8 +200,8 @@ const DefaultHeader = memo(() => {
                                   isPathActive(subitem.link) ? "tst-active" : ""
                                 }
                               >
-                                {subitem.link == "/onepage" ? (
-                                  <a href={subitem.link} target="_blank">
+                                {subitem.link === "/onepage" ? (
+                                  <a href={subitem.link} target="_blank" rel="noopener noreferrer">
                                     {SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}
                                   </a>
                                 ) : (
@@ -215,32 +213,71 @@ const DefaultHeader = memo(() => {
                         )}
                       </li>
                     ))}
+                    {showLanguageSwitcher && (
+                      <li className="d-lg-none" style={{ marginTop: "15px", display: "flex", justifyContent: "center" }}>
+                        <LanguageSwitcher />
+                      </li>
+                    )}
+                    <li className="d-lg-none">
+                      <button
+                        onClick={handleSearchOpen}
+                        className="tst-mobile-search-link"
+                        aria-label={t("searchTitle") || "Search"}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          padding: "0",
+                          background: "none",
+                          border: "none",
+                          color: "#7e2010",
+                          fontSize: "14px",
+                          fontWeight: 800,
+                          textTransform: "uppercase",
+                          letterSpacing: "1px",
+                          cursor: "pointer",
+                          fontFamily: "inherit",
+                        }}
+                      >
+                        <i className="fas fa-search"></i>
+                        {t("searchTitle") || "Search"}
+                      </button>
+                    </li>
                   </ul>
                 </>
               )}
             </nav>
-            {/* menu end */}
-            {/* top bar right */}
             <div className="tst-menu-right">
-              {showLanguageSwitcher && (
-                <div style={{ alignItems: "center", display: "flex", marginRight: "16px", flexShrink: 0 }}>
-                  <LanguageSwitcher />
-                </div>
-              )}
-              {/* menu button */}
+              <div className="d-none d-lg-flex" style={{ alignItems: "center", marginRight: "16px", flexShrink: 0 }}>
+                {showLanguageSwitcher && <LanguageSwitcher />}
+              </div>
               <div className="tst-menu-button-frame">
                 <div
                   className={`tst-menu-btn ${mobileMenu ? "tst-active" : ""}`}
                   onClick={handleMobileMenuToggle}
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
                 >
-                  <div className="tst-burger">
-                    <span></span>
-                  </div>
+                  {mobileMenu ? (
+                    <i className="fas fa-times" style={{ fontSize: "28px", color: "#F39C12" }}></i>
+                  ) : (
+                    <div className="tst-burger">
+                      <span></span>
+                    </div>
+                  )}
                 </div>
               </div>
-              {/* menu button end */}
 
-              {/* reservation popup button (far right) */}
+              <button
+                onClick={handleSearchOpen}
+                className="tst-btn tst-res-btn tst-btn-icon tst-search-btn"
+                aria-label={t("searchTitle") || "Search"}
+              >
+                <span className="tst-icon" aria-hidden="true">
+                  <i className="fas fa-search"></i>
+                </span>
+                <span className="sr-only">{t("searchTitle") || "Search"}</span>
+              </button>
+
               <a
                 href="#."
                 className={`tst-btn tst-res-btn tst-btn-icon ${
@@ -258,14 +295,12 @@ const DefaultHeader = memo(() => {
                 <span className="sr-only">{tc("reservations")}</span>
               </a>
             </div>
-            {/* top bar right end  */}
           </div>
         </div>
-        {/* top bar end */}
       </div>
-      {/* top bar frame */}
 
-      {/* popup */}
+      <SearchOverlay isOpen={searchOpen} onClose={handleSearchClose} />
+
       <div
         id="reservation-popup"
         className={`tst-popup-bg ${reservationPopup ? "tst-active" : ""}`}
@@ -276,19 +311,15 @@ const DefaultHeader = memo(() => {
               <i className="fas fa-times"></i>
             </div>
 
-            {/* title */}
             <div className="text-center">
               <div className="tst-suptitle tst-suptitle-center"></div>
               <h4 className="tst-mb-60">{tc("reserveTable")}</h4>
             </div>
-            {/* title end */}
 
-            {/* Only render form when popup is open - prevents unnecessary loading */}
             {reservationPopup && <ReservationForm />}
           </div>
         </div>
       </div>
-      {/* popup end */}
     </>
   );
 });

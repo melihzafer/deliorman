@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Data from "@data/sections/features.json";
 import { useTranslations } from "next-intl";
 
@@ -24,7 +25,7 @@ const FeaturesOneSection = () => {
             <div className="col-lg-4" key={`features-item-${key}`}>
                 {/* icon box */}
                 <div className="tst-icon-box tst-mb-60">
-                    <img src={item.icon} alt="icon" className="tst-mb-30" />
+                    <Image src={item.icon} alt={content.items[key]?.title || item.title} width={60} height={60} className="tst-mb-30" />
                     <h5 className="tst-mb-30">{content.items[key]?.title || item.title}</h5>
                     <div className="tst-text" dangerouslySetInnerHTML={{__html : content.items[key]?.text || item.text}} />
                 </div>

@@ -15,7 +15,7 @@ const ScheduleSection = () => {
 
                     <div className="tst-cover-frame">
                     <Image src={Data.image.url} alt={Data.image.alt} className="tst-cover" fill sizes="100vw" style={{ objectFit: 'cover' }} />
-                    <div className="tst-overlay" style={{background: "#000000d0"}}></div>
+                    <div className="tst-overlay tst-overlay-dark"></div>
                     </div>
 
                     <div className="row align-items-center">
@@ -28,8 +28,8 @@ const ScheduleSection = () => {
                       <p className="tst-text tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : content.description}} />
 
                       <div className="tst-btn-mobile">
-                        <div style={{display: "flex", padding: '1.5em'}}></div>
-                        <Link href={Data.button2.link}  style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-res-btn light">{content.buttonLabel}</Link>
+                        <div className="tst-schedule-spacer"></div>
+                        <Link href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-res-btn light">{content.buttonLabel}</Link>
                         {/* <Link href={Data.button2.link} className="tst-label tst-white-2">{Data.button2.label}</Link> Reservation */}
                       </div>
                       </div>

@@ -441,3 +441,33 @@
     }
   }
 }
+
+/* =============================
+   9. Mid-range breakpoint (768-1100px) — search icon visibility, bottom nav gap
+   ============================= */
+@media (min-width: 769px) and (max-width: 1100px) {
+  /* Ensure search icon stays visible and usable in this gap */
+  .tst-menu-right .tst-btn-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .tst-menu-right .tst-btn-icon .tst-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tst-menu-right .tst-btn-icon .tst-icon i {
+    font-size: 14px;
+  }
+
+  .tst-menu-right .tst-res-btn.tst-btn-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tst-menu-right .tst-res-btn.tst-btn-icon i {
+    font-size: 16px;
+  }
+}

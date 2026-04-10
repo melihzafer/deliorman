@@ -15,9 +15,8 @@
     "mainNavigation": "Main Navigation",
     "menuLabel": "Menu",
     "blog": "Blog",
-    "shop": "Shop",
-    "products": "Products",
-    "call": "Call"
+    "call": "Call",
+    "searchTitle": "Search"
   },
   "common": {
     "readMore": "Read More",
@@ -223,6 +222,63 @@
     "feedbackTitle": "Feedback | Share Your Opinion",
     "feedbackDescription": "Send anonymous feedback, suggestions or comments to Restaurant Deliorman."
   },
+  "hero": {
+    "slides": [
+      {
+        "title": "Welcome<br>to Deliorman",
+        "subtitle": "Hello, friends!",
+        "text": "Enjoy unique flavors and traditional recipes prepared with love and care.",
+        "button1": "View Menu",
+        "button2": "Make Reservation"
+      },
+      {
+        "title": "Explore <br>Our Menu",
+        "subtitle": "Discover a Wealth of Flavors!",
+        "text": "Dive into the world of authentic Bulgarian tastes and choose from our wide range of traditional dishes.",
+        "button1": "View Menu",
+        "button2": "Contact Us"
+      },
+      {
+        "title": "Try <br>Our Specialties",
+        "subtitle": "Real Taste, Real Experience!",
+        "text": "Try the best dishes from our traditional cuisine, prepared with quality products and craftsmanship.",
+        "button1": "How to Find Us",
+        "button2": "View Menu"
+      },
+      {
+        "title": "Reserve a <br>Table Today",
+        "subtitle": "We Look Forward to Seeing You!",
+        "text": "Ensure an unforgettable experience at Restaurant Deliorman with authentic cuisine and a cozy atmosphere.",
+        "button1": "Reserve a Table",
+        "button2": "Give Feedback"
+      }
+    ]
+  },
+  "specialties": {
+    "items": [
+      {
+        "title": "Deliorman Skewer",
+        "text": "Finely sliced meat marinated in our signature spice blend, slowly grilled to perfect tenderness. Served with a unique spicy sauce.",
+        "weight": "300 g",
+        "price": "12.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/shish_deliorman.webp"
+      },
+      {
+        "title": "Roast Beef",
+        "text": "Tender roast beef with a choice of garnish, served warm and prepared according to traditional recipes.",
+        "weight": "300 g",
+        "price": "19.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/teleshko.webp"
+      },
+      {
+        "title": "Lamb Skewer Delicacy",
+        "text": "Tender lamb marinated in special sauce, slowly grilled to preserve its juiciness and aroma. Served with seasonal roasted vegetables.",
+        "weight": "500 g",
+        "price": "29.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/agneshki.webp"
+      }
+    ]
+  },
   "languageSwitcher": {
     "label": "Language",
     "bg": "BG",
@@ -246,7 +302,14 @@
     "archivesTitle": "Archive",
     "authorsTitle": "Authors",
     "keywordsTitle": "Keywords",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "noResults": "No results found.",
+    "enterKeyword": "Please enter a keyword to search.",
+    "viewAllResults": "View all results",
+    "closeLabel": "Close",
+    "pagesSection": "Pages",
+    "specialtiesSection": "Specialties",
+    "menuSection": "Menu"
   },
   "about": {
     "pageTitle": "The Story of Our Restaurant",
@@ -426,6 +489,12 @@
     "reviewCount": "({count}+ reviews)"
   },
   "aboutSections": {
+    "intro": {
+      "subtitle": "About Us",
+      "title": "Welcome to Deliorman <br>Restaurant",
+      "description": "Deliorman Restaurant is a place where tradition and authentic Bulgarian taste come together. We pride ourselves on using fresh products and recipes passed down through generations to provide our guests with an unforgettable culinary experience.",
+      "buttonLabel": "Read More"
+    },
     "features": {
       "subtitle": "Our strengths",
       "title": "Why do people choose us?",
@@ -511,39 +580,7 @@
       "decoration": "Decoration for special events"
     }
   },
-  "orderFlow": {
-    "pageTitle": "Order from the menu",
-    "breadTitle": "Order",
-    "cartPageDescription": "Online orders are now placed directly from the menu page.",
-    "checkoutPageDescription": "Choose dishes from the menu and complete your order via WhatsApp or phone.",
-    "cartNoticeTitle": "The cart is no longer used",
-    "cartNoticeDescription": "To place an order, add dishes from the menu page and use the floating bar at the bottom of the screen.",
-    "checkoutNoticeTitle": "The checkout form has been replaced with direct ordering",
-    "checkoutNoticeDescription": "Orders are now completed from the menu page through the floating WhatsApp or phone bar.",
-    "legacyLead": "Add dishes directly from the menu page and complete the order through the floating WhatsApp or phone bar.",
-    "menuButton": "Go to menu",
-    "whatsappButton": "WhatsApp",
-    "whatsappIntro": "Hello! I would like to place an order from the menu.",
-    "whatsappThanks": "Thank you!",
-    "emptyTitle": "Add dishes from the menu",
-    "emptyDescription": "Choose dishes from the menu page to order via WhatsApp or phone.",
-    "currentOrderTitle": "Your order!",
-    "removeItem": "Remove item",
-    "itemSingular": "item",
-    "itemPlural": "items",
-    "itemFallback": "item",
-    "totalItems": "Total items:",
-    "reviewOrder": "Review your order",
-    "showOrder": "Order",
-    "hideOrder": "Hide",
-    "yourOrder": "Your order",
-    "decreaseQty": "Decrease",
-    "increaseQty": "Add",
-    "orderByWhatsApp": "Order via WhatsApp",
-    "callButton": "Call: {phone}",
-    "clearButton": "Clear",
-    "clearOrder": "Clear order"
-  },
+  
   "structuredData": {
     "restaurantDescription": "Restaurant Deliorman offers a distinctive culinary experience with traditional Bulgarian and regional dishes prepared with quality local ingredients in a cosy and authentic setting.",
     "areaServed": "Razgrad, Bulgaria",
@@ -630,34 +667,6 @@
       "mixedGrillDesc": "For two with sides",
       "roastLamb": "Roast Lamb",
       "roastLambDesc": "Slow roasted lamb"
-    },
-    "checkout": {
-      "requiredField": "Required field",
-      "invalidEmail": "Invalid email address",
-      "successMessage": "Thank you, your message has been sent successfully.",
-      "billingDetails": "Billing Details",
-      "firstName": "First Name",
-      "firstNamePlaceholder": "Your first name",
-      "lastName": "Last Name",
-      "lastNamePlaceholder": "Your last name",
-      "phone": "Phone",
-      "email": "Email",
-      "country": "Country",
-      "city": "City",
-      "address": "Address",
-      "notes": "Notes",
-      "notesPlaceholder": "Notes about your order",
-      "yourOrder": "Your Order",
-      "product": "Product",
-      "total": "Total",
-      "subtotal": "Subtotal",
-      "shipping": "Shipping",
-      "freeShipping": "Free",
-      "grandTotal": "Grand Total",
-      "placeOrder": "Place Order",
-      "orderSuccess": "Order Successful",
-      "orderNumber": "Order Number",
-      "orderConfirmation": "Your order has been received. A confirmation email has been sent."
     },
     "subscribe": {
       "subtitle": "Newsletter",

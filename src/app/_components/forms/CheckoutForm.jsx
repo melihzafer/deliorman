@@ -258,7 +258,7 @@ const CheckoutForm = () => {
             {/* button */}
             <button type="submit" className="tst-btn tst-btn-with-icon tst-m-0">
                 <span className="tst-icon">
-                    <img src="/img/ui/icons/arrow.svg" alt="icon" />
+                    <i className="fas fa-arrow-right" aria-hidden="true"></i>
                 </span>
                 <span>{t('placeOrder')}</span>
             </button>

@@ -258,7 +258,7 @@ body .tst-slider-navigation .tst-slider-pagination {
 datepicker
 --------------------------*/
 .datepicker {
-  z-index: 999999999999999;
+  z-index: 10000;
   border: none;
   font-weight: 400;
   font-family: $sf;
@@ -374,7 +374,7 @@ Accessibility - Skip Link
   top: -100px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 999999;
+  z-index: 10000;
   background-color: $dl1;
   color: $wl1;
   padding: 12px 24px;
@@ -447,9 +447,22 @@ Reduced Motion Support
     animation: none !important;
   }
   
-  // Disable hover scale effects
   .tst-slider-btn:hover,
   .swiper-pagination-bullet:hover {
     transform: none !important;
   }
+
+.tst-schedule-spacer {
+  display: block;
+  height: 1.5em;
+  width: 100%;
+}
+
+.tst-about-social {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 1.5rem;
+}
 }

@@ -34,10 +34,8 @@ import StructuredData from "@components/StructuredData";
 import ClientBoot from "@components/ClientBoot";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { CartProvider } from "@library/CartContext";
 import LazyLayoutWidgets from "@components/common/LazyLayoutWidgets";
 import MobileBottomNav from "@components/common/MobileBottomNav";
-import OrderSummary from "@components/order/OrderSummary";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
@@ -206,12 +204,9 @@ const Layouts = async ({ children }) => {
           <NextIntlClientProvider locale={locale} messages={messages}>
             {/* Lazy-loaded non-critical UI widgets (scroll progress, back-to-top, feedback) */}
             <LazyLayoutWidgets />
-            <CartProvider>
               <main id="main-content" tabIndex={-1}>
                 {children}
               </main>
-              <OrderSummary />
-            </CartProvider>
             <MobileBottomNav />
           </NextIntlClientProvider>
         </div>

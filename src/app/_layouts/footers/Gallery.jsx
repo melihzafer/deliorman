@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -90,13 +91,14 @@ const FooterGalleryModule = ( { items, button, buttonLabel } ) => {
             {items.map((item, key) => (
             <SwiperSlide key={`footer-gallery-item-${key}`}>
                 <div className="tst-footer-gal-item">
-                    <img 
-                        src={item.image} 
-                        alt={item.alt} 
-                        loading="lazy"
-                        width="300"
-                        height="300"
-                    />
+                    <div style={{ position: "relative", width: "100%", aspectRatio: "1" }}>
+                      <Image 
+                          src={item.image} 
+                          alt={item.alt} 
+                          fill
+                          style={{ objectFit: "cover" }}
+                      />
+                    </div>
                     <a
                         data-fancybox="gal"
                         href={item.image}

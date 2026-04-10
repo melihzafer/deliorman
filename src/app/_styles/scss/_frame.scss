@@ -89,7 +89,7 @@ marcup
 
 .tst-content-frame {
   position: relative;
-  z-index: 99999;
+  z-index: 10;
   border-radius: 10px;
   box-shadow: 0 5px 10px 0 rgba(26, 47, 51, 0.4);
   margin-left: 45px;
@@ -101,7 +101,7 @@ marcup
     height: 10px;
     width: calc(100% - 30px);
     position: absolute;
-    z-index: 999;
+    z-index: 1;
     top: -10px;
     border-radius: 5px 5px 0 0;
     background-color: $wl1;
@@ -399,6 +399,52 @@ menu
         margin-right: 0;
         font-size: 2em;
         transform: none;
+      }
+
+      & .tst-search-btn.tst-btn-icon {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        margin-right: 0;
+        border-radius: 25%;
+        color: #7e2010 !important;
+        background-color: transparent;
+        box-shadow: none;
+        cursor: pointer;
+        border: none;
+
+        &:before {
+          display: none;
+        }
+
+        &:hover {
+          color: #F39C12 !important;
+          background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        &:focus-visible {
+          outline-offset: 2px;
+        }
+
+        & .tst-icon {
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          box-shadow: none;
+          border-radius: 50%;
+          transform: none;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          margin: 0;
+        }
+
+        i {
+          margin-right: 0;
+          font-size: 1.3em;
+          transform: none;
+        }
       }
 
       & .tst-cart {
@@ -707,6 +753,20 @@ fade scroll object
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
   }
+}
+
+/* Fix: search button in header */
+.tst-btn-icon[type="button"],
+.tst-menu-right button.tst-btn-icon {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+}
+
+/* Fix: mobile search link */
+.tst-mobile-search-link {
+  cursor: pointer;
 }
 
 .tst-fade-down {

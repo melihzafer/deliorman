@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import Data from "@data/testimonials.json";
 import AnimateOnScroll from "@components/common/AnimateOnScroll";
 import styles from "./Testimonials.module.scss";

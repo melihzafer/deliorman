@@ -15,9 +15,8 @@
     "mainNavigation": "Ana Navigasyon",
     "menuLabel": "Menü",
     "blog": "Blog",
-    "shop": "Mağaza",
-    "products": "Ürünler",
-    "call": "Ara"
+    "call": "Ara",
+    "searchTitle": "Arama"
   },
   "common": {
     "readMore": "Devamını Oku",
@@ -220,10 +219,67 @@
     "reservationDescription": "Deliorman Restoran'da online veya +359 89 4766273 numarasından masa ayırtın.",
     "aboutTitle": "Hakkımızda | Deliorman Restoranın Hikayesi",
     "aboutDescription": "Samuil, Razgrad bölgesindeki Deliorman Restoranı hakkında daha fazla bilgi edinin. Hikayemiz, ekibimiz ve otantik Bulgar mutfağına olan tutkumuz.",
-    "feedbackTitle": "Geri Bildirim | Görüşünüzü Paylaşın",
-    "feedbackDescription": "Deliorman Restoran için anonim geri bildirim, öneri veya yorum gönderin."
-  },
-  "languageSwitcher": {
+    "feedbackTitle": "Geri Bildirim | Görüşlerinizi Paylaşın",
+    "feedbackDescription": "Deliorman Restoranı'na isimsiz geri bildirim, öneri veya yorum gönderin."
+    },
+    "hero": {
+    "slides": [
+      {
+        "title": "Deliorman'a<br>Hoş Geldiniz",
+        "subtitle": "Merhaba arkadaşlar!",
+        "text": "Sevgi ve özenle hazırlanan eşsiz lezzetlerin ve geleneksel tariflerin tadını çıkarın.",
+        "button1": "Menüyü İncele",
+        "button2": "Rezervasyon Yap"
+      },
+      {
+        "title": "Menümüzü <br>Keşfedin",
+        "subtitle": "Lezzet Zenginliğini Keşfedin!",
+        "text": "Otantik Bulgar lezzetleri dünyasına dalın ve geniş geleneksel yemek yelpazemizden seçiminizi yapın.",
+        "button1": "Menüyü İncele",
+        "button2": "Bize Ulaşın"
+      },
+      {
+        "title": "Spesiyallerimizi <br>Deneyin",
+        "subtitle": "Gerçek Tat, Gerçek Deneyim!",
+        "text": "Kaliteli ürünler ve ustalıkla hazırlanan geleneksel mutfağımızın en iyi yemeklerini deneyin.",
+        "button1": "Bizi Nasıl Bulursunuz",
+        "button2": "Menüyü İncele"
+      },
+      {
+        "title": "Hemen <br>Yer Ayırtın",
+        "subtitle": "Sizi Heyecanla Bekliyoruz!",
+        "text": "Otantik mutfağı ve sıcak atmosferiyle Deliorman Restoranı'nda unutulmaz bir deneyim yaşayın.",
+        "button1": "Masa Ayırt",
+        "button2": "Geri Bildirim Ver"
+      }
+    ]
+    },
+    "specialties": {
+    "items": [
+      {
+        "title": "Deliorman Şiş",
+        "text": "Özel baharat karışımımızla marine edilmiş, mükemmel yumuşaklığa ulaşana kadar ağır ağır ızgara yapılmış ince dilimlenmiş et. Eşsiz bir acı sos ile servis edilir.",
+        "weight": "300 g",
+        "price": "12.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/shish_deliorman.webp"
+      },
+      {
+        "title": "Dana Tandır",
+        "text": "Seçiminize göre garnitürle servis edilen, geleneksel tariflere göre hazırlanan ve sıcak servis edilen nefis dana eti.",
+        "weight": "300 g",
+        "price": "19.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/teleshko.webp"
+      },
+      {
+        "title": "Kuzu Şiş Lezzeti",
+        "text": "Özel sosla marine edilmiş kuzu eti, suyunu ve aromasını koruması için yavaşça ızgara yapılır. Közlenmiş mevsim sebzeleriyle servis edilir.",
+        "weight": "500 g",
+        "price": "29.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/agneshki.webp"
+      }
+    ]
+    },
+    "languageSwitcher": {
     "label": "Dil",
     "bg": "BG",
     "en": "EN",
@@ -246,7 +302,14 @@
     "archivesTitle": "Arşiv",
     "authorsTitle": "Yazarlar",
     "keywordsTitle": "Anahtar kelimeler",
-    "loading": "Yükleniyor..."
+    "loading": "Yükleniyor...",
+    "noResults": "Sonuç bulunamadı.",
+    "enterKeyword": "Aramak için bir anahtar kelime girin.",
+    "viewAllResults": "Tüm sonuçları görüntüle",
+    "closeLabel": "Kapat",
+    "pagesSection": "Sayfalar",
+    "specialtiesSection": "Spesiyaller",
+    "menuSection": "Menü"
   },
   "about": {
     "pageTitle": "Restoranımızın Hikayesi",
@@ -426,6 +489,12 @@
     "reviewCount": "({count}+ değerlendirme)"
   },
   "aboutSections": {
+    "intro": {
+      "subtitle": "Hakkımızda",
+      "title": "Deliorman Restoranına <br>Hoş Geldiniz",
+      "description": "Deliorman Restoranı, gelenek ve otantik Bulgar lezzetlerinin buluştuğu bir noktadır. Misafirlerimize unutulmaz bir mutfak deneyimi sunmak için nesillerden nesile aktarılan tarifleri ve taze ürünleri kullanmaktan gurur duyuyoruz.",
+      "buttonLabel": "Devamını Oku"
+    },
     "features": {
       "subtitle": "Avantajlarımız",
       "title": "İnsanlar neden bizi seçiyor?",
@@ -511,39 +580,7 @@
       "decoration": "Özel etkinlikler için dekorasyon"
     }
   },
-  "orderFlow": {
-    "pageTitle": "Menüden sipariş ver",
-    "breadTitle": "Sipariş",
-    "cartPageDescription": "Online siparişler artık doğrudan menü sayfasından veriliyor.",
-    "checkoutPageDescription": "Menüden yemek seçin ve siparişinizi WhatsApp veya telefonla tamamlayın.",
-    "cartNoticeTitle": "Sepet artık kullanılmıyor",
-    "cartNoticeDescription": "Sipariş vermek için menü sayfasından yemek ekleyin ve ekranın altındaki yüzen çubuğu kullanın.",
-    "checkoutNoticeTitle": "Ödeme formu doğrudan sipariş ile değiştirildi",
-    "checkoutNoticeDescription": "Siparişler artık menü sayfasındaki yüzen WhatsApp veya telefon çubuğu üzerinden tamamlanıyor.",
-    "legacyLead": "Yemekleri doğrudan menü sayfasından ekleyin ve siparişinizi yüzen WhatsApp veya telefon çubuğu üzerinden tamamlayın.",
-    "menuButton": "Menüye git",
-    "whatsappButton": "WhatsApp",
-    "whatsappIntro": "Merhaba! Menüden sipariş vermek istiyorum.",
-    "whatsappThanks": "Teşekkür ederim!",
-    "emptyTitle": "Menüden yemek ekleyin",
-    "emptyDescription": "WhatsApp veya telefonla sipariş vermek için menü sayfasından yemek seçin.",
-    "currentOrderTitle": "Siparişiniz!",
-    "removeItem": "Ürünü kaldır",
-    "itemSingular": "ürün",
-    "itemPlural": "ürün",
-    "itemFallback": "ürün",
-    "totalItems": "Toplam ürün:",
-    "reviewOrder": "Siparişi görüntüle",
-    "showOrder": "Sipariş ver",
-    "hideOrder": "Gizle",
-    "yourOrder": "Siparişiniz",
-    "decreaseQty": "Azalt",
-    "increaseQty": "Ekle",
-    "orderByWhatsApp": "WhatsApp ile sipariş ver",
-    "callButton": "Ara: {phone}",
-    "clearButton": "Temizle",
-    "clearOrder": "Siparişi temizle"
-  },
+  
   "structuredData": {
     "restaurantDescription": "Deliorman Restoran, kaliteli yerel malzemelerle hazırlanan geleneksel Bulgar ve bölgesel yemekleri samimi ve otantik bir atmosferde sunarak özel bir mutfak deneyimi yaşatır.",
     "areaServed": "Razgrad, Bulgaristan",
@@ -630,34 +667,6 @@
       "mixedGrillDesc": "İki kişilik garnitürlü",
       "roastLamb": "Kuzu Fırın",
       "roastLambDesc": "Yavaşça pişirilmiş kuzu"
-    },
-    "checkout": {
-      "requiredField": "Zorunlu alan",
-      "invalidEmail": "Geçersiz e-posta adresi",
-      "successMessage": "Teşekkürler, mesajınız başarıyla gönderildi.",
-      "billingDetails": "Fatura Bilgileri",
-      "firstName": "Ad",
-      "firstNamePlaceholder": "Adınız",
-      "lastName": "Soyad",
-      "lastNamePlaceholder": "Soyadınız",
-      "phone": "Telefon",
-      "email": "E-posta",
-      "country": "Ülke",
-      "city": "Şehir",
-      "address": "Adres",
-      "notes": "Notlar",
-      "notesPlaceholder": "Siparişinizle ilgili notlar",
-      "yourOrder": "Siparişiniz",
-      "product": "Ürün",
-      "total": "Toplam",
-      "subtotal": "Ara Toplam",
-      "shipping": "Kargo",
-      "freeShipping": "Ücretsiz",
-      "grandTotal": "Genel Toplam",
-      "placeOrder": "Sipariş Ver",
-      "orderSuccess": "Sipariş Başarılı",
-      "orderNumber": "Sipariş Numarası",
-      "orderConfirmation": "Siparişiniz alındı. Onay e-postası gönderildi."
     },
     "subscribe": {
       "subtitle": "Bülten",
