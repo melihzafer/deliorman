@@ -110,7 +110,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
                 {pages.length > 0 && (
                   <div className="tst-search-overlay__section">
                     <div className="tst-search-overlay__section-label">
-                      <i className="fas fa-file-alt" style={{ marginRight: "8px", verticalAlign: "middle" }}></i>
+                      <i className="fas fa-file-alt" style={{ marginRight: "8px", verticalAlign: "middle", display: "inline-flex", alignItems: "center" }}></i>
                       {t("pagesSection") || "Pages"}
                     </div>
                     {pages.map((item, idx) => (
@@ -132,7 +132,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
                 {specialties.length > 0 && (
                   <div className="tst-search-overlay__section">
                     <div className="tst-search-overlay__section-label">
-                      <i className="fas fa-star" style={{ marginRight: "8px", verticalAlign: "middle" }}></i>
+                      <i className="fas fa-star" style={{ marginRight: "8px", verticalAlign: "middle", display: "inline-flex", alignItems: "center" }}></i>
                       {t("specialtiesSection") || "Specialties"}
                     </div>
                     {specialties.map((item, idx) => (
@@ -154,7 +154,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
                 {menu.length > 0 && (
                   <div className="tst-search-overlay__section">
                     <div className="tst-search-overlay__section-label">
-                      <i className="fas fa-utensils" style={{ marginRight: "8px", verticalAlign: "middle" }}></i>
+                      <i className="fas fa-utensils" style={{ marginRight: "8px", verticalAlign: "middle", display: "inline-flex", alignItems: "center" }}></i>
                       {t("menuSection") || "Menu"}
                     </div>
                     {menu.map((item, idx) => (
@@ -185,7 +185,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
                   onClick={onClose}
                 >
                   {t("viewAllResults") || "View all results"}
-                  <i className="fas fa-arrow-right" style={{ marginLeft: "8px", verticalAlign: "middle" }}></i>
+                  <i className="fas fa-arrow-right" style={{ marginLeft: "8px", verticalAlign: "middle", display: "inline-flex", alignItems: "center" }}></i>
                 </Link>
               </>
             ) : (

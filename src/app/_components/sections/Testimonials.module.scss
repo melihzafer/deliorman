@@ -47,7 +47,7 @@
   top: 15px;
   right: 25px;
   font-size: 48px;
-  color: rgba(243, 156, 18, 0.18);
+  color: rgba(243, 156, 18, 0.35);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
@@ -65,7 +65,7 @@
 }
 
 .starEmpty {
-  color: rgba(5, 35, 43, 0.2);
+  color: rgba(5, 35, 43, 0.45);
   font-size: 15px;
 }
 
@@ -108,8 +108,8 @@
 }
 
 .navBtn {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: rgba(243, 156, 18, 0.2);
   border: 1px solid rgba(243, 156, 18, 0.4);
@@ -120,6 +120,15 @@
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    width: 20px;
+    height: 20px;
+  }
 
   &:hover {
     background: rgba(243, 156, 18, 0.9);

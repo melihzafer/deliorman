@@ -174,11 +174,11 @@ h6 {
 .tst-white {
   .tst-text {
     color: inherit;
-    opacity: 0.7;
+    opacity: 0.95;
   }
 }
 .tst-white-2.tst-text {
-  opacity: 0.7;
+  opacity: 0.95;
 }
 
 .tst-white-circle-as-bg{
@@ -268,7 +268,7 @@ h6 {
   height: 0;
   margin: 60px 0;
   border-bottom: dotted 4px $dl1t;
-  opacity: 0.3;
+  opacity: 0.5;
 
   &.tst-spacer-only-bottom-space {
     margin-top: 0;
@@ -287,7 +287,7 @@ h6 {
   height: 1px;
   margin: 15px 0;
   border-bottom: dotted 2px $dl1t;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 
 .tst-text-shadow {
@@ -300,7 +300,7 @@ h6 {
 
 a.tst-white {
   color: $wl1;
-  opacity: 0.8;
+  opacity: 1;
 
   &:hover {
     color: $wl1;
@@ -432,15 +432,19 @@ buttons
   font-size: var(--btn-font-size);
   letter-spacing: 1px;
   font-weight: 800;
+  color: white;
   border: none;
   transition: $tr-sm;
   border-radius: 5px;
   white-space: nowrap;
   vertical-align: middle;
+  gap: 8px;
+  text-decoration: none;
 
   & span {
-    line-height: 1;
-    display: inline-block;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
   }
 
   &.tst-btn-shadow {
@@ -477,10 +481,12 @@ buttons
   }
 
   & i {
-    margin-right: 8px;
     font-size: 18px;
     line-height: 1;
-    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
   &.tst-btn-gray {
@@ -741,10 +747,11 @@ spaces
       position: relative;
       background-color: $wl2;
       text-align: center;
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       height: 55px;
       width: 55px;
-      padding-top: 15px;
       color: $dl1;
     }
 

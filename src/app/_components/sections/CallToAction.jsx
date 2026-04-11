@@ -41,8 +41,8 @@ const CallToActionSection = () => {
                                         <div className="col-lg-6">
 
                                                 {/* icon */}
-                                                <div className="tst-cta-icon-wrapper tst-fade-up tst-active" style={{textAlign: 'center', padding: '60px 0'}}>
-                                                        <i className={localizedData.icon} style={{fontSize: '120px', color: '#f39c12', textShadow: '0 0 30px rgba(243, 156, 18, 0.3)'}}></i>
+                                                <div className="tst-cta-icon-wrapper tst-fade-up tst-active" style={{textAlign: 'center', padding: '60px 0', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                                        <i className={localizedData.icon} style={{fontSize: '120px', color: '#f39c12', textShadow: '0 0 30px rgba(243, 156, 18, 0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center'}}></i>
                                                 </div>
                                                 {/* icon end */}
 

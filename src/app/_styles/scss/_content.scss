@@ -683,7 +683,7 @@ body .tst-testimonials-slider {
 		}
 
 		& .tst-date {
-			opacity: 0.6;
+			opacity: 0.85;
 			background-color: rgba(26, 47, 51, 0.2);
 			padding: 3px 10px 1px;
 			border-radius: 10px;
@@ -806,7 +806,7 @@ blog
 	}
 
 	& .tst-date {
-		opacity: 0.6;
+		opacity: 0.85;
 		background-color: rgba(26, 47, 51, 0.2);
 		padding: 3px 10px 1px;
 		border-radius: 10px;
@@ -908,7 +908,7 @@ comments
 		margin-bottom: 30px;
 
 		& .tst-date {
-			opacity: 0.6;
+			opacity: 0.85;
 			background-color: rgba(26, 47, 51, 0.2);
 			padding: 3px 10px 1px;
 			border-radius: 10px;
@@ -1148,7 +1148,7 @@ footer {
 		}
 
 		& .tst-text {
-			opacity: 0.4;
+			opacity: 0.75;
 		}
 
 		@media (max-width: 991px) {
@@ -1585,7 +1585,7 @@ new menu
 					display: inline-block;
 					font-weight: 400;
 					font-size: 12px;
-					opacity: 0.6;
+					opacity: 0.85;
 				}
 			}
 		}

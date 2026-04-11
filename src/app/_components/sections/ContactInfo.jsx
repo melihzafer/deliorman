@@ -78,7 +78,7 @@ const ContactInfoSection = async () => {
 
             {/* icon box */}
             <div className="tst-icon-box tst-mb-60">
-                <i className={`${item.icon} tst-mb-30`} style={{ fontSize: "2rem" }} aria-hidden="true"></i>
+                <i className={`${item.icon} tst-mb-30`} style={{ fontSize: "2rem", display: "flex", alignItems: "center", justifyContent: "center" }} aria-hidden="true"></i>
                 <h5 className="tst-mb-30">{item.title}</h5>
                 <div className="tst-text">{item.content}</div>
             </div>

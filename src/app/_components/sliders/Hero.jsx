@@ -86,8 +86,8 @@ const HeroSlider = () => {
             <div className="tst-main-pagination" suppressHydrationWarning></div>
 
             <div className="tst-main-slider-nav" suppressHydrationWarning>
-              <button type="button" className="tst-slider-btn tst-main-prev" aria-label="Previous slide" style={{ background: 'none', border: 'none', padding: '12px', minWidth: '44px', minHeight: '44px' }}><i className="fas fa-arrow-left"></i></button>
-              <button type="button" className="tst-slider-btn tst-main-next" aria-label="Next slide" style={{ background: 'none', border: 'none', padding: '12px', minWidth: '44px', minHeight: '44px' }}><i className="fas fa-arrow-right"></i></button>
+              <button type="button" className="tst-slider-btn tst-main-prev" aria-label="Previous slide" style={{ background: 'none', border: 'none', padding: '12px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><i className="fas fa-arrow-left"></i></button>
+              <button type="button" className="tst-slider-btn tst-main-next" aria-label="Next slide" style={{ background: 'none', border: 'none', padding: '12px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}><i className="fas fa-arrow-right"></i></button>
             </div>
 
           </div>
