@@ -75,7 +75,12 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev, nextRuntime }) => {
+    // Edge runtime prohibits eval(); webpack dev mode uses eval by default for source maps.
+    // Switch to a non-eval devtool for the edge bundle to avoid EvalError.
+    if (dev && nextRuntime === 'edge') {
+      config.devtool = false;
+    }
     // Handle chunk loading issues
     if (!isServer) {
       config.resolve.fallback = {
