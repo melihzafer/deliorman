@@ -18,14 +18,14 @@
     min-height: 44px;
   }
 
-  /* Mid-range breakpoint adjustment: slightly smaller if really tight */
+  /* Mid-range breakpoint: maintain 44px touch targets */
   @media (min-width: 769px) and (max-width: 991px) {
     .tst-menu .tst-menu-right .tst-btn.tst-btn-icon,
     .tst-menu .tst-menu-right .tst-menu-btn {
-      width: 36px !important;
-      height: 36px !important;
-      min-width: 36px;
-      min-height: 36px;
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px;
+      min-height: 44px;
     }
   }
 }
