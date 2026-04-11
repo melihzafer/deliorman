@@ -395,8 +395,8 @@ menu
         padding: 0;
         margin-right: 0;
         border-radius: 50%;
-        color: #ffffff !important;
-        background-color: transparent;
+        color: rgba(26, 47, 51, 0.85) !important;
+        background-color: rgba(26, 47, 51, 0.06);
         transition: all 0.2s ease;
 
         &:before {
@@ -404,8 +404,8 @@ menu
         }
 
         &:hover {
-          color: #F39C12 !important;
-          background-color: rgba(126, 32, 16, 0.05);
+          color: rgba(26, 47, 51, 1) !important;
+          background-color: rgba(26, 47, 51, 0.12);
         }
       }
 

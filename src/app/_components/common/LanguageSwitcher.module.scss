@@ -7,12 +7,15 @@
 .trigger {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
-  background: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: rgba(26, 47, 51, 0.06);
   border: none;
   outline: none;
-  border-radius: 6px;
-  padding: 4px 10px;
+  border-radius: 50%;
   cursor: pointer;
   color: inherit;
   font-family: var(--font-josefin_sans);
@@ -24,24 +27,16 @@
   white-space: nowrap;
 
   &:hover {
-    background: rgba(243, 156, 18, 0.04);
+    background: rgba(26, 47, 51, 0.12);
   }
 }
 
 .label {
-  display: inline-block;
-  @media (max-width: 1100px) {
-    display: none;
-  }
+  display: none;
 }
 
 .arrow {
-  margin-left: 2px;
-  transition: transform 0.2s ease;
-  
-  @media (max-width: 1100px) {
-    display: none;
-  }
+  display: none;
 }
 
 .arrowOpen {
