@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { getClientIp } from '@library/client-ip';
+import { getClientIp } from '@library/clientIp';
 import { escapeHtml } from '@library/htmlUtils';
 
 export const runtime = 'nodejs';
