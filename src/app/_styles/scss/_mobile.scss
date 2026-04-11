@@ -154,6 +154,11 @@ a {
           border-radius: var(--radius-md, 8px);
         }
 
+        &.current-menu-item::after {
+          content: none !important;
+          display: none !important;
+        }
+
         /* Sub-menu items */
         ul {
           padding: 0 0 0 16px;
