@@ -183,12 +183,12 @@
    =========================== */
 html body .tst-menu nav ul li a,
 html body .tst-menu nav ul li ul li a {
-  color: #ffffff;
+  color: rgba(26, 47, 51, 0.85);
 }
 
 html body .tst-menu nav ul li a:hover,
 html body .tst-menu nav ul li ul li a:hover {
-  color: #ffffff;
+  color: rgba(26, 47, 51, 1);
 }
 
 html body .tst-btn,
@@ -199,9 +199,6 @@ html body a.tst-btn {
   border-color: #7e2010;
 }
 
-html body .tst-menu-right a {
-  color: #ffffff;
-}
 
 a {
   color: #7e2010;
@@ -213,7 +210,7 @@ a:hover {
 html body .tst-menu nav ul li.current-menu-item > a,
 html body .tst-menu nav ul li.tst-active > a {
   font-weight: bold;
-  color: #ffffff;
+  color: rgba(26, 47, 51, 1);
 }
 
 /* ===========================

@@ -20,7 +20,7 @@
   color: inherit;
   font-family: var(--font-josefin_sans);
   font-size: 13px;
-  fontWeight: 700;
+  font-weight: 700;
   letter-spacing: 0.5px;
   transition: background 0.2s ease;
   line-height: 1;
@@ -54,8 +54,8 @@
   list-style: none;
   margin: 0;
   padding: 4px;
-  minWidth: 140px;
-  zIndex: 99999;
+  min-width: 140px;
+  z-index: 99999;
   animation: fade-in 0.15s ease;
 }
 
@@ -75,11 +75,11 @@
   color: inherit;
   cursor: pointer;
   font-size: 13px;
-  fontWeight: 500;
+  font-weight: 500;
   font-family: var(--font-josefin_sans);
   border-radius: 6px;
   transition: background 0.15s ease;
-  textAlign: left;
+  text-align: left;
   line-height: 1.3;
 
   &:hover:not(:disabled) {
@@ -90,13 +90,13 @@
     background: rgba(243, 156, 18, 0.08);
     color: #f39c12;
     cursor: default;
-    fontWeight: 700;
+    font-weight: 700;
   }
 }
 
 .flag {
-  fontSize: 18px;
-  lineHeight: 1;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .text {
