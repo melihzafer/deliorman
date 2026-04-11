@@ -2,19 +2,21 @@
 
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import Image from "next/image";
 
-import Data from '@data/sliders/hero';
+import { getLocalizedHeroData } from '@data/sliders/getLocalizedHeroData';
 import { Link } from "@/src/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 import { ScrollAnimation } from "@common/scrollAnims";
 
 const HeroSlider = () => {
+  const locale = useLocale();
   const tMenu = useTranslations("menu");
-  const tHero = useTranslations("hero");
-  const slides = tHero.raw("slides");
+  
+  const localizedData = useMemo(() => getLocalizedHeroData(locale), [locale]);
+  const slides = localizedData.items;
 
   useEffect(() => {
     // Defer ScrollAnimation to avoid blocking initial render
@@ -48,8 +50,8 @@ const HeroSlider = () => {
             <div className="tst-banner">
               <div className="tst-cover-frame">
                 <Image
-                  src={Data.items[key]?.image?.url || "/img/banners/hero-bg.webp"}
-                  alt={Data.items[key]?.image?.alt || "Hero background"}
+                  src={item.image?.url || "/img/banners/hero-bg.webp"}
+                  alt={item.image?.alt || "Hero background"}
                   fill
                   priority={key === 0}
                   quality={90}
@@ -66,8 +68,8 @@ const HeroSlider = () => {
                       <div className="tst-suptitle tst-suptitle-mobile-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : item.subtitle}}  />
                       <h1 className="tst-white-2 tst-text-shadow tst-mb-30" dangerouslySetInnerHTML={{__html : item.title}}  />
                       <div className="tst-text tst-text-shadow tst-text-lg tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : item.text}}  />
-                      <Link href={Data.items[key]?.button1?.link || "/menu"} className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-mr-30">{getButtonLabel(Data.items[key]?.button1?.link, item.button1)}</Link>
-                      <Link href={Data.items[key]?.button2?.link || "/reservation"} className="tst-label tst-white-2">{getButtonLabel(Data.items[key]?.button2?.link, item.button2)}</Link>
+                      <Link href={item.button1?.link || "/menu"} className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-mr-30"><span>{getButtonLabel(item.button1?.link, item.button1?.label)}</span></Link>
+                      <Link href={item.button2?.link || "/reservation"} className="tst-label tst-white-2"><span>{getButtonLabel(item.button2?.link, item.button2?.label)}</span></Link>
                     </div>
                   </div>
                 </div>

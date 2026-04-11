@@ -4,10 +4,15 @@ import Image from "next/image";
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import Data from '@data/sliders/testimonial';
+import { getLocalizedTestimonialSliderData } from '@data/sliders/getLocalizedTestimonialSliderData';
 import Link from "next/link";
+import { useLocale } from "next-intl";
+import { useMemo } from "react";
 
 const TestimonialSlider = () => {
+  const locale = useLocale();
+  const localizedData = useMemo(() => getLocalizedTestimonialSliderData(locale), [locale]);
+
   return (
     <>
       {/* testimonials */}
@@ -17,9 +22,9 @@ const TestimonialSlider = () => {
 
             {/* title */}
             <div className="text-center">
-              <div className="tst-suptitle tst-suptitle-center tst-mb-15">{Data.subtitle}</div>
-              <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : Data.title}} />
-              <p className="tst-text" dangerouslySetInnerHTML={{__html : Data.description}} />
+              <div className="tst-suptitle tst-suptitle-center tst-mb-15">{localizedData.subtitle}</div>
+              <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : localizedData.title}} />
+              <p className="tst-text" dangerouslySetInnerHTML={{__html : localizedData.description}} />
             </div>
             {/* title end */}
 
@@ -31,7 +36,7 @@ const TestimonialSlider = () => {
               {...SliderProps.testimonialsSlider}
               className="swiper-container tst-testimonials-slider tst-cursor-scroll"
             >
-              {Data.items.map((item, key) => (
+              {localizedData.items.map((item, key) => (
                 <SwiperSlide className="swiper-slide" key={`testimonial-slider-item-${key}`}>
                   <div className="tst-testimonial-card">
                     <div className="tst-quote">"</div>
@@ -59,7 +64,7 @@ const TestimonialSlider = () => {
 
             {/* slider navigation */}
             <div className="tst-slider-navigation">
-              <Link href={Data.button.link} className="tst-btn tst-anima-link light">{Data.button.label}</Link>
+              <Link href={localizedData.button.link} className="tst-btn tst-anima-link light"><span>{localizedData.button.label}</span></Link>
               <div className="tst-slider-pagination tst-testi-pagination"></div>
               <div className="tst-nav tst-right">
                 <div className="tst-label">Slider navigation</div>

@@ -95,10 +95,43 @@
     "termsModalText1": "To process your request, we collect your name, surname, and phone number, as well as date/time and number of guests. We use the data solely for confirmation and organization of the reservation.",
     "termsModalText2": "The full text with rules and information about personal data processing can be read here:",
     "termsModalLink": "Terms and Conditions / Privacy",
-    "dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "dayNamesShort": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-    "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    "stepLabels": ["Date and Time", "Guests and Contact", "Confirmation"],
+    "dayNames": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "dayNamesShort": [
+      "Mo",
+      "Tu",
+      "We",
+      "Th",
+      "Fr",
+      "Sa",
+      "Su"
+    ],
+    "monthNames": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "stepLabels": [
+      "Date and Time",
+      "Guests and Contact",
+      "Confirmation"
+    ],
     "calendarSummary": "Deliorman Reservation - {guests} guests",
     "calendarDescription": "Reservation for {firstName} {lastName}\\nPhone: {phone}\\nGuests: {guests}",
     "calendarLocation": "Deliorman Restaurant",
@@ -472,7 +505,14 @@
     "widgetLabel": "Feedback",
     "widgetTitle": "Share your opinion",
     "modalTitle": "Feedback",
-    "modalDescription": "Your opinion matters a lot to us."
+    "modalDescription": "Your opinion matters a lot to us.",
+    "starRatingExcellent": "Excellent",
+    "starRatingVeryGood": "Very Good",
+    "starRatingGood": "Good",
+    "starRatingAcceptable": "Acceptable",
+    "starRatingNeedsImprovement": "Needs Improvement",
+    "starRatingHover": "Click to rate",
+    "successCheckmark": "Sent!"
   },
   "feedbackPage": {
     "pageTitle": "Your Opinion Matters",
@@ -580,7 +620,6 @@
       "decoration": "Decoration for special events"
     }
   },
-  
   "structuredData": {
     "restaurantDescription": "Restaurant Deliorman offers a distinctive culinary experience with traditional Bulgarian and regional dishes prepared with quality local ingredients in a cosy and authentic setting.",
     "areaServed": "Razgrad, Bulgaria",
@@ -741,10 +780,68 @@
       "pageDescription": "Discover the services we offer",
       "breadTitle": "Services"
     },
+    "lunchMenu": {
+      "pageTitle": "Lunch Menu",
+      "pageDescription": "Delicious and fresh lunch menu every day",
+      "breadTitle": "Lunch Menu",
+      "subtitle": "Updated Daily",
+      "title": "Our Lunch Menu",
+      "description": "Every day we cook a fresh and delicious lunch menu with special offers. The menu is uploaded daily to our Facebook page so you can see what delicious things we have prepared for you.",
+      "facebookSubtitle": "Follow us on Facebook",
+      "facebookTitle": "Daily Lunch Menu",
+      "facebookDescription": "We upload our daily lunch menu every morning on our Facebook page. Don't miss the special offers and your favorite dishes!",
+      "facebookButton": "Go to Facebook",
+      "dailyUpdate": "Daily Update",
+      "dailyUpdateDesc": "Every day we upload a new menu with different delicious dishes",
+      "freshlyMade": "Freshly Prepared",
+      "freshlyMadeDesc": "All dishes are cooked at the moment from the freshest ingredients",
+      "specialPrices": "Special Prices",
+      "specialPricesDesc": "Great prices on the lunch menu with a wide selection of dishes",
+      "lunchHoursTitle": "Lunch Hours",
+      "lunchHoursValue": "Monday - Sunday: 12:00 - 15:00",
+      "reservations": "For reservations:"
+    },
+    "checkout": {
+      "pageTitle": "Checkout",
+      "pageDescription": "Fill in your details to complete your reservation or order",
+      "breadTitle": "Checkout",
+      "billingDetails": "Billing Details",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Your last name",
+      "company": "Company",
+      "companyPlaceholder": "Company name (optional)",
+      "country": "Country",
+      "city": "City",
+      "state": "State / Province",
+      "address": "Address",
+      "addressPlaceholder": "Your address",
+      "postcode": "Postcode",
+      "phone": "Phone",
+      "email": "Email",
+      "notes": "Notes",
+      "notesPlaceholder": "Notes about your order, e.g. special instructions",
+      "paymentMethod": "Payment Method",
+      "bankTransfer": "Direct Bank Transfer",
+      "checkPayments": "Check Payments",
+      "cashOnDelivery": "Cash on Delivery",
+      "placeOrder": "Place Order",
+      "requiredField": "Required field",
+      "invalidEmail": "Invalid email address",
+      "successMessage": "Your order has been received successfully! Thank you."
+    },
     "history": {
       "pageTitle": "Our History",
       "pageDescription": "Discover the history of our restaurant",
       "breadTitle": "History"
+    },
+    "decorationGallery": {
+      "eyebrow": "Decoration & Design",
+      "title": "Decoration is on us!",
+      "description": "Every event deserves beautiful decoration. Browse our designs and get inspired!",
+      "openImageLabel": "Open image",
+      "imageAlt": "Event decoration at Restaurant Deliorman (photo {number})"
     },
     "backToTop": {
       "label": "Back to top"
@@ -763,6 +860,15 @@
       "thursday": "Thursday",
       "friday": "Friday",
       "saturday": "Saturday"
+    },
+    "daysShort": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
     },
     "months": {
       "january": "January",

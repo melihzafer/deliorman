@@ -95,10 +95,43 @@
     "termsModalText1": "Talebinizi işlemek için adınızı, soyadınızı ve telefon numaranızı, ayrıca tarih/saat ve misafir sayısını topluyoruz. Verileri yalnızca rezervasyonun onayı ve organizasyonu için kullanıyoruz.",
     "termsModalText2": "Kişisel verilerin işlenmesine ilişkin kurallar ve bilgilerin tam metni burada okunabilir:",
     "termsModalLink": "Şartlar ve Koşullar / Gizlilik",
-    "dayNames": ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"],
-    "dayNamesShort": ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
-    "monthNames": ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
-    "stepLabels": ["Tarih ve Saat", "Misafirler ve İletişim", "Onay"],
+    "dayNames": [
+      "Pazar",
+      "Pazartesi",
+      "Salı",
+      "Çarşamba",
+      "Perşembe",
+      "Cuma",
+      "Cumartesi"
+    ],
+    "dayNamesShort": [
+      "Pz",
+      "Pt",
+      "Sa",
+      "Ça",
+      "Pe",
+      "Cu",
+      "Ct"
+    ],
+    "monthNames": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ],
+    "stepLabels": [
+      "Tarih ve Saat",
+      "Misafirler ve İletişim",
+      "Onay"
+    ],
     "calendarSummary": "Deliorman Rezervasyon - {guests} kişi",
     "calendarDescription": "{firstName} {lastName} için rezervasyon\\nTelefon: {phone}\\nKişi: {guests}",
     "calendarLocation": "Deliorman Restoranı",
@@ -221,8 +254,8 @@
     "aboutDescription": "Samuil, Razgrad bölgesindeki Deliorman Restoranı hakkında daha fazla bilgi edinin. Hikayemiz, ekibimiz ve otantik Bulgar mutfağına olan tutkumuz.",
     "feedbackTitle": "Geri Bildirim | Görüşlerinizi Paylaşın",
     "feedbackDescription": "Deliorman Restoranı'na isimsiz geri bildirim, öneri veya yorum gönderin."
-    },
-    "hero": {
+  },
+  "hero": {
     "slides": [
       {
         "title": "Deliorman'a<br>Hoş Geldiniz",
@@ -253,8 +286,8 @@
         "button2": "Geri Bildirim Ver"
       }
     ]
-    },
-    "specialties": {
+  },
+  "specialties": {
     "items": [
       {
         "title": "Deliorman Şiş",
@@ -278,8 +311,8 @@
         "image": "/img/menuCategorised/newSpecialties/agneshki.webp"
       }
     ]
-    },
-    "languageSwitcher": {
+  },
+  "languageSwitcher": {
     "label": "Dil",
     "bg": "BG",
     "en": "EN",
@@ -472,7 +505,14 @@
     "widgetLabel": "Geri bildirim",
     "widgetTitle": "Görüşünüzü paylaşın",
     "modalTitle": "Geri bildirim",
-    "modalDescription": "Görüşünüz bizim için çok değerlidir."
+    "modalDescription": "Görüşünüz bizim için çok değerlidir.",
+    "starRatingExcellent": "Mükemmel",
+    "starRatingVeryGood": "Çok İyi",
+    "starRatingGood": "İyi",
+    "starRatingAcceptable": "Kabul Edilebilir",
+    "starRatingNeedsImprovement": "İyileştirme Gerekiyor",
+    "starRatingHover": "Puanlamak için tıklayın",
+    "successCheckmark": "Gönderildi!"
   },
   "feedbackPage": {
     "pageTitle": "Görüşünüz Bizim İçin Değerli",
@@ -580,7 +620,6 @@
       "decoration": "Özel etkinlikler için dekorasyon"
     }
   },
-  
   "structuredData": {
     "restaurantDescription": "Deliorman Restoran, kaliteli yerel malzemelerle hazırlanan geleneksel Bulgar ve bölgesel yemekleri samimi ve otantik bir atmosferde sunarak özel bir mutfak deneyimi yaşatır.",
     "areaServed": "Razgrad, Bulgaristan",
@@ -741,10 +780,68 @@
       "pageDescription": "Sunduğumuz hizmetleri keşfedin",
       "breadTitle": "Hizmetler"
     },
+    "lunchMenu": {
+      "pageTitle": "Öğle Menüsü",
+      "pageDescription": "Her gün lezzetli ve taze öğle menüsü",
+      "breadTitle": "Öğle Menüsü",
+      "subtitle": "Günlük Güncelleniyor",
+      "title": "Öğle Menümüz",
+      "description": "Her gün taze ve lezzetli öğle menüsü ve özel tekliflerle hizmetinizdeyiz. Menü her gün Facebook sayfamızda paylaşılmaktadır, böylece sizin için neler hazırladığımızı görebilirsiniz.",
+      "facebookSubtitle": "Bizi Facebook'tan takip edin",
+      "facebookTitle": "Günlük Öğle Menüsü",
+      "facebookDescription": "Günlük öğle menümüzü her sabah Facebook sayfamızda paylaşıyoruz. Özel teklifleri ve en sevdiğiniz yemekleri kaçırmayın!",
+      "facebookButton": "Facebook'a git",
+      "dailyUpdate": "Günlük Güncelleme",
+      "dailyUpdateDesc": "Her gün farklı ve lezzetli yemeklerle yeni bir menü paylaşıyoruz",
+      "freshlyMade": "Taze Hazırlanmış",
+      "freshlyMadeDesc": "Tüm yemekler en taze malzemelerle o anda pişirilir",
+      "specialPrices": "Özel Fiyatlar",
+      "specialPricesDesc": "Geniş yemek seçenekleriyle öğle menüsünde avantajlı fiyatlar",
+      "lunchHoursTitle": "Öğle Yemeği Saatleri",
+      "lunchHoursValue": "Pazartesi - Pazar: 12:00 - 15:00",
+      "reservations": "Rezervasyon için:"
+    },
+    "checkout": {
+      "pageTitle": "Ödeme",
+      "pageDescription": "Rezervasyonunuzu veya siparişinizi tamamlamak için bilgilerinizi doldurun",
+      "breadTitle": "Ödeme",
+      "billingDetails": "Fatura Bilgileri",
+      "firstName": "Ad",
+      "firstNamePlaceholder": "Adınız",
+      "lastName": "Soyad",
+      "lastNamePlaceholder": "Soyadınız",
+      "company": "Şirket",
+      "companyPlaceholder": "Şirket adı (isteğe bağlı)",
+      "country": "Ülke",
+      "city": "Şehir",
+      "state": "Eyalet / İl",
+      "address": "Adres",
+      "addressPlaceholder": "Adresiniz",
+      "postcode": "Posta Kodu",
+      "phone": "Telefon",
+      "email": "E-posta",
+      "notes": "Notlar",
+      "notesPlaceholder": "Siparişinizle ilgili notlar, örn. özel talimatlar",
+      "paymentMethod": "Ödeme Yöntemi",
+      "bankTransfer": "Doğrudan Banka Havalesi",
+      "checkPayments": "Çekle Ödeme",
+      "cashOnDelivery": "Kapıda Ödeme",
+      "placeOrder": "Siparişi Ver",
+      "requiredField": "Gerekli alan",
+      "invalidEmail": "Geçersiz e-posta adresi",
+      "successMessage": "Siparişiniz başarıyla alındı! Teşekkür ederiz."
+    },
     "history": {
       "pageTitle": "Tarihçemiz",
       "pageDescription": "Restoranımızın hikayesini keşfedin",
       "breadTitle": "Tarihçe"
+    },
+    "decorationGallery": {
+      "eyebrow": "Dekorasyon ve Tasarım",
+      "title": "Süsleme bizden!",
+      "description": "Her etkinlik güzel bir dekorasyonu hak eder. Tasarımlarımıza göz atın ve ilham alın!",
+      "openImageLabel": "Görseli aç",
+      "imageAlt": "Deliorman Restoranında etkinlik dekorasyonu (fotoğraf {number})"
     },
     "backToTop": {
       "label": "Yukarı dön"
@@ -763,6 +860,15 @@
       "thursday": "Perşembe",
       "friday": "Cuma",
       "saturday": "Cumartesi"
+    },
+    "daysShort": {
+      "mon": "Pzt",
+      "tue": "Sal",
+      "wed": "Çar",
+      "thu": "Per",
+      "fri": "Cum",
+      "sat": "Cmt",
+      "sun": "Paz"
     },
     "months": {
       "january": "Ocak",
