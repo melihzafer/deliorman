@@ -6,16 +6,8 @@ export default function MiniCalendar({ selectedDate, onSelect }) {
   const t = useTranslations("reservation");
   const locale = useLocale();
   
-  const monthNames = useMemo(() => [
-    t("months.january"), t("months.february"), t("months.march"), t("months.april"),
-    t("months.may"), t("months.june"), t("months.july"), t("months.august"),
-    t("months.september"), t("months.october"), t("months.november"), t("months.december")
-  ], [t]);
-
-  const dayNamesShort = useMemo(() => [
-    t("daysShort.mon"), t("daysShort.tue"), t("daysShort.wed"), 
-    t("daysShort.thu"), t("daysShort.fri"), t("daysShort.sat"), t("daysShort.sun")
-  ], [t]);
+  const monthNames = useMemo(() => t.raw("monthNames"), [t]);
+  const dayNamesShort = useMemo(() => t.raw("dayNamesShort"), [t]);
 
   const today = useMemo(() => {
     const d = new Date(); d.setHours(0, 0, 0, 0); return d;
