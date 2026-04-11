@@ -30,7 +30,7 @@ const ScheduleSection = () => {
 
                       <div className="tst-btn-mobile">
                         <div className="tst-schedule-spacer"></div>
-                        <Link href={localizedData.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-res-btn light"><span>{localizedData.buttonLabel}</span></Link>
+                        <Link href={localizedData.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-res-btn light"><span>{localizedData.button2.label}</span></Link>
                       </div>
                       </div>
 

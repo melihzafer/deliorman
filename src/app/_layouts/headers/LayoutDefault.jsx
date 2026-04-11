@@ -267,7 +267,7 @@ const DefaultHeader = memo(() => {
                           padding: "0",
                           background: "none",
                           border: "none",
-                          color: "#7e2010",
+                          color: "#ffffff",
                           fontSize: "14px",
                           fontWeight: 800,
                           textTransform: "uppercase",

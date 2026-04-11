@@ -9,7 +9,8 @@
   align-items: center;
   gap: 4px;
   background: none;
-  border: 1.5px solid rgba(26, 47, 51, 0.15);
+  border: none;
+  outline: none;
   border-radius: 6px;
   padding: 4px 10px;
   cursor: pointer;
@@ -18,18 +19,12 @@
   font-size: 13px;
   fontWeight: 700;
   letter-spacing: 0.5px;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease;
   line-height: 1;
   white-space: nowrap;
 
   &:hover {
-    border-color: rgba(243, 156, 18, 0.4) !important;
     background: rgba(243, 156, 18, 0.04);
-  }
-
-  &:focus-visible {
-    outline: 2px solid #f39c12;
-    outline-offset: 2px;
   }
 }
 

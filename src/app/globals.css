@@ -183,21 +183,24 @@
    =========================== */
 html body .tst-menu nav ul li a,
 html body .tst-menu nav ul li ul li a {
-  color: #7e2010;
+  color: #ffffff;
 }
 
 html body .tst-menu nav ul li a:hover,
 html body .tst-menu nav ul li ul li a:hover {
-  color: #7e2010;
+  color: #ffffff;
 }
 
 html body .tst-btn,
 html body .tst-res-btn,
-html body .tst-menu-right a,
 html body .tst-cart,
 html body a.tst-btn {
   color: #7e2010;
   border-color: #7e2010;
+}
+
+html body .tst-menu-right a {
+  color: #ffffff;
 }
 
 a {
@@ -210,7 +213,7 @@ a:hover {
 html body .tst-menu nav ul li.current-menu-item > a,
 html body .tst-menu nav ul li.tst-active > a {
   font-weight: bold;
-  color: #7e2010;
+  color: #ffffff;
 }
 
 /* ===========================
