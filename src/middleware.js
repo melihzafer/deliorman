@@ -1,6 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 import { NextResponse } from 'next/server';
+import { randomUUID } from 'crypto';
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -132,6 +133,9 @@ function validateOrigin(request) {
 export function middleware(request) {
   const { pathname } = request.nextUrl;
 
+  // Generate request correlation ID
+  const requestId = request.headers.get('x-request-id') || randomUUID();
+
   let routeType = null;
   if (pathname.startsWith('/api/feedback')) {
     routeType = 'feedback';
@@ -143,22 +147,28 @@ export function middleware(request) {
 
   if (pathname.startsWith('/api/')) {
     if (!routeType) {
-      return NextResponse.next();
+      const response = NextResponse.next();
+      response.headers.set('x-request-id', requestId);
+      return response;
     }
   }
 
   if (!routeType) {
-    return intlMiddleware(request);
+    const response = intlMiddleware(request);
+    response.headers.set('x-request-id', requestId);
+    return response;
   }
 
   if (request.method !== 'POST') {
-    return NextResponse.next();
+    const response = NextResponse.next();
+    response.headers.set('x-request-id', requestId);
+    return response;
   }
 
   if (!validateOrigin(request)) {
     return NextResponse.json(
       { success: false, errors: [{ message: 'Forbidden origin' }] },
-      { status: 403 }
+      { status: 403, headers: { 'x-request-id': requestId } }
     );
   }
 
@@ -180,6 +190,7 @@ export function middleware(request) {
           'Retry-After': String(rateLimit.retryAfter),
           'X-RateLimit-Remaining': '0',
           'X-RateLimit-Reset': String(rateLimit.resetTime),
+          'x-request-id': requestId,
         },
       }
     );
@@ -188,6 +199,7 @@ export function middleware(request) {
   const response = NextResponse.next();
   response.headers.set('X-RateLimit-Remaining', String(rateLimit.remaining));
   response.headers.set('X-RateLimit-Reset', String(rateLimit.resetTime));
+  response.headers.set('x-request-id', requestId);
 
   return response;
 }

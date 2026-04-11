@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getClientIp } from '@library/client-ip';
+import { getClientIp } from '@library/clientIp';
 import { validateBgPhone } from '@library/bgPhoneUtils';
 import { escapeHtml } from '@library/htmlUtils';
 
@@ -48,15 +48,6 @@ interface TelegramSendParams {
 interface TelegramApiResponse {
   ok?: boolean;
   description?: string;
-}
-
-interface RateLimitEntry {
-  count: number;
-  resetAt: number;
-}
-
-declare global {
-  var __reservationRate: Map<string, RateLimitEntry> | undefined;
 }
 
 /**
@@ -123,31 +114,7 @@ function roundUpToNextHour(date: Date): Date {
 }
 
 // NOTE: Blacklist / IP audit / KV storage removed per request.
-
-const RATE_LIMIT_WINDOW_SECONDS = Number(process.env.RESERVATION_RATE_WINDOW_SECONDS || 600); // 10 min
-const RATE_LIMIT_MAX = Number(process.env.RESERVATION_RATE_MAX || 5);
-
-// In-memory rate limiter (per process)
-const memoryRate = globalThis.__reservationRate ?? (globalThis.__reservationRate = new Map<string, RateLimitEntry>());
-
-/**
- * Check if the request is rate limited
- */
-async function isRateLimited(request: Request): Promise<boolean> {
-  // Memory only - using IP as identifier
-  const { ip: clientIp } = getClientIp(request);
-  const keyBase = `reservation:rate:${clientIp}`;
-  const now = Date.now();
-  const windowMs = RATE_LIMIT_WINDOW_SECONDS * 1000;
-  const entry = memoryRate.get(keyBase) || { count: 0, resetAt: now + windowMs };
-  if (now > entry.resetAt) {
-    entry.count = 0;
-    entry.resetAt = now + windowMs;
-  }
-  entry.count += 1;
-  memoryRate.set(keyBase, entry);
-  return entry.count > RATE_LIMIT_MAX;
-}
+// Rate limiting is handled by middleware — no duplicate in-process limiter needed.
 
 export function GET(): NextResponse<ReservationMethodNotAllowedResponse> {
   return NextResponse.json<ReservationMethodNotAllowedResponse>(
@@ -190,14 +157,6 @@ export async function POST(request: Request): Promise<NextResponse<ReservationRo
     // Capture client IP for security/audit purposes
     const ipInfo = getClientIp(request);
     const clientIp = ipInfo.ip;
-
-    // Basic rate limit
-    if (await isRateLimited(request)) {
-      return NextResponse.json(
-        { success: false, errors: [{ message: 'Твърде много заявки. Моля, опитайте отново след малко.' }] },
-        { status: 429 }
-      );
-    }
 
     const formData = await request.formData();
 

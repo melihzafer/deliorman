@@ -206,10 +206,8 @@ ${message}
 </html>
     `.trim();
 
-    // Log to console
-    console.log('=== NEW FEEDBACK SUBMISSION ===');
-    console.log(emailContent);
-    console.log('===============================');
+    // Log submission (no PII — category and rating only)
+    console.log(`[feedback] New submission: category=${category ?? 'none'}, rating=${rating ?? 'none'}`);
 
     // Send email using Resend
     if (!process.env.RESEND_API_KEY) {
