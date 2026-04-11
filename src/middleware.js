@@ -1,7 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 import { NextResponse } from 'next/server';
-import { randomUUID } from 'crypto';
+
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -134,7 +134,7 @@ export function middleware(request) {
   const { pathname } = request.nextUrl;
 
   // Generate request correlation ID
-  const requestId = request.headers.get('x-request-id') || randomUUID();
+  const requestId = request.headers.get('x-request-id') || crypto.randomUUID();
 
   let routeType = null;
   if (pathname.startsWith('/api/feedback')) {
