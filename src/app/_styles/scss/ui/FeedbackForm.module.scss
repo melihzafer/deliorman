@@ -30,7 +30,7 @@
   font-family: $sf;
   font-size: 13px;
   font-weight: 500;
-  color: rgba($dl1, 0.7);
+  color: rgba($dl1, 0.85);
   transition: all 0.2s ease;
 
   &:hover {
@@ -106,7 +106,7 @@
 
 .ratingHint {
   font-size: 12px;
-  color: rgba($dl1, 0.5);
+  color: rgba($dl1, 0.75);
   font-family: $sf;
   font-weight: 500;
   margin-top: 2px;
@@ -171,7 +171,7 @@
   top: 18px;
   font-size: 14px;
   font-weight: 400;
-  color: rgba($dl1, 0.4);
+  color: rgba($dl1, 0.6);
   pointer-events: none;
   transition: all 0.2s ease;
   font-family: $sf;
@@ -183,7 +183,7 @@
   top: 6px;
   font-size: 10px;
   font-weight: 600;
-  color: rgba($dl1, 0.5);
+  color: rgba($dl1, 0.75);
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
@@ -198,7 +198,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: rgba($dl1, 0.5);
+  color: rgba($dl1, 0.75);
 }
 
 .disclaimer {
@@ -206,7 +206,7 @@
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: rgba($dl1, 0.5);
+  color: rgba($dl1, 0.75);
   background: rgba($dl1, 0.03);
   padding: 10px 14px;
   border-radius: 10px;
@@ -216,7 +216,7 @@
   span {
     font-size: 14px;
     filter: grayscale(1);
-    opacity: 0.6;
+    opacity: 0.8;
   }
 }
 
@@ -291,7 +291,7 @@
 
   .labelText {
     font-size: 13px;
-    color: rgba($dl1, 0.6);
+    color: rgba($dl1, 0.75);
     line-height: 1.5;
 
     .required {
@@ -302,7 +302,7 @@
 }
 
 .charCounter {
-  color: rgba($dl1, 0.35);
+  color: rgba($dl1, 0.6);
   font-size: 12px;
   font-weight: 600;
   text-align: right;
@@ -386,7 +386,7 @@
   .cancelButton {
     background: transparent;
     border: 1.5px solid rgba($dl1, 0.1);
-    color: rgba($dl1, 0.5);
+    color: rgba($dl1, 0.75);
 
     &:hover {
       background: rgba($dl1, 0.04);

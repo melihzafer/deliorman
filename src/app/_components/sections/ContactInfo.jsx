@@ -19,7 +19,7 @@ const ContactInfoSection = async () => {
         <>
           <Link href="/reservation">{phoneDisplay}</Link>
           <br />
-          <span style={{ fontSize: "14px", color: "#999" }}>
+          <span style={{ fontSize: "14px", color: "#595959" }}>
             {t("workingHours")}
           </span>
         </>
@@ -34,7 +34,7 @@ const ContactInfoSection = async () => {
             restaurantdeliorman@gmail.com
           </a>
           <br />
-          <span style={{ fontSize: "14px", color: "#999" }}>
+          <span style={{ fontSize: "14px", color: "#595959" }}>
             {t("emailResponseTime")}
           </span>
         </>
@@ -49,7 +49,7 @@ const ContactInfoSection = async () => {
           <br />
           {t("addressLine2")}
           <br />
-          <span style={{ fontSize: "14px", color: "#999" }}>
+          <span style={{ fontSize: "14px", color: "#595959" }}>
             {t("parkingAvailable")}
           </span>
         </>

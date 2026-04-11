@@ -110,7 +110,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
                 {pages.length > 0 && (
                   <div className="tst-search-overlay__section">
                     <div className="tst-search-overlay__section-label">
-                      <i className="fas fa-file-alt" style={{ marginRight: "6px" }}></i>
+                      <i className="fas fa-file-alt" style={{ marginRight: "8px", verticalAlign: "middle" }}></i>
                       {t("pagesSection") || "Pages"}
                     </div>
                     {pages.map((item, idx) => (
@@ -132,7 +132,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
                 {specialties.length > 0 && (
                   <div className="tst-search-overlay__section">
                     <div className="tst-search-overlay__section-label">
-                      <i className="fas fa-star" style={{ marginRight: "6px" }}></i>
+                      <i className="fas fa-star" style={{ marginRight: "8px", verticalAlign: "middle" }}></i>
                       {t("specialtiesSection") || "Specialties"}
                     </div>
                     {specialties.map((item, idx) => (
@@ -154,7 +154,7 @@ export default function SearchOverlay({ isOpen, onClose }) {
                 {menu.length > 0 && (
                   <div className="tst-search-overlay__section">
                     <div className="tst-search-overlay__section-label">
-                      <i className="fas fa-utensils" style={{ marginRight: "6px" }}></i>
+                      <i className="fas fa-utensils" style={{ marginRight: "8px", verticalAlign: "middle" }}></i>
                       {t("menuSection") || "Menu"}
                     </div>
                     {menu.map((item, idx) => (
@@ -185,12 +185,12 @@ export default function SearchOverlay({ isOpen, onClose }) {
                   onClick={onClose}
                 >
                   {t("viewAllResults") || "View all results"}
-                  <i className="fas fa-arrow-right" style={{ marginLeft: "8px" }}></i>
+                  <i className="fas fa-arrow-right" style={{ marginLeft: "8px", verticalAlign: "middle" }}></i>
                 </Link>
               </>
             ) : (
               <div className="tst-search-overlay__no-results">
-                <i className="fas fa-search" style={{ fontSize: "24px", color: "#ccc", marginBottom: "12px" }}></i>
+                <i className="fas fa-search" style={{ fontSize: "24px", color: "#767676", marginBottom: "12px", display: "block" }}></i>
                 <p>{t("noResults") || "No results found"}</p>
               </div>
             )}

@@ -15,7 +15,7 @@
   --color-dark-deep: #04191d;
   --color-bg: #fcfcfc;
   --color-text: #1a2f33;
-  --color-text-light: rgba(26, 47, 51, 0.7);
+  --color-text-light: rgba(26, 47, 51, 0.85);
   --color-card: #ffffff;
   --color-border: #e5ebef;
   --color-white-l1: #f2f6f7;
@@ -71,7 +71,7 @@
   /* Buttons */
   --btn-height: 44px;
   --btn-lg-height: 52px;
-  --btn-icon-size: 55px;
+  --btn-icon-size: 44px;
   --btn-padding-x: 20px;
   --btn-font-size: 12px;
 
@@ -111,8 +111,8 @@
    =========================== */
 @media (max-width: 991px) {
   :root {
-    /* Typography – scaled down */
-    --font-body: 13px;
+    /* Typography – scaled down (min 11px for readability) */
+    --font-body: 15px;
     --font-body-line: 1.6;
     --font-h1-sm: 29px;
     --font-h1-md: 36px;
@@ -126,14 +126,14 @@
     --font-h4-sm: 16px;
     --font-h4-lg: 20px;
     --font-h5: 16px;
-    --font-h6: 10px;
-    --font-text: 13px;
+    --font-h6: 11px;
+    --font-text: 14px;
     --font-text-lg: 14px;
-    --font-suptitle: 10px;
-    --font-label: 10px;
-    --font-btn: 10px;
-    --font-nav: 10px;
-    --font-input: 12px;
+    --font-suptitle: 11px;
+    --font-label: 11px;
+    --font-btn: 11px;
+    --font-nav: 11px;
+    --font-input: 13px;
 
     /* Navigation – compact */
     --nav-height: 64px;
@@ -141,12 +141,12 @@
     --nav-font-size: 10px;
     --nav-letter-spacing: 1px;
 
-    /* Buttons – compact */
-    --btn-height: 36px;
-    --btn-lg-height: 42px;
+    /* Buttons – compact (min 44px touch target) */
+    --btn-height: 44px;
+    --btn-lg-height: 48px;
     --btn-icon-size: 44px;
     --btn-padding-x: 16px;
-    --btn-font-size: 10px;
+    --btn-font-size: 11px;
 
     /* Forms – compact */
     --input-height: 40px;
@@ -283,7 +283,7 @@ html body .tst-menu nav ul li.tst-active > a {
   position: absolute;
   left: 14px;
   font-size: 15px;
-  color: #999;
+  color: #595959;
   pointer-events: none;
 }
 
@@ -299,7 +299,7 @@ html body .tst-menu nav ul li.tst-active > a {
 }
 
 .tst-search-overlay__input::placeholder {
-  color: #aaa;
+  color: #767676;
 }
 
 .tst-search-overlay__close {
@@ -311,7 +311,7 @@ html body .tst-menu nav ul li.tst-active > a {
   background: transparent;
   cursor: pointer;
   font-size: 18px;
-  color: #666;
+  color: #595959;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -376,8 +376,8 @@ html body .tst-menu nav ul li.tst-active > a {
 }
 
 .tst-search-overlay__result-category {
-  font-size: 10px;
-  color: #999;
+  font-size: 11px;
+  color: #595959;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: 2px;
@@ -421,11 +421,11 @@ html body .tst-menu nav ul li.tst-active > a {
 
 .tst-search-overlay__section-label {
   padding: 8px 16px 5px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #999;
+  color: #595959;
   background: var(--color-white-l1);
 }
 
