@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Data from "@data/sections/promo-video.json";
+import Data from "@data/sections/media/promo-video.json";
 
 const PromoVideoSection = () => {
 

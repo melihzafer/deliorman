@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Data from "@data/sections/awards.json";
+import Data from "@data/sections/awards/awards.json";
 
 const AwardsSection = () => {
   return (

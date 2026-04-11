@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import Data from "@data/sections/subscribe.json";
+import Data from "@data/sections/social/subscribe.json";
 import AppData from "@data/app.json";
 
 const SubscribeSection = () => {
@@ -24,7 +24,7 @@ const SubscribeSection = () => {
                         <p className="tst-text tst-white-2 tst-text-shadow tst-mb-30">{t("description")}</p>
                         <form action={AppData.settings.mailchimp.url} method="post" target="_blank">
                             <input type="email" placeholder={t("emailPlaceholder")} name="EMAIL" required />
-                            <button className="tst-btn" type="submit">{t("subscribeButton")}</button>
+                            <button className="tst-btn" type="submit"><span>{t("subscribeButton")}</span></button>
                         </form>
                     </div>
                 </div>

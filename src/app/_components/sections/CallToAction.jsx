@@ -1,6 +1,11 @@
-import Data from "@data/sections/call-to-action.json";
+import { getLocalizedCallToActionData } from "@data/sections/cta/getLocalizedCallToActionData";
+import { useLocale } from "next-intl";
+import { useMemo } from "react";
 
 const CallToActionSection = () => {
+    const locale = useLocale();
+    const localizedData = useMemo(() => getLocalizedCallToActionData(locale), [locale]);
+
     return (
         <>
                 {/* call to action */}
@@ -12,21 +17,21 @@ const CallToActionSection = () => {
                                                 {/* text */}
                                                 <div className="tst-cta-frame">
                                                         <div className="tst-cta">
-                                                                <div className="tst-fade-up">
-                                                                        <div className="tst-suptitle tst-suptitle-mobile-md-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : Data.subtitle}} />
+                                                                <div className="tst-fade-up tst-active">
+                                                                        <div className="tst-suptitle tst-suptitle-mobile-md-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : localizedData.subtitle}} />
                                                                 </div>
-                                                                <h2 className="tst-white-2 tst-text-shadow tst-mb-30 tst-fade-up" dangerouslySetInnerHTML={{__html : Data.title}} />
-                                                                <div className="tst-fade-up">
-                                                                        <div className="tst-text tst-text-lg tst-text-shadow tst-white-2" dangerouslySetInnerHTML={{__html : Data.description}} />
+                                                                <h2 className="tst-white-2 tst-text-shadow tst-mb-30 tst-fade-up tst-active" dangerouslySetInnerHTML={{__html : localizedData.title}} />
+                                                                <div className="tst-fade-up tst-active">
+                                                                        <div className="tst-text tst-text-lg tst-text-shadow tst-white-2" dangerouslySetInnerHTML={{__html : localizedData.description}} />
                                                                 </div>
-                                                                <a href={Data.button1.link} style={{marginLeft: 'auto', marginRight: 'auto'}} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-mr-10 tst-fade-up">
-                                                                        <i className={Data.button1.icon}></i> 
-                                                                        {Data.button1.label}
+                                                                <a href={localizedData.button1.link} style={{marginLeft: 'auto', marginRight: 'auto'}} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-mr-10 tst-fade-up tst-active">
+                                                                        <i className={localizedData.button1.icon}></i> 
+                                                                        <span>{localizedData.button1.label}</span>
                                                                 </a>
                                                               
-                                                                <a href={Data.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-fade-up">
-                                                                        <i className={Data.button2.icon}></i> 
-                                                                        {Data.button2.label}
+                                                                <a href={localizedData.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} target="_blank" className="tst-btn tst-btn-lg tst-btn-shadow tst-mt-30 tst-fade-up tst-active">
+                                                                        <i className={localizedData.button2.icon}></i> 
+                                                                        <span>{localizedData.button2.label}</span>
                                                                 </a>
                                                         </div>
                                                 </div>
@@ -36,8 +41,8 @@ const CallToActionSection = () => {
                                         <div className="col-lg-6">
 
                                                 {/* icon */}
-                                                <div className="tst-cta-icon-wrapper tst-fade-up" style={{textAlign: 'center', padding: '60px 0'}}>
-                                                        <i className={Data.icon} style={{fontSize: '120px', color: '#f39c12', textShadow: '0 0 30px rgba(243, 156, 18, 0.3)'}}></i>
+                                                <div className="tst-cta-icon-wrapper tst-fade-up tst-active" style={{textAlign: 'center', padding: '60px 0'}}>
+                                                        <i className={localizedData.icon} style={{fontSize: '120px', color: '#f39c12', textShadow: '0 0 30px rgba(243, 156, 18, 0.3)'}}></i>
                                                 </div>
                                                 {/* icon end */}
 

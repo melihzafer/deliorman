@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Data from "@data/sections/hero.json";
+import Data from "@data/sections/hero/hero.json";
 import Link from "next/link";
 import { useEffect } from "react";
 
@@ -33,8 +33,8 @@ const Hero = ( { bgType } ) => {
                             <div className="tst-suptitle tst-suptitle-mobile-center tst-text-shadow tst-white-2 tst-mb-15">{Data.subtitle}</div>
                             <h1 className="tst-white-2 tst-text-shadow tst-mb-30" dangerouslySetInnerHTML={{__html : Data.title}} />
                             <div className="tst-text tst-text-shadow tst-text-lg tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : Data.description}} />
-                            <Link href={Data.button1.link} className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-mr-30">{Data.button1.label}</Link>
-                            <Link href={Data.button2.link} className="tst-label tst-white-2">{Data.button2.label}</Link>
+                            <Link href={Data.button1.link} className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-mr-30"><span>{Data.button1.label}</span></Link>
+                            <Link href={Data.button2.link} className="tst-label tst-white-2"><span>{Data.button2.label}</span></Link>
                         </div>
                         </div>
                     </div>
