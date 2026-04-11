@@ -21,7 +21,7 @@ export default function PageTransition({
   return (
     <motion.div
       variants={variants}
-      initial="hidden"
+      initial="enter"
       animate="enter"
       exit="exit"
       transition={{ duration: 0.35, ease: 'easeInOut' }}

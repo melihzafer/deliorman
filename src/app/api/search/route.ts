@@ -116,6 +116,14 @@ export async function GET(request: Request) {
     }
 
     const menuData = getLocalizedMenuData(locale);
+    let messages: any;
+    try {
+      messages = (await import(`../../../../messages/${locale}.json`)).default;
+    } catch {
+      messages = (await import(`../../../../messages/bg.json`)).default;
+    }
+
+    const menuTranslations = messages.menu || {};
     const menuResults: any[] = [];
 
     if (menuData?.categories) {
@@ -130,8 +138,8 @@ export async function GET(request: Request) {
               text: text ? text.substring(0, 120) : "",
               price: formatPrice(item.price, item.amount),
               category: category.slug,
-              categoryName: category.name || category.slug,
-              href: `/menu/${category.slug}`,
+              categoryName: (menuTranslations.categories && menuTranslations.categories[category.slug]) || category.name || category.slug,
+              href: `/menu?category=${category.slug}`,
             });
           }
         }
@@ -155,13 +163,6 @@ export async function GET(request: Request) {
           });
         }
       }
-    }
-
-    let messages: any;
-    try {
-      messages = (await import(`../../../../messages/${locale}.json`)).default;
-    } catch {
-      messages = (await import(`../../../../messages/bg.json`)).default;
     }
 
     const nav = messages.nav || {};
@@ -211,7 +212,6 @@ export async function GET(request: Request) {
     }
 
     // Search menu category names
-    const menuTranslations = messages.menu || {};
     for (const key of Object.keys(menuTranslations)) {
       if (typeof menuTranslations[key] === 'string') {
         if (match(menuTranslations[key])) {

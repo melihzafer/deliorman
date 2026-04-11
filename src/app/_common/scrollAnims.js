@@ -30,7 +30,7 @@ const initFadeObserver = () => {
             }
         });
     }, {
-        rootMargin: '0px 0px -200px 0px', // Trigger 200px before entering viewport
+        rootMargin: '0px 0px -50px 0px', // Trigger 50px before entering viewport
         threshold: 0
     });
     

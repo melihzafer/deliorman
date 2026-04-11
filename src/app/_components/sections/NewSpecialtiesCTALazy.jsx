@@ -125,7 +125,6 @@ const SwiperSkeleton = () => (
 const NewSpecialtiesCTA = dynamic(
   () => import("./NewSpecialtiesCTA"),
   {
-    ssr: false,
     loading: () => <SwiperSkeleton />,
   }
 );

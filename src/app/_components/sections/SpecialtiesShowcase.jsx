@@ -107,9 +107,10 @@ const SpecialtiesShowcase = () => {
               <div className="col-lg-6">
                 <Link 
                   href="/reservation"
-                  className="tst-btn tst-btn-lg tst-btn-shadow tst-reserve-cta"
+                  className="tst-btn tst-btn-lg tst-btn-shadow"
+                  style={{ width: '100%', maxWidth: 'none' }}
                 >
-                  {t("ctaButton")}
+                  <span>{t("ctaButton")}</span>
                 </Link>
               </div>
             </div>

@@ -113,7 +113,7 @@ const OpenTableForm = () => {
                 </div>
             </div>
             <div className="text-center">
-                <button className="tst-btn" type="submit" name="button">Reserve a table</button>
+                <button className="tst-btn" type="submit" name="button"><span>Reserve a table</span></button>
                 <p className="tst-powered d-center tst-p-15-0">
                     * Powered by 
                     <Image src="/img/ui/icons/opentable.svg" alt="OpenTable" width={80} height={20} />

@@ -2,13 +2,13 @@
 
 import { Link } from "@/src/i18n/navigation";
 import Image from "next/image";
-import { useEffect, useState, useTransition, useCallback, memo } from "react";
+import { useEffect, useState, useTransition, useCallback, memo, useMemo, useRef } from "react";
 import { usePathname } from "next/navigation";
 import dynamic from "next/dynamic";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { OnePageMenu } from "@common/onepageMenu";
-import AppData from "@data/app.json";
+import { getLocalizedAppData } from "@data/getLocalizedAppData";
 import LanguageSwitcher from "@components/common/LanguageSwitcher";
 import SearchOverlay from "@components/search/SearchOverlay";
 
@@ -54,14 +54,22 @@ const SUB_NAV_KEY_MAP = {
 };
 
 const DefaultHeader = memo(() => {
+  const locale = useLocale();
   const [mobileMenu, setMobileMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
   const [reservationPopup, setReservationPopup] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
+  
+  // Header scroll behavior
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
   const asPath = usePathname();
   const t = useTranslations("nav");
   const tc = useTranslations("common");
+
+  const localizedAppData = useMemo(() => getLocalizedAppData(locale), [locale]);
 
   const isPathActive = useCallback(
     (path) => {
@@ -70,6 +78,7 @@ const DefaultHeader = memo(() => {
     },
     [asPath]
   );
+  
   const showLanguageSwitcher = !isPathActive("onepage");
 
   const handleMobileMenuToggle = useCallback(() => {
@@ -109,11 +118,36 @@ const DefaultHeader = memo(() => {
     setSearchOpen(false);
   }, []);
 
+  // Handle scroll to hide/show header
+  useEffect(() => {
+    const handleScroll = () => {
+      if (typeof window === 'undefined') return;
+      
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < 10) {
+        setShowHeader(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // Scrolling down
+        if (!mobileMenu) setShowHeader(false);
+      } else {
+        // Scrolling up
+        setShowHeader(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, mobileMenu]);
+
   useEffect(() => {
     setMobileMenu(false);
     setReservationPopup(false);
     setOpenSubMenu(false);
     setSearchOpen(false);
+    setShowHeader(true);
   }, [asPath]);
 
   useEffect(() => {
@@ -133,14 +167,18 @@ const DefaultHeader = memo(() => {
 
   return (
     <>
-      <div className="tst-menu-frame">
+      <div className={`tst-menu-frame ${!showHeader ? 'tst-menu-hidden' : ''}`} style={{
+        transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease',
+        transform: showHeader ? 'translateY(0)' : 'translateY(-100%)',
+        opacity: showHeader ? 1 : 0
+      }}>
         <div className="tst-dynamic-menu" id="tst-dynamic-menu">
             <div className="tst-menu">
-              <Link href="/">
+              <Link href="/" className="tst-logo-link">
                 <Image
-                  src={AppData.header.logo.image}
+                  src={localizedAppData.header.logo.image}
                   className="tst-logo"
-                  alt={AppData.header.logo.alt}
+                  alt={localizedAppData.header.logo.alt}
                   width={70}
                   height={24}
                   priority
@@ -148,13 +186,17 @@ const DefaultHeader = memo(() => {
               </Link>
             <nav role="navigation" aria-label={t("mainNavigation")} className={`${mobileMenu ? "tst-active" : ""}`}>
               {mobileMenu && (
-                <div className="tst-close-menu d-lg-none" onClick={handleMobileMenuToggle} style={{ position: 'absolute', top: '20px', right: '20px', cursor: 'pointer', zIndex: 12 }}>
-                  <i className="fas fa-times" style={{ fontSize: '32px', color: '#F39C12' }}></i>
-                </div>
+                <button 
+                  className="tst-close-menu d-lg-none" 
+                  onClick={handleMobileMenuToggle}
+                  aria-label={tc("close")}
+                >
+                  <i className="fas fa-times" aria-hidden="true"></i>
+                </button>
               )}
               {isPathActive("onepage") ? (
                 <ul>
-                  {AppData.header.onepage.map((item, index) => (
+                  {localizedAppData.header.onepage.map((item, index) => (
                     <li
                       key={`header-menu-onepage-item-${index}`}
                       className={index === 0 ? "current-menu-item" : ""}
@@ -168,7 +210,7 @@ const DefaultHeader = memo(() => {
               ) : (
                 <>
                   <ul>
-                    {AppData.header.menu.map((item, index) => (
+                    {localizedAppData.header.menu.map((item, index) => (
                       <li
                         className={`${
                           item.children && item.children.length > 0
@@ -213,11 +255,6 @@ const DefaultHeader = memo(() => {
                         )}
                       </li>
                     ))}
-                    {showLanguageSwitcher && (
-                      <li className="d-lg-none" style={{ marginTop: "15px", display: "flex", justifyContent: "center" }}>
-                        <LanguageSwitcher />
-                      </li>
-                    )}
                     <li className="d-lg-none">
                       <button
                         onClick={handleSearchOpen}
@@ -248,24 +285,13 @@ const DefaultHeader = memo(() => {
               )}
             </nav>
             <div className="tst-menu-right">
-              <div className="d-none d-lg-flex" style={{ alignItems: "center", marginRight: "16px", flexShrink: 0 }}>
-                {showLanguageSwitcher && <LanguageSwitcher />}
-              </div>
-              <div className="tst-menu-button-frame">
-                <div
-                  className={`tst-menu-btn ${mobileMenu ? "tst-active" : ""}`}
-                  onClick={handleMobileMenuToggle}
-                  style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-                >
-                  {mobileMenu ? (
-                    <i className="fas fa-times" style={{ fontSize: "28px", color: "#F39C12" }}></i>
-                  ) : (
-                    <div className="tst-burger">
-                      <span></span>
-                    </div>
-                  )}
+              {/* Order: Language -> Search -> Reservation -> Hamburger */}
+              
+              {showLanguageSwitcher && (
+                <div className="tst-nav-item">
+                  <LanguageSwitcher />
                 </div>
-              </div>
+              )}
 
               <button
                 onClick={handleSearchOpen}
@@ -280,7 +306,19 @@ const DefaultHeader = memo(() => {
 
               <a
                 href="#."
-                className={`tst-btn tst-res-btn tst-btn-icon ${
+                className={`tst-btn tst-res-btn d-none d-lg-flex ${
+                  reservationPopup ? "tst-active" : ""
+                }`}
+                onClick={handleReservationToggle}
+                data-no-swup
+              >
+                <i className="fas fa-calendar-alt" aria-hidden="true" style={{marginRight: '8px', fontSize: '1.1em'}}></i>
+                <span>{tc("reservations")}</span>
+              </a>
+
+              <a
+                href="#."
+                className={`tst-btn tst-res-btn tst-btn-icon d-lg-none ${
                   reservationPopup ? "tst-active" : ""
                 }`}
                 aria-controls="reservation-popup"
@@ -294,6 +332,19 @@ const DefaultHeader = memo(() => {
                 </span>
                 <span className="sr-only">{tc("reservations")}</span>
               </a>
+
+              <div className="tst-menu-button-frame">
+                <button
+                  className={`tst-menu-btn ${mobileMenu ? "tst-active" : ""}`}
+                  onClick={handleMobileMenuToggle}
+                  aria-expanded={mobileMenu}
+                  aria-label={t("menu")}
+                >
+                  <div className="tst-burger">
+                    <span></span>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>

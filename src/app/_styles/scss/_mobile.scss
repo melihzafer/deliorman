@@ -8,8 +8,30 @@
 /* =============================
    1. Touch-friendly tap targets
    ============================= */
+@media (max-width: 1100px) {
+  /* Ensure header icon buttons meet 44×44 px minimum for accessibility */
+  .tst-menu .tst-menu-right .tst-btn.tst-btn-icon,
+  .tst-menu .tst-menu-right .tst-menu-btn {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Mid-range breakpoint adjustment: slightly smaller if really tight */
+  @media (min-width: 769px) and (max-width: 991px) {
+    .tst-menu .tst-menu-right .tst-btn.tst-btn-icon,
+    .tst-menu .tst-menu-right .tst-menu-btn {
+      width: 36px !important;
+      height: 36px !important;
+      min-width: 36px;
+      min-height: 36px;
+    }
+  }
+}
+
 @media (max-width: 768px) {
-  /* Ensure interactive elements meet 44×44 px minimum */
+  /* Ensure other interactive elements meet 44×44 px minimum */
   .tst-btn,
   a.tst-btn,
   button:not(.tst-qty-btn),
@@ -46,9 +68,9 @@
     height: 100vh;
     height: 100dvh; /* Dynamic viewport for iOS Safari */
     border-radius: 0;
-    padding: 100px 0 40px;
+    padding: 80px 0 32px;
     background-color: $card;
-    z-index: 10;
+    z-index: 100;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     box-shadow: none;
@@ -56,26 +78,52 @@
     /* Smooth animation */
     opacity: 0;
     pointer-events: none;
-    transform: none;
+    transform: translateY(-20px);
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                visibility 0.3s;
 
     &.tst-active {
       opacity: 1;
       pointer-events: all;
       visibility: visible;
-      transform: none;
+      transform: translateY(0);
     }
 
     &::after {
       display: none; /* Remove decorative shadow strip */
     }
 
-    /* Larger nav items for touch */
-    ul {
-      flex-direction: column;
+    /* Close button for mobile nav */
+    .tst-close-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      display: flex;
       align-items: center;
-      padding: 0 20px;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 110;
+      background: none;
+      border: none;
+      color: $ac;
+      font-size: 28px;
+      transition: transform 0.2s ease, color 0.2s ease;
+
+      &:hover, &:active {
+        transform: scale(1.1);
+        color: darken($ac, 10%);
+      }
+    }
+
+    /* Larger nav items for touch */
+ul {
+       flex-direction: column;
+       align-items: center;
+       padding: 0 16px;
 
       li {
         width: 100%;
@@ -88,13 +136,13 @@
           border-bottom: none;
         }
 
-        a {
-          padding: 16px 20px;
-          margin-bottom: 0;
-          font-size: 14px;
+a {
+          padding: 12px 16px;
+          margin-bottom: 8px;
+          font-size: 12px;
           display: flex;
           align-items: center;
-          min-height: 52px;
+          min-height: 44px;
           text-align: left;
           width: 100%;
         }
@@ -448,26 +496,26 @@
 @media (min-width: 769px) and (max-width: 1100px) {
   /* Ensure search icon stays visible and usable in this gap */
   .tst-menu-right .tst-btn-icon {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
   }
 
   .tst-menu-right .tst-btn-icon .tst-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .tst-menu-right .tst-btn-icon .tst-icon i {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .tst-menu-right .tst-res-btn.tst-btn-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
   }
 
   .tst-menu-right .tst-res-btn.tst-btn-icon i {
-    font-size: 16px;
+    font-size: 14px;
   }
 }

@@ -49,7 +49,9 @@ async function Home3() {
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              <TestimonialSlider />
+              <Suspense fallback={<div className="tst-skeleton" style={{ height: '300px', background: '#f2f3f5' }} />}>
+                <TestimonialSlider />
+              </Suspense>
               <Divider onlyBottom={0} />
               <SubscribeSection />
             </div>

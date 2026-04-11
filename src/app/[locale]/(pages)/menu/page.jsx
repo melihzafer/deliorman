@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { getLocalizedMenuData } from "@data/getLocalizedMenuData";
@@ -47,9 +47,11 @@ const Menu1 = async () => {
             <div className="container tst-p-60-0">
               <ScrollHint />
 
-              <MenuFiltered
-                categories={menuData.categories} 
-              />
+              <Suspense fallback={<div style={{ minHeight: '200px' }} />}>
+                <MenuFiltered
+                  categories={menuData.categories} 
+                />
+              </Suspense>
 
             </div>
           </div>

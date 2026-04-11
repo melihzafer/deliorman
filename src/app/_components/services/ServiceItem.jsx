@@ -14,7 +14,7 @@ const ServiceItem = ({ content, button, image, rowReverse = 0 }) => {
             <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : content.title}} />
             <div className="tst-text tst-mb-30" dangerouslySetInnerHTML={{__html : content.description}} />
 
-            <Link href={button.link} className="tst-btn tst-anima-link tst-mr-30">{button.label}</Link>
+            <Link href={button.link} className="tst-btn tst-anima-link tst-mr-30"><span>{button.label}</span></Link>
           </div>
           {/* service text end */}
 

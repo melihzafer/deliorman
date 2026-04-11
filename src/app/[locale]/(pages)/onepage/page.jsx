@@ -36,7 +36,9 @@ async function HomeOnePage() {
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <HeroSlider />
+        <Suspense fallback={<div className="tst-skeleton" style={{ height: '600px', background: '#f2f3f5' }} />}>
+          <HeroSlider />
+        </Suspense>
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
@@ -59,16 +61,18 @@ async function HomeOnePage() {
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-0">
-              <MenuFiltered 
-                heading={
-                  { 
-                    "subtitle": "Menu", 
-                    "title": "Our Menu", 
-                    "description": "Porro eveniet, autem ipsam vitae consequatur!" 
-                  }
-                } 
-                categories={MenuData.categories} 
-              />
+              <Suspense fallback={<div className="tst-skeleton" style={{ height: '400px', background: '#f2f3f5' }} />}>
+                <MenuFiltered 
+                  heading={
+                    { 
+                      "subtitle": "Menu", 
+                      "title": "Our Menu", 
+                      "description": "Porro eveniet, autem ipsam vitae consequatur!" 
+                    }
+                  } 
+                  categories={MenuData.categories} 
+                />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -76,7 +80,9 @@ async function HomeOnePage() {
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              <TestimonialSlider />
+              <Suspense fallback={<div className="tst-skeleton" style={{ height: '300px', background: '#f2f3f5' }} />}>
+                <TestimonialSlider />
+              </Suspense>
               <Divider onlyBottom={0} />
               <SubscribeSection />
             </div>

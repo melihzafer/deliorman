@@ -302,7 +302,7 @@ const ContactForm = () => {
               disabled={isSubmitting}
               style={{ marginLeft: "auto", marginRight: "auto" }}
             >
-              {isSubmitting ? t("submitting") : t("submit")}
+              <span>{isSubmitting ? t("submitting") : t("submit")}</span>
             </button>
 
             {submitStatus.message && (

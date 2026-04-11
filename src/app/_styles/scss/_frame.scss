@@ -90,10 +90,10 @@ marcup
 .tst-content-frame {
   position: relative;
   z-index: 10;
-  border-radius: 10px;
+  border-radius: var(--content-radius);
   box-shadow: 0 5px 10px 0 rgba(26, 47, 51, 0.4);
-  margin-left: 45px;
-  margin-right: 45px;
+  margin-left: var(--content-margin);
+  margin-right: var(--content-margin);
   background-color: $bg;
 
   &:before {
@@ -121,12 +121,7 @@ marcup
     left: 15px;
   }
 }
-@media (max-width: 790px) {
-  .tst-content-frame {
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-}
+/* Redundant media query removed - handled by --content-margin variable in globals.css */
 /*-------------------------
 menu
 -------------------------*/
@@ -144,9 +139,9 @@ menu
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
-    padding: 0 30px;
-    border-radius: 10px 10px;
+    height: var(--nav-height);
+    padding: 0 var(--nav-padding-x);
+    border-radius: var(--content-radius);
     background-color: $card;
     box-shadow: 0 5px 10px 0 rgba(26, 47, 51, 0.2);
     transition: $tr-md;
@@ -164,7 +159,7 @@ menu
     }
 
     & .tst-logo {
-      width: 70px;
+      width: var(--logo-width);
       height: auto;
     }
 
@@ -175,18 +170,18 @@ menu
         display: flex;
 
         & li {
-          height: 80px;
+          height: var(--nav-height);
           position: relative;
           list-style-type: none;
 
           & a {
-            padding: 34px 30px 0;
+            padding: 34px 24px 0;
             display: block;
             width: 100%;
             height: 100%;
             text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 1px;
+            font-size: var(--nav-font-size);
+            letter-spacing: var(--nav-letter-spacing);
             font-weight: 800;
             font-family: $sf;
             margin: 0;
@@ -355,63 +350,54 @@ menu
     & .tst-menu-right {
       display: flex;
       align-items: center;
+      gap: 12px;
 
       & .tst-res-btn {
-        margin-left: 12px;
+        margin-left: 0;
+      }
+
+      /* icon-only buttons in header */
+      & .tst-btn-icon,
+      & .tst-menu-btn {
+        outline: none !important;
+        box-shadow: none !important;
+        -webkit-tap-highlight-color: transparent;
+        
+        &:focus, &:focus-visible {
+          outline: none !important;
+          box-shadow: none !important;
+        }
       }
 
       /* icon-only reservation button in header */
       & .tst-res-btn.tst-btn-icon {
-        width: 44px;
-        height: 44px;
+        width: var(--btn-icon-size);
+        height: var(--btn-icon-size);
         padding: 0 0 2px 0;
         margin-right: 0;
-        border-radius: 25%;
+        border-radius: 50%;
         color: #F39C12 !important;
         background-color: transparent;
-        // border: 2px solid #F39C12;
-        box-shadow: none;
+        transition: background-color 0.2s ease;
 
         &:before {
           display: none;  
         }
 
         &:hover {
-          background-color: rgba(0, 0, 0, 0.03);
+          background-color: rgba(243, 156, 18, 0.08);
         }
-
-        &:focus-visible {
-          // outline: 2px solid #F39C12;
-          outline-offset: 2px;
-        }
-      }
-
-      & .tst-res-btn.tst-btn-icon .tst-icon {
-        width: 100%;
-        height: 100%;
-        background-color: transparent;
-        box-shadow: none;
-        border-radius: 50%;
-        transform: none;
-      }
-
-      & .tst-res-btn.tst-btn-icon i {
-        margin-right: 0;
-        font-size: 2em;
-        transform: none;
       }
 
       & .tst-search-btn.tst-btn-icon {
-        width: 44px;
-        height: 44px;
+        width: var(--btn-icon-size);
+        height: var(--btn-icon-size);
         padding: 0;
         margin-right: 0;
-        border-radius: 25%;
+        border-radius: 50%;
         color: #7e2010 !important;
         background-color: transparent;
-        box-shadow: none;
-        cursor: pointer;
-        border: none;
+        transition: all 0.2s ease;
 
         &:before {
           display: none;
@@ -419,112 +405,69 @@ menu
 
         &:hover {
           color: #F39C12 !important;
-          background-color: rgba(0, 0, 0, 0.03);
-        }
-
-        &:focus-visible {
-          outline-offset: 2px;
-        }
-
-        & .tst-icon {
-          width: 100%;
-          height: 100%;
-          background-color: transparent;
-          box-shadow: none;
-          border-radius: 50%;
-          transform: none;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 0;
-          margin: 0;
-        }
-
-        i {
-          margin-right: 0;
-          font-size: 1.3em;
-          transform: none;
-        }
-      }
-
-      & .tst-cart {
-        transform: translateY(-2px);
-        position: relative;
-        margin-left: 20px;
-
-        & svg {
-          width: 25px;
-        }
-
-        & .tst-cart-number {
-          line-height: 17px;
-          position: absolute;
-          top: 0;
-          right: 0;
-          font-weight: 600;
-          background-color: $auxc2;
-          color: $wl1;
-          height: 15px;
-          width: 15px;
-          font-size: 12px;
-          text-align: center;
-          border-radius: 50%;
+          background-color: rgba(126, 32, 16, 0.05);
         }
       }
 
       & .tst-menu-button-frame {
         display: none;
-        margin-left: 15px;
-        height: 80px;
-        width: 30px;
+        height: var(--nav-height);
+        width: auto;
         justify-content: center;
         align-items: center;
+        padding-left: 4px;
 
         & .tst-menu-btn {
-          padding-top: 2px;
-          width: 25px;
-          position: relative;
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          border: none;
+          background: transparent;
           cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
+          transition: background-color 0.2s ease;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+          }
 
           & .tst-burger {
             display: flex;
             justify-content: center;
-            padding-top: 1px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
+            width: 22px;
+            height: 22px;
 
             & span,
             & span:after,
             & span:before {
               content: "";
               display: block;
-              width: 19px;
-              height: 0.1em;
+              width: 22px;
+              height: 2px;
               border-radius: 3px;
               background: $dl1;
-              transition: 0.4s ease-in-out;
+              transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
               backface-visibility: hidden;
             }
 
             & span {
               position: relative;
-              margin: 7px 0 0;
+              margin: 10px 0 0;
 
               &:after,
               &:before {
                 position: absolute;
+                left: 0;
               }
 
               &:before {
-                top: -7px;
+                top: -8px;
               }
 
               &:after {
-                top: 7px;
+                top: 8px;
               }
             }
           }
@@ -532,14 +475,14 @@ menu
           &.tst-active {
             & .tst-burger {
               & span {
-                transform: rotate(45deg);
+                background: transparent;
 
                 &:before {
-                  transform: translate(0px, 7px) rotate(-90deg);
+                  transform: translateY(8px) rotate(45deg);
                 }
 
                 &:after {
-                  transform: translate(0px, -7px) rotate(-90deg);
+                  transform: translateY(-8px) rotate(-45deg);
                 }
               }
             }
@@ -573,16 +516,16 @@ menu
       & nav {
         opacity: 0;
         pointer-events: none;
-        transform: translateY(20px);
+        transform: translateY(16px);
         box-shadow: 0 5px 10px 0 rgba(26, 47, 51, 0.2);
-        padding: 15px 0;
+        padding: 12px 0;
         text-align: center;
         position: absolute;
         left: 10px;
-        top: 90px;
+        top: 72px;
         background-color: $card;
         width: calc(100% - 20px);
-        border-radius: 5px;
+        border-radius: var(--radius-md);
         transition: $tr-md;
 
         &.tst-active {
@@ -663,7 +606,7 @@ menu
     & .tst-menu-right {
       width: auto;
       // margin-left: 2em;
-      flex-direction: row-reverse;
+      flex-direction: row;
       & .tst-res-btn {
         display: inline-flex;
         // margin-left: 12px;
@@ -680,12 +623,12 @@ menu
 scroll hint
 -------------------------*/
 .tst-scroll-hint-frame {
-  height: 74px;
-  width: 74px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
   position: absolute;
-  top: -40px;
-  left: calc(50% - 37px);
+  top: -32px;
+  left: calc(50% - 30px);
   z-index: 9999;
   display: flex;
   justify-content: center;
@@ -695,8 +638,8 @@ scroll hint
   &:after {
     transform: scaleX(1.25) scaleY(1.09);
     content: "";
-    width: 74px;
-    height: 37px;
+    width: 60px;
+    height: 30px;
     opacity: 0.15;
     border-radius: 1000px 1000px 0 0;
     position: absolute;
@@ -706,11 +649,11 @@ scroll hint
   }
 
   & .tst-scroll-hint {
-    transform: scale(0.8);
+    transform: scale(0.7);
     top: -5px;
     position: relative;
-    height: 40px;
-    width: 25px;
+    height: 32px;
+    width: 20px;
     border: solid 2px $dl1;
     border-radius: 20px;
 

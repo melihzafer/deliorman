@@ -10,6 +10,7 @@ interface AnimateOnScrollProps {
   variants?: Variants;
   className?: string;
   delay?: number;
+  initialVisible?: boolean;
 }
 
 export default function AnimateOnScroll({
@@ -17,6 +18,7 @@ export default function AnimateOnScroll({
   variants = fadeUp as Variants,
   className,
   delay = 0,
+  initialVisible = false,
 }: AnimateOnScrollProps) {
   const prefersReduced = useReducedMotion();
 
@@ -27,7 +29,7 @@ export default function AnimateOnScroll({
   return (
     <motion.div
       variants={variants}
-      initial="hidden"
+      initial={initialVisible ? "visible" : "hidden"}
       whileInView="visible"
       viewport={{ once: true, margin: '-50px' }}
       transition={{ delay }}

@@ -52,14 +52,23 @@ function getStatusData() {
 export default function OpenStatus() {
   const t = useTranslations('components.openStatus');
   const [statusData, setStatusData] = useState(null);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setStatusData(getStatusData());
     const interval = setInterval(() => setStatusData(getStatusData()), 60_000);
     return () => clearInterval(interval);
   }, []);
 
-  if (!statusData) return null;
+  if (!mounted || !statusData) {
+    return (
+      <span className={`${styles.status} ${styles.closed}`}>
+        <span className={`${styles.dot}`} />
+        {t('checking') || '...'}
+      </span>
+    );
+  }
 
   const label = statusData.isOpen 
     ? t('open') 
