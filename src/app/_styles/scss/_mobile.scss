@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use 'variables' as *;
 
 /**********************************
@@ -115,7 +116,7 @@
 
       &:hover, &:active {
         transform: scale(1.1);
-        color: darken($ac, 10%);
+        color: color.adjust($ac, $lightness: -10%);
       }
     }
 

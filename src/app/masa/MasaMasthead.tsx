@@ -13,12 +13,96 @@ interface MasaMastheadProps {
   onOpenMenu: () => void;
   styles: MasaStyles;
   tableId: string;
+  pageLayout: "classic" | "modern" | "magazine";
 }
 
-export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles, tableId }: MasaMastheadProps) {
+export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles, tableId, pageLayout }: MasaMastheadProps) {
   const editionLabel = isVip ? t(locale, "vipBadge") : `${t(locale, "issueVolumeLabel")} ${tableId || "—"}`;
   const tableLabel = isVip ? t(locale, "vipBadge") : `${t(locale, "tableNumberLabel")} ${tableId || "—"}`;
   const editionClass = isVip ? `${styles.edition} ${styles.vipBadge}` : styles.edition;
+
+  if (pageLayout === "modern") {
+    return (
+      <header className={styles.kioskHeader}>
+        <div className={styles.kioskHeaderInner}>
+          <button
+            type="button"
+            className={styles.kioskMenuButton}
+            aria-label={t(locale, "openMenu")}
+            aria-expanded={menuOpen}
+            onClick={onOpenMenu}
+          >
+            <span className={styles.glowingDot} />
+            <span className={styles.hamburgerIconWithPulse}>
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className={styles.kioskMenuButtonLabel}>{t(locale, "styleIconLabel")}</span>
+          </button>
+          
+          <div className={styles.kioskBrand}>
+            <span className={styles.kioskLogoWrapper}>
+              <Image
+                src="/img/deliorman_colorized_logo.svg"
+                alt="Делиорман"
+                width={36}
+                height={36}
+                className={styles.kioskLogo}
+                priority
+              />
+            </span>
+            <span className={styles.kioskTitle}>DELIORMAN</span>
+          </div>
+
+          <div className={styles.kioskMeta}>
+            <span className={styles.kioskTable}>{tableLabel}</span>
+          </div>
+        </div>
+      </header>
+    );
+  }
+
+  if (pageLayout === "magazine") {
+    return (
+      <header className={styles.magazineHeader}>
+        <div className={styles.magazineTopBar}>
+          <button
+            type="button"
+            className={styles.magazineMenuButton}
+            aria-label={t(locale, "openMenu")}
+            aria-expanded={menuOpen}
+            onClick={onOpenMenu}
+          >
+            <span className={styles.glowingDot} />
+            <span className={styles.hamburgerIconWithPulse}>
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className={styles.magazineMenuButtonLabel}>{t(locale, "styleIconLabel")}</span>
+          </button>
+          <span className={styles.magazineIssue}>{editionLabel}</span>
+          <span className={styles.magazineTable}>{tableLabel}</span>
+        </div>
+
+        <div className={styles.magazineHeroContainer}>
+          <Image
+            src={heroImages[0]}
+            alt="Showcase"
+            width={820}
+            height={460}
+            className={styles.magazineHeroImage}
+            priority
+          />
+          <div className={styles.magazineHeroOverlay}>
+            <h1 className={styles.magazineTitle}>DELIORMAN</h1>
+            <p className={styles.magazineSubtitle}>{t(locale, "tasteJournal")}</p>
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className={styles.masthead}>
@@ -31,9 +115,13 @@ export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles,
             aria-expanded={menuOpen}
             onClick={onOpenMenu}
           >
-            <span />
-            <span />
-            <span />
+            <span className={styles.glowingDot} />
+            <span className={styles.hamburgerIconWithPulse}>
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className={styles.menuButtonLabel}>{t(locale, "styleIconLabel")}</span>
           </button>
           <span className={editionClass}>{editionLabel}</span>
         </span>
