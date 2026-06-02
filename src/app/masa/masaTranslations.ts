@@ -32,6 +32,7 @@ const copy = {
     previous: "Назад",
     next: "Напред",
     language: "Език",
+    vipBadge: "VIP Преглед",
   },
   tr: {
     loading: "QR oturumu kontrol ediliyor...",
@@ -64,6 +65,7 @@ const copy = {
     previous: "Geri",
     next: "İleri",
     language: "Dil",
+    vipBadge: "VIP Önizleme",
   },
   en: {
     loading: "Checking QR session...",
@@ -96,6 +98,7 @@ const copy = {
     previous: "Previous",
     next: "Next",
     language: "Language",
+    vipBadge: "VIP Preview",
   },
 } satisfies Record<Locale, Record<string, string>>;
 

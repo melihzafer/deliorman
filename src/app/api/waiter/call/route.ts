@@ -17,6 +17,7 @@ import {
   isMasaDevToken,
   updateMasaDevLastCall,
 } from '../../../_lib/masaDevSession';
+import { isVipToken } from '../../../_lib/vipSession';
 import { sendTelegramMessage } from '../../../_lib/telegram';
 
 export const runtime = 'nodejs';
@@ -41,6 +42,13 @@ export async function POST(request: Request): Promise<NextResponse> {
   const message = typeof body.message === 'string' ? body.message.trim().slice(0, 240) : '';
   if (!token || !tableId) {
     return NextResponse.json({ error: 'token and tableId required' }, { status: 400 });
+  }
+
+  if (isVipToken(token)) {
+    return NextResponse.json(
+      { error: 'Waiter calling is disabled for VIP sessions' },
+      { status: 403 }
+    );
   }
 
   if (isMasaDevToken(token)) {

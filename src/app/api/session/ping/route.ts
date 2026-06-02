@@ -11,6 +11,11 @@ import {
   isMasaDevToken,
   updateMasaDevLastPing,
 } from '../../../_lib/masaDevSession';
+import {
+  findVipSession,
+  isVipToken,
+  touchVipSession,
+} from '../../../_lib/vipSession';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -30,6 +35,15 @@ export async function POST(request: Request): Promise<NextResponse> {
   const token = typeof body.token === 'string' ? body.token.trim() : '';
   if (!token) {
     return NextResponse.json({ error: 'token required' }, { status: 400 });
+  }
+
+  if (isVipToken(token)) {
+    const session = findVipSession(token);
+    if (!session) {
+      return NextResponse.json({ error: 'Session expired' }, { status: 401 });
+    }
+    touchVipSession(token, new Date().toISOString());
+    return NextResponse.json({ ok: true, role: 'vip' });
   }
 
   if (isMasaDevToken(token)) {

@@ -4,20 +4,33 @@ import { isLocalTestHost, PING_INTERVAL_MS, SESSION_KEY_PREFIX } from "./masaCon
 import { t } from "./masaTranslations";
 import type { Locale, QrMenuData, SessionState } from "./masaTypes";
 
+export type MasaRole = "guest" | "vip";
+
 interface UseMasaSessionParams {
   locale: Locale;
   qrKey: string;
   tableId: string;
+  vipSecret: string;
 }
 
-export function useMasaSession({ locale, qrKey, tableId }: UseMasaSessionParams) {
+interface StartResponse {
+  token?: string;
+  role?: MasaRole;
+}
+
+export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSessionParams) {
   const [sessionState, setSessionState] = useState<SessionState>("loading");
   const [token, setToken] = useState("");
+  const [role, setRole] = useState<MasaRole>("guest");
   const [menuData, setMenuData] = useState<QrMenuData | null>(null);
   const [notice, setNotice] = useState("");
   const [activeCategoryId, setActiveCategoryId] = useState("");
   const localeRef = useRef(locale);
-  const sessionKey = tableId ? `${SESSION_KEY_PREFIX}.${tableId}` : "";
+  const sessionKey = tableId
+    ? `${SESSION_KEY_PREFIX}.${tableId}`
+    : vipSecret
+      ? `${SESSION_KEY_PREFIX}.vip`
+      : "";
 
   const blockSession = useCallback(
     (message: string) => {
@@ -39,6 +52,49 @@ export function useMasaSession({ locale, qrKey, tableId }: UseMasaSessionParams)
 
     async function startSession() {
       const allowLocalTestSession = isLocalTestHost();
+      const isVip = Boolean(vipSecret);
+
+      if (isVip) {
+        setSessionState("loading");
+        setNotice("");
+        try {
+          const sessionRes = await fetch("/api/session/start", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ vip: true, secret: vipSecret }),
+          });
+          if (cancelled) return;
+          if (!sessionRes.ok) {
+            blockSession(t(localeRef.current, "invalid"));
+            return;
+          }
+          const session = (await sessionRes.json()) as StartResponse;
+          if (cancelled) return;
+          if (!session.token) {
+            blockSession(t(localeRef.current, "invalid"));
+            return;
+          }
+          const menuRes = await fetch("/data/menu.json", { cache: "no-store" });
+          if (cancelled) return;
+          if (!menuRes.ok) {
+            blockSession(t(localeRef.current, "menuLoadError"));
+            return;
+          }
+          const menu = (await menuRes.json()) as QrMenuData;
+          if (cancelled) return;
+          if (sessionKey) sessionStorage.setItem(sessionKey, session.token);
+          setToken(session.token);
+          setRole("vip");
+          setMenuData(menu);
+          setActiveCategoryId(menu.categories?.[0]?.id ?? "");
+          setSessionState("active");
+        } catch (err) {
+          console.error("[masa] vip start failed:", err);
+          if (!cancelled) blockSession(t(localeRef.current, "invalid"));
+        }
+        return;
+      }
+
       if (!tableId || (!qrKey && !allowLocalTestSession)) {
         blockSession(t(localeRef.current, "invalid"));
         return;
@@ -60,7 +116,7 @@ export function useMasaSession({ locale, qrKey, tableId }: UseMasaSessionParams)
           return;
         }
 
-        const session = (await sessionRes.json()) as { token?: string };
+        const session = (await sessionRes.json()) as StartResponse;
         if (cancelled) return;
         if (!session.token) {
           blockSession(t(localeRef.current, "invalid"));
@@ -77,8 +133,9 @@ export function useMasaSession({ locale, qrKey, tableId }: UseMasaSessionParams)
         const menu = (await menuRes.json()) as QrMenuData;
         if (cancelled) return;
 
-        sessionStorage.setItem(sessionKey, session.token);
+        if (sessionKey) sessionStorage.setItem(sessionKey, session.token);
         setToken(session.token);
+        setRole("guest");
         setMenuData(menu);
         setActiveCategoryId(menu.categories?.[0]?.id ?? "");
         setSessionState("active");
@@ -92,7 +149,7 @@ export function useMasaSession({ locale, qrKey, tableId }: UseMasaSessionParams)
     return () => {
       cancelled = true;
     };
-  }, [blockSession, qrKey, sessionKey, tableId]);
+  }, [blockSession, qrKey, sessionKey, tableId, vipSecret]);
 
   useEffect(() => {
     if (!token || sessionState !== "active") return undefined;
@@ -130,6 +187,7 @@ export function useMasaSession({ locale, qrKey, tableId }: UseMasaSessionParams)
     blockSession,
     menuData,
     notice,
+    role,
     sessionState,
     setActiveCategoryId,
     token,

@@ -6,6 +6,7 @@ import { t } from "./masaTranslations";
 import type { Locale, MasaStyles } from "./masaTypes";
 
 interface MasaMastheadProps {
+  isVip: boolean;
   locale: Locale;
   menuOpen: boolean;
   now: Date;
@@ -14,7 +15,11 @@ interface MasaMastheadProps {
   tableId: string;
 }
 
-export function MasaMasthead({ locale, menuOpen, now, onOpenMenu, styles, tableId }: MasaMastheadProps) {
+export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles, tableId }: MasaMastheadProps) {
+  const editionLabel = isVip ? t(locale, "vipBadge") : `${t(locale, "issueVolumeLabel")} ${tableId || "—"}`;
+  const tableLabel = isVip ? t(locale, "vipBadge") : `${t(locale, "tableNumberLabel")} ${tableId || "—"}`;
+  const editionClass = isVip ? `${styles.edition} ${styles.vipBadge}` : styles.edition;
+
   return (
     <header className={styles.masthead}>
       <div className={styles.mastheadTop}>
@@ -30,9 +35,7 @@ export function MasaMasthead({ locale, menuOpen, now, onOpenMenu, styles, tableI
             <span />
             <span />
           </button>
-          <span className={styles.edition}>
-            {t(locale, "issueVolumeLabel")} {tableId || "—"}
-          </span>
+          <span className={editionClass}>{editionLabel}</span>
         </span>
         <span className={styles.edition}>{getEditionLabel(now, locale)}</span>
         <span className={styles.priceTag}>{t(locale, "dailyEdition")}</span>
@@ -71,9 +74,7 @@ export function MasaMasthead({ locale, menuOpen, now, onOpenMenu, styles, tableI
       <div className={styles.mastheadBottom}>
         <span>{formatDate(now, locale)}</span>
         <span>{t(locale, "seasonalMenu")}</span>
-        <span>
-          {t(locale, "tableNumberLabel")} {tableId || "—"}
-        </span>
+        <span className={isVip ? styles.vipBadge : undefined}>{tableLabel}</span>
         <span>{t(locale, "euroNote")}</span>
       </div>
     </header>

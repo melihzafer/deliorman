@@ -21,8 +21,10 @@ interface MasaClientProps {
 
 export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {}) {
   const searchParams = useSearchParams();
-  const tableId = normalizeTableId(searchParams.get("id"));
-  const qrKey = searchParams.get("key")?.trim() || "";
+  const vipSecret = searchParams.get("vip")?.trim() || "";
+  const isVipLink = vipSecret.length > 0;
+  const tableId = isVipLink ? "" : normalizeTableId(searchParams.get("id"));
+  const qrKey = isVipLink ? "" : searchParams.get("key")?.trim() || "";
   const [locale, setLocale] = useState<Locale>(() =>
     normalizeLocale(searchParams.get("lang"), initialLocale),
   );
@@ -35,10 +37,13 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
     blockSession,
     menuData,
     notice,
+    role,
     sessionState,
     setActiveCategoryId,
     token,
-  } = useMasaSession({ locale, qrKey, tableId });
+  } = useMasaSession({ locale, qrKey, tableId, vipSecret });
+
+  const isVip = role === "vip";
 
   const { callState, callWaiter, cooldownSeconds, feedback } = useWaiterCall({
     blockSession,
@@ -90,6 +95,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
     <main className={styles.paper}>
       <div className={styles.sheet}>
         <MasaMasthead
+          isVip={isVip}
           locale={locale}
           menuOpen={menuOpen}
           now={now}
@@ -140,7 +146,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
         />
       ) : null}
 
-      {sessionState === "active" ? (
+      {sessionState === "active" && !isVip ? (
         <MasaStopPress
           buttonLabel={buttonLabel}
           disabled={!token || callState === "loading" || cooldownSeconds > 0}

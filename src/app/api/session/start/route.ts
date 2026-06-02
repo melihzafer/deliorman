@@ -10,6 +10,10 @@ import {
   createMasaDevSession,
   isLocalMasaDevRequest,
 } from '../../../_lib/masaDevSession';
+import {
+  createVipSession,
+  validateVipSecret,
+} from '../../../_lib/vipSession';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -17,6 +21,8 @@ export const dynamic = 'force-dynamic';
 interface StartBody {
   tableId?: unknown;
   key?: unknown;
+  vip?: unknown;
+  secret?: unknown;
 }
 
 export async function POST(request: Request): Promise<NextResponse> {
@@ -25,6 +31,20 @@ export async function POST(request: Request): Promise<NextResponse> {
     body = (await request.json()) as StartBody;
   } catch {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  }
+
+  const wantsVip = body.vip === true;
+  const vipSecret = typeof body.secret === 'string' ? body.secret : '';
+
+  if (wantsVip) {
+    if (!validateVipSecret(vipSecret)) {
+      return NextResponse.json({ error: 'Invalid VIP session' }, { status: 401 });
+    }
+    const session = createVipSession();
+    return NextResponse.json({
+      token: session.token,
+      role: 'vip',
+    });
   }
 
   const tableId = normalizeTableId(body.tableId);

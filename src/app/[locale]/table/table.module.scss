@@ -263,6 +263,18 @@ $sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   flex: 0 0 auto;
 }
 
+.vipBadge {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid $ink;
+  background: $ink;
+  color: $paper;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
 .mastheadMenuCluster {
   display: inline-flex;
   align-items: center;
