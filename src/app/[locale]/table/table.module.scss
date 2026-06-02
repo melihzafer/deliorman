@@ -2285,6 +2285,31 @@ $sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
     font-weight: 800;
   }
 
+  .magazineBrand {
+    flex: 1;
+    text-align: center;
+    font-family: $serif !important;
+    font-size: clamp(14px, 2.6vw, 18px) !important;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  .magazineStatus {
+    font-family: $sans;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(26, 20, 17, 0.06);
+    white-space: nowrap;
+  }
+
   .magazineHeroContainer {
     position: relative;
     margin-top: 14px;
@@ -2293,6 +2318,34 @@ $sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
     aspect-ratio: 1.85 / 1;
     width: 100%;
     box-shadow: 0 16px 36px rgba(26, 20, 17, 0.15);
+  }
+
+  .magazineCompactBrand {
+    margin-top: 14px;
+    padding: 22px 20px 18px;
+    border-bottom: 1.5px solid var(--card-border, #e0e0e0);
+    text-align: center;
+    background: var(--card-bg, #fcfaf6);
+  }
+
+  .magazineCompactTitle {
+    font-family: $serif !important;
+    font-size: clamp(24px, 5vw, 36px) !important;
+    font-weight: 700;
+    color: var(--ink) !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .magazineCompactSubtitle {
+    font-family: $serif !important;
+    font-style: italic;
+    font-size: clamp(13px, 2.4vw, 16px) !important;
+    color: var(--ink-soft) !important;
+    margin: 4px 0 0;
+    letter-spacing: 0.02em;
   }
 
   .magazineHeroImage {
@@ -3010,6 +3063,268 @@ $sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   gap: 8px;
   justify-content: center;
   margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.wizardProgress {
+  font-family: $sans;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 0 0 4px;
+}
+
+.wizardQuestion {
+  font-family: $sans;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.wizardOptionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.wizardOptionLabel {
+  font-family: $sans;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.wizardBackBtn {
+  margin-top: 8px;
+  background: transparent;
+  border: none;
+  color: var(--ink-soft);
+  font-family: $sans;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  align-self: flex-start;
+
+  &:hover {
+    color: var(--ink);
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.wizardHistory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px dashed var(--ink-faint);
+  border-radius: 8px;
+  margin: 4px 0 8px;
+}
+
+.wizardHistoryLabel {
+  font-family: $sans;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+.wizardHistoryItem {
+  font-family: $serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.wizardIntroActions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.wizardFreeTextToggle {
+  margin-top: 6px;
+  background: transparent;
+  border: 1px dashed var(--ink-faint);
+  color: var(--ink-soft);
+  font-family: $sans;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  align-self: center;
+  transition: color 150ms ease, border-color 150ms ease;
+
+  &:hover {
+    color: var(--ink);
+    border-color: var(--ink-soft);
+  }
+}
+
+.wizardFreeTextChevronOpen {
+  transform: rotate(180deg);
+}
+
+.wizardFreeTextBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  margin-top: 4px;
+}
+
+.wizardFreeTextInput {
+  width: 100%;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: $sans;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--paper);
+  resize: vertical;
+  min-height: 60px;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: -1px;
+  }
+}
+
+.wizardFreeTextActions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.wizardFreeTextHint {
+  font-family: $sans;
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin: 0;
+  text-align: center;
+}
+
+.wizardFreeTextChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+
+.wizardFreeTextChip {
+  font-family: $sans;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  background: var(--accent);
+  color: var(--paper, #fff);
+  border-radius: 4px;
+}
+
+.wizardResultSurprise {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: $sans;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.wizardRationaleChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin: 6px 0;
+}
+
+.wizardRationaleChip {
+  font-family: $sans;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.02em;
+  padding: 3px 8px;
+  background: var(--accent-soft, rgba(230, 81, 0, 0.1));
+  color: var(--accent);
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+}
+
+.wizardAlternativesSection {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--ink-faint);
+
+  h5 {
+    font-family: $sans;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+    margin: 0 0 6px;
+  }
+}
+
+.wizardAlternativesList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wizardAltItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 6px;
+  font-family: $sans;
+  font-size: 12px;
+}
+
+.wizardAltTitle {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.wizardAltPrice {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 11px;
 }
 
 /* Theme variations for Taste Wizard */

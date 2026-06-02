@@ -1,0 +1,144 @@
+{
+  "mood": {
+    "comfort": [
+      "cozy", "warm", "comfort", "home", "homely", "familiar", "classic", "място", "уют", "топлина", "домашно", "класика",
+      "samimi", "sıcak", "rahat", "klasik", "ev", "ev yemeği"
+    ],
+    "healthy": [
+      "healthy", "light", "fresh", "salad", "fit", "lean", "low-fat", "vegetable", "здраве", "леко", "свежо", "салата", "зеленчуци",
+      "sağlıklı", "hafif", "taze", "salata", "sebze", "fit", "diyet"
+    ],
+    "indulgent": [
+      "indulge", "treat", "rich", "creamy", "decadent", "fancy", "luxury", "глезя", "богато", "сметаново", "пищно", "лукс",
+      "şımartma", "zengin", "krema", "lüks", "rahatlama"
+    ],
+    "adventurous": [
+      "adventurous", "bold", "spicy", "smoky", "exotic", "different", "new", "try", "challenge", "смело", "пикантно", "екзотично", "различно", "ново",
+      "cesur", "acılı", "füme", "egzotik", "farklı", "yeni", "macera", "heyecan"
+    ]
+  },
+  "anchor": {
+    "food": [
+      "food", "eat", "meal", "dish", "hungry", "main", "starter", "appetizer", "dinner", "lunch",
+      "храна", "ястие", "глад", "ядене", "обяд", "вечеря", "основно",
+      "yemek", "yemek ye", "ana yemek", "aç", "öğle", "akşam", "doyurucu"
+    ],
+    "drink": [
+      "drink", "beverage", "thirsty", "sip", "soda", "coffee", "tea", "water", "juice",
+      "напитка", "питие", "жаден", "кафе", "чай", "вода", "сок",
+      "içecek", "içmek", "susamış", "kahve", "çay", "su", "meyve suyu"
+    ],
+    "both": [
+      "both", "and", "with", "plus", "combo", "meal deal", "set",
+      "и", "плюс", "комплект", "меню",
+      "ve", "ile", "artı", "set menü", "kombo"
+    ]
+  },
+  "food_protein": {
+    "meat": [
+      "meat", "beef", "pork", "lamb", "steak", "ribs", "kebab", "minced",
+      "месо", "телешко", "свинско", "агнешко", "стек", "ребра", "кебап", "кайма", "кюфте",
+      "et", "dana", "domuz", "kuzu", "pirzola", "kaburga", "kebap", "kıyma", "köfte"
+    ],
+    "poultry": [
+      "chicken", "poultry", "turkey", "wings", "thigh", "breast", "skewer",
+      "пиле", "пилешко", "крилца", " бут", "гърди", "шиш",
+      "tavuk", "kanat", "but", "göğüs", "şiş"
+    ],
+    "fish": [
+      "fish", "seafood", "salmon", "tuna", "shrimp", "mackerel", "carp", "sprats",
+      "риба", "морски дарове", "сьомга", "тон", "скариди", "скумрия", "шаран", "цаца",
+      "balık", "deniz", "somon", "ton balığı", "karides", "uskumru", "sazan"
+    ],
+    "vegetarian": [
+      "vegetarian", "vegan", "no meat", "meatless", "plant",
+      "вегетарианско", "веган", "без месо", "растително",
+      "vejetaryen", "vegan", "etsiz", "bitkisel"
+    ],
+    "sweet-only": [
+      "dessert", "sweet", "cake", "ice cream", "chocolate", "pastry",
+      "десерт", "сладко", "торта", "сладолед", "шоколад", "палачинка",
+      "tatlı", "pasta", "dondurma", "çikolata", "künefe"
+    ]
+  },
+  "hunger": {
+    "snack": [
+      "snack", "light", "small", "bite", "appetizer", "side", "starter",
+      "леко", "малко", "хапка", "мезе", "стартер",
+      "atıştırmalık", "hafif", "küçük", "lokma", "meze", "başlangıç"
+    ],
+    "meal": [
+      "meal", "main", "regular", "normal", "standard",
+      "основно", "ястие", "нормално",
+      "ana yemek", "yemek", "normal", "standart"
+    ],
+    "feast": [
+      "feast", "big", "large", "huge", "platter", "family", "share", "celebration",
+      "голямо", "огромно", "плато", "семейно", "споделено", "празник",
+      "büyük", "dev", "sofra", "aile", "paylaşım", "kutlama"
+    ]
+  },
+  "food_texture": {
+    "grilled": [
+      "grilled", "grill", "charcoal", "bbq", "barbecue", "skewer", "smoky",
+      "скара", "грил", "въглища", "барбекю", "шиш", "пушено",
+      "ızgara", "mangal", "kömür", "şiş", "füme", "barbekü"
+    ],
+    "crispy": [
+      "crispy", "fried", "crunchy", "breaded", "battered",
+      "хрупкаво", "пържено", "панирано", "трошливо",
+      "çıtır", "kızarmış", "kızartma", "paneli", "gevrek"
+    ],
+    "creamy": [
+      "creamy", "smooth", "soft", "melted", "cheesy",
+      "кремообразно", "гладко", "меко", "разтопено", "сирене",
+      "kremamsı", "yumuşak", "eritilmiş", "peynirli"
+    ]
+  },
+  "drink_temp": {
+    "hot": [
+      "hot", "warm", "steaming", "boiling",
+      "горещо", "топло", "вряло",
+      "sıcak", "ılık", "kaynar"
+    ],
+    "cold": [
+      "cold", "iced", "chilled", "frozen", "cool",
+      "студено", "ледено", "охладено", "замръзнало",
+      "soğuk", "buzlu", "soğutulmuş", "donmuş"
+    ]
+  },
+  "alcohol": {
+    "alcoholic": [
+      "alcohol", "alcoholic", "beer", "wine", "vodka", "whiskey", "rakia", "spirits", "cocktail", "boozy",
+      "алкохол", "бира", "вино", "водка", "уиски", "ракия", "коктейл",
+      "alkol", "alkollü", "bira", "şarap", "votka", "viski", "rakı", "kokteyl"
+    ],
+    "non-alcoholic": [
+      "non-alcoholic", "no alcohol", "virgin", "soft", "kids", "mocktail", "0%", "0.0",
+      "безалкохолно", "без алкохол", "мек", "деца",
+      "alkolsüz", "alkol yok", "yumuşak", "çocuk", "meyve suyu"
+    ]
+  },
+  "drink_profile": {
+    "caffeine": [
+      "coffee", "espresso", "cappuccino", "latte", "mocha", "caffeine", "energy", "energize", "wake",
+      "кафе", "еспресо", "капучино", "мока", "кофеин", "енергия", "събуждане",
+      "kahve", "espresso", "kapuçino", "mocha", "kafein", "enerji", "uyandırıcı"
+    ],
+    "fruity": [
+      "fruit", "fruity", "juice", "lemon", "raspberry", "berry", "orange", "apple", "cider",
+      "плод", "плодов", "сок", "лимон", "малина", "горски", "портокал", "ябълка", "сайдер",
+      "meyve", "meyvemsi", "meyve suyu", "limon", "ahududu", "portakal", "elma"
+    ],
+    "herbal": [
+      "tea", "herbal", "mint", "chamomile", "tisane", "water",
+      "чай", "билков", "мента", "лайка", "вода",
+      "çay", "bitki", "nane", "papatya", "su"
+    ],
+    "beer-wine": [
+      "beer", "lager", "ale", "stout", "wine", "red", "white", "rose", "rosé", "sparkling",
+      "бира", "лагер", "еър, ейл", "вино", "червено", "бяло", "розе", "пенливо",
+      "bira", "şarap", "kırmızı", "beyaz", "roze", "köpüklü"
+    ]
+  }
+}

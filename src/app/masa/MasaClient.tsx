@@ -45,6 +45,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
   const [wizardOpen, setWizardOpen] = useState(false);
   const [isFirstCategoryRender, setIsFirstCategoryRender] = useState(true);
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+  const [showImages, setShowImages] = useState<boolean>(false);
 
   // Device orientation gyroscope tilt effect (3D tactile depth)
   useEffect(() => {
@@ -128,6 +129,10 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
       if (savedSound !== null) {
         setSoundEnabled(savedSound === "true");
       }
+      const savedImages = localStorage.getItem("deliorman.masa.showImages");
+      if (savedImages !== null) {
+        setShowImages(savedImages === "true");
+      }
       const storedEnd = localStorage.getItem("deliorman.masa.waiterSessionEnd");
       if (storedEnd) {
         const endMs = Number(storedEnd);
@@ -167,6 +172,12 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
     if (enabled) {
       playClick(true);
     }
+  };
+
+  const handleShowImagesChange = (show: boolean) => {
+    playClick(soundEnabled);
+    setShowImages(show);
+    localStorage.setItem("deliorman.masa.showImages", String(show));
   };
 
   // Waiter session timer tick
@@ -251,6 +262,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
           styles={styles}
           tableId={tableId}
           pageLayout={pageLayout}
+          showImages={showImages}
         />
 
         {sessionState !== "active" ? (
@@ -303,6 +315,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
                   layout={layout}
                   styles={styles}
                   pageLayout={pageLayout}
+                  showImages={showImages}
                 />
               </motion.div>
             </AnimatePresence>
@@ -342,6 +355,8 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
           styles={styles}
           soundEnabled={soundEnabled}
           onSoundEnabledChange={handleSoundEnabledChange}
+          showImages={showImages}
+          onShowImagesChange={handleShowImagesChange}
         />
       ) : null}
 
@@ -391,6 +406,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
           }}
           styles={styles}
           soundEnabled={soundEnabled}
+          sessionToken={token}
         />
       ) : null}
     </main>

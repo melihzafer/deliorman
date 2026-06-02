@@ -96,3 +96,10 @@
 | 16:16 | translated image card titles and notes | src/app/_lib/menuCategoryImages.ts, src/app/masa/MasaClient.tsx | Card labels now follow the active locale in the QR/table menu | ~900 |
 | 16:21 | added footer portfolio credit | src/app/masa/MasaClient.tsx, table.module.scss | Footer now includes a Powered by Melih Hyusein external link styled to match the newspaper footer | ~500 |
 | 16:23 | fixed translated card text overflow | src/app/[locale]/table/table.module.scss | Smaller card typography plus wrapping/hyphenation keeps long labels inside the cards | ~500 |
+
+## Session: 2026-06-02 18:14
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 18:14 | rebuilt QR wizard with tag engine + adaptive flow + NLU | src/app/masa/MasaTasteWizard.tsx, src/app/masa/wizard/*, src/app/masa/masaTranslations.ts, tests/unit/wizard/*, package.json, src/app/[locale]/table/table.module.scss, .wolf/anatomy.md, .wolf/memory.md | 1077-line keyword wizard replaced with 9-file tag-driven engine (scoring, pairings, rationale, adaptive state, multilingual lexicon NLU + lazy semantic stub); 3-4 questions instead of 6, free-text input, result shows main+alternatives+rationale chips+combo+refine; all strings via t() in 3 locales; 35/35 unit tests pass, tsc clean, build succeeds | ~15000 |
+| 18:52 | updated OpenWolf memory, anatomy, and cerebrum for new wizard files | .wolf/memory.md, .wolf/anatomy.md, .wolf/cerebrum.md | Documented new wizard subdirectory, unit tests directory, 7 new key learnings and 2 decision-log entries; added timestamp | ~600 |

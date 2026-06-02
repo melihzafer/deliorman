@@ -763,13 +763,24 @@
 - `MasaMenuList.tsx` — Active category heading, photo cards, and menu item list (~750 tok)
 - `MasaSessionOverlay.tsx` — QR session loading/blocked notice renderer (~200 tok)
 - `MasaStopPress.tsx` — Floating waiter-call control and feedback message renderer (~300 tok)
+- `MasaTasteWizard.tsx` — Adaptive taste wizard UI shell with mood/anchor/protein/hunger/texture/temp/alcohol/profile questions, free-text input, result card with alternatives and refine, history memory (~700 tok)
 - `masaConstants.ts` — QR menu timing, storage key, EUR conversion, and local test host constants (~360 tok)
 - `masaMenuUtils.ts` — QR menu locale fallback, date, edition, price, and table-id helpers (~700 tok)
-- `masaTranslations.ts` — Localized QR menu UI copy and lookup helper (~1600 tok)
+- `masaTranslations.ts` — Localized QR menu UI copy and lookup helper — now also includes the wizard question, rationale, pairing, and free-text keys for bg/tr/en (~2400 tok)
 - `masaTypes.ts` — Shared QR menu data, locale, style, and feedback types (~350 tok)
 - `useMasaSession.ts` — QR session start, menu load, heartbeat, and blocked-session state hook (~1400 tok)
 - `useWaiterCall.ts` — Waiter-call cooldown, feedback, and API call hook (~1050 tok)
 - `page.tsx` — Noindex /masa route wrapper (~54 tok)
+- `wizard/types.ts` — Wizard answer/state types (Anchor, Mood, FoodProtein, Hunger, FoodTexture, DrinkTemp, AlcoholChoice, DrinkProfileChoice, ItemTags, ScoredItem) (~220 tok)
+- `wizard/menuTags.ts` — Curated tag map for every menu item across 9 dimensions (protein/flavors/textures/temp/state/profile/vibe/portion/course) (~1500 tok)
+- `wizard/scoring.ts` — Tag-based weighted scoring engine with confidence gate and surprise picker (~500 tok)
+- `wizard/nextStep.ts` — Adaptive state machine (mood → anchor → protein → hunger → spinning); reduces 6-question flow to 3-4 (~170 tok)
+- `wizard/pairings.ts` — Tag-driven side-and-drink combo recommender with reason keys (~330 tok)
+- `wizard/rationale.ts` — Translates scored-item matchReasons + answers into localized one-line rationales with chip reasons (~150 tok)
+- `wizard/lexicon.json` — Multilingual (bg/tr/en) synonym table for the 7 wizard dimensions (~310 tok)
+- `wizard/intentLexicon.ts` — Token-based NLU that infers WizardAnswers from free-text input in any of the 3 locales, no model download (~150 tok)
+- `wizard/intentSemantic.ts` — Optional lazy ONNX semantic matcher stub — drops in @xenova/transformers MiniLM later without API changes (~60 tok)
+- `wizard/intentRouter.ts` — Two-stage orchestrator: lexicon first, semantic fallback only if enabled and stub returns a result (~100 tok)
 
 ## src/app/offline/
 
@@ -862,3 +873,15 @@
 ## src/data/sections/hero/
 
 - `hero.json` (~168 tok)
+
+## tests/
+
+- `e2e/accessibility.spec.js` — Playwright a11y test suite for the public marketing site (~600 tok)
+- `e2e/critical-journeys.spec.js` — Playwright smoke test for the home and reservation flow (~500 tok)
+- `e2e/helpers.js` — Shared Playwright helpers for navigation and form filling (~150 tok)
+- `unit/wizard/fixture.ts` — Tiny subset of the menu data used as fixture for the wizard unit tests (~150 tok)
+- `unit/wizard/scoring.test.ts` — Tag-based scoring engine determinism, anchor hard-filter, mood/protein/hunger matches (~280 tok)
+- `unit/wizard/nextStep.test.ts` — Adaptive state machine: intro/mood/anchor/protein/hunger/drink/temp/alcohol/profile paths and sweet-only shortcut (~230 tok)
+- `unit/wizard/intent.test.ts` — Multilingual lexicon NLU in bg/tr/en + intent router fallback behaviour (~210 tok)
+- `unit/wizard/pairings.test.ts` — Combo pairing reason keys + side-or-drink correctness (~180 tok)
+- `unit/wizard/rationale.test.ts` — Three-locale rationale sentence generation and chip reasoning (~150 tok)

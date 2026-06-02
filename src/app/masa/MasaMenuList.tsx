@@ -12,9 +12,10 @@ interface MasaMenuListProps {
   layout: "journal" | "cards" | "minimal";
   styles: MasaStyles;
   pageLayout: "classic" | "modern" | "magazine";
+  showImages: boolean;
 }
 
-export function MasaMenuList({ activeCategory, currency, locale, layout, styles, pageLayout }: MasaMenuListProps) {
+export function MasaMenuList({ activeCategory, currency, locale, layout, styles, pageLayout, showImages }: MasaMenuListProps) {
   if (!activeCategory) return null;
 
   const activeCategoryCards = getCategoryImageCards(activeCategory.id);
@@ -27,6 +28,35 @@ export function MasaMenuList({ activeCategory, currency, locale, layout, styles,
 
   const isModern = pageLayout === "modern";
   const isMagazine = pageLayout === "magazine";
+
+  if (!showImages) {
+    return (
+      <section className={`${styles.article} ${isModern ? styles.articleModern : isMagazine ? styles.articleMagazine : ""}`}>
+        {!isModern ? <div className={styles.kicker}>{t(locale, "issueSection")}</div> : null}
+        <h2 className={styles.headline}>{localized(activeCategory.title, locale)}</h2>
+        <p className={styles.deck}>{localized(activeCategory.description, locale)}</p>
+
+        <div className={`${styles.columns} ${layoutClass}`}>
+          {activeCategory.items.map((item) => {
+            const description = localized(item.description, locale);
+            return (
+              <article key={item.id} className={styles.item}>
+                <div className={styles.itemHead}>
+                  <h3 className={styles.itemTitle}>{localized(item.title, locale)}</h3>
+                  {layout === "journal" ? <span className={styles.dots} aria-hidden="true" /> : null}
+                  <span className={styles.price}>{formatPrice(item.price, currency, locale)}</span>
+                </div>
+                <div className={styles.itemMeta}>
+                  {item.amount ? <span className={styles.amount}>{item.amount}</span> : null}
+                  {description ? <span className={styles.itemText}>{description}</span> : null}
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    );
+  }
 
   if (isMagazine || isModern) {
     const items = activeCategory.items;

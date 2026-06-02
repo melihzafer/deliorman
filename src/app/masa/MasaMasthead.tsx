@@ -14,9 +14,10 @@ interface MasaMastheadProps {
   styles: MasaStyles;
   tableId: string;
   pageLayout: "classic" | "modern" | "magazine";
+  showImages: boolean;
 }
 
-export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles, tableId, pageLayout }: MasaMastheadProps) {
+export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles, tableId, pageLayout, showImages }: MasaMastheadProps) {
   const editionLabel = isVip ? t(locale, "vipBadge") : `${t(locale, "issueVolumeLabel")} ${tableId || "—"}`;
   const tableLabel = isVip ? t(locale, "vipBadge") : `${t(locale, "tableNumberLabel")} ${tableId || "—"}`;
   const editionClass = isVip ? `${styles.edition} ${styles.vipBadge}` : styles.edition;
@@ -64,6 +65,13 @@ export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles,
   }
 
   if (pageLayout === "magazine") {
+    const statusLabel = isVip
+      ? t(locale, "vipBadge")
+      : `${t(locale, "tableNumberLabel")} ${tableId || "—"}`;
+    const statusClass = isVip
+      ? `${styles.magazineStatus} ${styles.vipBadge}`
+      : styles.magazineStatus;
+
     return (
       <header className={styles.magazineHeader}>
         <div className={styles.magazineTopBar}>
@@ -82,24 +90,26 @@ export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles,
             </span>
             <span className={styles.magazineMenuButtonLabel}>{t(locale, "styleIconLabel")}</span>
           </button>
-          <span className={styles.magazineIssue}>{editionLabel}</span>
-          <span className={styles.magazineTable}>{tableLabel}</span>
+          <span className={styles.magazineBrand}>DELIORMAN</span>
+          <span className={statusClass}>{statusLabel}</span>
         </div>
 
-        <div className={styles.magazineHeroContainer}>
-          <Image
-            src={heroImages[0]}
-            alt="Showcase"
-            width={820}
-            height={460}
-            className={styles.magazineHeroImage}
-            priority
-          />
-          <div className={styles.magazineHeroOverlay}>
-            <h1 className={styles.magazineTitle}>DELIORMAN</h1>
-            <p className={styles.magazineSubtitle}>{t(locale, "tasteJournal")}</p>
+        {showImages ? (
+          <div className={styles.magazineHeroContainer}>
+            <Image
+              src={heroImages[0]}
+              alt="Showcase"
+              width={820}
+              height={460}
+              className={styles.magazineHeroImage}
+              priority
+            />
+            <div className={styles.magazineHeroOverlay}>
+              <h1 className={styles.magazineTitle}>DELIORMAN</h1>
+              <p className={styles.magazineSubtitle}>{t(locale, "tasteJournal")}</p>
+            </div>
           </div>
-        </div>
+        ) : null}
       </header>
     );
   }
@@ -144,20 +154,22 @@ export function MasaMasthead({ isVip, locale, menuOpen, now, onOpenMenu, styles,
       <p className={styles.tagline}>{t(locale, "tasteJournal")}</p>
       <p className={styles.subtitle}>{t(locale, "founded")}</p>
 
-      <div className={styles.heroStrip} aria-label={t(locale, "photoCaption")}>
-        {heroImages.map((src, index) => (
-          <Image
-            key={src}
-            src={src}
-            alt=""
-            width={260}
-            height={170}
-            className={styles.heroImage}
-            aria-hidden="true"
-            priority={index === 0}
-          />
-        ))}
-      </div>
+      {showImages && (
+        <div className={styles.heroStrip} aria-label={t(locale, "photoCaption")}>
+          {heroImages.map((src, index) => (
+            <Image
+              key={src}
+              src={src}
+              alt=""
+              width={260}
+              height={170}
+              className={styles.heroImage}
+              aria-hidden="true"
+              priority={index === 0}
+            />
+          ))}
+        </div>
+      )}
 
       <div className={styles.mastheadBottom}>
         <span>{formatDate(now, locale)}</span>

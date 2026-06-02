@@ -16,6 +16,8 @@ interface MasaDrawerProps {
   styles: MasaStyles;
   soundEnabled: boolean;
   onSoundEnabledChange: (enabled: boolean) => void;
+  showImages: boolean;
+  onShowImagesChange: (show: boolean) => void;
 }
 
 export function MasaDrawer({
@@ -33,6 +35,8 @@ export function MasaDrawer({
   styles,
   soundEnabled,
   onSoundEnabledChange,
+  showImages,
+  onShowImagesChange,
 }: MasaDrawerProps) {
   return (
     <div className={styles.drawerBackdrop} role="presentation" onClick={onClose}>
@@ -157,6 +161,26 @@ export function MasaDrawer({
                 onClick={() => onSoundEnabledChange(opt === "on")}
               >
                 {opt === "on" ? t(locale, "soundOn") : t(locale, "soundOff")}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.drawerSection}>
+          <h3>
+            {locale === "bg" ? "Снимки в менюто" : locale === "tr" ? "Görselleri Göster" : "Menu Images"}
+          </h3>
+          <div className={styles.drawerLangs}>
+            {(["on", "off"] as const).map((opt) => (
+              <button
+                key={opt}
+                type="button"
+                className={showImages === (opt === "on") ? styles.drawerOptionActive : styles.drawerOption}
+                onClick={() => onShowImagesChange(opt === "on")}
+              >
+                {opt === "on"
+                  ? (locale === "bg" ? "Вкл." : locale === "tr" ? "Açık" : "On")
+                  : (locale === "bg" ? "Изкл." : locale === "tr" ? "Kapalı" : "Off")}
               </button>
             ))}
           </div>

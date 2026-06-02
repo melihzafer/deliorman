@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "analyze": "ANALYZE=true npm run build",
+    "test:unit": "jest tests/unit",
     "test:e2e": "playwright test tests/e2e",
     "test:perf": "playwright test tests/performance/vitals.spec.js"
   },
@@ -42,12 +43,17 @@
     "@babel/eslint-parser": "^7.28.5",
     "@next/bundle-analyzer": "^16.0.1",
     "@playwright/test": "^1.54.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.10.0",
     "@types/react": "^19.2.2",
     "@typescript-eslint/parser": "^8.50.1",
     "eslint": "^9.39.2",
     "eslint-config-next": "^16.1.1",
     "globals": "^16.5.0",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
     "typescript": "^5.9.3"
   }
 }
