@@ -1,0 +1,2951 @@
+{
+  "version": 1,
+  "restaurantName": "Deliorman",
+  "currency": "BGN",
+  "categories": [
+    {
+      "id": "hot-beverages",
+      "order": 10,
+      "title": {
+        "bg": "Топли Напитки",
+        "tr": "Sıcak İçecekler",
+        "en": "Hot Beverages"
+      },
+      "description": {
+        "bg": "Подбрана селекция от топли напитки за всеки момент от деня",
+        "tr": "Günün her anı için özenle seçilmiş sıcak içecekler.",
+        "en": "A curated selection of hot drinks for any time of day."
+      },
+      "items": [
+        {
+          "id": "kafe-espreso",
+          "title": {
+            "bg": "Кафе еспресо",
+            "tr": "Espresso",
+            "en": "Espresso"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "60 ml",
+          "price": 1.95,
+          "allergens": []
+        },
+        {
+          "id": "kafe-lavatsa-kapsula",
+          "title": {
+            "bg": "Кафе \"Лаваца\" капсула",
+            "tr": "Lavazza Kapsül Kahve",
+            "en": "Lavazza Capsule Coffee"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "60 ml",
+          "price": 2.73,
+          "allergens": []
+        },
+        {
+          "id": "nes-kafe",
+          "title": {
+            "bg": "Нес кафе",
+            "tr": "Nescafe",
+            "en": "Nescafe"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "60 ml",
+          "price": 1.95,
+          "allergens": []
+        },
+        {
+          "id": "kapuchino",
+          "title": {
+            "bg": "Капучино",
+            "tr": "Cappuccino",
+            "en": "Cappuccino"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "150 ml",
+          "price": 2.73,
+          "allergens": []
+        },
+        {
+          "id": "mokachino",
+          "title": {
+            "bg": "Мокачино",
+            "tr": "Mocaccino",
+            "en": "Mocaccino"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "150 ml",
+          "price": 2.73,
+          "allergens": []
+        },
+        {
+          "id": "goresht-shokolad",
+          "title": {
+            "bg": "Горещ шоколад",
+            "tr": "Sıcak Çikolata",
+            "en": "Hot Chocolate"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "150 ml",
+          "price": 2.73,
+          "allergens": []
+        },
+        {
+          "id": "pryasno-mlyako",
+          "title": {
+            "bg": "Прясно мляко",
+            "tr": "Taze Süt",
+            "en": "Fresh Milk"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "150 ml",
+          "price": 2.15,
+          "allergens": []
+        },
+        {
+          "id": "chay-bilkov",
+          "title": {
+            "bg": "Чай билков",
+            "tr": "Bitki Çayı",
+            "en": "Herbal Tea"
+          },
+          "description": {
+            "bg": "мента, лайка, букет, черен, зелен",
+            "tr": "nane, papatya, buket, siyah, yeşil",
+            "en": "mint, chamomile, bouquet, black, green"
+          },
+          "amount": "150 ml",
+          "price": 1.76,
+          "allergens": []
+        },
+        {
+          "id": "plodov-chay",
+          "title": {
+            "bg": "Плодов чай",
+            "tr": "Meyve Çayı",
+            "en": "Fruit Tea"
+          },
+          "description": {
+            "bg": "лимон, малина, горски плод",
+            "tr": "limon, ahududu, orman meyveleri",
+            "en": "lemon, raspberry, forest fruits"
+          },
+          "amount": "150 ml",
+          "price": 1.76,
+          "allergens": []
+        },
+        {
+          "id": "med",
+          "title": {
+            "bg": "Мед",
+            "tr": "Bal",
+            "en": "Honey"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "15 ml",
+          "price": 0.78,
+          "allergens": []
+        },
+        {
+          "id": "kanichka-mlyako",
+          "title": {
+            "bg": "Каничка мляко",
+            "tr": "Süt Sürahisi",
+            "en": "Jug of Milk"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 0.78,
+          "allergens": []
+        },
+        {
+          "id": "smetana",
+          "title": {
+            "bg": "Сметана",
+            "tr": "Krema",
+            "en": "Cream"
+          },
+          "description": {
+            "bg": "суха, кондензирана, спрей",
+            "tr": "toz, yoğunlaştırılmış, sprey",
+            "en": "powdered, condensed, spray"
+          },
+          "amount": "10 ml",
+          "price": 0.78,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "salads",
+      "order": 20,
+      "title": {
+        "bg": "Салати",
+        "tr": "Salatalar",
+        "en": "Salads"
+      },
+      "description": {
+        "bg": "Класически и авторски салати, приготвени с пресни продукти",
+        "tr": "Taze ürünlerle hazırlanan klasik ve imza salatalar.",
+        "en": "Classic and signature salads made with fresh ingredients."
+      },
+      "items": [
+        {
+          "id": "shopska-salata",
+          "title": {
+            "bg": "Шопска салата",
+            "tr": "Şopska Salatası",
+            "en": "Shopska Salad"
+          },
+          "description": {
+            "bg": "домати, краставици, пипер, лук, сирене, маслини",
+            "tr": "domates, salatalık, biber, soğan, beyaz peynir, zeytin",
+            "en": "tomatoes, cucumbers, peppers, onions, white cheese, olives"
+          },
+          "amount": "400 g",
+          "price": 7.82,
+          "allergens": []
+        },
+        {
+          "id": "salata-deliorman",
+          "title": {
+            "bg": "Салата Делиорман",
+            "tr": "Deliorman Salatası",
+            "en": "Deliorman Salad"
+          },
+          "description": {
+            "bg": "домати, краставици, кашкавал, сирене, шунка, снежанка, печена чушка, маслини",
+            "tr": "domates, salatalık, kaşar peyniri, beyaz peynir, jambon, Snejanka mezesi, közlenmiş biber, zeytin",
+            "en": "tomatoes, cucumbers, kashkaval, white cheese, ham, Snow White salad, roasted pepper, olives"
+          },
+          "amount": "500 g",
+          "price": 10.75,
+          "allergens": []
+        },
+        {
+          "id": "salata-ovcharska",
+          "title": {
+            "bg": "Салата Овчарска",
+            "tr": "Ovçarska Salatası",
+            "en": "Ovcharska Salad"
+          },
+          "description": {
+            "bg": "домати, краставици, пипер, лук, гъби, шунка, кашкавал, сирене, яйце, маслини",
+            "tr": "domates, salatalık, biber, soğan, mantar, jambon, kaşar peyniri, beyaz peynir, yumurta, zeytin",
+            "en": "tomatoes, cucumbers, peppers, onions, mushrooms, ham, kashkaval, white cheese, egg, olives"
+          },
+          "amount": "550 g",
+          "price": 9.77,
+          "allergens": []
+        },
+        {
+          "id": "salata-gratska",
+          "title": {
+            "bg": "Салата гръцка",
+            "tr": "Yunan Salatası",
+            "en": "Greek Salad"
+          },
+          "description": {
+            "bg": "домати, краставици, печен пипер, сирене, маслини, лук, лимон, зехтин, риган",
+            "tr": "domates, salatalık, közlenmiş biber, beyaz peynir, zeytin, soğan, limon, zeytinyağı, kekik",
+            "en": "tomatoes, cucumbers, roasted pepper, white cheese, olives, onion, lemon, olive oil, oregano"
+          },
+          "amount": "450 g",
+          "price": 7.82,
+          "allergens": []
+        },
+        {
+          "id": "salata-tsezar",
+          "title": {
+            "bg": "Салата „Цезар“",
+            "tr": "Sezar Salatası",
+            "en": "Caesar Salad"
+          },
+          "description": {
+            "bg": "айсберг, пилешко филе, чери домати, краставици, крутони, пармезан, сос",
+            "tr": "iceberg marul, tavuk fileto, cherry domates, salatalık, kruton, parmesan, sos",
+            "en": "iceberg lettuce, chicken fillet, cherry tomatoes, cucumbers, croutons, parmesan, sauce"
+          },
+          "amount": "450 g",
+          "price": 11.73,
+          "allergens": []
+        },
+        {
+          "id": "zelena-salata-s-riba-ton",
+          "title": {
+            "bg": "Зелена салата с риба тон",
+            "tr": "Ton Balıklı Yeşil Salata",
+            "en": "Green Salad with Tuna"
+          },
+          "description": {
+            "bg": "маруля, краставици, маслини, риба тон, зехтин",
+            "tr": "marul, salatalık, zeytin, ton balığı, zeytinyağı",
+            "en": "lettuce, cucumbers, olives, tuna, olive oil"
+          },
+          "amount": "300 g",
+          "price": 10.75,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "hot-appetizers",
+      "order": 30,
+      "title": {
+        "bg": "Аламинути",
+        "tr": "Sıcak Yemekler",
+        "en": "Hot Dishes"
+      },
+      "description": {
+        "bg": "Бързи и вкусни ястия, подходящи за споделяне или основно",
+        "tr": "Paylaşmak ya da ana yemek olarak sunmak için hızlı ve lezzetli seçenekler.",
+        "en": "Quick, tasty dishes ideal for sharing or as a main."
+      },
+      "items": [
+        {
+          "id": "lucheni-kragcheta",
+          "title": {
+            "bg": "Лучени кръгчета",
+            "tr": "Soğan Halkaları",
+            "en": "Onion Rings"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "300 g",
+          "price": 8.8,
+          "allergens": []
+        },
+        {
+          "id": "kashkaval-pane",
+          "title": {
+            "bg": "Кашкавал пане",
+            "tr": "Pane Kaşar Peyniri",
+            "en": "Breaded Kashkaval"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 11.55,
+          "allergens": []
+        },
+        {
+          "id": "pileshki-filentsa-s-kornfleyks",
+          "title": {
+            "bg": "Пилешки филенца с корнфлейкс",
+            "tr": "Cornflakes'li Tavuk Fileto",
+            "en": "Chicken Fillets with Cornflakes"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "400 g",
+          "price": 13.4,
+          "allergens": []
+        },
+        {
+          "id": "parzheni-kartofi",
+          "title": {
+            "bg": "Пържени картофи",
+            "tr": "Patates Kızartması",
+            "en": "French Fries"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 6.84,
+          "allergens": []
+        },
+        {
+          "id": "parzheni-kartofi-sas-sirene",
+          "title": {
+            "bg": "Пържени картофи със сирене",
+            "tr": "Peynirli Patates Kızartması",
+            "en": "French Fries with White Cheese"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "250 g",
+          "price": 7.62,
+          "allergens": []
+        },
+        {
+          "id": "pileshki-kriltsa",
+          "title": {
+            "bg": "Пилешки крилца",
+            "tr": "Tavuk Kanatları",
+            "en": "Chicken Wings"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "400 g",
+          "price": 11.55,
+          "allergens": []
+        },
+        {
+          "id": "parzheni-kartofi-po-selski",
+          "title": {
+            "bg": "Пържени картофи по селски",
+            "tr": "Köy Usulü Patates Kızartması",
+            "en": "Country-Style Fries"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 7.62,
+          "allergens": []
+        },
+        {
+          "id": "omlet-s-shunka-i-garnitura",
+          "title": {
+            "bg": "Омлет с шунка и гарнитура",
+            "tr": "Jambonlu Omlet ve Garnitür",
+            "en": "Ham Omelette with Garnish"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "300 g",
+          "price": 9.58,
+          "allergens": []
+        },
+        {
+          "id": "portsiya-dyuner",
+          "title": {
+            "bg": "Порция дюнер",
+            "tr": "Döner Porsiyonu",
+            "en": "Doner Portion"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "400 g",
+          "price": 13.4,
+          "allergens": []
+        },
+        {
+          "id": "svinski-rebra-pecheni",
+          "title": {
+            "bg": "Свински ребра печени",
+            "tr": "Fırınlanmış Domuz Kaburga",
+            "en": "Roasted Pork Ribs"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "300 g",
+          "price": 13.4,
+          "allergens": []
+        },
+        {
+          "id": "topeni-sirentsa",
+          "title": {
+            "bg": "Топени сиренца",
+            "tr": "Eritme Peynir Lokmaları",
+            "en": "Processed Cheese Bites"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 9.58,
+          "allergens": []
+        },
+        {
+          "id": "beybi-motsarela",
+          "title": {
+            "bg": "Бейби моцарела",
+            "tr": "Bebek Mozzarella",
+            "en": "Baby Mozzarella"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "350 g",
+          "price": 13.4,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "soups-sandwiches",
+      "order": 40,
+      "title": {
+        "bg": "Супи, Пилешки Деликатеси и Сандвичи",
+        "tr": "Çorbalar, Tavuk Lezzetleri ve Sandviçler",
+        "en": "Soups, Chicken Delicacies & Sandwiches"
+      },
+      "description": {
+        "bg": "Супи, пилешки деликатеси на тиган и сандвичи за бърз обяд",
+        "tr": "Kısa bir öğle yemeği için çorbalar, tavada tavuk lezzetleri ve sandviçler.",
+        "en": "Soups, chicken delicacies and sandwiches for a quick lunch."
+      },
+      "items": [
+        {
+          "id": "pileshka-supa",
+          "title": {
+            "bg": "Пилешка супа",
+            "tr": "Tavuk Çorbası",
+            "en": "Chicken Soup"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "300 ml",
+          "price": 3.91,
+          "allergens": []
+        },
+        {
+          "id": "shkembe-chorba",
+          "title": {
+            "bg": "Шкембе чорба",
+            "tr": "İşkembe Çorbası",
+            "en": "Tripe Soup"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "300 ml",
+          "price": 3.91,
+          "allergens": []
+        },
+        {
+          "id": "supa-topcheta",
+          "title": {
+            "bg": "Супа топчета",
+            "tr": "Köfte Çorbası",
+            "en": "Meatball Soup"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "300 ml",
+          "price": 3.91,
+          "allergens": []
+        },
+        {
+          "id": "tarator",
+          "title": {
+            "bg": "Таратор",
+            "tr": "Tarator",
+            "en": "Tarator"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "300 ml",
+          "price": 3.71,
+          "allergens": []
+        },
+        {
+          "id": "pileshki-drobcheta",
+          "title": {
+            "bg": "Пилешки дробчета",
+            "tr": "Tavuk Ciğeri",
+            "en": "Chicken Livers"
+          },
+          "description": {
+            "bg": "лук, моркови, пипер",
+            "tr": "soğan, havuç, biber",
+            "en": "onions, carrots, peppers"
+          },
+          "amount": "350 g",
+          "price": 8.8,
+          "allergens": []
+        },
+        {
+          "id": "pileshki-sartsa",
+          "title": {
+            "bg": "Пилешки сърца",
+            "tr": "Tavuk Yüreği",
+            "en": "Chicken Hearts"
+          },
+          "description": {
+            "bg": "лук, моркови",
+            "tr": "soğan, havuç",
+            "en": "onions, carrots"
+          },
+          "amount": "300 g",
+          "price": 9.58,
+          "allergens": []
+        },
+        {
+          "id": "pileshki-vodenichki",
+          "title": {
+            "bg": "Пилешки воденички",
+            "tr": "Tavuk Taşlığı",
+            "en": "Chicken Gizzards"
+          },
+          "description": {
+            "bg": "лук, моркови",
+            "tr": "soğan, havuç",
+            "en": "onions, carrots"
+          },
+          "amount": "300 g",
+          "price": 9.58,
+          "allergens": []
+        },
+        {
+          "id": "sandvich-kayma",
+          "title": {
+            "bg": "Сандвич кайма",
+            "tr": "Kıymalı Sandviç",
+            "en": "Minced Meat Sandwich"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 5.08,
+          "allergens": []
+        },
+        {
+          "id": "sandvich-kashkaval-i-shunka",
+          "title": {
+            "bg": "Сандвич кашкавал и шунка",
+            "tr": "Kaşarlı ve Jambonlu Sandviç",
+            "en": "Kashkaval and Ham Sandwich"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 5.08,
+          "allergens": []
+        },
+        {
+          "id": "sandvich-kashkaval",
+          "title": {
+            "bg": "Сандвич кашкавал",
+            "tr": "Kaşarlı Sandviç",
+            "en": "Kashkaval Sandwich"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 4.49,
+          "allergens": []
+        },
+        {
+          "id": "sandvich-sirene-yaytsa-i-kashkaval",
+          "title": {
+            "bg": "Сандвич сирене, яйца и кашкавал",
+            "tr": "Beyaz Peynirli, Yumurtalı ve Kaşarlı Sandviç",
+            "en": "White Cheese, Egg and Kashkaval Sandwich"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 5.86,
+          "allergens": []
+        },
+        {
+          "id": "filiya-hlyab",
+          "title": {
+            "bg": "Филия хляб",
+            "tr": "Bir Dilim Ekmek",
+            "en": "Slice of Bread"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": 0.29,
+          "allergens": []
+        },
+        {
+          "id": "filiya-hlyab-prepechena",
+          "title": {
+            "bg": "Филия хляб-препечена",
+            "tr": "Kızarmış Bir Dilim Ekmek",
+            "en": "Toasted Slice of Bread"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": 0.39,
+          "allergens": []
+        },
+        {
+          "id": "gratska-pitka",
+          "title": {
+            "bg": "Гръцка питка",
+            "tr": "Yunan Pidesi",
+            "en": "Greek Flatbread"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 1.36,
+          "allergens": []
+        },
+        {
+          "id": "gratska-chesnova-pitka",
+          "title": {
+            "bg": "Гръцка чеснова питка",
+            "tr": "Sarımsaklı Yunan Pidesi",
+            "en": "Greek Garlic Flatbread"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 1.36,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "pizzas",
+      "order": 50,
+      "title": {
+        "bg": "Пици",
+        "tr": "Pizzalar",
+        "en": "Pizzas"
+      },
+      "description": {
+        "bg": "Класически рецепти с богата плънка и хрупкава основа",
+        "tr": "Zengin malzemeler ve çıtır bir tabanla klasik tarifler.",
+        "en": "Classic recipes with rich toppings and a crisp base."
+      },
+      "items": [
+        {
+          "id": "deliorman",
+          "title": {
+            "bg": "Делиорман",
+            "tr": "Deliorman Pizza",
+            "en": "Deliorman Pizza"
+          },
+          "description": {
+            "bg": "доматен сос, шунка, мар. гъби, кашкавал, луканка, сирене, кис. краставички, чес. паста, босилек",
+            "tr": "domates sosu, jambon, marine mantar, kaşar peyniri, lukanka sucuk, beyaz peynir, kornişon, sarımsak ezmesi, fesleğen",
+            "en": "tomato sauce, ham, marinated mushrooms, kashkaval, lukanka sausage, white cheese, pickles, garlic paste, basil"
+          },
+          "amount": "400 g",
+          "price": 9.58,
+          "allergens": []
+        },
+        {
+          "id": "bondzhorno",
+          "title": {
+            "bg": "Бонджорно",
+            "tr": "Bonjorno Pizza",
+            "en": "Buongiorno Pizza"
+          },
+          "description": {
+            "bg": "доматен сос, сирене, кашкавал",
+            "tr": "domates sosu, beyaz peynir, kaşar peyniri",
+            "en": "tomato sauce, white cheese, kashkaval"
+          },
+          "amount": "400 g",
+          "price": 8.8,
+          "allergens": []
+        },
+        {
+          "id": "margarita",
+          "title": {
+            "bg": "Маргарита",
+            "tr": "Margarita Pizza",
+            "en": "Margherita Pizza"
+          },
+          "description": {
+            "bg": "доматен сос, кашкавал, босилек",
+            "tr": "domates sosu, kaşar peyniri, fesleğen",
+            "en": "tomato sauce, kashkaval, basil"
+          },
+          "amount": "400 g",
+          "price": 7.62,
+          "allergens": []
+        },
+        {
+          "id": "kompira",
+          "title": {
+            "bg": "Компира",
+            "tr": "Kompira Pizza",
+            "en": "Compira Pizza"
+          },
+          "description": {
+            "bg": "доматен сос, шунка, пресни гъби, кашкавал",
+            "tr": "domates sosu, jambon, taze mantar, kaşar peyniri",
+            "en": "tomato sauce, ham, fresh mushrooms, kashkaval"
+          },
+          "amount": "400 g",
+          "price": 8.8,
+          "allergens": []
+        },
+        {
+          "id": "karleona",
+          "title": {
+            "bg": "Карлеона",
+            "tr": "Carleona Pizza",
+            "en": "Carleona Pizza"
+          },
+          "description": {
+            "bg": "доматен сос, шунка, луканка, кис. краставици, кашкавал",
+            "tr": "domates sosu, jambon, lukanka sucuk, kornişon, kaşar peyniri",
+            "en": "tomato sauce, ham, lukanka sausage, pickles, kashkaval"
+          },
+          "amount": "400 g",
+          "price": 9.58,
+          "allergens": []
+        },
+        {
+          "id": "antigua",
+          "title": {
+            "bg": "Антигуа",
+            "tr": "Antigua Pizza",
+            "en": "Antigua Pizza"
+          },
+          "description": {
+            "bg": "доматен сос, шунка, кашкавал",
+            "tr": "domates sosu, jambon, kaşar peyniri",
+            "en": "tomato sauce, ham, kashkaval"
+          },
+          "amount": "400 g",
+          "price": 8.8,
+          "allergens": []
+        },
+        {
+          "id": "neapolitana",
+          "title": {
+            "bg": "Неаполитана",
+            "tr": "Napoliten Pizza",
+            "en": "Neapolitan Pizza"
+          },
+          "description": {
+            "bg": "доматен сос, пилешко филе, пресни гъби, маслини, царевица, кашкавал",
+            "tr": "domates sosu, tavuk fileto, taze mantar, zeytin, mısır, kaşar peyniri",
+            "en": "tomato sauce, chicken fillet, fresh mushrooms, olives, sweetcorn, kashkaval"
+          },
+          "amount": "400 g",
+          "price": 9.58,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "grill",
+      "order": 60,
+      "title": {
+        "bg": "Скара",
+        "tr": "Izgara",
+        "en": "Grill"
+      },
+      "description": {
+        "bg": "Изпитани предложения на скара с автентичен вкус",
+        "tr": "Otantik ızgara lezzetleri ve güçlü bir tat.",
+        "en": "Authentic grilled favourites with bold flavour."
+      },
+      "items": [
+        {
+          "id": "kyufte",
+          "title": {
+            "bg": "Кюфте",
+            "tr": "Köfte",
+            "en": "Meatball"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "80 g",
+          "price": 1.95,
+          "allergens": []
+        },
+        {
+          "id": "kebapche",
+          "title": {
+            "bg": "Кебапче",
+            "tr": "Kebapçe",
+            "en": "Kebapche"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "80 g",
+          "price": 1.95,
+          "allergens": []
+        },
+        {
+          "id": "teleshko-kyufte",
+          "title": {
+            "bg": "Телешко кюфте",
+            "tr": "Dana Köfte",
+            "en": "Beef Meatball"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "80 g",
+          "price": 2.73,
+          "allergens": []
+        },
+        {
+          "id": "pileshki-shish",
+          "title": {
+            "bg": "Пилешки шиш",
+            "tr": "Tavuk Şiş",
+            "en": "Chicken Skewer"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 3.91,
+          "allergens": []
+        },
+        {
+          "id": "svinski-shish",
+          "title": {
+            "bg": "Свински шиш",
+            "tr": "Domuz Şiş",
+            "en": "Pork Skewer"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 4.3,
+          "allergens": []
+        },
+        {
+          "id": "pileshka-parzhola-but",
+          "title": {
+            "bg": "Пилешка пържола бут",
+            "tr": "Tavuk But Izgara",
+            "en": "Chicken Thigh Steak"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "250 g",
+          "price": 7.62,
+          "allergens": []
+        },
+        {
+          "id": "svinska-parzhola",
+          "title": {
+            "bg": "Свинска пържола",
+            "tr": "Domuz Pirzola",
+            "en": "Pork Steak"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "250 g",
+          "price": 8.8,
+          "allergens": []
+        },
+        {
+          "id": "adana-kebap",
+          "title": {
+            "bg": "Адана кебап",
+            "tr": "Adana Kebap",
+            "en": "Adana Kebab"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "160 g",
+          "price": 6.84,
+          "allergens": []
+        },
+        {
+          "id": "tatarsko-kyufte",
+          "title": {
+            "bg": "Татарско кюфте",
+            "tr": "Tatar Köfte",
+            "en": "Tatar Meatball"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 5.67,
+          "allergens": []
+        },
+        {
+          "id": "meshena-skara",
+          "title": {
+            "bg": "Мешена скара",
+            "tr": "Karışık Izgara",
+            "en": "Mixed Grill"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "900 g",
+          "price": 34.22,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "saj-fish-specialties",
+      "order": 70,
+      "title": {
+        "bg": "Сач, Риба и Специалитети",
+        "tr": "Sac, Balık ve Spesiyaller",
+        "en": "Saj, Fish & Specialties"
+      },
+      "description": {
+        "bg": "Сачове, риба и специалитети за богата трапеза",
+        "tr": "Sac tabakları, balık ve özel lezzetler dolu bir sofra için.",
+        "en": "Saj dishes, fish and specialties for a generous table."
+      },
+      "items": [
+        {
+          "id": "pileshki-sach-sas-zelenchutsi",
+          "title": {
+            "bg": "Пилешки сач със зеленчуци",
+            "tr": "Sebzeli Tavuk Sac",
+            "en": "Chicken Saj with Vegetables"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "1000 g",
+          "price": 28.35,
+          "allergens": []
+        },
+        {
+          "id": "svinski-sach-sas-zelenchutsi",
+          "title": {
+            "bg": "Свински сач със зеленчуци",
+            "tr": "Sebzeli Domuz Sac",
+            "en": "Pork Saj with Vegetables"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "1000 g",
+          "price": 28.35,
+          "allergens": []
+        },
+        {
+          "id": "agneshki-sach-sas-zelenchutsi",
+          "title": {
+            "bg": "Агнешки сач със зеленчуци",
+            "tr": "Sebzeli Kuzu Sac",
+            "en": "Lamb Saj with Vegetables"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "1000 g",
+          "price": 43,
+          "allergens": []
+        },
+        {
+          "id": "teleshki-ezik",
+          "title": {
+            "bg": "Телешки език",
+            "tr": "Dana Dili",
+            "en": "Beef Tongue"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 15.45,
+          "allergens": []
+        },
+        {
+          "id": "hapki-deliorman",
+          "title": {
+            "bg": "Хапки „Делиорман“",
+            "tr": "Deliorman Lokmaları",
+            "en": "Deliorman Bites"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "700 g",
+          "price": 23.27,
+          "allergens": []
+        },
+        {
+          "id": "mecha-lapa",
+          "title": {
+            "bg": "Меча лапа",
+            "tr": "Ayı Pençesi",
+            "en": "Bear Paw"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "300 g",
+          "price": 12.7,
+          "allergens": []
+        },
+        {
+          "id": "tsatsa",
+          "title": {
+            "bg": "Цаца",
+            "tr": "Çaça Balığı",
+            "en": "Sprats"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 5.86,
+          "allergens": []
+        },
+        {
+          "id": "skumriya",
+          "title": {
+            "bg": "Скумрия",
+            "tr": "Uskumru",
+            "en": "Mackerel"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "250 g",
+          "price": 12.71,
+          "allergens": []
+        },
+        {
+          "id": "sharan-na-tigan",
+          "title": {
+            "bg": "Шаран на тиган",
+            "tr": "Tavada Sazan",
+            "en": "Pan-Fried Carp"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "750 g",
+          "price": 35,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "burgers",
+      "order": 80,
+      "title": {
+        "bg": "Бургери",
+        "tr": "Burgerler",
+        "en": "Burgers"
+      },
+      "description": {
+        "bg": "Домашни бургери с пържени картофи и сосове",
+        "tr": "Patates kızartması ve soslarla servis edilen ev yapımı burgerler.",
+        "en": "Homemade burgers served with fries and sauces."
+      },
+      "items": [
+        {
+          "id": "burger-afrodita",
+          "title": {
+            "bg": "Бургер Афродита",
+            "tr": "Afrodit Burger",
+            "en": "Aphrodite Burger"
+          },
+          "description": {
+            "bg": "хрупкаво пилешко филе, чедър, марул, кис. краставици, гарн. пържени картофи и сосове",
+            "tr": "çıtır tavuk fileto, cheddar, marul, kornişon, patates kızartması ve soslar ile servis edilir",
+            "en": "crispy chicken fillet, cheddar, lettuce, pickles, served with fries and sauces"
+          },
+          "amount": "350 g",
+          "price": 12.71,
+          "allergens": []
+        },
+        {
+          "id": "olimp-burger",
+          "title": {
+            "bg": "Олимп бургер",
+            "tr": "Olimp Burger",
+            "en": "Olymp Burger"
+          },
+          "description": {
+            "bg": "телешко месо, чедър, марул, кис. краставици, гарн. пържени картофи и сосове",
+            "tr": "dana eti, cheddar, marul, kornişon, patates kızartması ve soslar ile servis edilir",
+            "en": "beef, cheddar, lettuce, pickles, served with fries and sauces"
+          },
+          "amount": "350 g",
+          "price": 12.71,
+          "allergens": []
+        },
+        {
+          "id": "royal-burger",
+          "title": {
+            "bg": "Роял бургер",
+            "tr": "Royal Burger",
+            "en": "Royal Burger"
+          },
+          "description": {
+            "bg": "пил. месо, марул, чедър, кис. краставици, гарн. пържени картофи и сосове",
+            "tr": "tavuk eti, marul, cheddar, kornişon, patates kızartması ve soslar ile servis edilir",
+            "en": "chicken meat, lettuce, cheddar, pickles, served with fries and sauces"
+          },
+          "amount": "300 g",
+          "price": 12.71,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "new-specialties",
+      "order": 90,
+      "title": {
+        "bg": "Нови Специалитети",
+        "tr": "Yeni Spesiyaller",
+        "en": "New Specialties"
+      },
+      "description": {
+        "bg": "Авторски ястия на ресторанта с подбрани продукти",
+        "tr": "Seçilmiş malzemelerle hazırlanan özel ev lezzetleri.",
+        "en": "Signature house specialties made with selected ingredients."
+      },
+      "items": [
+        {
+          "id": "shish-deliorman",
+          "title": {
+            "bg": "Шиш „Делиорман“",
+            "tr": "Deliorman Şiş",
+            "en": "Deliorman Skewer"
+          },
+          "description": {
+            "bg": "телешка кайма, арабска питка, лук",
+            "tr": "dana kıyma, Arap pidesi, soğan",
+            "en": "minced beef, Arabic flatbread, onion"
+          },
+          "amount": "300 g",
+          "price": 13.49,
+          "allergens": []
+        },
+        {
+          "id": "teleshko-pecheno",
+          "title": {
+            "bg": "Телешко печено",
+            "tr": "Fırın Dana",
+            "en": "Roast Beef"
+          },
+          "description": {
+            "bg": "телешко месо от рибица, чесън, картофи",
+            "tr": "dana but, sarımsak, patates",
+            "en": "beef round, garlic, potatoes"
+          },
+          "amount": "300 g",
+          "price": 21.31,
+          "allergens": []
+        },
+        {
+          "id": "agneshki-delikates-na-shish",
+          "title": {
+            "bg": "Агнешки деликатес на шиш",
+            "tr": "Şişte Kuzu Lezzeti",
+            "en": "Lamb Delicacy Skewer"
+          },
+          "description": {
+            "bg": "агнешко месо, зеленчуци",
+            "tr": "kuzu eti, sebzeler",
+            "en": "lamb meat, vegetables"
+          },
+          "amount": "450 g",
+          "price": 31.1,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "cold-appetizers-sides",
+      "order": 100,
+      "title": {
+        "bg": "Студени Мезета и Гарнитури",
+        "tr": "Soğuk Mezeler ve Garnitürler",
+        "en": "Cold Appetizers & Sides"
+      },
+      "description": {
+        "bg": "Подходящи за споделяне или за допълнение към основните ястия",
+        "tr": "Paylaşmak ya da ana yemeklere eşlik etmek için ideal seçenekler.",
+        "en": "Ideal for sharing or pairing with main dishes."
+      },
+      "items": [
+        {
+          "id": "lukanka",
+          "title": {
+            "bg": "Луканка",
+            "tr": "Lukanka Sucuğu",
+            "en": "Lukanka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 7.82,
+          "allergens": []
+        },
+        {
+          "id": "sudzhuk",
+          "title": {
+            "bg": "Суджук",
+            "tr": "Sucuk",
+            "en": "Sudzhuk"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 9.58,
+          "allergens": []
+        },
+        {
+          "id": "pastarma",
+          "title": {
+            "bg": "Пастърма",
+            "tr": "Pastırma",
+            "en": "Pastirma"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 13.49,
+          "allergens": []
+        },
+        {
+          "id": "sirene",
+          "title": {
+            "bg": "Сирене",
+            "tr": "Beyaz Peynir",
+            "en": "White Cheese"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 4.88,
+          "allergens": []
+        },
+        {
+          "id": "kashkaval",
+          "title": {
+            "bg": "Кашкавал",
+            "tr": "Kaşar Peyniri",
+            "en": "Kashkaval"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 g",
+          "price": 4.88,
+          "allergens": []
+        },
+        {
+          "id": "topla-garnitura",
+          "title": {
+            "bg": "Топла гарнитура",
+            "tr": "Sıcak Garnitür",
+            "en": "Warm Side Dish"
+          },
+          "description": {
+            "bg": "ориз, картофи",
+            "tr": "pirinç, patates",
+            "en": "rice, potatoes"
+          },
+          "amount": "200 g",
+          "price": 3.91,
+          "allergens": []
+        },
+        {
+          "id": "studena-garnitura",
+          "title": {
+            "bg": "Студена гарнитура",
+            "tr": "Soğuk Garnitür",
+            "en": "Cold Side Dish"
+          },
+          "description": {
+            "bg": "зеле, моркови",
+            "tr": "lahana, havuç",
+            "en": "cabbage, carrots"
+          },
+          "amount": "150 g",
+          "price": 2.93,
+          "allergens": []
+        },
+        {
+          "id": "studena-garnitura",
+          "title": {
+            "bg": "Студена гарнитура",
+            "tr": "Soğuk Garnitür",
+            "en": "Cold Side Dish"
+          },
+          "description": {
+            "bg": "домати, краставици",
+            "tr": "domates, salatalık",
+            "en": "tomatoes, cucumbers"
+          },
+          "amount": "150 g",
+          "price": 2.93,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "nuts-desserts",
+      "order": 110,
+      "title": {
+        "bg": "Ядки и Десерти",
+        "tr": "Kuruyemiş ve Tatlılar",
+        "en": "Nuts & Desserts"
+      },
+      "description": {
+        "bg": "Подбрани ядки и сладки предложения за завършек на менюто",
+        "tr": "Menüyü tatlı bir notla bitirmek için seçilmiş kuruyemişler ve tatlılar.",
+        "en": "Selected nuts and sweet treats to finish the menu."
+      },
+      "items": [
+        {
+          "id": "leshnitsi",
+          "title": {
+            "bg": "Лешници",
+            "tr": "Fındık",
+            "en": "Hazelnuts"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 gr",
+          "price": 6.84,
+          "allergens": []
+        },
+        {
+          "id": "bademi",
+          "title": {
+            "bg": "Бадеми",
+            "tr": "Badem",
+            "en": "Almonds"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 gr",
+          "price": 6.84,
+          "allergens": []
+        },
+        {
+          "id": "indiysko-kashu",
+          "title": {
+            "bg": "Индийско кашу",
+            "tr": "Kaju",
+            "en": "Cashews"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 gr",
+          "price": 6.84,
+          "allergens": []
+        },
+        {
+          "id": "fastatsi",
+          "title": {
+            "bg": "Фъстъци",
+            "tr": "Yer Fıstığı",
+            "en": "Peanuts"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "100 gr",
+          "price": 2.93,
+          "allergens": []
+        },
+        {
+          "id": "kyunefe",
+          "title": {
+            "bg": "Кюнефе",
+            "tr": "Künefe",
+            "en": "Kunefe"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "200 g",
+          "price": 10.75,
+          "allergens": []
+        },
+        {
+          "id": "sladoled",
+          "title": {
+            "bg": "Сладолед",
+            "tr": "Dondurma",
+            "en": "Ice Cream"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": 5.67,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "rakia",
+      "order": 120,
+      "title": {
+        "bg": "Ракия",
+        "tr": "Rakılar",
+        "en": "Rakia"
+      },
+      "description": {
+        "bg": "Подбрани ракии за традиционен завършек на всяка трапеза",
+        "tr": "Her sofraya geleneksel bir kapanış için seçilmiş rakılar.",
+        "en": "Traditional rakias for a classic finish to any meal."
+      },
+      "items": [
+        {
+          "id": "peshterska-grozdova-otlezhala",
+          "title": {
+            "bg": "„Пещерска“ Гроздова отлежала",
+            "tr": "Peshterska Dinlendirilmiş Üzüm Rakısı",
+            "en": "Peshterska Aged Grape Rakia"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.34,
+          "allergens": []
+        },
+        {
+          "id": "kehlibar-grozdova",
+          "title": {
+            "bg": "„Кехлибар“ Гроздова",
+            "tr": "Kehlibar Üzüm Rakısı",
+            "en": "Kehlibar Grape Rakia"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.54,
+          "allergens": []
+        },
+        {
+          "id": "burgaska-muskatova",
+          "title": {
+            "bg": "„Бургаска“ Мускатова",
+            "tr": "Burgaska Muscat Rakısı",
+            "en": "Burgaska Muscat Rakia"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.73,
+          "allergens": []
+        },
+        {
+          "id": "burgaska-grozdova",
+          "title": {
+            "bg": "„Бургаска“ Гроздова",
+            "tr": "Burgaska Üzüm Rakısı",
+            "en": "Burgaska Grape Rakia"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.34,
+          "allergens": []
+        },
+        {
+          "id": "burgas-63",
+          "title": {
+            "bg": "„Бургас 63“",
+            "tr": "Burgas 63",
+            "en": "Burgas 63"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.71,
+          "allergens": []
+        },
+        {
+          "id": "burgas-63-barel",
+          "title": {
+            "bg": "„Бургас 63“ Барел",
+            "tr": "Burgas 63 Barrel",
+            "en": "Burgas 63 Barrel"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 4.3,
+          "allergens": []
+        },
+        {
+          "id": "slivenska-perla-barel",
+          "title": {
+            "bg": "„Сливенска перла“ Барел",
+            "tr": "Slivenska Perla Barrel",
+            "en": "Slivenska Perla Barrel"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 4.3,
+          "allergens": []
+        },
+        {
+          "id": "kaylashka-grozdova",
+          "title": {
+            "bg": "„Кайлъшка“ Гроздова",
+            "tr": "Kaylashka Üzüm Rakısı",
+            "en": "Kaylashka Grape Rakia"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.54,
+          "allergens": []
+        },
+        {
+          "id": "troyanska-slivova-otlezhala",
+          "title": {
+            "bg": "„Троянска“ Сливова отлежала",
+            "tr": "Dinlendirilmiş Troyan Erik Rakısı",
+            "en": "Troyan Aged Plum Rakia"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.93,
+          "allergens": []
+        },
+        {
+          "id": "targovishte-muskatova-otlezhala",
+          "title": {
+            "bg": "„Търговище“ Мускатова отлежала",
+            "tr": "Dinlendirilmiş Targovishte Muscat Rakısı",
+            "en": "Targovishte Aged Muscat Rakia"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.73,
+          "allergens": []
+        },
+        {
+          "id": "korten-otlezhala-rezerva",
+          "title": {
+            "bg": "„Кортен“ отлежала Резерва",
+            "tr": "Korten Dinlendirilmiş Rezerv",
+            "en": "Korten Aged Reserve"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 4.88,
+          "allergens": []
+        },
+        {
+          "id": "straldzhanska-muskatova-barel",
+          "title": {
+            "bg": "„Стралджанска“ мускатова Барел",
+            "tr": "Straldzhanska Muscat Barrel",
+            "en": "Straldzhanska Muscat Barrel"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 4.3,
+          "allergens": []
+        },
+        {
+          "id": "isperih-kaysieva",
+          "title": {
+            "bg": "„Исперих“ кайсиева",
+            "tr": "Isperih Kayısı Rakısı",
+            "en": "Isperih Apricot Rakia"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 4.3,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "wines",
+      "order": 130,
+      "title": {
+        "bg": "Бели и Червени Вина",
+        "tr": "Beyaz ve Kırmızı Şaraplar",
+        "en": "White & Red Wines"
+      },
+      "description": {
+        "bg": "Бели, червени и розе вина от подбрани изби",
+        "tr": "Seçilmiş mahzenlerden beyaz, kırmızı ve roze şaraplar.",
+        "en": "White, red and rosé wines from selected cellars."
+      },
+      "items": [
+        {
+          "id": "targovishte-muskat-sovin-on-blan",
+          "title": {
+            "bg": "„Търговище“ - Мускат / Совиньон Блан",
+            "tr": "Targovishte Muscat / Sauvignon Blanc",
+            "en": "Targovishte Muscat / Sauvignon Blanc"
+          },
+          "description": {
+            "bg": "Бяло вино",
+            "tr": "Beyaz Şarap",
+            "en": "White Wine"
+          },
+          "amount": "750 ml",
+          "price": 14.66,
+          "allergens": []
+        },
+        {
+          "id": "kvantum-shardone-sovin-on-blan",
+          "title": {
+            "bg": "„Квантум“ - Шардоне / Совиньон Блан",
+            "tr": "Quantum Chardonnay / Sauvignon Blanc",
+            "en": "Quantum Chardonnay / Sauvignon Blanc"
+          },
+          "description": {
+            "bg": "Бяло вино",
+            "tr": "Beyaz Şarap",
+            "en": "White Wine"
+          },
+          "amount": "750 ml",
+          "price": 20.53,
+          "allergens": []
+        },
+        {
+          "id": "pearl-white-sovin-on-blan-semiyon",
+          "title": {
+            "bg": "„Pearl White“ Совиньон Блан & Семийон",
+            "tr": "Pearl White Sauvignon Blanc & Semillon",
+            "en": "Pearl White Sauvignon Blanc & Semillon"
+          },
+          "description": {
+            "bg": "Бяло вино",
+            "tr": "Beyaz Şarap",
+            "en": "White Wine"
+          },
+          "amount": "750 ml",
+          "price": 25.23,
+          "allergens": []
+        },
+        {
+          "id": "korten-shardone",
+          "title": {
+            "bg": "„Кортен“ Шардоне",
+            "tr": "Korten Chardonnay",
+            "en": "Korten Chardonnay"
+          },
+          "description": {
+            "bg": "Бяло вино",
+            "tr": "Beyaz Şarap",
+            "en": "White Wine"
+          },
+          "amount": "750 ml",
+          "price": 35,
+          "allergens": []
+        },
+        {
+          "id": "nalivna-kana",
+          "title": {
+            "bg": "Наливна кана",
+            "tr": "Sürahi",
+            "en": "Carafe"
+          },
+          "description": {
+            "bg": "Бяло вино",
+            "tr": "Beyaz Şarap",
+            "en": "White Wine"
+          },
+          "amount": "500 ml",
+          "price": 8.41,
+          "allergens": []
+        },
+        {
+          "id": "nalivna-chasha",
+          "title": {
+            "bg": "Наливна чаша",
+            "tr": "Kadeh",
+            "en": "Glass"
+          },
+          "description": {
+            "bg": "Бяло вино",
+            "tr": "Beyaz Şarap",
+            "en": "White Wine"
+          },
+          "amount": "150 ml",
+          "price": 2.93,
+          "allergens": []
+        },
+        {
+          "id": "targovishte-kaberne",
+          "title": {
+            "bg": "„Търговище“ Каберне",
+            "tr": "Targovishte Cabernet",
+            "en": "Targovishte Cabernet"
+          },
+          "description": {
+            "bg": "Червено вино",
+            "tr": "Kırmızı Şarap",
+            "en": "Red Wine"
+          },
+          "amount": "750 ml",
+          "price": 14.66,
+          "allergens": []
+        },
+        {
+          "id": "kvantum-kaberne-merlo",
+          "title": {
+            "bg": "„Квантум“ - Каберне / Мерло",
+            "tr": "Quantum Cabernet / Merlot",
+            "en": "Quantum Cabernet / Merlot"
+          },
+          "description": {
+            "bg": "Червено вино",
+            "tr": "Kırmızı Şarap",
+            "en": "Red Wine"
+          },
+          "amount": "750 ml",
+          "price": 20.53,
+          "allergens": []
+        },
+        {
+          "id": "deep-red-kaberne",
+          "title": {
+            "bg": "„Deep Red“ Каберне",
+            "tr": "Deep Red Cabernet",
+            "en": "Deep Red Cabernet"
+          },
+          "description": {
+            "bg": "Червено вино",
+            "tr": "Kırmızı Şarap",
+            "en": "Red Wine"
+          },
+          "amount": "750 ml",
+          "price": 25.23,
+          "allergens": []
+        },
+        {
+          "id": "korten-merlo-kaberne",
+          "title": {
+            "bg": "„Кортен“ - Мерло / Каберне",
+            "tr": "Korten Merlot / Cabernet",
+            "en": "Korten Merlot / Cabernet"
+          },
+          "description": {
+            "bg": "Червено вино",
+            "tr": "Kırmızı Şarap",
+            "en": "Red Wine"
+          },
+          "amount": "750 ml",
+          "price": 35,
+          "allergens": []
+        },
+        {
+          "id": "nalivna-kana",
+          "title": {
+            "bg": "Наливна кана",
+            "tr": "Sürahi",
+            "en": "Carafe"
+          },
+          "description": {
+            "bg": "Червено вино",
+            "tr": "Kırmızı Şarap",
+            "en": "Red Wine"
+          },
+          "amount": "500 ml",
+          "price": 8.41,
+          "allergens": []
+        },
+        {
+          "id": "nalivna-chasha",
+          "title": {
+            "bg": "Наливна чаша",
+            "tr": "Kadeh",
+            "en": "Glass"
+          },
+          "description": {
+            "bg": "Червено вино",
+            "tr": "Kırmızı Şarap",
+            "en": "Red Wine"
+          },
+          "amount": "150 ml",
+          "price": 2.93,
+          "allergens": []
+        },
+        {
+          "id": "targovishte-roze",
+          "title": {
+            "bg": "„Търговище“ розе",
+            "tr": "Targovishte Roze",
+            "en": "Targovishte Rosé"
+          },
+          "description": {
+            "bg": "Розе",
+            "tr": "Roze",
+            "en": "Rosé"
+          },
+          "amount": "750 ml",
+          "price": 14.66,
+          "allergens": []
+        },
+        {
+          "id": "kvantum-roze",
+          "title": {
+            "bg": "„Квантум“ розе",
+            "tr": "Quantum Roze",
+            "en": "Quantum Rosé"
+          },
+          "description": {
+            "bg": "Розе",
+            "tr": "Roze",
+            "en": "Rosé"
+          },
+          "amount": "750 ml",
+          "price": 20.53,
+          "allergens": []
+        },
+        {
+          "id": "pure-pink-roze-sira-murvedar",
+          "title": {
+            "bg": "„PURE PINK“ розе Сира & Мурведър",
+            "tr": "PURE PINK Roze Syrah & Mourvèdre",
+            "en": "PURE PINK Rosé Syrah & Mourvèdre"
+          },
+          "description": {
+            "bg": "Розе",
+            "tr": "Roze",
+            "en": "Rosé"
+          },
+          "amount": "750 ml",
+          "price": 25.23,
+          "allergens": []
+        },
+        {
+          "id": "korten-roze-sira",
+          "title": {
+            "bg": "„Кортен“ розе Сира",
+            "tr": "Korten Roze Syrah",
+            "en": "Korten Rosé Syrah"
+          },
+          "description": {
+            "bg": "Розе",
+            "tr": "Roze",
+            "en": "Rosé"
+          },
+          "amount": "750 ml",
+          "price": 35,
+          "allergens": []
+        },
+        {
+          "id": "nalivna-kana-roze",
+          "title": {
+            "bg": "Наливна кана розе",
+            "tr": "Roze Sürahi",
+            "en": "Carafe Rosé"
+          },
+          "description": {
+            "bg": "Розе",
+            "tr": "Roze",
+            "en": "Rosé"
+          },
+          "amount": "500 ml",
+          "price": 8.41,
+          "allergens": []
+        },
+        {
+          "id": "nalivna-chasha-roze",
+          "title": {
+            "bg": "Наливна чаша розе",
+            "tr": "Roze Kadeh",
+            "en": "Glass Rosé"
+          },
+          "description": {
+            "bg": "Розе",
+            "tr": "Roze",
+            "en": "Rosé"
+          },
+          "amount": "150 ml",
+          "price": 2.93,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "beer-cider-other-drinks",
+      "order": 140,
+      "title": {
+        "bg": "Бира, Сайдер и Други Напитки",
+        "tr": "Bira, Elma Şarabı ve Diğer İçecekler",
+        "en": "Beer, Cider & Other Drinks"
+      },
+      "description": {
+        "bg": "Бира, сайдер и избрани спиртни напитки за всяко настроение",
+        "tr": "Her ruh haline uygun bira, elma şarabı ve seçilmiş sert içkiler.",
+        "en": "Beer, cider and selected spirits for every mood."
+      },
+      "items": [
+        {
+          "id": "carlsberg",
+          "title": {
+            "bg": "Carlsberg",
+            "tr": "Carlsberg",
+            "en": "Carlsberg"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "500 ml",
+          "price": 3.91,
+          "allergens": []
+        },
+        {
+          "id": "carlsberg-0-0",
+          "title": {
+            "bg": "Carlsberg 0.0%",
+            "tr": "Carlsberg 0.0%",
+            "en": "Carlsberg 0.0%"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "330 ml",
+          "price": 4.3,
+          "allergens": []
+        },
+        {
+          "id": "1664-blanc",
+          "title": {
+            "bg": "1664 Blanc",
+            "tr": "1664 Blanc",
+            "en": "1664 Blanc"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "330 ml",
+          "price": 4.3,
+          "allergens": []
+        },
+        {
+          "id": "budweiser",
+          "title": {
+            "bg": "Budweiser",
+            "tr": "Budweiser",
+            "en": "Budweiser"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "500 ml",
+          "price": 4.88,
+          "allergens": []
+        },
+        {
+          "id": "tuborg",
+          "title": {
+            "bg": "Tuborg",
+            "tr": "Tuborg",
+            "en": "Tuborg"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "500 ml",
+          "price": 3.32,
+          "allergens": []
+        },
+        {
+          "id": "shumensko-svetlo",
+          "title": {
+            "bg": "Шуменско Светло",
+            "tr": "Shumensko Açık",
+            "en": "Shumensko Lager"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "500 ml",
+          "price": 2.93,
+          "allergens": []
+        },
+        {
+          "id": "shumensko-spetsialno",
+          "title": {
+            "bg": "Шуменско Специално",
+            "tr": "Shumensko Special",
+            "en": "Shumensko Special"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "330 ml",
+          "price": 2.54,
+          "allergens": []
+        },
+        {
+          "id": "pirinsko",
+          "title": {
+            "bg": "Пиринско",
+            "tr": "Pirinsko",
+            "en": "Pirinsko"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "500 ml",
+          "price": 2.93,
+          "allergens": []
+        },
+        {
+          "id": "pirinsko-mlado-pivo",
+          "title": {
+            "bg": "Пиринско Младо пиво",
+            "tr": "Pirinsko Genç Bira",
+            "en": "Pirinsko Young Beer"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "330 ml",
+          "price": 2.54,
+          "allergens": []
+        },
+        {
+          "id": "samarsbi",
+          "title": {
+            "bg": "Съмърсби",
+            "tr": "Somersby",
+            "en": "Somersby"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "330 ml",
+          "price": 3.32,
+          "allergens": []
+        },
+        {
+          "id": "uzo-plumari",
+          "title": {
+            "bg": "Узо „Плумари“",
+            "tr": "Uzo Plomari",
+            "en": "Ouzo Plomari"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.34,
+          "allergens": []
+        },
+        {
+          "id": "mastika-peshtera",
+          "title": {
+            "bg": "Мастика „Пещера“",
+            "tr": "Peshtera Mastika",
+            "en": "Peshtera Mastika"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 1.76,
+          "allergens": []
+        },
+        {
+          "id": "dzhin-savoy",
+          "title": {
+            "bg": "Джин „Савой“",
+            "tr": "Savoy Cin",
+            "en": "Savoy Gin"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.54,
+          "allergens": []
+        },
+        {
+          "id": "konyak-metaksa",
+          "title": {
+            "bg": "Коняк „Метакса“",
+            "tr": "Metaxa Brendi",
+            "en": "Metaxa Brandy"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.32,
+          "allergens": []
+        },
+        {
+          "id": "menta-peshtera",
+          "title": {
+            "bg": "Мента „Пещера“",
+            "tr": "Peshtera Nane Likörü",
+            "en": "Peshtera Mint Liqueur"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 1.76,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "whiskey-vodka",
+      "order": 150,
+      "title": {
+        "bg": "Уиски и Водка",
+        "tr": "Viski ve Votka",
+        "en": "Whisky & Vodka"
+      },
+      "description": {
+        "bg": "Популярни уискита и водки, подбрани за ценителите",
+        "tr": "Meraklıları için seçilmiş popüler viskiler ve votkalar.",
+        "en": "Popular whiskies and vodkas selected for connoisseurs."
+      },
+      "items": [
+        {
+          "id": "pasport",
+          "title": {
+            "bg": "„Паспорт“",
+            "tr": "Passport",
+            "en": "Passport"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.73,
+          "allergens": []
+        },
+        {
+          "id": "balantays",
+          "title": {
+            "bg": "„Балантайс“",
+            "tr": "Ballantine's",
+            "en": "Ballantine's"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.12,
+          "allergens": []
+        },
+        {
+          "id": "dzheymsan",
+          "title": {
+            "bg": "„Джеймсън“",
+            "tr": "Jameson",
+            "en": "Jameson"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.91,
+          "allergens": []
+        },
+        {
+          "id": "dzhoni-uokar-red-leybal",
+          "title": {
+            "bg": "„Джони Уокър“ Ред Лейбъл",
+            "tr": "Johnnie Walker Kırmızı Etiket",
+            "en": "Johnnie Walker Red Label"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.12,
+          "allergens": []
+        },
+        {
+          "id": "dzhim-biym",
+          "title": {
+            "bg": "„Джим Бийм“",
+            "tr": "Jim Beam",
+            "en": "Jim Beam"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.32,
+          "allergens": []
+        },
+        {
+          "id": "tyulamor-dyu",
+          "title": {
+            "bg": "„Тюламор Дю“",
+            "tr": "Tullamore Dew",
+            "en": "Tullamore Dew"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.71,
+          "allergens": []
+        },
+        {
+          "id": "dzhak-daniels",
+          "title": {
+            "bg": "„Джак Даниелс“",
+            "tr": "Jack Daniel's",
+            "en": "Jack Daniel's"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 4.88,
+          "allergens": []
+        },
+        {
+          "id": "dzhoni-uokar-blek-leybal",
+          "title": {
+            "bg": "„Джони Уокър“ Блек Лейбъл",
+            "tr": "Johnnie Walker Siyah Etiket",
+            "en": "Johnnie Walker Black Label"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 5.47,
+          "allergens": []
+        },
+        {
+          "id": "chivas-regal",
+          "title": {
+            "bg": "„Чивас Регал“",
+            "tr": "Chivas Regal",
+            "en": "Chivas Regal"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 5.47,
+          "allergens": []
+        },
+        {
+          "id": "bushmils-blek-bush",
+          "title": {
+            "bg": "„Бушмилс“ Блек Буш",
+            "tr": "Bushmills Black Bush",
+            "en": "Bushmills Black Bush"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 5.47,
+          "allergens": []
+        },
+        {
+          "id": "vodka-flirt",
+          "title": {
+            "bg": "Водка „Флирт“",
+            "tr": "Flirt Votka",
+            "en": "Flirt Vodka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 1.76,
+          "allergens": []
+        },
+        {
+          "id": "vodka-alyaska",
+          "title": {
+            "bg": "Водка „Аляска“",
+            "tr": "Alaska Votka",
+            "en": "Alaska Vodka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 1.76,
+          "allergens": []
+        },
+        {
+          "id": "vodka-smirnof",
+          "title": {
+            "bg": "Водка „Смирноф“",
+            "tr": "Smirnoff Votka",
+            "en": "Smirnoff Vodka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.03,
+          "allergens": []
+        },
+        {
+          "id": "vodka-absolyut",
+          "title": {
+            "bg": "Водка „Абсолют“",
+            "tr": "Absolut Votka",
+            "en": "Absolut Vodka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 2.03,
+          "allergens": []
+        },
+        {
+          "id": "vodka-ruski-standart",
+          "title": {
+            "bg": "Водка „Руски стандарт“",
+            "tr": "Russian Standard Votka",
+            "en": "Russian Standard Vodka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.32,
+          "allergens": []
+        },
+        {
+          "id": "vodka-finlandiya",
+          "title": {
+            "bg": "Водка „Финландия“",
+            "tr": "Finlandia Votka",
+            "en": "Finlandia Vodka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 3.32,
+          "allergens": []
+        },
+        {
+          "id": "vodka-beluga",
+          "title": {
+            "bg": "Водка „Белуга“",
+            "tr": "Beluga Votka",
+            "en": "Beluga Vodka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 6.84,
+          "allergens": []
+        },
+        {
+          "id": "vodka-siva-gaska",
+          "title": {
+            "bg": "Водка „Сива Гъска“",
+            "tr": "Grey Goose Votka",
+            "en": "Grey Goose Vodka"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "50 ml",
+          "price": 6.84,
+          "allergens": []
+        }
+      ]
+    },
+    {
+      "id": "allergens",
+      "order": 160,
+      "title": {
+        "bg": "Алергени",
+        "tr": "Alerjenler",
+        "en": "Allergens"
+      },
+      "description": {
+        "bg": "Вещества и продукти, причиняващи алергии или непоносимост",
+        "tr": "Alerji veya intoleransa neden olabilecek maddeler ve ürünler.",
+        "en": "Substances and products that can cause allergies or intolerance."
+      },
+      "items": [
+        {
+          "id": "zarneni-kulturi-sadarzhashti-gluten",
+          "title": {
+            "bg": "Зърнени култури, съдържащи глутен",
+            "tr": "Gluten içeren tahıllar",
+            "en": "Cereals containing gluten"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "rakoobrazni-produkti-i-produkti-ot-tyah",
+          "title": {
+            "bg": "Ракообразни продукти и продукти от тях",
+            "tr": "Kabuklu deniz ürünleri ve bunlardan elde edilen ürünler",
+            "en": "Crustaceans and products thereof"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "yaytsa-i-produkti-ot-tyah",
+          "title": {
+            "bg": "Яйца и продукти от тях",
+            "tr": "Yumurta ve yumurta ürünleri",
+            "en": "Eggs and products thereof"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "riba-i-ribni-produkti",
+          "title": {
+            "bg": "Риба и рибни продукти",
+            "tr": "Balık ve balık ürünleri",
+            "en": "Fish and fish products"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "fastatsi-i-produkti-s-tyah",
+          "title": {
+            "bg": "Фъстъци и продукти с тях",
+            "tr": "Yer fıstığı ve yer fıstığı ürünleri",
+            "en": "Peanuts and products thereof"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "soya-i-soevi-produkti",
+          "title": {
+            "bg": "Соя и соеви продукти",
+            "tr": "Soya ve soya ürünleri",
+            "en": "Soybeans and soybean products"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "mlyako-i-mlechni-produkti",
+          "title": {
+            "bg": "Мляко и млечни продукти",
+            "tr": "Süt ve süt ürünleri",
+            "en": "Milk and dairy products"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "yadki-bademi-leshnitsi-orehi-kashu-brazilski-orehi-shamfastak-makadamiya-i-orehi-kuinslend",
+          "title": {
+            "bg": "Ядки: бадеми, лешници, орехи, кашу, бразилски орехи, шамфъстък, макадамия и орехи куинсленд",
+            "tr": "Kabuklu yemişler: badem, fındık, ceviz, kaju, Brezilya cevizi, Antep fıstığı, makademya ve Queensland cevizi",
+            "en": "Tree nuts: almonds, hazelnuts, walnuts, cashews, Brazil nuts, pistachios, macadamia nuts and Queensland nuts"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "tselina-i-produkti-ot-neya",
+          "title": {
+            "bg": "Целина и продукти от нея",
+            "tr": "Kereviz ve kereviz ürünleri",
+            "en": "Celery and products thereof"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "sinap-i-produkti-ot-nego",
+          "title": {
+            "bg": "Синап и продукти от него",
+            "tr": "Hardal ve hardal ürünleri",
+            "en": "Mustard and products thereof"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "susamovo-seme-i-produkti-ot-nego",
+          "title": {
+            "bg": "Сусамово семе и продукти от него",
+            "tr": "Susam tohumu ve susam ürünleri",
+            "en": "Sesame seeds and products thereof"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "lupina-i-produkti-ot-neya",
+          "title": {
+            "bg": "Лупина и продукти от нея",
+            "tr": "Acı bakla ve ürünleri",
+            "en": "Lupin and products thereof"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        },
+        {
+          "id": "mekoteli-i-produkti-ot-tyah",
+          "title": {
+            "bg": "Мекотели и продукти от тях",
+            "tr": "Yumuşakçalar ve ürünleri",
+            "en": "Molluscs and products thereof"
+          },
+          "description": {
+            "bg": "",
+            "tr": "",
+            "en": ""
+          },
+          "amount": "",
+          "price": null,
+          "allergens": []
+        }
+      ]
+    }
+  ]
+}

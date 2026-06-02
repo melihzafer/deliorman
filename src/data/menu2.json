@@ -1,1189 +1,1213 @@
 {
-  "restaurant_name": "Делиорман",
+  "restaurant_name": "Deliorman",
   "menu_kategorileri": {
-    "salatalar": [
+    "hot-beverages": [
       {
-        "ad": "Салата Делиорман",
-        "gramaj": "500 г",
-        "fiyat_bgn": 9.90,
-        "fiyat_eur": 5.06,
-        "aciklama": "домати, краставици, кашкавал, сирене, шунка, снежанка, печена чушка, маслини"
+        "ad": "Espresso",
+        "miktar": "60 ml",
+        "fiyat_bgn": 1.95,
+        "fiyat_eur": 1,
+        "aciklama": null
       },
       {
-        "ad": "Салата Шопска",
-        "gramaj": "400 г",
-        "fiyat_bgn": 7.50,
-        "fiyat_eur": 3.84,
-        "aciklama": "домати, краставици, пипер, лук, сирене, маслини"
+        "ad": "Lavazza Kapsül Kahve",
+        "miktar": "60 ml",
+        "fiyat_bgn": 2.73,
+        "fiyat_eur": 1.4,
+        "aciklama": null
       },
       {
-        "ad": "Салата Овчарска",
-        "gramaj": "550 г",
-        "fiyat_bgn": 8.50,
-        "fiyat_eur": 4.35,
-        "aciklama": "домати, краставици, пипер, лук, гъби, шунка, кашкавал, сирене, яйце, маслини"
+        "ad": "Nescafe",
+        "miktar": "60 ml",
+        "fiyat_bgn": 1.95,
+        "fiyat_eur": 1,
+        "aciklama": null
       },
       {
-        "ad": "Салата Гръцка",
-        "gramaj": "450 г",
-        "fiyat_bgn": 7.50,
-        "fiyat_eur": 3.84,
-        "aciklama": "домати, краставици, печен пипер, сирене, маслини, лук, мляк, риган, зехтин"
+        "ad": "Cappuccino",
+        "miktar": "150 ml",
+        "fiyat_bgn": 2.73,
+        "fiyat_eur": 1.4,
+        "aciklama": null
       },
       {
-        "ad": "Салата \"Цезар\"",
-        "gramaj": "450 г",
-        "fiyat_bgn": 9.90,
-        "fiyat_eur": 5.06,
-        "aciklama": "айсберг, пил. филе, крутони, дресинг, пармезан, сос"
+        "ad": "Mocaccino",
+        "miktar": "150 ml",
+        "fiyat_bgn": 2.73,
+        "fiyat_eur": 1.4,
+        "aciklama": null
       },
       {
-        "ad": "Зелена салата с риба тон",
-        "gramaj": "300 г",
-        "fiyat_bgn": 9.90,
-        "fiyat_eur": 5.06,
-        "aciklama": "маруля, краставици, маслини, риба тон, дресинг"
+        "ad": "Sıcak Çikolata",
+        "miktar": "150 ml",
+        "fiyat_bgn": 2.73,
+        "fiyat_eur": 1.4,
+        "aciklama": null
       },
       {
-        "ad": "Редена салата",
-        "gramaj": "350 г",
-        "fiyat_bgn": 7.50,
-        "fiyat_eur": 3.84,
-        "aciklama": "домати, краставици, печ. чушки, сирене, маслини, лук"
+        "ad": "Taze Süt",
+        "miktar": "150 ml",
+        "fiyat_bgn": 2.15,
+        "fiyat_eur": 1.1,
+        "aciklama": null
       },
       {
-        "ad": "Салата зеле с майонеза",
-        "gramaj": "300 г",
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02,
-        "aciklama": "зеле, майонеза, маслини"
+        "ad": "Bitki Çayı",
+        "miktar": "150 ml",
+        "fiyat_bgn": 1.76,
+        "fiyat_eur": 0.9,
+        "aciklama": "nane, papatya, buket, siyah, yeşil"
       },
       {
-        "ad": "Зелена салата",
-        "gramaj": "350 г",
-        "fiyat_bgn": 6.50,
-        "fiyat_eur": 3.32,
-        "aciklama": "маруля, краставици, репички, маслини, яйце"
+        "ad": "Meyve Çayı",
+        "miktar": "150 ml",
+        "fiyat_bgn": 1.76,
+        "fiyat_eur": 0.9,
+        "aciklama": "limon, ahududu, orman meyveleri"
       },
       {
-        "ad": "Снежанка",
-        "gramaj": "300 г",
-        "fiyat_bgn": 6.50,
-        "fiyat_eur": 3.32,
-        "aciklama": "кис. краставици, копър, чесън, кис. мляко, маслини"
+        "ad": "Bal",
+        "miktar": "15 ml",
+        "fiyat_bgn": 0.78,
+        "fiyat_eur": 0.4,
+        "aciklama": null
       },
       {
-        "ad": "Зеле с моркови",
-        "gramaj": "300 г",
-        "fiyat_bgn": 5.50,
-        "fiyat_eur": 2.81,
-        "aciklama": "зеле, моркови"
+        "ad": "Süt Sürahisi",
+        "miktar": "50 ml",
+        "fiyat_bgn": 0.78,
+        "fiyat_eur": 0.4,
+        "aciklama": null
       },
       {
-        "ad": "Салата моркови с майонеза",
-        "gramaj": "300 г",
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02,
-        "aciklama": "моркови, майонеза, маслини"
+        "ad": "Krema",
+        "miktar": "10 ml",
+        "fiyat_bgn": 0.78,
+        "fiyat_eur": 0.4,
+        "aciklama": "toz, yoğunlaştırılmış, sprey"
       }
     ],
-    "alaminutler_aperatifler": [
+    "salads": [
       {
-        "ad": "Пържени кюфтета",
-        "gramaj": "300 г",
-        "fiyat_bgn": 6.90,
-        "fiyat_eur": 3.53,
+        "ad": "Şopska Salatası",
+        "miktar": "400 g",
+        "fiyat_bgn": 7.82,
+        "fiyat_eur": 4,
+        "aciklama": "domates, salatalık, biber, soğan, beyaz peynir, zeytin"
+      },
+      {
+        "ad": "Deliorman Salatası",
+        "miktar": "500 g",
+        "fiyat_bgn": 10.75,
+        "fiyat_eur": 5.5,
+        "aciklama": "domates, salatalık, kaşar peyniri, beyaz peynir, jambon, Snejanka mezesi, közlenmiş biber, zeytin"
+      },
+      {
+        "ad": "Ovçarska Salatası",
+        "miktar": "550 g",
+        "fiyat_bgn": 9.77,
+        "fiyat_eur": 5,
+        "aciklama": "domates, salatalık, biber, soğan, mantar, jambon, kaşar peyniri, beyaz peynir, yumurta, zeytin"
+      },
+      {
+        "ad": "Yunan Salatası",
+        "miktar": "450 g",
+        "fiyat_bgn": 7.82,
+        "fiyat_eur": 4,
+        "aciklama": "domates, salatalık, közlenmiş biber, beyaz peynir, zeytin, soğan, limon, zeytinyağı, kekik"
+      },
+      {
+        "ad": "Sezar Salatası",
+        "miktar": "450 g",
+        "fiyat_bgn": 11.73,
+        "fiyat_eur": 6,
+        "aciklama": "iceberg marul, tavuk fileto, cherry domates, salatalık, kruton, parmesan, sos"
+      },
+      {
+        "ad": "Ton Balıklı Yeşil Salata",
+        "miktar": "300 g",
+        "fiyat_bgn": 10.75,
+        "fiyat_eur": 5.5,
+        "aciklama": "marul, salatalık, zeytin, ton balığı, zeytinyağı"
+      }
+    ],
+    "hot-appetizers": [
+      {
+        "ad": "Soğan Halkaları",
+        "miktar": "300 g",
+        "fiyat_bgn": 8.8,
+        "fiyat_eur": 4.5,
         "aciklama": null
       },
       {
-        "ad": "Нашкавал пане",
-        "gramaj": "200 г",
-        "fiyat_bgn": 6.90,
-        "fiyat_eur": 3.53,
+        "ad": "Pane Kaşar Peyniri",
+        "miktar": "200 g",
+        "fiyat_bgn": 11.55,
+        "fiyat_eur": 5.91,
         "aciklama": null
       },
       {
-        "ad": "Пилешки дробчета",
-        "gramaj": "350 г",
-        "fiyat_bgn": 6.90,
-        "fiyat_eur": 3.53,
-        "aciklama": "/ лук, моркови, пипер/"
-      },
-      {
-        "ad": "Пилешки сърца на тиган",
-        "gramaj": "300 г",
-        "fiyat_bgn": 7.90,
-        "fiyat_eur": 4.04,
-        "aciklama": "/ лук, моркови/"
-      },
-      {
-        "ad": "Пилешки воденички на тиган",
-        "gramaj": "300 г",
-        "fiyat_bgn": 7.90,
-        "fiyat_eur": 4.04,
-        "aciklama": "/ лук, моркови/"
-      },
-      {
-        "ad": "Пилешки филенца с корнфлейкс",
-        "gramaj": "400 г",
-        "fiyat_bgn": 9.90,
-        "fiyat_eur": 5.06,
+        "ad": "Cornflakes'li Tavuk Fileto",
+        "miktar": "400 g",
+        "fiyat_bgn": 13.4,
+        "fiyat_eur": 6.85,
         "aciklama": null
       },
       {
-        "ad": "Пържени картофи",
-        "gramaj": "200 г",
-        "fiyat_bgn": 5.50,
-        "fiyat_eur": 2.81,
+        "ad": "Patates Kızartması",
+        "miktar": "200 g",
+        "fiyat_bgn": 6.84,
+        "fiyat_eur": 3.5,
         "aciklama": null
       },
       {
-        "ad": "Пържени картофи със сирене",
-        "gramaj": "250 г",
-        "fiyat_bgn": 6.50,
-        "fiyat_eur": 3.32,
+        "ad": "Peynirli Patates Kızartması",
+        "miktar": "250 g",
+        "fiyat_bgn": 7.62,
+        "fiyat_eur": 3.9,
         "aciklama": null
       },
       {
-        "ad": "Пилешки крилца",
-        "gramaj": "200 г",
-        "fiyat_bgn": 8.90,
-        "fiyat_eur": 4.55,
+        "ad": "Tavuk Kanatları",
+        "miktar": "400 g",
+        "fiyat_bgn": 11.55,
+        "fiyat_eur": 5.91,
         "aciklama": null
       },
       {
-        "ad": "Пържени картофи по селски",
-        "gramaj": "200 г",
-        "fiyat_bgn": 6.90,
-        "fiyat_eur": 3.53,
+        "ad": "Köy Usulü Patates Kızartması",
+        "miktar": "200 g",
+        "fiyat_bgn": 7.62,
+        "fiyat_eur": 3.9,
         "aciklama": null
       },
       {
-        "ad": "Омлет с шунка и гарнитура",
-        "gramaj": "250 г",
-        "fiyat_bgn": 6.90,
-        "fiyat_eur": 3.53,
+        "ad": "Jambonlu Omlet ve Garnitür",
+        "miktar": "300 g",
+        "fiyat_bgn": 9.58,
+        "fiyat_eur": 4.9,
         "aciklama": null
       },
       {
-        "ad": "Порция дюнер",
-        "gramaj": "500 г",
-        "fiyat_bgn": 9.90,
-        "fiyat_eur": 5.06,
+        "ad": "Döner Porsiyonu",
+        "miktar": "400 g",
+        "fiyat_bgn": 13.4,
+        "fiyat_eur": 6.85,
         "aciklama": null
       },
       {
-        "ad": "Свински ребра печени",
-        "gramaj": "250 г",
-        "fiyat_bgn": 12.90,
-        "fiyat_eur": 6.60,
+        "ad": "Fırınlanmış Domuz Kaburga",
+        "miktar": "300 g",
+        "fiyat_bgn": 13.4,
+        "fiyat_eur": 6.85,
         "aciklama": null
       },
       {
-        "ad": "Топени сиренца",
-        "gramaj": "200 г",
-        "fiyat_bgn": 6.90,
-        "fiyat_eur": 3.53,
+        "ad": "Eritme Peynir Lokmaları",
+        "miktar": "200 g",
+        "fiyat_bgn": 9.58,
+        "fiyat_eur": 4.9,
         "aciklama": null
       },
       {
-        "ad": "Бейби моцарела",
-        "gramaj": "350 г",
-        "fiyat_bgn": 9.90,
-        "fiyat_eur": 5.06,
+        "ad": "Bebek Mozzarella",
+        "miktar": "350 g",
+        "fiyat_bgn": 13.4,
+        "fiyat_eur": 6.85,
         "aciklama": null
       }
     ],
-    "corbalar_balik_sandvicler": {
-      "corbalar": [
-        {
-          "ad": "Пилешка супа",
-          "ml": "300 мл",
-          "fiyat_bgn": 3.50,
-          "fiyat_eur": 1.79
-        },
-        {
-          "ad": "Шкембе чорба",
-          "ml": "300 мл",
-          "fiyat_bgn": 3.50,
-          "fiyat_eur": 1.79
-        },
-        {
-          "ad": "Супа топчета",
-          "ml": "300 мл",
-          "fiyat_bgn": 3.50,
-          "fiyat_eur": 1.79
-        },
-        {
-          "ad": "Таратор",
-          "ml": "300 мл",
-          "fiyat_bgn": 2.50,
-          "fiyat_eur": 1.28
-        }
-      ],
-      "balik": [
-        {
-          "ad": "Цаца",
-          "gramaj": "200 г",
-          "fiyat_bgn": 5.50,
-          "fiyat_eur": 2.81
-        },
-        {
-          "ad": "Скумрия",
-          "gramaj": "250 г",
-          "fiyat_bgn": 8.90,
-          "fiyat_eur": 4.55
-        },
-        {
-          "ad": "Шаран на тиган",
-          "gramaj": "750 г",
-          "fiyat_bgn": 35.00,
-          "fiyat_eur": 17.89
-        }
-      ],
-      "sandvicler": [
-        {
-          "ad": "Кайма",
-          "gramaj": null,
-          "fiyat_bgn": 2.90,
-          "fiyat_eur": 1.48
-        },
-        {
-          "ad": "Кашкавал и шунка",
-          "gramaj": null,
-          "fiyat_bgn": 2.90,
-          "fiyat_eur": 1.48
-        },
-        {
-          "ad": "Кашкавал",
-          "gramaj": null,
-          "fiyat_bgn": 2.90,
-          "fiyat_eur": 1.48
-        },
-        {
-          "ad": "Сирене, яйца и кашкавал",
-          "gramaj": null,
-          "fiyat_bgn": 2.90,
-          "fiyat_eur": 1.48
-        }
-      ],
-      "ekmek": [
-        {
-          "ad": "Филия хляб",
-          "gramaj": null,
-          "fiyat_bgn": 0.25,
-          "fiyat_eur": 0.13
-        },
-        {
-          "ad": "Филия хляб-препечена",
-          "gramaj": null,
-          "fiyat_bgn": 0.35,
-          "fiyat_eur": 0.18
-        },
-        {
-          "ad": "Гръцка питка",
-          "gramaj": "100 г",
-          "fiyat_bgn": 1.00,
-          "fiyat_eur": 0.51
-        },
-        {
-          "ad": "Гръцка чеснова питка",
-          "gramaj": "100 г",
-          "fiyat_bgn": 1.00,
-          "fiyat_eur": 0.51
-        }
-      ]
-    },
-    "pizzalar": [
+    "soups-sandwiches": [
       {
-        "ad": "Делиорман",
-        "gramaj": "400 г",
-        "fiyat_bgn": 8.90,
-        "fiyat_eur": 4.55,
-        "aciklama": "доматен сос, шунка, мар. гъби, кашкавал, луканка, сирене, кис.краставички, чес. паста, босилек"
+        "ad": "Tavuk Çorbası",
+        "miktar": "300 ml",
+        "fiyat_bgn": 3.91,
+        "fiyat_eur": 2,
+        "aciklama": null
       },
       {
-        "ad": "Бонджорно",
-        "gramaj": "400 г",
-        "fiyat_bgn": 7.90,
-        "fiyat_eur": 4.04,
-        "aciklama": "доматен сос, сирене, кашкавал"
+        "ad": "İşkembe Çorbası",
+        "miktar": "300 ml",
+        "fiyat_bgn": 3.91,
+        "fiyat_eur": 2,
+        "aciklama": null
       },
       {
-        "ad": "Маргарита",
-        "gramaj": "400 г",
-        "fiyat_bgn": 7.90,
-        "fiyat_eur": 4.04,
-        "aciklama": "доматен сос, кашкавал, босилек"
+        "ad": "Köfte Çorbası",
+        "miktar": "300 ml",
+        "fiyat_bgn": 3.91,
+        "fiyat_eur": 2,
+        "aciklama": null
       },
       {
-        "ad": "Компира",
-        "gramaj": "400 г",
-        "fiyat_bgn": 7.90,
-        "fiyat_eur": 4.04,
-        "aciklama": "доматен сос, шунка, пресни гъби, кашкавал"
+        "ad": "Tarator",
+        "miktar": "300 ml",
+        "fiyat_bgn": 3.71,
+        "fiyat_eur": 1.9,
+        "aciklama": null
       },
       {
-        "ad": "Карлеона",
-        "gramaj": "400 г",
-        "fiyat_bgn": 8.90,
-        "fiyat_eur": 4.55,
-        "aciklama": "доматен сос, шунка, луканка, кис. краставици, кашкавал"
+        "ad": "Tavuk Ciğeri",
+        "miktar": "350 g",
+        "fiyat_bgn": 8.8,
+        "fiyat_eur": 4.5,
+        "aciklama": "soğan, havuç, biber"
       },
       {
-        "ad": "Антигуа",
-        "gramaj": "400 г",
-        "fiyat_bgn": 8.50,
-        "fiyat_eur": 4.35,
-        "aciklama": "доматен сос, шунка, кашкавал"
+        "ad": "Tavuk Yüreği",
+        "miktar": "300 g",
+        "fiyat_bgn": 9.58,
+        "fiyat_eur": 4.9,
+        "aciklama": "soğan, havuç"
       },
       {
-        "ad": "Неаполитана",
-        "gramaj": "400 г",
-        "fiyat_bgn": 8.50,
-        "fiyat_eur": 4.35,
-        "aciklama": "доматен сос, пилешко филе, пресни гъби, маслини, царевица, кашкавал"
+        "ad": "Tavuk Taşlığı",
+        "miktar": "300 g",
+        "fiyat_bgn": 9.58,
+        "fiyat_eur": 4.9,
+        "aciklama": "soğan, havuç"
+      },
+      {
+        "ad": "Kıymalı Sandviç",
+        "miktar": "200 g",
+        "fiyat_bgn": 5.08,
+        "fiyat_eur": 2.6,
+        "aciklama": null
+      },
+      {
+        "ad": "Kaşarlı ve Jambonlu Sandviç",
+        "miktar": "200 g",
+        "fiyat_bgn": 5.08,
+        "fiyat_eur": 2.6,
+        "aciklama": null
+      },
+      {
+        "ad": "Kaşarlı Sandviç",
+        "miktar": "200 g",
+        "fiyat_bgn": 4.49,
+        "fiyat_eur": 2.3,
+        "aciklama": null
+      },
+      {
+        "ad": "Beyaz Peynirli, Yumurtalı ve Kaşarlı Sandviç",
+        "miktar": "200 g",
+        "fiyat_bgn": 5.86,
+        "fiyat_eur": 3,
+        "aciklama": null
+      },
+      {
+        "ad": "Bir Dilim Ekmek",
+        "miktar": "",
+        "fiyat_bgn": 0.29,
+        "fiyat_eur": 0.15,
+        "aciklama": null
+      },
+      {
+        "ad": "Kızarmış Bir Dilim Ekmek",
+        "miktar": "",
+        "fiyat_bgn": 0.39,
+        "fiyat_eur": 0.2,
+        "aciklama": null
+      },
+      {
+        "ad": "Yunan Pidesi",
+        "miktar": "100 g",
+        "fiyat_bgn": 1.36,
+        "fiyat_eur": 0.7,
+        "aciklama": null
+      },
+      {
+        "ad": "Sarımsaklı Yunan Pidesi",
+        "miktar": "100 g",
+        "fiyat_bgn": 1.36,
+        "fiyat_eur": 0.7,
+        "aciklama": null
       }
     ],
-    "izgara_ve_spesiyaliteler": {
-      "izgara": [
-        {
-          "ad": "Кюфте",
-          "gramaj": "80 г",
-          "fiyat_bgn": 2.00,
-          "fiyat_eur": 1.02
-        },
-        {
-          "ad": "Кебапче",
-          "gramaj": "80 г",
-          "fiyat_bgn": 2.00,
-          "fiyat_eur": 1.02
-        },
-        {
-          "ad": "Телешко кюфте",
-          "gramaj": "80 г",
-          "fiyat_bgn": 2.50,
-          "fiyat_eur": 1.28
-        },
-        {
-          "ad": "Пилешки шиш",
-          "gramaj": "100 г",
-          "fiyat_bgn": 3.50,
-          "fiyat_eur": 1.79
-        },
-        {
-          "ad": "Свински шиш",
-          "gramaj": "100 г",
-          "fiyat_bgn": 3.50,
-          "fiyat_eur": 1.79
-        },
-        {
-          "ad": "Пилешка пържола бут",
-          "gramaj": "250 г",
-          "fiyat_bgn": 6.00,
-          "fiyat_eur": 3.07
-        },
-        {
-          "ad": "Свинска пържола",
-          "gramaj": "250 г",
-          "fiyat_bgn": 6.90,
-          "fiyat_eur": 3.53
-        },
-        {
-          "ad": "Адана кебап",
-          "gramaj": "160 г",
-          "fiyat_bgn": 5.90,
-          "fiyat_eur": 3.02
-        },
-        {
-          "ad": "Татарско кюфте",
-          "gramaj": "250 г",
-          "fiyat_bgn": 5.50,
-          "fiyat_eur": 2.81
-        },
-        {
-          "ad": "Мешена скара",
-          "gramaj": "900 г",
-          "fiyat_bgn": 29.50,
-          "fiyat_eur": 15.09
-        },
-        {
-          "ad": "Телешки език",
-          "gramaj": "200 г",
-          "fiyat_bgn": 14.90,
-          "fiyat_eur": 7.62
-        },
-        {
-          "ad": "Хапки 'Делиорман'",
-          "gramaj": "700 г",
-          "fiyat_bgn": 22.90,
-          "fiyat_eur": 11.71
-        },
-        {
-          "ad": "Меча лапа",
-          "gramaj": "300 г",
-          "fiyat_bgn": 10.90,
-          "fiyat_eur": 5.57
-        }
-      ],
-      "sac": [
-        {
-          "ad": "Пилешки сач със зеленчуци",
-          "gramaj": "1000 г",
-          "fiyat_bgn": 26.90,
-          "fiyat_eur": 13.75
-        },
-        {
-          "ad": "Свински сач със зеленчуци",
-          "gramaj": "1000 г",
-          "fiyat_bgn": 26.90,
-          "fiyat_eur": 13.75
-        },
-        {
-          "ad": "Агнешки сач със зеленчуци",
-          "gramaj": "1000 г",
-          "fiyat_bgn": 38.00,
-          "fiyat_eur": 19.43
-        }
-      ],
-      "soguk_mezeler": [
-        {
-          "ad": "Луканка",
-          "gramaj": "100 г",
-          "fiyat_bgn": 6.00,
-          "fiyat_eur": 3.07
-        },
-        {
-          "ad": "Суджук",
-          "gramaj": "100 г",
-          "fiyat_bgn": 6.00,
-          "fiyat_eur": 3.07
-        },
-        {
-          "ad": "Пастърма",
-          "gramaj": "100 г",
-          "fiyat_bgn": 8.00,
-          "fiyat_eur": 4.09
-        },
-        {
-          "ad": "Сирене",
-          "gramaj": "100 г",
-          "fiyat_bgn": 3.00,
-          "fiyat_eur": 1.53
-        },
-        {
-          "ad": "Кашкавал",
-          "gramaj": "100 г",
-          "fiyat_bgn": 4.00,
-          "fiyat_eur": 2.05
-        }
-      ],
-      "garniturler": [
-        {
-          "ad": "Топла гарнитура",
-          "gramaj": "200 г",
-          "fiyat_bgn": 2.50,
-          "fiyat_eur": 1.28,
-          "aciklama": "/ ориз, картофи /"
-        },
-        {
-          "ad": "Студена гарнитура",
-          "gramaj": "200 г",
-          "fiyat_bgn": 2.50,
-          "fiyat_eur": 1.28,
-          "aciklama": "/ зеле, моркови /"
-        },
-        {
-          "ad": "Студена гарнитура",
-          "gramaj": "200 г",
-          "fiyat_bgn": 2.50,
-          "fiyat_eur": 1.28,
-          "aciklama": "/ Домати, краставици /"
-        }
-      ]
-    },
-    "yeni_spesiyaliteler": [
+    "pizzas": [
       {
-        "ad": "Шиш „Делиорман”",
-        "gramaj": "300 г",
-        "fiyat_bgn": 12.90,
-        "fiyat_eur": 6.60,
-        "aciklama": "/ телешка кайма, арабска питка, лук/"
+        "ad": "Deliorman Pizza",
+        "miktar": "400 g",
+        "fiyat_bgn": 9.58,
+        "fiyat_eur": 4.9,
+        "aciklama": "domates sosu, jambon, marine mantar, kaşar peyniri, lukanka sucuk, beyaz peynir, kornişon, sarımsak ezmesi, fesleğen"
       },
       {
-        "ad": "Телешко печено",
-        "gramaj": "300 г",
-        "fiyat_bgn": 19.90,
-        "fiyat_eur": 10.17,
-        "aciklama": "/ телешко месо от рибица, чесън, картофи/"
+        "ad": "Bonjorno Pizza",
+        "miktar": "400 g",
+        "fiyat_bgn": 8.8,
+        "fiyat_eur": 4.5,
+        "aciklama": "domates sosu, beyaz peynir, kaşar peyniri"
       },
       {
-        "ad": "Агнешки деликатес на шиш",
-        "gramaj": "500 г",
-        "fiyat_bgn": 29.90,
-        "fiyat_eur": 15.29,
-        "aciklama": "/ агнешко месо, зеленчуци/"
+        "ad": "Margarita Pizza",
+        "miktar": "400 g",
+        "fiyat_bgn": 7.62,
+        "fiyat_eur": 3.9,
+        "aciklama": "domates sosu, kaşar peyniri, fesleğen"
+      },
+      {
+        "ad": "Kompira Pizza",
+        "miktar": "400 g",
+        "fiyat_bgn": 8.8,
+        "fiyat_eur": 4.5,
+        "aciklama": "domates sosu, jambon, taze mantar, kaşar peyniri"
+      },
+      {
+        "ad": "Carleona Pizza",
+        "miktar": "400 g",
+        "fiyat_bgn": 9.58,
+        "fiyat_eur": 4.9,
+        "aciklama": "domates sosu, jambon, lukanka sucuk, kornişon, kaşar peyniri"
+      },
+      {
+        "ad": "Antigua Pizza",
+        "miktar": "400 g",
+        "fiyat_bgn": 8.8,
+        "fiyat_eur": 4.5,
+        "aciklama": "domates sosu, jambon, kaşar peyniri"
+      },
+      {
+        "ad": "Napoliten Pizza",
+        "miktar": "400 g",
+        "fiyat_bgn": 9.58,
+        "fiyat_eur": 4.9,
+        "aciklama": "domates sosu, tavuk fileto, taze mantar, zeytin, mısır, kaşar peyniri"
       }
     ],
-    "tatlilar": [
+    "grill": [
       {
-        "ad": "Кюнефе",
-        "gramaj": null,
-        "fiyat_bgn": 9.50,
-        "fiyat_eur": 4.85
+        "ad": "Köfte",
+        "miktar": "80 g",
+        "fiyat_bgn": 1.95,
+        "fiyat_eur": 1,
+        "aciklama": null
       },
       {
-        "ad": "Чийзкейк с череши",
-        "gramaj": null,
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02
+        "ad": "Kebapçe",
+        "miktar": "80 g",
+        "fiyat_bgn": 1.95,
+        "fiyat_eur": 1,
+        "aciklama": null
       },
       {
-        "ad": "Шоколадов Ганаш",
-        "gramaj": null,
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02
+        "ad": "Dana Köfte",
+        "miktar": "80 g",
+        "fiyat_bgn": 2.73,
+        "fiyat_eur": 1.4,
+        "aciklama": null
       },
       {
-        "ad": "Торта \"Рафаело\"",
-        "gramaj": null,
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02
+        "ad": "Tavuk Şiş",
+        "miktar": "100 g",
+        "fiyat_bgn": 3.91,
+        "fiyat_eur": 2,
+        "aciklama": null
       },
       {
-        "ad": "Солен карамел",
-        "gramaj": null,
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02
+        "ad": "Domuz Şiş",
+        "miktar": "100 g",
+        "fiyat_bgn": 4.3,
+        "fiyat_eur": 2.2,
+        "aciklama": null
       },
       {
-        "ad": "Френска торта",
-        "gramaj": null,
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02
+        "ad": "Tavuk But Izgara",
+        "miktar": "250 g",
+        "fiyat_bgn": 7.62,
+        "fiyat_eur": 3.9,
+        "aciklama": null
       },
       {
-        "ad": "Премиум десерти в буркан",
-        "gramaj": null,
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02,
-        "alt_secenekler": [
-          "Банофи",
-          "Профитерол",
-          "Фереро"
-        ]
+        "ad": "Domuz Pirzola",
+        "miktar": "250 g",
+        "fiyat_bgn": 8.8,
+        "fiyat_eur": 4.5,
+        "aciklama": null
       },
       {
-        "ad": "Сладоледени торти",
-        "gramaj": null,
-        "fiyat_bgn": 5.90,
-        "fiyat_eur": 3.02,
-        "alt_secenekler": [
-          "Френска ванилия със смокини",
-          "Белгийски шоколад с печ. лешници"
-        ]
+        "ad": "Adana Kebap",
+        "miktar": "160 g",
+        "fiyat_bgn": 6.84,
+        "fiyat_eur": 3.5,
+        "aciklama": null
       },
       {
-        "ad": "Сладолед",
-        "gramaj": null,
-        "fiyat_bgn": 5.00,
-        "fiyat_eur": 2.56
+        "ad": "Tatar Köfte",
+        "miktar": "200 g",
+        "fiyat_bgn": 5.67,
+        "fiyat_eur": 2.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Karışık Izgara",
+        "miktar": "900 g",
+        "fiyat_bgn": 34.22,
+        "fiyat_eur": 17.5,
+        "aciklama": null
       }
     ],
-    "icecekler": {
-      "alkolsuz_icecekler": [
-        {
-          "ad": "Кока кола",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.60,
-          "fiyat_eur": 1.33
-        },
-        {
-          "ad": "Кока Кола Зиро",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.60,
-          "fiyat_eur": 1.33
-        },
-        {
-          "ad": "Фанта портокал",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.60,
-          "fiyat_eur": 1.33
-        },
-        {
-          "ad": "Фанта лимон",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.60,
-          "fiyat_eur": 1.33
-        },
-        {
-          "ad": "Спрайт",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.60,
-          "fiyat_eur": 1.33
-        },
-        {
-          "ad": "Швепс",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.60,
-          "fiyat_eur": 1.33
-        },
-        {
-          "ad": "Швепс",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.60,
-          "fiyat_eur": 1.33,
-          "aciklama": "/ мандарина, битер лимон, тоник, розов грейпфрут, розов тоник /"
-        },
-        {
-          "ad": "Натурален сок „Капи”",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.80,
-          "fiyat_eur": 1.43,
-          "aciklama": "/ праскова, кайсия, зел. ябълка, портокал, вишна, ябълка /"
-        },
-        {
-          "ad": "Студен чай /праскова, лимон, лайм/",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.80,
-          "fiyat_eur": 1.43
-        },
-        {
-          "ad": "Минерална вода „Банкя”",
-          "ml": "330 мл",
-          "fiyat_bgn": 1.80,
-          "fiyat_eur": 0.92
-        },
-        {
-          "ad": "Енергийна напитка Red Bull",
-          "ml": "250 мл",
-          "fiyat_bgn": 5.50,
-          "fiyat_eur": 2.81
-        },
-        {
-          "ad": "Айран",
-          "ml": "250 мл",
-          "fiyat_bgn": 2.00,
-          "fiyat_eur": 1.02
-        }
-      ],
-      "sicak_icecekler": [
-        {
-          "ad": "Кафе еспресо",
-          "ml": "60 мл",
-          "fiyat_bgn": 1.60,
-          "fiyat_eur": 0.82
-        },
-        {
-          "ad": "Кафе "Лаваца" капсула",
-          "ml": "60 мл",
-          "fiyat_bgn": 2.20,
-          "fiyat_eur": 1.12
-        },
-        {
-          "ad": "Нес кафе",
-          "ml": "60 мл",
-          "fiyat_bgn": 1.60,
-          "fiyat_eur": 0.82
-        },
-        {
-          "ad": "Капучино",
-          "ml": "150 мл",
-          "fiyat_bgn": 2.20,
-          "fiyat_eur": 1.12
-        },
-        {
-          "ad": "Мокачино",
-          "ml": "150 мл",
-          "fiyat_bgn": 2.20,
-          "fiyat_eur": 1.12
-        },
-        {
-          "ad": "Горещ шоколад",
-          "ml": "150 мл",
-          "fiyat_bgn": 2.20,
-          "fiyat_eur": 1.12
-        },
-        {
-          "ad": "Прясно мляко",
-          "ml": "150 мл",
-          "fiyat_bgn": 1.60,
-          "fiyat_eur": 0.82
-        },
-        {
-          "ad": "Чай билков",
-          "ml": "150 мл",
-          "fiyat_bgn": 1.40,
-          "fiyat_eur": 0.72,
-          "aciklama": "/ мента, лайка, бъз, черен, зелен/"
-        },
-        {
-          "ad": "Плодов чай",
-          "ml": "150 мл",
-          "fiyat_bgn": 1.40,
-          "fiyat_eur": 0.72,
-          "aciklama": "/ лимон, малина, горски плод/"
-        },
-        {
-          "ad": "Мед",
-          "ml": "15 мл",
-          "fiyat_bgn": 0.60,
-          "fiyat_eur": 0.31
-        },
-        {
-          "ad": "Мляко за кафе",
-          "ml": "10 мл",
-          "fiyat_bgn": 0.60,
-          "fiyat_eur": 0.31,
-          "aciklama": "/ суха, концентрирана, спрей/"
-        },
-        {
-          "ad": "Сметана",
-          "ml": "10 мл",
-          "fiyat_bgn": 0.60,
-          "fiyat_eur": 0.31
-        }
-      ],
-      "saraplar": {
-        "beyaz_saraplar": [
-          {
-            "ad": "Търговище Мускат/ Совиньон Блан",
-            "ml": "750 мл",
-            "fiyat_bgn": 13.90,
-            "fiyat_eur": 7.11
-          },
-          {
-            "ad": "Квантум Шардоне / Совиньон Блан",
-            "ml": "750 мл",
-            "fiyat_bgn": 19.90,
-            "fiyat_eur": 10.18
-          },
-          {
-            "ad": "Черга",
-            "ml": "750 мл",
-            "fiyat_bgn": 21.90,
-            "fiyat_eur": 11.20
-          },
-          {
-            "ad": "Pearl white Совиньон Блан&Семийон",
-            "ml": "750 мл",
-            "fiyat_bgn": 24.90,
-            "fiyat_eur": 12.73
-          },
-          {
-            "ad": "Кортен Шардоне",
-            "ml": "750 мл",
-            "fiyat_bgn": 34.90,
-            "fiyat_eur": 17.85
-          },
-          {
-            "ad": "Наливна кана",
-            "ml": "500 мл",
-            "fiyat_bgn": 7.90,
-            "fiyat_eur": 4.04
-          },
-          {
-            "ad": "Наливна чаша",
-            "ml": "150 мл",
-            "fiyat_bgn": 2.50,
-            "fiyat_eur": 1.28
-          }
-        ],
-        "kirmizi_saraplar": [
-          {
-            "ad": "Търговище Каберне",
-            "ml": "750 мл",
-            "fiyat_bgn": 13.90,
-            "fiyat_eur": 7.11
-          },
-          {
-            "ad": "Квантум Каберне/Мерло",
-            "ml": "750 мл",
-            "fiyat_bgn": 19.90,
-            "fiyat_eur": 10.18
-          },
-          {
-            "ad": "Черга",
-            "ml": "750 мл",
-            "fiyat_bgn": 21.90,
-            "fiyat_eur": 11.20
-          },
-          {
-            "ad": "Deep Red",
-            "ml": "750 мл",
-            "fiyat_bgn": 24.90,
-            "fiyat_eur": 12.73
-          },
-          {
-            "ad": "Кортен Мерло/ Каберне",
-            "ml": "750 мл",
-            "fiyat_bgn": 34.90,
-            "fiyat_eur": 17.85
-          },
-          {
-            "ad": "Наливна кана",
-            "ml": "500 мл",
-            "fiyat_bgn": 7.90,
-            "fiyat_eur": 4.04
-          },
-          {
-            "ad": "Наливна чаша",
-            "ml": "150 мл",
-            "fiyat_bgn": 2.50,
-            "fiyat_eur": 1.28
-          }
-        ],
-        "roze_saraplar": [
-          {
-            "ad": "Търговище Розе",
-            "ml": "750 мл",
-            "fiyat_bgn": 13.90,
-            "fiyat_eur": 7.11
-          },
-          {
-            "ad": "Квантум Розе",
-            "ml": "750 мл",
-            "fiyat_bgn": 19.90,
-            "fiyat_eur": 10.18
-          },
-          {
-            "ad": "Черга розе",
-            "ml": "750 мл",
-            "fiyat_bgn": 21.90,
-            "fiyat_eur": 11.20
-          },
-          {
-            "ad": "PURE Pink Розе Сира&Мурведър",
-            "ml": "750 мл",
-            "fiyat_bgn": 24.90,
-            "fiyat_eur": 12.73
-          },
-          {
-            "ad": "Кортен розе Сира",
-            "ml": "750 мл",
-            "fiyat_bgn": 34.90,
-            "fiyat_eur": 17.85
-          },
-          {
-            "ad": "Наливна кана розе",
-            "ml": "500 мл",
-            "fiyat_bgn": 7.90,
-            "fiyat_eur": 4.04
-          },
-          {
-            "ad": "Наливна чаша розе",
-            "ml": "150 мл",
-            "fiyat_bgn": 2.50,
-            "fiyat_eur": 1.28
-          }
-        ]
+    "saj-fish-specialties": [
+      {
+        "ad": "Sebzeli Tavuk Sac",
+        "miktar": "1000 g",
+        "fiyat_bgn": 28.35,
+        "fiyat_eur": 14.5,
+        "aciklama": null
       },
-      "alkollu_icecekler": {
-        "vodka": [
-          {
-            "ad": "Водка „Савой” Силвър / Савой",
-            "ml": "50 мл",
-            "fiyat_bgn": 1.60,
-            "fiyat_eur": 0.82
-          },
-          {
-            "ad": "Водка „Флирт”",
-            "ml": "50 мл",
-            "fiyat_bgn": 1.60,
-            "fiyat_eur": 0.82
-          },
-          {
-            "ad": "Водка „Аляска”",
-            "ml": "50 мл",
-            "fiyat_bgn": 1.60,
-            "fiyat_eur": 0.82
-          },
-          {
-            "ad": "Водка „Смирноф”",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.80,
-            "fiyat_eur": 1.43
-          },
-          {
-            "ad": "Водка „Абсолют”",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.80,
-            "fiyat_eur": 1.43
-          },
-          {
-            "ad": "Водка „Руски стандарт”",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.00,
-            "fiyat_eur": 1.53
-          },
-          {
-            "ad": "Водка „Финландия”",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.00,
-            "fiyat_eur": 1.53
-          },
-          {
-            "ad": "Правда",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.80,
-            "fiyat_eur": 1.94
-          },
-          {
-            "ad": "Белуга",
-            "ml": "50 мл",
-            "fiyat_bgn": 6.50,
-            "fiyat_eur": 3.32
-          },
-          {
-            "ad": "Сива Гъска",
-            "ml": "50 мл",
-            "fiyat_bgn": 6.50,
-            "fiyat_eur": 3.32
-          }
-        ],
-        "diger_alkollu_icecekler": [
-          {
-            "ad": "Узо Плумари",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.00,
-            "fiyat_eur": 1.02
-          },
-          {
-            "ad": "Ром Савой",
-            "ml": "50 мл",
-            "fiyat_bgn": 1.50,
-            "fiyat_eur": 0.77
-          },
-          {
-            "ad": "Ром Савой бял",
-            "ml": "50 мл",
-            "fiyat_bgn": 1.50,
-            "fiyat_eur": 0.77
-          },
-          {
-            "ad": "Мастика Пещера",
-            "ml": "50 мл",
-            "fiyat_bgn": 1.50,
-            "fiyat_eur": 0.77
-          },
-          {
-            "ad": "Джин Савой",
-            "ml": "50 мл",
-            "fiyat_bgn": 1.50,
-            "fiyat_eur": 0.77
-          },
-          {
-            "ad": "Коняк Метакса",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.80,
-            "fiyat_eur": 1.43
-          },
-          {
-            "ad": "Мента Пещера",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.00,
-            "fiyat_eur": 1.02
-          },
-          {
-            "ad": "Шампанско Остерайх голд",
-            "ml": "750 мл",
-            "fiyat_bgn": 39.00,
-            "fiyat_eur": 19.94
-          }
-        ],
-        "raki": [
-          {
-            "ad": "Пещерска Гроздова",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.00,
-            "fiyat_eur": 1.02
-          },
-          {
-            "ad": "Пещерска Гроздова отлежала",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.20,
-            "fiyat_eur": 1.13
-          },
-          {
-            "ad": "Кехлибар „Гроздова",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.20,
-            "fiyat_eur": 1.13
-          },
-          {
-            "ad": "Бургаска Мускатова",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.40,
-            "fiyat_eur": 1.23
-          },
-          {
-            "ad": "Бургас 63",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.40,
-            "fiyat_eur": 1.74
-          },
-          {
-            "ad": "Бургас 63 Барел",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.80,
-            "fiyat_eur": 1.94
-          },
-          {
-            "ad": "„Сливенска перла”",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.40,
-            "fiyat_eur": 1.74
-          },
-          {
-            "ad": "„Сливенска перла” Барел",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.80,
-            "fiyat_eur": 1.94
-          },
-          {
-            "ad": "Кайлъшка Гроздова",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.20,
-            "fiyat_eur": 1.13
-          },
-          {
-            "ad": "Ямболска Гроздова",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.00,
-            "fiyat_eur": 1.02
-          },
-          {
-            "ad": "Троянска Сливова",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.40,
-            "fiyat_eur": 1.23
-          },
-          {
-            "ad": "Троянска Сливова Отлежала",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.80,
-            "fiyat_eur": 1.43
-          },
-          {
-            "ad": "Търговище Мускатова",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.20,
-            "fiyat_eur": 1.13
-          },
-          {
-            "ad": "Търговище Мускатова отлежала",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.40,
-            "fiyat_eur": 1.23
-          },
-          {
-            "ad": "Кортен отлежала Резерва",
-            "ml": "50 мл",
-            "fiyat_bgn": 4.50,
-            "fiyat_eur": 2.30
-          },
-          {
-            "ad": "Стралджанска Мускатова",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.40,
-            "fiyat_eur": 1.74
-          },
-          {
-            "ad": "Стралджанска Мускатова Барел",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.80,
-            "fiyat_eur": 1.94
-          }
-        ],
-        "viski": [
-          {
-            "ad": "„Паспорт”",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.50,
-            "fiyat_eur": 1.28
-          },
-          {
-            "ad": "„Балантайнс”",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.90,
-            "fiyat_eur": 1.48
-          },
-          {
-            "ad": "Джи Би",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.90,
-            "fiyat_eur": 1.48
-          },
-          {
-            "ad": "„Джони Уокър” червен",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.90,
-            "fiyat_eur": 1.48
-          },
-          {
-            "ad": "„Джим Бийм”",
-            "ml": "50 мл",
-            "fiyat_bgn": 2.90,
-            "fiyat_eur": 1.48
-          },
-          {
-            "ad": "„Тюламор Дю”",
-            "ml": "50 мл",
-            "fiyat_bgn": 3.50,
-            "fiyat_eur": 1.79
-          },
-          {
-            "ad": "„Джак Даниелс”",
-            "ml": "50 мл",
-            "fiyat_bgn": 4.00,
-            "fiyat_eur": 2.05
-          },
-          {
-            "ad": "„Джони Уокър” черен",
-            "ml": "50 мл",
-            "fiyat_bgn": 4.90,
-            "fiyat_eur": 2.51
-          },
-          {
-            "ad": "Чивас Регал",
-            "ml": "50 мл",
-            "fiyat_bgn": 4.90,
-            "fiyat_eur": 2.51
-          },
-          {
-            "ad": "Бушмилс Блек Буш",
-            "ml": "50 мл",
-            "fiyat_bgn": 4.90,
-            "fiyat_eur": 2.51
-          }
-        ]
+      {
+        "ad": "Sebzeli Domuz Sac",
+        "miktar": "1000 g",
+        "fiyat_bgn": 28.35,
+        "fiyat_eur": 14.5,
+        "aciklama": null
       },
-      "cerezler": [
-        {
-          "ad": "Лешници",
-          "gramaj": "100 г",
-          "fiyat_bgn": 6.00,
-          "fiyat_eur": 3.07
-        },
-        {
-          "ad": "Бадеми",
-          "gramaj": "100 г",
-          "fiyat_bgn": 6.00,
-          "fiyat_eur": 3.07
-        },
-        {
-          "ad": "Индийско кашу",
-          "gramaj": "100 г",
-          "fiyat_bgn": 6.00,
-          "fiyat_eur": 3.07
-        },
-        {
-          "ad": "Фъстъци",
-          "gramaj": "100 г",
-          "fiyat_bgn": 3.00,
-          "fiyat_eur": 1.53
-        }
-      ]
-    }
+      {
+        "ad": "Sebzeli Kuzu Sac",
+        "miktar": "1000 g",
+        "fiyat_bgn": 43,
+        "fiyat_eur": 21.99,
+        "aciklama": null
+      },
+      {
+        "ad": "Dana Dili",
+        "miktar": "200 g",
+        "fiyat_bgn": 15.45,
+        "fiyat_eur": 7.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Deliorman Lokmaları",
+        "miktar": "700 g",
+        "fiyat_bgn": 23.27,
+        "fiyat_eur": 11.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Ayı Pençesi",
+        "miktar": "300 g",
+        "fiyat_bgn": 12.7,
+        "fiyat_eur": 6.49,
+        "aciklama": null
+      },
+      {
+        "ad": "Çaça Balığı",
+        "miktar": "200 g",
+        "fiyat_bgn": 5.86,
+        "fiyat_eur": 3,
+        "aciklama": null
+      },
+      {
+        "ad": "Uskumru",
+        "miktar": "250 g",
+        "fiyat_bgn": 12.71,
+        "fiyat_eur": 6.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Tavada Sazan",
+        "miktar": "750 g",
+        "fiyat_bgn": 35,
+        "fiyat_eur": 17.9,
+        "aciklama": null
+      }
+    ],
+    "burgers": [
+      {
+        "ad": "Afrodit Burger",
+        "miktar": "350 g",
+        "fiyat_bgn": 12.71,
+        "fiyat_eur": 6.5,
+        "aciklama": "çıtır tavuk fileto, cheddar, marul, kornişon, patates kızartması ve soslar ile servis edilir"
+      },
+      {
+        "ad": "Olimp Burger",
+        "miktar": "350 g",
+        "fiyat_bgn": 12.71,
+        "fiyat_eur": 6.5,
+        "aciklama": "dana eti, cheddar, marul, kornişon, patates kızartması ve soslar ile servis edilir"
+      },
+      {
+        "ad": "Royal Burger",
+        "miktar": "300 g",
+        "fiyat_bgn": 12.71,
+        "fiyat_eur": 6.5,
+        "aciklama": "tavuk eti, marul, cheddar, kornişon, patates kızartması ve soslar ile servis edilir"
+      }
+    ],
+    "new-specialties": [
+      {
+        "ad": "Deliorman Şiş",
+        "miktar": "300 g",
+        "fiyat_bgn": 13.49,
+        "fiyat_eur": 6.9,
+        "aciklama": "dana kıyma, Arap pidesi, soğan"
+      },
+      {
+        "ad": "Fırın Dana",
+        "miktar": "300 g",
+        "fiyat_bgn": 21.31,
+        "fiyat_eur": 10.9,
+        "aciklama": "dana but, sarımsak, patates"
+      },
+      {
+        "ad": "Şişte Kuzu Lezzeti",
+        "miktar": "450 g",
+        "fiyat_bgn": 31.1,
+        "fiyat_eur": 15.9,
+        "aciklama": "kuzu eti, sebzeler"
+      }
+    ],
+    "cold-appetizers-sides": [
+      {
+        "ad": "Lukanka Sucuğu",
+        "miktar": "100 g",
+        "fiyat_bgn": 7.82,
+        "fiyat_eur": 4,
+        "aciklama": null
+      },
+      {
+        "ad": "Sucuk",
+        "miktar": "100 g",
+        "fiyat_bgn": 9.58,
+        "fiyat_eur": 4.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Pastırma",
+        "miktar": "100 g",
+        "fiyat_bgn": 13.49,
+        "fiyat_eur": 6.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Beyaz Peynir",
+        "miktar": "100 g",
+        "fiyat_bgn": 4.88,
+        "fiyat_eur": 2.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Kaşar Peyniri",
+        "miktar": "100 g",
+        "fiyat_bgn": 4.88,
+        "fiyat_eur": 2.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Sıcak Garnitür",
+        "miktar": "200 g",
+        "fiyat_bgn": 3.91,
+        "fiyat_eur": 2,
+        "aciklama": "pirinç, patates"
+      },
+      {
+        "ad": "Soğuk Garnitür",
+        "miktar": "150 g",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": "lahana, havuç"
+      },
+      {
+        "ad": "Soğuk Garnitür",
+        "miktar": "150 g",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": "domates, salatalık"
+      }
+    ],
+    "nuts-desserts": [
+      {
+        "ad": "Fındık",
+        "miktar": "100 gr",
+        "fiyat_bgn": 6.84,
+        "fiyat_eur": 3.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Badem",
+        "miktar": "100 gr",
+        "fiyat_bgn": 6.84,
+        "fiyat_eur": 3.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Kaju",
+        "miktar": "100 gr",
+        "fiyat_bgn": 6.84,
+        "fiyat_eur": 3.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Yer Fıstığı",
+        "miktar": "100 gr",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Künefe",
+        "miktar": "200 g",
+        "fiyat_bgn": 10.75,
+        "fiyat_eur": 5.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Dondurma",
+        "miktar": "",
+        "fiyat_bgn": 5.67,
+        "fiyat_eur": 2.9,
+        "aciklama": null
+      }
+    ],
+    "rakia": [
+      {
+        "ad": "Peshterska Dinlendirilmiş Üzüm Rakısı",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.34,
+        "fiyat_eur": 1.2,
+        "aciklama": null
+      },
+      {
+        "ad": "Kehlibar Üzüm Rakısı",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.54,
+        "fiyat_eur": 1.3,
+        "aciklama": null
+      },
+      {
+        "ad": "Burgaska Muscat Rakısı",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.73,
+        "fiyat_eur": 1.4,
+        "aciklama": null
+      },
+      {
+        "ad": "Burgaska Üzüm Rakısı",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.34,
+        "fiyat_eur": 1.2,
+        "aciklama": null
+      },
+      {
+        "ad": "Burgas 63",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.71,
+        "fiyat_eur": 1.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Burgas 63 Barrel",
+        "miktar": "50 ml",
+        "fiyat_bgn": 4.3,
+        "fiyat_eur": 2.2,
+        "aciklama": null
+      },
+      {
+        "ad": "Slivenska Perla Barrel",
+        "miktar": "50 ml",
+        "fiyat_bgn": 4.3,
+        "fiyat_eur": 2.2,
+        "aciklama": null
+      },
+      {
+        "ad": "Kaylashka Üzüm Rakısı",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.54,
+        "fiyat_eur": 1.3,
+        "aciklama": null
+      },
+      {
+        "ad": "Dinlendirilmiş Troyan Erik Rakısı",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Dinlendirilmiş Targovishte Muscat Rakısı",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.73,
+        "fiyat_eur": 1.4,
+        "aciklama": null
+      },
+      {
+        "ad": "Korten Dinlendirilmiş Rezerv",
+        "miktar": "50 ml",
+        "fiyat_bgn": 4.88,
+        "fiyat_eur": 2.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Straldzhanska Muscat Barrel",
+        "miktar": "50 ml",
+        "fiyat_bgn": 4.3,
+        "fiyat_eur": 2.2,
+        "aciklama": null
+      },
+      {
+        "ad": "Isperih Kayısı Rakısı",
+        "miktar": "50 ml",
+        "fiyat_bgn": 4.3,
+        "fiyat_eur": 2.2,
+        "aciklama": null
+      }
+    ],
+    "wines": [
+      {
+        "ad": "Targovishte Muscat / Sauvignon Blanc",
+        "miktar": "750 ml",
+        "fiyat_bgn": 14.66,
+        "fiyat_eur": 7.5,
+        "aciklama": "Beyaz Şarap"
+      },
+      {
+        "ad": "Quantum Chardonnay / Sauvignon Blanc",
+        "miktar": "750 ml",
+        "fiyat_bgn": 20.53,
+        "fiyat_eur": 10.5,
+        "aciklama": "Beyaz Şarap"
+      },
+      {
+        "ad": "Pearl White Sauvignon Blanc & Semillon",
+        "miktar": "750 ml",
+        "fiyat_bgn": 25.23,
+        "fiyat_eur": 12.9,
+        "aciklama": "Beyaz Şarap"
+      },
+      {
+        "ad": "Korten Chardonnay",
+        "miktar": "750 ml",
+        "fiyat_bgn": 35,
+        "fiyat_eur": 17.9,
+        "aciklama": "Beyaz Şarap"
+      },
+      {
+        "ad": "Sürahi",
+        "miktar": "500 ml",
+        "fiyat_bgn": 8.41,
+        "fiyat_eur": 4.3,
+        "aciklama": "Beyaz Şarap"
+      },
+      {
+        "ad": "Kadeh",
+        "miktar": "150 ml",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": "Beyaz Şarap"
+      },
+      {
+        "ad": "Targovishte Cabernet",
+        "miktar": "750 ml",
+        "fiyat_bgn": 14.66,
+        "fiyat_eur": 7.5,
+        "aciklama": "Kırmızı Şarap"
+      },
+      {
+        "ad": "Quantum Cabernet / Merlot",
+        "miktar": "750 ml",
+        "fiyat_bgn": 20.53,
+        "fiyat_eur": 10.5,
+        "aciklama": "Kırmızı Şarap"
+      },
+      {
+        "ad": "Deep Red Cabernet",
+        "miktar": "750 ml",
+        "fiyat_bgn": 25.23,
+        "fiyat_eur": 12.9,
+        "aciklama": "Kırmızı Şarap"
+      },
+      {
+        "ad": "Korten Merlot / Cabernet",
+        "miktar": "750 ml",
+        "fiyat_bgn": 35,
+        "fiyat_eur": 17.9,
+        "aciklama": "Kırmızı Şarap"
+      },
+      {
+        "ad": "Sürahi",
+        "miktar": "500 ml",
+        "fiyat_bgn": 8.41,
+        "fiyat_eur": 4.3,
+        "aciklama": "Kırmızı Şarap"
+      },
+      {
+        "ad": "Kadeh",
+        "miktar": "150 ml",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": "Kırmızı Şarap"
+      },
+      {
+        "ad": "Targovishte Roze",
+        "miktar": "750 ml",
+        "fiyat_bgn": 14.66,
+        "fiyat_eur": 7.5,
+        "aciklama": "Roze"
+      },
+      {
+        "ad": "Quantum Roze",
+        "miktar": "750 ml",
+        "fiyat_bgn": 20.53,
+        "fiyat_eur": 10.5,
+        "aciklama": "Roze"
+      },
+      {
+        "ad": "PURE PINK Roze Syrah & Mourvèdre",
+        "miktar": "750 ml",
+        "fiyat_bgn": 25.23,
+        "fiyat_eur": 12.9,
+        "aciklama": "Roze"
+      },
+      {
+        "ad": "Korten Roze Syrah",
+        "miktar": "750 ml",
+        "fiyat_bgn": 35,
+        "fiyat_eur": 17.9,
+        "aciklama": "Roze"
+      },
+      {
+        "ad": "Roze Sürahi",
+        "miktar": "500 ml",
+        "fiyat_bgn": 8.41,
+        "fiyat_eur": 4.3,
+        "aciklama": "Roze"
+      },
+      {
+        "ad": "Roze Kadeh",
+        "miktar": "150 ml",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": "Roze"
+      }
+    ],
+    "beer-cider-other-drinks": [
+      {
+        "ad": "Carlsberg",
+        "miktar": "500 ml",
+        "fiyat_bgn": 3.91,
+        "fiyat_eur": 2,
+        "aciklama": null
+      },
+      {
+        "ad": "Carlsberg 0.0%",
+        "miktar": "330 ml",
+        "fiyat_bgn": 4.3,
+        "fiyat_eur": 2.2,
+        "aciklama": null
+      },
+      {
+        "ad": "1664 Blanc",
+        "miktar": "330 ml",
+        "fiyat_bgn": 4.3,
+        "fiyat_eur": 2.2,
+        "aciklama": null
+      },
+      {
+        "ad": "Budweiser",
+        "miktar": "500 ml",
+        "fiyat_bgn": 4.88,
+        "fiyat_eur": 2.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Tuborg",
+        "miktar": "500 ml",
+        "fiyat_bgn": 3.32,
+        "fiyat_eur": 1.7,
+        "aciklama": null
+      },
+      {
+        "ad": "Shumensko Açık",
+        "miktar": "500 ml",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Shumensko Special",
+        "miktar": "330 ml",
+        "fiyat_bgn": 2.54,
+        "fiyat_eur": 1.3,
+        "aciklama": null
+      },
+      {
+        "ad": "Pirinsko",
+        "miktar": "500 ml",
+        "fiyat_bgn": 2.93,
+        "fiyat_eur": 1.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Pirinsko Genç Bira",
+        "miktar": "330 ml",
+        "fiyat_bgn": 2.54,
+        "fiyat_eur": 1.3,
+        "aciklama": null
+      },
+      {
+        "ad": "Somersby",
+        "miktar": "330 ml",
+        "fiyat_bgn": 3.32,
+        "fiyat_eur": 1.7,
+        "aciklama": null
+      },
+      {
+        "ad": "Uzo Plomari",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.34,
+        "fiyat_eur": 1.2,
+        "aciklama": null
+      },
+      {
+        "ad": "Peshtera Mastika",
+        "miktar": "50 ml",
+        "fiyat_bgn": 1.76,
+        "fiyat_eur": 0.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Savoy Cin",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.54,
+        "fiyat_eur": 1.3,
+        "aciklama": null
+      },
+      {
+        "ad": "Metaxa Brendi",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.32,
+        "fiyat_eur": 1.7,
+        "aciklama": null
+      },
+      {
+        "ad": "Peshtera Nane Likörü",
+        "miktar": "50 ml",
+        "fiyat_bgn": 1.76,
+        "fiyat_eur": 0.9,
+        "aciklama": null
+      }
+    ],
+    "whiskey-vodka": [
+      {
+        "ad": "Passport",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.73,
+        "fiyat_eur": 1.4,
+        "aciklama": null
+      },
+      {
+        "ad": "Ballantine's",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.12,
+        "fiyat_eur": 1.6,
+        "aciklama": null
+      },
+      {
+        "ad": "Jameson",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.91,
+        "fiyat_eur": 2,
+        "aciklama": null
+      },
+      {
+        "ad": "Johnnie Walker Kırmızı Etiket",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.12,
+        "fiyat_eur": 1.6,
+        "aciklama": null
+      },
+      {
+        "ad": "Jim Beam",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.32,
+        "fiyat_eur": 1.7,
+        "aciklama": null
+      },
+      {
+        "ad": "Tullamore Dew",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.71,
+        "fiyat_eur": 1.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Jack Daniel's",
+        "miktar": "50 ml",
+        "fiyat_bgn": 4.88,
+        "fiyat_eur": 2.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Johnnie Walker Siyah Etiket",
+        "miktar": "50 ml",
+        "fiyat_bgn": 5.47,
+        "fiyat_eur": 2.8,
+        "aciklama": null
+      },
+      {
+        "ad": "Chivas Regal",
+        "miktar": "50 ml",
+        "fiyat_bgn": 5.47,
+        "fiyat_eur": 2.8,
+        "aciklama": null
+      },
+      {
+        "ad": "Bushmills Black Bush",
+        "miktar": "50 ml",
+        "fiyat_bgn": 5.47,
+        "fiyat_eur": 2.8,
+        "aciklama": null
+      },
+      {
+        "ad": "Flirt Votka",
+        "miktar": "50 ml",
+        "fiyat_bgn": 1.76,
+        "fiyat_eur": 0.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Alaska Votka",
+        "miktar": "50 ml",
+        "fiyat_bgn": 1.76,
+        "fiyat_eur": 0.9,
+        "aciklama": null
+      },
+      {
+        "ad": "Smirnoff Votka",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.03,
+        "fiyat_eur": 1.04,
+        "aciklama": null
+      },
+      {
+        "ad": "Absolut Votka",
+        "miktar": "50 ml",
+        "fiyat_bgn": 2.03,
+        "fiyat_eur": 1.04,
+        "aciklama": null
+      },
+      {
+        "ad": "Russian Standard Votka",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.32,
+        "fiyat_eur": 1.7,
+        "aciklama": null
+      },
+      {
+        "ad": "Finlandia Votka",
+        "miktar": "50 ml",
+        "fiyat_bgn": 3.32,
+        "fiyat_eur": 1.7,
+        "aciklama": null
+      },
+      {
+        "ad": "Beluga Votka",
+        "miktar": "50 ml",
+        "fiyat_bgn": 6.84,
+        "fiyat_eur": 3.5,
+        "aciklama": null
+      },
+      {
+        "ad": "Grey Goose Votka",
+        "miktar": "50 ml",
+        "fiyat_bgn": 6.84,
+        "fiyat_eur": 3.5,
+        "aciklama": null
+      }
+    ],
+    "allergens": [
+      {
+        "ad": "Gluten içeren tahıllar",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Kabuklu deniz ürünleri ve bunlardan elde edilen ürünler",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Yumurta ve yumurta ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Balık ve balık ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Yer fıstığı ve yer fıstığı ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Soya ve soya ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Süt ve süt ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Kabuklu yemişler: badem, fındık, ceviz, kaju, Brezilya cevizi, Antep fıstığı, makademya ve Queensland cevizi",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Kereviz ve kereviz ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Hardal ve hardal ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Susam tohumu ve susam ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Acı bakla ve ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      },
+      {
+        "ad": "Yumuşakçalar ve ürünleri",
+        "miktar": "",
+        "fiyat_bgn": null,
+        "fiyat_eur": null,
+        "aciklama": null
+      }
+    ]
   }
 }

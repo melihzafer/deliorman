@@ -1,0 +1,104 @@
+{
+  "purpose": "Menu photo capture backlog for the QR table card strip. Add photos for these categories/items, then wire them into src/app/_lib/menuCategoryImages.ts.",
+  "categoriesWithoutCardImages": [
+    {
+      "slug": "cold-appetizers-sides",
+      "name": "Студени Мезета и Гарнитури",
+      "items": [
+        "Луканка",
+        "Суджук",
+        "Пастърма",
+        "Сирене",
+        "Кашкавал",
+        "Топла гарнитура",
+        "Студена гарнитура"
+      ]
+    },
+    {
+      "slug": "rakia",
+      "name": "Ракия",
+      "items": [
+        "„Пещерска“ Гроздова отлежала",
+        "„Кехлибар“ Гроздова",
+        "„Бургаска“ Мускатова",
+        "„Бургаска“ Гроздова",
+        "„Бургас 63“",
+        "„Бургас 63“ Барел",
+        "„Сливенска перла“ Барел",
+        "„Кайлъшка“ Гроздова",
+        "„Троянска“ Сливова отлежала",
+        "„Търговище“ Мускатова отлежала",
+        "„Кортен“ отлежала Резерва",
+        "„Стралджанска“ мускатова Барел",
+        "„Исперих“ кайсиева"
+      ]
+    },
+    {
+      "slug": "wines",
+      "name": "Бели и Червени Вина",
+      "items": [
+        "„Търговище“ - Мускат / Совиньон Блан",
+        "„Квантум“ - Шардоне / Совиньон Блан",
+        "„Pearl White“ Совиньон Блан & Семийон",
+        "„Кортен“ Шардоне",
+        "Наливна кана",
+        "Наливна чаша",
+        "„Търговище“ Каберне",
+        "„Квантум“ - Каберне / Мерло",
+        "„Deep Red“ Каберне",
+        "„Кортен“ - Мерло / Каберне",
+        "„Търговище“ розе",
+        "„Квантум“ розе",
+        "„PURE PINK“ розе Сира & Мурведър",
+        "„Кортен“ розе Сира"
+      ]
+    },
+    {
+      "slug": "whiskey-vodka",
+      "name": "Уиски и Водка",
+      "items": [
+        "„Паспорт“",
+        "„Балантайс“",
+        "„Джеймсън“",
+        "„Джони Уокър“ Ред Лейбъл",
+        "„Джим Бийм“",
+        "„Тюламор Дю“",
+        "„Джак Даниелс“",
+        "„Джони Уокър“ Блек Лейбъл",
+        "„Чивас Регал“",
+        "„Бушмилс“ Блек Буш",
+        "Водка „Флирт“",
+        "Водка „Аляска“",
+        "Водка „Смирноф“",
+        "Водка „Абсолют“",
+        "Водка „Руски стандарт“",
+        "Водка „Финландия“",
+        "Водка „Белуга“",
+        "Водка „Сива Гъска“"
+      ]
+    },
+    {
+      "slug": "allergens",
+      "name": "Алергени",
+      "items": [
+        "Informational category; no food photo needed unless a generic allergen card is desired."
+      ]
+    }
+  ],
+  "partiallyCoveredCategories": [
+    {
+      "slug": "beer-cider-other-drinks",
+      "name": "Бира, Сайдер и Други Напитки",
+      "missingItemPhotoNotes": [
+        "Current cards use soft-drink assets. Capture beer/cider/spirit photos if this category should visually match listed beer and spirit items."
+      ]
+    },
+    {
+      "slug": "nuts-desserts",
+      "name": "Ядки и Десерти",
+      "missingItemPhotoNotes": [
+        "Desserts are covered. Capture nuts if the category should show nuts instead of only desserts."
+      ]
+    }
+  ]
+}

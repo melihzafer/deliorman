@@ -28,6 +28,7 @@ import "@styles/css/plugins/font-awesome.min.css";
 // (moved Swiper custom element registration to a client-only component)
 
 import '@styles/scss/style.scss';
+import "./tailwind.css";
 
 import AppData from "@data/app.json";
 import StructuredData from "@components/StructuredData";

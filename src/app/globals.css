@@ -1,3 +1,17 @@
+/* Kiosk mode — used by /table page to hide global nav/widgets */
+body.kiosk-mode [class*="MobileBottomNav"],
+body.kiosk-mode [class*="FAB"],
+body.kiosk-mode .tst-feedback-fab,
+body.kiosk-mode [class*="BackToTop"],
+body.kiosk-mode [class*="ScrollProgress"],
+body.kiosk-mode .tst-skip-link,
+body.kiosk-mode .tst-main-overlay {
+  display: none !important;
+}
+body.kiosk-mode {
+  background-image: none !important;
+}
+
 /* ===========================
    CSS Custom Properties
    (mirrors _variables.scss for theming / future dark-mode)

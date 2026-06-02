@@ -16,13 +16,25 @@ const DEFAULT_ALLOWED_ORIGINS = [
   'https://www.deliorman-git-dev-mzh-projcets.vercel.app',
 ];
 
+const LOCAL_TEST_ALLOWED_ORIGINS = [
+  'http://192.168.0.108:3000',
+  'http://192.168.0.108:3001',
+  'http://192.168.0.108:3010',
+  'http://100.112.143.11:3000',
+  'http://100.112.143.11:3001',
+  'http://100.112.143.11:3010',
+];
+
 function getAllowedOrigins() {
   const raw = process.env.ALLOWED_ORIGINS || '';
   const fromEnv = raw
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
-  return [...new Set([...DEFAULT_ALLOWED_ORIGINS, ...fromEnv])];
+  const localTestOrigins = process.env.VERCEL_ENV === 'production'
+    ? []
+    : LOCAL_TEST_ALLOWED_ORIGINS;
+  return [...new Set([...DEFAULT_ALLOWED_ORIGINS, ...localTestOrigins, ...fromEnv])];
 }
 
 const rateLimitStore = new Map();
@@ -151,6 +163,12 @@ export function middleware(request) {
       response.headers.set('x-request-id', requestId);
       return response;
     }
+  }
+
+  if (pathname === '/masa' || pathname.startsWith('/masa/')) {
+    const response = NextResponse.next();
+    response.headers.set('x-request-id', requestId);
+    return response;
   }
 
   if (!routeType) {

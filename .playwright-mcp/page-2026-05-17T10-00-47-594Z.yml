@@ -1,0 +1,28 @@
+- generic [active] [ref=e1]:
+  - link "Прескочи към съдържанието" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - main [ref=e5]:
+      - main [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - generic [ref=e9]:
+              - generic [ref=e10]: Том I · Бр. 3
+              - generic [ref=e11]: Обедно издание
+              - generic [ref=e12]: Всекидневник
+            - heading "Делиорман" [level=1] [ref=e13]
+            - paragraph [ref=e14]: ✦ Ежедневник на вкуса и трапезата ✦
+            - paragraph [ref=e15]: Основано в Самуил · Област Разград · Кухня без компромис
+            - generic [ref=e16]:
+              - generic [ref=e17]: неделя, 17 май 2026 г.
+              - generic [ref=e18]: "Език: BG · TR · EN"
+              - generic [ref=e19]: Маса № 3
+              - generic [ref=e20]: Цени в евро · фиксиран курс 1 € = 1.95583 лв.
+          - navigation "Език" [ref=e22]:
+            - button "BG ·" [ref=e23] [cursor=pointer]
+            - button "TR ·" [ref=e24] [cursor=pointer]
+            - button "EN" [ref=e25] [cursor=pointer]
+          - generic [ref=e26]: Проверяваме QR сесията...
+    - text:     
+  - button "Open Next.js Dev Tools" [ref=e32] [cursor=pointer]:
+    - img [ref=e33]

@@ -1,0 +1,485 @@
+{
+  "version": 1,
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-04-24T14:31:15.439Z",
+      "error_message": "Incorrect value in code",
+      "file": "package.json",
+      "root_cause": "Had \"gray-matter\"",
+      "fix": "Changed to \"googleapis\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-24T14:31:15.439Z"
+    },
+    {
+      "id": "bug-002",
+      "timestamp": "2026-04-24T15:11:59.207Z",
+      "error_message": "Significant refactor of ",
+      "file": "src/app/[locale]/table/TableClient.jsx",
+      "root_cause": "6 lines replaced/restructured",
+      "fix": "Rewrote 15→20 lines (6 removed) | Also: <div className={styles.ruleThin} />; <div className={styles.kicker}>Рубрика</div>",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-24T15:12:05.846Z"
+    },
+    {
+      "id": "bug-003",
+      "timestamp": "2026-04-24T15:17:25.538Z",
+      "error_message": "Missing guard clause",
+      "file": "src/app/[locale]/table/TableClient.jsx",
+      "root_cause": "No early return/throw for edge case: h < 11",
+      "fix": "Added guard clause: if (h < 11)",
+      "tags": [
+        "auto-detected",
+        "guard-clause",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-24T15:17:25.538Z"
+    },
+    {
+      "id": "bug-004",
+      "timestamp": "2026-04-24T15:17:32.283Z",
+      "error_message": "Wrong reference: span should be editionLabel",
+      "file": "src/app/[locale]/table/TableClient.jsx",
+      "root_cause": "Used \"span\" instead of \"editionLabel\"",
+      "fix": "Changed span → editionLabel",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-24T15:17:32.283Z"
+    },
+    {
+      "id": "bug-005",
+      "timestamp": "2026-04-24T15:17:43.026Z",
+      "error_message": "Significant refactor of ",
+      "file": "src/app/[locale]/table/TableClient.jsx",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 15→46 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-04-24T15:17:43.026Z"
+    },
+    {
+      "id": "bug-006",
+      "timestamp": "2026-04-24T15:17:55.078Z",
+      "error_message": "CSS fix: font-size, line-height, padding",
+      "file": "src/app/[locale]/table/table.module.scss",
+      "root_cause": "font-size: 3em → 3.4em; line-height: 0.85 → 1; padding: 6px 10px 0 0 → 4px 10px 0 2px",
+      "fix": "Changed font-size: 3em → 3.4em; line-height: 0.85 → 1; padding: 6px 10px 0 0 → 4px 10px 0 2px",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "scss"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-04-24T15:18:08.210Z"
+    },
+    {
+      "id": "bug-007",
+      "timestamp": "2026-05-17T08:20:00.000Z",
+      "error_message": "Auxiliary menu export regeneration script failed with 'Nullish coalescing operator(??) requires parens when mixing with logical operators'",
+      "file": "src/data/menu2.json",
+      "root_cause": "The one-off Node regeneration script mixed ?? and || in the fallback expression used while rebuilding the derived menu JSON exports.",
+      "fix": "Wrapped the nullish-coalescing expression in parentheses and reran the export generation command successfully.",
+      "tags": [
+        "node",
+        "script",
+        "menu-data"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T08:20:00.000Z"
+    },
+    {
+      "id": "bug-008",
+      "timestamp": "2026-05-17T08:20:00.000Z",
+      "error_message": "npm run lint fails with repo-wide no-undef and no-empty errors outside the menu files",
+      "file": ".wolf/hooks/*.js, public/sw.js, scripts/*.mjs, tests/**/*.js",
+      "root_cause": "The repository lint baseline includes non-app files that do not declare the required runtime globals or are not excluded from the shared ESLint run.",
+      "fix": "Not addressed in this menu task; validated the menu rewrite with a successful production build instead.",
+      "tags": [
+        "lint",
+        "eslint",
+        "baseline"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T08:20:00.000Z"
+    },
+    {
+      "id": "bug-009",
+      "timestamp": "2026-05-17T09:05:00.000Z",
+      "error_message": "Next build failed because src/app/_components/ui/Button.tsx differed from src/app/_components/ui/button.tsx only by casing",
+      "file": "src/app/masa/MasaButton.tsx",
+      "root_cause": "A new lowercase shadcn-style button component collided with the existing uppercase UI Button path on Windows/TypeScript case-insensitive resolution.",
+      "fix": "Moved the new QR-menu-specific button to src/app/masa/MasaButton.tsx and deleted the lowercase shared ui/button.tsx file.",
+      "tags": [
+        "typescript",
+        "windows",
+        "case-sensitivity",
+        "ui"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T09:05:00.000Z"
+    },
+    {
+      "id": "bug-010",
+      "timestamp": "2026-05-17T09:06:00.000Z",
+      "error_message": "Focused ESLint failed on generate-masa-qr-urls.mjs globals and MasaClient decorative img usage",
+      "file": "scripts/generate-masa-qr-urls.mjs, src/app/masa/MasaClient.tsx",
+      "root_cause": "The script lacked declared Node/browser globals for the repo ESLint config, and the client used raw img tags that triggered the Next.js no-img-element rule.",
+      "fix": "Declared script globals and switched decorative menu images to next/image.",
+      "tags": [
+        "eslint",
+        "next-image",
+        "script"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T09:06:00.000Z"
+    },
+    {
+      "id": "bug-011",
+      "timestamp": "2026-05-17T11:53:13.930+03:00",
+      "error_message": "GET /masa?id=3&key=... returned 404 during local smoke testing",
+      "file": "src/middleware.js",
+      "root_cause": "The next-intl middleware handled the unlocalized /masa route as a normal localized public page before Next could render the root /masa route.",
+      "fix": "Bypassed next-intl middleware for /masa and /masa/* while preserving x-request-id headers.",
+      "tags": [
+        "next-intl",
+        "middleware",
+        "qr-menu",
+        "routing"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T11:53:13.930+03:00"
+    },
+    {
+      "id": "bug-012",
+      "timestamp": "2026-05-17T11:53:13.930+03:00",
+      "error_message": "POST /api/session/start returned 503 with 'Session service unavailable' during live local smoke testing",
+      "file": ".env.local",
+      "root_cause": "The local environment did not define QR_MENU_SECRET, Google Sheets credentials, or TELEGRAM_CHAT_ID, so the Sheets-backed session service could not create a session.",
+      "fix": "No code change; local live testing must be retried after configuring QR_MENU_SECRET, Google Sheets env vars, TELEGRAM_CHAT_ID, and the sessions sheet.",
+      "tags": [
+        "env",
+        "google-sheets",
+        "qr-menu",
+        "smoke-test"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T11:53:13.930+03:00"
+    },
+    {
+      "id": "bug-013",
+      "timestamp": "2026-05-17T12:22:42.463+03:00",
+      "error_message": "Local LAN /masa test still showed the Bulgarian WiFi overlay",
+      "file": "src/app/masa/MasaClient.tsx, src/app/_lib/masaDevSession.ts, src/app/api/session/start/route.ts, src/app/api/session/ping/route.ts, src/app/api/waiter/call/route.ts",
+      "root_cause": "The client blocked before calling /api/session/start when the QR key was missing, and /api/session/start still required Sheets-backed sessions even for trusted local test hosts.",
+      "fix": "Added a development-only local session bypass for localhost, Ethernet, and Tailscale hosts, and updated the client to allow missing QR keys only on those local test hosts.",
+      "tags": [
+        "qr-menu",
+        "local-testing",
+        "session",
+        "lan"
+      ],
+      "related_bugs": [
+        "bug-012"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T12:22:42.463+03:00"
+    },
+    {
+      "id": "bug-014",
+      "timestamp": "2026-05-17T12:47:49.548+03:00",
+      "error_message": "User reported /masa used a new design instead of the existing design and pointed to the word 'всекидневник'",
+      "file": "src/app/masa/MasaClient.tsx, src/app/masa/page.tsx",
+      "root_cause": "The QR menu implementation created a new Tailwind newspaper-inspired layout instead of reusing the established /[locale]/table 'Всекидневник' design.",
+      "fix": "Replaced the /masa renderer with the existing newspaper masthead/article/button structure and reused table.module.scss while preserving /masa session, heartbeat, language, and waiter-call logic.",
+      "tags": [
+        "ui",
+        "qr-menu",
+        "newspaper-design",
+        "regression"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T12:47:49.548+03:00"
+    },
+    {
+      "id": "bug-015",
+      "timestamp": "2026-05-17T14:38:04.071+03:00",
+      "error_message": "User clarified not to change fonts/layout; only photo layout and hamburger menu controls should change",
+      "file": "src/app/masa/MasaClient.tsx, src/app/[locale]/table/table.module.scss",
+      "root_cause": "The reference-image implementation changed the visible masthead typography and menu-item layout instead of limiting changes to images and drawer navigation.",
+      "fix": "Restored the existing Всекидневник masthead/list rendering and kept only the hamburger drawer plus dish photo strip/clipping changes.",
+      "tags": [
+        "ui",
+        "qr-menu",
+        "layout-regression",
+        "fonts"
+      ],
+      "related_bugs": [
+        "bug-014"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T14:38:04.071+03:00"
+    },
+    {
+      "id": "bug-016",
+      "timestamp": "2026-05-17T14:55:00.000+03:00",
+      "error_message": "ParserError: An empty pipe element is not allowed.",
+      "file": "PowerShell logo copy command",
+      "root_cause": "The first SVG copy/check command attempted to pipe directly from a foreach statement block, which PowerShell parsed as an empty pipeline element.",
+      "fix": "Reran the command by assigning foreach results to a variable before piping to Format-Table, then copied the SVG successfully.",
+      "tags": [
+        "powershell",
+        "command",
+        "asset-copy"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T14:55:00.000+03:00"
+    },
+    {
+      "id": "bug-017",
+      "timestamp": "2026-05-17T14:56:00.000+03:00",
+      "error_message": "Playwright strict mode violation: locator('main') resolved to 2 elements",
+      "file": "Playwright browser snapshot check",
+      "root_cause": "The page contains nested main landmarks, so the generic snapshot target `main` was ambiguous in Playwright strict mode.",
+      "fix": "Used a direct DOM evaluation for the specific masthead logo instead of relying on an ambiguous `main` locator.",
+      "tags": [
+        "playwright",
+        "validation",
+        "strict-mode"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T14:56:00.000+03:00"
+    },
+    {
+      "id": "bug-018",
+      "timestamp": "2026-05-17T14:59:00.000+03:00",
+      "error_message": "User reported the /masa logo still needed improvement after the first enlargement/color filter pass",
+      "file": "public/img/deliorman_colorized_logo.svg, src/app/[locale]/table/table.module.scss",
+      "root_cause": "The logo still used its original bright SVG palette and relied on CSS filtering, which left it visually separate from the newspaper theme.",
+      "fix": "Replaced the SVG fill colors with the paper/ink/accent theme palette and increased the masthead logo size while keeping the text header removed.",
+      "tags": [
+        "ui",
+        "logo",
+        "qr-menu",
+        "theme"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T14:59:00.000+03:00"
+    },
+    {
+      "id": "bug-019",
+      "timestamp": "2026-05-17T15:05:00.000+03:00",
+      "error_message": "User said the /masa logo should look carved into newspaper, use wood brown instead of red, and be smaller",
+      "file": "public/img/deliorman_colorized_logo.svg, src/app/[locale]/table/table.module.scss",
+      "root_cause": "The previous logo treatment was still too large, visibly red-accented, and read like a sticker/badge instead of an embedded newspaper mark.",
+      "fix": "Cropped and reduced the stamp wrapper, muted the embossed blend/filtering, and replaced red SVG accents with wood-brown colors.",
+      "tags": [
+        "ui",
+        "logo",
+        "qr-menu",
+        "theme"
+      ],
+      "related_bugs": [
+        "bug-018"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T15:05:00.000+03:00"
+    },
+    {
+      "id": "bug-020",
+      "timestamp": "2026-05-17T15:14:00.000+03:00",
+      "error_message": "User reported duplicate text in the /masa design while asking to remove the digital menu label",
+      "file": "src/app/masa/MasaClient.tsx, src/app/[locale]/table/table.module.scss",
+      "root_cause": "The category description was rendered twice: once as the deck paragraph and again as the lede paragraph with drop cap.",
+      "fix": "Removed the digital menu label and deleted the repeated lede rendering so each category description appears only once.",
+      "tags": [
+        "ui",
+        "duplicate-text",
+        "qr-menu"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T15:14:00.000+03:00"
+    },
+    {
+      "id": "bug-021",
+      "timestamp": "2026-05-17T15:36:00.000+03:00",
+      "error_message": "User reported that card images should be related to the current category items, e.g. salads should show only salads",
+      "file": "src/app/_lib/menuCategoryImages.ts, src/app/masa/MasaClient.tsx, src/data/menu-image-gaps.json",
+      "root_cause": "The card strip selected neighboring categories around the active category, so hot beverages could show beer/salad cards and other unrelated category photos.",
+      "fix": "Replaced neighboring-category selection with active-category image pools and created a photo capture backlog for categories/items without card images.",
+      "tags": [
+        "ui",
+        "menu-images",
+        "qr-menu",
+        "category-filtering"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T15:36:00.000+03:00"
+    },
+    {
+      "id": "bug-022",
+      "timestamp": "2026-05-17T15:50:50.538+03:00",
+      "error_message": "User reported untranslated text in the table hamburger menu, header, and menu categories",
+      "file": "src/app/masa/MasaClient.tsx, public/data/menu.json",
+      "root_cause": "The QR table masthead still hardcoded Bulgarian labels, and the public menu JSON fell back to Bulgarian for category titles/descriptions in the en/tr locales.",
+      "fix": "Localized the masthead labels in MasaClient and filled the en/tr category titles and descriptions in the QR menu JSON.",
+      "tags": [
+        "ui",
+        "qr-menu",
+        "translation",
+        "i18n"
+      ],
+      "related_bugs": [
+        "bug-020"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T15:50:50.538+03:00"
+    },
+    {
+      "id": "bug-023",
+      "timestamp": "2026-05-17T16:14:02.532+03:00",
+      "error_message": "User reported the three hero-strip images were still static dish photos instead of restaurant indoor/outdoor images",
+      "file": "src/app/_lib/menuCategoryImages.ts",
+      "root_cause": "The shared heroImages array still pointed at menu food assets, so the QR/table masthead reused dish images in the slider strip.",
+      "fix": "Replaced the hero strip sources with indoor and outdoor restaurant photos.",
+      "tags": [
+        "ui",
+        "hero-strip",
+        "venue-photos",
+        "qr-menu"
+      ],
+      "related_bugs": [
+        "bug-021"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T16:14:02.532+03:00"
+    },
+    {
+      "id": "bug-024",
+      "timestamp": "2026-05-17T16:16:15.705+03:00",
+      "error_message": "User reported the image card names were not translated",
+      "file": "src/app/_lib/menuCategoryImages.ts, src/app/masa/MasaClient.tsx",
+      "root_cause": "Category image cards stored hardcoded Bulgarian strings and the QR menu rendered them directly without locale-aware lookup.",
+      "fix": "Converted card titles/notes to localized bg/tr/en objects and rendered them through the existing locale helper.",
+      "tags": [
+        "ui",
+        "i18n",
+        "card-images",
+        "qr-menu"
+      ],
+      "related_bugs": [
+        "bug-022"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T16:16:15.705+03:00"
+    },
+    {
+      "id": "bug-025",
+      "timestamp": "2026-05-17T16:21:11.307+03:00",
+      "error_message": "User requested the footer to add a 'Powered by Melih Hyusein' link",
+      "file": "src/app/masa/MasaClient.tsx, src/app/[locale]/table/table.module.scss",
+      "root_cause": "The QR/table footer only rendered the newspaper colophon and had no creator credit link.",
+      "fix": "Added an external footer credit link to https://portfolio.melihzafer.me and styled it to match the existing footer.",
+      "tags": [
+        "ui",
+        "footer",
+        "link",
+        "qr-menu"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T16:21:11.307+03:00"
+    },
+    {
+      "id": "bug-026",
+      "timestamp": "2026-05-17T16:23:01.620+03:00",
+      "error_message": "User reported some card text overflowed",
+      "file": "src/app/[locale]/table/table.module.scss",
+      "root_cause": "The translated card titles and notes became longer, but the card typography and min-heights were tuned for short Bulgarian labels.",
+      "fix": "Reduced card-title and note font sizes, increased header/note vertical space, and enabled safe wrapping and hyphenation.",
+      "tags": [
+        "ui",
+        "overflow",
+        "cards",
+        "i18n"
+      ],
+      "related_bugs": [
+        "bug-024"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T16:23:01.620+03:00"
+    },
+    {
+      "id": "bug-027",
+      "timestamp": "2026-05-17T17:03:43.401+03:00",
+      "error_message": "npx tsc --noEmit failed with TS6053 missing .next/types files after architect validation",
+      "file": "tsconfig.tsbuildinfo",
+      "root_cause": "The tracked incremental TypeScript build artifact retained stale references to generated .next/types files while validation/build steps regenerated .next.",
+      "fix": "Deleted tsconfig.tsbuildinfo and added it to .gitignore so TypeScript recomputes incremental state instead of reading stale generated paths.",
+      "tags": [
+        "typescript",
+        "build-artifact",
+        "architect",
+        "validation"
+      ],
+      "related_bugs": [
+        "bug-008"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T17:03:43.401+03:00"
+    },
+    {
+      "id": "bug-028",
+      "timestamp": "2026-05-17T17:03:43.401+03:00",
+      "error_message": "Security review found public feedback/reservation routes accepted oversized or malformed request bodies before parsing",
+      "file": "src/app/api/reservation/route.ts, src/app/api/reservation/reservationValidation.ts, src/app/api/feedback/route.ts, src/app/api/feedback/feedbackEmail.ts",
+      "root_cause": "The refactored public POST routes parsed request bodies before enforcing content length, content type, FormData file rejection, field caps, and escaped HTML email fields.",
+      "fix": "Added request body guards, content-type checks, reservation field length caps, FormData file rejection, safe production errors, and HTML escaping for feedback email fields.",
+      "tags": [
+        "security",
+        "request-validation",
+        "feedback",
+        "reservation"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-05-17T17:03:43.401+03:00"
+    }
+  ]
+}

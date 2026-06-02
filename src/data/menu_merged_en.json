@@ -2,277 +2,303 @@
   "restaurant_name": "Deliorman",
   "categories": [
     {
-      "name": "Salads",
-      "slug": "salads",
-      "subtitle": "Fresh & Flavorful",
-      "description": "Choose from our selection of traditional and Mediterranean salads",
+      "name": "Hot Beverages",
+      "slug": "hot-beverages",
+      "subtitle": "Hot Beverages",
+      "description": "",
       "items": [
         {
-          "title": "Deliorman Salad",
-          "amount": "500 g",
-          "price": 9.90,
-          "text": "tomatoes, cucumbers, cheese, white cheese, ham, snowflake cheese, roasted peppers, olives"
+          "title": "Espresso",
+          "amount": "60 ml",
+          "price": 1.95,
+          "text": ""
         },
         {
-          "title": "Shopska Salad",
-          "amount": "400 g",
-          "price": 7.50,
-          "text": "tomatoes, cucumbers, peppers, onions, cheese, olives"
+          "title": "Lavazza Capsule Coffee",
+          "amount": "60 ml",
+          "price": 2.73,
+          "text": ""
         },
         {
-          "title": "Shepherd's Salad",
-          "amount": "550 g",
-          "price": 8.50,
-          "text": "tomatoes, cucumbers, peppers, onions, mushrooms, ham, cheese, white cheese, egg, olives"
+          "title": "Nescafe",
+          "amount": "60 ml",
+          "price": 1.95,
+          "text": ""
         },
         {
-          "title": "Greek Salad",
-          "amount": "450 g",
-          "price": 7.50,
-          "text": "tomatoes, cucumbers, roasted peppers, cheese, olives, onions, feta, oregano, olive oil"
+          "title": "Cappuccino",
+          "amount": "150 ml",
+          "price": 2.73,
+          "text": ""
         },
         {
-          "title": "Caesar Salad",
-          "amount": "450 g",
-          "price": 9.90,
-          "text": "iceberg lettuce, chicken fillet, croutons, dressing, parmesan, sauce"
+          "title": "Mocaccino",
+          "amount": "150 ml",
+          "price": 2.73,
+          "text": ""
         },
         {
-          "title": "Green Salad with Tuna",
-          "amount": "300 g",
-          "price": 9.90,
-          "text": "lettuce, cucumbers, olives, tuna, dressing"
+          "title": "Hot Chocolate",
+          "amount": "150 ml",
+          "price": 2.73,
+          "text": ""
         },
         {
-          "title": "Garden Salad",
-          "amount": "350 g",
-          "price": 7.50,
-          "text": "tomatoes, cucumbers, roasted peppers, cheese, olives, onions"
+          "title": "Fresh Milk",
+          "amount": "150 ml",
+          "price": 2.15,
+          "text": ""
         },
         {
-          "title": "Coleslaw with Mayonnaise",
-          "amount": "300 g",
-          "price": 5.90,
-          "text": "cabbage, mayonnaise, olives"
+          "title": "Herbal Tea",
+          "amount": "150 ml",
+          "price": 1.76,
+          "text": "mint, chamomile, bouquet, black, green"
         },
         {
-          "title": "Green Salad",
-          "amount": "350 g",
-          "price": 6.50,
-          "text": "lettuce, cucumbers, radishes, olives, egg"
+          "title": "Fruit Tea",
+          "amount": "150 ml",
+          "price": 1.76,
+          "text": "lemon, raspberry, forest fruits"
         },
         {
-          "title": "Snowflake Salad",
-          "amount": "300 g",
-          "price": 6.50,
-          "text": "pickled cucumbers, dill, garlic, sour milk, olives"
+          "title": "Honey",
+          "amount": "15 ml",
+          "price": 0.78,
+          "text": ""
         },
         {
-          "title": "Cabbage with Carrots",
-          "amount": "300 g",
-          "price": 5.50,
-          "text": "cabbage, carrots"
+          "title": "Jug of Milk",
+          "amount": "50 ml",
+          "price": 0.78,
+          "text": ""
         },
         {
-          "title": "Carrot Salad with Mayonnaise",
-          "amount": "300 g",
-          "price": 5.90,
-          "text": "carrots, mayonnaise, olives"
+          "title": "Cream",
+          "amount": "10 ml",
+          "price": 0.78,
+          "text": "powdered, condensed, spray"
         }
       ]
     },
     {
-      "name": "Appetizers & Sides",
-      "slug": "appetizers-and-side-dishes",
-      "subtitle": "Perfect Starters",
-      "description": "Start your meal with our delicious appetizers",
+      "name": "Salads",
+      "slug": "salads",
+      "subtitle": "Salads",
+      "description": "",
       "items": [
         {
-          "title": "Fried Meatballs",
+          "title": "Shopska Salad",
+          "amount": "400 g",
+          "price": 7.82,
+          "text": "tomatoes, cucumbers, peppers, onions, white cheese, olives"
+        },
+        {
+          "title": "Deliorman Salad",
+          "amount": "500 g",
+          "price": 10.75,
+          "text": "tomatoes, cucumbers, kashkaval, white cheese, ham, Snow White salad, roasted pepper, olives"
+        },
+        {
+          "title": "Ovcharska Salad",
+          "amount": "550 g",
+          "price": 9.77,
+          "text": "tomatoes, cucumbers, peppers, onions, mushrooms, ham, kashkaval, white cheese, egg, olives"
+        },
+        {
+          "title": "Greek Salad",
+          "amount": "450 g",
+          "price": 7.82,
+          "text": "tomatoes, cucumbers, roasted pepper, white cheese, olives, onion, lemon, olive oil, oregano"
+        },
+        {
+          "title": "Caesar Salad",
+          "amount": "450 g",
+          "price": 11.73,
+          "text": "iceberg lettuce, chicken fillet, cherry tomatoes, cucumbers, croutons, parmesan, sauce"
+        },
+        {
+          "title": "Green Salad with Tuna",
           "amount": "300 g",
-          "price": 6.90,
+          "price": 10.75,
+          "text": "lettuce, cucumbers, olives, tuna, olive oil"
+        }
+      ]
+    },
+    {
+      "name": "Hot Dishes",
+      "slug": "hot-appetizers",
+      "subtitle": "Hot Dishes",
+      "description": "",
+      "items": [
+        {
+          "title": "Onion Rings",
+          "amount": "300 g",
+          "price": 8.8,
           "text": ""
         },
         {
-          "title": "Fried Cheese",
+          "title": "Breaded Kashkaval",
           "amount": "200 g",
-          "price": 6.90,
+          "price": 11.55,
           "text": ""
-        },
-        {
-          "title": "Chicken Offal",
-          "amount": "350 g",
-          "price": 6.90,
-          "text": "onions, carrots, peppers"
-        },
-        {
-          "title": "Chicken Hearts on Grill",
-          "amount": "300 g",
-          "price": 7.90,
-          "text": "onions, carrots"
-        },
-        {
-          "title": "Chicken Liver on Grill",
-          "amount": "300 g",
-          "price": 7.90,
-          "text": "onions, carrots"
         },
         {
           "title": "Chicken Fillets with Cornflakes",
           "amount": "400 g",
-          "price": 9.90,
+          "price": 13.4,
           "text": ""
         },
         {
-          "title": "Fried Potatoes",
+          "title": "French Fries",
           "amount": "200 g",
-          "price": 5.50,
+          "price": 6.84,
           "text": ""
         },
         {
-          "title": "Fried Potatoes with Cheese",
+          "title": "French Fries with White Cheese",
           "amount": "250 g",
-          "price": 6.50,
+          "price": 7.62,
           "text": ""
         },
         {
           "title": "Chicken Wings",
+          "amount": "400 g",
+          "price": 11.55,
+          "text": ""
+        },
+        {
+          "title": "Country-Style Fries",
           "amount": "200 g",
-          "price": 8.90,
+          "price": 7.62,
           "text": ""
         },
         {
-          "title": "Village-Style Fried Potatoes",
-          "amount": "200 g",
-          "price": 6.90,
+          "title": "Ham Omelette with Garnish",
+          "amount": "300 g",
+          "price": 9.58,
           "text": ""
         },
         {
-          "title": "Omelette with Ham & Sides",
-          "amount": "250 g",
-          "price": 6.90,
-          "text": ""
-        },
-        {
-          "title": "Döner Portion",
-          "amount": "500 g",
-          "price": 9.90,
+          "title": "Doner Portion",
+          "amount": "400 g",
+          "price": 13.4,
           "text": ""
         },
         {
           "title": "Roasted Pork Ribs",
-          "amount": "250 g",
-          "price": 12.90,
+          "amount": "300 g",
+          "price": 13.4,
           "text": ""
         },
         {
-          "title": "Melted Cheese",
+          "title": "Processed Cheese Bites",
           "amount": "200 g",
-          "price": 6.90,
+          "price": 9.58,
           "text": ""
         },
         {
           "title": "Baby Mozzarella",
           "amount": "350 g",
-          "price": 9.90,
+          "price": 13.4,
           "text": ""
         }
       ]
     },
     {
-      "name": "Soups, Fish & Sandwiches",
-      "slug": "soups-fish-sandwiches",
-      "subtitle": "Hearty & Fresh Options",
-      "description": "From traditional soups to fresh fish and sandwiches",
+      "name": "Soups, Chicken Delicacies & Sandwiches",
+      "slug": "soups-sandwiches",
+      "subtitle": "Soups, Chicken Delicacies & Sandwiches",
+      "description": "",
       "items": [
         {
           "title": "Chicken Soup",
           "amount": "300 ml",
-          "price": 3.50,
+          "price": 3.91,
           "text": ""
         },
         {
           "title": "Tripe Soup",
           "amount": "300 ml",
-          "price": 3.50,
+          "price": 3.91,
           "text": ""
         },
         {
           "title": "Meatball Soup",
           "amount": "300 ml",
-          "price": 3.50,
+          "price": 3.91,
           "text": ""
         },
         {
-          "title": "Tarator (Cold Soup)",
+          "title": "Tarator",
           "amount": "300 ml",
-          "price": 2.50,
+          "price": 3.71,
           "text": ""
         },
         {
-          "title": "Bream",
+          "title": "Chicken Livers",
+          "amount": "350 g",
+          "price": 8.8,
+          "text": "onions, carrots, peppers"
+        },
+        {
+          "title": "Chicken Hearts",
+          "amount": "300 g",
+          "price": 9.58,
+          "text": "onions, carrots"
+        },
+        {
+          "title": "Chicken Gizzards",
+          "amount": "300 g",
+          "price": 9.58,
+          "text": "onions, carrots"
+        },
+        {
+          "title": "Minced Meat Sandwich",
           "amount": "200 g",
-          "price": 5.50,
+          "price": 5.08,
           "text": ""
         },
         {
-          "title": "Mackerel",
-          "amount": "250 g",
-          "price": 8.90,
+          "title": "Kashkaval and Ham Sandwich",
+          "amount": "200 g",
+          "price": 5.08,
           "text": ""
         },
         {
-          "title": "Carp on Grill",
-          "amount": "750 g",
-          "price": 35.00,
+          "title": "Kashkaval Sandwich",
+          "amount": "200 g",
+          "price": 4.49,
           "text": ""
         },
         {
-          "title": "Ground Meat Sandwich",
+          "title": "White Cheese, Egg and Kashkaval Sandwich",
+          "amount": "200 g",
+          "price": 5.86,
+          "text": ""
+        },
+        {
+          "title": "Slice of Bread",
           "amount": "",
-          "price": 2.90,
+          "price": 0.29,
           "text": ""
         },
         {
-          "title": "Cheese & Ham Sandwich",
+          "title": "Toasted Slice of Bread",
           "amount": "",
-          "price": 2.90,
+          "price": 0.39,
           "text": ""
         },
         {
-          "title": "Cheese Sandwich",
-          "amount": "",
-          "price": 2.90,
-          "text": ""
-        },
-        {
-          "title": "Cheese, Egg & Ham Sandwich",
-          "amount": "",
-          "price": 2.90,
-          "text": ""
-        },
-        {
-          "title": "Bread Slice",
-          "amount": "",
-          "price": 0.25,
-          "text": ""
-        },
-        {
-          "title": "Toasted Bread Slice",
-          "amount": "",
-          "price": 0.35,
-          "text": ""
-        },
-        {
-          "title": "Greek Pita",
+          "title": "Greek Flatbread",
           "amount": "100 g",
-          "price": 1.00,
+          "price": 1.36,
           "text": ""
         },
         {
-          "title": "Greek Garlic Pita",
+          "title": "Greek Garlic Flatbread",
           "amount": "100 g",
-          "price": 1.00,
+          "price": 1.36,
           "text": ""
         }
       ]
@@ -280,525 +306,833 @@
     {
       "name": "Pizzas",
       "slug": "pizzas",
-      "subtitle": "Italian Favorites",
-      "description": "Our delicious oven-baked pizzas",
+      "subtitle": "Pizzas",
+      "description": "",
       "items": [
         {
           "title": "Deliorman Pizza",
           "amount": "400 g",
-          "price": 8.90,
-          "text": "tomato sauce, ham, mushrooms, cheese, sausage, white cheese, pickled cucumbers, garlic paste, basil"
+          "price": 9.58,
+          "text": "tomato sauce, ham, marinated mushrooms, kashkaval, lukanka sausage, white cheese, pickles, garlic paste, basil"
         },
         {
           "title": "Buongiorno Pizza",
           "amount": "400 g",
-          "price": 7.90,
-          "text": "tomato sauce, cheese, cheese"
+          "price": 8.8,
+          "text": "tomato sauce, white cheese, kashkaval"
         },
         {
           "title": "Margherita Pizza",
           "amount": "400 g",
-          "price": 7.90,
-          "text": "tomato sauce, cheese, basil"
+          "price": 7.62,
+          "text": "tomato sauce, kashkaval, basil"
         },
         {
           "title": "Compira Pizza",
           "amount": "400 g",
-          "price": 7.90,
-          "text": "tomato sauce, ham, fresh mushrooms, cheese"
+          "price": 8.8,
+          "text": "tomato sauce, ham, fresh mushrooms, kashkaval"
         },
         {
           "title": "Carleona Pizza",
           "amount": "400 g",
-          "price": 8.90,
-          "text": "tomato sauce, ham, sausage, pickled cucumbers, cheese"
+          "price": 9.58,
+          "text": "tomato sauce, ham, lukanka sausage, pickles, kashkaval"
         },
         {
           "title": "Antigua Pizza",
           "amount": "400 g",
-          "price": 8.50,
-          "text": "tomato sauce, ham, cheese"
+          "price": 8.8,
+          "text": "tomato sauce, ham, kashkaval"
         },
         {
           "title": "Neapolitan Pizza",
           "amount": "400 g",
-          "price": 8.50,
-          "text": "tomato sauce, chicken fillet, fresh mushrooms, olives, corn, cheese"
+          "price": 9.58,
+          "text": "tomato sauce, chicken fillet, fresh mushrooms, olives, sweetcorn, kashkaval"
         }
       ]
     },
     {
-      "name": "Grilled Specialties",
-      "slug": "grill-and-specialties",
-      "subtitle": "Authentic Grilled Meats",
-      "description": "Premium grilled selections cooked to perfection",
+      "name": "Grill",
+      "slug": "grill",
+      "subtitle": "Grill",
+      "description": "",
       "items": [
         {
           "title": "Meatball",
           "amount": "80 g",
-          "price": 2.00,
+          "price": 1.95,
           "text": ""
         },
         {
           "title": "Kebapche",
           "amount": "80 g",
-          "price": 2.00,
+          "price": 1.95,
           "text": ""
         },
         {
           "title": "Beef Meatball",
           "amount": "80 g",
-          "price": 2.50,
+          "price": 2.73,
           "text": ""
         },
         {
           "title": "Chicken Skewer",
           "amount": "100 g",
-          "price": 3.50,
+          "price": 3.91,
           "text": ""
         },
         {
           "title": "Pork Skewer",
           "amount": "100 g",
-          "price": 3.50,
+          "price": 4.3,
           "text": ""
         },
         {
-          "title": "Chicken Chop - Thigh",
+          "title": "Chicken Thigh Steak",
           "amount": "250 g",
-          "price": 6.00,
+          "price": 7.62,
           "text": ""
         },
         {
-          "title": "Pork Chop",
+          "title": "Pork Steak",
           "amount": "250 g",
-          "price": 6.90,
+          "price": 8.8,
           "text": ""
         },
         {
-          "title": "Adana Kebap",
+          "title": "Adana Kebab",
           "amount": "160 g",
-          "price": 5.90,
+          "price": 6.84,
           "text": ""
         },
         {
           "title": "Tatar Meatball",
-          "amount": "250 g",
-          "price": 5.50,
+          "amount": "200 g",
+          "price": 5.67,
           "text": ""
         },
         {
           "title": "Mixed Grill",
           "amount": "900 g",
-          "price": 29.50,
+          "price": 34.22,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "Saj, Fish & Specialties",
+      "slug": "saj-fish-specialties",
+      "subtitle": "Saj, Fish & Specialties",
+      "description": "",
+      "items": [
+        {
+          "title": "Chicken Saj with Vegetables",
+          "amount": "1000 g",
+          "price": 28.35,
+          "text": ""
+        },
+        {
+          "title": "Pork Saj with Vegetables",
+          "amount": "1000 g",
+          "price": 28.35,
+          "text": ""
+        },
+        {
+          "title": "Lamb Saj with Vegetables",
+          "amount": "1000 g",
+          "price": 43,
           "text": ""
         },
         {
           "title": "Beef Tongue",
           "amount": "200 g",
-          "price": 14.90,
+          "price": 15.45,
           "text": ""
         },
         {
           "title": "Deliorman Bites",
           "amount": "700 g",
-          "price": 22.90,
+          "price": 23.27,
           "text": ""
         },
         {
           "title": "Bear Paw",
           "amount": "300 g",
-          "price": 10.90,
+          "price": 12.7,
           "text": ""
         },
         {
-          "title": "Chicken Sac with Vegetables",
-          "amount": "1000 g",
-          "price": 26.90,
-          "text": ""
-        },
-        {
-          "title": "Pork Sac with Vegetables",
-          "amount": "1000 g",
-          "price": 26.90,
-          "text": ""
-        },
-        {
-          "title": "Lamb Sac with Vegetables",
-          "amount": "1000 g",
-          "price": 38.00,
-          "text": ""
-        },
-        {
-          "title": "Sausage",
-          "amount": "100 g",
-          "price": 6.00,
-          "text": ""
-        },
-        {
-          "title": "Sudjuk",
-          "amount": "100 g",
-          "price": 6.00,
-          "text": ""
-        },
-        {
-          "title": "Pastirma",
-          "amount": "100 g",
-          "price": 8.00,
-          "text": ""
-        },
-        {
-          "title": "White Cheese",
-          "amount": "100 g",
-          "price": 3.00,
-          "text": ""
-        },
-        {
-          "title": "Yellow Cheese",
-          "amount": "100 g",
-          "price": 4.00,
-          "text": ""
-        },
-        {
-          "title": "Warm Sides",
+          "title": "Sprats",
           "amount": "200 g",
-          "price": 2.50,
-          "text": "rice, potatoes"
+          "price": 5.86,
+          "text": ""
         },
         {
-          "title": "Cold Sides",
-          "amount": "200 g",
-          "price": 2.50,
-          "text": "cabbage, carrots"
+          "title": "Mackerel",
+          "amount": "250 g",
+          "price": 12.71,
+          "text": ""
         },
         {
-          "title": "Cold Sides",
-          "amount": "200 g",
-          "price": 2.50,
-          "text": "tomatoes, cucumbers"
+          "title": "Pan-Fried Carp",
+          "amount": "750 g",
+          "price": 35,
+          "text": ""
         }
       ]
     },
     {
-      "name": "Chef Specialties",
+      "name": "Burgers",
+      "slug": "burgers",
+      "subtitle": "Burgers",
+      "description": "",
+      "items": [
+        {
+          "title": "Aphrodite Burger",
+          "amount": "350 g",
+          "price": 12.71,
+          "text": "crispy chicken fillet, cheddar, lettuce, pickles, served with fries and sauces"
+        },
+        {
+          "title": "Olymp Burger",
+          "amount": "350 g",
+          "price": 12.71,
+          "text": "beef, cheddar, lettuce, pickles, served with fries and sauces"
+        },
+        {
+          "title": "Royal Burger",
+          "amount": "300 g",
+          "price": 12.71,
+          "text": "chicken meat, lettuce, cheddar, pickles, served with fries and sauces"
+        }
+      ]
+    },
+    {
+      "name": "New Specialties",
       "slug": "new-specialties",
-      "subtitle": "House Signature Dishes",
-      "description": "Our chef's carefully crafted special recipes",
+      "subtitle": "New Specialties",
+      "description": "",
       "items": [
         {
           "title": "Deliorman Skewer",
           "amount": "300 g",
-          "price": 12.90,
-          "text": "ground beef, Arabic pita, onions"
+          "price": 13.49,
+          "text": "minced beef, Arabic flatbread, onion"
         },
         {
-          "title": "Roasted Beef",
+          "title": "Roast Beef",
           "amount": "300 g",
-          "price": 19.90,
-          "text": "beef tenderloin, garlic, potatoes"
+          "price": 21.31,
+          "text": "beef round, garlic, potatoes"
         },
         {
           "title": "Lamb Delicacy Skewer",
-          "amount": "500 g",
-          "price": 29.90,
+          "amount": "450 g",
+          "price": 31.1,
           "text": "lamb meat, vegetables"
         }
       ]
     },
     {
-      "name": "Desserts",
-      "slug": "desserts",
-      "subtitle": "Sweet Endings",
-      "description": "Indulge in our delectable dessert selection",
+      "name": "Cold Appetizers & Sides",
+      "slug": "cold-appetizers-sides",
+      "subtitle": "Cold Appetizers & Sides",
+      "description": "",
       "items": [
         {
+          "title": "Lukanka",
+          "amount": "100 g",
+          "price": 7.82,
+          "text": ""
+        },
+        {
+          "title": "Sudzhuk",
+          "amount": "100 g",
+          "price": 9.58,
+          "text": ""
+        },
+        {
+          "title": "Pastirma",
+          "amount": "100 g",
+          "price": 13.49,
+          "text": ""
+        },
+        {
+          "title": "White Cheese",
+          "amount": "100 g",
+          "price": 4.88,
+          "text": ""
+        },
+        {
+          "title": "Kashkaval",
+          "amount": "100 g",
+          "price": 4.88,
+          "text": ""
+        },
+        {
+          "title": "Warm Side Dish",
+          "amount": "200 g",
+          "price": 3.91,
+          "text": "rice, potatoes"
+        },
+        {
+          "title": "Cold Side Dish",
+          "amount": "150 g",
+          "price": 2.93,
+          "text": "cabbage, carrots"
+        },
+        {
+          "title": "Cold Side Dish",
+          "amount": "150 g",
+          "price": 2.93,
+          "text": "tomatoes, cucumbers"
+        }
+      ]
+    },
+    {
+      "name": "Nuts & Desserts",
+      "slug": "nuts-desserts",
+      "subtitle": "Nuts & Desserts",
+      "description": "",
+      "items": [
+        {
+          "title": "Hazelnuts",
+          "amount": "100 gr",
+          "price": 6.84,
+          "text": ""
+        },
+        {
+          "title": "Almonds",
+          "amount": "100 gr",
+          "price": 6.84,
+          "text": ""
+        },
+        {
+          "title": "Cashews",
+          "amount": "100 gr",
+          "price": 6.84,
+          "text": ""
+        },
+        {
+          "title": "Peanuts",
+          "amount": "100 gr",
+          "price": 2.93,
+          "text": ""
+        },
+        {
           "title": "Kunefe",
-          "amount": "",
-          "price": 9.50,
+          "amount": "200 g",
+          "price": 10.75,
           "text": ""
-        },
-        {
-          "title": "Cheesecake with Cherries",
-          "amount": "",
-          "price": 5.90,
-          "text": ""
-        },
-        {
-          "title": "Chocolate Ganache",
-          "amount": "",
-          "price": 5.90,
-          "text": ""
-        },
-        {
-          "title": "Raffaello Cake",
-          "amount": "",
-          "price": 5.90,
-          "text": ""
-        },
-        {
-          "title": "Salted Caramel",
-          "amount": "",
-          "price": 5.90,
-          "text": ""
-        },
-        {
-          "title": "French Cake",
-          "amount": "",
-          "price": 5.90,
-          "text": ""
-        },
-        {
-          "title": "Premium Jar Desserts",
-          "amount": "",
-          "price": 5.90,
-          "text": "Banoffi, Profiterole, Ferrero"
-        },
-        {
-          "title": "Ice Cream Cakes",
-          "amount": "",
-          "price": 5.90,
-          "text": "French vanilla with figs, Belgian chocolate with roasted hazelnuts"
         },
         {
           "title": "Ice Cream",
           "amount": "",
-          "price": 5.00,
+          "price": 5.67,
           "text": ""
         }
       ]
     },
     {
-      "name": "Soft Drinks & Beverages",
-      "slug": "soft-drinks-beverages",
-      "subtitle": "Refreshing Drinks",
-      "description": "Wide selection of cold and hot beverages",
+      "name": "Rakia",
+      "slug": "rakia",
+      "subtitle": "Rakia",
+      "description": "",
       "items": [
         {
-          "title": "Coca Cola",
-          "amount": "250 ml",
-          "price": 2.60,
+          "title": "Peshterska Aged Grape Rakia",
+          "amount": "50 ml",
+          "price": 2.34,
           "text": ""
         },
         {
-          "title": "Coca Cola Zero",
-          "amount": "250 ml",
-          "price": 2.60,
+          "title": "Kehlibar Grape Rakia",
+          "amount": "50 ml",
+          "price": 2.54,
           "text": ""
         },
         {
-          "title": "Fanta Orange",
-          "amount": "250 ml",
-          "price": 2.60,
+          "title": "Burgaska Muscat Rakia",
+          "amount": "50 ml",
+          "price": 2.73,
           "text": ""
         },
         {
-          "title": "Fanta Lemon",
-          "amount": "250 ml",
-          "price": 2.60,
+          "title": "Burgaska Grape Rakia",
+          "amount": "50 ml",
+          "price": 2.34,
           "text": ""
         },
         {
-          "title": "Sprite",
-          "amount": "250 ml",
-          "price": 2.60,
+          "title": "Burgas 63",
+          "amount": "50 ml",
+          "price": 3.71,
           "text": ""
         },
         {
-          "title": "Schweppes",
-          "amount": "250 ml",
-          "price": 2.60,
+          "title": "Burgas 63 Barrel",
+          "amount": "50 ml",
+          "price": 4.3,
           "text": ""
         },
         {
-          "title": "Schweppes Flavored",
-          "amount": "250 ml",
-          "price": 2.60,
-          "text": "mandarin, bitter lemon, tonic, pink grapefruit, pink tonic"
-        },
-        {
-          "title": "Natural Juice 'Kapi'",
-          "amount": "250 ml",
-          "price": 2.80,
-          "text": "peach, apricot, green apple, orange, cherry, apple"
-        },
-        {
-          "title": "Iced Tea",
-          "amount": "250 ml",
-          "price": 2.80,
-          "text": "peach, lemon, lime"
-        },
-        {
-          "title": "Mineral Water 'Bankya'",
-          "amount": "330 ml",
-          "price": 1.80,
+          "title": "Slivenska Perla Barrel",
+          "amount": "50 ml",
+          "price": 4.3,
           "text": ""
         },
         {
-          "title": "Red Bull Energy Drink",
-          "amount": "250 ml",
-          "price": 5.50,
+          "title": "Kaylashka Grape Rakia",
+          "amount": "50 ml",
+          "price": 2.54,
           "text": ""
         },
         {
-          "title": "Ayran",
-          "amount": "250 ml",
-          "price": 2.00,
+          "title": "Troyan Aged Plum Rakia",
+          "amount": "50 ml",
+          "price": 2.93,
           "text": ""
         },
         {
-          "title": "Espresso Coffee",
-          "amount": "60 ml",
-          "price": 1.60,
+          "title": "Targovishte Aged Muscat Rakia",
+          "amount": "50 ml",
+          "price": 2.73,
           "text": ""
         },
         {
-          "title": "Lavazza Capsule Coffee",
-          "amount": "60 ml",
-          "price": 2.20,
+          "title": "Korten Aged Reserve",
+          "amount": "50 ml",
+          "price": 4.88,
           "text": ""
         },
         {
-          "title": "Americano",
-          "amount": "300 ml",
-          "price": 1.60,
+          "title": "Straldzhanska Muscat Barrel",
+          "amount": "50 ml",
+          "price": 4.3,
           "text": ""
         },
         {
-          "title": "Cappuccino",
-          "amount": "300 ml",
-          "price": 2.20,
+          "title": "Isperih Apricot Rakia",
+          "amount": "50 ml",
+          "price": 4.3,
           "text": ""
-        },
-        {
-          "title": "Latte",
-          "amount": "300 ml",
-          "price": 2.20,
-          "text": ""
-        },
-        {
-          "title": "Macchiato",
-          "amount": "300 ml",
-          "price": 2.20,
-          "text": ""
-        },
-        {
-          "title": "Turkish Coffee",
-          "amount": "150 ml",
-          "price": 1.60,
-          "text": ""
-        },
-        {
-          "title": "Hot Chocolate",
-          "amount": "300 ml",
-          "price": 2.20,
-          "text": ""
-        },
-        {
-          "title": "Assorted Herbal Teas",
-          "amount": "250 ml",
-          "price": 1.60,
-          "text": "mint, linden, elderberry, black, green"
-        },
-        {
-          "title": "Fruit Teas",
-          "amount": "250 ml",
-          "price": 1.60,
-          "text": "lemon, raspberry, forest berry"
-        },
-        {
-          "title": "Instant Coffee",
-          "amount": "",
-          "price": 0.60,
-          "text": ""
-        },
-        {
-          "title": "Nescafé",
-          "amount": "",
-          "price": 1.20,
-          "text": "dry, concentrated, spray"
         }
       ]
     },
     {
-      "name": "Wines",
+      "name": "White & Red Wines",
       "slug": "wines",
-      "subtitle": "Fine Wine Selection",
-      "description": "Premium wines from around the world",
+      "subtitle": "White & Red Wines",
+      "description": "",
       "items": [
         {
-          "title": "Red Wine",
-          "amount": "",
-          "price": 0,
-          "text": "Available on request"
+          "title": "Targovishte Muscat / Sauvignon Blanc",
+          "amount": "750 ml",
+          "price": 14.66,
+          "text": "White Wine"
         },
         {
-          "title": "White Wine",
-          "amount": "",
-          "price": 0,
-          "text": "Available on request"
+          "title": "Quantum Chardonnay / Sauvignon Blanc",
+          "amount": "750 ml",
+          "price": 20.53,
+          "text": "White Wine"
         },
         {
-          "title": "Rosé Wine",
-          "amount": "",
-          "price": 0,
-          "text": "Available on request"
+          "title": "Pearl White Sauvignon Blanc & Semillon",
+          "amount": "750 ml",
+          "price": 25.23,
+          "text": "White Wine"
+        },
+        {
+          "title": "Korten Chardonnay",
+          "amount": "750 ml",
+          "price": 35,
+          "text": "White Wine"
+        },
+        {
+          "title": "Carafe",
+          "amount": "500 ml",
+          "price": 8.41,
+          "text": "White Wine"
+        },
+        {
+          "title": "Glass",
+          "amount": "150 ml",
+          "price": 2.93,
+          "text": "White Wine"
+        },
+        {
+          "title": "Targovishte Cabernet",
+          "amount": "750 ml",
+          "price": 14.66,
+          "text": "Red Wine"
+        },
+        {
+          "title": "Quantum Cabernet / Merlot",
+          "amount": "750 ml",
+          "price": 20.53,
+          "text": "Red Wine"
+        },
+        {
+          "title": "Deep Red Cabernet",
+          "amount": "750 ml",
+          "price": 25.23,
+          "text": "Red Wine"
+        },
+        {
+          "title": "Korten Merlot / Cabernet",
+          "amount": "750 ml",
+          "price": 35,
+          "text": "Red Wine"
+        },
+        {
+          "title": "Carafe",
+          "amount": "500 ml",
+          "price": 8.41,
+          "text": "Red Wine"
+        },
+        {
+          "title": "Glass",
+          "amount": "150 ml",
+          "price": 2.93,
+          "text": "Red Wine"
+        },
+        {
+          "title": "Targovishte Rosé",
+          "amount": "750 ml",
+          "price": 14.66,
+          "text": "Rosé"
+        },
+        {
+          "title": "Quantum Rosé",
+          "amount": "750 ml",
+          "price": 20.53,
+          "text": "Rosé"
+        },
+        {
+          "title": "PURE PINK Rosé Syrah & Mourvèdre",
+          "amount": "750 ml",
+          "price": 25.23,
+          "text": "Rosé"
+        },
+        {
+          "title": "Korten Rosé Syrah",
+          "amount": "750 ml",
+          "price": 35,
+          "text": "Rosé"
+        },
+        {
+          "title": "Carafe Rosé",
+          "amount": "500 ml",
+          "price": 8.41,
+          "text": "Rosé"
+        },
+        {
+          "title": "Glass Rosé",
+          "amount": "150 ml",
+          "price": 2.93,
+          "text": "Rosé"
         }
       ]
     },
     {
-      "name": "Spirits & Liqueurs",
-      "slug": "spirits-liqueurs",
-      "subtitle": "Premium Spirits",
-      "description": "Selection of vodka, whisky, raki and more",
+      "name": "Beer, Cider & Other Drinks",
+      "slug": "beer-cider-other-drinks",
+      "subtitle": "Beer, Cider & Other Drinks",
+      "description": "",
       "items": [
         {
-          "title": "Vodka",
-          "amount": "50 ml",
-          "price": 3.00,
-          "text": "Premium selection available"
+          "title": "Carlsberg",
+          "amount": "500 ml",
+          "price": 3.91,
+          "text": ""
         },
         {
-          "title": "Raki",
-          "amount": "50 ml",
-          "price": 3.00,
-          "text": "Traditional spirit"
+          "title": "Carlsberg 0.0%",
+          "amount": "330 ml",
+          "price": 4.3,
+          "text": ""
         },
         {
-          "title": "Whisky",
+          "title": "1664 Blanc",
+          "amount": "330 ml",
+          "price": 4.3,
+          "text": ""
+        },
+        {
+          "title": "Budweiser",
+          "amount": "500 ml",
+          "price": 4.88,
+          "text": ""
+        },
+        {
+          "title": "Tuborg",
+          "amount": "500 ml",
+          "price": 3.32,
+          "text": ""
+        },
+        {
+          "title": "Shumensko Lager",
+          "amount": "500 ml",
+          "price": 2.93,
+          "text": ""
+        },
+        {
+          "title": "Shumensko Special",
+          "amount": "330 ml",
+          "price": 2.54,
+          "text": ""
+        },
+        {
+          "title": "Pirinsko",
+          "amount": "500 ml",
+          "price": 2.93,
+          "text": ""
+        },
+        {
+          "title": "Pirinsko Young Beer",
+          "amount": "330 ml",
+          "price": 2.54,
+          "text": ""
+        },
+        {
+          "title": "Somersby",
+          "amount": "330 ml",
+          "price": 3.32,
+          "text": ""
+        },
+        {
+          "title": "Ouzo Plomari",
           "amount": "50 ml",
-          "price": 4.50,
-          "text": "Premium selection"
+          "price": 2.34,
+          "text": ""
+        },
+        {
+          "title": "Peshtera Mastika",
+          "amount": "50 ml",
+          "price": 1.76,
+          "text": ""
+        },
+        {
+          "title": "Savoy Gin",
+          "amount": "50 ml",
+          "price": 2.54,
+          "text": ""
+        },
+        {
+          "title": "Metaxa Brandy",
+          "amount": "50 ml",
+          "price": 3.32,
+          "text": ""
+        },
+        {
+          "title": "Peshtera Mint Liqueur",
+          "amount": "50 ml",
+          "price": 1.76,
+          "text": ""
         }
       ]
     },
     {
-      "name": "Snacks & Appetizer Sides",
-      "slug": "snacks-sides",
-      "subtitle": "Quick Bites",
-      "description": "Quick snacks to complement your meal",
+      "name": "Whisky & Vodka",
+      "slug": "whiskey-vodka",
+      "subtitle": "Whisky & Vodka",
+      "description": "",
       "items": [
         {
-          "title": "Olives",
-          "amount": "100 g",
-          "price": 6.00,
+          "title": "Passport",
+          "amount": "50 ml",
+          "price": 2.73,
           "text": ""
         },
         {
-          "title": "Mixed Nuts",
-          "amount": "100 g",
-          "price": 6.00,
+          "title": "Ballantine's",
+          "amount": "50 ml",
+          "price": 3.12,
           "text": ""
         },
         {
-          "title": "Breadsticks",
-          "amount": "100 g",
-          "price": 6.00,
+          "title": "Jameson",
+          "amount": "50 ml",
+          "price": 3.91,
           "text": ""
         },
         {
-          "title": "Cheese Platter",
-          "amount": "200 g",
-          "price": 12.00,
+          "title": "Johnnie Walker Red Label",
+          "amount": "50 ml",
+          "price": 3.12,
+          "text": ""
+        },
+        {
+          "title": "Jim Beam",
+          "amount": "50 ml",
+          "price": 3.32,
+          "text": ""
+        },
+        {
+          "title": "Tullamore Dew",
+          "amount": "50 ml",
+          "price": 3.71,
+          "text": ""
+        },
+        {
+          "title": "Jack Daniel's",
+          "amount": "50 ml",
+          "price": 4.88,
+          "text": ""
+        },
+        {
+          "title": "Johnnie Walker Black Label",
+          "amount": "50 ml",
+          "price": 5.47,
+          "text": ""
+        },
+        {
+          "title": "Chivas Regal",
+          "amount": "50 ml",
+          "price": 5.47,
+          "text": ""
+        },
+        {
+          "title": "Bushmills Black Bush",
+          "amount": "50 ml",
+          "price": 5.47,
+          "text": ""
+        },
+        {
+          "title": "Flirt Vodka",
+          "amount": "50 ml",
+          "price": 1.76,
+          "text": ""
+        },
+        {
+          "title": "Alaska Vodka",
+          "amount": "50 ml",
+          "price": 1.76,
+          "text": ""
+        },
+        {
+          "title": "Smirnoff Vodka",
+          "amount": "50 ml",
+          "price": 2.03,
+          "text": ""
+        },
+        {
+          "title": "Absolut Vodka",
+          "amount": "50 ml",
+          "price": 2.03,
+          "text": ""
+        },
+        {
+          "title": "Russian Standard Vodka",
+          "amount": "50 ml",
+          "price": 3.32,
+          "text": ""
+        },
+        {
+          "title": "Finlandia Vodka",
+          "amount": "50 ml",
+          "price": 3.32,
+          "text": ""
+        },
+        {
+          "title": "Beluga Vodka",
+          "amount": "50 ml",
+          "price": 6.84,
+          "text": ""
+        },
+        {
+          "title": "Grey Goose Vodka",
+          "amount": "50 ml",
+          "price": 6.84,
+          "text": ""
+        }
+      ]
+    },
+    {
+      "name": "Allergens",
+      "slug": "allergens",
+      "subtitle": "Allergens",
+      "description": "",
+      "items": [
+        {
+          "title": "Cereals containing gluten",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Crustaceans and products thereof",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Eggs and products thereof",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Fish and fish products",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Peanuts and products thereof",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Soybeans and soybean products",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Milk and dairy products",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Tree nuts: almonds, hazelnuts, walnuts, cashews, Brazil nuts, pistachios, macadamia nuts and Queensland nuts",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Celery and products thereof",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Mustard and products thereof",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Sesame seeds and products thereof",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Lupin and products thereof",
+          "amount": "",
+          "price": null,
+          "text": ""
+        },
+        {
+          "title": "Molluscs and products thereof",
+          "amount": "",
+          "price": null,
           "text": ""
         }
       ]

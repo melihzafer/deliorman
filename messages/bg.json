@@ -363,20 +363,22 @@
     "nextSpecialty": "Следващ специалитет",
     "orderFromMenuCta": "Поръчай от менюто",
     "categories": {
-      "soft-drinks-beverages": "Безалкохолни и Топли Напитки",
+      "hot-beverages": "Топли Напитки",
       "salads": "Салати",
       "hot-appetizers": "Аламинути",
-      "soups-fish-sandwiches": "Супи, Риба и Сандвичи",
+      "soups-sandwiches": "Супи, Пилешки Деликатеси и Сандвичи",
       "pizzas": "Пици",
-      "grill-and-specialties": "Скара и Специалитети",
-      "sach-cold-appetizers-sides": "Сач, Студени Мезета и Гарнитури",
+      "grill": "Скара",
+      "saj-fish-specialties": "Сач, Риба и Специалитети",
+      "burgers": "Бургери",
       "new-specialties": "Нови Специалитети",
-      "desserts": "Десерти",
-      "beer": "Бира",
-      "rakia": "Ракии",
+      "cold-appetizers-sides": "Студени Мезета и Гарнитури",
+      "nuts-desserts": "Ядки и Десерти",
+      "rakia": "Ракия",
       "wines": "Бели и Червени Вина",
-      "vodka-other-spirits": "Водка и Други Напитки",
-      "whiskey-and-nuts": "Уиски и Ядки"
+      "beer-cider-other-drinks": "Бира, Сайдер и Други Напитки",
+      "whiskey-vodka": "Уиски и Водка",
+      "allergens": "Алергени"
     },
     "specialtiesSlides": [
       {

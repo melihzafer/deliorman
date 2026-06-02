@@ -363,20 +363,22 @@
     "nextSpecialty": "Sonraki spesiyal",
     "orderFromMenuCta": "Menüden sipariş ver",
     "categories": {
-      "soft-drinks-beverages": "Alkolsüz ve Sıcak İçecekler",
+      "hot-beverages": "Sıcak İçecekler",
       "salads": "Salatalar",
       "hot-appetizers": "Sıcak Yemekler",
-      "soups-fish-sandwiches": "Çorbalar, Balık ve Sandviçler",
+      "soups-sandwiches": "Çorbalar, Tavuk Lezzetleri ve Sandviçler",
       "pizzas": "Pizzalar",
-      "grill-and-specialties": "Izgara ve Spesiyaller",
-      "sach-cold-appetizers-sides": "Sac, Soğuk Mezeler ve Garnitürler",
+      "grill": "Izgara",
+      "saj-fish-specialties": "Sac, Balık ve Spesiyaller",
+      "burgers": "Burgerler",
       "new-specialties": "Yeni Spesiyaller",
-      "desserts": "Tatlılar",
-      "beer": "Bira",
+      "cold-appetizers-sides": "Soğuk Mezeler ve Garnitürler",
+      "nuts-desserts": "Kuruyemiş ve Tatlılar",
       "rakia": "Rakılar",
       "wines": "Beyaz ve Kırmızı Şaraplar",
-      "vodka-other-spirits": "Votka ve Diğer İçkiler",
-      "whiskey-and-nuts": "Viski ve Kuruyemişler"
+      "beer-cider-other-drinks": "Bira, Elma Şarabı ve Diğer İçecekler",
+      "whiskey-vodka": "Viski ve Votka",
+      "allergens": "Alerjenler"
     },
     "specialtiesSlides": [
       {

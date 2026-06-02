@@ -363,20 +363,22 @@
     "nextSpecialty": "Next specialty",
     "orderFromMenuCta": "Order from the menu",
     "categories": {
-      "soft-drinks-beverages": "Soft Drinks & Hot Beverages",
+      "hot-beverages": "Hot Beverages",
       "salads": "Salads",
       "hot-appetizers": "Hot Dishes",
-      "soups-fish-sandwiches": "Soups, Fish & Sandwiches",
+      "soups-sandwiches": "Soups, Chicken Delicacies & Sandwiches",
       "pizzas": "Pizzas",
-      "grill-and-specialties": "Grill & Specialties",
-      "sach-cold-appetizers-sides": "Saj Platters, Cold Appetizers & Sides",
+      "grill": "Grill",
+      "saj-fish-specialties": "Saj, Fish & Specialties",
+      "burgers": "Burgers",
       "new-specialties": "New Specialties",
-      "desserts": "Desserts",
-      "beer": "Beer",
+      "cold-appetizers-sides": "Cold Appetizers & Sides",
+      "nuts-desserts": "Nuts & Desserts",
       "rakia": "Rakia",
       "wines": "White & Red Wines",
-      "vodka-other-spirits": "Vodka & Other Spirits",
-      "whiskey-and-nuts": "Whisky & Nuts"
+      "beer-cider-other-drinks": "Beer, Cider & Other Drinks",
+      "whiskey-vodka": "Whisky & Vodka",
+      "allergens": "Allergens"
     },
     "specialtiesSlides": [
       {
