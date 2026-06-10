@@ -127,7 +127,7 @@ export const AIAssistantModal = ({ isOpen, onClose, table = null }) => {
 
         if (!response.ok) {
           if (response.status === 429) errorKey = "errorRateLimit";
-          else if (response.status === 503) errorKey = "errorUnavailable";
+          else if (response.status === 502 || response.status === 503) errorKey = "errorUnavailable";
           else errorKey = "errorGeneric";
         } else if (response.body) {
           const reader = response.body.getReader();

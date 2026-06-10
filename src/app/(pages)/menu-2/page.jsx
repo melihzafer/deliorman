@@ -7,6 +7,7 @@ import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
 import MenuFiltered from "@components/menu/MenuFiltered2";
+import MenuAIAssistant from "@components/menu/ai/MenuAIAssistant";
 
 export const metadata = {
   title: {
@@ -33,8 +34,10 @@ const Menu1 = () => {
             <div className="container tst-p-60-0">
               <ScrollHint />
 
+              <MenuAIAssistant />
+
               <MenuFiltered
-                categories={MenuData.categories} 
+                categories={MenuData.categories}
               />
 
             </div>

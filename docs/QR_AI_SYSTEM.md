@@ -42,13 +42,17 @@ The page is `noindex` — it's an internal tool.
 Guests who scan a table QR land on `/menu?table=N` and can chat with **Deli**, the
 restaurant's digital waiter:
 
-- powered by the official Anthropic TypeScript SDK
-  ([`anthropics/anthropic-sdk-typescript`](https://github.com/anthropics/anthropic-sdk-typescript))
-  running **Claude Opus 4.8** (`claude-opus-4-8`),
+- **two pluggable providers**, selected by environment variables:
+  - **Groq (default, zero cost)** — `llama-3.1-8b-instant` on Groq's free tier
+    (14,400 requests/day) via the OpenAI-compatible endpoint
+    `https://api.groq.com/openai/v1`. Set `GROQ_API_KEY` and you're live.
+  - **Claude (optional upgrade)** — the official Anthropic TypeScript SDK
+    ([`anthropics/anthropic-sdk-typescript`](https://github.com/anthropics/anthropic-sdk-typescript))
+    running `claude-opus-4-8`, with prompt caching (`cache_control: ephemeral`)
+    for ~90% cheaper cached input. Set `AI_PROVIDER=anthropic` +
+    `ANTHROPIC_API_KEY` to switch — no code changes needed.
 - the **entire localized menu** (bg/en/tr) is rendered into the system prompt as
-  compact text, so answers are grounded in real dishes and prices — the prompt is
-  byte-stable per locale and marked with `cache_control: ephemeral`, so Anthropic's
-  prompt caching kicks in across guests (~90% cheaper cached input),
+  compact text, so answers are grounded in real dishes and prices,
 - responses **stream** to the browser, so the first words appear immediately,
 - the assistant knows the guest's table number from the QR deep link,
 - scope-locked by the system prompt: menu/restaurant questions only, no invented
@@ -79,12 +83,17 @@ lock, mobile bottom-sheet layout.
 
 ```bash
 # .env.local (never commit this file!)
-ANTHROPIC_API_KEY=sk-ant-...
+GROQ_API_KEY=gsk_...           # free at https://console.groq.com
 NEXT_PUBLIC_SITE_URL=https://www.restorantdeliorman.com
+
+# Optional: switch to Claude instead of the free Groq tier
+# AI_PROVIDER=anthropic
+# ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-Without `ANTHROPIC_API_KEY` the assistant degrades gracefully: the API returns
-503 and the modal shows a friendly "ask our staff" message.
+Without any AI key the assistant degrades gracefully: the API returns 503 and
+the modal shows a friendly "ask our staff" message. If the upstream provider
+errors, the API returns 502 with the same friendly client behavior.
 
 ## Brainstorm: where to take the QR system next
 
