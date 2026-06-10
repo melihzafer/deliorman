@@ -24,13 +24,33 @@ interface ContactSuccessResponse {
 
 type ContactRouteResponse = ContactSuccessResponse | ContactErrorResponse;
 
+// Contact submissions are small; anything bigger is abuse.
+const MAX_BODY_BYTES = 50_000;
+
 export async function POST(request: Request): Promise<NextResponse<ContactRouteResponse>> {
   try {
+    const contentLength = Number(request.headers.get('content-length') || 0);
+    if (contentLength > MAX_BODY_BYTES) {
+      return NextResponse.json<ContactErrorResponse>(
+        { success: false, errors: [{ message: 'Заявката е твърде голяма.' }] },
+        { status: 413 },
+      );
+    }
+
     // Capture client IP for security/audit purposes
     const ipInfo = getClientIp(request);
     const clientIp = ipInfo.ip;
 
     const formData = await request.formData();
+
+    // Honeypot (bots tend to fill it). Field is optional and hidden in UI.
+    const hp = formData.get('company');
+    if (hp && String(hp).trim() !== '') {
+      return NextResponse.json<ContactSuccessResponse>({
+        success: true,
+        message: 'Благодарим за вашето съобщение! Ще се свържем с вас скоро.',
+      });
+    }
 
     // Extract form data
     const firstName = formData.get('first_name') as string | null;
@@ -63,7 +83,7 @@ export async function POST(request: Request): Promise<NextResponse<ContactRouteR
       errors.push({ field: 'last_name', message: 'Фамилията трябва да е поне 2 символа' });
     }
 
-    if (!email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}/i.test(email)) {
+    if (!email || !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
       errors.push({ field: 'email', message: 'Невалиден имейл адрес' });
     }
 
@@ -123,11 +143,18 @@ ${validatedMessage}
       '━━━━━━━━━━━━━━━━━━━━━━━',
       '<b>🔒 Информация за сигурност:</b>',
       `<b>🌐 IP адрес:</b> <code>${escapeHtml(clientIp)}</code>`,
-      `<i>⏱️ Изпратено:</i> ${escapeHtml(new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }))}</i>`,
+      `<i>⏱️ Изпратено:</i> ${escapeHtml(new Date().toLocaleString('bg-BG', { timeZone: 'Europe/Sofia' }))}`,
     ].join('\n');
 
     // Send email via Resend
-    const resend = new Resend(process.env.RESEND_API_KEY as string);
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY not configured. Cannot send contact email.');
+      return NextResponse.json<ContactErrorResponse>(
+        { success: false, errors: [{ message: 'Формата за контакт не е конфигурирана. Моля, обадете се на +359 89 4766273.' }] },
+        { status: 503 },
+      );
+    }
+    const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from: 'Deliorman Contact <onboarding@resend.dev>',
       to: 'restaurantdeliorman@gmail.com',

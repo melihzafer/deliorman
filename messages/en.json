@@ -886,5 +886,46 @@
       "november": "November",
       "december": "December"
     }
+  },
+  "aiAssistant": {
+    "triggerTitle": "Ask Deli",
+    "triggerSubtitle": "AI menu assistant — recommendations, pairings and questions",
+    "triggerCta": "Start chat",
+    "modalTitle": "Deli — AI Assistant",
+    "modalSubtitle": "Your digital waiter",
+    "tableBadge": "Table {table}",
+    "welcome": "Hi! 👋 I'm Deli, your digital waiter. Ask me anything about the menu — I can recommend dishes, explain what's in them, or help you decide.",
+    "inputPlaceholder": "Ask about the menu…",
+    "send": "Send",
+    "close": "Close",
+    "thinking": "Deli is typing…",
+    "suggestion1": "What would you recommend?",
+    "suggestion2": "What are your specialties?",
+    "suggestion3": "Do you have vegetarian dishes?",
+    "suggestion4": "Which dessert should I try?",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorRateLimit": "Too many questions in a short time. Please wait a moment and try again. 🙏",
+    "errorUnavailable": "The AI assistant is currently unavailable. Please ask our staff — we're happy to help!",
+    "disclaimer": "The AI assistant can make mistakes. Please confirm allergens and important details with our staff."
+  },
+  "qrMenu": {
+    "title": "Menu QR Codes",
+    "description": "Generate QR codes for your tables — guests scan and see the digital menu.",
+    "pageLabel": "Page",
+    "pageMenu": "Menu",
+    "pageTable": "Table (interactive menu)",
+    "pageLunchMenu": "Lunch menu",
+    "pageFeedback": "Feedback",
+    "localeLabel": "Language",
+    "tableFromLabel": "From table",
+    "tableToLabel": "To table",
+    "noTables": "No table numbers",
+    "generate": "Generate",
+    "print": "Print all",
+    "download": "Download SVG",
+    "tableLabel": "Table",
+    "scanHint": "Scan for the menu",
+    "limitNote": "Maximum {limit} tables and up to {batch} codes at once.",
+    "rangeError": "Invalid table range."
   }
 }

@@ -66,6 +66,7 @@ const nextConfig = {
               "font-src 'self' data: https://fonts.gstatic.com",
               "connect-src 'self' https://api.mapbox.com https://events.mapbox.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
               "frame-src 'none'",
+              "frame-ancestors 'self'",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",

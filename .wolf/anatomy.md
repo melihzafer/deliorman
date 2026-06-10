@@ -1,13 +1,13 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-04-29T15:00:04.423Z
-> Files: 510 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-06-10T15:05:16.907Z
+> Files: 562 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
-- `.gitignore` — Git ignore rules for local env/build/generated artifacts (~38 tok)
-- `.architect-before.json` — Architect skill baseline health metrics and structural counts (~150 tok)
 - `.architect-after.json` — Architect skill after-restructure health metrics and structural counts (~250 tok)
+- `.architect-before.json` — Architect skill baseline health metrics and structural counts (~150 tok)
+- `.gitignore` — Git ignore rules for local env/build/generated artifacts (~38 tok)
 - `.graphify_cached.json` (~214 tok)
 - `.graphify_merge_all.py` (~220 tok)
 - `.graphify_merge_sem.py` (~365 tok)
@@ -37,7 +37,7 @@
 - `jsconfig.json` (~100 tok)
 - `MENU_NAVIGATION_DOCS.md` — 🎨 Geliştirilmiş Menu Navigasyon (~811 tok)
 - `next-env.d.ts` — / <reference types="next" /> (~74 tok)
-- `next.config.js` — Next.js configuration (~933 tok)
+- `next.config.js` — Declares createNextIntlPlugin (~947 tok)
 - `package-lock.json` — npm lock file (~94434 tok)
 - `package.json` — Node.js package manifest (~384 tok)
 - `playwright.config.js` — /*.spec.js'], (~426 tok)
@@ -120,8 +120,8 @@
 - `apple-touch-icon.webp` (~1317 tok)
 - `bg.webp` (~85011 tok)
 - `burger.webp` (~21143 tok)
-- `favicon-96x96.webp` (~413 tok)
 - `deliorman_colorized_logo.svg` — Colorized Deliorman SVG logo used by the `/masa` masthead (~19000 tok)
+- `favicon-96x96.webp` (~413 tok)
 - `logo.webp` (~19094 tok)
 - `phone.webp` (~10639 tok)
 - `reserved.webp` (~5555 tok)
@@ -335,7 +335,7 @@
 ## src/
 
 - `.DS_Store` (~2732 tok)
-- `middleware.js` — API routes: GET (6 endpoints) (~1584 tok)
+- `middleware.js` — API routes: GET (6 endpoints) (~1734 tok)
 
 ## src/app/
 
@@ -346,8 +346,8 @@
 - `opengraph-image.tsx` — runtime (~280 tok)
 - `robots.ts` — Exports robots (~104 tok)
 - `sitemap.ts` — Declares sitemap (~356 tok)
-- `tailwind.css` — Tailwind theme and utilities import without preflight (~18 tok)
 - `sw.js` — Declares serwist (~138 tok)
+- `tailwind.css` — Tailwind theme and utilities import without preflight (~18 tok)
 
 ## src/app/[locale]/
 
@@ -415,7 +415,7 @@
 
 ## src/app/[locale]/(pages)/menu/
 
-- `page.jsx` — generateMetadata (~534 tok)
+- `page.jsx` — generateMetadata (~563 tok)
 
 ## src/app/[locale]/(pages)/onepage/
 
@@ -513,7 +513,7 @@
 
 - `CheckoutForm.jsx` — CheckoutForm — renders form (~3168 tok)
 - `ContactForm.jsx` — ContactForm — renders form — uses useState (~3731 tok)
-- `FeedbackForm.jsx` — STAR_VALUES — renders form — uses useState, useCallback (~2988 tok)
+- `FeedbackForm.jsx` — STAR_VALUES — renders form (~3117 tok)
 - `OpenTableForm.jsx` — OpenTableForm — renders form (~1912 tok)
 - `ReservationForm.jsx` — stepVariants — renders form (~5407 tok)
 
@@ -542,6 +542,10 @@
 ## src/app/_components/menu/__tests__/
 
 - `MenuFiltered.test.jsx` — translator (~1214 tok)
+
+## src/app/_components/menu/qr/
+
+- `QRMenuTool.jsx` — MAX_BATCH — renders form (~1745 tok)
 
 ## src/app/_components/reviews/
 
@@ -658,9 +662,9 @@
 - `siteContact.js` — Exports getRestaurantPhoneDisplay, getRestaurantPhoneNormalized, getRestaurantPhoneHref (~338 tok)
 - `telegram.ts` — Exports sendTelegramMessage (~192 tok)
 - `ThemeContext.jsx` — ThemeContext (~319 tok)
-- `utils.ts` — Exports cn helper combining clsx and tailwind-merge (~39 tok)
 - `usePagination.js` — Exports usePagination (~220 tok)
 - `useReducedMotion.js` — Exports useReducedMotion (~144 tok)
+- `utils.ts` — Exports cn helper combining clsx and tailwind-merge (~39 tok)
 
 ## src/app/_lib/__tests__/
 
@@ -709,6 +713,10 @@
 - `contact.test.js` — mockSend: createFormDataRequest, validFields (~1766 tok)
 - `reservation.test.js` — raw: createFormDataRequest, futureDateTime, pastDateTime, validFields (~2247 tok)
 
+## src/app/api/ai/menu-assistant/
+
+- `route.ts` — Providers, cheapest first: (~3214 tok)
+
 ## src/app/api/contact/
 
 - `route.ts` — Next.js API route: POST (~1664 tok)
@@ -716,8 +724,8 @@
 ## src/app/api/feedback/
 
 - `feedbackEmail.ts` — Builds plain-text and escaped HTML email content for feedback submissions (~1750 tok)
-- `feedbackValidation.ts` — Feedback request schema and route response types (~260 tok)
-- `route.ts` — Next.js API route: POST with content-type/body-size guard (~1150 tok)
+- `feedbackValidation.ts` — Zod schemas: feedbackSchema (~322 tok)
+- `route.ts` — Next.js API route: POST (~1322 tok)
 
 ## src/app/api/health/
 
@@ -726,6 +734,10 @@
 ## src/app/api/menu/
 
 - `route.ts` — Next.js API route: GET (~161 tok)
+
+## src/app/api/qr/
+
+- `route.ts` — QR code generator for the restaurant's own pages. (~1104 tok)
 
 ## src/app/api/reservation/
 
@@ -755,32 +767,32 @@
 
 ## src/app/masa/
 
-- `MasaClient.tsx` — QR menu composition container wiring state hooks and newspaper UI modules (~1100 tok)
 - `MasaCategoryNav.tsx` — Planned QR menu category navigation component (not present if unused) (~0 tok)
+- `MasaClient.tsx` — QR menu composition container wiring state hooks and newspaper UI modules (~1100 tok)
+- `masaConstants.ts` — QR menu timing, storage key, EUR conversion, and local test host constants (~360 tok)
 - `MasaDrawer.tsx` — QR menu hamburger drawer for language and category selection (~900 tok)
 - `MasaImageCards.tsx` — Active category newspaper photo-card renderer (~850 tok)
 - `MasaMasthead.tsx` — QR menu newspaper masthead and hero strip renderer (~1000 tok)
 - `MasaMenuList.tsx` — Active category heading, photo cards, and menu item list (~750 tok)
+- `masaMenuUtils.ts` — QR menu locale fallback, date, edition, price, and table-id helpers (~700 tok)
 - `MasaSessionOverlay.tsx` — QR session loading/blocked notice renderer (~200 tok)
 - `MasaStopPress.tsx` — Floating waiter-call control and feedback message renderer (~300 tok)
 - `MasaTasteWizard.tsx` — Adaptive taste wizard UI shell with mood/anchor/protein/hunger/texture/temp/alcohol/profile questions, free-text input, result card with alternatives and refine, history memory (~700 tok)
-- `masaConstants.ts` — QR menu timing, storage key, EUR conversion, and local test host constants (~360 tok)
-- `masaMenuUtils.ts` — QR menu locale fallback, date, edition, price, and table-id helpers (~700 tok)
 - `masaTranslations.ts` — Localized QR menu UI copy and lookup helper — now also includes the wizard question, rationale, pairing, and free-text keys for bg/tr/en (~2400 tok)
 - `masaTypes.ts` — Shared QR menu data, locale, style, and feedback types (~350 tok)
+- `page.tsx` — Noindex /masa route wrapper (~54 tok)
 - `useMasaSession.ts` — QR session start, menu load, heartbeat, and blocked-session state hook (~1400 tok)
 - `useWaiterCall.ts` — Waiter-call cooldown, feedback, and API call hook (~1050 tok)
-- `page.tsx` — Noindex /masa route wrapper (~54 tok)
-- `wizard/types.ts` — Wizard answer/state types (Anchor, Mood, FoodProtein, Hunger, FoodTexture, DrinkTemp, AlcoholChoice, DrinkProfileChoice, ItemTags, ScoredItem) (~220 tok)
+- `wizard/intentLexicon.ts` — Token-based NLU that infers WizardAnswers from free-text input in any of the 3 locales, no model download (~150 tok)
+- `wizard/intentRouter.ts` — Two-stage orchestrator: lexicon first, semantic fallback only if enabled and stub returns a result (~100 tok)
+- `wizard/intentSemantic.ts` — Optional lazy ONNX semantic matcher stub — drops in @xenova/transformers MiniLM later without API changes (~60 tok)
+- `wizard/lexicon.json` — Multilingual (bg/tr/en) synonym table for the 7 wizard dimensions (~310 tok)
 - `wizard/menuTags.ts` — Curated tag map for every menu item across 9 dimensions (protein/flavors/textures/temp/state/profile/vibe/portion/course) (~1500 tok)
-- `wizard/scoring.ts` — Tag-based weighted scoring engine with confidence gate and surprise picker (~500 tok)
 - `wizard/nextStep.ts` — Adaptive state machine (mood → anchor → protein → hunger → spinning); reduces 6-question flow to 3-4 (~170 tok)
 - `wizard/pairings.ts` — Tag-driven side-and-drink combo recommender with reason keys (~330 tok)
 - `wizard/rationale.ts` — Translates scored-item matchReasons + answers into localized one-line rationales with chip reasons (~150 tok)
-- `wizard/lexicon.json` — Multilingual (bg/tr/en) synonym table for the 7 wizard dimensions (~310 tok)
-- `wizard/intentLexicon.ts` — Token-based NLU that infers WizardAnswers from free-text input in any of the 3 locales, no model download (~150 tok)
-- `wizard/intentSemantic.ts` — Optional lazy ONNX semantic matcher stub — drops in @xenova/transformers MiniLM later without API changes (~60 tok)
-- `wizard/intentRouter.ts` — Two-stage orchestrator: lexicon first, semantic fallback only if enabled and stub returns a result (~100 tok)
+- `wizard/scoring.ts` — Tag-based weighted scoring engine with confidence gate and surprise picker (~500 tok)
+- `wizard/types.ts` — Wizard answer/state types (Anchor, Mood, FoodProtein, Hunger, FoodTexture, DrinkTemp, AlcoholChoice, DrinkProfileChoice, ItemTags, ScoredItem) (~220 tok)
 
 ## src/app/offline/
 
@@ -799,8 +811,8 @@
 - `getLocalizedMenuData.js` — Exports getLocalizedMenuData (~434 tok)
 - `getLocalizedTestimonialsData.js` — Exports getLocalizedTestimonialsData (~383 tok)
 - `menu_merged_en.json` (~5871 tok)
-- `menu.json` (~9048 tok)
 - `menu-image-gaps.json` — Photo capture backlog for menu categories/items without card-strip images (~700 tok)
+- `menu.json` (~9048 tok)
 - `menu.translations.en.js` — Declares menuTranslationsEn (~2886 tok)
 - `menu.translations.tr.js` — Declares menuTranslationsTr (~2905 tok)
 - `menu2.json` (~8597 tok)
@@ -880,8 +892,8 @@
 - `e2e/critical-journeys.spec.js` — Playwright smoke test for the home and reservation flow (~500 tok)
 - `e2e/helpers.js` — Shared Playwright helpers for navigation and form filling (~150 tok)
 - `unit/wizard/fixture.ts` — Tiny subset of the menu data used as fixture for the wizard unit tests (~150 tok)
-- `unit/wizard/scoring.test.ts` — Tag-based scoring engine determinism, anchor hard-filter, mood/protein/hunger matches (~280 tok)
-- `unit/wizard/nextStep.test.ts` — Adaptive state machine: intro/mood/anchor/protein/hunger/drink/temp/alcohol/profile paths and sweet-only shortcut (~230 tok)
 - `unit/wizard/intent.test.ts` — Multilingual lexicon NLU in bg/tr/en + intent router fallback behaviour (~210 tok)
+- `unit/wizard/nextStep.test.ts` — Adaptive state machine: intro/mood/anchor/protein/hunger/drink/temp/alcohol/profile paths and sweet-only shortcut (~230 tok)
 - `unit/wizard/pairings.test.ts` — Combo pairing reason keys + side-or-drink correctness (~180 tok)
 - `unit/wizard/rationale.test.ts` — Three-locale rationale sentence generation and chip reasoning (~150 tok)
+- `unit/wizard/scoring.test.ts` — Tag-based scoring engine determinism, anchor hard-filter, mood/protein/hunger matches (~280 tok)

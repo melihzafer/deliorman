@@ -41,6 +41,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
     rating: "",
     category: "",
     termsAccepted: false,
+    website: "",
   });
   const [touched, setTouched] = useState({
     message: false,
@@ -97,7 +98,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
   }, []);
 
   const resetForm = () => {
-    setValues({ message: "", rating: "", category: "", termsAccepted: false });
+    setValues({ message: "", rating: "", category: "", termsAccepted: false, website: "" });
     setTouched({ message: false, rating: false, category: false, termsAccepted: false });
     setServerErrors({ message: "", rating: "", category: "", termsAccepted: "" });
     setSubmitError("");
@@ -124,6 +125,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           rating: values.rating ? parseInt(values.rating) : undefined,
           category: values.category || undefined,
           termsAccepted: values.termsAccepted,
+          website: values.website || undefined,
         }),
       });
 
@@ -172,6 +174,17 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
+      {/* Honeypot anti-spam field: hidden from users, bots fill it */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        onChange={handleChange}
+        value={values.website || ""}
+        style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }}
+        aria-hidden="true"
+      />
       <div className={styles.categorySection}>
         <label className={styles.fieldLabel}>{t("categoryLabel")}</label>
         <div className={styles.pillsRow}>

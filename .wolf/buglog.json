@@ -480,6 +480,86 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-05-17T17:03:43.401+03:00"
+    },
+    {
+      "id": "bug-029",
+      "timestamp": "2026-06-10T14:59:53.076Z",
+      "error_message": "Incorrect value in code",
+      "file": "next.config.js",
+      "root_cause": "Had 'none'",
+      "fix": "Changed to 'self'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-10T14:59:53.076Z"
+    },
+    {
+      "id": "bug-030",
+      "timestamp": "2026-06-10T15:00:49.315Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/[locale]/(pages)/menu/page.jsx",
+      "root_cause": "Had \"@/src/i18n/seo\"",
+      "fix": "Changed to \"@components/menu/ai/MenuAIAssistant\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-10T15:00:49.315Z"
+    },
+    {
+      "id": "bug-031",
+      "timestamp": "2026-06-10T15:01:20.979Z",
+      "error_message": "Type error",
+      "file": "src/app/api/feedback/route.ts",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-10T15:01:20.979Z"
+    },
+    {
+      "id": "bug-032",
+      "timestamp": "2026-06-10T15:02:10.436Z",
+      "error_message": "CSS fix: message",
+      "file": "src/app/_components/forms/FeedbackForm.jsx",
+      "root_cause": "message: \"\", rating: \"\", category: \"\", termsAccepted: false → \"\", rating: \"\", category: \"\", termsAccepted: false, website: \"\"",
+      "fix": "Changed message: \"\", rating: \"\", category: \"\", termsAccepted: false → \"\", rating: \"\", category: \"\", termsAccepted: false, website: \"\"",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-10T15:02:10.436Z"
+    },
+    {
+      "id": "bug-033",
+      "timestamp": "2026-06-10T15:04:48.607Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/api/ai/menu-assistant/route.ts",
+      "root_cause": "Had '@library/client-ip'",
+      "fix": "Changed to '@library/clientIp'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-06-10T15:05:01.347Z"
     }
   ]
 }

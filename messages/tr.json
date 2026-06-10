@@ -886,5 +886,46 @@
       "november": "Kasım",
       "december": "Aralık"
     }
+  },
+  "aiAssistant": {
+    "triggerTitle": "Deli'ye Sor",
+    "triggerSubtitle": "Yapay zekâ menü asistanı — öneriler, uyumlar ve sorular",
+    "triggerCta": "Sohbeti başlat",
+    "modalTitle": "Deli — Yapay Zekâ Asistanı",
+    "modalSubtitle": "Dijital garsonunuz",
+    "tableBadge": "Masa {table}",
+    "welcome": "Merhaba! 👋 Ben Deli, dijital garsonunuz. Menü hakkında her şeyi sorabilirsiniz — yemek önerebilir, içeriklerini açıklayabilir veya seçim yapmanıza yardımcı olabilirim.",
+    "inputPlaceholder": "Menü hakkında sorun…",
+    "send": "Gönder",
+    "close": "Kapat",
+    "thinking": "Deli yazıyor…",
+    "suggestion1": "Ne önerirsin?",
+    "suggestion2": "Spesiyaliteleriniz neler?",
+    "suggestion3": "Vejetaryen yemekleriniz var mı?",
+    "suggestion4": "Hangi tatlıyı denemeliyim?",
+    "errorGeneric": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "errorRateLimit": "Kısa sürede çok fazla soru soruldu. Lütfen biraz bekleyip tekrar deneyin. 🙏",
+    "errorUnavailable": "Yapay zekâ asistanı şu anda kullanılamıyor. Lütfen personelimize sorun — memnuniyetle yardımcı oluruz!",
+    "disclaimer": "Yapay zekâ asistanı hata yapabilir. Alerjenleri ve önemli ayrıntıları personelimizle teyit edin."
+  },
+  "qrMenu": {
+    "title": "Menü QR Kodları",
+    "description": "Masalarınız için QR kodları oluşturun — misafirler tarayıp dijital menüyü görür.",
+    "pageLabel": "Sayfa",
+    "pageMenu": "Menü",
+    "pageTable": "Masa (etkileşimli menü)",
+    "pageLunchMenu": "Öğle menüsü",
+    "pageFeedback": "Geri bildirim",
+    "localeLabel": "Dil",
+    "tableFromLabel": "Başlangıç masası",
+    "tableToLabel": "Bitiş masası",
+    "noTables": "Masa numarası yok",
+    "generate": "Oluştur",
+    "print": "Tümünü yazdır",
+    "download": "SVG indir",
+    "tableLabel": "Masa",
+    "scanHint": "Menü için tarayın",
+    "limitNote": "En fazla {limit} masa ve tek seferde {batch} kod.",
+    "rangeError": "Geçersiz masa aralığı."
   }
 }

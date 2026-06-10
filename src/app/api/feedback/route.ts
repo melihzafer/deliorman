@@ -68,7 +68,16 @@ export async function POST(request: Request): Promise<NextResponse<FeedbackRoute
       );
     }
 
-    const { message, rating, category } = validation.data;
+    const { message, rating, category, website } = validation.data;
+
+    // Honeypot tripped — pretend success without sending anything.
+    if (website && website.trim() !== '') {
+      return NextResponse.json<FeedbackSuccessResponse>({
+        success: true,
+        message: 'Благодарим за вашата обратна връзка! Вашето мнение е важно за нас.',
+      });
+    }
+
     const email = buildFeedbackEmail({
       message,
       rating,

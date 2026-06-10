@@ -12,6 +12,8 @@ export const feedbackSchema = z.object({
   termsAccepted: z.boolean().refine((val) => val === true, {
     message: 'Моля, приемете условията за ползване преди изпращане',
   }),
+  // Honeypot: hidden in the UI, real users never fill it.
+  website: z.string().optional().nullable(),
 });
 
 export type FeedbackPayload = z.infer<typeof feedbackSchema>;

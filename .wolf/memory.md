@@ -103,3 +103,18 @@
 |------|--------|---------|---------|--------|
 | 18:14 | rebuilt QR wizard with tag engine + adaptive flow + NLU | src/app/masa/MasaTasteWizard.tsx, src/app/masa/wizard/*, src/app/masa/masaTranslations.ts, tests/unit/wizard/*, package.json, src/app/[locale]/table/table.module.scss, .wolf/anatomy.md, .wolf/memory.md | 1077-line keyword wizard replaced with 9-file tag-driven engine (scoring, pairings, rationale, adaptive state, multilingual lexicon NLU + lazy semantic stub); 3-4 questions instead of 6, free-text input, result shows main+alternatives+rationale chips+combo+refine; all strings via t() in 3 locales; 35/35 unit tests pass, tsc clean, build succeeds | ~15000 |
 | 18:52 | updated OpenWolf memory, anatomy, and cerebrum for new wizard files | .wolf/memory.md, .wolf/anatomy.md, .wolf/cerebrum.md | Documented new wizard subdirectory, unit tests directory, 7 new key learnings and 2 decision-log entries; added timestamp | ~600 |
+| 14:59 | Edited next.config.js | 2→3 lines | ~31 |
+| 15:00 | Edited src/middleware.js | 5→9 lines | ~59 |
+| 15:00 | Edited src/middleware.js | added 1 condition(s) | ~46 |
+| 15:00 | Edited src/app/[locale]/(pages)/menu/page.jsx | added 1 import(s) | ~50 |
+| 15:00 | Edited src/app/[locale]/(pages)/menu/page.jsx | 7→9 lines | ~76 |
+| 15:01 | Edited src/app/api/feedback/route.ts | added 1 condition(s) | ~116 |
+| 15:01 | Edited src/app/api/feedback/feedbackValidation.ts | 4→6 lines | ~70 |
+| 15:02 | Edited src/app/_components/forms/FeedbackForm.jsx | CSS: website | ~40 |
+| 15:02 | Edited src/app/_components/forms/FeedbackForm.jsx | CSS: website | ~35 |
+| 15:02 | Edited src/app/_components/forms/FeedbackForm.jsx | CSS: website | ~84 |
+| 15:02 | Edited src/app/_components/forms/FeedbackForm.jsx | expanded (+11 lines) | ~143 |
+| 15:04 | Edited src/app/api/ai/menu-assistant/route.ts | "@library/client-ip" → "@library/clientIp" | ~14 |
+| 15:05 | Edited src/app/api/qr/route.ts | "@library/client-ip" → "@library/clientIp" | ~14 |
+| 15:05 | Edited src/app/api/qr/route.ts | inline fix | ~32 |
+| 15:05 | Edited src/app/_components/menu/qr/QRMenuTool.jsx | 5→6 lines | ~62 |

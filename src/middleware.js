@@ -49,8 +49,12 @@ const RATE_LIMITS = {
     maxRequests: 2,           
   },
   reservation: {
-    windowMs: 60 * 60 * 1000, 
-    maxRequests: 2,          
+    windowMs: 60 * 60 * 1000,
+    maxRequests: 2,
+  },
+  ai: {
+    windowMs: 10 * 60 * 1000, // 10 minute window
+    maxRequests: 30,          // 30 requests per 10 minutes per IP
   },
 };
 
@@ -155,6 +159,8 @@ export function middleware(request) {
     routeType = 'contact';
   } else if (pathname.startsWith('/api/reservation')) {
     routeType = 'reservation';
+  } else if (pathname.startsWith('/api/ai')) {
+    routeType = 'ai';
   }
 
   if (pathname.startsWith('/api/')) {
