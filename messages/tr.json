@@ -96,10 +96,43 @@
     "termsModalText1": "Talebinizi işlemek için adınızı, soyadınızı ve telefon numaranızı, ayrıca tarih/saat ve misafir sayısını topluyoruz. Verileri yalnızca rezervasyonun onayı ve organizasyonu için kullanıyoruz.",
     "termsModalText2": "Kişisel verilerin işlenmesine ilişkin kurallar ve bilgilerin tam metni burada okunabilir:",
     "termsModalLink": "Şartlar ve Koşullar / Gizlilik",
-    "dayNames": ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"],
-    "dayNamesShort": ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
-    "monthNames": ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
-    "stepLabels": ["Tarih ve Saat", "Misafirler ve İletişim", "Onay"],
+    "dayNames": [
+      "Pazar",
+      "Pazartesi",
+      "Salı",
+      "Çarşamba",
+      "Perşembe",
+      "Cuma",
+      "Cumartesi"
+    ],
+    "dayNamesShort": [
+      "Pz",
+      "Pt",
+      "Sa",
+      "Ça",
+      "Pe",
+      "Cu",
+      "Ct"
+    ],
+    "monthNames": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ],
+    "stepLabels": [
+      "Tarih ve Saat",
+      "Misafirler ve İletişim",
+      "Onay"
+    ],
     "calendarSummary": "Deliorman Rezervasyon - {guests} kişi",
     "calendarDescription": "{firstName} {lastName} için rezervasyon\\nTelefon: {phone}\\nKişi: {guests}",
     "calendarLocation": "Deliorman Restoranı",
@@ -769,5 +802,45 @@
       "november": "Kasım",
       "december": "Aralık"
     }
+  },
+  "aiAssistant": {
+    "triggerTitle": "Deli'ye Sor",
+    "triggerSubtitle": "Yapay zekâ menü asistanı — öneriler, uyumlar ve sorular",
+    "triggerCta": "Sohbeti başlat",
+    "modalTitle": "Deli — Yapay Zekâ Asistanı",
+    "modalSubtitle": "Dijital garsonunuz",
+    "tableBadge": "Masa {table}",
+    "welcome": "Merhaba! 👋 Ben Deli, dijital garsonunuz. Menü hakkında her şeyi sorabilirsiniz — yemek önerebilir, içeriklerini açıklayabilir veya seçim yapmanıza yardımcı olabilirim.",
+    "inputPlaceholder": "Menü hakkında sorun…",
+    "send": "Gönder",
+    "close": "Kapat",
+    "thinking": "Deli yazıyor…",
+    "suggestion1": "Ne önerirsin?",
+    "suggestion2": "Spesiyaliteleriniz neler?",
+    "suggestion3": "Vejetaryen yemekleriniz var mı?",
+    "suggestion4": "Hangi tatlıyı denemeliyim?",
+    "errorGeneric": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "errorRateLimit": "Kısa sürede çok fazla soru soruldu. Lütfen biraz bekleyip tekrar deneyin. 🙏",
+    "errorUnavailable": "Yapay zekâ asistanı şu anda kullanılamıyor. Lütfen personelimize sorun — memnuniyetle yardımcı oluruz!",
+    "disclaimer": "Yapay zekâ asistanı hata yapabilir. Alerjenleri ve önemli ayrıntıları personelimizle teyit edin."
+  },
+  "qrMenu": {
+    "title": "Menü QR Kodları",
+    "description": "Masalarınız için QR kodları oluşturun — misafirler tarayıp dijital menüyü görür.",
+    "pageLabel": "Sayfa",
+    "pageMenu": "Menü",
+    "pageLunchMenu": "Öğle menüsü",
+    "pageFeedback": "Geri bildirim",
+    "localeLabel": "Dil",
+    "tableFromLabel": "Başlangıç masası",
+    "tableToLabel": "Bitiş masası",
+    "noTables": "Masa numarası yok",
+    "generate": "Oluştur",
+    "print": "Tümünü yazdır",
+    "download": "SVG indir",
+    "tableLabel": "Masa",
+    "scanHint": "Menü için tarayın",
+    "limitNote": "En fazla {limit} masa ve tek seferde {batch} kod.",
+    "rangeError": "Geçersiz masa aralığı."
   }
 }

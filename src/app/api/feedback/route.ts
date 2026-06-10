@@ -16,6 +16,8 @@ const feedbackSchema = z.object({
     .refine((val) => val === true, {
       message: 'Моля, приемете условията за ползване преди изпращане',
     }),
+  // Honeypot: hidden in the UI, real users never fill it.
+  website: z.string().optional().nullable(),
   });
 
 type FeedbackError = {
@@ -37,8 +39,19 @@ type FeedbackRouteResponse = FeedbackSuccessResponse | FeedbackErrorResponse;
 type FeedbackPayload = z.infer<typeof feedbackSchema>;
 type FeedbackCategory = NonNullable<FeedbackPayload['category']>;
 
+// Feedback payloads are small JSON; anything bigger is abuse.
+const MAX_BODY_BYTES = 20_000;
+
 export async function POST(request: Request): Promise<NextResponse<FeedbackRouteResponse>> {
   try {
+    const contentLength = Number(request.headers.get('content-length') || 0);
+    if (contentLength > MAX_BODY_BYTES) {
+      return NextResponse.json<FeedbackErrorResponse>(
+        { success: false, errors: [{ message: 'Заявката е твърде голяма.' }] },
+        { status: 413 },
+      );
+    }
+
     const body: unknown = await request.json();
 
     // Validate the request body
@@ -57,7 +70,15 @@ export async function POST(request: Request): Promise<NextResponse<FeedbackRoute
       );
     }
 
-    const { message, rating, category } = validation.data;
+    const { message, rating, category, website } = validation.data;
+
+    // Honeypot tripped — pretend success without sending anything.
+    if (website && website.trim() !== '') {
+      return NextResponse.json<FeedbackSuccessResponse>({
+        success: true,
+        message: 'Благодарим за вашата обратна връзка! Вашето мнение е важно за нас.',
+      });
+    }
 
     // Prepare email content
     const categoryLabels: Record<FeedbackCategory, string> = {
@@ -206,10 +227,8 @@ ${message}
 </html>
     `.trim();
 
-    // Log to console
-    console.log('=== NEW FEEDBACK SUBMISSION ===');
-    console.log(emailContent);
-    console.log('===============================');
+    // Log metadata only — message content, IP and user agent stay out of logs.
+    console.log(`[feedback] new submission: category=${category || 'none'} rating=${rating || 'none'} length=${message.length}`);
 
     // Send email using Resend
     if (!process.env.RESEND_API_KEY) {

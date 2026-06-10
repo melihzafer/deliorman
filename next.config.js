@@ -55,6 +55,13 @@ const nextConfig = {
           {
             key: 'Permissions-Policy',
             value: 'camera=(), microphone=(), geolocation=()'
+          },
+          {
+            // Conservative CSP: blocks plugin content, locks down framing,
+            // base tag and form targets without restricting scripts/styles
+            // (which would require a nonce pipeline and risk breaking the app).
+            key: 'Content-Security-Policy',
+            value: "object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'"
           }
         ],
       },

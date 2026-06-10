@@ -91,16 +91,11 @@ function nextWithLocale(request, locale) {
 // In-memory store for rate limiting
 // LIMITATIONS:
 // - Resets on every server restart or redeployment
-// - In serverless environments (like Vercel), each function instance maintains
-//   its own Map, making rate limiting ineffective across multiple instances
-// RECOMMENDATIONS:
-// - For production with multiple instances: Use Redis or similar persistent storage
-// - This implementation works well for:
 // - In serverless environments (e.g., Vercel), each function instance maintains
-//   its own Map, making rate limiting ineffective across multiple instances
+//   its own Map, so limits apply per instance rather than globally
 // RECOMMENDATIONS:
 // - For production with multiple instances or serverless deployments, use Redis
-//   or similar persistent storage for effective rate limiting
+//   (e.g. @upstash/ratelimit) or Vercel KV for cross-instance state
 // - This in-memory approach works well for:
 //   * Single-instance deployments
 //   * Low-traffic scenarios
@@ -120,6 +115,10 @@ const RATE_LIMITS = {
   reservation: {
     windowMs: 60 * 60 * 1000, // 1 hour window
     maxRequests: 2,          // 2 requests per hour per IP
+  },
+  ai: {
+    windowMs: 10 * 60 * 1000, // 10 minute window
+    maxRequests: 30,          // 30 requests per 10 minutes per IP
   },
 };
 
@@ -240,6 +239,8 @@ export function middleware(request) {
     routeType = 'contact';
   } else if (pathname.startsWith('/api/reservation')) {
     routeType = 'reservation';
+  } else if (pathname.startsWith('/api/ai')) {
+    routeType = 'ai';
   }
 
   // Handle localized page routing and locale persistence for non-API routes

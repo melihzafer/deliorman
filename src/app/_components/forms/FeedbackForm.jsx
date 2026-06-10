@@ -32,6 +32,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
     rating: "",
     category: "",
     termsAccepted: false,
+    website: "",
   });
   // Monomorphic: always same shape to prevent V8 de-optimization
   const [touched, setTouched] = useState({
@@ -69,7 +70,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
   };
 
   const resetForm = () => {
-    setValues({ message: "", rating: "", category: "", termsAccepted: false });
+    setValues({ message: "", rating: "", category: "", termsAccepted: false, website: "" });
     // Reset to stable shape, not empty object
     setTouched({ message: false, rating: false, category: false, termsAccepted: false });
     setServerErrors({ message: "", rating: "", category: "", termsAccepted: "" });
@@ -102,6 +103,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           rating: values.rating ? parseInt(values.rating) : undefined,
           category: values.category || undefined,
           termsAccepted: values.termsAccepted,
+          website: values.website || undefined,
         }),
       });
 
@@ -139,6 +141,17 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
+      {/* Honeypot anti-spam field: hidden from users, bots fill it */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        onChange={handleChange}
+        value={values.website || ""}
+        style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }}
+        aria-hidden="true"
+      />
       <div className={styles.groupInput}>
         <label htmlFor="category">
           {t("categoryLabel")}

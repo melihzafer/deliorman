@@ -1,7 +1,5 @@
 "use client";
 
-"use client";
-
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
