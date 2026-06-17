@@ -1,128 +1,171 @@
-# 🍽️ Restaurant Deliorman
+# 🍽️ Ресторант Делиорман — Restaurant Website & Ordering Platform
 
-> A modern, fully responsive restaurant website for Deliorman Restaurant located in Samuil, Razgrad, Bulgaria. Features online table reservations, interactive menu showcase, and elegant UI/UX design.
+> A modern, trilingual, production-grade website for **Deliorman Restaurant** in Samuil, Razgrad, Bulgaria. Built with Next.js 16 (App Router), it combines a digital menu, online ordering, table reservations, catering, a customer feedback system, and a blog — all optimized for performance, SEO, and accessibility.
 
-[![Live Published](https://img.shields.io/badge/demo-live-success)](https://restorantdeliorman.com)
-[![Built with](https://img.shields.io/badge/built%20with-React-61dafb)](https://reactjs.org/)
-[![Powered by](https://img.shields.io/badge/powered%20by-Melih%20Hyusein-blue)](https://melihzafer.netlify.app)
+[![Live Site](https://img.shields.io/badge/live-restorantdeliorman.com-success)](https://restorantdeliorman.com)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org/)
+[![i18n](https://img.shields.io/badge/i18n-BG%20%7C%20EN%20%7C%20TR-blue)](#-internationalization)
+[![Deploy](https://img.shields.io/badge/deploy-Vercel-black?logo=vercel)](https://vercel.com/)
+
+---
 
 ## ✨ Features
 
-- **📅 Online Reservations** - Interactive table booking system with date/time selection
-- **🍴 Digital Menu** - Comprehensive menu display with specialty dishes and pricing
-- **📱 Fully Responsive** - Optimized for mobile, tablet, and desktop devices
-- **🎨 Modern UI/UX** - Clean design with smooth animations and transitions
-- **🖼️ Photo Gallery** - Showcase restaurant ambiance and signature dishes
-- **📍 Location Integration** - Contact information and directions
-- **🕒 Business Hours Display** - Real-time operating hours visibility
-- **🌐 Multilingual Support** - Content in Bulgarian for local audience
+- **🍴 Digital Menu** — Classic menu, lunch menu, and specialty dishes with categories, pricing, and per-locale translations.
+- **🛒 Online Ordering** — Product catalog, cart, and checkout flow for orders and pickups.
+- **📅 Table Reservations** — Date/time picker, guest count, and notes, with instant **Telegram** and **email** notifications to staff (plus rate limiting to prevent spam).
+- **🎉 Catering & Special Days** — Dedicated pages for catering services and event bookings.
+- **⭐ Customer Feedback & Reviews** — Built-in feedback form and review display system with its own API.
+- **📝 Blog** — Markdown-powered posts with authors, tags, and categories.
+- **🖼️ Gallery** — Image gallery with lightbox.
+- **📍 Mapbox Integration** — Interactive location map and directions.
+- **🌐 Trilingual (BG / EN / TR)** — Full internationalization via `next-intl` with locale-based routing.
+- **📱 PWA-ready** — Offline fallback page and responsive design across mobile, tablet, and desktop.
+- **🔒 Hardened** — Security headers (HSTS, CSP-related, X-Frame-Options, etc.) and structured data (JSON-LD) for SEO.
 
 ## 🛠️ Tech Stack
 
-- **Frontend Framework:** React / Next.js
-- **Styling:** CSS3 / Tailwind CSS / Styled Components
-- **Form Handling:** React Hook Form / Formik
-- **Deployment:** Vercel / Netlify
-- **Analytics:** Google Analytics (optional)
+| Layer | Technology |
+|-------|-----------|
+| **Framework** | Next.js 16 (App Router, Webpack build) |
+| **Language** | JavaScript + TypeScript (incremental migration) |
+| **Styling** | SCSS / Sass + CSS |
+| **i18n** | next-intl (BG, EN, TR) |
+| **Email** | Resend |
+| **Notifications** | Telegram Bot API |
+| **Maps** | Mapbox GL |
+| **UI / Media** | Swiper, Framer Motion, react-modal-video, yet-another-react-lightbox |
+| **Content** | Markdown via remark / gray-matter |
+| **Images** | next/image + Sharp (AVIF / WebP) |
+| **Testing** | Playwright (E2E + performance/Web Vitals) |
+| **Deployment** | Vercel |
+| **Analytics** | Vercel Analytics + Speed Insights |
+
+## 📋 Prerequisites
+
+- Node.js 18.17 or later
+- npm or yarn
+
+## 🚀 Getting Started
+
+```bash
+# 1. Clone
+git clone https://github.com/melihzafer/deliorman.git
+cd deliorman
+
+# 2. Install dependencies
+npm install
+
+# 3. Configure environment
+cp .env.example .env
+# fill in your values (see below)
+
+# 4. Run the dev server
+npm run dev
+# open http://localhost:3000
+```
 
 ## ⚙️ Environment Variables
 
-This project requires several environment variables to be configured. Create a `.env` file in the root directory based on `.env.example`.
+Create a `.env` from `.env.example`. **Never commit `.env`** — it is already gitignored.
 
-### Required Variables (Server-side)
+### Required (server-side)
 
-- `RESEND_API_KEY` - API key for Resend email service
-- `TELEGRAM_BOT_TOKEN` - Telegram bot token from BotFather
-- `TELEGRAM_RESERVATIONS_CHAT_ID` - Telegram chat/channel ID for reservation notifications
-- `TELEGRAM_DISABLE` - Set to `true` to disable Telegram notifications (useful for local development)
+| Variable | Purpose |
+|----------|---------|
+| `RESEND_API_KEY` | Resend API key for transactional email |
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token from BotFather |
+| `TELEGRAM_RESERVATIONS_CHAT_ID` | Chat/channel ID for reservation alerts |
 
-### Optional Variables
+### Optional
 
-- `NEXT_PUBLIC_SITE_URL` - Your site's production URL (e.g., https://restorantdeliorman.com)
-- `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` - Mapbox token for map integration
-- `NEXT_PUBLIC_OPENTABLE_RESTAURANT_ID` - OpenTable restaurant ID
-- `NEXT_PUBLIC_FORMSPREE_URL` - Formspree form endpoint
-- `NEXT_PUBLIC_MAILCHIMP_URL` - Mailchimp subscription URL
-- `NEXT_PUBLIC_MAILCHIMP_KEY` - Mailchimp API key
-- `RESERVATION_RATE_WINDOW_SECONDS` - Time window for rate limiting (default: 86400)
-- `RESERVATION_RATE_MAX` - Maximum reservations per window (default: 5)
+| Variable | Purpose |
+|----------|---------|
+| `TELEGRAM_DISABLE` | Set `true` to disable Telegram (useful locally) |
+| `NEXT_PUBLIC_SITE_URL` | Production URL (e.g. `https://restorantdeliorman.com`) |
+| `NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN` | Mapbox token for the location map |
+| `RESERVATION_RATE_WINDOW_SECONDS` | Rate-limit window (default `86400`) |
+| `RESERVATION_RATE_MAX` | Max reservations per window (default `5`) |
 
-### Setup Instructions
+## 📦 Available Scripts
 
-1. Copy `.env.example` to `.env`:
-   ```bash
-   cp .env.example .env
-   ```
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start the development server |
+| `npm run build` | Production build |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint |
+| `npm run analyze` | Build with bundle analyzer |
+| `npm run test:e2e` | Run Playwright E2E tests |
+| `npm run test:perf` | Run Web Vitals performance tests |
 
-2. Fill in your actual API keys and tokens in the `.env` file
+## 🌐 Internationalization
 
-3. **Important:** Never commit the `.env` file to version control. It's already in `.gitignore` for your protection.
+The app serves three locales with locale-prefixed routes (`/bg`, `/en`, `/tr`) handled by `next-intl` and `src/middleware.js`. Translation files live in `messages/{bg,en,tr}.json`, and menu data has dedicated per-locale translations.
 
-## 🚀 Key Sections
+## 🧱 Project Structure
 
-### Hero Section
-- Dynamic slider with call-to-action buttons
-- Direct links to menu and reservation system
-- Eye-catching visuals of signature dishes
+```
+src/
+├─ app/
+│  ├─ [locale]/(pages)/   # localized routes: menu, shop, cart, checkout,
+│  │                      # reservation, catering, feedback, gallery, about…
+│  ├─ api/                # contact, menu, reservation, feedback endpoints
+│  ├─ _components/        # home, menu, order, products, reviews, forms, ui…
+│  ├─ _layouts/           # headers, footers, cart, preloader
+│  └─ offline/            # PWA offline fallback
+├─ data/                  # menu, products, posts, testimonials, sliders…
+├─ i18n/                  # next-intl request config
+└─ middleware.js          # locale routing
+```
 
-### Menu Showcase
-- Шиш Делиорман (Signature kebab specialty)
-- Агнешки шиш (Lamb kebab)
-- Телешко печено (Traditional veal roast)
-- Full menu categorization
+## 🔌 API Endpoints
 
-### About Section
-- Restaurant story and philosophy
-- Quality commitment highlights
-- Team expertise showcase
+| Route | Purpose |
+|-------|---------|
+| `POST /api/reservation` | Submit a reservation (email + Telegram, rate-limited) |
+| `POST /api/contact` | Contact form submissions |
+| `POST /api/feedback` | Customer feedback / reviews |
+| `GET  /api/menu` | Menu data |
 
-### Reservation System
-- Real-time availability checking
-- Guest count selection (1-6+ people)
-- Date and time picker integration
-- Additional notes field
+## 🔧 Configuration
 
-## 📊 Website Stats
+- **Site info, contact, social, coordinates, menu:** `src/data/app.json` and related data files.
+- **Domain / canonical URLs:** `src/app/layout.jsx`, `robots.ts`, `sitemap.ts`, `StructuredData.jsx`.
 
-- **Daily Visitors:** 500+ active users
-- **Monthly Catering Services:** 30+ events
-- **Customer Satisfaction:** 95% positive reviews
-- **Awards & Recognition:** Multiple local accolades
+## 🚢 Deployment (Vercel)
 
-## 📸 Screenshots
+1. Push to GitHub.
+2. Import the project in Vercel.
+3. Add the environment variables listed above.
+4. Deploy. Vercel Analytics and Speed Insights are wired in automatically.
 
-![Homepage](./screenshots/homepage.png)
-![Menu](./screenshots/menu.png)
+## ⚡ Performance
 
-## 🎯 Project Goals
-
-This project demonstrates:
-- Modern web development best practices
-- Responsive design implementation
-- User-centric interface design
-- Performance optimization
-- SEO-friendly structure
-- Accessibility standards compliance
+- Automatic AVIF/WebP image optimization via next/image + Sharp.
+- `optimizePackageImports` for Swiper, Framer Motion, date-fns, and more.
+- Long-lived image cache TTL and responsive device sizes.
+- Lazy loading, static generation where possible, and bundle analysis.
 
 ## 📞 Contact & Links
 
-- **Live Website:** [restorantdeliorman.com](https://restorantdeliorman.com)
+- **Live:** [restorantdeliorman.com](https://restorantdeliorman.com)
 - **Facebook:** [Restaurant Deliorman](https://www.facebook.com/profile.php?id=100063542858187)
 - **Phone:** +359 89 4766273
 - **Email:** restaurantdeliorman@gmail.com
-- **Location:** с. Самуил, ул. "Хаджи Димитър" №6, обл. Разград
+- **Location:** с. Самуил, ул. „Хаджи Димитър" №6, обл. Разград
 
 ## 👨‍💻 Developer
 
 **Melih Zafer Hyusein**
-- Portfolio: [melihzafer.netlify.app](https://portfolio.melihzafer.me)
+- Portfolio: [portfolio.melihzafer.me](https://portfolio.melihzafer.me)
 - GitHub: [@melihzafer](https://github.com/melihzafer)
 - Company: OMNI Tech Solutions
 
-## 📝 License
+## 📄 License
 
 © Restaurant Deliorman. All rights reserved.
 
 ---
 
-**Built with ❤️ for local businesses in Bulgaria**
+**Built with ❤️ for local businesses in Bulgaria.**
