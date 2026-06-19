@@ -1,0 +1,28 @@
+.backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 108px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-accent, #f39c12);
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0, 0, 0, 0.15));
+  z-index: 1000;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--color-accent-hover, #e67e22);
+  }
+
+  @media (max-width: 768px) {
+    bottom: 20px;
+    right: 92px;
+  }
+}

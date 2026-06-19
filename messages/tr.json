@@ -1,0 +1,931 @@
+{
+  "nav": {
+    "home": "Ana Sayfa",
+    "menu": "Menü",
+    "classicMenu": "Klasik Menü",
+    "lunchMenu": "Öğle Menüsü",
+    "about": "Hakkımızda",
+    "aboutRestaurant": "Restoran Hakkında",
+    "specialDays": "Özel Günler",
+    "services": "Hizmetler",
+    "gallery": "Galeri",
+    "contact": "İletişim",
+    "reservation": "Rezervasyon",
+    "feedback": "Geri Bildirim",
+    "mainNavigation": "Ana Navigasyon",
+    "menuLabel": "Menü",
+    "blog": "Blog",
+    "call": "Ara",
+    "searchTitle": "Arama"
+  },
+  "common": {
+    "readMore": "Devamını Oku",
+    "loading": "Yükleniyor...",
+    "error": "Bir hata oluştu",
+    "submit": "Gönder",
+    "cancel": "İptal",
+    "close": "Kapat",
+    "back": "Geri",
+    "next": "İleri",
+    "previous": "Önceki",
+    "skipToContent": "İçeriğe geç",
+    "reservations": "Rezervasyonlar",
+    "reserveTable": "Masa Rezervasyonu",
+    "requiredField": "Zorunlu alan",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "address": "Adres",
+    "mobileNavigation": "Mobil navigasyon",
+    "openZoomedImage": "Büyütülmüş görseli aç",
+    "openZoomedImageWithAlt": "Büyütülmüş görseli aç: {alt}",
+    "previousPhotos": "Önceki fotoğrafları göster",
+    "nextPhotos": "Sonraki fotoğrafları göster",
+    "bannerImageAlt": "Deliorman Restoranı - dış görünüm"
+  },
+  "reservation": {
+    "title": "Masa Rezervasyonu",
+    "subtitle": "Rezervasyon",
+    "description": "+359 89 4766273'Ü ARAYIN VEYA AŞAĞIDAKİ FORMU DOLDURUN",
+    "pageTitle": "Rezervasyon",
+    "pageDescription": "Deliorman Restoran'da masa ayırtın ve  Samuil köyünde özel mutfak ve rahat atmosferin tadını çıkarın.",
+    "breadTitle": "Masa Rezervasyonu",
+    "firstName": "Ad *",
+    "lastName": "Soyad *",
+    "phone": "Telefon *",
+    "email": "E-posta",
+    "date": "Tarih *",
+    "time": "Saat *",
+    "guests": "Misafir Sayısı *",
+    "message": "Mesaj",
+    "submit": "Rezervasyon Yap",
+    "submitting": "Gönderiliyor...",
+    "success": "Rezervasyon başarıyla gönderildi!",
+    "error": "Gönderme hatası. Lütfen tekrar deneyin veya +359 89 4766273'ü arayın.",
+    "privacyConsent": "Kabul ediyorum",
+    "termsLink": "şartlar ve koşullar",
+    "privacyInfo": "ve kişisel veri politikası.",
+    "privacyError": "Lütfen şartlar ve koşulları okuduğunuzu onaylayın.",
+    "nameMinLength": "Ad en az 2 karakter olmalıdır",
+    "lastNameMinLength": "Soyad en az 2 karakter olmalıdır",
+    "invalidPhone": "Geçersiz telefon numarası",
+    "invalidEmail": "Geçersiz e-posta adresi",
+    "guestsRequired": "Lütfen misafir sayısını seçin",
+    "dateRequired": "Lütfen bir tarih seçin",
+    "timeRequired": "Lütfen bir saat seçin",
+    "guestsPlaceholder": "Misafir *",
+    "guestsInvalid": "Lütfen geçerli bir misafir sayısı girin",
+    "guestsMinimum": "Misafir sayısı en az 1 olmalıdır",
+    "guestsMaximum": "Maksimum misafir sayısı 100",
+    "datePast": "Geçmiş bir tarih için rezervasyon yapılamaz",
+    "dateMaxFuture": "Rezervasyonlar yalnızca 1 ay ilerisine kadar yapılabilir",
+    "timePast": "Lütfen gelecekte bir saat seçin",
+    "timeMinAdvance": "Rezervasyon en erken 4 saat sonra yapılabilir ({datetime} sonrası)",
+    "largeGroupMessage": "20 kişiden fazla gruplar için lütfen kısa bir yorum yazın (etkinlik türü, gereksinimler).",
+    "noAvailableTimes": "Uygun saat yok (farklı bir tarih seçin)",
+    "messagePlaceholder": "Ek mesaj (isteğe bağlı)",
+    "problemOccurred": "Bir sorun oluştu",
+    "readTermsSummary": "Özet oku",
+    "submitButton": "Masa Ayırt",
+    "successModalTitle": "Talep gönderildi",
+    "successModalSubtitle": "Arama bekleyin",
+    "successModalMessage": "Onay için {phone} numarasını arayacağız.",
+    "successModalNote": "Lütfen restorandan gelecek aramayı bekleyin. Telefonla onaylanana kadar rezervasyon geçerli değildir.",
+    "successModalClose": "Anladım",
+    "termsModalTitle": "Rezervasyon İçin Kişisel Veriler",
+    "termsModalText1": "Talebinizi işlemek için adınızı, soyadınızı ve telefon numaranızı, ayrıca tarih/saat ve misafir sayısını topluyoruz. Verileri yalnızca rezervasyonun onayı ve organizasyonu için kullanıyoruz.",
+    "termsModalText2": "Kişisel verilerin işlenmesine ilişkin kurallar ve bilgilerin tam metni burada okunabilir:",
+    "termsModalLink": "Şartlar ve Koşullar / Gizlilik",
+    "dayNames": [
+      "Pazar",
+      "Pazartesi",
+      "Salı",
+      "Çarşamba",
+      "Perşembe",
+      "Cuma",
+      "Cumartesi"
+    ],
+    "dayNamesShort": [
+      "Pz",
+      "Pt",
+      "Sa",
+      "Ça",
+      "Pe",
+      "Cu",
+      "Ct"
+    ],
+    "monthNames": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ],
+    "stepLabels": [
+      "Tarih ve Saat",
+      "Misafirler ve İletişim",
+      "Onay"
+    ],
+    "calendarSummary": "Deliorman Rezervasyon - {guests} kişi",
+    "calendarDescription": "{firstName} {lastName} için rezervasyon\\nTelefon: {phone}\\nKişi: {guests}",
+    "calendarLocation": "Deliorman Restoranı",
+    "previousMonth": "Önceki ay",
+    "nextMonth": "Sonraki ay",
+    "legendToday": "bugün",
+    "legendClosed": "kapalı",
+    "selectTime": "Saat seçin:",
+    "noSlotsAvailable": "Bu tarih için uygun saat yok. Lütfen başka bir tarih seçin.",
+    "selectTimeSlot": "{time} saatini seç",
+    "step1Title": "Tarih ve saat seçin",
+    "step2Title": "Misafirler ve iletişim bilgileri",
+    "step3Title": "İnceleme ve onay",
+    "guestCount": "Misafir sayısı",
+    "decreaseGuests": "Misafir sayısını azalt",
+    "increaseGuests": "Misafir sayısını artır",
+    "firstNamePlaceholder": "Ad *",
+    "lastNamePlaceholder": "Soyad *",
+    "phonePlaceholder": "Telefon * (örn. 0888123456)",
+    "emailPlaceholder": "E-posta (isteğe bağlı)",
+    "specialRequestsPlaceholder": "Özel istekler (isteğe bağlı)",
+    "confirmationWaitMessage": "Çalışma saatlerinde 30 dakika içinde onay araması bekleyin.",
+    "agreeWithTerms": "Kabul ediyorum",
+    "termsAndConditions": "şartlar ve koşullar",
+    "andPrivacyInfo": "ve kişisel veri politikası.",
+    "readSummary": "Özeti oku",
+    "backButton": "← Geri",
+    "nextButton": "İleri →",
+    "submitButtonSending": "Gönderiliyor...",
+    "submitButtonText": "Rezervasyon Gönder",
+    "successTitle": "Talep gönderildi!",
+    "successSubtitle": "Onay araması bekleyin",
+    "hoursLabel": "saat",
+    "guestSingular": "misafir",
+    "guestPlural": "misafir",
+    "confirmationCallNote": "Belirtilen telefonu onay için arayacağız. Telefonla onaylanana kadar rezervasyon geçerli değildir.",
+    "addToCalendar": "📥 Takvime ekle",
+    "newReservation": "Yeni rezervasyon",
+    "forChanges": "Değişiklikler için:",
+    "reviewDate": "Tarih",
+    "reviewTime": "Saat",
+    "reviewGuests": "Misafirler",
+    "reviewName": "Ad",
+    "reviewPhone": "Telefon",
+    "reviewEmail": "E-posta",
+    "closeButton": "Kapat"
+  },
+  "contact": {
+    "title": "Bize Mesaj Gönderin",
+    "subtitle": "İletişim",
+    "description": "Deliorman Restoran ziyaretiniz için sorularınızı, önerilerinizi veya özel isteklerinizi bizimle paylaşın!",
+    "pageTitle": "Bize Ulaşın",
+    "pageDescription": "Deliorman Restoran sizi sıcak misafirperverlik  ve unutulmaz mutfak deneyimleriyle Samuil köyünde bekliyor.",
+    "breadTitle": "İletişim",
+    "firstName": "Ad *",
+    "lastName": "Soyad *",
+    "phone": "Telefon *",
+    "email": "E-posta *",
+    "message": "Mesaj (en az 10 karakter) *",
+    "submit": "Mesaj Gönder",
+    "submitting": "Gönderiliyor...",
+    "success": "Mesajınız için teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.",
+    "error": "Gönderme hatası. Lütfen tekrar deneyin veya +359 89 4766273'ü arayın.",
+    "nameMinLength": "Ad en az 2 karakter olmalıdır",
+    "lastNameMinLength": "Soyad en az 2 karakter olmalıdır",
+    "invalidPhone": "Geçersiz telefon numarası",
+    "invalidEmail": "Geçersiz e-posta adresi",
+    "messageMinLength": "Mesaj en az 10 karakter olmalıdır",
+    "privacyConsent": "Kabul ediyorum",
+    "termsLink": "şartlar ve koşullar",
+    "privacyInfo": "ve kişisel veri politikası.",
+    "privacyError": "Lütfen şartlar ve koşulları okuduğunuzu onaylayın.",
+    "problemOccurred": "Bir sorun oluştu",
+    "requiredField": "Zorunlu alan",
+    "infoSubtitle": "Sorularınız mı var?",
+    "infoTitle": "Bizimle iletişime geçin",
+    "infoDescription": "Deliorman Restoran sizi Samuil köyünün kalbinde sıcak misafirperverlik ve unutulmaz mutfak deneyimleriyle bekliyor.",
+    "reservationPhoneTitle": "Rezervasyon telefonu",
+    "workingHours": "Çalışma saatleri: 08:00 - 23:00",
+    "emailInquiriesTitle": "Sorular için e-posta",
+    "emailResponseTime": "24 saat içinde yanıt veriyoruz",
+    "addressTitle": "Adres",
+    "addressLine1": "Samuil, Hacı Dimitar Cad. No:6",
+    "addressLine2": "Razgrad İli",
+    "parkingAvailable": "Otopark mevcut"
+  },
+  "footer": {
+    "aboutTitle": "Deliorman Restoran Hakkında",
+    "aboutText": "Deliorman Restoran, Samuil köyünün kalbinde yer alan bir mutfak mücevheridir. Felsefemiz, yalnızca en taze yerel malzemeleri kullanarak geleneksel tarifleri modern mutfak teknikleriyle birleştirmektir. Tüm misafirlerimiz için eşsiz bir gastronomi deneyimi yaratıyoruz.",
+    "viewMenu": "Menüyü Görüntüle",
+    "contactTitle": "İletişim Bilgileri",
+    "phoneLabel": "Rezervasyon \n Telefonu",
+    "emailLabel": "E-posta",
+    "addressLabel": "Adres",
+    "phoneValue": "+359 89 4766273",
+    "emailValue": "restaurantdeliorman@gmail.com",
+    "addressValue": "Samuil, Hacı Dimitar Cad. No:6, Razgrad İli",
+    "reserveTable": "Masa Ayırt",
+    "galleryTitle": "Restoranımızdan Galeri",
+    "viewMorePhotos": "Daha Fazla Fotoğraf",
+    "termsLink": "Şartlar ve Koşullar / Gizlilik",
+    "copyright": "Powered by <a href=\"https://portfolio.melihzafer.me\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"tst-color tst-anima-link\">Melih Hyusein</a> © Deliorman Restoran. Tüm hakları saklıdır.",
+    "toTop": "Yukarı"
+  },
+  "meta": {
+    "siteName": "Deliorman Restoran",
+    "homeTitle": "Deliorman Restoran – Samuil (Razgrad İli)",
+    "homeDescription": "Deliorman Restoran, rahat ve otantik bir atmosferde en kaliteli yerel ürünlerle hazırlanan geleneksel Bulgar ve bölgesel yemeklerle eşsiz bir mutfak deneyimi sunar.",
+    "menuTitle": "Menü",
+    "menuDescription": "Deliorman Restoran menüsünü inceleyin",
+    "galleryPageTitle": "Galeri | İç Mekan, Dış Mekan ve Dekorasyon",
+    "galleryPageDescription": "Deliorman Restoran galerisini keşfedin — Samuil, Razgrad'daki kutlamalarınız için samimi iç mekanlar, güzel bir bahçe ve özel dekorasyonlar.",
+    "contactTitle": "İletişim | Adres, Telefon ve Çalışma Saatleri",
+    "contactDescription": "Deliorman Restoran ile iletişime geçin — Samuil, Hacı Dimitar Cad. No:6, Razgrad İli. Telefon +359 89 4766273.",
+    "searchTitle": "Arama",
+    "searchDescription": "Deliorman Restoran blogu ve menüsünde arama sonuçları.",
+    "reservationTitle": "Masa Rezervasyonu | Online ve Telefonla",
+    "reservationDescription": "Deliorman Restoran'da online veya +359 89 4766273 numarasından masa ayırtın.",
+    "aboutTitle": "Hakkımızda | Deliorman Restoranın Hikayesi",
+    "aboutDescription": "Samuil, Razgrad bölgesindeki Deliorman Restoranı hakkında daha fazla bilgi edinin. Hikayemiz, ekibimiz ve otantik Bulgar mutfağına olan tutkumuz.",
+    "feedbackTitle": "Geri Bildirim | Görüşlerinizi Paylaşın",
+    "feedbackDescription": "Deliorman Restoranı'na isimsiz geri bildirim, öneri veya yorum gönderin."
+  },
+  "hero": {
+    "slides": [
+      {
+        "title": "Deliorman'a<br>Hoş Geldiniz",
+        "subtitle": "Merhaba arkadaşlar!",
+        "text": "Sevgi ve özenle hazırlanan eşsiz lezzetlerin ve geleneksel tariflerin tadını çıkarın.",
+        "button1": "Menüyü İncele",
+        "button2": "Rezervasyon Yap"
+      },
+      {
+        "title": "Menümüzü <br>Keşfedin",
+        "subtitle": "Lezzet Zenginliğini Keşfedin!",
+        "text": "Otantik Bulgar lezzetleri dünyasına dalın ve geniş geleneksel yemek yelpazemizden seçiminizi yapın.",
+        "button1": "Menüyü İncele",
+        "button2": "Bize Ulaşın"
+      },
+      {
+        "title": "Spesiyallerimizi <br>Deneyin",
+        "subtitle": "Gerçek Tat, Gerçek Deneyim!",
+        "text": "Kaliteli ürünler ve ustalıkla hazırlanan geleneksel mutfağımızın en iyi yemeklerini deneyin.",
+        "button1": "Bizi Nasıl Bulursunuz",
+        "button2": "Menüyü İncele"
+      },
+      {
+        "title": "Hemen <br>Yer Ayırtın",
+        "subtitle": "Sizi Heyecanla Bekliyoruz!",
+        "text": "Otantik mutfağı ve sıcak atmosferiyle Deliorman Restoranı'nda unutulmaz bir deneyim yaşayın.",
+        "button1": "Masa Ayırt",
+        "button2": "Geri Bildirim Ver"
+      }
+    ]
+  },
+  "specialties": {
+    "items": [
+      {
+        "title": "Deliorman Şiş",
+        "text": "Özel baharat karışımımızla marine edilmiş, mükemmel yumuşaklığa ulaşana kadar ağır ağır ızgara yapılmış ince dilimlenmiş et. Eşsiz bir acı sos ile servis edilir.",
+        "weight": "300 g",
+        "price": "12.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/shish_deliorman.webp"
+      },
+      {
+        "title": "Dana Tandır",
+        "text": "Seçiminize göre garnitürle servis edilen, geleneksel tariflere göre hazırlanan ve sıcak servis edilen nefis dana eti.",
+        "weight": "300 g",
+        "price": "19.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/teleshko.webp"
+      },
+      {
+        "title": "Kuzu Şiş Lezzeti",
+        "text": "Özel sosla marine edilmiş kuzu eti, suyunu ve aromasını koruması için yavaşça ızgara yapılır. Közlenmiş mevsim sebzeleriyle servis edilir.",
+        "weight": "500 g",
+        "price": "29.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/agneshki.webp"
+      }
+    ]
+  },
+  "languageSwitcher": {
+    "label": "Dil",
+    "bg": "BG",
+    "en": "EN",
+    "tr": "TR",
+    "switchTo": "{language} diline geç",
+    "currentLanguage": "Geçerli dil: {language}",
+    "bgName": "Bulgarca",
+    "enName": "İngilizce",
+    "trName": "Türkçe"
+  },
+  "searchPage": {
+    "pageTitleTemplate": "Arama: %s",
+    "pageDescription": "Deliorman Restoranın blog ve menüsündeki  arama sonuçları.",
+    "breadTitle": "Arama",
+    "searchSectionTitle": "Arama",
+    "inputPlaceholder": "Ne arıyorsunuz?",
+    "submitLabel": "Ara",
+    "iconAlt": "Arama simgesi",
+    "categoriesTitle": "Kategoriler",
+    "archivesTitle": "Arşiv",
+    "authorsTitle": "Yazarlar",
+    "keywordsTitle": "Anahtar kelimeler",
+    "loading": "Yükleniyor...",
+    "noResults": "Sonuç bulunamadı.",
+    "enterKeyword": "Aramak için bir anahtar kelime girin.",
+    "viewAllResults": "Tüm sonuçları görüntüle",
+    "closeLabel": "Kapat",
+    "pagesSection": "Sayfalar",
+    "specialtiesSection": "Spesiyaller",
+    "menuSection": "Menü"
+  },
+  "about": {
+    "pageTitle": "Restoranımızın Hikayesi",
+    "pageDescription": "Bulgar mutfağına ve geleneklerine olan tutkumuzu keşfedin",
+    "breadTitle": "Hakkımızda",
+    "subtitle": "Hakkımızda",
+    "title": "Restoranımızı  ziyaret etmenizi bekliyoruz",
+    "description": "Geleneğin modernlikle buluştuğu samimi restoranımıza hoş geldiniz. Birkaç yıldan fazla süredir sevgiyle ve detaylara özen göstererek hazırlanan otantik Bulgar yemekleri sunuyoruz. Deneyimli şeflerden oluşan ekibimiz yalnızca en taze malzemeleri ve nesilden nesile aktarılan geleneksel tarifleri kullanmaktadır. Burada sıcak bir atmosfer, mükemmel hizmet ve sizi Bulgar mutfak geleneğinin kalbine götürecek unutulmaz tatlar bulacaksınız."
+  },
+  "menu": {
+    "pageTitle": "Menümüzü Keşfedin",
+    "pageDescription": "Ludogorie'nin kalbinde otantik Bulgar mutfağının ve  uluslararası spesiyalitelerin tadını çıkarın.",
+    "breadTitle": "Menü",
+    "swipeHint": "Kategorileri görmek için kaydırın",
+    "addToOrder": "Siparişe ekle",
+    "addSpecificItem": "{item} ürününü siparişe ekle",
+    "previousSpecialty": "Önceki spesiyal",
+    "nextSpecialty": "Sonraki spesiyal",
+    "orderFromMenuCta": "Menüden sipariş ver",
+    "categories": {
+      "hot-beverages": "Sıcak İçecekler",
+      "salads": "Salatalar",
+      "hot-appetizers": "Sıcak Yemekler",
+      "soups-sandwiches": "Çorbalar, Tavuk Lezzetleri ve Sandviçler",
+      "pizzas": "Pizzalar",
+      "grill": "Izgara",
+      "saj-fish-specialties": "Sac, Balık ve Spesiyaller",
+      "burgers": "Burgerler",
+      "new-specialties": "Yeni Spesiyaller",
+      "cold-appetizers-sides": "Soğuk Mezeler ve Garnitürler",
+      "nuts-desserts": "Kuruyemiş ve Tatlılar",
+      "rakia": "Rakılar",
+      "wines": "Beyaz ve Kırmızı Şaraplar",
+      "beer-cider-other-drinks": "Bira, Elma Şarabı ve Diğer İçecekler",
+      "whiskey-vodka": "Viski ve Votka",
+      "allergens": "Alerjenler"
+    },
+    "specialtiesSlides": [
+      {
+        "subtitle": "Menüde yeni",
+        "title": "Deliorman Şiş<br/>Şefin spesiyali",
+        "description": "Özel baharat karışımıyla marine edilmiş ince dilimlenmiş et, mükemmel yumuşaklığa ulaşana kadar ağır ağır pişirilir. Güçlü lezzet katan özel acı sos ile servis edilir.",
+        "image": {
+          "url": "/img/menuCategorised/newSpecialties/shish_deliorman.webp",
+          "alt": "Deliorman şiş - Restaurant Deliorman imza spesiyali"
+        },
+        "button": {
+          "link": "/menu",
+          "label": "Menüyü görüntüle",
+          "icon": "fas fa-arrow-right"
+        },
+        "features": [
+          {
+            "icon": "fas fa-award",
+            "title": "İmza tarif",
+            "text": "Baş şefimizin hazırladığı özel marine sosu"
+          },
+          {
+            "icon": "fas fa-fire",
+            "title": "Izgarada pişirilir",
+            "text": "Geleneksel olarak ızgarada hazırlanır"
+          },
+          {
+            "icon": "fas fa-star",
+            "title": "En çok tercih edilen",
+            "text": "Misafirlerimizin favori yemeklerinden biri"
+          }
+        ]
+      },
+      {
+        "subtitle": "Yeni spesiyal",
+        "title": "Kuzu şiş<br/>Yumuşaklık ve lezzet",
+        "description": "Özel sosla marine edilen yumuşak kuzu eti, suyunu ve zarif aromasını koruması için yavaşça pişirilir. Közlenmiş mevsim sebzeleriyle servis edilir.",
+        "image": {
+          "url": "/img/menuCategorised/newSpecialties/agneshki.webp",
+          "alt": "Kuzu şiş - taze Deliorman spesiyali"
+        },
+        "button": {
+          "link": "/reservation",
+          "label": "Masa ayırtın",
+          "icon": "fas fa-calendar-alt"
+        },
+        "features": [
+          {
+            "icon": "fas fa-leaf",
+            "title": "Doğal et",
+            "text": "Sertifikalı yerel çiftliklerden"
+          },
+          {
+            "icon": "fas fa-heart",
+            "title": "Dengeli tercih",
+            "text": "Protein açısından zengin, kalori açısından daha hafif"
+          },
+          {
+            "icon": "fas fa-clock",
+            "title": "Yavaş pişirilir",
+            "text": "Maksimum yumuşaklık ve lezzet için"
+          }
+        ]
+      },
+      {
+        "subtitle": "Sezonun favorisi",
+        "title": "Fırın dana eti<br/>Gelenek ve kalite",
+        "description": "Otantik Bulgar tarifine göre hazırlanan klasik fırın dana eti. Kendi suyunda yavaşça pişirilerek altın kahverengi bir kabuk elde edilir; böylece hem sulu kalır hem de zengin lezzetini korur.",
+        "image": {
+          "url": "/img/menuCategorised/newSpecialties/teleshko.webp",
+          "alt": "Fırın dana eti - geleneksel Deliorman spesiyali"
+        },
+        "button": {
+          "link": "/reservation",
+          "label": "Hemen rezervasyon yapın",
+          "icon": "fas fa-calendar"
+        },
+        "features": [
+          {
+            "icon": "fas fa-drumstick-bite",
+            "title": "Seçkin et",
+            "text": "Yüksek kaliteli taze dana eti"
+          },
+          {
+            "icon": "fas fa-mortar-pestle",
+            "title": "Geleneksel tarif",
+            "text": "Eski Bulgar yöntemine göre hazırlanır"
+          },
+          {
+            "icon": "fas fa-pepper-hot",
+            "title": "Zengin lezzet",
+            "text": "Baharat ve otların dengeli uyumu"
+          }
+        ]
+      }
+    ]
+  },
+  "feedback": {
+    "categoryLabel": "Kategori",
+    "categoryPlaceholder": "Kategori seçin (isteğe bağlı)",
+    "categoryService": "Hizmet",
+    "categoryFood": "Yemek",
+    "categoryVibes": "Atmosfer",
+    "categoryOther": "Diğer",
+    "ratingLabel": "Değerlendirme (isteğe bağlı)",
+    "ratingNone": "Değerlendirme yok",
+    "ratingExcellent": "⭐⭐⭐⭐⭐ Mükemmel",
+    "ratingVeryGood": "⭐⭐⭐⭐ Çok İyi",
+    "ratingGood": "⭐⭐⭐ İyi",
+    "ratingAcceptable": "⭐⭐ Kabul Edilebilir",
+    "ratingNeedsImprovement": "⭐ İyileştirme Gerekiyor",
+    "messageLabel": "Mesajınız",
+    "messagePlaceholder": "Düşüncelerinizi paylaşın...",
+    "messageRequired": "Lütfen bir mesaj girin",
+    "messageMinLength": "Mesaj en az 10 karakter içermelidir",
+    "messageMaxLength": "Mesaj 1000 karakteri aşamaz",
+    "termsLabel": "Mesajımın anonim olarak gönderilmesini kabul ediyorum ve yanıt alamayacağımı anlıyorum.",
+    "termsError": "Lütfen gönderme koşullarını kabul edin",
+    "disclaimer": "Tüm mesajlar anonimdir ve güvenli bir şekilde gönderilir.",
+    "submit": "Gönder",
+    "submitting": "Gönderiliyor...",
+    "close": "Kapat",
+    "submitError": "Geri bildirim gönderme hatası",
+    "generalError": "Mesajınız gönderilirken bir hata oluştu. Lütfen tekrar deneyin.",
+    "required": "*",
+    "widgetLabel": "Geri bildirim",
+    "widgetTitle": "Görüşünüzü paylaşın",
+    "modalTitle": "Geri bildirim",
+    "modalDescription": "Görüşünüz bizim için çok değerlidir.",
+    "starRatingExcellent": "Mükemmel",
+    "starRatingVeryGood": "Çok İyi",
+    "starRatingGood": "İyi",
+    "starRatingAcceptable": "Kabul Edilebilir",
+    "starRatingNeedsImprovement": "İyileştirme Gerekiyor",
+    "starRatingHover": "Puanlamak için tıklayın",
+    "successCheckmark": "Gönderildi!"
+  },
+  "feedbackPage": {
+    "pageTitle": "Görüşünüz Bizim İçin Değerli",
+    "pageDescription": "Düşüncelerinizi, önerilerinizi veya yorumlarınızı paylaşın",
+    "breadTitle": "Geri Bildirim",
+    "subtitle": "Geri Bildirim",
+    "title": "Deneyiminizi nasıl daha iyi hale getirebiliriz?",
+    "description": "Görüşleriniz bizim için son derece önemlidir. İster bir övgü, ister bir öneri ya da yapıcı eleştiri paylaşmak isteyin, sizi dinlemek için buradayız. Her geri bildirim, kendimizi geliştirmemize ve daha iyi hizmet sunmamıza yardımcı olur.",
+    "successTitle": "Teşekkür ederiz!",
+    "successMessage": "Geri bildiriminiz başarıyla gönderildi. Görüşünüz bizim için değerlidir!"
+  },
+  "googleReviews": {
+    "title": "Bizi Google Maps'te görün",
+    "reviewCount": "({count}+ değerlendirme)"
+  },
+  "aboutSections": {
+    "intro": {
+      "subtitle": "Hakkımızda",
+      "title": "Deliorman Restoranına <br>Hoş Geldiniz",
+      "description": "Deliorman Restoranı, gelenek ve otantik Bulgar lezzetlerinin buluştuğu bir noktadır. Misafirlerimize unutulmaz bir mutfak deneyimi sunmak için nesillerden nesile aktarılan tarifleri ve taze ürünleri kullanmaktan gurur duyuyoruz.",
+      "buttonLabel": "Devamını Oku"
+    },
+    "features": {
+      "subtitle": "Avantajlarımız",
+      "title": "İnsanlar neden bizi seçiyor?",
+      "description": "Kalite, lezzet ve tazelik – hepsi tek yerde!",
+      "items": [
+        {
+          "title": "Her damak zevkine uygun menü",
+          "text": "Özenle hazırlanan geleneksel ve modern yemeklerden zengin bir seçki"
+        },
+        {
+          "title": "Her zaman taze malzemeler",
+          "text": "Eşsiz tat için yalnızca en kaliteli ve taze ürünleri kullanıyoruz"
+        },
+        {
+          "title": "Deneyimli şefler",
+          "text": "Usta şeflerimiz gerçek mutfak şaheserleri yaratır"
+        }
+      ]
+    },
+    "schedule": {
+      "subtitle": "Çalışma saatleri",
+      "title": "Bizi ziyaret edin",
+      "description": "Deliorman Restoran’da otantik mutfağın ve sıcak misafirperverliğin tadını çıkarın. Sizi her gün gülümseyerek ve lezzetli yemeklerle karşılamak için açığız.",
+      "buttonLabel": "Bize ulaşın",
+      "items": [
+        {
+          "label": "Pazartesi - Çarşamba"
+        },
+        {
+          "label": "Perşembe - Pazar"
+        }
+      ]
+    },
+    "counters": {
+      "items": [
+        {
+          "label": "Günlük misafir"
+        },
+        {
+          "label": "Aylık catering hizmeti"
+        },
+        {
+          "label": "Olumlu yorum"
+        },
+        {
+          "label": "Ödül ve takdir"
+        }
+      ]
+    },
+    "cta": {
+      "subtitle": "Rezervasyon",
+      "title": "Bu akşam  unutulmaz olacak!",
+      "description": "Deliorman Restoran’da masa ayırtın ve  Samuil köyünde seçkin mutfak ile samimi atmosferin tadını çıkarın.",
+      "button1Label": "Hemen rezervasyon yapın",
+      "button2Label": "Menü"
+    }
+  },
+  "galleryPage": {
+    "pageTitle": "Galeri",
+    "pageDescription": "Restoranımızı ve atmosferini keşfedin",
+    "breadTitle": "Galeri",
+    "introSuptitle": "Mekanlarımız",
+    "introTitle": "Deliorman'ın atmosferini keşfedin",
+    "introDescription": "Samimi iç mekanımızı, güzel dış bahçemizi ve kutlamalarınız için hazırlanan özel dekorasyonları inceleyin.",
+    "filters": {
+      "all": "Tümü",
+      "indoor": "İç Mekan",
+      "outdoor": "Dış Mekan",
+      "decoration": "Dekorasyon"
+    },
+    "showCategory": "{category} kategorisini göster",
+    "openImageLabel": "Görseli aç: {image}",
+    "openImageFallback": "Galeride görseli aç",
+    "noResults": "Bu kategoride fotoğraf yok",
+    "dialogLabel": "Görsel görüntüleniyor: {image}",
+    "dialogLabelFallback": "Görsel görüntüleniyor",
+    "closeImage": "Görseli kapat",
+    "previousImage": "Önceki görseli göster",
+    "nextImage": "Sonraki görseli göster",
+    "imageAlt": {
+      "indoor": "Restoranın iç mekanı",
+      "outdoor": "Restoranın dış görünümü",
+      "decoration": "Özel etkinlikler için dekorasyon"
+    }
+  },
+  "structuredData": {
+    "restaurantDescription": "Deliorman Restoran, kaliteli yerel malzemelerle hazırlanan geleneksel Bulgar ve bölgesel yemekleri samimi ve otantik bir atmosferde sunarak özel bir mutfak deneyimi yaşatır.",
+    "areaServed": "Razgrad, Bulgaristan",
+    "menuName": "Deliorman Restoran Menüsü",
+    "breadcrumbs": {
+      "home": "Ana Sayfa",
+      "menu": "Menü",
+      "about": "Hakkımızda",
+      "gallery": "Galeri",
+      "reservation": "Rezervasyon",
+      "contact": "İletişim"
+    },
+    "faq": [
+      {
+        "question": "Deliorman Restoran'ın çalışma saatleri nelerdir?",
+        "answer": "Deliorman Restoran pazartesiden çarşambaya 07:00-17:00, perşembeden pazara ise 07:00-23:00 saatleri arasında açıktır."
+      },
+      {
+        "question": "Deliorman Restoran'da nasıl rezervasyon yapabilirim?",
+        "answer": "Web sitemizdeki Rezervasyon sayfası üzerinden çevrim içi rezervasyon yapabilir veya +359 89 4766273 numaralı telefonu arayabilirsiniz. Özellikle 6 kişiden büyük gruplar ve hafta sonları için önceden rezervasyon öneririz."
+      },
+      {
+        "question": "Deliorman Restoran yakınında otopark var mı?",
+        "answer": "Evet, restoran misafirleri için ücretsiz otopark sunmaktadır. Otopark, Razgrad bölgesindeki Samuil köyünde girişin hemen yanında yer almaktadır."
+      },
+      {
+        "question": "Catering hizmeti sunuyor musunuz?",
+        "answer": "Evet, düğünler, vaftizler, kurumsal etkinlikler ve aile kutlamaları için profesyonel catering hizmeti sunuyoruz. Size özel teklif için bizimle iletişime geçin."
+      }
+    ]
+  },
+  "components": {
+    "openStatus": {
+      "open": "Açık",
+      "closedOpensAt": "Kapalı · {time}'de açılır"
+    },
+    "themeToggle": {
+      "switchToDark": "Karanlık temaya geç",
+      "switchToLight": "Aydınlık temaya geç",
+      "dark": "Karanlık tema",
+      "light": "Aydınlık tema"
+    },
+    "lightbox": {
+      "viewImage": "Görseli görüntüle",
+      "closeImage": "Görseli kapat",
+      "showPrevious": "Önceki görseli göster",
+      "showNext": "Sonraki görseli göster",
+      "enlargedImage": "Büyütülmüş görsel"
+    },
+    "testimonials": {
+      "title": "Müşteri Yorumları",
+      "previousReview": "Önceki yorum",
+      "nextReview": "Sonraki yorum"
+    },
+    "trustIndicators": {
+      "freshProducts": "Taze Ürünler",
+      "freshProductsDesc": "Her gün yerel tedarikçilerden",
+      "homeRecipes": "Ev Yapımı Tarifler",
+      "homeRecipesDesc": "Geleneksel Bulgar mutfağı",
+      "fastDelivery": "Hızlı Teslimat",
+      "fastDeliveryDesc": "Etkinliğiniz için catering",
+      "familyRestaurant": "Aile Restoranı",
+      "familyRestaurantDesc": "Sıcak ve samimi karşılama"
+    },
+    "statsCounter": {
+      "yearsExperience": "Yıllık Deneyim",
+      "happyClients": "Mutlu Müşteri",
+      "menuDishes": "Menüde Yemek",
+      "eventsHosted": "Düzenlenen Etkinlik"
+    },
+    "dailySpecial": {
+      "dailyOffer": "Günün Önerisi",
+      "chickenSoup": "Tavuk Çorbası",
+      "chickenSoupDesc": "Şehriyeli ev yapımı tavuk çorbası",
+      "moussaka": "Musaka",
+      "moussakaDesc": "Geleneksel Bulgar musakası",
+      "kebapcheta": "Köfte",
+      "kebapchetaDesc": "adet, seçiminize göre garnitürle",
+      "tripe": "İşkembe Çorbası",
+      "tripeDesc": "Otantik tarif",
+      "grilledFish": "Izgara Balık",
+      "grilledFishDesc": "Salata ile alabalık",
+      "mixedGrill": "Karışık Izgara",
+      "mixedGrillDesc": "İki kişilik garnitürlü",
+      "roastLamb": "Kuzu Fırın",
+      "roastLambDesc": "Yavaşça pişirilmiş kuzu"
+    },
+    "subscribe": {
+      "subtitle": "Bülten",
+      "title": "Haberlerden haberdar olun",
+      "description": "Güncellemeler ve özel teklifler için bültenimize abone olun",
+      "emailPlaceholder": "E-posta adresinizi girin",
+      "subscribeButton": "Abone Ol"
+    },
+    "specialtiesShowcase": {
+      "subtitle": "Yeni Lezzetler",
+      "title": "Yeni yemeklerimizi deneyin",
+      "description": "Geleneksel Bulgar mutfağından ilham alan, modern bir anlayışla hazırlanan taze spesiyaliteler.",
+      "menuButton": "Menü",
+      "reservationButton": "Rezervasyon",
+      "ctaButton": "Masanızı şimdi ayırtın"
+    },
+    "specialDays": {
+      "pageTitle": "Özel Günler",
+      "pageDescription": "Özel günlerinizi bizimle kutlayın",
+      "breadTitle": "Özel Günler",
+      "subtitle": "Kutlamalar ve Etkinlikler",
+      "title": "Özel anlarınız bizim önceliğimiz",
+      "description": "Deliorman Restoranında tüm özel günleriniz için unutulmaz kutlamalar düzenliyoruz - doğum günleri, nişanlar, aile kutlamaları ve kurumsal etkinlikler.",
+      "features": {
+        "privateDining": "Özel Yemek Alanı",
+        "privateDiningDesc": "50 kişiye kadar kapasite",
+        "customMenu": "Özel Menü",
+        "customMenuDesc": "İsteğinize göre hazırlanan menü",
+        "decoration": "Dekorasyon",
+        "decorationDesc": "Profesyonel süsleme hizmeti",
+        "entertainment": "Eğlence",
+        "entertainmentDesc": "Canlı müzik ve DJ seçenekleri"
+      },
+      "reserveButton": "Masa Ayırt",
+      "events": {
+        "birthdays": "Doğum Günleri",
+        "birthdaysDesc": "Özel menümüz ve atmosferimizle doğum gününüzü unutulmaz kılın",
+        "engagements": "Nişan ve Düğünler",
+        "engagementsDesc": "Aşkınızı kusursuz organizasyon ve özel menü ile kutlayın",
+        "family": "Aile Kutlamaları",
+        "familyDesc": "Sıcak ve samimi ortamda tüm aileyi özel anlar için bir araya getirin",
+        "corporate": "Kurumsal Etkinlikler",
+        "corporateDesc": "İş toplantıları, takım aktiviteleri ve kokteyl partileri için profesyonel hizmet",
+        "graduation": "Mezuniyet ve Balo",
+        "graduationDesc": "Başarıları arkadaşlarınız ve yakınlarınızla şık ortamda kutlayın",
+        "religious": "Dini Bayramlar",
+        "religiousDesc": "Mevlit ve diğer önemli dini günler için özel menüler"
+      },
+      "decorationSection": {
+        "subtitle": "Dekorasyon",
+        "title": "Etkinliğiniz için mükemmel atmosfer",
+        "description": "Süsleme bizden! Ekibimiz, tercihlerinize ve etkinlik temasına göre mekanın tüm dekorasyonuyla ilgilenir.",
+        "balloons": "Balon ve çiçek düzenlemeleri",
+        "themed": "İsteğe göre tematik dekorasyon",
+        "lighting": "Özel aydınlatma",
+        "tables": "Masaların kişiselleştirilmiş süslemesi",
+        "imageAlt": "Özel günler için dekorasyon"
+      },
+      "mevlid": {
+        "subtitle": "Özel Menü",
+        "title": "Mevlit ve Dini Bayramlar",
+        "description": "Geleneksel menü ve profesyonel hizmetle Mevlit ve diğer dini günler için özel porsiyonlar düzenliyoruz",
+        "chickenLeg": "Garnitürlü Tavuk Budu",
+        "chickenLegDesc": "Pilav, haşlanmış patates, biber ve pide ile sulu tavuk budu",
+        "chickenSteak": "Garnitürlü Tavuk Pirzola",
+        "chickenSteakDesc": "Pilav, haşlanmış patates, biber ve pide ile tavuk pirzola",
+        "customNote": "Menü müşterinin tercihine göre değiştirilebilir"
+      }
+    },
+    "services": {
+      "pageTitle": "Hizmetler",
+      "pageDescription": "Sunduğumuz hizmetleri keşfedin",
+      "breadTitle": "Hizmetler"
+    },
+    "lunchMenu": {
+      "pageTitle": "Öğle Menüsü",
+      "pageDescription": "Her gün lezzetli ve taze öğle menüsü",
+      "breadTitle": "Öğle Menüsü",
+      "subtitle": "Günlük Güncelleniyor",
+      "title": "Öğle Menümüz",
+      "description": "Her gün taze ve lezzetli öğle menüsü ve özel tekliflerle hizmetinizdeyiz. Menü her gün Facebook sayfamızda paylaşılmaktadır, böylece sizin için neler hazırladığımızı görebilirsiniz.",
+      "facebookSubtitle": "Bizi Facebook'tan takip edin",
+      "facebookTitle": "Günlük Öğle Menüsü",
+      "facebookDescription": "Günlük öğle menümüzü her sabah Facebook sayfamızda paylaşıyoruz. Özel teklifleri ve en sevdiğiniz yemekleri kaçırmayın!",
+      "facebookButton": "Facebook'a git",
+      "dailyUpdate": "Günlük Güncelleme",
+      "dailyUpdateDesc": "Her gün farklı ve lezzetli yemeklerle yeni bir menü paylaşıyoruz",
+      "freshlyMade": "Taze Hazırlanmış",
+      "freshlyMadeDesc": "Tüm yemekler en taze malzemelerle o anda pişirilir",
+      "specialPrices": "Özel Fiyatlar",
+      "specialPricesDesc": "Geniş yemek seçenekleriyle öğle menüsünde avantajlı fiyatlar",
+      "lunchHoursTitle": "Öğle Yemeği Saatleri",
+      "lunchHoursValue": "Pazartesi - Pazar: 12:00 - 15:00",
+      "reservations": "Rezervasyon için:"
+    },
+    "checkout": {
+      "pageTitle": "Ödeme",
+      "pageDescription": "Rezervasyonunuzu veya siparişinizi tamamlamak için bilgilerinizi doldurun",
+      "breadTitle": "Ödeme",
+      "billingDetails": "Fatura Bilgileri",
+      "firstName": "Ad",
+      "firstNamePlaceholder": "Adınız",
+      "lastName": "Soyad",
+      "lastNamePlaceholder": "Soyadınız",
+      "company": "Şirket",
+      "companyPlaceholder": "Şirket adı (isteğe bağlı)",
+      "country": "Ülke",
+      "city": "Şehir",
+      "state": "Eyalet / İl",
+      "address": "Adres",
+      "addressPlaceholder": "Adresiniz",
+      "postcode": "Posta Kodu",
+      "phone": "Telefon",
+      "email": "E-posta",
+      "notes": "Notlar",
+      "notesPlaceholder": "Siparişinizle ilgili notlar, örn. özel talimatlar",
+      "paymentMethod": "Ödeme Yöntemi",
+      "bankTransfer": "Doğrudan Banka Havalesi",
+      "checkPayments": "Çekle Ödeme",
+      "cashOnDelivery": "Kapıda Ödeme",
+      "placeOrder": "Siparişi Ver",
+      "requiredField": "Gerekli alan",
+      "invalidEmail": "Geçersiz e-posta adresi",
+      "successMessage": "Siparişiniz başarıyla alındı! Teşekkür ederiz."
+    },
+    "history": {
+      "pageTitle": "Tarihçemiz",
+      "pageDescription": "Restoranımızın hikayesini keşfedin",
+      "breadTitle": "Tarihçe"
+    },
+    "decorationGallery": {
+      "eyebrow": "Dekorasyon ve Tasarım",
+      "title": "Süsleme bizden!",
+      "description": "Her etkinlik güzel bir dekorasyonu hak eder. Tasarımlarımıza göz atın ve ilham alın!",
+      "openImageLabel": "Görseli aç",
+      "imageAlt": "Deliorman Restoranında etkinlik dekorasyonu (fotoğraf {number})"
+    },
+    "backToTop": {
+      "label": "Yukarı dön"
+    },
+    "mobileNav": {
+      "home": "Ana Sayfa",
+      "menu": "Menü",
+      "reservation": "Rezervasyon",
+      "contact": "İletişim"
+    },
+    "days": {
+      "sunday": "Pazar",
+      "monday": "Pazartesi",
+      "tuesday": "Salı",
+      "wednesday": "Çarşamba",
+      "thursday": "Perşembe",
+      "friday": "Cuma",
+      "saturday": "Cumartesi"
+    },
+    "daysShort": {
+      "mon": "Pzt",
+      "tue": "Sal",
+      "wed": "Çar",
+      "thu": "Per",
+      "fri": "Cum",
+      "sat": "Cmt",
+      "sun": "Paz"
+    },
+    "months": {
+      "january": "Ocak",
+      "february": "Şubat",
+      "march": "Mart",
+      "april": "Nisan",
+      "may": "Mayıs",
+      "june": "Haziran",
+      "july": "Temmuz",
+      "august": "Ağustos",
+      "september": "Eylül",
+      "october": "Ekim",
+      "november": "Kasım",
+      "december": "Aralık"
+    }
+  },
+  "aiAssistant": {
+    "triggerTitle": "Deli'ye Sor",
+    "triggerSubtitle": "Yapay zekâ menü asistanı — öneriler, uyumlar ve sorular",
+    "triggerCta": "Sohbeti başlat",
+    "modalTitle": "Deli — Yapay Zekâ Asistanı",
+    "modalSubtitle": "Dijital garsonunuz",
+    "tableBadge": "Masa {table}",
+    "welcome": "Merhaba! 👋 Ben Deli, dijital garsonunuz. Menü hakkında her şeyi sorabilirsiniz — yemek önerebilir, içeriklerini açıklayabilir veya seçim yapmanıza yardımcı olabilirim.",
+    "inputPlaceholder": "Menü hakkında sorun…",
+    "send": "Gönder",
+    "close": "Kapat",
+    "thinking": "Deli yazıyor…",
+    "suggestion1": "Ne önerirsin?",
+    "suggestion2": "Spesiyaliteleriniz neler?",
+    "suggestion3": "Vejetaryen yemekleriniz var mı?",
+    "suggestion4": "Hangi tatlıyı denemeliyim?",
+    "errorGeneric": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "errorRateLimit": "Kısa sürede çok fazla soru soruldu. Lütfen biraz bekleyip tekrar deneyin. 🙏",
+    "errorUnavailable": "Yapay zekâ asistanı şu anda kullanılamıyor. Lütfen personelimize sorun — memnuniyetle yardımcı oluruz!",
+    "disclaimer": "Yapay zekâ asistanı hata yapabilir. Alerjenleri ve önemli ayrıntıları personelimizle teyit edin."
+  },
+  "qrMenu": {
+    "title": "Menü QR Kodları",
+    "description": "Masalarınız için QR kodları oluşturun — misafirler tarayıp dijital menüyü görür.",
+    "pageLabel": "Sayfa",
+    "pageMenu": "Menü",
+    "pageTable": "Masa (etkileşimli menü)",
+    "pageLunchMenu": "Öğle menüsü",
+    "pageFeedback": "Geri bildirim",
+    "localeLabel": "Dil",
+    "tableFromLabel": "Başlangıç masası",
+    "tableToLabel": "Bitiş masası",
+    "noTables": "Masa numarası yok",
+    "generate": "Oluştur",
+    "print": "Tümünü yazdır",
+    "download": "SVG indir",
+    "tableLabel": "Masa",
+    "scanHint": "Menü için tarayın",
+    "limitNote": "En fazla {limit} masa ve tek seferde {batch} kod.",
+    "rangeError": "Geçersiz masa aralığı."
+  }
+}

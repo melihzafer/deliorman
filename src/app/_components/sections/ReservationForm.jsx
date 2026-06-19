@@ -1,7 +1,8 @@
-import Data from "@data/sections/reservation-form.json";
+import { getTranslations } from "next-intl/server";
 import ReservationForm from "@components/forms/ReservationForm";
 
-const ReservationSection = () => {
+const ReservationSection = async () => {
+    const t = await getTranslations("reservation");
     return (
         <>
             <div className="row">
@@ -10,9 +11,9 @@ const ReservationSection = () => {
 
                 {/* title */}
                 <div className="text-center">
-                  <div className="tst-suptitle tst-suptitle-center tst-mb-15" dangerouslySetInnerHTML={{__html : Data.subtitle}} />
-                  <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : Data.title}} />
-                  <p className="tst-text tst-mb-60" dangerouslySetInnerHTML={{__html : Data.description}} />
+                  <div className="tst-suptitle tst-suptitle-center tst-mb-15">{t("subtitle")}</div>
+                  <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : t.raw("title")}} />
+                  <p className="tst-text tst-mb-60">{t("description")}</p>
                 </div>
                 {/* title end */}
 

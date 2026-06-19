@@ -1,0 +1,104 @@
+.langSwitcher {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: rgba(26, 47, 51, 0.06);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: inherit;
+  font-family: var(--font-josefin_sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease;
+  line-height: 1;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(26, 47, 51, 0.12);
+  }
+}
+
+.label {
+  display: none;
+}
+
+.arrow {
+  display: none;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: #fff;
+  border: 1px solid rgba(26, 47, 51, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  list-style: none;
+  margin: 0;
+  padding: 4px;
+  min-width: 140px;
+  z-index: 99999;
+  animation: fade-in 0.15s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.optionButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-josefin_sans);
+  border-radius: 6px;
+  transition: background 0.15s ease;
+  text-align: left;
+  line-height: 1.3;
+
+  &:hover:not(:disabled) {
+    background: rgba(26, 47, 51, 0.05);
+  }
+
+  &:disabled {
+    background: rgba(243, 156, 18, 0.08);
+    color: #f39c12;
+    cursor: default;
+    font-weight: 700;
+  }
+}
+
+.flag {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.text {
+  flex: 1;
+}

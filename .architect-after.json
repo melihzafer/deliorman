@@ -1,0 +1,140 @@
+{
+  "file_size_balance": 8,
+  "folder_organization": 6,
+  "naming_consistency": 6,
+  "dependency_clarity": 9,
+  "dead_code": 8,
+  "convention_adherence": 7,
+  "navigability": 7,
+  "scalability": 7,
+  "health_score": 73,
+  "circular_deps": 0,
+  "god_files": 0,
+  "orphans": 0,
+  "generated_source_artifacts": 0,
+  "source_ds_store_files": 0,
+  "folders_over_25_files": 1,
+  "folders_over_15_files": 4,
+  "files_scanned": 235,
+  "ts_files_scanned": 51,
+  "largest_files": [
+    {
+      "lines": 394,
+      "path": "src/app/_components/forms/ContactForm.jsx",
+      "ext": ".jsx"
+    },
+    {
+      "lines": 380,
+      "path": "src/app/_layouts/headers/LayoutDefault.jsx",
+      "ext": ".jsx"
+    },
+    {
+      "lines": 357,
+      "path": "src/app/_components/forms/ReservationForm.jsx",
+      "ext": ".jsx"
+    },
+    {
+      "lines": 334,
+      "path": "src/app/_components/forms/FeedbackForm.jsx",
+      "ext": ".jsx"
+    },
+    {
+      "lines": 325,
+      "path": "src/app/[locale]/(pages)/special-days/page.jsx",
+      "ext": ".jsx"
+    },
+    {
+      "lines": 316,
+      "path": "src/app/[locale]/(pages)/terms/content.js",
+      "ext": ".js"
+    },
+    {
+      "lines": 285,
+      "path": "src/data/menu.translations.en.js",
+      "ext": ".js"
+    },
+    {
+      "lines": 285,
+      "path": "src/data/menu.translations.tr.js",
+      "ext": ".js"
+    },
+    {
+      "lines": 275,
+      "path": "src/app/_components/forms/CheckoutForm.jsx",
+      "ext": ".jsx"
+    },
+    {
+      "lines": 259,
+      "path": "src/app/[locale]/(pages)/catering-services/content.js",
+      "ext": ".js"
+    },
+    {
+      "lines": 245,
+      "path": "src/app/_lib/sheets.ts",
+      "ext": ".ts"
+    },
+    {
+      "lines": 242,
+      "path": "src/app/api/reservation/reservationValidation.ts",
+      "ext": ".ts"
+    },
+    {
+      "lines": 240,
+      "path": "src/app/[locale]/(pages)/pageCopy.js",
+      "ext": ".js"
+    },
+    {
+      "lines": 238,
+      "path": "src/app/api/search/route.ts",
+      "ext": ".ts"
+    },
+    {
+      "lines": 238,
+      "path": "src/app/api/__tests__/reservation.test.js",
+      "ext": ".js"
+    }
+  ],
+  "folders_largest": [
+    {
+      "count": 28,
+      "path": "src/app/_components/sections"
+    },
+    {
+      "count": 25,
+      "path": "src/app/_components/common"
+    },
+    {
+      "count": 19,
+      "path": "src/data"
+    },
+    {
+      "count": 17,
+      "path": "src/data/sections/cta"
+    },
+    {
+      "count": 15,
+      "path": "src/app/masa"
+    },
+    {
+      "count": 15,
+      "path": "src/app/_components/ui"
+    },
+    {
+      "count": 14,
+      "path": "src/app/_lib"
+    },
+    {
+      "count": 11,
+      "path": "src/app/_styles/scss"
+    },
+    {
+      "count": 10,
+      "path": "src/app"
+    },
+    {
+      "count": 10,
+      "path": "src/app/_components"
+    }
+  ],
+  "cycles": []
+}

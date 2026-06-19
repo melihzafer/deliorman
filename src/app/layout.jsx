@@ -1,19 +1,20 @@
 import { Josefin_Sans, Playfair_Display } from 'next/font/google'
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale, getMessages, getTranslations } from 'next-intl/server'
 
 const josefin_sans = Josefin_Sans({
-  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext'],
   variable: '--font-josefin_sans',
   display: 'swap',
-  // Use Next.js default font fallback generation (matches previous behavior)
   adjustFontFallback: true,
 })
 
 const playfair_display = Playfair_Display({
-  weight: ['400', '500', '600', '700', '800', '900', '700'],
+  weight: ['400', '500', '600', '700', '800', '900'],
   style: ['normal', 'italic'],
-  subsets: ['latin'],
+  subsets: ['latin', 'latin-ext', 'cyrillic'],
   variable: '--font-playfair_display',
   display: 'swap',
   adjustFontFallback: true,
@@ -27,13 +28,15 @@ import "@styles/css/plugins/font-awesome.min.css";
 // (moved Swiper custom element registration to a client-only component)
 
 import '@styles/scss/style.scss';
+import "./tailwind.css";
 
 import AppData from "@data/app.json";
 import StructuredData from "@components/StructuredData";
 import ClientBoot from "@components/ClientBoot";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { FeedbackFAB } from "@components/ui/FeedbackFAB";
+import LazyLayoutWidgets from "@components/common/LazyLayoutWidgets";
+import MobileBottomNav from "@components/common/MobileBottomNav";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
@@ -159,19 +162,36 @@ export const viewport = {
   themeColor: '#F39C12',
 }
 
-const Layouts = ({ children }) => {
+const Layouts = async ({ children }) => {
+  const locale = await getLocale();
+  const messages = await getMessages();
+  const t = await getTranslations('common');
+
   return (
     <html
-      lang="bg"
+      lang={locale}
       className={`${josefin_sans.variable} ${playfair_display.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        {/* Preconnect to critical third-party origins */}
+        <link rel="preconnect" href="https://api.mapbox.com" />
+        <link rel="preconnect" href="https://events.mapbox.com" />
+        {/* DNS prefetch for analytics (loaded conditionally in production) */}
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+        <link rel="dns-prefetch" href="https://va.vercel-scripts.com" />
+      </head>
       <body
         style={{
           backgroundImage: `url(${AppData.settings.bgImage})`,
         }}
         suppressHydrationWarning
       >
+        {/* Skip to main content link for keyboard/screen reader users */}
+        <a href="#main-content" className="tst-skip-link">
+          {t('skipToContent')}
+        </a>
+
         {/* Structured data (JSON-LD). This can be safely included in the body. */}
         <StructuredData />
 
@@ -182,12 +202,16 @@ const Layouts = ({ children }) => {
 
         {/* app wrapper */}
         <div id="tst-app" className="tst-app">
-          {children}
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            {/* Lazy-loaded non-critical UI widgets (scroll progress, back-to-top, feedback) */}
+            <LazyLayoutWidgets />
+              <main id="main-content" tabIndex={-1}>
+                {children}
+              </main>
+            <MobileBottomNav />
+          </NextIntlClientProvider>
         </div>
         {/* app wrapper end */}
-
-        {/* Feedback FAB */}
-        <FeedbackFAB />
 
         {/* Vercel Analytics */}
         {process.env.NODE_ENV === 'production' ? (

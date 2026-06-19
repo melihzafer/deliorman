@@ -1,0 +1,143 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - main [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e6]:
+            - generic [ref=e7]:
+              - generic [ref=e8]: Том I · Бр. 5
+              - generic [ref=e9]: Следобедно издание
+              - generic [ref=e10]: Всекидневник
+            - heading "Делиорман" [level=1] [ref=e11]
+            - paragraph [ref=e12]: ✦ Ежедневник на вкуса и трапезата ✦
+            - paragraph [ref=e13]: Основано в Самуил · Облaст Разград · Кухня без компромис
+            - generic [ref=e14]:
+              - generic [ref=e15]: неделя, 17 май 2026 г.
+              - generic [ref=e16]: Маса № 5
+              - generic [ref=e17]: "Цена: безценно"
+          - generic [ref=e18]:
+            - button "Назад" [disabled] [ref=e19]: ‹
+            - navigation "Рубрики" [ref=e20]:
+              - button "Топли Напитки ·" [ref=e21] [cursor=pointer]
+              - button "Салати ·" [ref=e22] [cursor=pointer]
+              - button "Аламинути ·" [ref=e23] [cursor=pointer]
+              - button "Супи, Пилешки Деликатеси и Сандвичи ·" [ref=e24] [cursor=pointer]
+              - button "Пици ·" [ref=e25] [cursor=pointer]
+              - button "Скара ·" [ref=e26] [cursor=pointer]
+              - button "Сач, Риба и Специалитети ·" [ref=e27] [cursor=pointer]
+              - button "Бургери ·" [ref=e28] [cursor=pointer]
+              - button "Нови Специалитети ·" [ref=e29] [cursor=pointer]
+              - button "Студени Мезета и Гарнитури ·" [ref=e30] [cursor=pointer]
+              - button "Ядки и Десерти ·" [ref=e31] [cursor=pointer]
+              - button "Ракия ·" [ref=e32] [cursor=pointer]
+              - button "Бели и Червени Вина ·" [ref=e33] [cursor=pointer]
+              - button "Бира, Сайдер и Други Напитки ·" [ref=e34] [cursor=pointer]
+              - button "Уиски и Водка ·" [ref=e35] [cursor=pointer]
+              - button "Алергени" [ref=e36] [cursor=pointer]
+            - button "Напред" [ref=e37] [cursor=pointer]: ›
+          - generic [ref=e38]: ❦ · ❦ · ❦
+          - generic [ref=e39]:
+            - generic [ref=e40]: — Рубрика на изданието —
+            - heading "Топли Напитки" [level=2] [ref=e41]
+            - paragraph [ref=e42]: Кафе, чай и още
+            - paragraph [ref=e43]:
+              - generic [ref=e44]: П
+              - text: одбрана селекция от топли напитки за всеки момент от деня
+            - generic "Снимки от менюто" [ref=e45]:
+              - figure "Кулинарна колонка" [ref=e46]:
+                - generic [ref=e47]:
+                  - generic [ref=e48]: "01"
+                  - generic [ref=e49]: Бира, Сайдер и Други Напитки
+                - paragraph [ref=e50]: Освежаващи предложения
+                - img "Бира, Сайдер и Други Напитки" [ref=e52]
+                - generic [ref=e53]: Кулинарна колонка
+              - figure "Кулинарна колонка" [ref=e54]:
+                - generic [ref=e55]:
+                  - generic [ref=e56]: "02"
+                  - generic [ref=e57]: Топли Напитки
+                - paragraph [ref=e58]: Кафе, чай и още
+                - img "Топли Напитки" [ref=e60]
+                - generic [ref=e61]: Кулинарна колонка
+              - figure "Кулинарна колонка" [ref=e62]:
+                - generic [ref=e63]:
+                  - generic [ref=e64]: "03"
+                  - generic [ref=e65]: Салати
+                - paragraph [ref=e66]: Свежи предложения
+                - img "Салати" [ref=e68]
+                - generic [ref=e69]: Кулинарна колонка
+            - generic [ref=e70]:
+              - article [ref=e71]:
+                - generic [ref=e72]:
+                  - heading "Кафе еспресо" [level=3] [ref=e73]
+                  - generic [ref=e75]: 1.95 лв.
+                - generic [ref=e77]: 60 ml
+              - article [ref=e78]:
+                - generic [ref=e79]:
+                  - heading "Кафе \"Лаваца\" капсула" [level=3] [ref=e80]
+                  - generic [ref=e82]: 2.73 лв.
+                - generic [ref=e84]: 60 ml
+              - article [ref=e85]:
+                - generic [ref=e86]:
+                  - heading "Нес кафе" [level=3] [ref=e87]
+                  - generic [ref=e89]: 1.95 лв.
+                - generic [ref=e91]: 60 ml
+              - article [ref=e92]:
+                - generic [ref=e93]:
+                  - heading "Капучино" [level=3] [ref=e94]
+                  - generic [ref=e96]: 2.73 лв.
+                - generic [ref=e98]: 150 ml
+              - article [ref=e99]:
+                - generic [ref=e100]:
+                  - heading "Мокачино" [level=3] [ref=e101]
+                  - generic [ref=e103]: 2.73 лв.
+                - generic [ref=e105]: 150 ml
+              - article [ref=e106]:
+                - generic [ref=e107]:
+                  - heading "Горещ шоколад" [level=3] [ref=e108]
+                  - generic [ref=e110]: 2.73 лв.
+                - generic [ref=e112]: 150 ml
+              - article [ref=e113]:
+                - generic [ref=e114]:
+                  - heading "Прясно мляко" [level=3] [ref=e115]
+                  - generic [ref=e117]: 2.15 лв.
+                - generic [ref=e119]: 150 ml
+              - article [ref=e120]:
+                - generic [ref=e121]:
+                  - heading "Чай билков" [level=3] [ref=e122]
+                  - generic [ref=e124]: 1.76 лв.
+                - generic [ref=e125]:
+                  - generic [ref=e126]: 150 ml
+                  - generic [ref=e127]: мента, лайка, букет, черен, зелен
+              - article [ref=e128]:
+                - generic [ref=e129]:
+                  - heading "Плодов чай" [level=3] [ref=e130]
+                  - generic [ref=e132]: 1.76 лв.
+                - generic [ref=e133]:
+                  - generic [ref=e134]: 150 ml
+                  - generic [ref=e135]: лимон, малина, горски плод
+              - article [ref=e136]:
+                - generic [ref=e137]:
+                  - heading "Мед" [level=3] [ref=e138]
+                  - generic [ref=e140]: 0.78 лв.
+                - generic [ref=e142]: 15 ml
+              - article [ref=e143]:
+                - generic [ref=e144]:
+                  - heading "Каничка мляко" [level=3] [ref=e145]
+                  - generic [ref=e147]: 0.78 лв.
+                - generic [ref=e149]: 50 ml
+              - article [ref=e150]:
+                - generic [ref=e151]:
+                  - heading "Сметана" [level=3] [ref=e152]
+                  - generic [ref=e154]: 0.78 лв.
+                - generic [ref=e155]:
+                  - generic [ref=e156]: 10 ml
+                  - generic [ref=e157]: суха, кондензирана, спрей
+          - generic [ref=e158]:
+            - generic [ref=e159]: ❦ · ❦ · ❦
+            - paragraph [ref=e161]: „Приятна вечер от екипа на Делиорман.“
+        - button "✦ Повикай сервитьор ✦" [disabled] [ref=e162]:
+          - text: ✦
+          - generic [ref=e163]: Повикай сервитьор
+          - text: ✦
+    - text:     
+  - alert [ref=e164]

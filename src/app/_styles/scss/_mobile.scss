@@ -1,0 +1,527 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+/**********************************
+  Mobile UX Enhancements
+  All rules scoped to @media queries — desktop is unaffected.
+***********************************/
+
+/* =============================
+   1. Touch-friendly tap targets
+   ============================= */
+@media (max-width: 1100px) {
+  /* Ensure header icon buttons meet 44×44 px minimum for accessibility */
+  .tst-menu .tst-menu-right .tst-btn.tst-btn-icon,
+  .tst-menu .tst-menu-right .tst-menu-btn {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Mid-range breakpoint: maintain 44px touch targets */
+  @media (min-width: 769px) and (max-width: 991px) {
+    .tst-menu .tst-menu-right .tst-btn.tst-btn-icon,
+    .tst-menu .tst-menu-right .tst-menu-btn {
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  /* Ensure other interactive elements meet 44×44 px minimum */
+  .tst-btn,
+  a.tst-btn,
+  button:not(.tst-qty-btn),
+  nav a,
+  .tst-menu nav ul li a {
+    min-height: 44px;
+  }
+
+  /* Pagination links */
+  .tst-pagination li a {
+    min-width: 44px;
+    min-height: 44px;
+    padding-top: 10px;
+  }
+
+  /* Slider nav buttons */
+  .tst-slider-btn,
+  .tst-main-slider-nav .tst-slider-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* =============================
+   2. Full-screen mobile navigation overlay
+   ============================= */
+@media (max-width: 1100px) {
+  .tst-menu-frame .tst-menu nav {
+    /* Override default dropdown — use full-screen overlay */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport for iOS Safari */
+    border-radius: 0;
+    padding: 80px 0 32px;
+    background-color: $card;
+    z-index: 100;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: none;
+
+    /* Smooth animation */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-20px);
+    visibility: hidden;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                visibility 0.3s;
+
+    &.tst-active {
+      opacity: 1;
+      pointer-events: all;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    &::after {
+      display: none; /* Remove decorative shadow strip */
+    }
+
+    /* Close button for mobile nav */
+    .tst-close-menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 110;
+      background: none;
+      border: none;
+      color: $ac;
+      font-size: 28px;
+      transition: transform 0.2s ease, color 0.2s ease;
+
+      &:hover, &:active {
+        transform: scale(1.1);
+        color: color.adjust($ac, $lightness: -10%);
+      }
+    }
+
+    /* Larger nav items for touch */
+ul {
+       flex-direction: column;
+       align-items: center;
+       padding: 0 16px;
+
+      li {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        padding: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+a {
+          padding: 12px 16px;
+          margin-bottom: 8px;
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          min-height: 44px;
+          text-align: left;
+          width: 100%;
+        }
+
+        &.current-menu-item > a {
+          color: $ac;
+          font-weight: 800;
+          background-color: rgba(243, 156, 18, 0.06);
+          border-radius: var(--radius-md, 8px);
+        }
+
+        &.current-menu-item::after {
+          content: none !important;
+          display: none !important;
+        }
+
+        /* Sub-menu items */
+        ul {
+          padding: 0 0 0 16px;
+          border-bottom: none;
+
+          li {
+            border-bottom: none;
+
+            a {
+              min-height: 44px;
+              padding: 12px 20px;
+              font-size: 13px;
+              opacity: 0.85;
+            }
+          }
+
+          &.tst-active {
+            max-height: 500px;
+            padding-top: 0;
+            padding-bottom: 8px;
+          }
+        }
+      }
+    }
+  }
+
+  /* Ensure hamburger z-index is above overlay */
+  .tst-menu-frame .tst-menu {
+    z-index: 11;
+  }
+
+  /* Lock body scroll when mobile menu is open */
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+}
+
+/* =============================
+   3. Mobile typography improvements
+   ============================= */
+@media (max-width: 768px) {
+  /* Responsive heading sizes with clamp */
+  .h1, h1 {
+    font-size: clamp(1.75rem, 5vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  .h2, h2 {
+    font-size: clamp(1.5rem, 4.5vw, 1.875rem);
+    line-height: 1.25;
+  }
+
+  .h3, h3 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    line-height: 1.3;
+  }
+
+  .h4, h4 {
+    font-size: clamp(1.1rem, 3.5vw, 1.25rem);
+    line-height: 1.3;
+  }
+
+  /* Body text readability */
+  .tst-text {
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* Better letter spacing on small screens */
+  .tst-suptitle,
+  .h6, h6,
+  .tst-label {
+    letter-spacing: 0.5px;
+  }
+}
+
+/* =============================
+   4. Mobile card layouts — single column
+   ============================= */
+@media (max-width: 768px) {
+  /* Menu cards: full-width single column */
+  .tst-menu-book-item {
+    margin-bottom: 30px;
+
+    .tst-item-cover-frame {
+      padding-bottom: 55%; /* Slightly larger images */
+    }
+
+    .tst-menu-book-descr {
+      padding: 20px;
+    }
+  }
+
+  /* Horizontal card variant (mbi-2) — stack on mobile */
+  .tst-menu-book-item.tst-mbi-2 {
+    flex-direction: column;
+
+    .tst-item-cover-frame {
+      width: 100%;
+      padding-bottom: 50%;
+      border-radius: 5px 5px 0 0;
+
+      img {
+        border-radius: 5px 5px 0 0;
+      }
+    }
+
+    .tst-menu-book-descr {
+      width: 100%;
+    }
+  }
+
+  /* Small card (mbi-3) — breathing room */
+  .tst-menu-book-item.tst-mbi-3 {
+    margin-bottom: 30px;
+
+    .tst-item-cover-frame {
+      height: 200px;
+      border-radius: 8px;
+    }
+  }
+
+  /* Swiper category pills — scrollable */
+  .swiper-menu-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 8px;
+    padding: 0 16px;
+    margin-bottom: 30px;
+
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .swiper-pagination-bullet {
+      scroll-snap-align: start;
+      flex-shrink: 0;
+      padding: 0 20px;
+      font-size: 11px;
+      height: 42px;
+      line-height: 44px;
+      border-radius: 21px;
+    }
+  }
+}
+
+/* =============================
+   5. Mobile form improvements
+   ============================= */
+@media (max-width: 768px) {
+  form {
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      font-size: 16px; /* Prevents iOS zoom on focus */
+      padding: 0 16px;
+      margin-bottom: 16px;
+      border-radius: var(--radius-md, 8px);
+    }
+
+    textarea {
+      min-height: 120px;
+      padding: 14px 16px;
+    }
+
+    select {
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%231a2f33' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 12px;
+      padding-right: 40px;
+    }
+  }
+
+  /* Space between form groups */
+  .tst-group-input {
+    margin-bottom: 4px;
+
+    label {
+      font-size: 15px;
+      margin-bottom: 6px;
+      display: block;
+    }
+  }
+
+  /* Radio buttons — bigger touch area */
+  .tst-radio {
+    padding: 8px 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+
+    label {
+      padding-left: 36px;
+    }
+
+    .tst-check {
+      width: 26px;
+      height: 26px;
+
+      &::before {
+        width: 16px;
+        height: 16px;
+        top: 3px;
+        left: 3px;
+      }
+    }
+  }
+
+  /* Nice select mobile fix */
+  .nice-select {
+    min-height: 48px;
+    font-size: 16px;
+
+    span {
+      line-height: 50px;
+    }
+  }
+}
+
+/* Popup form (reservation) — better mobile layout */
+@media (max-width: 768px) {
+  .tst-popup-bg {
+    .tst-popup-frame {
+      padding: 20px 16px;
+      max-width: 100%;
+      margin: 0;
+      border-radius: 16px 16px 0 0;
+      max-height: 90vh;
+      max-height: 90dvh;
+      overflow-y: auto;
+    }
+  }
+
+  .tst-close-popup {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+}
+
+/* =============================
+   6. Bottom nav spacing
+   ============================= */
+@media (max-width: 768px) {
+  /* Add bottom padding so content isn't hidden behind bottom nav */
+  .tst-content-frame {
+    padding-bottom: 70px;
+  }
+
+  /* Offset order summary bar above bottom nav */
+  .tst-order-summary {
+    bottom: 64px;
+  }
+
+  /* Offset back-to-top above bottom nav */
+  .tst-back-to-top,
+  .back-to-top {
+    bottom: 80px !important;
+  }
+
+  /* Offset feedback FAB above bottom nav */
+  .tst-feedback-fab {
+    bottom: 80px !important;
+  }
+}
+
+/* =============================
+   7. Mobile spacing & general polish
+   ============================= */
+@media (max-width: 768px) {
+  /* Tighter section spacing */
+  .tst-mb-60 {
+    margin-bottom: 35px;
+  }
+
+  .tst-mb-90 {
+    margin-bottom: 50px;
+  }
+
+  /* Better padding for content sections */
+  .tst-p-60-60 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  /* Banner height — use viewport-aware unit */
+  .tst-banner {
+    min-height: auto;
+    height: 70vh;
+    height: 70dvh;
+  }
+
+  /* Dynamic banner */
+  .tst-dynamic-banner {
+    min-height: 250px;
+  }
+
+  /* Footer columns — full-width stack */
+  footer .col-lg-3,
+  footer .col-lg-4,
+  footer .col-lg-6 {
+    margin-bottom: 30px;
+  }
+
+  /* Image galleries — 2 columns instead of 3/4 */
+  .tst-gallery .col-lg-3,
+  .tst-gallery .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* =============================
+   8. iOS safe areas
+   ============================= */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  @media (max-width: 768px) {
+    .tst-content-frame {
+      padding-bottom: calc(70px + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* =============================
+   9. Mid-range breakpoint (768-1100px) — search icon visibility, bottom nav gap
+   ============================= */
+@media (min-width: 769px) and (max-width: 1100px) {
+  /* Ensure search icon stays visible and usable in this gap */
+  .tst-menu-right .tst-btn-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .tst-menu-right .tst-btn-icon .tst-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tst-menu-right .tst-btn-icon .tst-icon i {
+    font-size: 12px;
+  }
+
+  .tst-menu-right .tst-res-btn.tst-btn-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tst-menu-right .tst-res-btn.tst-btn-icon i {
+    font-size: 14px;
+  }
+}

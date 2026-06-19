@@ -1,0 +1,502 @@
+{
+  "version": 1,
+  "created_at": "2026-04-24T14:26:11.935Z",
+  "lifetime": {
+    "total_tokens_estimated": 44852,
+    "total_reads": 22,
+    "total_writes": 56,
+    "total_sessions": 3,
+    "anatomy_hits": 13,
+    "anatomy_misses": 9,
+    "repeated_reads_blocked": 19,
+    "estimated_savings_vs_bare_cli": 2600
+  },
+  "sessions": [
+    {
+      "id": "session-2026-04-24-1757",
+      "started": "2026-04-24T14:57:21.744Z",
+      "ended": "2026-04-24T15:05:18.949Z",
+      "reads": [
+        {
+          "file": "D:/Projects/Web/deliorman/screenshots/table-newspaper.png",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/layout.jsx",
+          "tokens_estimated": 1939,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 2774,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 354,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 90,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 154,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 83,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 412,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/inspect-orange.mjs",
+          "tokens_estimated": 376,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 4713,
+        "output_tokens_estimated": 1469,
+        "reads_count": 3,
+        "writes_count": 6,
+        "repeated_reads_blocked": 3,
+        "anatomy_lookups": 2
+      }
+    },
+    {
+      "id": "session-2026-04-24-1757",
+      "started": "2026-04-24T14:57:21.744Z",
+      "ended": "2026-04-24T15:13:31.752Z",
+      "reads": [
+        {
+          "file": "D:/Projects/Web/deliorman/screenshots/table-newspaper.png",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/layout.jsx",
+          "tokens_estimated": 1939,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 2774,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/page.jsx",
+          "tokens_estimated": 136,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/screenshots/table-newspaper-viewport.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 354,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 90,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 154,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 83,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 412,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/inspect-orange.mjs",
+          "tokens_estimated": 376,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/page.jsx",
+          "tokens_estimated": 273,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 2861,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 234,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 78,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 99,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 235,
+          "action": "create"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 4849,
+        "output_tokens_estimated": 5249,
+        "reads_count": 5,
+        "writes_count": 12,
+        "repeated_reads_blocked": 4,
+        "anatomy_lookups": 3
+      }
+    },
+    {
+      "id": "session-2026-04-24-1757",
+      "started": "2026-04-24T14:57:21.744Z",
+      "ended": "2026-04-24T15:19:26.088Z",
+      "reads": [
+        {
+          "file": "D:/Projects/Web/deliorman/screenshots/table-newspaper.png",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/layout.jsx",
+          "tokens_estimated": 1939,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 2774,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/page.jsx",
+          "tokens_estimated": 136,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/screenshots/table-newspaper-viewport.png",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/melih/Downloads/localhost_3000_table_id=5(iPhone 14 Pro Max).png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 2658,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 354,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 90,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 154,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 83,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 412,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/inspect-orange.mjs",
+          "tokens_estimated": 376,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/page.jsx",
+          "tokens_estimated": 273,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 2861,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 234,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 78,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 99,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 235,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 484,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 19,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 408,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 112,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 328,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 81,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 98,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 7507,
+        "output_tokens_estimated": 6779,
+        "reads_count": 7,
+        "writes_count": 19,
+        "repeated_reads_blocked": 6,
+        "anatomy_lookups": 4
+      }
+    },
+    {
+      "id": "session-2026-04-24-1757",
+      "started": "2026-04-24T14:57:21.744Z",
+      "ended": "2026-04-24T15:26:05.105Z",
+      "reads": [
+        {
+          "file": "D:/Projects/Web/deliorman/screenshots/table-newspaper.png",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/layout.jsx",
+          "tokens_estimated": 1939,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 2774,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/page.jsx",
+          "tokens_estimated": 136,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/screenshots/table-newspaper-viewport.png",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/melih/Downloads/localhost_3000_table_id=5(iPhone 14 Pro Max).png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 2658,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 354,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 90,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 154,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/globals.css",
+          "tokens_estimated": 83,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 412,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/inspect-orange.mjs",
+          "tokens_estimated": 376,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/page.jsx",
+          "tokens_estimated": 273,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 2861,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 234,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 78,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 99,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/scripts/screenshot-table.mjs",
+          "tokens_estimated": 235,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 484,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 19,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 408,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 112,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 328,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/TableClient.jsx",
+          "tokens_estimated": 81,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/table.module.scss",
+          "tokens_estimated": 98,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 7507,
+        "output_tokens_estimated": 6779,
+        "reads_count": 7,
+        "writes_count": 19,
+        "repeated_reads_blocked": 6,
+        "anatomy_lookups": 4
+      }
+    }
+  ],
+  "daemon_usage": [],
+  "waste_flags": [],
+  "optimization_report": {
+    "last_generated": null,
+    "patterns": []
+  }
+}

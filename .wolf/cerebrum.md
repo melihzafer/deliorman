@@ -1,0 +1,68 @@
+# Cerebrum
+
+> OpenWolf's learning memory. Updated automatically as the AI learns from interactions.
+> Do not edit manually unless correcting an error.
+> Last updated: 2026-05-17
+
+## User Preferences
+
+<!-- How the user likes things done. Code style, tools, patterns, communication. -->
+
+## Key Learnings
+
+- **Project:** deliorman
+- **Description:** > A modern, fully responsive restaurant website for Deliorman Restaurant located in Samuil, Razgrad, Bulgaria. Features online table reservations, interactive menu showcase, and elegant UI/UX design.
+- Architect audit found `src/graphify-out/cache` contains generated Graphify JSON artifacts under the source root; future cleanup should remove or ignore it instead of treating it as app code.
+- Architect audit found `.gitignore` currently contains unresolved conflict markers and does not protect against several generated artifacts (`src/graphify-out/`, `.graphify_*`, `tsconfig.tsbuildinfo`).
+- The `/masa` QR menu client is now split across `src/app/masa/` modules: hooks own session/waiter state, helper files own locale/menu logic, and presentational components receive the shared table stylesheet as props.
+- Public feedback/reservation route guards require valid `Content-Length` before parsing bodies; browser/proxy submissions must preserve that header.
+- Menu localization is split across `src/data/menu.json` for the Bulgarian source of truth, `src/data/menu.translations.en.js` and `src/data/menu.translations.tr.js` for item-level translations, and `messages/*.json` for category labels used by the UI, search, and SEO layers.
+- When menu category slugs change, `src/app/_components/StructuredData.jsx` must be updated too because it hardcodes the food-category slug list used for JSON-LD menu sections.
+- The QR menu route is `/masa`; it uses `public/data/menu.json` for static localized menu data, `QR_MENU_SECRET` HMAC keys for table URLs, and Google Sheets `sessions` columns `token | masa_id | created_at | last_ping | active | last_call`.
+- The unlocalized `/masa` route must bypass `next-intl` middleware in `src/middleware.js`; otherwise local/dev requests can return 404 before the root route renders.
+- Local QR/API testing can use Ethernet `192.168.0.108` and Tailscale `100.112.143.11`; middleware cannot inspect WiFi/Ethernet SSID, only request origin/host/IP headers.
+- Local `/masa?id=3` testing without a QR key uses development-only in-memory sessions from `src/app/_lib/masaDevSession.ts` for localhost, Ethernet, and Tailscale hosts.
+- QR menu prices are displayed in euros by converting BGN data at the fixed rate `1 EUR = 1.95583 BGN`; the source JSON still stores the menu currency as BGN.
+- The `/masa` masthead uses only the themed SVG logo at `public/img/deliorman_colorized_logo.svg` for the brand mark; the old visible `Делиорман` text header is intentionally removed.
+- The QR table header text lives in `src/app/masa/MasaClient.tsx`, while category titles/descriptions come from `public/data/menu.json`; they need separate translation updates.
+- The QR masthead hero strip should use restaurant indoor/outdoor venue photos, not menu dish photos.
+- The category image cards in `src/app/_lib/menuCategoryImages.ts` need localized `bg/tr/en` title and note copy; rendering them directly as plain strings leaves the cards stuck in Bulgarian.
+
+## Do-Not-Repeat
+
+<!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
+<!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->
+- [2026-05-17] When using a one-off Node regeneration script, do not mix `??` with `||` in the same expression without parentheses; Node will stop on a syntax error before the export files are generated.
+- [2026-05-17] Do not add lowercase `button.tsx` under `src/app/_components/ui/`; Windows treats it as colliding with the existing uppercase `Button.jsx` import path and Next/TypeScript fails the build.
+- [2026-05-17] Do not route `/masa` through the locale middleware; explicitly return `NextResponse.next()` for `/masa` and `/masa/*`.
+- [2026-05-17] Do not try to enforce SSID in Next middleware; browsers/edge middleware do not expose SSID, so use signed QR keys plus origin/IP-based testing instead.
+- [2026-05-17] Allowing local network origins in middleware is not enough for `/masa`; the client and session API also need local-test handling because the menu is gated by `/api/session/start`.
+- [2026-05-17] Do not change `/masa` fonts or the existing Всекидневник menu-item layout when iterating UI; restrict changes to photo treatment and hamburger drawer controls unless explicitly asked.
+- [2026-05-17] QR menu card images must stay scoped to the active category; do not fill the card strip with neighboring or unrelated category images. Track missing photos in `src/data/menu-image-gaps.json`.
+- [2026-05-17] Do not reuse dish assets in the hero strip; `src/app/_lib/menuCategoryImages.ts` heroImages should point at venue photos from `public/img/indoor_footage/` and `public/img/outdoor_footage/`.
+- [2026-05-17] Do not run `npx tsc --noEmit` in parallel with `next build`; both touch `.next`/incremental TypeScript state and can create false missing `.next/types` errors.
+- [2026-06-02] The QR taste wizard was a 1077-line keyword-matching component (`MasaTasteWizard.tsx`) that faked AI by substring-matching item titles. It is now a tag-driven engine: every menu item has curated `ItemTags` in `src/app/masa/wizard/menuTags.ts`, and the scoring / pairings / rationale modules reason about those tags instead of titles.
+- [2026-06-02] The wizard flow is no longer 6 linear questions. The state machine in `src/app/masa/wizard/nextStep.ts` adapts: 3 questions for desserts, 4 for normal food or drink, 6 for "both", with optional "texture" or "profile" follow-ups driven by scoring confidence.
+- [2026-06-02] Multilingual NLU without an LLM: a curated synonym table in `src/app/masa/wizard/lexicon.json` (bg/tr/en) and `intentLexicon.ts` infer wizard answers from free-text input in any of the 3 locales with no model download. A `intentSemantic.ts` stub exists for future `@xenova/transformers` MiniLM integration; the `intentRouter.ts` orchestrates lexicon-first, semantic-fallback.
+- [2026-06-02] The masa wizard now has 3 hard-coded strings left in `MasaTasteWizard.tsx:541, 599, 611` (the "Show in Menu" button label). The previous version had 4 such ternaries bypassing `t()`. All new wizard strings are in `masaTranslations.ts` under all 3 locales. New keys follow the pattern `wizard*`, `q_*`, `mood_*`, `rv_*`, `rf_*`, `rt_*`, `rte_*`, `rp_*`, `rpo_*`, `rpr_*`, `rs_*`, `pair_*`, `rm_*`, `r_*`, `free_text_*`, `last_picked_label`.
+- [2026-06-02] The wizard persists the last 3 picks to `localStorage` key `masa_wizard_history_v2` and shows the most recent on the intro screen.
+- [2026-06-02] The taste wizard's LLM path uses Groq `llama-3.1-8b-instant` via `/api/wizard/recommend`. Every layer has a local fallback: lexicon NLU → local scoring → "Surprise me" random. Client-side never throws — `llmRecommend.ts::recommend()` returns `null` on any failure and the wizard silently uses the local pick. The local fallback always exists, so a Groq outage produces zero user-visible breakage.
+- [2026-06-02] The Groq prompt never sends the full `QrMenuCategory[]` tree. `llmPrompt.ts::compactMenu()` reduces 184 items to `{id, name, price, categoryId, tags[]}` in the requested locale only, dropping items with empty localised names. The route loads `public/data/menu.json` directly via `node:fs` and caches per-process.
+- [2026-06-02] LLM responses are NEVER trusted. `recommendSchema.ts::validateLlmResponse()` builds an id index from the real menu, drops hallucinated ids, enforces the budget gate as a defence-in-depth (the code-side filter is the source of truth, the LLM only gets a `budget_bgn` hint), coerces `matchReasons` to the allowed tag vocabulary, and falls back to `pair_default` for any unknown `reasonKey`. Rationale is hard-capped at 280 chars to prevent chatty models from blowing up the UI.
+- [2026-06-02] `\b` regex word boundary does NOT recognise Cyrillic. `budgetParse.ts` uses `(?=$|[^\p{L}\p{N}])` with the `u` flag instead, otherwise the Bulgarian `лв` keyword is never anchored.
+- [2026-06-02] The `/api/wizard/recommend` route is a soft-auth endpoint. It accepts UUID-style tokens, `vip-*` and `dev-local-*` prefixes. The full session check (Google Sheets lookup) is intentionally NOT done here because it would add 100-500ms to the LLM call. The per-IP sliding-window rate limit (`WIZARD_LLM_RATE_MAX=10` per `WIZARD_LLM_RATE_WINDOW_SECONDS=60`) is the real abuse gate. Missing key / wrong prefix → 200 with `{ok:false, source:"empty"}` so the client falls back silently.
+- [2026-06-02] In `MasaTasteWizard.tsx`, `finishQuiz` fires the LLM call in parallel with the 1.2s UX spin timer using `Promise.all`. If the LLM returns first, the spinner keeps going; if the LLM returns after 1.2s, the local result is replaced when the LLM resolves. The "Show another" button does NOT re-call the LLM — it cycles through `alternatives` from the original result and marks `source: "local"`.
+
+## Decision Log
+
+<!-- Significant technical decisions with rationale. Why X was chosen over Y. -->
+- [2026-05-17] Reorganized the new printed menu into a clearer flat category model so the existing slider-based menu UI could stay unchanged while the web data matches the new 8-page print menu.
+- [2026-05-17] `/masa` defaults to Bulgarian, supports Turkish as secondary and English where available, and must reuse the existing `Всекидневник` newspaper design from `src/app/[locale]/table`.
+- [2026-05-17] `/masa` improves the `Всекидневник` UX with euro pricing, hamburger-drawer language/category controls, and photo strip/clippings using existing dish images from `public/img/menuCategorised`.
+- [2026-05-17] Planned routing cleanup: `/[locale]/table` should become the canonical QR menu route, `/masa` should redirect there, and the table route should render the Masa QR content with the latest image cards.
+- [2026-05-17] Do not assume the QR table masthead or category labels are covered by message files; translate `MasaClient` copy keys and `public/data/menu.json` directly when working on `/[locale]/table`.
+- [2026-05-17] Chose not to reorganize `src/app/_components/sections` during architect cleanup; it remains a later PR because it is high import-churn compared with the resolved generated-artifact and god-file issues.
+- [2026-06-02] The QR menu taste wizard intentionally avoids a full LLM (no WebGPU, no 1GB model download) and instead ships a tag-driven rule engine + a multilingual lexicon NLU. This keeps the bundle light enough for the lowest-spec iPad and works on every device including older Androids. A semantic model can be added later by replacing the stub in `src/app/masa/wizard/intentSemantic.ts`.
+- [2026-06-02] Wizard unit tests live in `tests/unit/wizard/` and run via `npm run test:unit` (Jest 30 + jsdom). The pre-existing `jest.config.js` had `testPathIgnorePatterns` blocking `tests/`; widened it to only ignore `tests/e2e/` and `tests/performance/`. New devDeps added: `jest`, `jest-environment-jsdom`, `@testing-library/jest-dom`, `@testing-library/react`, `@types/jest`.
+- [2026-06-02] Groq is the LLM provider, not OpenAI, because the free tier (14,400 req/day) covers the restaurant's actual traffic. Model: `llama-3.1-8b-instant` (Groq's LPU inference is typically 200-800ms for our prompt size). The route is provider-agnostic — swap to OpenAI by setting `GROQ_BASE` env (future), changing `callGroq()`, and renaming the env vars.
+- [2026-06-02] The wizard's free-text path is two-tier: (1) `intentLexicon.ts::parseWithLexicon` extracts structured answers from bg/tr/en text in <5ms, (2) the LLM gets both the structured answers AND the raw free text, plus an extracted budget if any. Even when the lexicon produces zero signals but a budget is detected (e.g. "10 euros"), the wizard enters the LLM flow. Free-text LLM calls use mode="freetext" in the prompt so the model knows to weight the raw text as the primary signal.

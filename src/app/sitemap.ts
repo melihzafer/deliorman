@@ -1,18 +1,15 @@
 import { MetadataRoute } from 'next'
-import { getSortedPostsData } from '@library/posts'
+import { routing } from '@/src/i18n/routing'
+import {
+  SITE_URL,
+  getAlternateLanguages,
+  getLocalizedUrl,
+} from '@/src/i18n/seo'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://restorantdeliorman.com' // Updated to the real domain
-
-  // Get all blog posts
-  const posts = getSortedPostsData()
-  
-  // Static pages
-  const staticPages = [
-    '',
+  const localizedPages = [
     '/about',
     '/menu',
-    '/menu-2',
     '/lunch-menu',
     '/reservation',
     '/terms',
@@ -22,24 +19,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/services',
     '/special-days',
     '/contact',
-    '/shop',
-    '/products',
+    '/feedback',
+    '/search',
   ]
-  
-  const staticUrls: MetadataRoute.Sitemap = staticPages.map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: route === '' ? 'daily' : 'weekly',
-    priority: route === '' ? 1.0 : 0.8,
-  }))
-  
-  // Dynamic blog post URLs
-  const postUrls: MetadataRoute.Sitemap = posts.map((post: any) => ({
-    url: `${baseUrl}/blog/${post.id}`,
-    lastModified: post.date ? new Date(post.date) : new Date(),
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }))
-  
-  return [...staticUrls, ...postUrls]
+
+  const staticUrls: MetadataRoute.Sitemap = [
+    {
+      url: SITE_URL,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 1.0,
+    },
+    ...localizedPages.flatMap((route) =>
+      routing.locales.map((locale) => ({
+        url: getLocalizedUrl(route, locale),
+        alternates: {
+          languages: getAlternateLanguages(route),
+        },
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: locale === routing.defaultLocale ? 0.8 : 0.7,
+      }))
+    ),
+  ].filter((entry, index, allEntries) => {
+    return allEntries.findIndex(({ url }) => url === entry.url) === index
+  })
+
+  return [...staticUrls]
 }

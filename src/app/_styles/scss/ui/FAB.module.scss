@@ -1,11 +1,11 @@
-@import '../variables';
+@use '../variables' as *;
 
 .fab {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
+  bottom: 24px;
+  right: 24px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: $ac;
   color: $wl1;
@@ -17,7 +17,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   z-index: 999;
-  font-size: 24px;
+  font-size: 20px;
 
   &:hover {
     transform: scale(1.1);
@@ -35,14 +35,50 @@
   }
 
   &:focus:not(:focus-visible) {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); // Restore normal shadow
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
   @media (max-width: 768px) {
     bottom: 20px;
     right: 20px;
-    width: 56px;
-    height: 56px;
-    font-size: 22px;
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+  }
+}
+
+.toast {
+  position: fixed;
+  bottom: 86px;
+  right: 24px;
+  background-color: #2ecc71;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 300px;
+  animation: toastSlideIn 0.3s ease-out;
+  font-size: 14px;
+
+  @media (max-width: 768px) {
+    bottom: 80px;
+    right: 16px;
+    left: 16px;
+    max-width: none;
+  }
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

@@ -1,0 +1,21 @@
+{
+  "file_size_balance": 5,
+  "folder_organization": 4,
+  "naming_consistency": 6,
+  "dependency_clarity": 8,
+  "dead_code": 4,
+  "convention_adherence": 6,
+  "navigability": 5,
+  "scalability": 5,
+  "health_score": 54,
+  "circular_deps": 0,
+  "god_files": 1,
+  "orphans": 2,
+  "potential_orphans_raw": 15,
+  "generated_source_artifacts": 213,
+  "source_ds_store_files": 17,
+  "folders_over_25_files": 2,
+  "folders_over_15_files": 5,
+  "files_scanned": 219,
+  "tracked_source_files": 304
+}

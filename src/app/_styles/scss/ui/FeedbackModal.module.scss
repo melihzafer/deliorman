@@ -1,4 +1,4 @@
-@import '../variables';
+@use '../variables' as *;
 
 .modalOverlay {
   position: fixed;
@@ -13,48 +13,46 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 20px;
-  overflow-y: hidden; 
+  padding: 16px;
+  overflow-y: hidden;
 }
 
 .modalContent {
-  background: rgba(255, 255, 255, 0.98); // Slightly more opaque for better readability
-  border: 1px solid rgba(255, 255, 255, 1); // Clean white border
-  border-radius: 24px; // Softer corners
-  padding: 30px;
-  max-width: 550px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(255, 255, 255, 1);
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 480px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
 
-  // Custom scrollbar styling
   &::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   &::-webkit-scrollbar-track {
     background: transparent;
-    margin: 24px 0; // Add margin to keep scrollbar within rounded corners
+    margin: 16px 0;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba($dl1, 0.2);
-    border-radius: 10px;
+    background: rgba($dl1, 0.15);
+    border-radius: 8px;
 
     &:hover {
-      background: rgba($dl1, 0.3);
+      background: rgba($dl1, 0.25);
     }
   }
 
-  // Firefox scrollbar styling
   scrollbar-width: thin;
-  scrollbar-color: rgba($dl1, 0.2) transparent;
+  scrollbar-color: rgba($dl1, 0.15) transparent;
 
   @media (min-width: 790px) {
-    padding: 40px;
+    padding: 32px;
   }
 }
 
@@ -62,60 +60,64 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
-  border-bottom: 1px solid rgba($dl1, 0.1);
+  margin-bottom: 0.75em;
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid rgba($dl1, 0.08);
 
   h3 {
     margin: 0;
     color: $dl1;
     font-family: $pf;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 700;
   }
 }
 
 .modalDescription {
- color: darkslategrey;   
- font-weight: 900;
- margin-bottom: 1.5em;
-position: relative;
-padding-left: 1.7em;
- font-size: 15px;
- @media (min-width: 790px) {
-  font-size: 18px;
- }
- &::before{
-  left: 0;
-  top: 0; 
-  position: absolute; 
-  content: "♥";
-  color: white;
-  font-size: 12px;
-  width: 24px;
-  height: 24px;
-  background-color: $ac;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1em;
-}}
+  color: rgba($dl1, 0.6);
+  font-weight: 500;
+  margin-bottom: 1.25em;
+  font-size: 13px;
+  position: relative;
+  padding-left: 1.5em;
+
+  &::before {
+    left: 0;
+    top: 0;
+    position: absolute;
+    content: "♥";
+    color: white;
+    font-size: 9px;
+    width: 20px;
+    height: 20px;
+    background-color: $ac;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8em;
+  }
+
+  @media (min-width: 790px) {
+    font-size: 14px;
+  }
+}
 
 .closeButton {
   background: rgba($dl1, 0.05);
   border: none;
   cursor: pointer;
-  color: rgba($dl1, 0.6);
-  transition: all $tr-sm;
+  color: rgba($dl1, 0.5);
+  transition: all 0.2s ease;
   padding: 0;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px; // Square-ish with round corners looks modern
+  border-radius: 6px;
   outline: none;
+  flex-shrink: 0;
 
   &:hover {
     color: $dl1;
@@ -126,7 +128,7 @@ padding-left: 1.7em;
   &:focus {
     outline: none;
     background: rgba($dl1, 0.1);
-    box-shadow: 0 0 0 3px rgba($ac, 0.2);
+    box-shadow: 0 0 0 3px rgba($ac, 0.15);
   }
 
   &:focus:not(:focus-visible) {
@@ -135,7 +137,7 @@ padding-left: 1.7em;
   }
 
   svg {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 }

@@ -9,7 +9,7 @@
             "key": "YOUR_MAILCHIMP_KEY"
         },
         "mapbox": {
-            "AccessToken": "pk.eyJ1IjoiZGVuaXptZW1kdWV2IiwiYSI6ImNtNnRzdTgwMjA2MzMyanNjZmhmcWc0ZWkifQ.MH2pHeSSJBue9Xvzi40GDg",
+            "_AccessToken_NOTE": "Token moved to NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN env var. Previous value: pk.eyJ1Ij...40GDg",
             "style": "mapbox://styles/mapbox/dark-v11",
             "zoom": 15,
             "long": 26.740900,

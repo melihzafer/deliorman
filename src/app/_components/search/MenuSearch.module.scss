@@ -1,0 +1,20 @@
+.searchGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.searchGridItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.noResultsIcon {
+  font-size: 48px;
+  color: #ccc;
+  margin-bottom: 20px;
+}

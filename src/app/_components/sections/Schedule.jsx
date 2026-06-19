@@ -1,18 +1,22 @@
-"use client";
-
-import Data from "@data/sections/schedule.json";
-import Link from "next/link";
+import Image from "next/image";
+import { getLocalizedScheduleData } from "@data/sections/schedule/getLocalizedScheduleData";
+import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 import DividerModule from "../../_layouts/divider/Index";
+import { useMemo } from "react";
 
 const ScheduleSection = () => {
+    const locale = useLocale();
+    const localizedData = useMemo(() => getLocalizedScheduleData(locale), [locale]);
+
     return (
         <>
             {/* schedule */}
                   <div className="tst-banner-sm">
 
                     <div className="tst-cover-frame">
-                    <img src={Data.image.url} alt={Data.image.alt} className="tst-cover" />
-                    <div className="tst-overlay" style={{background: "#000000d0"}}></div>
+                    <Image src={localizedData.image.url} alt={localizedData.image.alt} className="tst-cover" fill sizes="100vw" style={{ objectFit: 'cover' }} />
+                    <div className="tst-overlay tst-overlay-dark"></div>
                     </div>
 
                     <div className="row align-items-center">
@@ -20,14 +24,13 @@ const ScheduleSection = () => {
                     <div className="col-lg-8">
 
                       <div className="tst-text-frame">
-                      <div className="tst-suptitle tst-suptitle-mobile-center tst-white-2 tst-mb-15">{Data.subtitle}</div>
-                      <h2 className="tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : Data.title}} />
-                      <p className="tst-text tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : Data.description}} />
+                      <div className="tst-suptitle tst-suptitle-mobile-center tst-white-2 tst-mb-15">{localizedData.subtitle}</div>
+                      <h2 className="tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : localizedData.title}} />
+                      <p className="tst-text tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : localizedData.description}} />
 
                       <div className="tst-btn-mobile">
-                        <div style={{display: "flex", padding: '1.5em'}}></div>
-                        <Link href={Data.button2.link}  style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-res-btn light">{Data.button2.label}</Link>
-                        {/* <Link href={Data.button2.link} className="tst-label tst-white-2">{Data.button2.label}</Link> Reservation */}
+                        <div className="tst-schedule-spacer"></div>
+                        <Link href={localizedData.button2.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-res-btn light"><span>{localizedData.button2.label}</span></Link>
                       </div>
                       </div>
 
@@ -35,7 +38,7 @@ const ScheduleSection = () => {
                     <div className="col-lg-4">
 
                       <div className="tst-wh-frame tst-pb-60" style={{ minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                      {Data.items.map((item, key) => (
+                      {localizedData.items.map((item, key) => (
                       <div className={key == 0 ? "tst-mb-2": ""} key={`schedule-item-${key}`}>
                         <div className="tst-label">{item.label}</div>
                         <div className="h5">{item.from.hours} <span className="tst-color">:</span> {item.from.minutes}</div>

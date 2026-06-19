@@ -1,0 +1,126 @@
+/* MobileBottomNav — fixed bottom navigation for mobile only */
+
+.wrapper {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 99998;
+    background-color: var(--color-card, #fff);
+    border-top: 1px solid var(--color-border, #e5ebef);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.08);
+    /* iOS safe area */
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 64px;
+  }
+
+  .item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+    height: 100%;
+    padding: 6px 4px 8px;
+    text-decoration: none;
+    color: var(--color-text-light, rgba(26, 47, 51, 0.7));
+    font-family: var(--font-josefin_sans, sans-serif);
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    transition: color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+  }
+
+  .link:hover,
+  .link:active {
+    color: var(--color-text, #1a2f33);
+  }
+
+  .active {
+    color: #f39c12;
+  }
+
+  .active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 25%;
+    right: 25%;
+    height: 3px;
+    background-color: #f39c12;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .icon {
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  .label {
+    display: block;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 64px;
+  }
+
+  /* Phone link — accent color for primary action */
+  .phone {
+    color: #25d366;
+  }
+
+  .phone:hover,
+  .phone:active {
+    color: #1faa52;
+  }
+}
+
+/* Dark theme support */
+:global([data-theme="dark"]) {
+  .wrapper {
+    background-color: var(--color-card, #132a30);
+    border-top-color: var(--color-border, #1e3a42);
+    box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .link {
+    color: var(--color-text-light, #9ca3af);
+  }
+
+  .link:hover,
+  .link:active {
+    color: var(--color-text, #e5ebef);
+  }
+}

@@ -16,7 +16,7 @@ export default [
 
   // Node-ish files
   {
-    files: ['next.config.js', '**/*.config.{js,cjs,mjs}'],
+    files: ['next.config.js', '**/*.config.{js,cjs,mjs}', 'tests/**/*.js'],
     languageOptions: {
       globals: {
         ...globals.node,

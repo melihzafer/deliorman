@@ -1,4 +1,5 @@
-import Data from "@data/sections/awards.json";
+import Image from "next/image";
+import Data from "@data/sections/awards/awards.json";
 
 const AwardsSection = () => {
   return (
@@ -8,7 +9,7 @@ const AwardsSection = () => {
             {Data.items.map((item, key) => (
             <div className="col-6 col-lg-2" key={`awards-item-${key}`}>
                 <div className="tst-awards">
-                    <img src={item.icon} alt={item.title} />
+                    <Image src={item.icon} alt={item.title} width={80} height={80} />
                     <div className="tst-label">{item.title}</div>
                 </div>
             </div>

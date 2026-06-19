@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 /**********************************
 
 content
@@ -23,8 +25,6 @@ banner
 		filter: brightness(0.5);
 
 		& .tst-cover {
-			width: 100%;
-			height: 100%;
 			object-fit: cover;
 			object-position: center;
 		}
@@ -344,17 +344,23 @@ about
 	border-radius: 5px;
 	box-shadow: 0 5px 10px 0 rgba(26, 47, 51, 0.11);
 
+.tst-about-social {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin-top: 0;
+}
+
+.tst-overlay-dark {
+	background: rgba(0, 0, 0, 0.82) !important;
+}
+
 	&.tst-video-cover {
 		padding-bottom: 60%;
 	}
 
 	& .tst-cover {
-		width: 100%;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		border-radius: 5px;
 		object-fit: cover;
 		object-position: top;
 	}
@@ -677,7 +683,7 @@ body .tst-testimonials-slider {
 		}
 
 		& .tst-date {
-			opacity: 0.6;
+			opacity: 0.85;
 			background-color: rgba(26, 47, 51, 0.2);
 			padding: 3px 10px 1px;
 			border-radius: 10px;
@@ -800,7 +806,7 @@ blog
 	}
 
 	& .tst-date {
-		opacity: 0.6;
+		opacity: 0.85;
 		background-color: rgba(26, 47, 51, 0.2);
 		padding: 3px 10px 1px;
 		border-radius: 10px;
@@ -902,7 +908,7 @@ comments
 		margin-bottom: 30px;
 
 		& .tst-date {
-			opacity: 0.6;
+			opacity: 0.85;
 			background-color: rgba(26, 47, 51, 0.2);
 			padding: 3px 10px 1px;
 			border-radius: 10px;
@@ -972,6 +978,7 @@ footer {
 
 		& .tst-logo {
 			width: 90px;
+			height: auto;
 			z-index: 1;
 		}
 	}
@@ -1042,6 +1049,8 @@ footer {
 	& .tst-footer-gallery {
 		width: 100%;
 		position: relative;
+		// Prevent layout shift during Swiper initialization
+		min-height: 120px;
 
 		& .tst-footer-gal-item {
 			padding-bottom: 100%;
@@ -1051,6 +1060,10 @@ footer {
 			border-radius: 5px;
 			margin-bottom: 40px;
 			box-shadow: 0 5px 10px 0 rgba(26, 47, 51, 0.11);
+			// Modern browsers: use aspect-ratio for better CLS
+			aspect-ratio: 1 / 1;
+			// Prevent layout shift from lazy images
+			contain: layout style paint;
 
 			& img {
 				display: block;
@@ -1105,6 +1118,8 @@ footer {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		// Reserve space to prevent CLS
+		min-height: 40px;
 
 		& .tst-fg-nav {
 			display: flex;
@@ -1125,13 +1140,15 @@ footer {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		// Reserve space to prevent CLS
+		min-height: 50px;
 
 		& a {
 			z-index: 1;
 		}
 
 		& .tst-text {
-			opacity: 0.4;
+			opacity: 0.75;
 		}
 
 		@media (max-width: 991px) {
@@ -1568,7 +1585,7 @@ new menu
 					display: inline-block;
 					font-weight: 400;
 					font-size: 12px;
-					opacity: 0.6;
+					opacity: 0.85;
 				}
 			}
 		}

@@ -1,0 +1,41 @@
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+}
+
+.open {
+  color: #16a34a;
+  background: rgba(22, 163, 74, 0.1);
+}
+
+.closed {
+  color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotOpen {
+  background: #16a34a;
+  animation: pulse 2s infinite;
+}
+
+.dotClosed {
+  background: #dc2626;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

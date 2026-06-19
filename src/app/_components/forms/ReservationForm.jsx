@@ -1,770 +1,356 @@
 "use client";
 
-import { Formik } from "formik";
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link } from "@/src/i18n/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import useReservationForm from "./reservation/useReservationForm";
+import MiniCalendar from "./reservation/MiniCalendar";
+import GuestIcons from "./reservation/GuestIcons";
+import formStyles from "./reservation/formStyles";
 
-function normalizeBgPhone(input) {
-  const raw = String(input ?? "").trim();
-  if (!raw) return "";
-
-  let s = raw.replace(/[\s\-()]/g, "");
-
-  // 00359... -> +359...
-  if (s.startsWith("00")) s = `+${s.slice(2)}`;
-
-  // 359... -> +359...
-  if (s.startsWith("359")) s = `+${s}`;
-
-  // 08XXXXXXXXX -> +3598XXXXXXXX
-  if (s.startsWith("08")) s = `+359${s.slice(1)}`;
-
-  return s;
-}
-
-function validateBgPhone(input) {
-  const normalized = normalizeBgPhone(input);
-  if (!normalized) {
-    return { ok: false, normalized: "", message: "Задължително поле" };
-  }
-
-  if (!/^\+\d+$/.test(normalized)) {
-    return {
-      ok: false,
-      normalized,
-      message: "Невалиден телефон. Пример: +359888123456 или 0888123456.",
-    };
-  }
-
-  if (!normalized.startsWith("+359")) {
-    return {
-      ok: false,
-      normalized,
-      message: "Невалиден телефон. Пример: +359888123456 или 0888123456.",
-    };
-  }
-
-  // Common BG mobile length: +359 + 9 digits
-  if (normalized.length !== 13) {
-    return {
-      ok: false,
-      normalized,
-      message: "Невалиден телефон. Пример: +359888123456 или 0888123456.",
-    };
-  }
-
-  return { ok: true, normalized, message: "" };
-}
-
-function parseDateTimeLocal(dateStr, timeStr) {
-  if (!dateStr || !timeStr) return null;
-  const [y, m, d] = String(dateStr).split("-").map(Number);
-  const [hh, mm] = String(timeStr).split(":").map(Number);
-  if (!y || !m || !d || Number.isNaN(hh) || Number.isNaN(mm)) return null;
-  return new Date(y, m - 1, d, hh, mm, 0, 0);
-}
-
-function roundUpToNextHour(date) {
-  const d = new Date(date);
-  d.setMinutes(0, 0, 0);
-  if (
-    date.getMinutes() !== 0 ||
-    date.getSeconds() !== 0 ||
-    date.getMilliseconds() !== 0
-  ) {
-    d.setHours(d.getHours() + 1);
-  }
-  return d;
-}
-
-const TIME_OPTIONS = [
-  "10:00",
-  "11:00",
-  "12:00",
-  "13:00",
-  "14:00",
-  "15:00",
-  "16:00",
-  "17:00",
-  "18:00",
-  "19:00",
-  "20:00",
-  "21:00",
-  "22:00",
-];
+const stepVariants = {
+  enter: (dir) => ({ x: dir > 0 ? 60 : -60, opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir) => ({ x: dir > 0 ? -60 : 60, opacity: 0 }),
+};
 
 const ReservationForm = () => {
-  const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
-  const [successModal, setSuccessModal] = useState({ open: false, phone: "" });
-  const [termsModalOpen, setTermsModalOpen] = useState(false);
+  const {
+    step, direction, values, errors, submitStatus, isSubmitting, successData,
+    termsModalOpen, setTermsModalOpen,
+    stepLabels, timeSlots,
+    formatDateLocale, updateField, handleInputChange,
+    goNext, goBack, handleSubmit, downloadIcs, getTimeSlotsForDate,
+    resetForm, t, tc,
+  } = useReservationForm();
 
-  // Close modal on ESC
-  useEffect(() => {
-    if (!successModal.open) return;
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") setSuccessModal({ open: false, phone: "" });
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [successModal.open]);
 
-  // Close terms modal on ESC
-  useEffect(() => {
-    if (!termsModalOpen) return;
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") setTermsModalOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [termsModalOpen]);
 
+  // ── Success state ──
+  if (successData) {
+    return (
+      <>
+        <motion.div className="rsv-success"
+          initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}>
+          <div className="rsv-success-icon" aria-hidden="true">
+            <motion.svg width="72" height="72" viewBox="0 0 72 72">
+              <circle cx="36" cy="36" r="34" fill="none" stroke="rgba(46,204,113,0.2)" strokeWidth="3" />
+              <motion.circle cx="36" cy="36" r="34" fill="none" stroke="#2ecc71" strokeWidth="3"
+                initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+                transition={{ duration: 0.6, ease: "easeOut" }} />
+              <motion.path d="M22 36l9 9 19-19" fill="none" stroke="#2ecc71" strokeWidth="3.5"
+                strokeLinecap="round" strokeLinejoin="round"
+                initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+                transition={{ duration: 0.4, delay: 0.5, ease: "easeOut" }} />
+            </motion.svg>
+          </div>
+          <h4 className="rsv-success-title">{t("successTitle")}</h4>
+          <p className="rsv-success-sub">{t("successSubtitle")}</p>
+          <div className="rsv-success-details">
+            <div className="rsv-detail-row"><span className="rsv-detail-icon">📅</span><span>{formatDateLocale(successData.values.date)}</span></div>
+            <div className="rsv-detail-row"><span className="rsv-detail-icon">🕒</span><span>{successData.values.time} {t("hoursLabel")}</span></div>
+            <div className="rsv-detail-row"><span className="rsv-detail-icon">👥</span><span>{successData.values.person} {Number(successData.values.person) === 1 ? t("guestSingular") : t("guestPlural")}</span></div>
+            <div className="rsv-detail-row"><span className="rsv-detail-icon">📞</span><span>{successData.phone}</span></div>
+          </div>
+          <p className="rsv-success-note">
+            {t("confirmationCallNote")}
+          </p>
+          <div className="rsv-success-actions">
+            <button type="button" className="tst-btn rsv-btn-ics" onClick={() => downloadIcs(successData.values)}>
+              {t("addToCalendar")}
+            </button>
+            <button type="button" className="tst-btn tst-btn-2" onClick={resetForm}>{t("newReservation")}</button>
+          </div>
+          <p className="rsv-success-phone-note">{t("forChanges")} <a href="tel:+359894766273">+359 89 4766273</a></p>
+        </motion.div>
+        <style jsx>{formStyles}</style>
+      </>
+    );
+  }
+
+  // ── Main multi-step form ──
   return (
     <>
-      {successModal.open && (
-        <div
-          className="tst-reservation-modal-overlay"
-          role="dialog"
-          aria-modal="true"
-          onMouseDown={(e) => {
-            // click outside closes
-            if (e.target === e.currentTarget)
-              setSuccessModal({ open: false, phone: "" });
-          }}
-        >
-          <div className="tst-reservation-modal">
-            <h4 className="tst-mb-10 tst-color-darkgreen">
-              Заявката е изпратена
-            </h4>
-            <h6 className="tst-mb-15 text-primary-yellow">
-              Изчакайте обаждане
-            </h6>
-            <p className="tst-text tst-mb-15">
-              Ще се обадим на <strong>{successModal.phone}</strong> за
-              потвърждение.
-            </p>
-            <p className="tst-text tst-mb-30" style={{ opacity: 0.85 }}>
-              Моля, изчакайте обаждане от ресторанта. Докато не бъде потвърдена
-              по телефона, резервацията не е валидна.
-            </p>
-            <button
-              className="tst-btn"
-              type="button"
-              onClick={() => setSuccessModal({ open: false, phone: "" })}
-            >
-              Разбрах
-            </button>
-          </div>
-        </div>
-      )}
-
       {termsModalOpen && (
-        <div
-          className="tst-reservation-modal-overlay"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Правила и условия / Лични данни"
-          onMouseDown={(e) => {
-            if (e.target === e.currentTarget) setTermsModalOpen(false);
-          }}
-        >
-          <div className="tst-reservation-modal">
-            <h4 className="tst-mb-10 tst-color-darkgreen">
-              Лични данни при резервация
-            </h4>
+        <div className="rsv-modal-overlay" role="dialog" aria-modal="true"
+          aria-label={t("termsModalTitle")}
+          onMouseDown={(e) => { if (e.target === e.currentTarget) setTermsModalOpen(false); }}>
+          <div className="rsv-modal">
+            <h4 className="tst-mb-10" style={{ color: "#0b2e13" }}>{t("termsModalTitle")}</h4>
             <p className="tst-text tst-mb-15" style={{ opacity: 0.9 }}>
-              За да обработим заявката Ви, събираме име, фамилия и телефон,
-              както и дата/час и брой гости. Използваме данните единствено за
-              потвърждение и организация на резервацията.
+              {t("termsModalText1")}
             </p>
             <p className="tst-text tst-mb-20" style={{ opacity: 0.85 }}>
-              Пълният текст с правила и информация за обработката на лични данни
-              може да прочетете тук:
-              <span> </span>
-              <Link href="/terms" className="tst-color tst-anima-link">
-                Правила и условия / Лични данни
-              </Link>
-              .
+              {t("termsModalText2") || "Full text can be read here:"}{" "}
+              <Link href="/terms" className="tst-color tst-anima-link">{t("termsAndConditions")}</Link>.
             </p>
-            <button
-              className="tst-btn"
-              type="button"
-              onClick={() => setTermsModalOpen(false)}
-            >
-              Затвори
-            </button>
+            <button className="tst-btn" type="button" onClick={() => setTermsModalOpen(false)}>{t("closeButton")}</button>
           </div>
         </div>
       )}
 
-      {/* reservation form */}
-      <Formik
-        initialValues={{
-          phone: "",
-          first_name: "",
-          last_name: "",
-          time: "",
-          date: "",
-          person: "",
-          message: "",
-          company: "",
-          privacy_consent: false,
-        }}
-        validate={(values) => {
-          const errors = {};
-
-          if (!values.first_name || values.first_name.trim().length < 2) {
-            errors.first_name = "Името трябва да е поне 2 символа";
-          }
-
-          if (!values.last_name || values.last_name.trim().length < 2) {
-            errors.last_name = "Фамилията трябва да е поне 2 символа";
-          }
-
-          const phoneCheck = validateBgPhone(values.phone);
-          if (!phoneCheck.ok) {
-            errors.phone = phoneCheck.message;
-          }
-
-          // Guests validation (allow large groups, up to a sane max)
-          const guestsNum = Number(values.person);
-          if (!values.person || String(values.person).trim() === "") {
-            errors.person = "Моля въведете брой гости";
-          } else if (
-            !Number.isFinite(guestsNum) ||
-            !Number.isInteger(guestsNum)
-          ) {
-            errors.person = "Моля въведете валиден брой гости";
-          } else if (guestsNum < 1) {
-            errors.person = "Броят гости трябва да е поне 1";
-          } else if (guestsNum > 100) {
-            errors.person = "Максималният брой гости е 100";
-          }
-
-          if (!values.date) {
-            errors.date = "Моля изберете дата";
-          } else {
-            const selectedDate = new Date(values.date);
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-
-            const maxDate = new Date(today);
-            maxDate.setMonth(today.getMonth() + 1);
-            maxDate.setHours(23, 59, 59, 999);
-
-            if (selectedDate < today) {
-              errors.date = "Не може да резервирате за минала дата";
-            } else if (selectedDate > maxDate) {
-              errors.date =
-                "Резервации могат да се правят само до 1 месец напред";
-            }
-          }
-
-          if (!values.time || values.time === "") {
-            errors.time = "Моля изберете час";
-          }
-
-          // Time validation: not in the past and at least 4 hours from now
-          if (values.date && values.time) {
-            const selectedDateTime = parseDateTimeLocal(
-              values.date,
-              values.time
+      <div className="rsv-wizard">
+        {/* Progress indicator */}
+        <div className="rsv-progress">
+          {stepLabels.map((label, i) => {
+            const num = i + 1;
+            const isActive = num === step;
+            const isDone = num < step;
+            return (
+              <div key={num} className={`rsv-progress-step ${isActive ? "active" : ""} ${isDone ? "done" : ""}`}>
+                <div className="rsv-progress-circle">
+                  {isDone ? (
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                      <path d="M6.5 11.5L3 8l1-1 2.5 2.5L12 4l1 1z" />
+                    </svg>
+                  ) : num}
+                </div>
+                <span className="rsv-progress-label">{label}</span>
+                {num < 3 && <div className="rsv-progress-line" />}
+              </div>
             );
-            if (selectedDateTime) {
-              const now = new Date();
-              const minAllowed = new Date(now.getTime() + 4 * 60 * 60 * 1000);
+          })}
+        </div>
 
-              if (selectedDateTime.getTime() < now.getTime()) {
-                errors.time = "Моля изберете бъдещ час";
-              } else if (selectedDateTime.getTime() < minAllowed.getTime()) {
-                const rounded = roundUpToNextHour(minAllowed);
-                const dd = String(rounded.getDate()).padStart(2, "0");
-                const mm = String(rounded.getMonth() + 1).padStart(2, "0");
-                const yyyy = String(rounded.getFullYear());
-                const hh = String(rounded.getHours()).padStart(2, "0");
-                const min = String(rounded.getMinutes()).padStart(2, "0");
-                errors.time = `Резервация може да се направи най-рано след 4 часа (след ${dd}.${mm}.${yyyy} ${hh}:${min})`;
-              }
-            }
-          }
+        <form id="reservationForm" onSubmit={(e) => {
+          e.preventDefault();
+          if (step < 3) goNext(); else handleSubmit();
+        }}>
+          {/* Honeypot */}
+          <div style={{ position: "absolute", left: "-9999px", top: "auto", width: 1, height: 1, overflow: "hidden" }} aria-hidden="true">
+            <input type="text" name="company" tabIndex={-1} autoComplete="off" onChange={handleInputChange} value={values.company || ""} />
+          </div>
 
-          // Require message/details for large groups (> 20)
-          if (Number.isFinite(guestsNum) && guestsNum > 20) {
-            const msg = String(values.message || "").trim();
-            if (msg.length < 5) {
-              errors.message =
-                "За групи над 20 души, моля напишете кратък коментар (повод, тип събитие, изисквания).";
-            }
-          }
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div key={step} custom={direction} variants={stepVariants}
+              initial="enter" animate="center" exit="exit"
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="rsv-step-content">
 
-          if (!values.privacy_consent) {
-            errors.privacy_consent =
-              "Моля, потвърдете, че сте се запознали с правилата и условията.";
-          }
+              {/* Step 1: Date & Time */}
+              {step === 1 && (
+                <div className="rsv-step">
+                  <h5 className="rsv-step-title">{t("step1Title")}</h5>
+                  <MiniCalendar selectedDate={values.date}
+                    onSelect={(d) => {
+                      updateField("date", d);
+                      const newSlots = getTimeSlotsForDate(d);
+                      if (values.time && !newSlots.includes(values.time)) updateField("time", "");
+                    }} />
+                  {errors.date && <div className="rsv-field-error" role="alert">{errors.date}</div>}
 
-          return errors;
-        }}
-        onSubmit={async (values, { setSubmitting, resetForm }) => {
-          setSubmitStatus({ type: "", message: "" });
-
-          const phoneCheck = validateBgPhone(values.phone);
-          if (!phoneCheck.ok) {
-            setSubmitStatus({ type: "error", message: phoneCheck.message });
-            setSubmitting(false);
-            return;
-          }
-
-          const data = new FormData();
-          data.append("first_name", values.first_name);
-          data.append("last_name", values.last_name);
-          data.append("phone", phoneCheck.normalized);
-          data.append("person", values.person);
-          data.append("time", values.time);
-          data.append("date", values.date);
-          data.append("message", values.message);
-          data.append("company", values.company);
-          data.append(
-            "privacy_consent",
-            values.privacy_consent ? "true" : "false"
-          );
-
-          try {
-            const response = await fetch("/api/reservation", {
-              method: "POST",
-              body: data,
-            });
-
-            const result = await response.json();
-
-            if (response.ok && result.success) {
-              setSuccessModal({
-                open: true,
-                phone: result.data?.phone || phoneCheck.normalized,
-              });
-              resetForm();
-            } else {
-              const errorMessages =
-                result.errors?.map((e) => e.message).join(", ") ||
-                "Възникна проблем";
-              setSubmitStatus({
-                type: "error",
-                message: errorMessages,
-              });
-            }
-          } catch (error) {
-            console.error("Form submission error:", error);
-            setSubmitStatus({
-              type: "error",
-              message:
-                "Грешка при резервацията. Моля, обадете се на +359 89 4766273.",
-            });
-          }
-
-          setSubmitting(false);
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-        }) => {
-          const filteredTimeOptions = (() => {
-            // If no date selected, show full list.
-            if (!values.date) return TIME_OPTIONS;
-
-            const now = new Date();
-            const minAllowed = new Date(now.getTime() + 4 * 60 * 60 * 1000);
-
-            return TIME_OPTIONS.filter((t) => {
-              const dt = parseDateTimeLocal(values.date, t);
-              if (!dt) return false;
-              return dt.getTime() >= minAllowed.getTime();
-            });
-          })();
-
-          // Calculate min/max dates for the date picker
-          const today = new Date();
-          const maxDate = new Date(today);
-          maxDate.setMonth(today.getMonth() + 1);
-          // Handle month overflow (e.g. Jan 31 -> Feb 28/29)
-          if (today.getDate() !== maxDate.getDate()) {
-            maxDate.setDate(0);
-          }
-
-          const toDateInputStr = (d) => {
-            const y = d.getFullYear();
-            const m = String(d.getMonth() + 1).padStart(2, "0");
-            const day = String(d.getDate()).padStart(2, "0");
-            return `${y}-${m}-${day}`;
-          };
-
-          const minDateStr = toDateInputStr(today);
-          const maxDateStr = toDateInputStr(maxDate);
-
-          return (
-            <form onSubmit={handleSubmit} id="reservationForm">
-              <div className="row">
-                <div className="col-12 col-md-6">
-                  <input
-                    type="text"
-                    placeholder="Име *"
-                    name="first_name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.first_name}
-                    className={
-                      errors.first_name && touched.first_name ? "error" : ""
-                    }
-                  />
-                  {errors.first_name && touched.first_name && (
-                    <div className="tst-field-error">{errors.first_name}</div>
-                  )}
-                </div>
-                <div className="col-12 col-md-6">
-                  <input
-                    type="text"
-                    placeholder="Фамилия *"
-                    name="last_name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.last_name}
-                    className={
-                      errors.last_name && touched.last_name ? "error" : ""
-                    }
-                  />
-                  {errors.last_name && touched.last_name && (
-                    <div className="tst-field-error">{errors.last_name}</div>
-                  )}
-                </div>
-                <div className="col-8 col-md-8">
-                  <input
-                    type="tel"
-                    placeholder="Телефон *"
-                    name="phone"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.phone}
-                    className={errors.phone && touched.phone ? "error" : ""}
-                    inputMode="tel"
-                    autoComplete="tel"
-                  />
-                  {errors.phone && touched.phone && (
-                    <div className="tst-field-error">{errors.phone}</div>
-                  )}
-                </div>
-                <div className="col-4 col-md-4">
-                  {/*<label style={{ display: 'block', textAlign: 'left', marginBottom: 6 }}>*/}
-                  {/*  Брой гости <span style={{ opacity: 0.7 }}>(вкл. фирмени банкети)</span> **/}
-                  {/*</label>*/}
-                  <div className="tst-guests-row">
-                    <div className="tst-guests-input">
-                      <input
-                        type="number"
-                        placeholder="Гости *"
-                        name="person"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.person}
-                        min={1}
-                        max={500}
-                        step={1}
-                        inputMode="numeric"
-                        className={
-                          errors.person && touched.person ? "error" : ""
-                        }
-                      />
-                      {errors.person && touched.person && (
-                        <div className="tst-field-error">{errors.person}</div>
+                  {values.date && (
+                    <div className="rsv-time-section">
+                      <p className="rsv-time-label">{t("selectTime")}</p>
+                      {timeSlots.length === 0 ? (
+                        <p className="rsv-no-slots">{t("noSlotsAvailable")}</p>
+                      ) : (
+                        <div className="rsv-time-grid">
+                          {timeSlots.map((ts) => (
+                            <button key={ts} type="button"
+                              className={`rsv-time-slot ${values.time === ts ? "selected" : ""}`}
+                              onClick={() => updateField("time", ts)}
+                              aria-pressed={values.time === ts}
+                              aria-label={t("selectTimeSlot", { time: ts })}
+                            >
+                              {ts}
+                            </button>
+                          ))}
+                        </div>
                       )}
+                      {errors.time && <div className="rsv-field-error" role="alert">{errors.time}</div>}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Step 2: Guests & Contact */}
+              {step === 2 && (
+                <div className="rsv-step">
+                  <h5 className="rsv-step-title">{t("step2Title")}</h5>
+                  <div className="rsv-guest-section">
+                    <label className="rsv-label">{t("guestCount")}</label>
+                    <div className="rsv-guest-counter">
+                      <button type="button" className="rsv-counter-btn"
+                        disabled={values.person <= 1}
+                        onClick={() => updateField("person", Math.max(1, Number(values.person) - 1))}
+                        aria-label={t("decreaseGuests")}>−</button>
+                      <input type="number" className={`rsv-counter-value ${errors.person ? "error" : ""}`}
+                        name="person" value={values.person} min={1} max={20}
+                        onChange={(e) => {
+                          const v = e.target.value === "" ? "" : Math.max(1, Math.min(20, parseInt(e.target.value, 10) || 1));
+                          updateField("person", v);
+                        }} inputMode="numeric" aria-label={t("guestCount")} />
+                      <button type="button" className="rsv-counter-btn"
+                        disabled={values.person >= 20}
+                        onClick={() => updateField("person", Math.min(20, Number(values.person) + 1))}
+                        aria-label={t("increaseGuests")}>+</button>
+                    </div>
+                    {Number(values.person) > 0 && Number(values.person) <= 20 && (
+                      <GuestIcons count={Number(values.person)} />
+                    )}
+                    {errors.person && <div className="rsv-field-error" role="alert">{errors.person}</div>}
+                  </div>
+                  <div className="rsv-contact-fields">
+                    <div className="rsv-field-row">
+                      <div className="rsv-field">
+                        <input
+                          id="reservation-first-name"
+                          type="text"
+                          placeholder={t("firstNamePlaceholder")}
+                          name="first_name"
+                          value={values.first_name}
+                          onChange={handleInputChange} autoComplete="given-name" aria-required="true"
+                          aria-label={t("reviewName")}
+                          aria-invalid={Boolean(errors.first_name)}
+                          aria-describedby={errors.first_name ? "reservation-first-name-error" : undefined}
+                          className={errors.first_name ? "error" : ""} />
+                        {errors.first_name && <div id="reservation-first-name-error" className="rsv-field-error" role="alert">{errors.first_name}</div>}
+                      </div>
+                      <div className="rsv-field">
+                        <input
+                          id="reservation-last-name"
+                          type="text"
+                          placeholder={t("lastNamePlaceholder")}
+                          name="last_name"
+                          value={values.last_name}
+                          onChange={handleInputChange} autoComplete="family-name" aria-required="true"
+                          aria-label={t("lastNamePlaceholder")}
+                          aria-invalid={Boolean(errors.last_name)}
+                          aria-describedby={errors.last_name ? "reservation-last-name-error" : undefined}
+                          className={errors.last_name ? "error" : ""} />
+                        {errors.last_name && <div id="reservation-last-name-error" className="rsv-field-error" role="alert">{errors.last_name}</div>}
+                      </div>
+                    </div>
+                    <div className="rsv-field">
+                      <input
+                        id="reservation-phone"
+                        type="tel"
+                        placeholder={t("phonePlaceholder")}
+                        name="phone"
+                        value={values.phone}
+                        onChange={handleInputChange}
+                        inputMode="tel"
+                        autoComplete="tel"
+                        aria-required="true"
+                        aria-label={t("reviewPhone")}
+                        aria-invalid={Boolean(errors.phone)}
+                        aria-describedby={errors.phone ? "reservation-phone-error" : undefined}
+                        className={errors.phone ? "error" : ""}
+                      />
+                      {errors.phone && <div id="reservation-phone-error" className="rsv-field-error" role="alert">{errors.phone}</div>}
+                    </div>
+                    <div className="rsv-field">
+                      <input
+                        id="reservation-email"
+                        type="email"
+                        placeholder={t("emailPlaceholder")}
+                        name="email"
+                        value={values.email} onChange={handleInputChange}
+                        autoComplete="email"
+                        aria-label={t("reviewEmail")}
+                        aria-invalid={Boolean(errors.email)}
+                        aria-describedby={errors.email ? "reservation-email-error" : undefined}
+                        className={errors.email ? "error" : ""}
+                      />
+                      {errors.email && <div id="reservation-email-error" className="rsv-field-error" role="alert">{errors.email}</div>}
                     </div>
                   </div>
                 </div>
-                <div className="col-6 col-md-6">
-                  <input
-                    type="date"
-                    name="date"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.date}
-                    className={errors.date && touched.date ? "error" : ""}
-                    min={minDateStr}
-                    max={maxDateStr}
-                  />
-                  {errors.date && touched.date && (
-                    <div className="tst-field-error">{errors.date}</div>
-                  )}
-                </div>
-                <div className="col-6 col-md-6">
-                  <select
-                    name="time"
-                    className={`wide ${
-                      errors.time && touched.time ? "error" : ""
-                    }`}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.time}
-                  >
-                    <option value="">Час *</option>
-                    {filteredTimeOptions.length === 0 ? (
-                      <option value="" disabled>
-                        Няма свободни часове (изберете друга дата)
-                      </option>
-                    ) : (
-                      filteredTimeOptions.map((t) => (
-                        <option key={t} value={t}>
-                          {t}
-                        </option>
-                      ))
+              )}
+
+              {/* Step 3: Confirmation */}
+              {step === 3 && (
+                <div className="rsv-step">
+                  <h5 className="rsv-step-title">{t("step3Title")}</h5>
+                  <div className="rsv-summary">
+                    <div className="rsv-summary-row"><span className="rsv-summary-icon">📅</span>
+                      <div><strong>{t("reviewDate")}</strong><p>{formatDateLocale(values.date)}</p></div></div>
+                    <div className="rsv-summary-row"><span className="rsv-summary-icon">🕒</span>
+                      <div><strong>{t("reviewTime")}</strong><p>{values.time} {t("hoursLabel")}</p></div></div>
+                    <div className="rsv-summary-row"><span className="rsv-summary-icon">👥</span>
+                      <div><strong>{t("reviewGuests")}</strong><p>{values.person} {Number(values.person) === 1 ? t("guestSingular") : t("guestPlural")}</p></div></div>
+                    <div className="rsv-summary-row"><span className="rsv-summary-icon">👤</span>
+                      <div><strong>{t("reviewName")}</strong><p>{values.first_name} {values.last_name}</p></div></div>
+                    <div className="rsv-summary-row"><span className="rsv-summary-icon">📞</span>
+                      <div><strong>{t("reviewPhone")}</strong><p>{values.phone}</p></div></div>
+                    {values.email && (
+                      <div className="rsv-summary-row"><span className="rsv-summary-icon">✉️</span>
+                        <div><strong>{t("reviewEmail")}</strong><p>{values.email}</p></div></div>
                     )}
-                  </select>
-                  {errors.time && touched.time && (
-                    <div className="tst-field-error">{errors.time}</div>
-                  )}
-                </div>
-                <div className="col-12">
-                  <textarea
-                    placeholder="Допълнително съобщение (незадължително)"
-                    name="message"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.message}
-                    rows="4"
-                    className={errors.message && touched.message ? "error" : ""}
-                  />
-                  {errors.message && touched.message && (
-                    <div className="tst-field-error">{errors.message}</div>
-                  )}
-                </div>
-
-                {/* Honeypot: hidden field for bots (do not remove) */}
-                <div
-                  style={{
-                    position: "absolute",
-                    left: "-9999px",
-                    top: "auto",
-                    width: 1,
-                    height: 1,
-                    overflow: "hidden",
-                  }}
-                  aria-hidden="true"
-                >
-                  <input
-                    type="text"
-                    name="company"
-                    tabIndex={-1}
-                    autoComplete="off"
-                    onChange={handleChange}
-                    value={values.company || ""}
-                  />
-                </div>
-              </div>
-
-              <div className="tst-privacy-consent">
-                <label className="tst-privacy-consent-label">
-                  <input
-                    type="checkbox"
-                    name="privacy_consent"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    checked={Boolean(values.privacy_consent)}
-                  />
-                  <span>
-                    Съгласен/а съм с{" "}
-                    <Link href="/terms" className="tst-color tst-anima-link">
-                      правилата и условията
-                    </Link>
-                    <span> </span>и информацията за лични данни.
-                    <button
-                      type="button"
-                      className="tst-privacy-consent-mini"
-                      onClick={() => setTermsModalOpen(true)}
-                    >
-                      Прочети накратко
-                    </button>
-                  </span>
-                </label>
-                {errors.privacy_consent && touched.privacy_consent && (
-                  <div className="tst-field-error">
-                    {errors.privacy_consent}
                   </div>
-                )}
-              </div>
 
-              <button
-                className="tst-btn tst-reserve-submit"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? "Изпращане..." : "Резервирай маса"}
-              </button>
+                  <div className="rsv-message-field">
+                    <textarea
+                      id="reservation-message"
+                      placeholder={t("specialRequestsPlaceholder")}
+                      name="message"
+                      value={values.message} onChange={handleInputChange} rows="3"
+                      aria-label={t("specialRequestsPlaceholder")}
+                      aria-invalid={Boolean(errors.message)}
+                      aria-describedby={errors.message ? "reservation-message-error" : undefined}
+                      className={errors.message ? "error" : ""}
+                    />
+                    {errors.message && <div id="reservation-message-error" className="rsv-field-error" role="alert">{errors.message}</div>}
+                  </div>
 
-              {submitStatus.message && submitStatus.type === "error" && (
-                <div className={`tst-form-status ${submitStatus.type}`}>
-                  <h5 style={{ color: "#f44336" }}>{submitStatus.message}</h5>
+                  <div className="rsv-wait-notice">
+                    <span className="rsv-wait-icon">⏱️</span>
+                    {t("confirmationWaitMessage")}
+                  </div>
+
+                  <div className="rsv-privacy-consent">
+                    <label className="rsv-consent-label">
+                      <input
+                        type="checkbox"
+                        name="privacy_consent"
+                        onChange={handleInputChange}
+                        checked={Boolean(values.privacy_consent)}
+                        aria-required="true"
+                        aria-invalid={Boolean(errors.privacy_consent)}
+                        aria-describedby={errors.privacy_consent ? "reservation-privacy-error" : undefined}
+                      />
+                      <span>
+                        {t("agreeWithTerms")}{" "}
+                        <Link href="/terms" className="tst-color tst-anima-link">{t("termsAndConditions")}</Link>
+                        {" "}{t("andPrivacyInfo")}{" "}
+                        <button type="button" className="rsv-consent-mini" onClick={() => setTermsModalOpen(true)}>
+                          {t("readSummary")}
+                        </button>
+                      </span>
+                    </label>
+                    {errors.privacy_consent && <div id="reservation-privacy-error" className="rsv-field-error" role="alert">{errors.privacy_consent}</div>}
+                  </div>
+
+                  {submitStatus.message && submitStatus.type === "error" && (
+                    <div className="rsv-form-error" role="alert"><p>{submitStatus.message}</p></div>
+                  )}
                 </div>
               )}
-            </form>
-          );
-        }}
-      </Formik>
-      {/* reservation form end */}
+            </motion.div>
+          </AnimatePresence>
 
-      <style jsx>{`
-        .tst-color-darkgreen {
-          color: #0b2e13;
-        }
-        .text-primary-yellow {
-          color: #e0a800;
-        }
+          {/* Navigation buttons */}
+          <div className="rsv-nav-buttons">
+            {step > 1 && (
+              <button type="button" className="tst-btn tst-btn-2 rsv-nav-btn" onClick={goBack}>{t("backButton")}</button>
+            )}
+            <div className="rsv-nav-spacer" />
+            {step < 3 ? (
+              <button type="button" className="tst-btn rsv-nav-btn" onClick={goNext}>{t("nextButton")}</button>
+            ) : (
+              <button type="submit" className="tst-btn rsv-nav-btn rsv-submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? t("submitButtonSending") : t("submitButtonText")}
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
 
-        .tst-field-error {
-          color: #f44336;
-          font-size: 13px;
-          margin-top: 5px;
-          margin-bottom: 10px;
-        }
-
-        input.error,
-        textarea.error,
-        select.error {
-          border-color: #f44336 !important;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-          border-color: #7e2010;
-          outline: none;
-          box-shadow: 0 0 0 3px rgba(126, 32, 16, 0.1);
-        }
-
-        .tst-form-status {
-          margin-top: 20px;
-          padding: 15px;
-          border-radius: 8px;
-          animation: slideIn 0.3s ease;
-        }
-
-        .tst-form-status.error {
-          background-color: #ffebee;
-          border: 1px solid #f44336;
-        }
-
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateY(-10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .tst-reservation-modal-overlay {
-          position: fixed;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.55);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 20px;
-          z-index: 9999;
-        }
-
-        .tst-reservation-modal {
-          width: 100%;
-          max-width: 520px;
-          background: #fff;
-          border-radius: 14px;
-          padding: 22px;
-          box-shadow: 0 12px 34px rgba(0, 0, 0, 0.25);
-        }
-
-        .tst-guests-row {
-          display: flex;
-          gap: 12px;
-          align-items: flex-start;
-          flex-wrap: wrap;
-        }
-
-        .tst-guests-input {
-          min-width: 0;
-          flex: 1 1 auto;
-        }
-
-        .tst-guests-input input {
-          width: 100%;
-        }
-
-        .tst-guest-chip-text {
-          margin-bottom: 20px;
-        }
-
-        .tst-reserve-submit {
-          display: block;
-          margin-left: auto;
-          margin-right: auto;
-          min-width: 220px;
-        }
-
-        .tst-privacy-consent {
-          margin-top: 16px;
-          margin-bottom: 16px;
-        }
-
-        .tst-privacy-consent-label {
-          display: flex;
-          gap: 10px;
-          align-items: center;
-          cursor: pointer;
-          user-select: none;
-          margin-bottom: 3em;
-        }
-
-        .tst-privacy-consent-label input {
-          
-          width: 25px;
-          height: 25px;
-          margin: 0 3em 7px 0;
-        }
-
-        .tst-privacy-consent-mini {
-          margin-left: 10px;
-          padding: 0;
-          border: none;
-          background: transparent;
-          cursor: pointer;
-          text-decoration: underline;
-          color: inherit;
-          opacity: 0.85;
-        }
-
-        @media (max-width: 767px) {
-          .tst-reserve-submit {
-            width: 100%;
-            min-width: 0;
-          }
-        }
-
-        /* Responsive: on small screens stack input + chips nicely */
-        @media (max-width: 767px) {
-          .tst-guests-row {
-            flex-direction: column;
-            gap: 10px;
-          }
-
-          .tst-guests-input {
-            min-width: 0;
-            width: 100%;
-            flex: 1 1 auto;
-          }
-        }
-      `}</style>
+      <style jsx>{formStyles}</style>
     </>
   );
 };
+
 export default ReservationForm;
+

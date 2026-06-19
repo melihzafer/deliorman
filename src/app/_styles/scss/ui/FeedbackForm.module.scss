@@ -1,210 +1,323 @@
-@import '../variables';
+@use '../variables' as *;
 
 .formContainer {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+}
+
+.categorySection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1.5px solid rgba($dl1, 0.12);
+  border-radius: 20px;
+  background: transparent;
+  cursor: pointer;
+  font-family: $sf;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba($dl1, 0.85);
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $ac;
+    color: $dl1;
+    background: rgba($ac, 0.04);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $ac;
+    outline-offset: 2px;
+  }
+}
+
+.pillActive {
+  border-color: $ac;
+  background: $ac;
+  color: $wl1;
+
+  .pillIcon {
+    filter: none;
+  }
+
+  &:hover {
+    background: #e68a00;
+    color: $wl1;
+  }
+}
+
+.pillIcon {
+  font-size: 16px;
+  line-height: 1;
+  filter: grayscale(0.3);
+}
+
+.pillText {
+  line-height: 1;
+}
+
+.ratingSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.starsRow {
+  display: flex;
+  gap: 4px;
+}
+
+.starBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: rgba($dl1, 0.15);
+  transition: color 0.15s ease, transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $ac;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.starFilled {
+  color: $ac;
+}
+
+.ratingHint {
+  font-size: 12px;
+  color: rgba($dl1, 0.75);
+  font-family: $sf;
+  font-weight: 500;
+  margin-top: 2px;
 }
 
 .groupInput {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   position: relative;
+}
 
-  label {
-    font-family: $sf;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: rgba($dl1, 0.7);
-    margin-bottom: 8px;
-    
-    .required {
-        color: $ac;
-        margin-left: 2px;
-    }
+.floatingField {
+  position: relative;
+}
+
+.textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 1.5px solid rgba($dl1, 0.12);
+  border-radius: 10px;
+  padding: 22px 16px 10px;
+  font-family: $sf;
+  font-size: 14px;
+  font-weight: 400;
+  color: $dl1;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.5;
+
+  &::placeholder {
+    color: transparent;
   }
 
-  input,
-  select,
-  textarea {
-    width: 100%;
+  &:hover {
+    border-color: rgba($dl1, 0.25);
+    background: #fafafa;
+  }
+
+  &:focus {
+    border-color: $ac;
+    box-shadow: 0 0 0 3px rgba($ac, 0.1);
     background: #ffffff;
-    border: 1.5px solid rgba($dl1, 0.12);
-    border-radius: 12px;
-    padding: 14px 20px;
-    font-family: $sf;
-    font-size: 16px;
-    font-weight: 500;
-    color: $dl1;
-    outline: none;
-    transition: all $tr-sm;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
 
-    &::placeholder {
-      color: rgba($dl1, 0.4);
-    }
-
-    &:hover {
-      border-color: rgba($dl1, 0.25);
-      background: #fafafa;
-    }
+  &.error {
+    border-color: $auxc1;
+    background: rgba($auxc1, 0.02);
 
     &:focus {
-      border-color: $ac;
-      box-shadow: 0 0 0 4px rgba($ac, 0.1);
-      background: #ffffff;
-      outline: none;
-    }
-
-    &.error {
-      border-color: $auxc1;
-      background: rgba($auxc1, 0.02);
-
-      &:focus {
-        box-shadow: 0 0 0 4px rgba($auxc1, 0.1);
-      }
+      box-shadow: 0 0 0 3px rgba($auxc1, 0.1);
     }
   }
+}
 
-  select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231a2f33' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 20px center;
-    background-size: 18px;
-    padding-right: 50px;
-    cursor: pointer;
-  }
+.floatingLabel {
+  position: absolute;
+  left: 16px;
+  top: 18px;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba($dl1, 0.6);
+  pointer-events: none;
+  transition: all 0.2s ease;
+  font-family: $sf;
+  line-height: 1;
+}
 
-  textarea {
-    resize: vertical;
-    min-height: 120px;
-    line-height: 1.5;
-  }
+.textarea:focus ~ .floatingLabel,
+.textarea.filled ~ .floatingLabel {
+  top: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba($dl1, 0.75);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.textarea:focus ~ .floatingLabel {
+  color: $ac;
+}
+
+.fieldLabel {
+  font-family: $sf;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba($dl1, 0.75);
 }
 
 .disclaimer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: rgba($dl1, 0.6);
-    background: rgba($dl1, 0.04);
-    padding: 12px 20px;
-    border-radius: 12px;
-    margin-bottom: 8px;
-    border: 1px solid rgba($dl1, 0.05);
-    line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba($dl1, 0.75);
+  background: rgba($dl1, 0.03);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba($dl1, 0.06);
+  line-height: 1.4;
 
-    span {
-        font-size: 18px;
-        filter: grayscale(1); // Muted lock icon
-        opacity: 0.7;
-    }
+  span {
+    font-size: 14px;
+    filter: grayscale(1);
+    opacity: 0.8;
+  }
 }
 
 .termsGroup {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .checkboxLabel {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  padding-left: 28px;
+
+  input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
     cursor: pointer;
-    position: relative;
-    padding-left: 32px;
+    height: 0;
+    width: 0;
 
-    input[type="checkbox"] {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
+    &:checked ~ .checkmark {
+      background: $ac;
+      border-color: $ac;
 
-        &:checked ~ .checkmark {
-            background: $ac;
-            border-color: $ac;
-
-            &::after {
-                display: block;
-            }
-        }
-
-        &:focus ~ .checkmark {
-            box-shadow: 0 0 0 4px rgba($ac, 0.15);
-        }
-
-        &.error ~ .checkmark {
-            border-color: $auxc1;
-            background: rgba($auxc1, 0.05);
-        }
+      &::after {
+        display: block;
+      }
     }
 
-    .checkmark {
-        position: absolute;
-        left: 0;
-        top: 2px;
-        height: 20px;
-        width: 20px;
-        background: #ffffff;
-        border: 2px solid rgba($dl1, 0.2);
-        border-radius: 6px;
-        transition: all $tr-sm;
-
-        &::after {
-            content: "";
-            position: absolute;
-            display: none;
-            left: 6px;
-            top: 2px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
+    &:focus ~ .checkmark {
+      box-shadow: 0 0 0 3px rgba($ac, 0.15);
     }
 
-    &:hover .checkmark {
-        border-color: rgba($dl1, 0.35);
+    &.error ~ .checkmark {
+      border-color: $auxc1;
+      background: rgba($auxc1, 0.05);
     }
+  }
 
-    .labelText {
-        font-size: 14px;
-        color: rgba($dl1, 0.7);
-        line-height: 1.5;
+  .checkmark {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    height: 18px;
+    width: 18px;
+    background: #ffffff;
+    border: 1.5px solid rgba($dl1, 0.2);
+    border-radius: 5px;
+    transition: all 0.2s ease;
 
-        .required {
-            color: $ac;
-            margin-left: 2px;
-        }
+    &::after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 5px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
     }
+  }
+
+  &:hover .checkmark {
+    border-color: rgba($dl1, 0.35);
+  }
+
+  .labelText {
+    font-size: 13px;
+    color: rgba($dl1, 0.75);
+    line-height: 1.5;
+
+    .required {
+      color: $ac;
+      margin-left: 2px;
+    }
+  }
 }
 
 .charCounter {
-    color: rgba($dl1, 0.4);
-    font-size: 13px;
-    font-weight: 600;
-    text-align: right;
-    margin-top: 4px;
-    transition: color $tr-sm;
+  color: rgba($dl1, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: right;
+  margin-top: 4px;
+  transition: color 0.2s ease;
+  font-family: $sf;
 
-    &.invalid {
-        color: $auxc1;
-    }
+  &.invalid {
+    color: $auxc1;
+  }
 }
 
 .errorMessage {
   color: $auxc1;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -212,79 +325,121 @@
   margin-top: 4px;
 
   &.box {
-      background: rgba($auxc1, 0.1);
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid rgba($auxc1, 0.2);
+    background: rgba($auxc1, 0.08);
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba($auxc1, 0.15);
   }
 }
 
 .helperText {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .actions {
   display: flex;
-  gap: 12px;
-  margin-top: 12px;
+  gap: 10px;
+  margin-top: 8px;
 
   button {
-      flex: 1;
-      height: 54px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: all $tr-sm;
-      cursor: pointer;
-      border: none;
-      font-family: $sf;
-      text-transform: uppercase;
-      font-size: 14px;
-      letter-spacing: 0.5px;
+    flex: 1;
+    height: 46px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    font-family: $sf;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
 
-      &:focus {
-          outline: none;
-          box-shadow: 0 0 0 4px rgba($ac, 0.2);
-      }
-      
-      &:disabled {
-          opacity: 0.7;
-          cursor: not-allowed;
-      }
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($ac, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
   }
 
   .submitButton {
-      background: $ac;
-      color: $wl1;
-      box-shadow: 0 4px 12px rgba($ac, 0.2);
+    background: $ac;
+    color: $wl1;
+    box-shadow: 0 4px 12px rgba($ac, 0.2);
 
-      &:hover:not(:disabled) {
-          filter: brightness(108%);
-          transform: translateY(-1px);
-          box-shadow: 0 6px 16px rgba($ac, 0.3);
-      }
+    &:hover:not(:disabled) {
+      filter: brightness(108%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba($ac, 0.3);
+    }
 
-      &:active:not(:disabled) {
-          transform: translateY(0);
-      }
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
   }
-  
-  .cancelButton {
-      background: transparent;
-      border: 1.5px solid rgba($dl1, 0.1);
-      color: rgba($dl1, 0.6);
-      
-      &:hover {
-          background: rgba($dl1, 0.05);
-          color: $dl1;
-          border-color: rgba($dl1, 0.2);
-      }
 
-      &:focus {
-          outline: none;
-          box-shadow: 0 0 0 4px rgba($dl1, 0.05);
-          border-color: rgba($dl1, 0.2);
-      }
+  .cancelButton {
+    background: transparent;
+    border: 1.5px solid rgba($dl1, 0.1);
+    color: rgba($dl1, 0.75);
+
+    &:hover {
+      background: rgba($dl1, 0.04);
+      color: $dl1;
+      border-color: rgba($dl1, 0.2);
+    }
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .pillsRow {
+    gap: 6px;
+  }
+
+  .pill {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .starBtn {
+    padding: 2px;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .textarea {
+    min-height: 80px;
+    padding: 20px 14px 8px;
+  }
+
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+
+    button {
+      height: 46px;
+    }
   }
 }

@@ -2,12 +2,14 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { FeedbackForm } from "../forms/FeedbackForm";
 import styles from "../../_styles/scss/ui/FeedbackModal.module.scss";
 
 export const FeedbackModal = ({ isOpen, onClose, onSuccess }) => {
   const modalRef = useRef(null);
   const previousActiveElement = useRef(null);
+  const t = useTranslations("feedback");
 
   useEffect(() => {
     if (isOpen) {
@@ -104,13 +106,13 @@ export const FeedbackModal = ({ isOpen, onClose, onSuccess }) => {
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ duration: 0.3 }}
             onClick={(e) => e.stopPropagation()}
-          >
-            <div className={styles.modalHeader}>
-              <h3 id="feedback-modal-title">Обратна връзка</h3>
+            >
+              <div className={styles.modalHeader}>
+              <h3 id="feedback-modal-title">{t("modalTitle")}</h3>
               <button
                 className={styles.closeButton}
                 onClick={onClose}
-                aria-label="Затвори"
+                aria-label={t("close")}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -126,7 +128,7 @@ export const FeedbackModal = ({ isOpen, onClose, onSuccess }) => {
               </button>
             </div>
             <p className={styles.modalDescription}>
-              Вашето мнение е изключително важно за нас.
+              {t("modalDescription")}
             </p>
             <FeedbackForm onSuccess={handleSuccess} onClose={onClose} />
           </motion.div>

@@ -1,0 +1,142 @@
+/* ===== Filter Bar ===== */
+.filterBar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filterBtn {
+  padding: 10px 24px;
+  border: 2px solid #e8e8e8;
+  background: #f8f9fa;
+  border-radius: 30px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #05232b;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover,
+  &.active {
+    background: #05232b;
+    border-color: #05232b;
+    color: white;
+  }
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: bold;
+  background: #05232b;
+  color: white;
+  line-height: 1.4;
+}
+
+.filterBtn.active .badge,
+.filterBtn:hover .badge {
+  background: #f39c12;
+}
+
+/* ===== Masonry Grid ===== */
+.masonryGrid {
+  column-count: 3;
+  column-gap: 16px;
+  padding: 0;
+
+  @media (max-width: 992px) {
+    column-count: 2;
+  }
+  @media (max-width: 576px) {
+    column-count: 1;
+  }
+}
+
+.masonryItem {
+  break-inside: avoid;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  border: none;
+  background: transparent;
+  text-align: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+  }
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px #f39c12, 0 8px 25px rgba(0, 0, 0, 0.18);
+    outline: none;
+  }
+
+  &:focus-visible .overlay {
+    opacity: 1;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  &:focus-visible img {
+    transform: scale(1.05);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 28px;
+  pointer-events: none;
+}
+
+/* ===== Intro ===== */
+.suptitle {
+  color: #f39c12;
+}
+
+.suptitleIcon {
+  margin-right: 8px;
+}
+
+/* ===== Empty State ===== */
+.noResultsIcon {
+  font-size: 64px;
+  color: #e8e8e8;
+  margin-bottom: 20px;
+}
+
+.noResultsHeading {
+  color: #04161b;
+}

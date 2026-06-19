@@ -1,74 +1,205 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { Link } from "@/src/i18n/navigation";
+import Image from "next/image";
+import { useEffect, useState, useTransition, useCallback, memo, useMemo, useRef } from "react";
 import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 
+import { useTranslations, useLocale } from "next-intl";
 import { OnePageMenu } from "@common/onepageMenu";
+import { getLocalizedAppData } from "@data/getLocalizedAppData";
+import LanguageSwitcher from "@components/common/LanguageSwitcher";
+import SearchOverlay from "@components/search/SearchOverlay";
 
-import AppData from "@data/app.json";
-import CartData from "@data/cart.json";
+const ReservationForm = dynamic(
+  () => import("@components/forms/ReservationForm"),
+  {
+    ssr: false,
+    loading: () => (
+      <div style={{ textAlign: "center", padding: "40px" }}>
+        <div
+          style={{
+            width: "40px",
+            height: "40px",
+            border: "3px solid rgba(243, 156, 18, 0.3)",
+            borderTop: "3px solid #f39c12",
+            borderRadius: "50%",
+            margin: "0 auto 15px",
+            animation: "spin 1s linear infinite",
+          }}
+        />
+        <p style={{ color: "#666" }}>...</p>
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    ),
+  }
+);
 
-import MiniCart from "@layouts/cart/MiniCart";
-import ReservationForm from "@components/forms/ReservationForm";
+const NAV_KEY_MAP = {
+  '/': 'home',
+  '/menu': 'menu',
+  '/about': 'about',
+  '/gallery': 'gallery',
+  '/contact': 'contact',
+  '/reservation': 'reservation',
+  '/feedback': 'feedback',
+};
+const SUB_NAV_KEY_MAP = {
+  '/menu': 'classicMenu',
+  '/lunch-menu': 'lunchMenu',
+  '/about': 'aboutRestaurant',
+  '/special-days': 'specialDays',
+  '/catering-services': 'services',
+};
 
-const DefaultHeader = () => {
+const DefaultHeader = memo(() => {
+  const locale = useLocale();
   const [mobileMenu, setMobileMenu] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState(false);
-  const [miniCart, setMiniCart] = useState(false);
   const [reservationPopup, setReservationPopup] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  
+  // Header scroll behavior
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
   const asPath = usePathname();
+  const t = useTranslations("nav");
+  const tc = useTranslations("common");
 
-  const isPathActive = (path) => {
-    return (asPath.endsWith(path) == 1 && path !== "/") || asPath === path;
-  };
+  const localizedAppData = useMemo(() => getLocalizedAppData(locale), [locale]);
 
-  const handleSubMenuClick = (index, e) => {
-    if (window !== undefined) {
-      if (window.innerWidth <= 992) {
-        e.preventDefault();
-        setOpenSubMenu(openSubMenu === index ? false : index);
-      }
+  const isPathActive = useCallback(
+    (path) => {
+      if (path === "/") return asPath === "/" || asPath === `/${asPath.split("/")[1]}`;
+      return asPath === path || asPath.startsWith(path + "/");
+    },
+    [asPath]
+  );
+  
+  const showLanguageSwitcher = !isPathActive("onepage");
+
+  const handleMobileMenuToggle = useCallback(() => {
+    startTransition(() => {
+      setMobileMenu((prev) => !prev);
+    });
+  }, []);
+
+  const handleReservationToggle = useCallback((e) => {
+    e.preventDefault();
+    startTransition(() => {
+      setReservationPopup((prev) => !prev);
+    });
+  }, []);
+
+  const handleReservationClose = useCallback(() => {
+    startTransition(() => {
+      setReservationPopup(false);
+    });
+  }, []);
+
+  const handleSubMenuClick = useCallback((index, e) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 992) {
+      e.preventDefault();
+      e.stopPropagation();
+      startTransition(() => {
+        setOpenSubMenu((prev) => (prev === index ? false : index));
+      });
     }
-  };
+  }, []);
+
+  const handleSearchOpen = useCallback(() => {
+    setSearchOpen(true);
+  }, []);
+
+  const handleSearchClose = useCallback(() => {
+    setSearchOpen(false);
+  }, []);
+
+  // Handle scroll to hide/show header
+  useEffect(() => {
+    const handleScroll = () => {
+      if (typeof window === 'undefined') return;
+      
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < 10) {
+        setShowHeader(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        // Scrolling down
+        if (!mobileMenu) setShowHeader(false);
+      } else {
+        // Scrolling up
+        setShowHeader(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY, mobileMenu]);
 
   useEffect(() => {
-    // close mobile menu
     setMobileMenu(false);
-    setMiniCart(false);
     setReservationPopup(false);
     setOpenSubMenu(false);
+    setSearchOpen(false);
+    setShowHeader(true);
   }, [asPath]);
+
+  useEffect(() => {
+    if (mobileMenu) {
+      document.body.classList.add("mobile-menu-open");
+    } else {
+      document.body.classList.remove("mobile-menu-open");
+    }
+    return () => document.body.classList.remove("mobile-menu-open");
+  }, [mobileMenu]);
 
   useEffect(() => {
     if (isPathActive("onepage")) {
       OnePageMenu();
     }
-  }, []);
+  }, [isPathActive]);
 
   return (
     <>
-      {/* top bar frame */}
-      <div className="tst-menu-frame">
-        {/* top bar */}
+      <div className={`tst-menu-frame ${!showHeader ? 'tst-menu-hidden' : ''}`} style={{
+        transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease',
+        transform: showHeader ? 'translateY(0)' : 'translateY(-100%)',
+        opacity: showHeader ? 1 : 0
+      }}>
         <div className="tst-dynamic-menu" id="tst-dynamic-menu">
-          <div className="tst-menu">
-            {/* logo */}
-            <Link href="/">
-              <img
-                src={AppData.header.logo.image}
-                className="tst-logo"
-                alt={AppData.header.logo.alt}
-              />
-            </Link>
-            {/* menu */}
-            <nav className={`${mobileMenu ? "tst-active" : ""}`}>
+            <div className="tst-menu">
+              <Link href="/" className="tst-logo-link">
+                <Image
+                  src={localizedAppData.header.logo.image}
+                  className="tst-logo"
+                  alt={localizedAppData.header.logo.alt}
+                  width={70}
+                  height={24}
+                  priority
+                />
+              </Link>
+            <nav role="navigation" aria-label={t("mainNavigation")} className={`${mobileMenu ? "tst-active" : ""}`}>
+              {mobileMenu && (
+                <button 
+                  className="tst-close-menu d-lg-none" 
+                  onClick={handleMobileMenuToggle}
+                  aria-label={tc("close")}
+                >
+                  <i className="fas fa-times" aria-hidden="true"></i>
+                </button>
+              )}
               {isPathActive("onepage") ? (
                 <ul>
-                  {AppData.header.onepage.map((item, index) => (
+                  {localizedAppData.header.onepage.map((item, index) => (
                     <li
                       key={`header-menu-onepage-item-${index}`}
-                      className={index == 0 ? "current-menu-item" : ""}
+                      className={index === 0 ? "current-menu-item" : ""}
                     >
                       <a data-no-swup href={item.link}>
                         {item.label}
@@ -77,138 +208,173 @@ const DefaultHeader = () => {
                   ))}
                 </ul>
               ) : (
-                <ul>
-                  {AppData.header.menu.map((item, index) => (
-                    <li
-                      className={`${
-                        item.children && item.children.length > 0 ? "menu-item-has-children" : ""
-                      } ${isPathActive(item.link) ? "current-menu-item" : ""}`}
-                      key={`header-menu-item-${index}`}
-                    >
-                      <Link
-                        href={item.link}
-                        onClick={
+                <>
+                  <ul>
+                    {localizedAppData.header.menu.map((item, index) => (
+                      <li
+                        className={`${
                           item.children && item.children.length > 0
-                            ? (e) => handleSubMenuClick(index, e)
-                            : null
-                        }
+                            ? "menu-item-has-children"
+                            : ""
+                        } ${isPathActive(item.link) ? "current-menu-item" : ""}`}
+                        key={`header-menu-item-${index}`}
                       >
-                        {item.label}
-                      </Link>
-                      {item.children && item.children.length > 0 && (
-                        <ul
-                          className={openSubMenu === index ? "tst-active" : ""}
+                        <Link
+                          href={item.link}
+                          onClick={
+                            item.children && item.children.length > 0
+                              ? (e) => handleSubMenuClick(index, e)
+                              : undefined
+                          }
                         >
-                          {item.children.map((subitem, subIndex) => (
-                            <li
-                              key={`header-submenu-item-${subIndex}`}
-                              className={
-                                isPathActive(subitem.link) ? "tst-active" : ""
-                              }
-                            >
-                              {subitem.link == "/onepage" ? (
-                                <a href={subitem.link} target="_blank">
-                                  {subitem.label}
-                                </a>
-                              ) : (
-                                <Link href={subitem.link}>{subitem.label}</Link>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
+                          {NAV_KEY_MAP[item.link] ? t(NAV_KEY_MAP[item.link]) : item.label}
+                        </Link>
+                        {item.children && item.children.length > 0 && (
+                          <ul
+                            className={openSubMenu === index ? "tst-active" : ""}
+                            aria-expanded={openSubMenu === index}
+                            aria-hidden={openSubMenu !== index}
+                          >
+                            {item.children.map((subitem, subIndex) => (
+                              <li
+                                key={`header-submenu-item-${subIndex}`}
+                                className={
+                                  isPathActive(subitem.link) ? "tst-active" : ""
+                                }
+                              >
+                                {subitem.link === "/onepage" ? (
+                                  <a href={subitem.link} target="_blank" rel="noopener noreferrer">
+                                    {SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}
+                                  </a>
+                                ) : (
+                                  <Link href={subitem.link}>{SUB_NAV_KEY_MAP[subitem.link] ? t(SUB_NAV_KEY_MAP[subitem.link]) : subitem.label}</Link>
+                                )}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                    <li className="d-lg-none">
+                      <button
+                        onClick={handleSearchOpen}
+                        className="tst-mobile-search-link"
+                        aria-label={t("searchTitle") || "Search"}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          padding: "0",
+                          background: "none",
+                          border: "none",
+                          color: "#ffffff",
+                          fontSize: "14px",
+                          fontWeight: 800,
+                          textTransform: "uppercase",
+                          letterSpacing: "1px",
+                          cursor: "pointer",
+                          fontFamily: "inherit",
+                        }}
+                      >
+                        <i className="fas fa-search"></i>
+                        {t("searchTitle") || "Search"}
+                      </button>
                     </li>
-                  ))}
-                </ul>
+                  </ul>
+                </>
               )}
             </nav>
-            {/* menu end */}
-            {/* top bar right */}
             <div className="tst-menu-right">
-              {/* menu button */}
-              <div className="tst-menu-button-frame">
-                <div
-                  className={`tst-menu-btn ${mobileMenu ? "tst-active" : ""}`}
-                  onClick={() => setMobileMenu(!mobileMenu)}
-                >
-                  <div className="tst-burger">
-                    <span></span>
-                  </div>
+              {/* Order: Language -> Search -> Reservation -> Hamburger */}
+              
+              {showLanguageSwitcher && (
+                <div className="tst-nav-item">
+                  <LanguageSwitcher />
                 </div>
-              </div>
-              {/* menu button end */}
+              )}
 
-              {/* reservation popup button (far right) */}
+              <button
+                onClick={handleSearchOpen}
+                className="tst-btn tst-res-btn tst-btn-icon tst-search-btn"
+                aria-label={t("searchTitle") || "Search"}
+              >
+                <span className="tst-icon" aria-hidden="true">
+                  <i className="fas fa-search"></i>
+                </span>
+                <span className="sr-only">{t("searchTitle") || "Search"}</span>
+              </button>
+
               <a
                 href="#."
-                className={`tst-btn tst-res-btn tst-btn-icon ${
+                className={`tst-btn tst-res-btn d-none d-lg-flex ${
+                  reservationPopup ? "tst-active" : ""
+                }`}
+                onClick={handleReservationToggle}
+                data-no-swup
+              >
+                <i className="fas fa-calendar-alt" aria-hidden="true" style={{marginRight: '8px', fontSize: '1.1em'}}></i>
+                <span>{tc("reservations")}</span>
+              </a>
+
+              <a
+                href="#."
+                className={`tst-btn tst-res-btn tst-btn-icon d-lg-none ${
                   reservationPopup ? "tst-active" : ""
                 }`}
                 aria-controls="reservation-popup"
                 aria-expanded={reservationPopup ? "true" : "false"}
-                aria-label="Резервации"
-                onClick={(e) => {
-                  setReservationPopup(!reservationPopup);
-                  e.preventDefault();
-                }}
+                aria-label={tc("reservations")}
+                onClick={handleReservationToggle}
                 data-no-swup
               >
                 <span className="tst-icon" aria-hidden="true">
                   <i className="fas fa-calendar-check"></i>
                 </span>
-                <span className="sr-only">Резервации</span>
+                <span className="sr-only">{tc("reservations")}</span>
               </a>
-              {/* <div className="tst-minicart"> */}
-              {/* minicart button */}
-              {/* <a href="#." className={`tst-cart ${miniCart ? "tst-active" : ""}`} onClick={(e) => { setMiniCart(!miniCart); e.preventDefault(); }}>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                        <path
-                            d="M87.7,33.1l-0.8-10.8C86,10.4,76,1,64,1s-22.1,9.4-22.9,21.3l-0.8,10.8H28.8c-4.7,0-8.6,3.7-9,8.4l-5.4,75.9c0,0,0,0,0,0 c-0.2,2.5,0.7,5,2.4,6.8s4.1,2.9,6.6,2.9h81.3c2.5,0,4.9-1,6.6-2.9c1.7-1.8,2.6-4.3,2.4-6.8l-5.4-75.2c-0.4-5.1-4.6-9-9.7-9H87.7z M47.1,22.7C47.7,13.9,55.1,7,64,7s16.3,6.9,16.9,15.7l0.7,10.4H46.3L47.1,22.7z M102.3,42.6l5.4,75.2c0.1,0.8-0.2,1.6-0.8,2.3 c-0.6,0.6-1.4,1-2.2,1H23.4c-0.8,0-1.6-0.3-2.2-1s-0.9-1.4-0.8-2.3h0l5.4-75.9c0.1-1.6,1.4-2.8,3-2.8h11.1l-0.6,8 c-0.1,1.7,1.1,3.1,2.8,3.2c0.1,0,0.1,0,0.2,0c1.6,0,2.9-1.2,3-2.8l0.6-8.4h36.2l0.6,8.4c0.1,1.7,1.5,2.9,3.2,2.8 c1.7-0.1,2.9-1.5,2.8-3.2l-0.6-8h10.5C100.5,39.1,102.1,40.6,102.3,42.6z" />
-                        </svg>
-                        <div className="tst-cart-number">{CartData.total}</div>
-                    </a> */}
-              {/* minicart button end */}
-              {/* minicart */}
-              {/* <div className={`tst-minicart-window ${miniCart ? "tst-active" : "" }`}>
-                        <MiniCart />
-                    </div>
-                    </div> */}
-              {/* minicart end */}
+
+              <div className="tst-menu-button-frame">
+                <button
+                  className={`tst-menu-btn ${mobileMenu ? "tst-active" : ""}`}
+                  onClick={handleMobileMenuToggle}
+                  aria-expanded={mobileMenu}
+                  aria-label={t("menu")}
+                >
+                  <div className="tst-burger">
+                    <span></span>
+                  </div>
+                </button>
+              </div>
             </div>
-            {/* top bar right end  */}
           </div>
         </div>
-        {/* top bar end */}
       </div>
-      {/* top bar frame */}
 
-      {/* popup */}
+      <SearchOverlay isOpen={searchOpen} onClose={handleSearchClose} />
+
       <div
         id="reservation-popup"
         className={`tst-popup-bg ${reservationPopup ? "tst-active" : ""}`}
       >
         <div className="tst-popup-frame">
           <div className="tst-popup-body">
-            <div
-              className="tst-close-popup"
-              onClick={() => setReservationPopup(!reservationPopup)}
-            >
+            <div className="tst-close-popup" onClick={handleReservationClose}>
               <i className="fas fa-times"></i>
             </div>
 
-            {/* title */}
             <div className="text-center">
               <div className="tst-suptitle tst-suptitle-center"></div>
-              <h4 className="tst-mb-60">Резервация на маса</h4>
+              <h4 className="tst-mb-60">{tc("reserveTable")}</h4>
             </div>
-            {/* title end */}
 
-            <ReservationForm />
+            {reservationPopup && <ReservationForm />}
           </div>
         </div>
       </div>
-      {/* popup end */}
     </>
   );
-};
+});
+
+DefaultHeader.displayName = "DefaultHeader";
+
 export default DefaultHeader;

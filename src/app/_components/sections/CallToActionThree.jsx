@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import { mapboxInit } from "@common/mapboxInit";
 
-import Data from "@data/sections/call-to-action-3.json";
+import Data from "@data/sections/cta/call-to-action-3.json";
 import Link from "next/link";
 
 const CallToActionThreeSection = () => {
   const [mapLock, setMapLock] = useState(false);
 
   useEffect(() => {
-    mapboxInit();
+    mapboxInit().catch(console.error);
   }, []);
 
   return (
@@ -33,14 +33,14 @@ const CallToActionThreeSection = () => {
                     {/* text */}
                     <div className="tst-cta-frame">
                         <div className="tst-cta">
-                        <div className="tst-fade-up">
+                        <div className="tst-fade-up tst-active">
                             <div className="tst-suptitle tst-suptitle-mobile-center tst-text-shadow tst-white-2 tst-mb-15" dangerouslySetInnerHTML={{__html : Data.subtitle}} />
                         </div>
-                        <h2 className="tst-white-2 tst-text-shadow tst-fade-up tst-mb-30" dangerouslySetInnerHTML={{__html : Data.title}} />
-                        <div className="tst-fade-up">
+                        <h2 className="tst-white-2 tst-text-shadow tst-fade-up tst-active tst-mb-30" dangerouslySetInnerHTML={{__html : Data.title}} />
+                        <div className="tst-fade-up tst-active">
                             <div className="tst-text tst-text-lg tst-text-shadow tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : Data.description}} />
                         </div>
-                        <Link href={Data.button.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-fade-up tst-mr-30 dark">{Data.button.label}</Link>
+                        <Link href={Data.button.link} style={{marginLeft: 'auto', marginRight: 'auto'}} className="tst-btn tst-btn-lg tst-btn-shadow tst-res-btn tst-fade-up tst-active tst-mr-30 dark"><span>{Data.button.label}</span></Link>
                         </div>
                     </div>
                     {/* text end */}

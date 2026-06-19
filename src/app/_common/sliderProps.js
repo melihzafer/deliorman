@@ -1,51 +1,14 @@
 "use client";
 
-import SwiperCore, {
-  A11y,
-  Autoplay,
-  EffectCreative,
-  EffectFade,
-  Grid,
-  HashNavigation,
-  History,
-  Keyboard,
-  Mousewheel,
-  Navigation,
-  Pagination,
-  Scrollbar,
-  Thumbs,
-  Virtual,
-  Parallax,
-  FreeMode,
-} from "swiper";
-
-SwiperCore.use([
-  Mousewheel,
-  Pagination,
-  Navigation,
-  EffectFade,
-  Autoplay,
-  Grid,
-  EffectCreative,
-  Virtual,
-  HashNavigation,
-  History,
-  Thumbs,
-  Scrollbar,
-  Keyboard,
-  A11y,
-  Parallax,
-  FreeMode,
-]);
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 export const SliderProps = {
   heroSlider: {
     slidesPerView: 1,
-    speed: 800,
+    speed: 400,
     effect: 'fade',
     fadeEffect: {
       crossFade: true
@@ -54,7 +17,6 @@ export const SliderProps = {
       el: '.tst-main-pagination',
       clickable: true,
     },
-    parallax: true,
     autoplay: {
       delay: 5000,
     },
@@ -101,9 +63,7 @@ export const SliderProps = {
   },
   menuSlider: {
     effect: 'fade',
-    parallax: true,
     speed: 600,
-    autoHeight: true,
     fadeEffect: {
       crossFade: true
     },
@@ -144,6 +104,28 @@ export const SliderProps = {
       0: {
         slidesPerView: 1,
       },
+    },
+  },
+  newSpecialtiesSlider: {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    speed: 400,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.tst-specialties-pagination',
+      clickable: true,
+    },
+    navigation: {
+      prevEl: '.tst-specialties-prev',
+      nextEl: '.tst-specialties-next',
     },
   }
 };

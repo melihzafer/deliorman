@@ -1,0 +1,144 @@
+{
+  "session_id": "session-2026-04-29-1259",
+  "started": "2026-04-29T09:59:04.248Z",
+  "files_read": {
+    "/home/user/deliorman/next.config.js": {
+      "count": 1,
+      "tokens": 933,
+      "first_read": "2026-06-10T14:59:46.414Z"
+    },
+    "/home/user/deliorman/src/middleware.js": {
+      "count": 1,
+      "tokens": 1584,
+      "first_read": "2026-06-10T14:59:53.862Z"
+    },
+    "/home/user/deliorman/src/app/[locale]/(pages)/menu/page.jsx": {
+      "count": 1,
+      "tokens": 534,
+      "first_read": "2026-06-10T15:00:41.732Z"
+    },
+    "/home/user/deliorman/src/app/api/feedback/route.ts": {
+      "count": 1,
+      "tokens": 1150,
+      "first_read": "2026-06-10T15:01:03.150Z"
+    },
+    "/home/user/deliorman/src/app/api/feedback/feedbackValidation.ts": {
+      "count": 1,
+      "tokens": 260,
+      "first_read": "2026-06-10T15:01:21.412Z"
+    },
+    "/home/user/deliorman/src/app/_components/forms/FeedbackForm.jsx": {
+      "count": 3,
+      "tokens": 3010,
+      "first_read": "2026-06-10T15:01:57.230Z"
+    }
+  },
+  "files_written": [
+    {
+      "file": "/home/user/deliorman/next.config.js",
+      "action": "edit",
+      "tokens": 31,
+      "at": "2026-06-10T14:59:53.074Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/middleware.js",
+      "action": "edit",
+      "tokens": 59,
+      "at": "2026-06-10T15:00:06.606Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/middleware.js",
+      "action": "edit",
+      "tokens": 46,
+      "at": "2026-06-10T15:00:08.015Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/[locale]/(pages)/menu/page.jsx",
+      "action": "edit",
+      "tokens": 50,
+      "at": "2026-06-10T15:00:49.314Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/[locale]/(pages)/menu/page.jsx",
+      "action": "edit",
+      "tokens": 76,
+      "at": "2026-06-10T15:00:50.891Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/api/feedback/route.ts",
+      "action": "edit",
+      "tokens": 116,
+      "at": "2026-06-10T15:01:20.977Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/api/feedback/feedbackValidation.ts",
+      "action": "edit",
+      "tokens": 70,
+      "at": "2026-06-10T15:01:31.418Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/_components/forms/FeedbackForm.jsx",
+      "action": "edit",
+      "tokens": 40,
+      "at": "2026-06-10T15:02:08.417Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/_components/forms/FeedbackForm.jsx",
+      "action": "edit",
+      "tokens": 35,
+      "at": "2026-06-10T15:02:10.434Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/_components/forms/FeedbackForm.jsx",
+      "action": "edit",
+      "tokens": 84,
+      "at": "2026-06-10T15:02:29.879Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/_components/forms/FeedbackForm.jsx",
+      "action": "edit",
+      "tokens": 143,
+      "at": "2026-06-10T15:02:44.663Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/api/ai/menu-assistant/route.ts",
+      "action": "edit",
+      "tokens": 14,
+      "at": "2026-06-10T15:04:48.606Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/api/qr/route.ts",
+      "action": "edit",
+      "tokens": 14,
+      "at": "2026-06-10T15:05:01.345Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/api/qr/route.ts",
+      "action": "edit",
+      "tokens": 32,
+      "at": "2026-06-10T15:05:02.926Z"
+    },
+    {
+      "file": "/home/user/deliorman/src/app/_components/menu/qr/QRMenuTool.jsx",
+      "action": "edit",
+      "tokens": 62,
+      "at": "2026-06-10T15:05:16.921Z"
+    }
+  ],
+  "edit_counts": {
+    "next.config.js": 1,
+    "src/middleware.js": 2,
+    "src/app/[locale]/(pages)/menu/page.jsx": 2,
+    "src/app/api/feedback/route.ts": 1,
+    "src/app/api/feedback/feedbackValidation.ts": 1,
+    "src/app/_components/forms/FeedbackForm.jsx": 4,
+    "src/app/api/ai/menu-assistant/route.ts": 1,
+    "src/app/api/qr/route.ts": 2,
+    "src/app/_components/menu/qr/QRMenuTool.jsx": 1
+  },
+  "anatomy_hits": 6,
+  "anatomy_misses": 0,
+  "repeated_reads_warned": 2,
+  "cerebrum_warnings": 0,
+  "stop_count": 1
+}

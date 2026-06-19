@@ -26,6 +26,20 @@
 .swiperContainer {
   position: relative;
   padding-bottom: 60px;
+
+  // Fix for fade effect - ensure slides stack properly
+  :global(.swiper-wrapper) {
+    // Fade effect requires wrapper to not be flex
+  }
+
+  :global(.swiper-slide) {
+    height: auto;
+    // Fade effect handles opacity and visibility
+  }
+
+  :global(.swiper-slide-active) {
+    z-index: 2;
+  }
 }
 
 .slideContent {
@@ -36,7 +50,7 @@
   }
 }
 
-// Navigation Buttons
+// Navigation Buttons Container (main branch pattern - absolute positioning)
 .navButtons {
   position: absolute;
   top: 50%;
@@ -54,6 +68,7 @@
   }
 }
 
+// Navigation Button (CSS Modules class - main branch pattern)
 .navBtn {
   pointer-events: all;
   width: 60px;
@@ -86,7 +101,7 @@
     transform: scale(1.05);
   }
 
-  &.swiper-button-disabled {
+  &:global(.swiper-button-disabled) {
     opacity: 0.3;
     cursor: not-allowed;
     pointer-events: none;
@@ -94,6 +109,7 @@
 
   i {
     transition: transform 0.3s ease;
+    line-height: 1;
   }
 
   &:hover i {
@@ -137,11 +153,14 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 20px;
+  // Pause animations by default to save CPU when not visible
   animation: pulse 2s ease-in-out infinite;
+  animation-play-state: paused;
 
   i {
     font-size: 16px;
     animation: rotate 3s linear infinite;
+    animation-play-state: paused;
   }
 
   @media (max-width: 991px) {
@@ -165,6 +184,25 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+// Enable animations only when component is visible in viewport
+.isVisible {
+  .badge {
+    animation-play-state: running;
+
+    i {
+      animation-play-state: running;
+    }
+  }
+}
+
+// Respect user preference for reduced motion (accessibility)
+@media (prefers-reduced-motion: reduce) {
+  .badge,
+  .badge i {
+    animation: none !important;
   }
 }
 
@@ -338,6 +376,8 @@
     0 10px 30px rgba(0, 0, 0, 0.3);
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
+  aspect-ratio: 4 / 3;
+  width: 100%;
 
   &:hover {
     transform: scale(1.02) rotateY(2deg);
@@ -365,15 +405,12 @@
 }
 
 .slideImage {
-  width: 100%;
-  height: auto;
-  display: block;
-  aspect-ratio: 4/3;
-  object-fit: cover;
   transition: transform 0.6s ease;
 
   @media (max-width: 576px) {
-    aspect-ratio: 16/9;
+    :global(.swiper-slide) & {
+      // keep aspect ratio on mobile
+    }
   }
 }
 
@@ -392,15 +429,12 @@
   transition: background 0.6s ease;
 }
 
-// Custom Pagination
+// Custom Pagination (CSS Modules class - main branch pattern)
 .pagination {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 12px;
-  z-index: 10;
+  justify-content: center;
+  margin-top: 40px;
 
   :global(.swiper-pagination-bullet) {
     width: 12px;

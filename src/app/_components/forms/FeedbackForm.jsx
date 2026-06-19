@@ -1,50 +1,75 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, startTransition, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import styles from "../../_styles/scss/ui/FeedbackForm.module.scss";
 
-const CATEGORIES = [
-  { value: "", label: "Изберете категория (по избор)" },
-  { value: "service", label: "Обслужване" },
-  { value: "food", label: "Храна" },
-  { value: "vibes", label: "Атмосфера" },
-  { value: "other", label: "Друго" },
-];
+const STAR_VALUES = [1, 2, 3, 4, 5];
 
-// Validation function
-const validateMessage = (message) => {
-  if (!message || message.trim() === "") {
-    return "Моля, въведете съобщение";
-  } else if (message.trim().length < 10) {
-    return "Съобщението трябва да съдържа поне 10 символа";
-  } else if (message.length > 1000) {
-    return "Съобщението не може да надвишава 1000 символа";
-  }
-  return null;
+const STAR_LABELS = {
+  5: "starRatingExcellent",
+  4: "starRatingVeryGood",
+  3: "starRatingGood",
+  2: "starRatingAcceptable",
+  1: "starRatingNeedsImprovement",
 };
 
+const CATEGORIES = [
+  { value: "service", icon: "🍽️" },
+  { value: "food", icon: "🍕" },
+  { value: "vibes", icon: "✨" },
+  { value: "other", icon: "💬" },
+];
+
 export const FeedbackForm = ({ onSuccess, onClose }) => {
+  const t = useTranslations("feedback");
+
+  const validateMessage = (message) => {
+    if (!message || message.trim() === "") {
+      return t("messageRequired");
+    } else if (message.trim().length < 10) {
+      return t("messageMinLength");
+    } else if (message.length > 1000) {
+      return t("messageMaxLength");
+    }
+    return null;
+  };
+
   const [values, setValues] = useState({
     message: "",
     rating: "",
     category: "",
     termsAccepted: false,
+    website: "",
   });
-  const [touched, setTouched] = useState({});
+  const [touched, setTouched] = useState({
+    message: false,
+    rating: false,
+    category: false,
+    termsAccepted: false,
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
-  const [serverErrors, setServerErrors] = useState({});
+  const [hoveredStar, setHoveredStar] = useState(null);
+  const [serverErrors, setServerErrors] = useState({
+    message: "",
+    rating: "",
+    category: "",
+    termsAccepted: "",
+  });
 
   const messageError = validateMessage(values.message);
   const messageLength = values.message.length;
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setValues((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value
-    }));
+    startTransition(() => {
+      setValues((prev) => ({
+        ...prev,
+        [name]: type === "checkbox" ? checked : value,
+      }));
+    });
   };
 
   const handleBlur = (e) => {
@@ -52,39 +77,55 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
     setTouched((prev) => ({ ...prev, [name]: true }));
   };
 
+  const handleCategorySelect = useCallback((value) => {
+    startTransition(() => {
+      setValues((prev) => ({
+        ...prev,
+        category: prev.category === value ? "" : value,
+      }));
+      setTouched((prev) => ({ ...prev, category: true }));
+    });
+  }, []);
+
+  const handleStarClick = useCallback((value) => {
+    startTransition(() => {
+      setValues((prev) => ({
+        ...prev,
+        rating: prev.rating === String(value) ? "" : String(value),
+      }));
+      setTouched((prev) => ({ ...prev, rating: true }));
+    });
+  }, []);
+
   const resetForm = () => {
-    setValues({ message: "", rating: "", category: "", termsAccepted: false });
-    setTouched({});
-    setServerErrors({});
+    setValues({ message: "", rating: "", category: "", termsAccepted: false, website: "" });
+    setTouched({ message: false, rating: false, category: false, termsAccepted: false });
+    setServerErrors({ message: "", rating: "", category: "", termsAccepted: "" });
     setSubmitError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Mark all fields as touched
     setTouched({ message: true, rating: true, category: true, termsAccepted: true });
 
-    // Validate before submitting
     if (messageError || !values.termsAccepted) {
       return;
     }
 
     setIsSubmitting(true);
     setSubmitError("");
-    setServerErrors({});
+    setServerErrors({ message: "", rating: "", category: "", termsAccepted: "" });
 
     try {
       const response = await fetch("/api/feedback", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: values.message,
           rating: values.rating ? parseInt(values.rating) : undefined,
           category: values.category || undefined,
           termsAccepted: values.termsAccepted,
+          website: values.website || undefined,
         }),
       });
 
@@ -92,9 +133,9 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
 
       if (!response.ok) {
         if (data.errors && Array.isArray(data.errors)) {
-          const errorMap = {};
+          const errorMap = { message: "", rating: "", category: "", termsAccepted: "" };
           data.errors.forEach((err) => {
-            if (err.field) {
+            if (err.field && err.field in errorMap) {
               errorMap[err.field] = err.message;
             } else {
               setSubmitError(err.message);
@@ -102,7 +143,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           });
           setServerErrors(errorMap);
         } else {
-          throw new Error("Грешка при изпращане на обратна връзка");
+          throw new Error(t("submitError"));
         }
         return;
       }
@@ -113,101 +154,135 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
       }
     } catch (error) {
       console.error("Feedback submission error:", error);
-      setSubmitError(
-        "Възникна грешка при изпращане на вашето съобщение. Моля, опитайте отново."
-      );
+      setSubmitError(t("generalError"));
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const getCategoryLabel = (value) => {
+    const map = {
+      service: t("categoryService"),
+      food: t("categoryFood"),
+      vibes: t("categoryVibes"),
+      other: t("categoryOther"),
+    };
+    return map[value] || value;
+  };
+
+  const displayStars = hoveredStar || (values.rating ? parseInt(values.rating) : 0);
+
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
-      <div className={styles.groupInput}>
-        <label htmlFor="category">
-          Категория
-        </label>
-        <select
-          id="category"
-          name="category"
-          value={values.category}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        >
+      {/* Honeypot anti-spam field: hidden from users, bots fill it */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        onChange={handleChange}
+        value={values.website || ""}
+        style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }}
+        aria-hidden="true"
+      />
+      <div className={styles.categorySection}>
+        <label className={styles.fieldLabel}>{t("categoryLabel")}</label>
+        <div className={styles.pillsRow}>
           {CATEGORIES.map((cat) => (
-            <option key={cat.value} value={cat.value}>
-              {cat.label}
-            </option>
+            <button
+              key={cat.value}
+              type="button"
+              className={`${styles.pill} ${values.category === cat.value ? styles.pillActive : ""}`}
+              onClick={() => handleCategorySelect(cat.value)}
+              aria-pressed={values.category === cat.value}
+            >
+              <span className={styles.pillIcon}>{cat.icon}</span>
+              <span className={styles.pillText}>{getCategoryLabel(cat.value)}</span>
+            </button>
           ))}
-        </select>
+        </div>
+      </div>
+
+      <div className={styles.ratingSection}>
+        <label className={styles.fieldLabel}>{t("ratingLabel")}</label>
+        <div className={styles.starsRow}>
+          {STAR_VALUES.map((value) => (
+            <button
+              key={value}
+              type="button"
+              className={`${styles.starBtn} ${value <= displayStars ? styles.starFilled : ""}`}
+              onClick={() => handleStarClick(value)}
+              onMouseEnter={() => setHoveredStar(value)}
+              onMouseLeave={() => setHoveredStar(null)}
+              aria-label={t(STAR_LABELS[value])}
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill={value <= displayStars ? "currentColor" : "none"}
+                stroke="currentColor"
+                strokeWidth="1.5"
+              >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </button>
+          ))}
+        </div>
+        {displayStars > 0 && (
+          <div className={styles.ratingHint}>
+            {t(STAR_LABELS[displayStars] || "ratingNone")}
+          </div>
+        )}
       </div>
 
       <div className={styles.groupInput}>
-        <label htmlFor="rating">
-          Оценка (по избор)
-        </label>
-        <select
-          id="rating"
-          name="rating"
-          value={values.rating}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        >
-          <option value="">Без оценка</option>
-          <option value="5">⭐⭐⭐⭐⭐ Отлично</option>
-          <option value="4">⭐⭐⭐⭐ Много добро</option>
-          <option value="3">⭐⭐⭐ Добро</option>
-          <option value="2">⭐⭐ Приемливо</option>
-          <option value="1">⭐ Нуждае се от подобрение</option>
-        </select>
-      </div>
-
-      <div className={styles.groupInput}>
-        <label htmlFor="message">
-          Вашето съобщение <span className={styles.required}>*</span>
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows="5"
-          placeholder="Споделете вашите мисли..."
-          value={values.message}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          className={(touched.message && messageError) || serverErrors.message ? styles.error : ''}
-        />
-
+        <div className={styles.floatingField}>
+          <textarea
+            id="feedback-message"
+            name="message"
+            rows="4"
+            value={values.message}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            className={`${styles.textarea} ${(touched.message && messageError) || serverErrors.message ? styles.error : ""} ${values.message ? styles.filled : ""}`}
+            placeholder=" "
+          />
+          <label htmlFor="feedback-message" className={styles.floatingLabel}>
+            {t("messageLabel")} <span className={styles.required}>*</span>
+          </label>
+        </div>
         <div className={styles.helperText}>
-             <div style={{ flex: 1 }}>
-                <AnimatePresence>
-                {((touched.message && messageError) || serverErrors.message) && (
-                    <motion.div
-                    initial={{ opacity: 0, y: -5 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -5 }}
-                    className={styles.errorMessage}
-                    >
-                    <span>⚠</span> {serverErrors.message || messageError}
-                    </motion.div>
-                )}
-                </AnimatePresence>
-             </div>
-             <div className={`${styles.charCounter} ${messageLength < 10 || messageLength > 1000 ? styles.invalid : ''}`}>
-                {messageLength}/1000
-             </div>
+          <div style={{ flex: 1 }}>
+            <AnimatePresence>
+              {((touched.message && messageError) || serverErrors.message) && (
+                <motion.div
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -5 }}
+                  className={styles.errorMessage}
+                >
+                  <span>⚠</span> {serverErrors.message || messageError}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          <div className={`${styles.charCounter} ${messageLength < 10 || messageLength > 1000 ? styles.invalid : ""}`}>
+            {messageLength}/1000
+          </div>
         </div>
       </div>
 
       <AnimatePresence>
         {submitError && (
-            <motion.div
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             className={`${styles.errorMessage} ${styles.box}`}
-            >
+          >
             {submitError}
-            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -219,12 +294,11 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
             checked={values.termsAccepted}
             onChange={handleChange}
             onBlur={handleBlur}
-            className={touched.termsAccepted && !values.termsAccepted ? styles.error : ''}
+            className={touched.termsAccepted && !values.termsAccepted ? styles.error : ""}
           />
           <span className={styles.checkmark}></span>
           <span className={styles.labelText}>
-            Съгласен/на съм съобщението ми да бъде изпратено анонимно и разбирам, че
-            не мога да получа отговор. <span className={styles.required}>*</span>
+            {t("termsLabel")} <span className={styles.required}>*</span>
           </span>
         </label>
         <AnimatePresence>
@@ -235,14 +309,14 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
               exit={{ opacity: 0, y: -5 }}
               className={styles.errorMessage}
             >
-              <span>⚠</span> Моля, приемете условията за изпращане
+              <span>⚠</span> {t("termsError")}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
       <div className={styles.disclaimer}>
-        <span>🔒</span> Всички съобщения са анонимни и се изпращат сигурно.
+        <span>🔒</span> {t("disclaimer")}
       </div>
 
       <div className={styles.actions}>
@@ -251,7 +325,11 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
           className={styles.submitButton}
           disabled={isSubmitting}
         >
-          {isSubmitting ? "Изпраща се..." : "Изпрати"}
+          {isSubmitting ? (
+            <span className={styles.spinner}></span>
+          ) : (
+            t("submit")
+          )}
         </button>
         {onClose && (
           <button
@@ -260,7 +338,7 @@ export const FeedbackForm = ({ onSuccess, onClose }) => {
             className={styles.cancelButton}
             disabled={isSubmitting}
           >
-            Затвори
+            {t("close")}
           </button>
         )}
       </div>

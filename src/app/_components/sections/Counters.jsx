@@ -1,12 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
+import { useTranslations, useLocale } from "next-intl";
 
-import Data from "@data/sections/counters.json";
+import { getLocalizedCountersData } from "@data/sections/counters/getLocalizedCountersData";
 
 import { ScrollAnimation } from "@common/scrollAnims";
 
 const CountersSection = () => {
+  const locale = useLocale();
+  const localizedData = useMemo(() => getLocalizedCountersData(locale), [locale]);
+
   useEffect(() => {
     ScrollAnimation();
   }, []);
@@ -15,7 +19,7 @@ const CountersSection = () => {
     <>
         {/* counters */}
         <div className="row">
-            {Data.items.map((item, key) => (
+            {localizedData.items.map((item, key) => (
             <div className="col-sm-6 col-lg-3" key={`counters-item-${key}`}>
 
             {/* counter */}

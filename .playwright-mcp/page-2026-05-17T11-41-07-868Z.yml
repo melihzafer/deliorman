@@ -1,0 +1,57 @@
+- generic [active] [ref=e1]:
+  - link "Прескочи към съдържанието" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - main [ref=e5]:
+      - main [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - generic [ref=e9]:
+              - button "Отвори меню" [ref=e10] [cursor=pointer]
+              - generic [ref=e14]:
+                - generic [ref=e15]: •
+                - generic [ref=e16]: Ресторант
+                - generic [ref=e17]: •
+              - generic "Маса 3" [ref=e18]:
+                - generic [ref=e24]: Маса 3
+            - heading "Делиорман" [level=1] [ref=e25]
+            - paragraph [ref=e26]: Основано в Самуил · Област Разград · Кухня без компромис
+            - generic "Фото кореспонденция от кухнята" [ref=e27]:
+              - img [ref=e28]
+              - img [ref=e29]
+              - img [ref=e30]
+            - generic [ref=e31]:
+              - generic [ref=e32]: • Сезонно меню •
+              - generic [ref=e33]: неделя, 17 май 2026 г.
+              - generic [ref=e34]: Кухня 12:00 – 23:00
+            - paragraph [ref=e35]: Цени в евро · фиксиран курс 1 € = 1.95583 лв.
+          - generic [ref=e36]: Проверяваме QR сесията...
+    - navigation "Мобилна навигация" [ref=e37]:
+      - list [ref=e38]:
+        - listitem [ref=e39]:
+          - link "Начало" [ref=e40] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e42]: 
+            - generic [ref=e43]: Начало
+        - listitem [ref=e44]:
+          - link "Меню" [ref=e45] [cursor=pointer]:
+            - /url: /menu
+            - generic [ref=e47]: 
+            - generic [ref=e48]: Меню
+        - listitem [ref=e49]:
+          - link "Резервация" [ref=e50] [cursor=pointer]:
+            - /url: /reservation
+            - generic [ref=e52]: 
+            - generic [ref=e53]: Резервация
+        - listitem [ref=e54]:
+          - link "Обади се" [ref=e55] [cursor=pointer]:
+            - /url: tel:+359894766273
+            - generic [ref=e57]: 
+            - generic [ref=e58]: Обади се
+        - listitem [ref=e59]:
+          - link "Галерия" [ref=e60] [cursor=pointer]:
+            - /url: /gallery
+            - generic [ref=e62]: 
+            - generic [ref=e63]: Галерия
+  - button "Open Next.js Dev Tools" [ref=e69] [cursor=pointer]:
+    - img [ref=e70]

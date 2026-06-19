@@ -1,0 +1,20 @@
+{
+    "image": {
+       "url": "/img/banners/hero-bg.webp",
+       "alt": "заглавна снимка"
+    },
+    "video": {
+        "url": "https://bslthemes.com/mp4/tastycs/video-banner.mp4"
+     },
+    "subtitle": "Здравейте, нови приятели!",
+    "title": "Добре дошли отново <br>в Делиорман",
+    "description": "Насладете се на изискана кухня и неповторима атмосфера <br>в ресторант Делиорман, село Самуил.",
+    "button1": {
+        "link": "/contact",
+        "label": "Резервация"
+    },
+    "button2": {
+        "link": "/menu",
+        "label": "Отвори менюто"
+    }
+}

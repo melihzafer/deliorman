@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-04-29T09:59:42.351Z",
+  "achievements": [
+    "Built table-side ordering/waiter-call MVP: new /[locale]/table route with TableClient.jsx, table.module.scss, and page.jsx wired to a session lifecycle",
+    "Added backend plumbing for table sessions: src/app/_lib/sheets.ts (Google Sheets persistence) and src/app/_lib/telegram.ts (waiter notifications)",
+    "Shipped 3 new API routes: /api/session/create, /api/session/ping (heartbeat), /api/waiter/call",
+    "Expanded env.example with new server-side keys for Sheets + Telegram integration",
+    "Added screenshot tooling (scripts/screenshot-table.mjs, inspect-orange.mjs) for visual QA of the table page",
+    "Recent UI polish on main site: MiniCalendar uses shared monthNames/dayNamesShort, mobile nav dropdown fixes (commits fcdfd94, 2302661, 980ef5d, fd807ef)"
+  ],
+  "improvements": [
+    "src/app/_lib/sheets.ts is ~1110 tokens — extract session row schema/validation into a separate module before it grows further",
+    "TableClient.jsx (~3390 tok) was edited 8+ times in one session — likely accumulated dead code; run the simplify skill on it",
+    "Move .graphify_*.py and .graphify_*.json scratch files out of repo root into a .graphify/ dir or add to .gitignore (currently polluting git status)",
+    "Consolidate the 10+ markdown audit/summary docs in repo root (AUDIT_REPORT, FEEDBACK_*, IMPLEMENTATION_*, SECURITY_AUDIT, etc.) into docs/ — they're noise at the top level",
+    "Add rate-limiting on /api/waiter/call and /api/session/ping — both are unauthenticated endpoints triggered from QR-scanned client",
+    "session/ping endpoint should debounce server-side; a misbehaving client could spam Sheets writes",
+    "TableClient.jsx and table.module.scss aren't tested — add at least a smoke test given this is now a customer-facing flow"
+  ],
+  "next_tasks": [
+    "Write API route tests for /api/session/create, /api/session/ping, /api/waiter/call (mirror existing api/__tests__/contact.test.js pattern)",
+    "Add i18n strings for the table page in messages/{bg,en,tr}.json — currently the new route may have hardcoded copy",
+    "Add the table route to sitemap.ts and decide whether it should be indexed (likely noindex, since it's per-table)",
+    "Wire QR code generation per table (server util + admin page) so staff can print table-specific URLs with token",
+    "Add a Telegram failure fallback: if sendTelegramMessage throws, log to Sheets so waiter calls aren't silently dropped",
+    "Run openwolf designqc on /table route and compare against existing screenshots/table-newspaper-*.png to verify mobile rendering",
+    "Commit or stash the dirty working tree (package.json, globals.css, tsconfig.tsbuildinfo) — currently 6 modified files on pre-published branch"
+  ],
+  "risks": [
+    "New table/waiter feature on pre-published branch is uncommitted and untested — high risk of regression before merge to main",
+    "Google Sheets as a session store: rate limits (~60 reads/min per user), no transactions; concurrent table sessions could race on findSessionByToken/updateLastPing",
+    "Telegram bot token in env: if leaked via client bundle (verify it's only imported in route.ts files, never in 'use client' files), attacker can spam staff",
+    "TableClient.jsx PING_INTERVAL_MS — verify it's reasonable (15-30s); too aggressive will burn Sheets quota, too slow misses session expiry",
+    "tsconfig.tsbuildinfo is modified and tracked in git — should be in .gitignore (causes noisy diffs every build)",
+    "graphify-out/ and src/graphify-out/ both exist in working tree — duplicate output dirs suggest tooling misconfigured",
+    "10+ stale audit/feedback markdown files at repo root suggest doc rot — readers won't know which is authoritative",
+    "No auth/signing on session tokens visible in API contract — verify tokens are unguessable (UUID v4 minimum) so attackers can't hijack another table's session"
+  ]
+}

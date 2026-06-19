@@ -1,0 +1,110 @@
+$ac: rgba(243, 156, 18, 1);
+$auxc1: rgba(231, 76, 60, 1);
+$auxc2: rgba(46, 204, 113, 1);
+$auxc3: rgba(52, 152, 219, 1);
+$dl1: rgba(26, 47, 51, 1);
+
+.container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 280px;
+  max-width: 400px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 8px 24px rgba(26, 47, 51, 0.18);
+  pointer-events: auto;
+  font-family: var(--font-josefin_sans), sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: $dl1;
+  border-left: 4px solid transparent;
+}
+
+.icon {
+  flex-shrink: 0;
+  font-size: 18px;
+  line-height: 1;
+  margin-top: 1px;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.message {
+  word-break: break-word;
+}
+
+.close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgba(26, 47, 51, 0.5);
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $dl1;
+  }
+}
+
+/* Type variants */
+.success {
+  border-left-color: $auxc2;
+
+  .icon {
+    color: $auxc2;
+  }
+}
+
+.error {
+  border-left-color: $auxc1;
+
+  .icon {
+    color: $auxc1;
+  }
+}
+
+.warning {
+  border-left-color: $ac;
+
+  .icon {
+    color: $ac;
+  }
+}
+
+.info {
+  border-left-color: $auxc3;
+
+  .icon {
+    color: $auxc3;
+  }
+}
+
+/* Progress bar */
+.progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  border-radius: 0 0 0 8px;
+  background-color: currentColor;
+  opacity: 0.3;
+}

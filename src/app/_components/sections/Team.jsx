@@ -1,6 +1,12 @@
-import Data from "@data/sections/team.json";
+import Image from "next/image";
+import { getLocalizedTeamData } from "@data/sections/team/getLocalizedTeamData";
+import { useLocale } from "next-intl";
+import { useMemo } from "react";
 
 const TeamSection = ( { items } ) => {
+  const locale = useLocale();
+  const localizedData = useMemo(() => getLocalizedTeamData(locale), [locale]);
+
   return (
     <>
         {/* team */}
@@ -10,21 +16,23 @@ const TeamSection = ( { items } ) => {
 
                 {/* title */}
                 <div className="text-center">
-                    <div className="tst-suptitle tst-suptitle-center tst-mb-15" dangerouslySetInnerHTML={{__html : Data.subtitle}} />
-                    <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : Data.title}} />
-                    <p className="tst-text tst-mb-60" dangerouslySetInnerHTML={{__html : Data.description}} />
+                    <div className="tst-suptitle tst-suptitle-center tst-mb-15" dangerouslySetInnerHTML={{__html : localizedData.subtitle}} />
+                    <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : localizedData.title}} />
+                    <p className="tst-text tst-mb-60" dangerouslySetInnerHTML={{__html : localizedData.description}} />
                 </div>
                 {/* title end */}
 
             </div>
 
-            {Data.items.slice(0, items).map((item, key) => (
+            {localizedData.items.slice(0, items).map((item, key) => (
             <div className="col-lg-4" key={`teams-item-${key}`}>
 
                 {/* team member */}
                 <div className="tst-team-member">
                     <div className="tst-member-portrait-frame tst-anima-link">
-                        <img src={item.image} alt={item.name} />
+                        <div style={{ position: "relative", width: "100%", aspectRatio: "1", overflow: "hidden" }}>
+                          <Image src={item.image} alt={item.name} fill style={{ objectFit: "cover" }} />
+                        </div>
                     </div>
                     <div className="tst-member-descr">
                         <h5 className="tst-mb-15">{item.name}</h5>

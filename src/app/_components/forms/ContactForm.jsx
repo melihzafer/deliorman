@@ -2,10 +2,13 @@
 
 import { Formik } from "formik";
 import { useState } from "react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/src/i18n/navigation";
 
 const ContactForm = () => {
+  const t = useTranslations("contact");
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
+  const getFieldLabel = (key) => t(key).replace(/\s*\*$/, "");
 
   return (
     <>
@@ -17,38 +20,40 @@ const ContactForm = () => {
           first_name: "",
           last_name: "",
           message: "",
+          company: "",
           privacy_consent: false,
         }}
+        validateOnChange={false}
+        validateOnBlur={true}
         validate={(values) => {
           const errors = {};
 
           if (!values.first_name || values.first_name.trim().length < 2) {
-            errors.first_name = "Името трябва да е поне 2 символа";
+            errors.first_name = t("nameMinLength");
           }
 
           if (!values.last_name || values.last_name.trim().length < 2) {
-            errors.last_name = "Фамилията трябва да е поне 2 символа";
+            errors.last_name = t("lastNameMinLength");
           }
 
           if (!values.email) {
-            errors.email = "Задължително поле";
+            errors.email = t("requiredField");
           } else if (
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
-            errors.email = "Невалиден имейл адрес";
+            errors.email = t("invalidEmail");
           }
 
           if (!values.phone || values.phone.trim().length < 9) {
-            errors.phone = "Невалиден телефонен номер";
+            errors.phone = t("invalidPhone");
           }
 
           if (!values.message || values.message.trim().length < 10) {
-            errors.message = "Съобщението трябва да е поне 10 символа";
+            errors.message = t("messageMinLength");
           }
 
           if (!values.privacy_consent) {
-            errors.privacy_consent =
-              "Моля, потвърдете, че сте се запознали с правилата и условията.";
+            errors.privacy_consent = t("privacyError");
           }
 
           return errors;
@@ -62,6 +67,7 @@ const ContactForm = () => {
           data.append("email", values.email);
           data.append("phone", values.phone);
           data.append("message", values.message);
+          data.append("company", values.company);
           data.append(
             "privacy_consent",
             values.privacy_consent ? "true" : "false"
@@ -78,14 +84,13 @@ const ContactForm = () => {
             if (response.ok && result.success) {
               setSubmitStatus({
                 type: "success",
-                message:
-                  "Благодарим за вашето съобщение! Ще се свържем с вас скоро.",
+                message: t("success"),
               });
               resetForm();
             } else {
-              const errorMessages =
-                result.errors?.map((e) => e.message).join(", ") ||
-                "Възникна проблем";
+              const errorMessages = Array.isArray(result.errors)
+                ? result.errors.map((e) => e.message).join(", ")
+                : t("problemOccurred");
               setSubmitStatus({
                 type: "error",
                 message: errorMessages,
@@ -95,8 +100,7 @@ const ContactForm = () => {
             console.error("Form submission error:", error);
             setSubmitStatus({
               type: "error",
-              message:
-                "Грешка при изпращането. Моля, опитайте отново или се обадете на +359 89 4766273.",
+              message: t("error"),
             });
           }
 
@@ -113,79 +117,156 @@ const ContactForm = () => {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit} id="contactForm">
+            {/* Honeypot anti-spam field: hidden from users, bots fill it */}
+            <input
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              onChange={handleChange}
+              value={values.company || ""}
+              style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }}
+              aria-hidden="true"
+            />
             <div className="row">
               <div className="col-lg-6">
                 <input
+                  id="contact-first-name"
                   type="text"
-                  placeholder="Име *"
+                  placeholder={t("firstName")}
                   name="first_name"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.first_name}
+                  aria-label={getFieldLabel("firstName")}
+                  aria-invalid={Boolean(errors.first_name && touched.first_name)}
+                  aria-describedby={
+                    errors.first_name && touched.first_name
+                      ? "contact-first-name-error"
+                      : undefined
+                  }
                   className={
                     errors.first_name && touched.first_name ? "error" : ""
                   }
                 />
                 {errors.first_name && touched.first_name && (
-                  <div className="tst-field-error">{errors.first_name}</div>
+                  <div
+                    id="contact-first-name-error"
+                    className="tst-field-error"
+                    role="alert"
+                  >
+                    {errors.first_name}
+                  </div>
                 )}
               </div>
               <div className="col-lg-6">
                 <input
+                  id="contact-last-name"
                   type="text"
-                  placeholder="Фамилия *"
+                  placeholder={t("lastName")}
                   name="last_name"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.last_name}
+                  aria-label={getFieldLabel("lastName")}
+                  aria-invalid={Boolean(errors.last_name && touched.last_name)}
+                  aria-describedby={
+                    errors.last_name && touched.last_name
+                      ? "contact-last-name-error"
+                      : undefined
+                  }
                   className={
                     errors.last_name && touched.last_name ? "error" : ""
                   }
                 />
                 {errors.last_name && touched.last_name && (
-                  <div className="tst-field-error">{errors.last_name}</div>
+                  <div
+                    id="contact-last-name-error"
+                    className="tst-field-error"
+                    role="alert"
+                  >
+                    {errors.last_name}
+                  </div>
                 )}
               </div>
               <div className="col-lg-6">
                 <input
+                  id="contact-phone"
                   type="tel"
-                  placeholder="Телефон *"
+                  placeholder={t("phone")}
                   name="phone"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.phone}
+                  aria-label={getFieldLabel("phone")}
+                  aria-invalid={Boolean(errors.phone && touched.phone)}
+                  aria-describedby={
+                    errors.phone && touched.phone ? "contact-phone-error" : undefined
+                  }
                   className={errors.phone && touched.phone ? "error" : ""}
                 />
                 {errors.phone && touched.phone && (
-                  <div className="tst-field-error">{errors.phone}</div>
+                  <div
+                    id="contact-phone-error"
+                    className="tst-field-error"
+                    role="alert"
+                  >
+                    {errors.phone}
+                  </div>
                 )}
               </div>
               <div className="col-lg-6">
                 <input
+                  id="contact-email"
                   type="email"
-                  placeholder="Имейл *"
+                  placeholder={t("email")}
                   name="email"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.email}
+                  aria-label={getFieldLabel("email")}
+                  aria-invalid={Boolean(errors.email && touched.email)}
+                  aria-describedby={
+                    errors.email && touched.email ? "contact-email-error" : undefined
+                  }
                   className={errors.email && touched.email ? "error" : ""}
                 />
                 {errors.email && touched.email && (
-                  <div className="tst-field-error">{errors.email}</div>
+                  <div
+                    id="contact-email-error"
+                    className="tst-field-error"
+                    role="alert"
+                  >
+                    {errors.email}
+                  </div>
                 )}
               </div>
               <div className="col-lg-12">
                 <textarea
-                  placeholder="Съобщение (минимум 10 символа) *"
+                  id="contact-message"
+                  placeholder={t("message")}
                   name="message"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.message}
                   rows="4"
+                  aria-label={getFieldLabel("message")}
+                  aria-invalid={Boolean(errors.message && touched.message)}
+                  aria-describedby={
+                    errors.message && touched.message
+                      ? "contact-message-error"
+                      : undefined
+                  }
                   className={errors.message && touched.message ? "error" : ""}
                 />
                 {errors.message && touched.message && (
-                  <div className="tst-field-error">{errors.message}</div>
+                  <div
+                    id="contact-message-error"
+                    className="tst-field-error"
+                    role="alert"
+                  >
+                    {errors.message}
+                  </div>
                 )}
               </div>
             </div>
@@ -193,22 +274,38 @@ const ContactForm = () => {
             <div className="tst-privacy-consent">
               <label className="tst-privacy-consent-label">
                 <input
+                  id="contact-privacy-consent"
                   type="checkbox"
                   name="privacy_consent"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   checked={Boolean(values.privacy_consent)}
+                  aria-invalid={Boolean(
+                    errors.privacy_consent && touched.privacy_consent
+                  )}
+                  aria-describedby={
+                    errors.privacy_consent && touched.privacy_consent
+                      ? "contact-privacy-consent-error"
+                      : undefined
+                  }
                 />
                 <span>
-                  Съгласен/а съм с{" "}
+                  {t("privacyConsent")}{" "}
                   <Link href="/terms" className="tst-color tst-anima-link">
-                    правилата и условията
+                    {t("termsLink")}
                   </Link>
-                  <span> </span>и информацията за лични данни.
+                  <span> </span>
+                  {t("privacyInfo")}
                 </span>
               </label>
               {errors.privacy_consent && touched.privacy_consent && (
-                <div className="tst-field-error">{errors.privacy_consent}</div>
+                <div
+                  id="contact-privacy-consent-error"
+                  className="tst-field-error"
+                  role="alert"
+                >
+                  {errors.privacy_consent}
+                </div>
               )}
             </div>
 
@@ -218,11 +315,15 @@ const ContactForm = () => {
               disabled={isSubmitting}
               style={{ marginLeft: "auto", marginRight: "auto" }}
             >
-              {isSubmitting ? "Изпращане..." : "Изпрати съобщение"}
+              <span>{isSubmitting ? t("submitting") : t("submit")}</span>
             </button>
 
             {submitStatus.message && (
-              <div className={`tst-form-status ${submitStatus.type}`}>
+              <div
+                className={`tst-form-status ${submitStatus.type}`}
+                role={submitStatus.type === "error" ? "alert" : "status"}
+                aria-live="polite"
+              >
                 <h5
                   style={{
                     color:
