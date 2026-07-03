@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { randomUUID } from 'node:crypto';
+import { getClientIp } from '@library/clientIp';
+import { checkRateLimit } from '@library/rate-limit';
 import {
   appendSession,
   normalizeTableId,
@@ -26,6 +28,21 @@ interface StartBody {
 }
 
 export async function POST(request: Request): Promise<NextResponse> {
+  const { ip: clientIp } = getClientIp(request);
+  const startRate = checkRateLimit(`masa-session-start:${clientIp}`, {
+    windowSeconds: 60,
+    max: 120,
+  });
+  if (startRate.limited) {
+    return NextResponse.json(
+      {
+        error: 'Too many session attempts',
+        retryAfterSeconds: startRate.retryAfterSeconds,
+      },
+      { status: 429 },
+    );
+  }
+
   let body: StartBody;
   try {
     body = (await request.json()) as StartBody;

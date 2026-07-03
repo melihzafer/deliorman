@@ -59,4 +59,19 @@ describe("scoring", () => {
     // mixed-grill is portion=feast
     expect(scored[0]?.item.id).toBe("mixed-grill");
   });
+
+  it("boosts items by title keyword match", () => {
+    const scoredEn = scoreItems(TEST_CATEGORIES, {}, "en", "chocolate");
+    expect(scoredEn[0]?.item.id).toBe("hot-chocolate");
+
+    const scoredBg = scoreItems(TEST_CATEGORIES, {}, "bg", "шоколад");
+    expect(scoredBg[0]?.item.id).toBe("hot-chocolate");
+  });
+
+  it("boosts items by category title match", () => {
+    const scored = scoreItems(TEST_CATEGORIES, {}, "en", "salads");
+    const ids = scored.map((s) => s.item.id);
+    expect(ids).toContain("shopska");
+    expect(ids).toContain("caesar");
+  });
 });

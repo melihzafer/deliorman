@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import { X } from "lucide-react";
+
 import { t } from "./masaTranslations";
 import type { Locale, MasaStyles } from "./masaTypes";
 
@@ -5,14 +8,6 @@ interface MasaDrawerProps {
   locale: Locale;
   onClose: () => void;
   onLocaleChange: (locale: Locale) => void;
-  displayMode: "both" | "icons" | "text";
-  onDisplayModeChange: (mode: "both" | "icons" | "text") => void;
-  theme: "classic" | "brutalist" | "olive" | "terminal";
-  onThemeChange: (theme: "classic" | "brutalist" | "olive" | "terminal") => void;
-  layout: "journal" | "cards" | "minimal";
-  onLayoutChange: (layout: "journal" | "cards" | "minimal") => void;
-  pageLayout: "classic" | "modern" | "magazine";
-  onPageLayoutChange: (pageLayout: "classic" | "modern" | "magazine") => void;
   styles: MasaStyles;
   soundEnabled: boolean;
   onSoundEnabledChange: (enabled: boolean) => void;
@@ -20,171 +15,114 @@ interface MasaDrawerProps {
   onShowImagesChange: (show: boolean) => void;
 }
 
+const LOCALES: { code: Locale; label: string }[] = [
+  { code: "bg", label: "Български" },
+  { code: "tr", label: "Türkçe" },
+  { code: "en", label: "English" },
+];
+
 export function MasaDrawer({
   locale,
   onClose,
   onLocaleChange,
-  displayMode,
-  onDisplayModeChange,
-  theme,
-  onThemeChange,
-  layout,
-  onLayoutChange,
-  pageLayout,
-  onPageLayoutChange,
   styles,
   soundEnabled,
   onSoundEnabledChange,
   showImages,
   onShowImagesChange,
 }: MasaDrawerProps) {
+  // Lock body scroll while the drawer is open.
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
   return (
-    <div className={styles.drawerBackdrop} role="presentation" onClick={onClose}>
+    <div className={styles.scrim} role="presentation" onClick={onClose}>
       <aside
         className={styles.drawer}
         role="dialog"
         aria-modal="true"
-        aria-label={t(locale, "openMenu")}
+        aria-label={t(locale, "settings")}
         onClick={(event) => event.stopPropagation()}
       >
-        <div className={styles.drawerHeader}>
-          <div>
-            <p className={styles.drawerKicker}>Deliorman</p>
-            <h2>{t(locale, "openMenu")}</h2>
-          </div>
-          <button type="button" className={styles.drawerClose} onClick={onClose}>
-            {t(locale, "closeMenu")}
+        <div className={styles.drawerHead}>
+          <h2 className={styles.drawerTitle}>{t(locale, "settings")}</h2>
+          <button
+            type="button"
+            className={styles.drawerClose}
+            onClick={onClose}
+            aria-label={t(locale, "closeMenu")}
+          >
+            <X size={20} aria-hidden="true" />
           </button>
         </div>
 
-        <section className={styles.drawerSection}>
-          <h3>{t(locale, "language")}</h3>
-          <div className={styles.drawerLangs}>
-            {(["bg", "tr", "en"] as Locale[]).map((option) => (
-              <button
-                key={option}
-                type="button"
-                className={locale === option ? styles.drawerOptionActive : styles.drawerOption}
-                onClick={() => onLocaleChange(option)}
-              >
-                {option.toUpperCase()}
-              </button>
-            ))}
+        <div className={styles.drawerBody}>
+          <div className={styles.field}>
+            <p className={styles.fieldLabel}>{t(locale, "language")}</p>
+            <div className={styles.segment}>
+              {LOCALES.map(({ code, label }) => (
+                <button
+                  key={code}
+                  type="button"
+                  className={`${styles.segBtn} ${locale === code ? styles.segBtnActive : ""}`}
+                  aria-pressed={locale === code}
+                  onClick={() => onLocaleChange(code)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
           </div>
-        </section>
 
-        <section className={styles.drawerSection}>
-          <h3>{t(locale, "display")}</h3>
-          <div className={styles.drawerLangs} style={{ gridTemplateColumns: "1fr" }}>
-            {(["both", "icons", "text"] as const).map((mode) => (
+          <div className={styles.field}>
+            <p className={styles.fieldLabel}>{t(locale, "menuImages")}</p>
+            <div className={styles.segment}>
               <button
-                key={mode}
                 type="button"
-                className={displayMode === mode ? styles.drawerOptionActive : styles.drawerOption}
-                onClick={() => onDisplayModeChange(mode)}
-                style={{ textAlign: "center", marginBottom: "4px" }}
+                className={`${styles.segBtn} ${showImages ? styles.segBtnActive : ""}`}
+                aria-pressed={showImages}
+                onClick={() => onShowImagesChange(true)}
               >
-                {mode === "both" && t(locale, "modeBoth")}
-                {mode === "icons" && t(locale, "modeIcons")}
-                {mode === "text" && t(locale, "modeText")}
+                {t(locale, "soundOn")}
               </button>
-            ))}
+              <button
+                type="button"
+                className={`${styles.segBtn} ${!showImages ? styles.segBtnActive : ""}`}
+                aria-pressed={!showImages}
+                onClick={() => onShowImagesChange(false)}
+              >
+                {t(locale, "soundOff")}
+              </button>
+            </div>
           </div>
-        </section>
 
-        <section className={styles.drawerSection}>
-          <h3>{t(locale, "theme")}</h3>
-          <div className={styles.drawerLangs} style={{ gridTemplateColumns: "1fr" }}>
-            {(["classic", "brutalist", "olive", "terminal"] as const).map((tOpt) => (
+          <div className={styles.field}>
+            <p className={styles.fieldLabel}>{t(locale, "soundEffects")}</p>
+            <div className={styles.segment}>
               <button
-                key={tOpt}
                 type="button"
-                className={theme === tOpt ? styles.drawerOptionActive : styles.drawerOption}
-                onClick={() => onThemeChange(tOpt)}
-                style={{ textAlign: "center", marginBottom: "4px" }}
+                className={`${styles.segBtn} ${soundEnabled ? styles.segBtnActive : ""}`}
+                aria-pressed={soundEnabled}
+                onClick={() => onSoundEnabledChange(true)}
               >
-                {tOpt === "classic" && t(locale, "themeClassic")}
-                {tOpt === "brutalist" && t(locale, "themeBrutalist")}
-                {tOpt === "olive" && t(locale, "themeOlive")}
-                {tOpt === "terminal" && t(locale, "themeTerminal")}
+                {t(locale, "soundOn")}
               </button>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.drawerSection}>
-          <h3>{t(locale, "layout")}</h3>
-          <div className={styles.drawerLangs} style={{ gridTemplateColumns: "1fr" }}>
-            {(["journal", "cards", "minimal"] as const).map((lOpt) => (
               <button
-                key={lOpt}
                 type="button"
-                className={layout === lOpt ? styles.drawerOptionActive : styles.drawerOption}
-                onClick={() => onLayoutChange(lOpt)}
-                style={{ textAlign: "center", marginBottom: "4px" }}
+                className={`${styles.segBtn} ${!soundEnabled ? styles.segBtnActive : ""}`}
+                aria-pressed={!soundEnabled}
+                onClick={() => onSoundEnabledChange(false)}
               >
-                {lOpt === "journal" && t(locale, "layoutJournal")}
-                {lOpt === "cards" && t(locale, "layoutCards")}
-                {lOpt === "minimal" && t(locale, "layoutMinimal")}
+                {t(locale, "soundOff")}
               </button>
-            ))}
+            </div>
           </div>
-        </section>
-
-        <section className={styles.drawerSection}>
-          <h3>{t(locale, "pageLayout")}</h3>
-          <div className={styles.drawerLangs} style={{ gridTemplateColumns: "1fr" }}>
-            {(["classic", "modern", "magazine"] as const).map((pOpt) => (
-              <button
-                key={pOpt}
-                type="button"
-                className={pageLayout === pOpt ? styles.drawerOptionActive : styles.drawerOption}
-                onClick={() => onPageLayoutChange(pOpt)}
-                style={{ textAlign: "center", marginBottom: "4px" }}
-              >
-                {pOpt === "classic" && t(locale, "pageLayoutClassic")}
-                {pOpt === "modern" && t(locale, "pageLayoutModern")}
-                {pOpt === "magazine" && t(locale, "pageLayoutMagazine")}
-              </button>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.drawerSection}>
-          <h3>{t(locale, "soundEffects")}</h3>
-          <div className={styles.drawerLangs}>
-            {(["on", "off"] as const).map((opt) => (
-              <button
-                key={opt}
-                type="button"
-                className={soundEnabled === (opt === "on") ? styles.drawerOptionActive : styles.drawerOption}
-                onClick={() => onSoundEnabledChange(opt === "on")}
-              >
-                {opt === "on" ? t(locale, "soundOn") : t(locale, "soundOff")}
-              </button>
-            ))}
-          </div>
-        </section>
-
-        <section className={styles.drawerSection}>
-          <h3>
-            {locale === "bg" ? "Снимки в менюто" : locale === "tr" ? "Görselleri Göster" : "Menu Images"}
-          </h3>
-          <div className={styles.drawerLangs}>
-            {(["on", "off"] as const).map((opt) => (
-              <button
-                key={opt}
-                type="button"
-                className={showImages === (opt === "on") ? styles.drawerOptionActive : styles.drawerOption}
-                onClick={() => onShowImagesChange(opt === "on")}
-              >
-                {opt === "on"
-                  ? (locale === "bg" ? "Вкл." : locale === "tr" ? "Açık" : "On")
-                  : (locale === "bg" ? "Изкл." : locale === "tr" ? "Kapalı" : "Off")}
-              </button>
-            ))}
-          </div>
-        </section>
+        </div>
       </aside>
     </div>
   );

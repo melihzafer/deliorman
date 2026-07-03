@@ -15,6 +15,7 @@
 
 import type { Locale, QrMenuItem, QrMenuCategory } from "../masaTypes";
 import { getItemTags } from "./menuTags";
+import { localized } from "../masaMenuUtils";
 import type {
   FoodProtein,
   FoodTexture,
@@ -223,14 +224,57 @@ function buildReasonKeys(tags: ItemTags, answers: WizardAnswers): { keys: string
   return { keys, tags: tagDescs };
 }
 
+function matchesKeyword(
+  title: string,
+  desc: string,
+  categoryName: string,
+  freetext: string,
+): number {
+  if (!freetext) return 0;
+  const cleanFreetext = freetext.toLowerCase().trim();
+  if (!cleanFreetext) return 0;
+
+  // Split free text by space/punctuation, matching words/characters of >= 2 length
+  const tokens = cleanFreetext
+    .split(/[\s,.\-!]+/u)
+    .map((t) => t.replace(/[^\p{L}\p{N}]/gu, ""))
+    .filter((t) => t.length >= 2);
+  
+  if (tokens.length === 0) return 0;
+
+  let score = 0;
+  const cleanTitle = title.toLowerCase();
+  const cleanDesc = desc.toLowerCase();
+  const cleanCat = categoryName.toLowerCase();
+
+  for (const token of tokens) {
+    if (cleanTitle.includes(token)) {
+      score += 45; // Substantial boost for direct matches in item title
+    }
+    if (cleanCat.includes(token)) {
+      score += 35; // High boost for category matching
+    }
+    if (cleanDesc.includes(token)) {
+      score += 15; // Moderate boost for descriptions
+    }
+  }
+  return score;
+}
+
 export function scoreItems(
   categories: QrMenuCategory[],
   answers: WizardAnswers,
   locale: Locale,
+  freetext?: string,
 ): ScoredItemInternal[] {
   const all = flattenItems(categories);
   const filtered = filterByAnchor(all, answers);
   if (filtered.length === 0) return [];
+
+  const categoryMap = new Map<string, string>();
+  for (const cat of categories) {
+    categoryMap.set(cat.id, localized(cat.title, locale) || "");
+  }
 
   const scored = filtered.map((item) => {
     const tags = getItemTags(item.id);
@@ -247,6 +291,13 @@ export function scoreItems(
     // lead with a starter/snack.
     if (answers.anchor === "food" && tags.course === "main") score += 4;
     if (answers.anchor === "drink" && tags.course === "drink") score += 4;
+
+    if (freetext) {
+      const itemTitle = localized(item.title, locale) || "";
+      const itemDesc = localized(item.description, locale) || "";
+      const catTitle = categoryMap.get(item.categoryId) || "";
+      score += matchesKeyword(itemTitle, itemDesc, catTitle, freetext);
+    }
 
     const reason = buildReasonKeys(tags, answers);
     return { item, score, rationaleKey: reason.keys[0] ?? "r_signature", matchReasons: reason.tags, reasons: reason.keys, confidence: 0 };
@@ -275,8 +326,13 @@ export interface WizardPick {
   pool: ScoredItemInternal[];
 }
 
-export function pickRecommendation(categories: QrMenuCategory[], answers: WizardAnswers, locale: Locale): WizardPick | null {
-  const scored = scoreItems(categories, answers, locale);
+export function pickRecommendation(
+  categories: QrMenuCategory[],
+  answers: WizardAnswers,
+  locale: Locale,
+  freetext?: string,
+): WizardPick | null {
+  const scored = scoreItems(categories, answers, locale, freetext);
   if (scored.length === 0) return null;
   const top = scored[0];
   const rest = scored.slice(1, 5);

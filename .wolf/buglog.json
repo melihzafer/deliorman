@@ -560,6 +560,139 @@
       "related_bugs": [],
       "occurrences": 2,
       "last_seen": "2026-06-10T15:05:01.347Z"
+    },
+    {
+      "id": "bug-034",
+      "timestamp": "2026-06-19T22:04:28.765Z",
+      "error_message": "CSS fix: https",
+      "file": "src/app/[locale]/table/page.jsx",
+      "root_cause": "https: //fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Old+Standard+TT:ital,wght@0,400 → //fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500",
+      "fix": "Changed https: //fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Old+Standard+TT:ital,wght@0,400 → //fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-19T22:04:28.765Z"
+    },
+    {
+      "id": "bug-035",
+      "timestamp": "2026-06-19T22:04:57.943Z",
+      "error_message": "CSS fix: border",
+      "file": "src/app/[locale]/table/menu.module.scss",
+      "root_cause": "border: 1px solid color-mix(in srgb, var(--brand) 35%, transparent) → 1px solid rgba(158, 36, 26, 0.35)",
+      "fix": "Changed border: 1px solid color-mix(in srgb, var(--brand) 35%, transparent) → 1px solid rgba(158, 36, 26, 0.35)",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "scss"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-19T22:04:57.943Z"
+    },
+    {
+      "id": "bug-036",
+      "timestamp": "2026-06-19T22:12:15.776Z",
+      "error_message": "Wrong reference: main should be div",
+      "file": "src/app/masa/MasaClient.tsx",
+      "root_cause": "Used \"main\" instead of \"div\"",
+      "fix": "Changed main → div",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-19T22:12:15.776Z"
+    },
+    {
+      "id": "bug-037",
+      "timestamp": "2026-06-19T22:14:01.427Z",
+      "error_message": "CSS fix: background",
+      "file": "src/app/[locale]/table/menu.module.scss",
+      "root_cause": "background: color-mix(in srgb, var(--bg) 88%, transparent) → color-mix(in srgb, var(--bg) 90%, transparent)",
+      "fix": "Changed background: color-mix(in srgb, var(--bg) 88%, transparent) → color-mix(in srgb, var(--bg) 90%, transparent)",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "scss"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-06-19T22:14:07.075Z"
+    },
+    {
+      "id": "bug-038",
+      "timestamp": "2026-06-19T22:26:20.444Z",
+      "error_message": "CSS fix: min-width, height",
+      "file": "src/app/[locale]/table/menu.module.scss",
+      "root_cause": "min-width: 34px → 40px; height: 32px → 36px",
+      "fix": "Changed min-width: 34px → 40px; height: 32px → 36px",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "scss"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-06-19T22:26:31.755Z"
+    },
+    {
+      "id": "bug-039",
+      "timestamp": "2026-06-20T00:00:00.000Z",
+      "error_message": "Redesigned QR menu sticky header + category bar scrolled away instead of pinning",
+      "file": "src/app/globals.css, src/app/[locale]/table/menu.module.scss",
+      "root_cause": "The global #tst-app wrapper sets overflow:hidden (to stop horizontal bleed), which makes it a scroll container and breaks position:sticky for any descendant relative to the viewport.",
+      "fix": "Added 'body.kiosk-mode #tst-app { overflow: visible !important; }' (kiosk-mode is exclusive to the /table + /masa QR menu) and wrapped the header + category bar in a single sticky .stickyTop container so they stack without magic top offsets.",
+      "tags": [
+        "css",
+        "position-sticky",
+        "overflow",
+        "qr-menu",
+        "kiosk"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-20T00:00:00.000Z"
+    },
+    {
+      "id": "bug-040",
+      "timestamp": "2026-06-20T00:05:00.000Z",
+      "error_message": "Taste Wizard modal rendered with a transparent background (computed backgroundColor rgba(0,0,0,0)) after the QR menu redesign",
+      "file": "src/app/[locale]/table/menu.module.scss",
+      "root_cause": "MasaTasteWizard keeps its own table.module.scss and reads legacy theme CSS variables (--paper, --accent, --accent-dark, --card-bg, --paper-edge) that used to be provided by the old .paper/.themeClassic root. The new .page root only defined --ink/--bg/--brand, so those vars resolved to nothing and var(--paper) backgrounds became transparent.",
+      "fix": "Added the legacy theme variables to .page, mapped to the new clean palette (--paper:#fff, --accent:#9e241a, etc.), so the wizard inherits correct on-brand colours and visually matches the new menu.",
+      "tags": [
+        "css",
+        "css-variables",
+        "qr-menu",
+        "wizard",
+        "theming",
+        "regression"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-20T00:05:00.000Z"
+    },
+    {
+      "id": "bug-041",
+      "timestamp": "2026-06-19T22:29:00.405Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/[locale]/table/menu.module.scss",
+      "root_cause": "Had \"Cormorant Garamond\"",
+      "fix": "Changed to \"Playfair Display\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "scss"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-06-19T22:29:00.405Z"
     }
   ]
 }

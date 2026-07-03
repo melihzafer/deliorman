@@ -14,6 +14,7 @@ interface UseMasaSessionParams {
 }
 
 interface StartResponse {
+  expiresInSeconds?: number;
   token?: string;
   role?: MasaRole;
 }
@@ -24,6 +25,7 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
   const [role, setRole] = useState<MasaRole>("guest");
   const [menuData, setMenuData] = useState<QrMenuData | null>(null);
   const [notice, setNotice] = useState("");
+  const [sessionExpiresAt, setSessionExpiresAt] = useState(0);
   const [activeCategoryId, setActiveCategoryId] = useState("");
   const localeRef = useRef(locale);
   const sessionKey = tableId
@@ -36,6 +38,7 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
     (message: string) => {
       setToken("");
       setMenuData(null);
+      setSessionExpiresAt(0);
       setSessionState("blocked");
       setNotice(message);
       if (sessionKey) sessionStorage.removeItem(sessionKey);
@@ -85,6 +88,7 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
           if (sessionKey) sessionStorage.setItem(sessionKey, session.token);
           setToken(session.token);
           setRole("vip");
+          setSessionExpiresAt(0);
           setMenuData(menu);
           setActiveCategoryId(menu.categories?.[0]?.id ?? "");
           setSessionState("active");
@@ -136,6 +140,9 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
         if (sessionKey) sessionStorage.setItem(sessionKey, session.token);
         setToken(session.token);
         setRole("guest");
+        setSessionExpiresAt(
+          session.expiresInSeconds ? Date.now() + session.expiresInSeconds * 1000 : 0,
+        );
         setMenuData(menu);
         setActiveCategoryId(menu.categories?.[0]?.id ?? "");
         setSessionState("active");
@@ -189,6 +196,7 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
     notice,
     role,
     sessionState,
+    sessionExpiresAt,
     setActiveCategoryId,
     token,
   };

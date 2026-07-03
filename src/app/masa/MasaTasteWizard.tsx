@@ -29,6 +29,15 @@ interface MasaTasteWizardProps {
 
 const STORAGE_KEY = "masa_wizard_history_v2";
 
+const SUGGESTION_CHIPS = [
+  { labelKey: "chip_fresh_salad", emoji: "🥗" },
+  { labelKey: "chip_spicy_grill", emoji: "🔥" },
+  { labelKey: "chip_cold_drink", emoji: "🍹" },
+  { labelKey: "chip_sweet_dessert", emoji: "🍰" },
+  { labelKey: "chip_juicy_steak", emoji: "🥩" },
+  { labelKey: "chip_cold_beer", emoji: "🍺" },
+];
+
 interface HistoryEntry {
   itemId: string;
   titleBg: string;
@@ -232,7 +241,7 @@ export function MasaTasteWizard({
   const [refining, setRefining] = useState(false);
   const [freeText, setFreeText] = useState("");
   const [freeTextLoading, setFreeTextLoading] = useState(false);
-  const [freeTextOpen, setFreeTextOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<"quiz" | "text">("quiz");
   const [freeTextResult, setFreeTextResult] = useState<IntentResult | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
 
@@ -301,7 +310,7 @@ export function MasaTasteWizard({
     const localPromise: Promise<WizardPick | null> = new Promise((resolve) => {
       setTimeout(() => {
         clearInterval(spin);
-        resolve(pickRecommendation(categories, finalAnswers, locale));
+        resolve(pickRecommendation(categories, finalAnswers, locale, opts.freetext));
       }, 1200);
     });
 
@@ -408,6 +417,7 @@ export function MasaTasteWizard({
     setResult(null);
     setFreeTextResult(null);
     setFreeText("");
+    setActiveTab("quiz");
   };
 
   const handleShowAnother = () => {
@@ -453,7 +463,6 @@ export function MasaTasteWizard({
         setStep("spinning");
         setTimeout(() => {
           finishQuiz(answers, { freetext: freeText, budgetBgn });
-          setFreeTextOpen(false);
           setFreeText("");
           setFreeTextResult(null);
         }, 800);
@@ -463,6 +472,20 @@ export function MasaTasteWizard({
     } finally {
       setFreeTextLoading(false);
     }
+  };
+
+  const handleChipClick = (labelKey: string) => {
+    triggerClick();
+    const label = t(locale, labelKey);
+    setFreeText((prev) => {
+      const trimmed = prev.trim();
+      if (!trimmed) return label;
+      return `${trimmed} ${label}`;
+    });
+    setTimeout(() => {
+      const el = document.getElementById("wizardFreeTextInput") as HTMLTextAreaElement | null;
+      if (el) el.focus();
+    }, 50);
   };
 
   // -------------------------------------------------------------------------
@@ -512,101 +535,142 @@ export function MasaTasteWizard({
 
   // -------------------------------------------------------------------------
 
-  const renderIntro = () => (
-    <div className={styles.wizardStep}>
-      <p className={styles.wizardIntroText}>{t(locale, "wizardIntro")}</p>
-      {history.length > 0 ? (
-        <div className={styles.wizardHistory}>
-          <span className={styles.wizardHistoryLabel}>{t(locale, "last_picked_label")}</span>
-          <span className={styles.wizardHistoryItem}>
-            {history[0] ? localized(
-              { bg: history[0].titleBg, tr: history[0].titleTr, en: history[0].titleEn },
-              locale,
-            ) : ""}
-          </span>
+  const renderIntro = () => {
+    return (
+      <div className={styles.wizardIntroContainer}>
+        {/* Tab Switcher */}
+        <div className={styles.wizardTabSwitcher}>
+          <button
+            type="button"
+            className={`${styles.wizardTabBtn} ${activeTab === "quiz" ? styles.wizardTabBtnActive : ""}`}
+            onClick={() => {
+              triggerClick();
+              setActiveTab("quiz");
+            }}
+          >
+            <Sparkles size={16} />
+            <span>{t(locale, "wizard_tab_quiz")}</span>
+          </button>
+          <button
+            type="button"
+            className={`${styles.wizardTabBtn} ${activeTab === "text" ? styles.wizardTabBtnActive : ""}`}
+            onClick={() => {
+              triggerClick();
+              setActiveTab("text");
+            }}
+          >
+            <MessageSquare size={16} />
+            <span>{t(locale, "wizard_tab_text")}</span>
+          </button>
         </div>
-      ) : null}
-      <div className={styles.wizardIntroActions}>
-        <button
-          type="button"
-          className={styles.wizardBtnPrimary}
-          onClick={() => {
-            triggerClick();
-            setStep("q_mood");
-          }}
-        >
-          <Sparkles size={16} />
-          <span>{t(locale, "wizardStart")}</span>
-        </button>
-        <button
-          type="button"
-          className={styles.wizardBtnSecondary}
-          onClick={handleSurprise}
-        >
-          <Wand2 size={16} />
-          <span>{t(locale, "wizardSurprise")}</span>
-        </button>
-      </div>
-      <button
-        type="button"
-        className={styles.wizardFreeTextToggle}
-        onClick={() => {
-          triggerClick();
-          setFreeTextOpen((v) => !v);
-        }}
-        aria-expanded={freeTextOpen}
-      >
-        <MessageSquare size={14} />
-        <span>{t(locale, "free_text_label")}</span>
-        <ChevronDown size={14} className={freeTextOpen ? styles.wizardFreeTextChevronOpen : ""} />
-      </button>
-      {freeTextOpen ? (
-        <div className={styles.wizardFreeTextBox}>
-          <textarea
-            className={styles.wizardFreeTextInput}
-            value={freeText}
-            onChange={(e) => setFreeText(e.target.value)}
-            placeholder={t(locale, "free_text_placeholder")}
-            rows={3}
-            disabled={freeTextLoading}
-          />
-          <div className={styles.wizardFreeTextActions}>
-            <button
-              type="button"
-              className={styles.wizardBtnPrimary}
-              onClick={handleFreeTextSubmit}
-              disabled={freeTextLoading || !freeText.trim()}
-            >
-              {freeTextLoading ? t(locale, "free_text_loading_ai") : t(locale, "free_text_submit")}
-            </button>
-            <button
-              type="button"
-              className={styles.wizardBtnSecondary}
-              onClick={() => {
-                setFreeTextOpen(false);
-                setFreeText("");
-                setFreeTextResult(null);
-              }}
-            >
-              {t(locale, "free_text_collapse")}
-            </button>
-          </div>
-          {freeTextResult && freeTextResult.source === "buttons-only" ? (
-            <p className={styles.wizardFreeTextHint}>{t(locale, "free_text_no_match")}</p>
-          ) : null}
-          {freeTextResult && freeTextResult.signals.length > 0 ? (
-            <div className={styles.wizardFreeTextChips}>
-              {freeTextResult.signals.map((s, i) => (
-                <span key={`${s.dim}-${i}`} className={styles.wizardFreeTextChip}>
-                  {s.dim}: {s.value}
+
+        {/* Tab Contents */}
+        {activeTab === "quiz" ? (
+          <div className={styles.wizardIntroContent}>
+            <p className={styles.wizardIntroText}>{t(locale, "wizardIntro")}</p>
+            {history.length > 0 ? (
+              <div className={styles.wizardHistory}>
+                <span className={styles.wizardHistoryLabel}>{t(locale, "last_picked_label")}</span>
+                <span className={styles.wizardHistoryItem}>
+                  {history[0] ? localized(
+                    { bg: history[0].titleBg, tr: history[0].titleTr, en: history[0].titleEn },
+                    locale,
+                  ) : ""}
                 </span>
-              ))}
+              </div>
+            ) : null}
+            <div className={styles.wizardIntroActions}>
+              <button
+                type="button"
+                className={styles.wizardBtnPrimary}
+                onClick={() => {
+                  triggerClick();
+                  setStep("q_mood");
+                }}
+              >
+                <Sparkles size={16} />
+                <span>{t(locale, "wizardStart")}</span>
+              </button>
+              <button
+                type="button"
+                className={styles.wizardBtnSecondary}
+                onClick={handleSurprise}
+              >
+                <Wand2 size={16} />
+                <span>{t(locale, "wizardSurprise")}</span>
+              </button>
             </div>
-          ) : null}
-        </div>
-      ) : null}
-    </div>
-  );
+          </div>
+        ) : (
+          <div className={styles.wizardFreeTextContainer}>
+            <div className={styles.wizardFreeTextBox}>
+              <textarea
+                id="wizardFreeTextInput"
+                className={styles.wizardFreeTextInput}
+                value={freeText}
+                onChange={(e) => setFreeText(e.target.value)}
+                placeholder={t(locale, "free_text_placeholder")}
+                rows={3}
+                disabled={freeTextLoading}
+                autoFocus
+              />
+              
+              {/* Suggestion Chips */}
+              <div className={styles.wizardFreeTextSuggestions}>
+                {SUGGESTION_CHIPS.map((chip) => (
+                  <button
+                    key={chip.labelKey}
+                    type="button"
+                    className={styles.wizardSuggestionChip}
+                    onClick={() => handleChipClick(chip.labelKey)}
+                    disabled={freeTextLoading}
+                  >
+                    <span className={styles.wizardSuggestionEmoji}>{chip.emoji}</span>
+                    <span>{t(locale, chip.labelKey)}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.wizardFreeTextActions}>
+              <button
+                type="button"
+                className={styles.wizardBtnPrimary}
+                onClick={handleFreeTextSubmit}
+                disabled={freeTextLoading || !freeText.trim()}
+              >
+                {freeTextLoading ? t(locale, "free_text_loading_ai") : t(locale, "free_text_submit")}
+              </button>
+              <button
+                type="button"
+                className={styles.wizardBtnSecondary}
+                onClick={() => {
+                  triggerClick();
+                  setFreeText("");
+                  setFreeTextResult(null);
+                }}
+                disabled={freeTextLoading || !freeText.trim()}
+              >
+                {t(locale, "wizardRestart")}
+              </button>
+            </div>
+            {freeTextResult && freeTextResult.source === "buttons-only" ? (
+              <p className={styles.wizardFreeTextHint} style={{ marginTop: "10px" }}>{t(locale, "free_text_no_match")}</p>
+            ) : null}
+            {freeTextResult && freeTextResult.signals.length > 0 ? (
+              <div className={styles.wizardFreeTextChips} style={{ marginTop: "10px" }}>
+                {freeTextResult.signals.map((s, i) => (
+                  <span key={`${s.dim}-${i}`} className={styles.wizardFreeTextChip}>
+                    {s.dim}: {s.value}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        )}
+      </div>
+    );
+  };
 
   const renderSpinning = () => (
     <div className={styles.wizardStep}>
@@ -720,7 +784,7 @@ export function MasaTasteWizard({
 
           <div className={styles.wizardResultActions}>
             <button type="button" className={styles.wizardBtnPrimary} onClick={onClose}>
-              {locale === "bg" ? "Виж в менюто" : locale === "tr" ? "Menüde Gör" : "Show in Menu"}
+              {t(locale, "wizard_show_in_menu")}
             </button>
             {result.alternatives.length > 0 ? (
               <button type="button" className={styles.wizardBtnSecondary} onClick={handleShowAnother}>

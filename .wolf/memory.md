@@ -118,3 +118,80 @@
 | 15:05 | Edited src/app/api/qr/route.ts | "@library/client-ip" → "@library/clientIp" | ~14 |
 | 15:05 | Edited src/app/api/qr/route.ts | inline fix | ~32 |
 | 15:05 | Edited src/app/_components/menu/qr/QRMenuTool.jsx | 5→6 lines | ~62 |
+| 19:49 | designqc: captured 2 screenshots (96KB, ~5000 tok) | /masa | ready for eval | ~0 |
+
+## Session: 2026-06-10 16:18
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 16:18 | Set goal: improve QR wizard mobile UI/UX | goal-engine | 40-turn budget | ~0 |
+| 16:19 | Read MasaTasteWizard, masaTranslations, types, table.module.scss | src/app/masa/* | Identified mobile issues: iOS input zoom, cramped modal, small touch targets, missing safe areas | ~8000 |
+| 16:40 | Started dev server, captured designqc screenshots | .wolf/designqc-captures/ | Confirmed wizard blocked on non-localhost; used browser console to open wizard in mobile emulator | ~2000 |
+| 17:53 | Overhauled wizard mobile SCSS | src/app/[locale]/table/table.module.scss | Bottom-sheet modal (16px top radius), 16px input font (iOS zoom fix), 80px option buttons, 48px action buttons, env(safe-area-inset-bottom), 88dvh max-height, flex:1 body, dvh units | ~3000 |
+| 18:03 | Fixed hardcoded "Show in Menu" string | src/app/masa/MasaTasteWizard.tsx, src/app/masa/masaTranslations.ts | Added wizard_show_in_menu key in bg/tr/en, replaced ternary with t() call | ~200 |
+| 18:04 | Verified unit tests | tests/unit/wizard/* | 8 suites, 87 tests passed | ~0 |
+| 18:09 | Browser console navigation through wizard | localhost:3000/en/table?id=3 | Tested intro, questions, and result screens on iPhone 14 Pro Max emulator; all buttons visible and scrollable | ~1000 |
+
+## Session: 2026-06-19 00:45
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-06-19 00:51
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-06-19 00:52
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 01:01 | Created src/app/[locale]/table/menu.module.scss | — | ~4015 |
+| 01:01 | Created src/app/masa/masaCategoryIcons.tsx | — | ~396 |
+| 01:01 | Created src/app/masa/MasaCategoryBar.tsx | — | ~574 |
+| 01:01 | Created src/app/masa/MasaMasthead.tsx | — | ~635 |
+| 01:02 | Created src/app/masa/MasaMenuList.tsx | — | ~941 |
+| 01:02 | Created src/app/masa/MasaSessionOverlay.tsx | — | ~571 |
+| 01:02 | Created src/app/masa/MasaDrawer.tsx | — | ~1170 |
+| 01:03 | Created src/app/masa/MasaClient.tsx | — | ~2676 |
+| 01:03 | Edited src/app/[locale]/table/menu.module.scss | CSS: animation, transform | ~45 |
+| 01:04 | Edited src/app/masa/masaTranslations.ts | expanded (+6 lines) | ~97 |
+| 01:04 | Edited src/app/masa/masaTranslations.ts | expanded (+6 lines) | ~94 |
+| 01:04 | Edited src/app/masa/masaTranslations.ts | expanded (+6 lines) | ~94 |
+| 01:04 | Edited src/app/[locale]/table/page.jsx | 5→5 lines | ~68 |
+| 01:04 | Edited src/app/[locale]/table/menu.module.scss | 7→8 lines | ~70 |
+| 01:04 | Edited src/app/[locale]/table/menu.module.scss | 7→8 lines | ~74 |
+| 01:04 | Edited src/app/[locale]/table/menu.module.scss | mix() → rgba() | ~62 |
+| 01:08 | Created .claude/launch.json | — | ~53 |
+| 01:12 | Edited src/app/masa/MasaClient.tsx | 3→3 lines | ~19 |
+| 01:12 | Edited src/app/masa/MasaClient.tsx | 5→5 lines | ~13 |
+| 01:13 | Edited src/app/globals.css | CSS: overflow, position, overflow | ~97 |
+| 01:14 | Edited src/app/[locale]/table/menu.module.scss | 10→14 lines | ~111 |
+| 01:14 | Edited src/app/[locale]/table/menu.module.scss | 9→6 lines | ~61 |
+| 01:14 | Edited src/app/masa/MasaClient.tsx | 23→25 lines | ~202 |
+| 01:17 | Edited src/app/masa/MasaClient.tsx | 3→3 lines | ~48 |
+| 01:18 | Edited src/app/[locale]/table/menu.module.scss | expanded (+11 lines) | ~164 |
+| 01:26 | Edited src/app/[locale]/table/menu.module.scss | 4→4 lines | ~18 |
+| 01:26 | Edited src/app/[locale]/table/menu.module.scss | 7→7 lines | ~38 |
+| 01:26 | Edited src/app/[locale]/table/menu.module.scss | 3→3 lines | ~12 |
+
+| 00:10 | UX redesign: QR menu (table/masa) rebuilt clean & mobile-first via ux-architect skill | menu.module.scss, MasaClient/Masthead/MenuList/Drawer/SessionOverlay/CategoryBar, masaCategoryIcons, masaTranslations, globals.css, table/page.jsx | tsc 0 / eslint 0 / 89 tests pass / build OK; verified mobile+tablet | ~30k |
+| 00:11 | Fixed sticky nav (#tst-app overflow) + wizard transparent bg (missing CSS vars) + nested <main> | globals.css, menu.module.scss, MasaClient.tsx | bug-039, bug-040 logged | ~3k |
+| 01:29 | Edited src/app/[locale]/table/menu.module.scss | 2→3 lines | ~76 |
+| 01:29 | Created src/app/[locale]/table/page.jsx | — | ~151 |
+| 01:33 | Session end: 30 writes across 12 files (menu.module.scss, masaCategoryIcons.tsx, MasaCategoryBar.tsx, MasaMasthead.tsx, MasaMenuList.tsx) | 17 reads | ~13200 tok |
+
+## Session: 2026-06-20 19:31
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-06-22 13:29
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-07-03 14:25
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|

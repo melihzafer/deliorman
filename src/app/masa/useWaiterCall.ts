@@ -12,6 +12,12 @@ interface UseWaiterCallParams {
   token: string;
 }
 
+function formatCooldown(seconds: number): string {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
+}
+
 export function useWaiterCall({ blockSession, locale, nowMs, tableId, token }: UseWaiterCallParams) {
   const [callState, setCallState] = useState<"idle" | "loading">("idle");
   const [feedback, setFeedback] = useState<WaiterFeedback>(null);
@@ -63,7 +69,10 @@ export function useWaiterCall({ blockSession, locale, nowMs, tableId, token }: U
         const until = Date.now() + retryAfterSeconds * 1000;
         setCooldownUntil(until);
         sessionStorage.setItem(cooldownKey, String(until));
-        showFeedback("error", t(locale, "retryLater"));
+        showFeedback(
+          "error",
+          t(locale, "retryLaterWithTime").replace("{time}", formatCooldown(retryAfterSeconds)),
+        );
         return;
       }
 
@@ -75,7 +84,10 @@ export function useWaiterCall({ blockSession, locale, nowMs, tableId, token }: U
       const until = Date.now() + COOLDOWN_MS;
       setCooldownUntil(until);
       sessionStorage.setItem(cooldownKey, String(until));
-      showFeedback("success", t(locale, "success"));
+      showFeedback(
+        "success",
+        t(locale, "successWithCooldown").replace("{time}", formatCooldown(COOLDOWN_MS / 1000)),
+      );
     } catch (err) {
       console.error("[masa] waiter call failed:", err);
       showFeedback("error", t(locale, "retryLater"));

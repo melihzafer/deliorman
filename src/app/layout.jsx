@@ -160,6 +160,9 @@ export const metadata = {
 /** @type {import('next').Viewport} */
 export const viewport = {
   themeColor: '#F39C12',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 }
 
 const Layouts = async ({ children }) => {

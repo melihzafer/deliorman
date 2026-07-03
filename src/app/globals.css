@@ -11,6 +11,12 @@ body.kiosk-mode .tst-main-overlay {
 body.kiosk-mode {
   background-image: none !important;
 }
+/* The global #tst-app wrapper sets overflow:hidden to stop horizontal bleed,
+   but that makes it a scroll container and breaks position:sticky for the
+   kiosk header + category bar. Relax it on the kiosk page only. */
+body.kiosk-mode #tst-app {
+  overflow: visible !important;
+}
 
 /* ===========================
    CSS Custom Properties

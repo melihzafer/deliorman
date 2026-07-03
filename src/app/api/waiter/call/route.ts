@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { escapeHtml } from '@library/htmlUtils';
+import { getClientIp } from '@library/clientIp';
+import { checkRateLimit } from '@library/rate-limit';
 import {
   deactivateSession,
   findLastCallForTable,
@@ -42,6 +44,19 @@ export async function POST(request: Request): Promise<NextResponse> {
   const message = typeof body.message === 'string' ? body.message.trim().slice(0, 240) : '';
   if (!token || !tableId) {
     return NextResponse.json({ error: 'token and tableId required' }, { status: 400 });
+  }
+
+  const { ip: clientIp } = getClientIp(request);
+  const tokenRate = checkRateLimit(`waiter-token:${token}`, { windowSeconds: 180, max: 1 });
+  const ipRate = checkRateLimit(`waiter-ip:${clientIp}`, { windowSeconds: 60, max: 30 });
+  if (tokenRate.limited || ipRate.limited) {
+    return NextResponse.json(
+      {
+        error: 'Lütfen biraz bekleyin',
+        retryAfterSeconds: Math.max(tokenRate.retryAfterSeconds, ipRate.retryAfterSeconds),
+      },
+      { status: 429 },
+    );
   }
 
   if (isVipToken(token)) {
