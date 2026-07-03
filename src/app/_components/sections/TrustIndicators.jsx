@@ -35,7 +35,7 @@ const TrustIndicators = () => {
       <div className="container">
         <div className={styles.grid}>
           {indicators.map((item, index) => (
-            <AnimateOnScroll key={`trust-${index}`} delay={index * 0.1}>
+            <AnimateOnScroll key={`trust-${index}`} delay={index * 0.1} initialVisible={true}>
               <div className={styles.item}>
                 <div className={styles.icon}>
                   <i className={item.icon}></i>

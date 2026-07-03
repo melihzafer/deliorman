@@ -28,16 +28,15 @@ import "@styles/css/plugins/font-awesome.min.css";
 // (moved Swiper custom element registration to a client-only component)
 
 import '@styles/scss/style.scss';
+import "./tailwind.css";
 
 import AppData from "@data/app.json";
 import StructuredData from "@components/StructuredData";
 import ClientBoot from "@components/ClientBoot";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { CartProvider } from "@library/CartContext";
 import LazyLayoutWidgets from "@components/common/LazyLayoutWidgets";
 import MobileBottomNav from "@components/common/MobileBottomNav";
-import OrderSummary from "@components/order/OrderSummary";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
@@ -161,6 +160,9 @@ export const metadata = {
 /** @type {import('next').Viewport} */
 export const viewport = {
   themeColor: '#F39C12',
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 }
 
 const Layouts = async ({ children }) => {
@@ -206,12 +208,9 @@ const Layouts = async ({ children }) => {
           <NextIntlClientProvider locale={locale} messages={messages}>
             {/* Lazy-loaded non-critical UI widgets (scroll progress, back-to-top, feedback) */}
             <LazyLayoutWidgets />
-            <CartProvider>
               <main id="main-content" tabIndex={-1}>
                 {children}
               </main>
-              <OrderSummary />
-            </CartProvider>
             <MobileBottomNav />
           </NextIntlClientProvider>
         </div>

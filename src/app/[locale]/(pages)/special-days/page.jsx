@@ -2,24 +2,24 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 import { Link } from "@/src/i18n/navigation";
 import PageBanner from "@components/PageBanner";
 import DarkSection from "@components/DarkSection";
-import { getLegacyPageCopy } from "../pageCopy";
 
 const SpecialDays = () => {
-  const locale = useLocale();
-  const copy = getLegacyPageCopy("specialDays", locale);
+  const t = useTranslations("components.specialDays");
+  const tc = useTranslations("common");
   const [imageError, setImageError] = useState(false);
+
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
         <PageBanner 
-          pageTitle={copy.pageTitle}
-          description={copy.pageDescription}
-          breadTitle={copy.breadTitle}
+          pageTitle={t("pageTitle")}
+          description={t("pageDescription")}
+          breadTitle={t("breadTitle")}
         />
       </div>
       
@@ -34,12 +34,11 @@ const SpecialDays = () => {
                   <div className="text-center tst-mb-60">
                     <div className="tst-suptitle tst-suptitle-center tst-mb-15" style={{color: '#f39c12'}}>
                       <i className="fas fa-glass-cheers" style={{marginRight: '8px'}}></i>
-                      Празненства и събития
+                      {t("subtitle")}
                     </div>
-                    <h3 className="tst-mb-30">Вашите специални моменти са нашият приоритет</h3>
+                    <h3 className="tst-mb-30">{t("title")}</h3>
                     <p className="tst-text tst-text-lg">
-                      В ресторант Делиорман организираме незабравими празненства за всички ваши специални дни - 
-                      рожденни дни, годежи, семейни тържества и корпоративни събития.
+                      {t("description")}
                     </p>
                   </div>
                 </div>
@@ -52,9 +51,9 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-birthday-cake" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Рожденни дни</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>{t("events.birthdays")}</h5>
                     <p className="tst-text">
-                      Направете вашия рожден ден незабравим с нашето специално меню и атмосфера
+                      {t("events.birthdaysDesc")}
                     </p>
                   </div>
                 </div>
@@ -63,9 +62,9 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-ring" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Годежи и сватби</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>{t("events.engagements")}</h5>
                     <p className="tst-text">
-                      Празнувайте вашата любов с перфектна организация и изискано меню
+                      {t("events.engagementsDesc")}
                     </p>
                   </div>
                 </div>
@@ -74,9 +73,9 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-users" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Семейни тържества</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>{t("events.family")}</h5>
                     <p className="tst-text">
-                      Съберете цялото семейство за специални моменти в топла и уютна обстановка
+                      {t("events.familyDesc")}
                     </p>
                   </div>
                 </div>
@@ -85,9 +84,9 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-briefcase" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Корпоративни събития</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>{t("events.corporate")}</h5>
                     <p className="tst-text">
-                      Професионално обслужване за бизнес срещи, тийм билдинги и коктейли
+                      {t("events.corporateDesc")}
                     </p>
                   </div>
                 </div>
@@ -96,9 +95,9 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-graduation-cap" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Дипломирания и абитуриенти</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>{t("events.graduation")}</h5>
                     <p className="tst-text">
-                      Празнувайте успехите с приятели и близки в стилна обстановка
+                      {t("events.graduationDesc")}
                     </p>
                   </div>
                 </div>
@@ -107,9 +106,9 @@ const SpecialDays = () => {
                     <div className="tst-icon-frame tst-mb-20">
                       <i className="fas fa-star-and-crescent" style={{fontSize: '56px', color: '#f39c12'}}></i>
                     </div>
-                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>Религиозни празници</h5>
+                    <h5 className="tst-mb-15" style={{color: '#05232B'}}>{t("events.religious")}</h5>
                     <p className="tst-text">
-                      Специални менюта за Мевлид и други важни религиозни дни
+                      {t("events.religiousDesc")}
                     </p>
                   </div>
                 </div>
@@ -129,29 +128,28 @@ const SpecialDays = () => {
                   }}>
                     <div className="tst-suptitle tst-mb-15" style={{color: '#f39c12'}}>
                       <i className="fas fa-paint-brush" style={{marginRight: '8px'}}></i>
-                      Декорация
+                      {t("decorationSection.subtitle")}
                     </div>
-                    <h4 className="tst-mb-20" style={{color: '#05232B'}}>Перфектната атмосфера за вашето събитие</h4>
+                    <h4 className="tst-mb-20" style={{color: '#05232B'}}>{t("decorationSection.title")}</h4>
                     <p className="tst-text tst-mb-20">
-                      <strong>Украсата е от нас!</strong> Нашият екип се грижи за цялостната декорация на пространството 
-                      според вашите предпочитания и темата на събитието.
+                      {t("decorationSection.description")}
                     </p>
                     <ul style={{listStyle: 'none', padding: 0}}>
                       <li className="tst-text tst-mb-10">
                         <i className="fas fa-check-circle" style={{color: '#f39c12', marginRight: '10px'}}></i>
-                        Балони и цветни аранжименти
+                        {t("decorationSection.balloons")}
                       </li>
                       <li className="tst-text tst-mb-10">
                         <i className="fas fa-check-circle" style={{color: '#f39c12', marginRight: '10px'}}></i>
-                        Тематична украса по желание
+                        {t("decorationSection.themed")}
                       </li>
                       <li className="tst-text tst-mb-10">
                         <i className="fas fa-check-circle" style={{color: '#f39c12', marginRight: '10px'}}></i>
-                        Специално осветление
+                        {t("decorationSection.lighting")}
                       </li>
                       <li className="tst-text tst-mb-10">
                         <i className="fas fa-check-circle" style={{color: '#f39c12', marginRight: '10px'}}></i>
-                        Персонализирана украса на масите
+                        {t("decorationSection.tables")}
                       </li>
                     </ul>
                   </div>
@@ -171,7 +169,7 @@ const SpecialDays = () => {
                     ) : (
                       <Image 
                         src="/img/decoration_footage/ukrasa1.webp"
-                        alt="Декорация за специални дни"
+                        alt={t("decorationSection.imageAlt")}
                         fill
                         sizes="(max-width: 768px) 100vw, 50vw"
                         style={{ objectFit: 'cover' }}
@@ -189,12 +187,11 @@ const SpecialDays = () => {
                     <div className="text-center tst-mb-40">
                       <div className="tst-suptitle tst-white-2 tst-mb-15">
                         <i className="fas fa-star-and-crescent" style={{marginRight: '10px'}}></i>
-                        Специално меню
+                        {t("mevlid.subtitle")}
                       </div>
-                      <h3 className="tst-white-2 tst-mb-20">Мевлид и религиозни празници</h3>
+                      <h3 className="tst-white-2 tst-mb-20">{t("mevlid.title")}</h3>
                       <p className="tst-text-lg tst-white-2">
-                        Организираме специални порции за Мевлид и други религиозни дни 
-                        с традиционно меню и професионално обслужване
+                        {t("mevlid.description")}
                       </p>
                     </div>
 
@@ -226,9 +223,9 @@ const SpecialDays = () => {
                               <i className="fas fa-drumstick-bite" style={{fontSize: '20px'}}></i>
                             </div>
                             <div>
-                              <h5 className="tst-white-2 tst-mb-10">Пилешко бутче с гарнитура</h5>
+                              <h5 className="tst-white-2 tst-mb-10">{t("mevlid.chickenLeg")}</h5>
                               <p className="tst-text tst-white-2" style={{opacity: 0.9, fontSize: '14px', marginBottom: 0}}>
-                                Сочно пилешко бутче с ориз, варени картофи, чушка и питка
+                                {t("mevlid.chickenLegDesc")}
                               </p>
                             </div>
                           </div>
@@ -260,9 +257,9 @@ const SpecialDays = () => {
                               <i className="fas fa-utensils" style={{fontSize: '20px'}}></i>
                             </div>
                             <div>
-                              <h5 className="tst-white-2 tst-mb-10">Пилешка пържола с гарнитура</h5>
+                              <h5 className="tst-white-2 tst-mb-10">{t("mevlid.chickenSteak")}</h5>
                               <p className="tst-text tst-white-2" style={{opacity: 0.9, fontSize: '14px', marginBottom: 0}}>
-                                Пилешка пържола с ориз, варени картофи, чушка и питка
+                                {t("mevlid.chickenSteakDesc")}
                               </p>
                             </div>
                           </div>
@@ -280,7 +277,7 @@ const SpecialDays = () => {
                       }}>
                         <i className="fas fa-info-circle" style={{fontSize: '24px', color: '#f39c12', marginBottom: '10px', display: 'block'}}></i>
                         <p className="tst-text-lg tst-white-2" style={{marginBottom: 0}}>
-                          <strong>Менюто може да бъде променено според предпочитанията на клиента</strong>
+                          <strong>{t("mevlid.customNote")}</strong>
                         </p>
                       </div>
                     </div>
@@ -304,7 +301,7 @@ const SpecialDays = () => {
                         onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#f39c12'}
                       >
                         <i className="fas fa-calendar" style={{marginRight: '10px'}}></i>
-                        Резервирайте маса
+                        <span>{tc("reserveTable")}</span>
                       </Link>
                       
                       <p className="tst-text tst-white-2 mt-3" style={{opacity: 0.8}}>

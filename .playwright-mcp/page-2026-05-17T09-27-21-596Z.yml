@@ -1,0 +1,12 @@
+- generic [active] [ref=e1]:
+  - link "Прескочи към съдържанието" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - main [ref=e5]:
+      - main [ref=e6]:
+        - generic [ref=e9]:
+          - img [ref=e10]
+          - heading "Проверяваме QR сесията..." [level=1] [ref=e12]
+    - text:     
+  - button "Open Next.js Dev Tools" [ref=e18] [cursor=pointer]:
+    - img [ref=e19]

@@ -20,6 +20,7 @@ const ContactForm = () => {
           first_name: "",
           last_name: "",
           message: "",
+          company: "",
           privacy_consent: false,
         }}
         validateOnChange={false}
@@ -66,6 +67,7 @@ const ContactForm = () => {
           data.append("email", values.email);
           data.append("phone", values.phone);
           data.append("message", values.message);
+          data.append("company", values.company);
           data.append(
             "privacy_consent",
             values.privacy_consent ? "true" : "false"
@@ -115,6 +117,17 @@ const ContactForm = () => {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit} id="contactForm">
+            {/* Honeypot anti-spam field: hidden from users, bots fill it */}
+            <input
+              type="text"
+              name="company"
+              tabIndex={-1}
+              autoComplete="off"
+              onChange={handleChange}
+              value={values.company || ""}
+              style={{ position: "absolute", left: "-9999px", height: 0, width: 0, opacity: 0 }}
+              aria-hidden="true"
+            />
             <div className="row">
               <div className="col-lg-6">
                 <input
@@ -302,7 +315,7 @@ const ContactForm = () => {
               disabled={isSubmitting}
               style={{ marginLeft: "auto", marginRight: "auto" }}
             >
-              {isSubmitting ? t("submitting") : t("submit")}
+              <span>{isSubmitting ? t("submitting") : t("submit")}</span>
             </button>
 
             {submitStatus.message && (

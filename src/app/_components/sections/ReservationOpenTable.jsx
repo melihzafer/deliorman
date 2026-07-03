@@ -1,4 +1,4 @@
-import Data from "@data/sections/reservation-opentable.json";
+import Data from "@data/sections/reservation/reservation-opentable.json";
 import OpenTableForm from "@components/forms/OpenTableForm";
 
 const ReservationOpenTableSection = () => {

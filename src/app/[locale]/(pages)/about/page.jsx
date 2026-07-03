@@ -1,8 +1,6 @@
 import React from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { getSortedPostsData } from "@library/posts";
-
 import AppData from "@data/app.json";
 
 import ScrollHint from "@layouts/scroll-hint/Index";
@@ -32,7 +30,6 @@ export async function generateMetadata() {
 }
 
 async function About() {
-  const posts = await getAllPosts();
   const t = await getTranslations("about");
 
   return (
@@ -76,13 +73,11 @@ async function About() {
                   {/* about text end */}
                 </div>
               </div>
-              {/* <AwardsSection /> Awards will be added soon!! */}
+              
               <PromoVideoSection />
               <Divider />
               <FeaturesSection />
               <Divider />
-              {/* <TeamSection />
-              <Divider /> */}
               
             </div>
           </div>
@@ -95,15 +90,6 @@ async function About() {
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-               {/* <TestimonialSlider /> 
-               <Divider onlyBottom={0} />
-              <Suspense fallback={<div>Зареждане...</div>}>
-                <LatestPostsSection posts={posts} />
-              </Suspense>
-              <Divider onlyBottom={0} /> 
-              <SubscribeSection /> */}
-
-
               <ScheduleSection />
               
               <Divider onlyBottom={0} />
@@ -116,8 +102,3 @@ async function About() {
   );
 }
 export default About;
-
-async function getAllPosts() {
-  const allPosts = getSortedPostsData();
-  return allPosts;
-}

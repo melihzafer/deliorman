@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const ServiceItem = ({ content, button, image, rowReverse = 0 }) => {    
@@ -13,7 +14,7 @@ const ServiceItem = ({ content, button, image, rowReverse = 0 }) => {
             <h3 className="tst-mb-30" dangerouslySetInnerHTML={{__html : content.title}} />
             <div className="tst-text tst-mb-30" dangerouslySetInnerHTML={{__html : content.description}} />
 
-            <Link href={button.link} className="tst-btn tst-anima-link tst-mr-30">{button.label}</Link>
+            <Link href={button.link} className="tst-btn tst-anima-link tst-mr-30"><span>{button.label}</span></Link>
           </div>
           {/* service text end */}
 
@@ -23,7 +24,7 @@ const ServiceItem = ({ content, button, image, rowReverse = 0 }) => {
 
           {/* service img */}
           <div className="tst-about-cover tst-mb-60">
-            <img src={image.url} alt={image.alt} className="tst-cover" />
+            <Image src={image.url} alt={image.alt} fill className="tst-cover" />
           </div>
           {/* service img end */}
 

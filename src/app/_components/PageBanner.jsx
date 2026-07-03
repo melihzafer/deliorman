@@ -63,15 +63,16 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
           </div>
         </div>
         ) : (
-        <div className="tst-cover-frame"> 
-          <Image 
-            src="/img/outdoor_footage/IMG_9339.webp" 
-            alt={tc("bannerImageAlt")} 
+        <div className="tst-cover-frame">
+          <Image
+            src="/img/outdoor_footage/IMG_9339.webp"
+            alt={tc("bannerImageAlt")}
             fill
             priority
             sizes="100vw"
-            className="tst-cover tst-parallax"
+            className="tst-cover"
             style={{ objectFit: 'cover' }}
+            suppressHydrationWarning
           />
           <div className="tst-overlay"></div>
         </div>
@@ -79,7 +80,7 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
         <div className={showMap ? `tst-banner-content-frame tst-with-map ${mapLock ? "tst-active": ""}` : "tst-banner-content-frame"}>
           <div className="container">
             <div className="tst-main-title-frame">
-              <div className={showMap ? "tst-main-title" : "tst-main-title text-center"}>
+              <div className={showMap ? "tst-main-title" : "tst-main-title text-center"} suppressHydrationWarning>
                 <div className={`tst-suptitle ${showMap ? "": "tst-suptitle-center"} tst-suptitle-mobile-center tst-text-shadow tst-white-2 tst-mb-15`} dangerouslySetInnerHTML={{__html : pageSubTitle}} />
                 <h1 className="tst-white-2 tst-text-shadow tst-mb-30" dangerouslySetInnerHTML={{__html : resolvedPageTitle}} />
                 <div className="tst-text tst-text-shadow tst-text-lg tst-white-2 tst-mb-30" dangerouslySetInnerHTML={{__html : description}} />
@@ -88,16 +89,6 @@ const PageBanner = ({ pageTitle, pageSubTitle = false, description, breadTitle, 
                     {asPath.indexOf('/blog/') != -1 && asPath.indexOf('/blog/page/') == -1 &&
                     <li>
                       <Link href="/blog">{tn("blog")}</Link>
-                    </li>
-                    }
-                    {asPath.indexOf('/products') != -1 &&
-                    <li>
-                      <Link href="/shop">{tn("shop")}</Link>
-                    </li>
-                    }
-                    {asPath.endsWith('/product') == 1 &&
-                    <li>
-                      <Link href="/products">{tn("products")}</Link>
                     </li>
                     }
                     <li className="tst-active"><a dangerouslySetInnerHTML={{__html : clearBreadTitle}} /></li>

@@ -361,6 +361,7 @@ We appreciate security researchers who responsibly disclose vulnerabilities:
 - Implemented rate limiting
 - Enhanced Firebase security rules
 - Added automated dependency scanning
+- Added VIP / Admin secret link (`?vip=...`) for the QR menu. The link is a bearer secret bound to `VIP_MENU_SECRET` (server-only, min 24 chars, timing-safe compared). Rotate the env var to invalidate every link at once; in-memory VIP sessions are dropped on server restart, so the next ping silently re-authenticates the visitor.
 
 ### Version 1.5.0
 - Initial security policy

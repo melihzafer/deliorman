@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef } from "react";
-import { useTranslations } from "next-intl";
+import { useRef, useMemo } from "react";
+import { useTranslations, useLocale } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper";
-import Data from "@data/testimonials.json";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { getLocalizedTestimonialsData } from "@data/getLocalizedTestimonialsData";
 import AnimateOnScroll from "@components/common/AnimateOnScroll";
 import styles from "./Testimonials.module.scss";
 
@@ -26,9 +26,12 @@ const StarRating = ({ rating }) => {
 };
 
 const Testimonials = () => {
+  const locale = useLocale();
   const t = useTranslations('components.testimonials');
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const localizedData = useMemo(() => getLocalizedTestimonialsData(locale), [locale]);
 
   const handleSwiper = (swiper) => {
     if (swiper.params.navigation && prevRef.current && nextRef.current) {
@@ -41,13 +44,13 @@ const Testimonials = () => {
 
   return (
     <div className={styles.testimonials}>
-      <AnimateOnScroll>
+      <AnimateOnScroll initialVisible={true}>
         <div className={styles.header}>
           <div className="tst-suptitle tst-suptitle-center tst-mb-15">
-            {Data.subtitle}
+            {localizedData.subtitle}
           </div>
-          <h3 className="tst-mb-30" dangerouslySetInnerHTML={{ __html: Data.title }} />
-          <p className="tst-text">{Data.description}</p>
+          <h3 className="tst-mb-30" dangerouslySetInnerHTML={{ __html: localizedData.title }} />
+          <p className="tst-text">{localizedData.description}</p>
         </div>
       </AnimateOnScroll>
 
@@ -81,7 +84,7 @@ const Testimonials = () => {
         aria-roledescription="carousel"
         aria-label={t('title')}
       >
-        {Data.items.map((item, key) => (
+        {localizedData.items.map((item, key) => (
           <SwiperSlide key={`testimonial-${key}`}>
             <div className={styles.card}>
               <div className={styles.quoteIcon}>&ldquo;</div>

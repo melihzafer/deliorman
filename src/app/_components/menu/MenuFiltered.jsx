@@ -1,18 +1,20 @@
 "use client";
 
-import { useState, useRef, useTransition, useCallback } from "react";
+import { useState, useRef, useTransition, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { SliderProps } from "@common/sliderProps";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MenuItem from "@components/menu/MenuItem";
 import styles from "./MenuFiltered.module.scss";
 
-/**
- * MenuFiltered - Category-based menu with swipeable slides
- * Uses useTransition for non-blocking category switches (~100ms INP reduction)
- */
 const MenuFiltered = ({ heading = 0, categories }) => {
-  const [activeCategory, setActiveCategory] = useState(0);
+  const searchParams = useSearchParams();
+  const initialCategorySlug = searchParams.get("category");
+  const initialIndex = initialCategorySlug
+    ? categories.findIndex((c) => c.slug === initialCategorySlug)
+    : 0;
+  const [activeCategory, setActiveCategory] = useState(initialIndex >= 0 ? initialIndex : 0);
   const [isPending, startTransition] = useTransition();
   const swiperRef = useRef(null);
   const navRef = useRef(null);
@@ -23,6 +25,12 @@ const MenuFiltered = ({ heading = 0, categories }) => {
     (category) => translatedCategories?.[category.slug] || category.name,
     [translatedCategories]
   );
+
+  useEffect(() => {
+    if (initialIndex >= 0 && swiperRef.current?.swiper) {
+      swiperRef.current.swiper.slideTo(initialIndex >= 0 ? initialIndex : 0);
+    }
+  }, []);
 
   // Handle category click - wrapped in useTransition for non-blocking UI
   const handleCategoryClick = useCallback((index) => {

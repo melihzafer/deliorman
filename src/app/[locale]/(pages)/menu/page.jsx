@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { getLocale, getTranslations } from "next-intl/server";
 
 import { getLocalizedMenuData } from "@data/getLocalizedMenuData";
@@ -8,6 +8,7 @@ import ScrollHint from "@layouts/scroll-hint/Index";
 import PageBanner from "@components/PageBanner";
 import NewSpecialtiesCTA from "@components/sections/NewSpecialtiesCTALazy";
 import MenuFiltered from "@components/menu/MenuFiltered";
+import MenuAIAssistant from "@components/menu/ai/MenuAIAssistant";
 import { buildAlternates } from "@/src/i18n/seo";
 
 export async function generateMetadata() {
@@ -47,9 +48,13 @@ const Menu1 = async () => {
             <div className="container tst-p-60-0">
               <ScrollHint />
 
-              <MenuFiltered
-                categories={menuData.categories} 
-              />
+              <MenuAIAssistant />
+
+              <Suspense fallback={<div style={{ minHeight: '200px' }} />}>
+                <MenuFiltered
+                  categories={menuData.categories}
+                />
+              </Suspense>
 
             </div>
           </div>

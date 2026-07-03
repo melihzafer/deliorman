@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screenshots — Deliorman</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f0f; color: #eee; font-family: system-ui, sans-serif; padding: 2rem; }
+  h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  p { color: #999; margin-bottom: 2rem; }
+  h2 { font-size: 1.1rem; margin: 2rem 0 1rem; padding-top: 1rem; border-top: 1px solid #222; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+  .grid-full { display: grid; grid-template-columns: repeat(auto-fill, minmax(640px, 1fr)); gap: 1.5rem; }
+  .card { background: #1a1a1a; border-radius: 8px; overflow: hidden; }
+  .card img { width: 100%; display: block; }
+  .card .label { padding: 0.75rem; font-size: 0.8rem; color: #aaa; }
+  .card .label strong { color: #fff; display: block; margin-bottom: 0.25rem; }
+  .fiverr-card { background: #1a1a1a; border-radius: 8px; overflow: hidden; }
+  .fiverr-card img { width: 100%; display: block; }
+  .download { display: inline-block; background: #1dbf73; color: #fff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; margin: 0.25rem; }
+  .download:hover { background: #19a564; }
+  .sub { font-size: 0.75rem; color: #666; }
+</style>
+</head>
+<body>
+<h1>📸 Deliorman — Screenshot Gallery</h1>
+<p>Ready for Fiverr &middot; Fiverr mockups: 1280×769 (Fiverr recommended)</p>
+
+<h2>🎯 Fiverr-Ready Mockups (1280×769)</h2>
+<p style="color:#1dbf73">✓ Optimized dimensions, branding header, device frame — upload directly.</p>
+<div class="grid-full">
+  <div class="fiverr-card">
+    <img src="fiverr/01-homepage-desk-fiverr.jpg" alt="Homepage">
+    <div class="label">
+      <strong>Restaurant Homepage</strong>
+      <a class="download" href="fiverr/01-homepage-desk-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/01-homepage-mob-fiverr.jpg" alt="Mobile Homepage">
+    <div class="label">
+      <strong>Mobile Homepage</strong>
+      <a class="download" href="fiverr/01-homepage-mob-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/02-menu-desk-fiverr.jpg" alt="Menu">
+    <div class="label">
+      <strong>Full Menu</strong>
+      <a class="download" href="fiverr/02-menu-desk-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/02-menu-mob-fiverr.jpg" alt="Mobile Menu">
+    <div class="label">
+      <strong>Mobile Menu</strong>
+      <a class="download" href="fiverr/02-menu-mob-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/10-masa-digital-menu-mob-fiverr.jpg" alt="Masa QR Menu">
+    <div class="label">
+      <strong>Masa — QR Digital Menu</strong>
+      <a class="download" href="fiverr/10-masa-digital-menu-mob-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/11-qr-menu-tool-desk-fiverr.jpg" alt="QR Code Generator">
+    <div class="label">
+      <strong>QR Code Generator</strong>
+      <a class="download" href="fiverr/11-qr-menu-tool-desk-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/05-gallery-desk-fiverr.jpg" alt="Gallery">
+    <div class="label">
+      <strong>Photo Gallery</strong>
+      <a class="download" href="fiverr/05-gallery-desk-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/06-reservation-desk-fiverr.jpg" alt="Reservation">
+    <div class="label">
+      <strong>Online Reservations</strong>
+      <a class="download" href="fiverr/06-reservation-desk-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/03-about-desk-fiverr.jpg" alt="About">
+    <div class="label">
+      <strong>Our Story</strong>
+      <a class="download" href="fiverr/03-about-desk-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+  <div class="fiverr-card">
+    <img src="fiverr/07-services-desk-fiverr.jpg" alt="Services">
+    <div class="label">
+      <strong>Catering &amp; Events</strong>
+      <a class="download" href="fiverr/07-services-desk-fiverr.jpg" download>Download</a>
+    </div>
+  </div>
+</div>
+
+<h2>🖥️ Desktop Frames (raw + mockup)</h2>
+<div class="grid" id="desktop"></div>
+
+<h2>📱 Mobile Frames (raw + mockup)</h2>
+<div class="grid" id="mobile"></div>
+
+<script>
+  const mockups = [
+    { n: '01-homepage', l: 'Homepage' },
+    { n: '02-menu', l: 'Menu' },
+    { n: '03-about', l: 'About' },
+    { n: '04-contact', l: 'Contact' },
+    { n: '05-gallery', l: 'Gallery' },
+    { n: '06-reservation', l: 'Reservation' },
+    { n: '07-services', l: 'Services' },
+    { n: '08-special-days', l: 'Special Days' },
+    { n: '09-lunch-menu', l: 'Lunch Menu' },
+    { n: '10-masa-digital-menu', l: 'Masa — QR Digital Menu' },
+    { n: '11-qr-menu-tool', l: 'QR Code Generator' },
+    { n: '12-feedback', l: 'Feedback' },
+  ];
+
+  function render(containerId, suffix) {
+    const container = document.getElementById(containerId);
+    mockups.forEach(m => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<img src="mockups/${m.n}-${suffix}-mockup.png" alt="${m.l}" loading="lazy"><div class="label"><strong>${m.l}</strong><span class="sub">${m.n}-${suffix}-mockup.png</span></div>`;
+      container.appendChild(card);
+    });
+  }
+
+  render('desktop', 'desktop');
+  render('mobile', 'mobile');
+</script>
+</body>
+</html>

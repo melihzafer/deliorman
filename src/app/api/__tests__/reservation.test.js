@@ -8,7 +8,7 @@ import { POST, GET } from '../reservation/route';
 // Mocks
 // ---------------------------------------------------------------------------
 
-jest.mock('@library/client-ip', () => ({
+jest.mock('@library/clientIp', () => ({
   getClientIp: jest.fn(() => ({ ip: 'localhost', source: 'dev-fallback', chain: [] })),
 }));
 

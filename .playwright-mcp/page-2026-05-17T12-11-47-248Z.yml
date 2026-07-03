@@ -1,0 +1,58 @@
+- generic [active] [ref=e1]:
+  - link "Прескочи към съдържанието" [ref=e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - main [ref=e5]:
+      - main [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e8]:
+            - generic [ref=e9]:
+              - generic [ref=e10]:
+                - button "Отвори меню" [ref=e11] [cursor=pointer]
+                - generic [ref=e15]: Том I · Бр. 3
+              - generic [ref=e16]: Следобедно издание
+              - generic [ref=e17]: Всекидневник
+            - heading "Делиорман Дигитално меню" [level=1] [ref=e18]:
+              - img "Делиорман" [ref=e20]
+              - generic [ref=e21]: Дигитално меню
+            - paragraph [ref=e22]: ✦ Ежедневник на вкуса и трапезата ✦
+            - paragraph [ref=e23]: Основано в Самуил · Област Разград · Кухня без компромис
+            - generic "Фото кореспонденция от кухнята" [ref=e24]:
+              - img [ref=e25]
+              - img [ref=e26]
+              - img [ref=e27]
+            - generic [ref=e28]:
+              - generic [ref=e29]: неделя, 17 май 2026 г.
+              - generic [ref=e30]: Сезонно меню
+              - generic [ref=e31]: Маса № 3
+              - generic [ref=e32]: Цени в евро · фиксиран курс 1 € = 1.95583 лв.
+          - generic [ref=e33]: Проверяваме QR сесията...
+    - navigation "Мобилна навигация" [ref=e34]:
+      - list [ref=e35]:
+        - listitem [ref=e36]:
+          - link "Начало" [ref=e37] [cursor=pointer]:
+            - /url: /
+            - generic [ref=e39]: 
+            - generic [ref=e40]: Начало
+        - listitem [ref=e41]:
+          - link "Меню" [ref=e42] [cursor=pointer]:
+            - /url: /menu
+            - generic [ref=e44]: 
+            - generic [ref=e45]: Меню
+        - listitem [ref=e46]:
+          - link "Резервация" [ref=e47] [cursor=pointer]:
+            - /url: /reservation
+            - generic [ref=e49]: 
+            - generic [ref=e50]: Резервация
+        - listitem [ref=e51]:
+          - link "Обади се" [ref=e52] [cursor=pointer]:
+            - /url: tel:+359894766273
+            - generic [ref=e54]: 
+            - generic [ref=e55]: Обади се
+        - listitem [ref=e56]:
+          - link "Галерия" [ref=e57] [cursor=pointer]:
+            - /url: /gallery
+            - generic [ref=e59]: 
+            - generic [ref=e60]: Галерия
+  - button "Open Next.js Dev Tools" [ref=e66] [cursor=pointer]:
+    - img [ref=e67]

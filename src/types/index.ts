@@ -3,7 +3,7 @@
 export interface MenuItem {
   title: string;
   amount: string;
-  price: number;
+  price: number | null;
   text: string;
 }
 

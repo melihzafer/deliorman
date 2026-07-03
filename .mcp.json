@@ -1,0 +1,29 @@
+{
+    "mcpServers":  {
+                       "firecrawl":  {
+                                         "command":  "cmd",
+                                         "args":  [
+                                                      "/c",
+                                                      "npx",
+                                                      "-y",
+                                                      "firecrawl-mcp"
+                                                  ],
+                                         "env":  {
+                                                     "FIRECRAWL_API_KEY":  "${FIRECRAWL_API_KEY}"
+                                                 }
+                                     },
+                       "browser-use":  {
+                                           "command":  "cmd",
+                                           "args":  [
+                                                        "/c",
+                                                        "npx",
+                                                        "-y",
+                                                        "mcp-browser-use"
+                                                    ]
+                                       },
+                       "context7":  {
+                                        "type":  "http",
+                                        "url":  "https://mcp.context7.com/mcp"
+                                    }
+                   }
+}

@@ -1,30 +1,5 @@
 "use client";
 
-import SwiperCore, {
-  A11y,
-  Autoplay,
-  EffectFade,
-  Keyboard,
-  Navigation,
-  Pagination,
-  Parallax,
-  FreeMode,
-} from "swiper";
-
-// Only load modules that are actually used in slider configurations
-// Removed: Grid, HashNavigation, History, Thumbs, Virtual, Scrollbar, EffectCreative, Mousewheel
-// This reduces bundle size by ~30KB
-SwiperCore.use([
-  Pagination,
-  Navigation,
-  EffectFade,
-  Autoplay,
-  Keyboard,
-  A11y,
-  Parallax,
-  FreeMode,
-]);
-
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

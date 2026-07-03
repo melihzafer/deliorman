@@ -1,11 +1,12 @@
-/.DS_Store
-/.next
+.DS_Store
+.next
 node_modules
-/studio
+studio
 .env
-<<<<<<< Updated upstream
-/performance-reports
-=======
-.vercel
 .env*.local
->>>>>>> Stashed changes
+.vercel
+performance-reports
+graphify-out/
+src/graphify-out/
+.graphify_*
+tsconfig.tsbuildinfo

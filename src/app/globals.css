@@ -1,3 +1,23 @@
+/* Kiosk mode — used by /table page to hide global nav/widgets */
+body.kiosk-mode [class*="MobileBottomNav"],
+body.kiosk-mode [class*="FAB"],
+body.kiosk-mode .tst-feedback-fab,
+body.kiosk-mode [class*="BackToTop"],
+body.kiosk-mode [class*="ScrollProgress"],
+body.kiosk-mode .tst-skip-link,
+body.kiosk-mode .tst-main-overlay {
+  display: none !important;
+}
+body.kiosk-mode {
+  background-image: none !important;
+}
+/* The global #tst-app wrapper sets overflow:hidden to stop horizontal bleed,
+   but that makes it a scroll container and breaks position:sticky for the
+   kiosk header + category bar. Relax it on the kiosk page only. */
+body.kiosk-mode #tst-app {
+  overflow: visible !important;
+}
+
 /* ===========================
    CSS Custom Properties
    (mirrors _variables.scss for theming / future dark-mode)
@@ -15,7 +35,7 @@
   --color-dark-deep: #04191d;
   --color-bg: #fcfcfc;
   --color-text: #1a2f33;
-  --color-text-light: rgba(26, 47, 51, 0.7);
+  --color-text-light: rgba(26, 47, 51, 0.85);
   --color-card: #ffffff;
   --color-border: #e5ebef;
   --color-white-l1: #f2f6f7;
@@ -34,6 +54,147 @@
   /* transitions */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
+
+  /* === SIZING: Desktop 100% baseline ===
+       Mobile overrides at ~80% are defined below in @media block */
+
+  /* Typography */
+  --font-body: 16px;
+  --font-body-line: 1.6;
+  --font-h1-sm: 36px;
+  --font-h1-md: 48px;
+  --font-h1-lg: 64px;
+  --font-h2-sm: 30px;
+  --font-h2-md: 38px;
+  --font-h2-lg: 48px;
+  --font-h3-sm: 24px;
+  --font-h3-md: 28px;
+  --font-h3-lg: 32px;
+  --font-h4-sm: 20px;
+  --font-h4-lg: 24px;
+  --font-h5: 18px;
+  --font-h6: 12px;
+  --font-text: 15px;
+  --font-text-lg: 16px;
+  --font-suptitle: 12px;
+  --font-label: 12px;
+  --font-btn: 12px;
+  --font-nav: 12px;
+  --font-input: 14px;
+
+  /* Navigation */
+  --nav-height: 80px;
+  --nav-padding-x: 30px;
+  --nav-font-size: 12px;
+  --nav-letter-spacing: 1px;
+
+  /* Buttons */
+  --btn-height: 44px;
+  --btn-lg-height: 52px;
+  --btn-icon-size: 44px;
+  --btn-padding-x: 20px;
+  --btn-font-size: 12px;
+
+  /* Forms */
+  --input-height: 50px;
+  --input-padding-x: 20px;
+  --input-font-size: 14px;
+  --input-radius: 5px;
+
+  /* Layout */
+  --content-margin: 45px;
+  --section-padding: 60px;
+  --section-padding-lg: 60px;
+  --content-radius: 10px;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 18px;
+  --space-lg: 30px;
+  --space-xl: 40px;
+  --space-2xl: 50px;
+
+  /* Logo */
+  --logo-width: 70px;
+
+  /* Swiper / Menu nav */
+  --menu-nav-gap: 0.75rem;
+  --menu-nav-font: 0.95rem;
+  --menu-nav-padding: 0.75rem 1.5rem;
+  --menu-nav-radius: 6px;
+}
+
+/* ===========================
+   Mobile & Tablet Scaling (~80%)
+   Desktop stays at 100% (original sizes above)
+   =========================== */
+@media (max-width: 991px) {
+  :root {
+    /* Typography – scaled down (min 11px for readability) */
+    --font-body: 15px;
+    --font-body-line: 1.6;
+    --font-h1-sm: 29px;
+    --font-h1-md: 36px;
+    --font-h1-lg: 38px;
+    --font-h2-sm: 24px;
+    --font-h2-md: 30px;
+    --font-h2-lg: 30px;
+    --font-h3-sm: 19px;
+    --font-h3-md: 22px;
+    --font-h3-lg: 24px;
+    --font-h4-sm: 16px;
+    --font-h4-lg: 20px;
+    --font-h5: 16px;
+    --font-h6: 11px;
+    --font-text: 14px;
+    --font-text-lg: 14px;
+    --font-suptitle: 11px;
+    --font-label: 11px;
+    --font-btn: 11px;
+    --font-nav: 11px;
+    --font-input: 13px;
+
+    /* Navigation – compact */
+    --nav-height: 64px;
+    --nav-padding-x: 24px;
+    --nav-font-size: 10px;
+    --nav-letter-spacing: 1px;
+
+    /* Buttons – compact (min 44px touch target) */
+    --btn-height: 44px;
+    --btn-lg-height: 48px;
+    --btn-icon-size: 44px;
+    --btn-padding-x: 16px;
+    --btn-font-size: 11px;
+
+    /* Forms – compact */
+    --input-height: 40px;
+    --input-padding-x: 16px;
+    --input-font-size: 12px;
+    --input-radius: 4px;
+
+    /* Layout – compact */
+    --content-margin: 10px;
+    --content-radius: 8px;
+
+    /* Spacing – compact */
+    --space-xs: 6px;
+    --space-sm: 10px;
+    --space-md: 15px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 40px;
+
+    /* Logo */
+    --logo-width: 56px;
+
+    /* Menu nav */
+    --menu-nav-gap: 0.6rem;
+    --menu-nav-font: 0.85rem;
+    --menu-nav-padding: 0.55rem 1.2rem;
+    --menu-nav-radius: 5px;
+  }
 }
 
 /* ===========================
@@ -42,22 +203,22 @@
    =========================== */
 html body .tst-menu nav ul li a,
 html body .tst-menu nav ul li ul li a {
-  color: #7e2010;
+  color: rgba(26, 47, 51, 0.85);
 }
 
 html body .tst-menu nav ul li a:hover,
 html body .tst-menu nav ul li ul li a:hover {
-  color: #7e2010;
+  color: rgba(26, 47, 51, 1);
 }
 
 html body .tst-btn,
 html body .tst-res-btn,
-html body .tst-menu-right a,
 html body .tst-cart,
 html body a.tst-btn {
   color: #7e2010;
   border-color: #7e2010;
 }
+
 
 a {
   color: #7e2010;
@@ -69,7 +230,7 @@ a:hover {
 html body .tst-menu nav ul li.current-menu-item > a,
 html body .tst-menu nav ul li.tst-active > a {
   font-weight: bold;
-  color: #7e2010;
+  color: rgba(26, 47, 51, 1);
 }
 
 /* ===========================
@@ -90,5 +251,210 @@ html body .tst-menu nav ul li.tst-active > a {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ===========================
+   Search Overlay
+   =========================== */
+.tst-search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(4, 25, 29, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 100000;
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  animation: tst-overlay-fade-in 0.2s ease;
+}
+
+@keyframes tst-overlay-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tst-search-overlay__container {
+  width: 100%;
+  max-width: 640px;
+  padding: 0 20px;
+  animation: tst-overlay-slide-down 0.25s ease;
+}
+
+@keyframes tst-overlay-slide-down {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tst-search-overlay__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tst-search-overlay__icon {
+  position: absolute;
+  left: 14px;
+  font-size: 15px;
+  color: #595959;
+  pointer-events: none;
+}
+
+.tst-search-overlay__input {
+  width: 100%;
+  padding: 14px 48px 14px 44px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--color-dark);
+  background: transparent;
+}
+
+.tst-search-overlay__input::placeholder {
+  color: #767676;
+}
+
+.tst-search-overlay__close {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 50px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  color: #595959;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+}
+
+.tst-search-overlay__close:hover {
+  color: var(--color-dark);
+}
+
+.tst-search-overlay__results {
+  margin-top: 16px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.tst-search-overlay__loading {
+  padding: 24px;
+  text-align: center;
+  color: var(--color-accent);
+  font-size: 20px;
+}
+
+.tst-search-overlay__result-item {
+  display: block;
+  padding: 12px 16px;
+  color: var(--color-dark);
+  text-decoration: none;
+  transition: background var(--transition-fast);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tst-search-overlay__result-item:last-child {
+  border-bottom: none;
+}
+
+.tst-search-overlay__result-item:hover {
+  background: var(--color-white-l1);
+}
+
+.tst-search-overlay__result-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.tst-search-overlay__result-text {
+  font-size: 12px;
+  color: var(--color-text-light);
+  line-height: 1.4;
+}
+
+.tst-search-overlay__result-price {
+  font-size: 12px;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.tst-search-overlay__result-category {
+  font-size: 11px;
+  color: #595959;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.tst-search-overlay__no-results {
+  padding: 24px;
+  text-align: center;
+  color: var(--color-text-light);
+}
+
+.tst-search-overlay__no-results p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.tst-search-overlay__view-all {
+  display: block;
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-accent);
+  text-decoration: none;
+  border-top: 2px solid var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+.tst-search-overlay__view-all:hover {
+  background: var(--color-white-l1);
+  color: var(--color-accent-hover);
+}
+
+.tst-search-overlay__section {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tst-search-overlay__section:last-of-type {
+  border-bottom: none;
+}
+
+.tst-search-overlay__section-label {
+  padding: 8px 16px 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #595959;
+  background: var(--color-white-l1);
+}
+
+@media (max-width: 768px) {
+  .tst-search-overlay {
+    padding-top: 70px;
+  }
+  .tst-search-overlay__input {
+    font-size: 14px;
+    padding: 14px 44px 14px 40px;
   }
 }

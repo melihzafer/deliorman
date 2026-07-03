@@ -2,55 +2,37 @@
 
 import Image from "next/image";
 import { useState, useMemo, useCallback, lazy, Suspense, startTransition } from "react";
+import { useTranslations } from "next-intl";
 
 // Lazy load Lightbox - only load when user clicks (reduces INP)
 const Lightbox = lazy(() => import("yet-another-react-lightbox"));
 
-const defaultCopy = {
-  eyebrow: "Украса и дизайн",
-  title: "Украсата е от нас!",
-  description:
-    "Всяко събитие заслужава прекрасна украса. Прегледайте нашите дизайни и се вдъхновете!",
-  openImageLabel: "Отвори изображение",
-  images: [
-    "Украса за събитие в ресторант Делиорман (снимка 1)",
-    "Украса за събитие в ресторант Делиорман (снимка 2)",
-    "Украса за събитие в ресторант Делиорман (снимка 3)",
-    "Украса за събитие в ресторант Делиорман (снимка 4)",
-  ],
-};
-
-const DecorationGallery = ({ copy = defaultCopy }) => {
+const DecorationGallery = () => {
+  const t = useTranslations("components.decorationGallery");
   const [isOpen, setIsOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [failedImages, setFailedImages] = useState(new Set());
-
-  const galleryCopy = {
-    ...defaultCopy,
-    ...copy,
-    images: copy?.images ?? defaultCopy.images,
-  };
 
   const images = useMemo(
     () => [
       {
         url: "/img/decoration_footage/ukrasa1.webp",
-        alt: galleryCopy.images[0] ?? defaultCopy.images[0],
+        alt: t("imageAlt", { number: 1 }),
       },
       {
         url: "/img/decoration_footage/ukrasa3.webp",
-        alt: galleryCopy.images[1] ?? defaultCopy.images[1],
+        alt: t("imageAlt", { number: 2 }),
       },
       {
         url: "/img/decoration_footage/ukrasa2.webp",
-        alt: galleryCopy.images[2] ?? defaultCopy.images[2],
+        alt: t("imageAlt", { number: 3 }),
       },
       {
         url: "/img/decoration_footage/ukrasa4.webp",
-        alt: galleryCopy.images[3] ?? defaultCopy.images[3],
+        alt: t("imageAlt", { number: 4 }),
       },
     ],
-    [galleryCopy]
+    [t]
   );
 
   const lightboxSlides = useMemo(
@@ -75,7 +57,7 @@ const DecorationGallery = ({ copy = defaultCopy }) => {
         <div className="text-center tst-mb-40">
           <div className="tst-suptitle tst-suptitle-center tst-mb-15" style={{ color: "#f39c12" }}>
             <i className="fas fa-sparkles" style={{ marginRight: "8px" }}></i>
-            {galleryCopy.eyebrow}
+            {t("eyebrow")}
           </div>
           <h3
             style={{
@@ -86,9 +68,9 @@ const DecorationGallery = ({ copy = defaultCopy }) => {
               fontSize: "32px",
             }}
           >
-            {galleryCopy.title}
+            {t("title")}
           </h3>
-          <p className="tst-text tst-text-lg tst-mb-30">{galleryCopy.description}</p>
+          <p className="tst-text tst-text-lg tst-mb-30">{t("description")}</p>
         </div>
 
         <div
@@ -135,7 +117,7 @@ const DecorationGallery = ({ copy = defaultCopy }) => {
                 e.currentTarget.style.boxShadow = "none";
               }}
               onClick={() => handleImageClick(index)}
-              aria-label={`${galleryCopy.openImageLabel}: ${image.alt}`}
+              aria-label={`${t("openImageLabel")}: ${image.alt}`}
             >
               {failedImages.has(index) ? (
                 <div

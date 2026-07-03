@@ -112,10 +112,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Company</label>
+                    <label>{t('company')}</label>
                     <input 
                         type="text" 
-                        placeholder="Company name"
+                        placeholder={t('companyPlaceholder')}
                         name="company"
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -153,7 +153,7 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>State / Province</label>
+                    <label>{t('state')}</label>
                     <input 
                         type="text" 
                         placeholder="Razgrad"
@@ -170,7 +170,7 @@ const CheckoutForm = () => {
                     <label>{t('address')}</label>
                     <input 
                         type="text" 
-                        placeholder="Your address"
+                        placeholder={t('addressPlaceholder')}
                         name="address"
                         required="required"
                         onChange={handleChange}
@@ -181,10 +181,10 @@ const CheckoutForm = () => {
                 </div>
                 <div className="col-lg-6">
                 <div className="tst-group-input">
-                    <label>Postcode</label>
+                    <label>{t('postcode')}</label>
                     <input 
                         type="text" 
-                        placeholder="00198"
+                        placeholder="7450"
                         name="postcode"
                         required="required"
                         onChange={handleChange}
@@ -236,21 +236,21 @@ const CheckoutForm = () => {
                 />
             </div>
             <div className="tst-mb-30">
-                <h5 className="tst-mb-30">Payment method</h5>
+                <h5 className="tst-mb-30">{t('paymentMethod')}</h5>
                 <ul>
                     <li className="tst-radio">
                         <input type="radio" id="option-1" name="payment_method" defaultChecked value="1" />
-                        <label htmlFor="option-1">Direct bank transfer</label>
+                        <label htmlFor="option-1">{t('bankTransfer')}</label>
                         <div className="tst-check"></div>
                     </li>
                     <li className="tst-radio">
                         <input type="radio" id="option-2" name="payment_method" value="2" />
-                        <label htmlFor="option-2">Check payments</label>
+                        <label htmlFor="option-2">{t('checkPayments')}</label>
                         <div className="tst-check"></div>
                     </li>
                     <li className="tst-radio">
                         <input type="radio" id="option-3" name="payment_method" value="3" />
-                        <label htmlFor="option-3">Cash on delivery</label>
+                        <label htmlFor="option-3">{t('cashOnDelivery')}</label>
                         <div className="tst-check"></div>
                     </li>
                 </ul>
@@ -258,7 +258,7 @@ const CheckoutForm = () => {
             {/* button */}
             <button type="submit" className="tst-btn tst-btn-with-icon tst-m-0">
                 <span className="tst-icon">
-                    <img src="/img/ui/icons/arrow.svg" alt="icon" />
+                    <i className="fas fa-arrow-right" aria-hidden="true"></i>
                 </span>
                 <span>{t('placeOrder')}</span>
             </button>

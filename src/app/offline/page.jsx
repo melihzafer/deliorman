@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import AppData from "@data/app.json";
 
 export default function OfflinePage() {
@@ -19,7 +20,7 @@ export default function OfflinePage() {
       }}
     >
       {/* Logo */}
-      <img
+      <Image
         src="/img/logo.webp"
         alt={AppData.header.logo.alt}
         width={180}

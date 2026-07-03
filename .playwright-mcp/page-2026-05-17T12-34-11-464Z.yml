@@ -1,0 +1,28 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - main [ref=e3]:
+      - main [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e6]:
+            - generic [ref=e7]:
+              - generic [ref=e8]:
+                - button "Отвори меню" [ref=e9] [cursor=pointer]
+                - generic [ref=e13]: Том I · Бр. 5
+              - generic [ref=e14]: Следобедно издание
+              - generic [ref=e15]: Всекидневник
+            - heading "Делиорман" [level=1] [ref=e16]:
+              - img "Делиорман" [ref=e18]
+            - paragraph [ref=e19]: ✦ Ежедневник на вкуса и трапезата ✦
+            - paragraph [ref=e20]: Основано в Самуил · Област Разград · Кухня без компромис
+            - generic "Фото кореспонденция от кухнята" [ref=e21]:
+              - img [ref=e22]
+              - img [ref=e23]
+              - img [ref=e24]
+            - generic [ref=e25]:
+              - generic [ref=e26]: неделя, 17 май 2026 г.
+              - generic [ref=e27]: Сезонно меню
+              - generic [ref=e28]: Маса № 5
+              - generic [ref=e29]: Цени в евро · фиксиран курс 1 € = 1.95583 лв.
+          - generic [ref=e30]: Проверяваме QR сесията...
+    - text:     
+  - alert [ref=e31]

@@ -115,12 +115,14 @@ export default async function StructuredData() {
   const foodCategorySlugs = [
     'salads',
     'hot-appetizers',
-    'soups-fish-sandwiches',
+    'soups-sandwiches',
     'pizzas',
-    'grill-and-specialties',
-    'sach-cold-appetizers-sides',
+    'grill',
+    'saj-fish-specialties',
+    'burgers',
     'new-specialties',
-    'desserts',
+    'cold-appetizers-sides',
+    'nuts-desserts',
   ]
 
   const menuSections = menuData.categories

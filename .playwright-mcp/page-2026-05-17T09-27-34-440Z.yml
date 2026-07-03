@@ -1,0 +1,120 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - main [ref=e5]:
+      - main [ref=e6]:
+        - img
+        - img
+        - img
+        - img
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - generic [ref=e24]:
+              - generic [ref=e25]: Горско издание
+              - generic [ref=e26]: Маса 3
+              - generic [ref=e27]: 17.05.2026 г.
+            - paragraph [ref=e28]: Ресторант Делиорман представя
+            - heading "Дивото горско меню" [level=1] [ref=e29]
+            - paragraph [ref=e30]: Ретро вестник за гладни пътешественици, отпечатан върху стара хартия и подправен с аромат на гора.
+          - generic [ref=e31]:
+            - paragraph [ref=e33]: Рубрики
+            - generic [ref=e34]:
+              - generic [ref=e35]: Език
+              - button "BG" [ref=e36] [cursor=pointer]
+              - button "TR" [ref=e37] [cursor=pointer]
+              - button "EN" [ref=e38] [cursor=pointer]
+          - navigation [ref=e39]:
+            - button "Топли Напитки" [ref=e40] [cursor=pointer]
+            - button "Салати" [ref=e41] [cursor=pointer]
+            - button "Аламинути" [ref=e42] [cursor=pointer]
+            - button "Супи, Пилешки Деликатеси и Сандвичи" [ref=e43] [cursor=pointer]
+            - button "Пици" [ref=e44] [cursor=pointer]
+            - button "Скара" [ref=e45] [cursor=pointer]
+            - button "Сач, Риба и Специалитети" [ref=e46] [cursor=pointer]
+            - button "Бургери" [ref=e47] [cursor=pointer]
+            - button "Нови Специалитети" [ref=e48] [cursor=pointer]
+            - button "Студени Мезета и Гарнитури" [ref=e49] [cursor=pointer]
+            - button "Ядки и Десерти" [ref=e50] [cursor=pointer]
+            - button "Ракия" [ref=e51] [cursor=pointer]
+            - button "Бели и Червени Вина" [ref=e52] [cursor=pointer]
+            - button "Бира, Сайдер и Други Напитки" [ref=e53] [cursor=pointer]
+            - button "Уиски и Водка" [ref=e54] [cursor=pointer]
+            - button "Алергени" [ref=e55] [cursor=pointer]
+          - generic [ref=e57]:
+            - complementary [ref=e58]:
+              - paragraph [ref=e59]: No. 10
+              - heading "Топли Напитки" [level=2] [ref=e60]
+              - paragraph [ref=e61]: Подбрана селекция от топли напитки за всеки момент от деня
+            - generic [ref=e62]:
+              - article [ref=e63]:
+                - generic [ref=e64]:
+                  - heading "Кафе еспресо" [level=3] [ref=e65]
+                  - generic [ref=e66]: 1,95 BGN
+                - generic [ref=e68]: 60 ml
+              - article [ref=e69]:
+                - generic [ref=e70]:
+                  - heading "Кафе \"Лаваца\" капсула" [level=3] [ref=e71]
+                  - generic [ref=e72]: 2,73 BGN
+                - generic [ref=e74]: 60 ml
+              - article [ref=e75]:
+                - generic [ref=e76]:
+                  - heading "Нес кафе" [level=3] [ref=e77]
+                  - generic [ref=e78]: 1,95 BGN
+                - generic [ref=e80]: 60 ml
+              - article [ref=e81]:
+                - generic [ref=e82]:
+                  - heading "Капучино" [level=3] [ref=e83]
+                  - generic [ref=e84]: 2,73 BGN
+                - generic [ref=e86]: 150 ml
+              - article [ref=e87]:
+                - generic [ref=e88]:
+                  - heading "Мокачино" [level=3] [ref=e89]
+                  - generic [ref=e90]: 2,73 BGN
+                - generic [ref=e92]: 150 ml
+              - article [ref=e93]:
+                - generic [ref=e94]:
+                  - heading "Горещ шоколад" [level=3] [ref=e95]
+                  - generic [ref=e96]: 2,73 BGN
+                - generic [ref=e98]: 150 ml
+              - article [ref=e99]:
+                - generic [ref=e100]:
+                  - heading "Прясно мляко" [level=3] [ref=e101]
+                  - generic [ref=e102]: 2,15 BGN
+                - generic [ref=e104]: 150 ml
+              - article [ref=e105]:
+                - generic [ref=e106]:
+                  - heading "Чай билков" [level=3] [ref=e107]
+                  - generic [ref=e108]: 1,76 BGN
+                - generic [ref=e109]:
+                  - generic [ref=e110]: 150 ml
+                  - generic [ref=e111]: мента, лайка, букет, черен, зелен
+              - article [ref=e112]:
+                - generic [ref=e113]:
+                  - heading "Плодов чай" [level=3] [ref=e114]
+                  - generic [ref=e115]: 1,76 BGN
+                - generic [ref=e116]:
+                  - generic [ref=e117]: 150 ml
+                  - generic [ref=e118]: лимон, малина, горски плод
+              - article [ref=e119]:
+                - generic [ref=e120]:
+                  - heading "Мед" [level=3] [ref=e121]
+                  - generic [ref=e122]: 0,78 BGN
+                - generic [ref=e124]: 15 ml
+              - article [ref=e125]:
+                - generic [ref=e126]:
+                  - heading "Каничка мляко" [level=3] [ref=e127]
+                  - generic [ref=e128]: 0,78 BGN
+                - generic [ref=e130]: 50 ml
+              - article [ref=e131]:
+                - generic [ref=e132]:
+                  - heading "Сметана" [level=3] [ref=e133]
+                  - generic [ref=e134]: 0,78 BGN
+                - generic [ref=e135]:
+                  - generic [ref=e136]: 10 ml
+                  - generic [ref=e137]: суха, кондензирана, спрей
+        - button "Повикай сервитьор 🔔" [ref=e140] [cursor=pointer]:
+          - img [ref=e141]
+          - text: Повикай сервитьор 🔔
+    - text:     
+  - button "Open Next.js Dev Tools" [ref=e18] [cursor=pointer]:
+    - img [ref=e19]
+  - alert [ref=e144]

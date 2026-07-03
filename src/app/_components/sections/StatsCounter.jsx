@@ -39,7 +39,7 @@ const StatsCounter = () => {
     <div className={styles.statsCounter}>
       <div className={styles.statsGrid}>
         {stats.map((stat, index) => (
-          <AnimateOnScroll key={`stat-${index}`} delay={index * 0.1}>
+          <AnimateOnScroll key={`stat-${index}`} delay={index * 0.1} initialVisible={true}>
             <div className={styles.statItem}>
               <div className={styles.statIcon}>
                 <i className={stat.icon}></i>

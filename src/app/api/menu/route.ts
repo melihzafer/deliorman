@@ -1,32 +1,20 @@
 import { NextResponse } from 'next/server';
-import menuData from '@data/menu.json';
-import type { MenuData } from '@/src/types';
+import { getLocalizedMenuData } from '@data/getLocalizedMenuData';
 
-interface MenuSuccessResponse {
-  success: true;
-  data: MenuData;
-}
-
-interface MenuErrorResponse {
-  success: false;
-  error: string;
-}
-
-type MenuRouteResponse = MenuSuccessResponse | MenuErrorResponse;
-
-export async function GET(): Promise<NextResponse<MenuRouteResponse>> {
+export async function GET(request: Request) {
   try {
-    return NextResponse.json<MenuSuccessResponse>({
+    const { searchParams } = new URL(request.url);
+    const locale = searchParams.get('locale') || 'bg';
+    const data = getLocalizedMenuData(locale);
+    
+    return NextResponse.json({
       success: true,
-      data: menuData as MenuData,
+      categories: data.categories || [],
     });
   } catch {
-    return NextResponse.json<MenuErrorResponse>(
-      {
-        success: false,
-        error: 'Failed to fetch menu data',
-      },
-      { status: 500 },
+    return NextResponse.json(
+      { success: false, error: 'Failed to fetch menu data' },
+      { status: 500 }
     );
   }
 }

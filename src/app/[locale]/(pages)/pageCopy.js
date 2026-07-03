@@ -28,24 +28,6 @@ export const LEGACY_PAGE_COPY = {
         "Открийте традиционните предложения и любимите ястия от нашето класическо меню.",
       breadTitle: "Класическо меню",
     },
-    product: {
-      metaTitle: "Детайли за продукт",
-      metaDescription:
-        "Подробности за избран продукт от онлайн каталога на ресторант Делиорман.",
-      pageTitle: "Детайли за продукт",
-      pageDescription:
-        "Вижте повече информация за продукта, съставките и препоръките за сервиране.",
-      breadTitle: "Продукт",
-    },
-    products: {
-      metaTitle: "Продукти",
-      metaDescription:
-        "Разгледайте продуктовия каталог и селекцията от предложения на ресторант Делиорман.",
-      pageTitle: "Продукти",
-      pageDescription:
-        "Изберете от нашата селекция продукти и разгледайте наличните предложения.",
-      breadTitle: "Магазин",
-    },
     reservation2: {
       metaTitle: "Онлайн резервация",
       metaDescription:
@@ -63,15 +45,6 @@ export const LEGACY_PAGE_COPY = {
       pageDescription:
         "Научете повече за кетъринга, събитията и допълнителните услуги, които предлагаме.",
       breadTitle: "Услуги",
-    },
-    shop: {
-      metaTitle: "Магазин",
-      metaDescription:
-        "Разгледайте онлайн магазина и подбраните предложения на ресторант Делиорман.",
-      pageTitle: "Магазин",
-      pageDescription:
-        "Разгледайте нашите подбрани продукти и налични предложения в онлайн магазина.",
-      breadTitle: "Онлайн магазин",
     },
     specialDays: {
       metaTitle: "Специални дни",
@@ -112,24 +85,6 @@ export const LEGACY_PAGE_COPY = {
         "Discover our traditional favourites and signature selections from the classic menu.",
       breadTitle: "Classic menu",
     },
-    product: {
-      metaTitle: "Product details",
-      metaDescription:
-        "Detailed information about a selected product from Restaurant Deliorman's online catalogue.",
-      pageTitle: "Product details",
-      pageDescription:
-        "See more information about the product, its ingredients and serving suggestions.",
-      breadTitle: "Product",
-    },
-    products: {
-      metaTitle: "Products",
-      metaDescription:
-        "Browse the product catalogue and selected offers from Restaurant Deliorman.",
-      pageTitle: "Products",
-      pageDescription:
-        "Choose from our product selection and browse the currently available offers.",
-      breadTitle: "Shop",
-    },
     reservation2: {
       metaTitle: "Online booking",
       metaDescription:
@@ -147,15 +102,6 @@ export const LEGACY_PAGE_COPY = {
       pageDescription:
         "Learn more about our catering, events and additional services.",
       breadTitle: "Services",
-    },
-    shop: {
-      metaTitle: "Shop",
-      metaDescription:
-        "Browse the online shop and selected offers from Restaurant Deliorman.",
-      pageTitle: "Shop",
-      pageDescription:
-        "Explore our selected products and currently available offers in the online shop.",
-      breadTitle: "Online store",
     },
     specialDays: {
       metaTitle: "Special days",
@@ -196,24 +142,6 @@ export const LEGACY_PAGE_COPY = {
         "Klasik menümüzdeki geleneksel lezzetleri ve en sevilen seçimleri keşfedin.",
       breadTitle: "Klasik menü",
     },
-    product: {
-      metaTitle: "Ürün detayları",
-      metaDescription:
-        "Deliorman Restoran'ın çevrim içi kataloğundaki seçili bir ürün hakkında ayrıntılı bilgi.",
-      pageTitle: "Ürün detayları",
-      pageDescription:
-        "Ürün, içerikler ve servis önerileri hakkında daha fazla bilgi görün.",
-      breadTitle: "Ürün",
-    },
-    products: {
-      metaTitle: "Ürünler",
-      metaDescription:
-        "Deliorman Restoran'ın ürün kataloğunu ve seçili tekliflerini inceleyin.",
-      pageTitle: "Ürünler",
-      pageDescription:
-        "Ürün seçkimizi inceleyin ve mevcut teklifleri keşfedin.",
-      breadTitle: "Mağaza",
-    },
     reservation2: {
       metaTitle: "Online rezervasyon",
       metaDescription:
@@ -231,15 +159,6 @@ export const LEGACY_PAGE_COPY = {
       pageDescription:
         "Catering, etkinlikler ve sunduğumuz ek hizmetler hakkında daha fazla bilgi alın.",
       breadTitle: "Hizmetler",
-    },
-    shop: {
-      metaTitle: "Mağaza",
-      metaDescription:
-        "Deliorman Restoran'ın online mağazasını ve seçili tekliflerini keşfedin.",
-      pageTitle: "Mağaza",
-      pageDescription:
-        "Online mağazadaki seçili ürünlerimizi ve mevcut teklifleri inceleyin.",
-      breadTitle: "Online mağaza",
     },
     specialDays: {
       metaTitle: "Özel günler",

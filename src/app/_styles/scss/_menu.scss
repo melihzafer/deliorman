@@ -15,10 +15,6 @@ default card
   border-radius: 5px;
   margin-bottom: 60px;
 
-  & .tst-btn.tst-cart-btn svg {
-    width: 22px;
-  }
-
   & .tst-item-cover-frame {
     display: block;
     border-radius: 5px 5px 0 0;
@@ -68,13 +64,13 @@ default card
             display: inline-block;
             font-weight: 400;
             font-size: 12px;
-            opacity: 0.6;
+            opacity: 0.85;
           }
 
           &.tst-old-price {
             font-size: 17px;
             font-weight: 300;
-            opacity: 0.6;
+            opacity: 0.85;
             margin-bottom: 5px;
 
             & .tst-symbol {
@@ -89,10 +85,6 @@ default card
   &.tst-mbi-2 {
     display: flex;
     justify-content: space-between;
-
-    & .tst-btn.tst-cart-btn svg {
-      width: 15px;
-    }
 
     & .tst-item-cover-frame {
       width: 30%;
@@ -130,10 +122,6 @@ default card
       }
     }
 
-    & .tst-btn.tst-cart-btn svg {
-      width: 15px;
-    }
-
     & .tst-item-cover-frame {
       height: 90px;
       width: 130px;
@@ -152,28 +140,17 @@ default card
         display: none;
       }
 
-      & .tst-menu-book-bottom {
-        width: 140px;
-        flex-direction: column;
-        justify-content: space-around;
+& .tst-menu-book-bottom {
+          width: 140px;
+          flex-direction: column;
+          justify-content: space-around;
 
-        & .tst-menu-book-price {
-          & .tst-price {
-            font-size: 18px;
+          & .tst-menu-book-price {
+            & .tst-price {
+              font-size: 18px;
+            }
           }
         }
-
-        & .tst-cart-btn {
-          border-radius: 50%;
-          padding: 0;
-          height: 35px;
-          width: 35px;
-
-          & svg {
-            margin-bottom: 15px;
-          }
-        }
-      }
     }
   }
 }

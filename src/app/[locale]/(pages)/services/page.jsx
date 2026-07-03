@@ -1,15 +1,12 @@
 import React, { Suspense } from "react";
 import { getLocale } from "next-intl/server";
 
-import { getSortedPostsData } from "@library/posts";
-
 import ScrollHint from "@layouts/scroll-hint/Index";
 import Divider from "@layouts/divider/Index";
 
 import PageBanner from "@components/PageBanner";
 import ServiceItem from "@components/services/ServiceItem";
 import CallToActionSection from "@components/sections/CallToAction";
-import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
 import { buildAlternates } from "@/src/i18n/seo";
 
@@ -35,7 +32,6 @@ export async function generateMetadata() {
 async function Services() {
   const locale = await getLocale();
   const copy = getLegacyPageCopy("services", locale);
-  const posts = await getAllPosts();
 
   return (
     <>
@@ -131,10 +127,6 @@ async function Services() {
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              <Suspense fallback={<div>Loading...</div>}>
-                <LatestPostsSection posts={posts} />
-              </Suspense>
-              <Divider onlyBottom={0} />
               <SubscribeSection />
             </div>
           </div>
@@ -144,8 +136,3 @@ async function Services() {
   );
 };
 export default Services;
-
-async function getAllPosts() {
-  const allPosts = getSortedPostsData();
-  return allPosts;
-}

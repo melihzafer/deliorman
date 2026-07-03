@@ -30,7 +30,7 @@ export default function MobileBottomNav() {
     },
     {
       href: restaurantPhoneHref,
-      icon: "fas fa-phone-alt",
+      icon: "fas fa-phone",
       label: tNav("call"),
       isExternal: true,
       className: "phone",

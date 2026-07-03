@@ -1,7 +1,5 @@
 "use client";
 
-import Sticky from "sticky-js";
-
 // Global scroll animation listener - only attached once
 let scrollListenerAttached = false;
 let fadeObserver = null;
@@ -32,7 +30,7 @@ const initFadeObserver = () => {
             }
         });
     }, {
-        rootMargin: '0px 0px -200px 0px', // Trigger 200px before entering viewport
+        rootMargin: '0px 0px -50px 0px', // Trigger 50px before entering viewport
         threshold: 0
     });
     

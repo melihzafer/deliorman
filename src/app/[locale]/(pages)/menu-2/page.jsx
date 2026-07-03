@@ -8,6 +8,7 @@ import ScrollHint from "@layouts/scroll-hint/Index";
 
 import PageBanner from "@components/PageBanner";
 import MenuFiltered from "@components/menu/MenuFiltered2";
+import MenuAIAssistant from "@components/menu/ai/MenuAIAssistant";
 import { buildAlternates } from "@/src/i18n/seo";
 
 import { getLegacyPageCopy } from "../pageCopy";
@@ -49,8 +50,10 @@ const Menu1 = async () => {
             <div className="container tst-p-60-0">
               <ScrollHint />
 
+              <MenuAIAssistant />
+
               <MenuFiltered
-                categories={MenuData.categories} 
+                categories={MenuData.categories}
               />
 
             </div>

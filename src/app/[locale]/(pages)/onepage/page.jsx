@@ -1,8 +1,6 @@
 import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
 
-import { getSortedPostsData } from "@library/posts";
-
 import AppData from "@data/app.json";
 import MenuData from "@data/menu.json";
 
@@ -17,7 +15,6 @@ import CountersSection from "@components/sections/Counters";
 import CallToActionSection from "@components/sections/CallToAction";
 import CallToActionTwoSection from "@components/sections/CallToActionTwo";
 import CallToActionThreeSection from "@components/sections/CallToActionThree";
-import LatestPostsSection from "@components/sections/LatestPosts";
 import SubscribeSection from "@components/sections/Subscribe";
 import ContactInfoSection from "@components/sections/ContactInfo";
 import ContactFormSection from "@components/sections/ContactForm";
@@ -36,12 +33,12 @@ export const metadata = {
 }
 
 async function HomeOnePage() {
-  const posts = await getAllPosts();
-
   return (
     <>
       <div id="tst-dynamic-banner" className="tst-dynamic-banner">
-        <HeroSlider />
+        <Suspense fallback={<div className="tst-skeleton" style={{ height: '600px', background: '#f2f3f5' }} />}>
+          <HeroSlider />
+        </Suspense>
       </div>
       <div id="tst-dynamic-content" className="tst-dynamic-content">
         <div className="tst-content-frame">
@@ -64,16 +61,18 @@ async function HomeOnePage() {
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-0">
-              <MenuFiltered 
-                heading={
-                  { 
-                    "subtitle": "Menu", 
-                    "title": "Our Menu", 
-                    "description": "Porro eveniet, autem ipsam vitae consequatur!" 
-                  }
-                } 
-                categories={MenuData.categories} 
-              />
+              <Suspense fallback={<div className="tst-skeleton" style={{ height: '400px', background: '#f2f3f5' }} />}>
+                <MenuFiltered 
+                  heading={
+                    { 
+                      "subtitle": "Menu", 
+                      "title": "Our Menu", 
+                      "description": "Porro eveniet, autem ipsam vitae consequatur!" 
+                    }
+                  } 
+                  categories={MenuData.categories} 
+                />
+              </Suspense>
             </div>
           </div>
         </div>
@@ -81,10 +80,8 @@ async function HomeOnePage() {
         <div className="tst-content-frame">
           <div className="tst-content-box">
             <div className="container tst-p-60-60">
-              <TestimonialSlider />
-              <Divider onlyBottom={0} />
-              <Suspense fallback={<div>Loading...</div>}>
-                <LatestPostsSection posts={posts} />
+              <Suspense fallback={<div className="tst-skeleton" style={{ height: '300px', background: '#f2f3f5' }} />}>
+                <TestimonialSlider />
               </Suspense>
               <Divider onlyBottom={0} />
               <SubscribeSection />
@@ -106,8 +103,3 @@ async function HomeOnePage() {
   );
 };
 export default HomeOnePage;
-
-async function getAllPosts() {
-  const allPosts = getSortedPostsData();
-  return allPosts;
-}

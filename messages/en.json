@@ -15,9 +15,8 @@
     "mainNavigation": "Main Navigation",
     "menuLabel": "Menu",
     "blog": "Blog",
-    "shop": "Shop",
-    "products": "Products",
-    "call": "Call"
+    "call": "Call",
+    "searchTitle": "Search"
   },
   "common": {
     "readMore": "Read More",
@@ -96,10 +95,43 @@
     "termsModalText1": "To process your request, we collect your name, surname, and phone number, as well as date/time and number of guests. We use the data solely for confirmation and organization of the reservation.",
     "termsModalText2": "The full text with rules and information about personal data processing can be read here:",
     "termsModalLink": "Terms and Conditions / Privacy",
-    "dayNames": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "dayNamesShort": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
-    "monthNames": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-    "stepLabels": ["Date and Time", "Guests and Contact", "Confirmation"],
+    "dayNames": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "dayNamesShort": [
+      "Mo",
+      "Tu",
+      "We",
+      "Th",
+      "Fr",
+      "Sa",
+      "Su"
+    ],
+    "monthNames": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "stepLabels": [
+      "Date and Time",
+      "Guests and Contact",
+      "Confirmation"
+    ],
     "calendarSummary": "Deliorman Reservation - {guests} guests",
     "calendarDescription": "Reservation for {firstName} {lastName}\\nPhone: {phone}\\nGuests: {guests}",
     "calendarLocation": "Deliorman Restaurant",
@@ -223,6 +255,63 @@
     "feedbackTitle": "Feedback | Share Your Opinion",
     "feedbackDescription": "Send anonymous feedback, suggestions or comments to Restaurant Deliorman."
   },
+  "hero": {
+    "slides": [
+      {
+        "title": "Welcome<br>to Deliorman",
+        "subtitle": "Hello, friends!",
+        "text": "Enjoy unique flavors and traditional recipes prepared with love and care.",
+        "button1": "View Menu",
+        "button2": "Make Reservation"
+      },
+      {
+        "title": "Explore <br>Our Menu",
+        "subtitle": "Discover a Wealth of Flavors!",
+        "text": "Dive into the world of authentic Bulgarian tastes and choose from our wide range of traditional dishes.",
+        "button1": "View Menu",
+        "button2": "Contact Us"
+      },
+      {
+        "title": "Try <br>Our Specialties",
+        "subtitle": "Real Taste, Real Experience!",
+        "text": "Try the best dishes from our traditional cuisine, prepared with quality products and craftsmanship.",
+        "button1": "How to Find Us",
+        "button2": "View Menu"
+      },
+      {
+        "title": "Reserve a <br>Table Today",
+        "subtitle": "We Look Forward to Seeing You!",
+        "text": "Ensure an unforgettable experience at Restaurant Deliorman with authentic cuisine and a cozy atmosphere.",
+        "button1": "Reserve a Table",
+        "button2": "Give Feedback"
+      }
+    ]
+  },
+  "specialties": {
+    "items": [
+      {
+        "title": "Deliorman Skewer",
+        "text": "Finely sliced meat marinated in our signature spice blend, slowly grilled to perfect tenderness. Served with a unique spicy sauce.",
+        "weight": "300 g",
+        "price": "12.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/shish_deliorman.webp"
+      },
+      {
+        "title": "Roast Beef",
+        "text": "Tender roast beef with a choice of garnish, served warm and prepared according to traditional recipes.",
+        "weight": "300 g",
+        "price": "19.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/teleshko.webp"
+      },
+      {
+        "title": "Lamb Skewer Delicacy",
+        "text": "Tender lamb marinated in special sauce, slowly grilled to preserve its juiciness and aroma. Served with seasonal roasted vegetables.",
+        "weight": "500 g",
+        "price": "29.90 BGN",
+        "image": "/img/menuCategorised/newSpecialties/agneshki.webp"
+      }
+    ]
+  },
   "languageSwitcher": {
     "label": "Language",
     "bg": "BG",
@@ -246,7 +335,14 @@
     "archivesTitle": "Archive",
     "authorsTitle": "Authors",
     "keywordsTitle": "Keywords",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "noResults": "No results found.",
+    "enterKeyword": "Please enter a keyword to search.",
+    "viewAllResults": "View all results",
+    "closeLabel": "Close",
+    "pagesSection": "Pages",
+    "specialtiesSection": "Specialties",
+    "menuSection": "Menu"
   },
   "about": {
     "pageTitle": "The Story of Our Restaurant",
@@ -267,20 +363,22 @@
     "nextSpecialty": "Next specialty",
     "orderFromMenuCta": "Order from the menu",
     "categories": {
-      "soft-drinks-beverages": "Soft Drinks & Hot Beverages",
+      "hot-beverages": "Hot Beverages",
       "salads": "Salads",
       "hot-appetizers": "Hot Dishes",
-      "soups-fish-sandwiches": "Soups, Fish & Sandwiches",
+      "soups-sandwiches": "Soups, Chicken Delicacies & Sandwiches",
       "pizzas": "Pizzas",
-      "grill-and-specialties": "Grill & Specialties",
-      "sach-cold-appetizers-sides": "Saj Platters, Cold Appetizers & Sides",
+      "grill": "Grill",
+      "saj-fish-specialties": "Saj, Fish & Specialties",
+      "burgers": "Burgers",
       "new-specialties": "New Specialties",
-      "desserts": "Desserts",
-      "beer": "Beer",
+      "cold-appetizers-sides": "Cold Appetizers & Sides",
+      "nuts-desserts": "Nuts & Desserts",
       "rakia": "Rakia",
       "wines": "White & Red Wines",
-      "vodka-other-spirits": "Vodka & Other Spirits",
-      "whiskey-and-nuts": "Whisky & Nuts"
+      "beer-cider-other-drinks": "Beer, Cider & Other Drinks",
+      "whiskey-vodka": "Whisky & Vodka",
+      "allergens": "Allergens"
     },
     "specialtiesSlides": [
       {
@@ -409,7 +507,14 @@
     "widgetLabel": "Feedback",
     "widgetTitle": "Share your opinion",
     "modalTitle": "Feedback",
-    "modalDescription": "Your opinion matters a lot to us."
+    "modalDescription": "Your opinion matters a lot to us.",
+    "starRatingExcellent": "Excellent",
+    "starRatingVeryGood": "Very Good",
+    "starRatingGood": "Good",
+    "starRatingAcceptable": "Acceptable",
+    "starRatingNeedsImprovement": "Needs Improvement",
+    "starRatingHover": "Click to rate",
+    "successCheckmark": "Sent!"
   },
   "feedbackPage": {
     "pageTitle": "Your Opinion Matters",
@@ -426,6 +531,12 @@
     "reviewCount": "({count}+ reviews)"
   },
   "aboutSections": {
+    "intro": {
+      "subtitle": "About Us",
+      "title": "Welcome to Deliorman <br>Restaurant",
+      "description": "Deliorman Restaurant is a place where tradition and authentic Bulgarian taste come together. We pride ourselves on using fresh products and recipes passed down through generations to provide our guests with an unforgettable culinary experience.",
+      "buttonLabel": "Read More"
+    },
     "features": {
       "subtitle": "Our strengths",
       "title": "Why do people choose us?",
@@ -510,39 +621,6 @@
       "outdoor": "Restaurant exterior",
       "decoration": "Decoration for special events"
     }
-  },
-  "orderFlow": {
-    "pageTitle": "Order from the menu",
-    "breadTitle": "Order",
-    "cartPageDescription": "Online orders are now placed directly from the menu page.",
-    "checkoutPageDescription": "Choose dishes from the menu and complete your order via WhatsApp or phone.",
-    "cartNoticeTitle": "The cart is no longer used",
-    "cartNoticeDescription": "To place an order, add dishes from the menu page and use the floating bar at the bottom of the screen.",
-    "checkoutNoticeTitle": "The checkout form has been replaced with direct ordering",
-    "checkoutNoticeDescription": "Orders are now completed from the menu page through the floating WhatsApp or phone bar.",
-    "legacyLead": "Add dishes directly from the menu page and complete the order through the floating WhatsApp or phone bar.",
-    "menuButton": "Go to menu",
-    "whatsappButton": "WhatsApp",
-    "whatsappIntro": "Hello! I would like to place an order from the menu.",
-    "whatsappThanks": "Thank you!",
-    "emptyTitle": "Add dishes from the menu",
-    "emptyDescription": "Choose dishes from the menu page to order via WhatsApp or phone.",
-    "currentOrderTitle": "Your order!",
-    "removeItem": "Remove item",
-    "itemSingular": "item",
-    "itemPlural": "items",
-    "itemFallback": "item",
-    "totalItems": "Total items:",
-    "reviewOrder": "Review your order",
-    "showOrder": "Order",
-    "hideOrder": "Hide",
-    "yourOrder": "Your order",
-    "decreaseQty": "Decrease",
-    "increaseQty": "Add",
-    "orderByWhatsApp": "Order via WhatsApp",
-    "callButton": "Call: {phone}",
-    "clearButton": "Clear",
-    "clearOrder": "Clear order"
   },
   "structuredData": {
     "restaurantDescription": "Restaurant Deliorman offers a distinctive culinary experience with traditional Bulgarian and regional dishes prepared with quality local ingredients in a cosy and authentic setting.",
@@ -631,34 +709,6 @@
       "roastLamb": "Roast Lamb",
       "roastLambDesc": "Slow roasted lamb"
     },
-    "checkout": {
-      "requiredField": "Required field",
-      "invalidEmail": "Invalid email address",
-      "successMessage": "Thank you, your message has been sent successfully.",
-      "billingDetails": "Billing Details",
-      "firstName": "First Name",
-      "firstNamePlaceholder": "Your first name",
-      "lastName": "Last Name",
-      "lastNamePlaceholder": "Your last name",
-      "phone": "Phone",
-      "email": "Email",
-      "country": "Country",
-      "city": "City",
-      "address": "Address",
-      "notes": "Notes",
-      "notesPlaceholder": "Notes about your order",
-      "yourOrder": "Your Order",
-      "product": "Product",
-      "total": "Total",
-      "subtotal": "Subtotal",
-      "shipping": "Shipping",
-      "freeShipping": "Free",
-      "grandTotal": "Grand Total",
-      "placeOrder": "Place Order",
-      "orderSuccess": "Order Successful",
-      "orderNumber": "Order Number",
-      "orderConfirmation": "Your order has been received. A confirmation email has been sent."
-    },
     "subscribe": {
       "subtitle": "Newsletter",
       "title": "Stay updated with the news",
@@ -732,10 +782,68 @@
       "pageDescription": "Discover the services we offer",
       "breadTitle": "Services"
     },
+    "lunchMenu": {
+      "pageTitle": "Lunch Menu",
+      "pageDescription": "Delicious and fresh lunch menu every day",
+      "breadTitle": "Lunch Menu",
+      "subtitle": "Updated Daily",
+      "title": "Our Lunch Menu",
+      "description": "Every day we cook a fresh and delicious lunch menu with special offers. The menu is uploaded daily to our Facebook page so you can see what delicious things we have prepared for you.",
+      "facebookSubtitle": "Follow us on Facebook",
+      "facebookTitle": "Daily Lunch Menu",
+      "facebookDescription": "We upload our daily lunch menu every morning on our Facebook page. Don't miss the special offers and your favorite dishes!",
+      "facebookButton": "Go to Facebook",
+      "dailyUpdate": "Daily Update",
+      "dailyUpdateDesc": "Every day we upload a new menu with different delicious dishes",
+      "freshlyMade": "Freshly Prepared",
+      "freshlyMadeDesc": "All dishes are cooked at the moment from the freshest ingredients",
+      "specialPrices": "Special Prices",
+      "specialPricesDesc": "Great prices on the lunch menu with a wide selection of dishes",
+      "lunchHoursTitle": "Lunch Hours",
+      "lunchHoursValue": "Monday - Sunday: 12:00 - 15:00",
+      "reservations": "For reservations:"
+    },
+    "checkout": {
+      "pageTitle": "Checkout",
+      "pageDescription": "Fill in your details to complete your reservation or order",
+      "breadTitle": "Checkout",
+      "billingDetails": "Billing Details",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Your last name",
+      "company": "Company",
+      "companyPlaceholder": "Company name (optional)",
+      "country": "Country",
+      "city": "City",
+      "state": "State / Province",
+      "address": "Address",
+      "addressPlaceholder": "Your address",
+      "postcode": "Postcode",
+      "phone": "Phone",
+      "email": "Email",
+      "notes": "Notes",
+      "notesPlaceholder": "Notes about your order, e.g. special instructions",
+      "paymentMethod": "Payment Method",
+      "bankTransfer": "Direct Bank Transfer",
+      "checkPayments": "Check Payments",
+      "cashOnDelivery": "Cash on Delivery",
+      "placeOrder": "Place Order",
+      "requiredField": "Required field",
+      "invalidEmail": "Invalid email address",
+      "successMessage": "Your order has been received successfully! Thank you."
+    },
     "history": {
       "pageTitle": "Our History",
       "pageDescription": "Discover the history of our restaurant",
       "breadTitle": "History"
+    },
+    "decorationGallery": {
+      "eyebrow": "Decoration & Design",
+      "title": "Decoration is on us!",
+      "description": "Every event deserves beautiful decoration. Browse our designs and get inspired!",
+      "openImageLabel": "Open image",
+      "imageAlt": "Event decoration at Restaurant Deliorman (photo {number})"
     },
     "backToTop": {
       "label": "Back to top"
@@ -755,6 +863,15 @@
       "friday": "Friday",
       "saturday": "Saturday"
     },
+    "daysShort": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    },
     "months": {
       "january": "January",
       "february": "February",
@@ -769,5 +886,46 @@
       "november": "November",
       "december": "December"
     }
+  },
+  "aiAssistant": {
+    "triggerTitle": "Ask Deli",
+    "triggerSubtitle": "AI menu assistant — recommendations, pairings and questions",
+    "triggerCta": "Start chat",
+    "modalTitle": "Deli — AI Assistant",
+    "modalSubtitle": "Your digital waiter",
+    "tableBadge": "Table {table}",
+    "welcome": "Hi! 👋 I'm Deli, your digital waiter. Ask me anything about the menu — I can recommend dishes, explain what's in them, or help you decide.",
+    "inputPlaceholder": "Ask about the menu…",
+    "send": "Send",
+    "close": "Close",
+    "thinking": "Deli is typing…",
+    "suggestion1": "What would you recommend?",
+    "suggestion2": "What are your specialties?",
+    "suggestion3": "Do you have vegetarian dishes?",
+    "suggestion4": "Which dessert should I try?",
+    "errorGeneric": "Something went wrong. Please try again.",
+    "errorRateLimit": "Too many questions in a short time. Please wait a moment and try again. 🙏",
+    "errorUnavailable": "The AI assistant is currently unavailable. Please ask our staff — we're happy to help!",
+    "disclaimer": "The AI assistant can make mistakes. Please confirm allergens and important details with our staff."
+  },
+  "qrMenu": {
+    "title": "Menu QR Codes",
+    "description": "Generate QR codes for your tables — guests scan and see the digital menu.",
+    "pageLabel": "Page",
+    "pageMenu": "Menu",
+    "pageTable": "Table (interactive menu)",
+    "pageLunchMenu": "Lunch menu",
+    "pageFeedback": "Feedback",
+    "localeLabel": "Language",
+    "tableFromLabel": "From table",
+    "tableToLabel": "To table",
+    "noTables": "No table numbers",
+    "generate": "Generate",
+    "print": "Print all",
+    "download": "Download SVG",
+    "tableLabel": "Table",
+    "scanHint": "Scan for the menu",
+    "limitNote": "Maximum {limit} tables and up to {batch} codes at once.",
+    "rangeError": "Invalid table range."
   }
 }

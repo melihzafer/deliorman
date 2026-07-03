@@ -1,0 +1,190 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - main [ref=e3]:
+      - main [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e6]:
+            - generic [ref=e7]:
+              - generic [ref=e8]:
+                - button "Отвори меню" [expanded] [active] [ref=e9] [cursor=pointer]
+                - generic [ref=e13]: Том I · Бр. 5
+              - generic [ref=e14]: Следобедно издание
+              - generic [ref=e15]: Всекидневник
+            - heading "Делиорман" [level=1] [ref=e16]:
+              - img "Делиорман" [ref=e18]
+            - paragraph [ref=e19]: ✦ Ежедневник на вкуса и трапезата ✦
+            - paragraph [ref=e20]: Основано в Самуил · Област Разград · Кухня без компромис
+            - generic "Фото кореспонденция от кухнята" [ref=e21]:
+              - img [ref=e22]
+              - img [ref=e23]
+              - img [ref=e24]
+            - generic [ref=e25]:
+              - generic [ref=e26]: неделя, 17 май 2026 г.
+              - generic [ref=e27]: Сезонно меню
+              - generic [ref=e28]: Маса № 5
+              - generic [ref=e29]: Цени в евро · фиксиран курс 1 € = 1.95583 лв.
+          - generic [ref=e32]:
+            - generic [ref=e33]: — Рубрика на изданието —
+            - heading "Топли Напитки" [level=2] [ref=e34]
+            - paragraph [ref=e35]: Подбрана селекция от топли напитки за всеки момент от деня
+            - generic "Фото кореспонденция от кухнята" [ref=e36]:
+              - figure "Фото кореспонденция от кухнята" [ref=e37]:
+                - generic [ref=e38]:
+                  - generic [ref=e39]: "01"
+                  - generic [ref=e40]: Кафе еспресо
+                - paragraph [ref=e41]: Топли напитки
+                - img "Кафе еспресо" [ref=e43]
+                - generic [ref=e44]: Фото кореспонденция от кухнята
+              - figure "Фото кореспонденция от кухнята" [ref=e45]:
+                - generic [ref=e46]:
+                  - generic [ref=e47]: "02"
+                  - generic [ref=e48]: Капучино
+                - paragraph [ref=e49]: Топли напитки
+                - img "Капучино" [ref=e51]
+                - generic [ref=e52]: Фото кореспонденция от кухнята
+              - figure "Фото кореспонденция от кухнята" [ref=e53]:
+                - generic [ref=e54]:
+                  - generic [ref=e55]: "03"
+                  - generic [ref=e56]: Горещ шоколад
+                - paragraph [ref=e57]: Топли напитки
+                - img "Горещ шоколад" [ref=e59]
+                - generic [ref=e60]: Фото кореспонденция от кухнята
+            - generic [ref=e61]:
+              - article [ref=e62]:
+                - generic [ref=e63]:
+                  - heading "Кафе еспресо" [level=3] [ref=e64]
+                  - generic [ref=e66]: 1,00 €
+                - generic [ref=e68]: 60 ml
+              - article [ref=e69]:
+                - generic [ref=e70]:
+                  - heading "Кафе \"Лаваца\" капсула" [level=3] [ref=e71]
+                  - generic [ref=e73]: 1,40 €
+                - generic [ref=e75]: 60 ml
+              - article [ref=e76]:
+                - generic [ref=e77]:
+                  - heading "Нес кафе" [level=3] [ref=e78]
+                  - generic [ref=e80]: 1,00 €
+                - generic [ref=e82]: 60 ml
+              - article [ref=e83]:
+                - generic [ref=e84]:
+                  - heading "Капучино" [level=3] [ref=e85]
+                  - generic [ref=e87]: 1,40 €
+                - generic [ref=e89]: 150 ml
+              - article [ref=e90]:
+                - generic [ref=e91]:
+                  - heading "Мокачино" [level=3] [ref=e92]
+                  - generic [ref=e94]: 1,40 €
+                - generic [ref=e96]: 150 ml
+              - article [ref=e97]:
+                - generic [ref=e98]:
+                  - heading "Горещ шоколад" [level=3] [ref=e99]
+                  - generic [ref=e101]: 1,40 €
+                - generic [ref=e103]: 150 ml
+              - article [ref=e104]:
+                - generic [ref=e105]:
+                  - heading "Прясно мляко" [level=3] [ref=e106]
+                  - generic [ref=e108]: 1,10 €
+                - generic [ref=e110]: 150 ml
+              - article [ref=e111]:
+                - generic [ref=e112]:
+                  - heading "Чай билков" [level=3] [ref=e113]
+                  - generic [ref=e115]: 0,90 €
+                - generic [ref=e116]:
+                  - generic [ref=e117]: 150 ml
+                  - generic [ref=e118]: мента, лайка, букет, черен, зелен
+              - article [ref=e119]:
+                - generic [ref=e120]:
+                  - heading "Плодов чай" [level=3] [ref=e121]
+                  - generic [ref=e123]: 0,90 €
+                - generic [ref=e124]:
+                  - generic [ref=e125]: 150 ml
+                  - generic [ref=e126]: лимон, малина, горски плод
+              - article [ref=e127]:
+                - generic [ref=e128]:
+                  - heading "Мед" [level=3] [ref=e129]
+                  - generic [ref=e131]: 0,40 €
+                - generic [ref=e133]: 15 ml
+              - article [ref=e134]:
+                - generic [ref=e135]:
+                  - heading "Каничка мляко" [level=3] [ref=e136]
+                  - generic [ref=e138]: 0,40 €
+                - generic [ref=e140]: 50 ml
+              - article [ref=e141]:
+                - generic [ref=e142]:
+                  - heading "Сметана" [level=3] [ref=e143]
+                  - generic [ref=e145]: 0,40 €
+                - generic [ref=e146]:
+                  - generic [ref=e147]: 10 ml
+                  - generic [ref=e148]: суха, кондензирана, спрей
+          - generic [ref=e149]:
+            - generic [ref=e150]: ❦ · ❦ · ❦
+            - paragraph [ref=e152]: „Приятна вечер от екипа на Делиорман.“
+        - dialog "Отвори меню" [ref=e155]:
+          - generic [ref=e156]:
+            - generic [ref=e157]:
+              - paragraph [ref=e158]: Deliorman
+              - heading "Отвори меню" [level=2] [ref=e159]
+            - button "Затвори меню" [ref=e160] [cursor=pointer]
+          - generic [ref=e161]:
+            - heading "Език" [level=3] [ref=e162]
+            - generic [ref=e163]:
+              - button "BG" [ref=e164] [cursor=pointer]
+              - button "TR" [ref=e165] [cursor=pointer]
+              - button "EN" [ref=e166] [cursor=pointer]
+          - generic [ref=e167]:
+            - heading "Категории" [level=3] [ref=e168]
+            - generic [ref=e169]:
+              - button "Топли Напитки 10" [ref=e170] [cursor=pointer]:
+                - generic [ref=e171]: Топли Напитки
+                - generic [ref=e172]: "10"
+              - button "Салати 20" [ref=e173] [cursor=pointer]:
+                - generic [ref=e174]: Салати
+                - generic [ref=e175]: "20"
+              - button "Аламинути 30" [ref=e176] [cursor=pointer]:
+                - generic [ref=e177]: Аламинути
+                - generic [ref=e178]: "30"
+              - button "Супи, Пилешки Деликатеси и Сандвичи 40" [ref=e179] [cursor=pointer]:
+                - generic [ref=e180]: Супи, Пилешки Деликатеси и Сандвичи
+                - generic [ref=e181]: "40"
+              - button "Пици 50" [ref=e182] [cursor=pointer]:
+                - generic [ref=e183]: Пици
+                - generic [ref=e184]: "50"
+              - button "Скара 60" [ref=e185] [cursor=pointer]:
+                - generic [ref=e186]: Скара
+                - generic [ref=e187]: "60"
+              - button "Сач, Риба и Специалитети 70" [ref=e188] [cursor=pointer]:
+                - generic [ref=e189]: Сач, Риба и Специалитети
+                - generic [ref=e190]: "70"
+              - button "Бургери 80" [ref=e191] [cursor=pointer]:
+                - generic [ref=e192]: Бургери
+                - generic [ref=e193]: "80"
+              - button "Нови Специалитети 90" [ref=e194] [cursor=pointer]:
+                - generic [ref=e195]: Нови Специалитети
+                - generic [ref=e196]: "90"
+              - button "Студени Мезета и Гарнитури 100" [ref=e197] [cursor=pointer]:
+                - generic [ref=e198]: Студени Мезета и Гарнитури
+                - generic [ref=e199]: "100"
+              - button "Ядки и Десерти 110" [ref=e200] [cursor=pointer]:
+                - generic [ref=e201]: Ядки и Десерти
+                - generic [ref=e202]: "110"
+              - button "Ракия 120" [ref=e203] [cursor=pointer]:
+                - generic [ref=e204]: Ракия
+                - generic [ref=e205]: "120"
+              - button "Бели и Червени Вина 130" [ref=e206] [cursor=pointer]:
+                - generic [ref=e207]: Бели и Червени Вина
+                - generic [ref=e208]: "130"
+              - button "Бира, Сайдер и Други Напитки 140" [ref=e209] [cursor=pointer]:
+                - generic [ref=e210]: Бира, Сайдер и Други Напитки
+                - generic [ref=e211]: "140"
+              - button "Уиски и Водка 150" [ref=e212] [cursor=pointer]:
+                - generic [ref=e213]: Уиски и Водка
+                - generic [ref=e214]: "150"
+              - button "Алергени 160" [ref=e215] [cursor=pointer]:
+                - generic [ref=e216]: Алергени
+                - generic [ref=e217]: "160"
+        - button "✦ Повикай сервитьор ✦" [ref=e153] [cursor=pointer]:
+          - text: ✦
+          - generic [ref=e154]: Повикай сервитьор
+          - text: ✦
+    - text:     
+  - alert [ref=e31]
