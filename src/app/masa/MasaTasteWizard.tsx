@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { Sparkles, X, RotateCcw, ArrowLeft, Wand2, MessageSquare, ChevronDown } from "lucide-react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Sparkles, X, RotateCcw, ArrowLeft, Wand2, MessageSquare } from "lucide-react";
 import { formatPrice, localized } from "./masaMenuUtils";
 import { t } from "./masaTranslations";
 import type { Locale, MasaStyles, QrMenuCategory } from "./masaTypes";
@@ -10,10 +10,12 @@ import { pickRecommendation, getSurprisePick, type WizardPick } from "./wizard/s
 import { nextStep, questionNumber } from "./wizard/nextStep";
 import { buildCombo, type PairingPick } from "./wizard/pairings";
 import { explainMatch } from "./wizard/rationale";
-import { inferIntent, type IntentResult } from "./wizard/intentRouter";
-import { budgetInEur } from "./wizard/budgetParse";
+import { inferIntent } from "./wizard/intentRouter";
+import { parseWithLexicon } from "./wizard/intentLexicon";
+import { budgetInEur, parseBudget } from "./wizard/budgetParse";
 import { recommend, type WizardPickFromLlm } from "./wizard/llmRecommend";
-import type { ScoredItem, WizardAnswers, WizardStep } from "./wizard/types";
+import { getItemTags } from "./wizard/menuTags";
+import { isDrinkCategory, type BudgetStatus, type ScoredItem, type WizardAnswers, type WizardStep } from "./wizard/types";
 
 interface MasaTasteWizardProps {
   categories: QrMenuCategory[];
@@ -28,15 +30,194 @@ interface MasaTasteWizardProps {
 }
 
 const STORAGE_KEY = "masa_wizard_history_v2";
+const WIZARD_DEBUG = process.env.NODE_ENV !== "production";
+const SPINNER_MIN_MS = 900;
+const CLIENT_LLM_TIMEOUT_MS = 6000;
 
-const SUGGESTION_CHIPS = [
-  { labelKey: "chip_fresh_salad", emoji: "🥗" },
-  { labelKey: "chip_spicy_grill", emoji: "🔥" },
-  { labelKey: "chip_cold_drink", emoji: "🍹" },
-  { labelKey: "chip_sweet_dessert", emoji: "🍰" },
-  { labelKey: "chip_juicy_steak", emoji: "🥩" },
-  { labelKey: "chip_cold_beer", emoji: "🍺" },
-];
+const WIZARD_COPY = {
+  en: {
+    tabs: { quiz: "Quick Quiz", text: "Tell the Wizard" },
+    headerKicker: "AI WAITER",
+    assistantName: "Deliorman Wizard",
+    assistantStatus: "Listening for budget, hunger and cravings",
+    freeTitle: "Tell us what you feel like.",
+    freeSubtitle: "Mention budget, hunger, drink, mood, or anything you crave.",
+    placeholders: [
+      "I have 10 euros, I'm very hungry and I want a beer.",
+      "Something spicy, grilled, and not too expensive.",
+      "Light food, no alcohol, with something cold.",
+    ],
+    chips: [
+      { key: "budget_hungry", label: "€10 + very hungry", sentence: "I have 10 euros, I'm very hungry and want filling food first." },
+      { key: "beer_grill", label: "Beer + grilled food", sentence: "I want a beer with grilled food, but keep the combo sensible." },
+      { key: "light_fresh", label: "Light and fresh", sentence: "Light food, no alcohol, with something cold." },
+      { key: "spicy", label: "Spicy choice", sentence: "Something spicy, grilled, and not too expensive." },
+      { key: "sweet", label: "Sweet only", sentence: "I only want something sweet." },
+      { key: "no_alcohol", label: "No alcohol", sentence: "No alcohol, just a good food and drink match." },
+    ],
+    submit: "Find my pick",
+    loading: "Finding your best match...",
+    clear: "Clear",
+    tryAnother: "Try another",
+    understood: "Understood:",
+    matched: "Matched:",
+    tip: "Tip: Try adding your budget or hunger level.",
+    budget: "budget",
+    veryHungry: "very hungry",
+    hungry: "hungry",
+    wantsBeer: "wants beer",
+    noAlcohol: "no alcohol",
+    sweetOnly: "sweet only",
+    spicy: "spicy",
+    grilled: "grilled",
+    light: "light",
+    fresh: "fresh",
+    language: { en: "English", tr: "Turkish", bg: "Bulgarian" },
+    subtitles: {
+      smartPick: "SMART PICK",
+      underBudget: "UNDER YOUR BUDGET",
+      foodDrink: "FOOD + DRINK",
+      quickMatch: "QUICK MATCH",
+      filling: "FILLING CHOICE",
+    },
+    total: "Total",
+    remaining: "left",
+    foodOnlyBudget: "Skipped the drink or side to keep the meal inside your budget.",
+    alt: { cheaper: "Cheaper", filling: "More filling", noAlcohol: "Without alcohol", spicy: "Spicier", lighter: "Lighter" },
+  },
+  tr: {
+    tabs: { quiz: "Kısa Test", text: "Dileğini Yaz" },
+    headerKicker: "AI GARSON",
+    assistantName: "Deliorman Sihirbazı",
+    assistantStatus: "Bütçe, açlık ve canının çektiğini dinliyor",
+    freeTitle: "Ne istediğini tek cümleyle yaz.",
+    freeSubtitle: "Bütçe, açlık, içecek veya canının çektiği şeyi yazabilirsin.",
+    placeholders: [
+      "10 euro var, çok açım ve bira istiyorum.",
+      "Acılı, ızgara ve çok pahalı olmayan bir şey.",
+      "Hafif bir yemek olsun, alkol olmasın.",
+    ],
+    chips: [
+      { key: "budget_hungry", label: "10€ + çok açım", sentence: "10 euro var, çok açım ve önce doyurucu yemek istiyorum." },
+      { key: "beer_grill", label: "Bira + ızgara", sentence: "Bira istiyorum, yanında ızgara bir yemek iyi olur." },
+      { key: "light_fresh", label: "Hafif ve ferah", sentence: "Hafif ve ferah bir yemek olsun, alkol olmasın." },
+      { key: "spicy", label: "Acılı bir şey", sentence: "Acılı, ızgara ve çok pahalı olmayan bir şey istiyorum." },
+      { key: "sweet", label: "Sadece tatlı", sentence: "Sadece tatlı bir şey istiyorum." },
+      { key: "no_alcohol", label: "Alkol olmasın", sentence: "Alkol olmasın, iyi bir yemek ve içecek eşleşmesi olsun." },
+    ],
+    submit: "Bana öner",
+    loading: "En iyi seçimi buluyorum...",
+    clear: "Temizle",
+    tryAnother: "Başka öner",
+    understood: "Anladım:",
+    matched: "Eşleşti:",
+    tip: "İpucu: Bütçeni veya ne kadar aç olduğunu yaz.",
+    budget: "bütçe",
+    veryHungry: "çok aç",
+    hungry: "aç",
+    wantsBeer: "bira istiyor",
+    noAlcohol: "alkol istemiyor",
+    sweetOnly: "sadece tatlı",
+    spicy: "acılı",
+    grilled: "ızgara",
+    light: "hafif",
+    fresh: "ferah",
+    language: { en: "İngilizce", tr: "Türkçe", bg: "Bulgarca" },
+    subtitles: {
+      smartPick: "AKILLI SEÇİM",
+      underBudget: "BÜTÇEYE UYGUN",
+      foodDrink: "YEMEK + İÇECEK",
+      quickMatch: "HIZLI EŞLEŞME",
+      filling: "DOYURUCU SEÇİM",
+    },
+    total: "Toplam",
+    remaining: "kaldı",
+    foodOnlyBudget: "Bütçeyi aşmamak için içecek veya yan ürünü çıkardım.",
+    alt: { cheaper: "Daha ucuz", filling: "Daha doyurucu", noAlcohol: "Alkolsüz", spicy: "Daha acılı", lighter: "Daha hafif" },
+  },
+  bg: {
+    tabs: { quiz: "Бърз тест", text: "Напиши желание" },
+    headerKicker: "AI СЕРВИТЬОР",
+    assistantName: "Вълшебникът на Делиорман",
+    assistantStatus: "Разбира бюджет, глад и вкус",
+    freeTitle: "Напиши какво ти се хапва.",
+    freeSubtitle: "Можеш да споменеш бюджет, глад, напитка или вкус.",
+    placeholders: [
+      "Имам 15 €, много съм гладен и искам бира.",
+      "Нещо пикантно, скара и не много скъпо.",
+      "Леко хапване, без алкохол, с нещо студено.",
+    ],
+    chips: [
+      { key: "budget_hungry", label: "€15 + много гладен", sentence: "Имам 15 €, много съм гладен и искам нещо засищащо." },
+      { key: "beer_grill", label: "Бира + скара", sentence: "Искам бира със скара, но да е разумно като цена." },
+      { key: "light_fresh", label: "Леко и свежо", sentence: "Леко хапване, без алкохол, с нещо студено." },
+      { key: "spicy", label: "Пикантно", sentence: "Нещо пикантно, скара и не много скъпо." },
+      { key: "sweet", label: "Само сладко", sentence: "Искам само нещо сладко." },
+      { key: "no_alcohol", label: "Без алкохол", sentence: "Без алкохол, само добра комбинация храна и напитка." },
+    ],
+    submit: "Препоръчай ми",
+    loading: "Търся най-добрия избор...",
+    clear: "Изчисти",
+    tryAnother: "Друга препоръка",
+    understood: "Разбрах:",
+    matched: "Съвпадение:",
+    tip: "Съвет: добави бюджет или колко си гладен.",
+    budget: "бюджет",
+    veryHungry: "много гладен",
+    hungry: "гладен",
+    wantsBeer: "иска бира",
+    noAlcohol: "без алкохол",
+    sweetOnly: "само сладко",
+    spicy: "пикантно",
+    grilled: "скара",
+    light: "леко",
+    fresh: "свежо",
+    language: { en: "английски", tr: "турски", bg: "български" },
+    subtitles: {
+      smartPick: "УМЕН ИЗБОР",
+      underBudget: "В БЮДЖЕТА",
+      foodDrink: "ХРАНА + НАПИТКА",
+      quickMatch: "БЪРЗО СЪВПАДЕНИЕ",
+      filling: "ЗАСИЩАЩ ИЗБОР",
+    },
+    total: "Общо",
+    remaining: "остават",
+    foodOnlyBudget: "Пропуснах напитка или гарнитура, за да остане в бюджета.",
+    alt: { cheaper: "По-евтино", filling: "По-засищащо", noAlcohol: "Без алкохол", spicy: "По-пикантно", lighter: "По-леко" },
+  },
+} satisfies Record<Locale, {
+  tabs: { quiz: string; text: string };
+  headerKicker: string;
+  assistantName: string;
+  assistantStatus: string;
+  freeTitle: string;
+  freeSubtitle: string;
+  placeholders: string[];
+  chips: Array<{ key: string; label: string; sentence: string }>;
+  submit: string;
+  loading: string;
+  clear: string;
+  tryAnother: string;
+  understood: string;
+  matched: string;
+  tip: string;
+  budget: string;
+  veryHungry: string;
+  hungry: string;
+  wantsBeer: string;
+  noAlcohol: string;
+  sweetOnly: string;
+  spicy: string;
+  grilled: string;
+  light: string;
+  fresh: string;
+  language: Record<Locale, string>;
+  subtitles: { smartPick: string; underBudget: string; foodDrink: string; quickMatch: string; filling: string };
+  total: string;
+  remaining: string;
+  foodOnlyBudget: string;
+  alt: { cheaper: string; filling: string; noAlcohol: string; spicy: string; lighter: string };
+}>;
 
 interface HistoryEntry {
   itemId: string;
@@ -68,6 +249,295 @@ function pushHistory(entry: HistoryEntry) {
   } catch {
     // ignore
   }
+}
+
+function wizardDebug(stage: string, details?: Record<string, unknown>) {
+  if (!WIZARD_DEBUG) return;
+  if (details) console.debug(`[wizard] ${stage}`, details);
+  else console.debug(`[wizard] ${stage}`);
+}
+
+function isVeryHungryText(text: string): boolean {
+  const s = text.toLowerCase();
+  return /very hungry|so hungry|super hungry|really hungry|starving/.test(s) ||
+    /çok aç|çok açım|kurt gibi aç|acıktım/.test(s) ||
+    /много гладен|много гладна|страшно гладен|умирам от глад|адски гладен/.test(s);
+}
+
+function wantsBeerText(text: string): boolean {
+  const s = text.toLowerCase();
+  const negated = /no alcohol|without alcohol|non-alcoholic|alcohol-free|alkol olmasın|alkolsüz|alkol yok|без алкохол/.test(s);
+  if (negated) return false;
+  return /\bbeer\b|\bwine\b|\balcohol\b|bira|şarap|alkol|бира|вино|алкохол/.test(s);
+}
+
+function wantsNoAlcoholText(text: string): boolean {
+  const s = text.toLowerCase();
+  return /no alcohol|without alcohol|non-alcoholic|alcohol-free|alkol olmasın|alkolsüz|alkol yok|без алкохол|безалкохолно/.test(s);
+}
+
+function wantsSweetOnlyText(text: string): boolean {
+  const s = text.toLowerCase();
+  return /sweet only|only sweet|dessert only|само сладко|sadece tatlı/.test(s);
+}
+
+function detectInputLanguage(text: string, fallback: Locale): Locale {
+  const s = text.toLowerCase();
+  if (/[а-яё]/i.test(text)) return "bg";
+  if (/[çğıöşü]/i.test(text) || /\b(bira|cebimde|açım|istiyorum|olsun|hafif|acılı|ızgara)\b/.test(s)) return "tr";
+  if (/[a-z]/i.test(text)) return "en";
+  return fallback;
+}
+
+function enrichAnswersFromFreeText(base: WizardAnswers, text: string): WizardAnswers {
+  const s = text.toLowerCase();
+  const next: WizardAnswers = { ...base };
+  const veryHungry = isVeryHungryText(text);
+  const wantsBeer = wantsBeerText(text);
+
+  if (veryHungry) {
+    next.hunger = "feast";
+    if (!next.anchor || next.anchor === "drink") next.anchor = wantsBeer ? "both" : "food";
+  }
+  if (wantsBeer) {
+    next.alcohol = "alcoholic";
+    next.drinkProfile = "beer-wine";
+    if (!next.anchor) next.anchor = veryHungry || /food|eat|meal|yemek|храна|ядене/.test(s) ? "both" : "drink";
+  }
+  if (wantsNoAlcoholText(text)) {
+    next.alcohol = "non-alcoholic";
+    if (!next.drinkProfile) next.drinkProfile = "any";
+  }
+  if (wantsSweetOnlyText(text)) {
+    next.foodProtein = "sweet-only";
+    next.anchor = "food";
+    next.hunger = "snack";
+  }
+  if (/spicy|hot sauce|acılı|acı|пикантно|люто|лютиво/.test(s)) {
+    next.mood = "adventurous";
+  }
+  if (/grilled|grill|bbq|ızgara|mangal|скара|грил/.test(s)) {
+    next.foodTexture = "grilled";
+    if (!next.anchor) next.anchor = "food";
+  }
+  if (/light|fresh|hafif|ferah|леко|свежо/.test(s)) {
+    next.mood = "healthy";
+    if (!next.hunger) next.hunger = "snack";
+  }
+  if (/cold|iced|soğuk|buzlu|студено|ледено/.test(s)) {
+    next.drinkTemp = "cold";
+  }
+  return next;
+}
+
+function factListForInput(
+  text: string,
+  answers: WizardAnswers,
+  budgetEur: number | null,
+  locale: Locale,
+): string[] {
+  const copy = WIZARD_COPY[locale];
+  const facts: string[] = [];
+  const add = (value: string) => {
+    if (!facts.includes(value)) facts.push(value);
+  };
+  const parsedBudget = parseBudget(text);
+  if (budgetEur != null) {
+    const budgetLabel = parsedBudget?.currency === "BGN" ? parsedBudget.source : formatPrice(budgetEur, "EUR", locale);
+    add(`${budgetLabel} ${copy.budget}`);
+  }
+  if (answers.hunger === "feast" || isVeryHungryText(text)) add(copy.veryHungry);
+  else if (answers.hunger) add(copy.hungry);
+  if (answers.alcohol === "alcoholic" || wantsBeerText(text)) add(copy.wantsBeer);
+  if (answers.alcohol === "non-alcoholic" || wantsNoAlcoholText(text)) add(copy.noAlcohol);
+  if (answers.foodProtein === "sweet-only" || wantsSweetOnlyText(text)) add(copy.sweetOnly);
+  if (answers.mood === "adventurous" || /spicy|acılı|acı|пикантно|люто/.test(text.toLowerCase())) add(copy.spicy);
+  if (answers.foodTexture === "grilled") add(copy.grilled);
+  if (answers.mood === "healthy") add(copy.light);
+  if (/fresh|ferah|свежо/.test(text.toLowerCase())) add(copy.fresh);
+  if (text.trim().length > 0 && facts.length > 0) add(copy.language[detectInputLanguage(text, locale)]);
+  return facts.slice(0, 5);
+}
+
+function appendSentence(prev: string, sentence: string): string {
+  const trimmed = prev.trim();
+  if (!trimmed) return sentence;
+  const separator = /[.!?]$/.test(trimmed) ? " " : ". ";
+  return `${trimmed}${separator}${sentence}`;
+}
+
+function priceOf(item: { price: number | null } | null | undefined): number {
+  return typeof item?.price === "number" ? item.price : 0;
+}
+
+function comboTotal(
+  main: ScoredItem["item"],
+  combo: { side: PairingPick | null; drink: PairingPick | null },
+): number {
+  return Math.round((priceOf(main) + priceOf(combo.side?.item) + priceOf(combo.drink?.item)) * 100) / 100;
+}
+
+function findBudgetBeer(categories: QrMenuCategory[], maxPrice: number | null): PairingPick | null {
+  const beers = categories
+    .flatMap((cat) => cat.items.map((item) => ({ ...item, categoryId: cat.id })))
+    .filter((item) => {
+      const tags = getItemTags(item.id);
+      return isDrinkCategory(item.categoryId) &&
+        tags.state === "alcoholic" &&
+        (tags.profile === "malty" || tags.profile === "hoppy" || item.categoryId === "beer-cider-other-drinks") &&
+        (maxPrice == null || priceOf(item) <= maxPrice);
+    })
+    .sort((a, b) => priceOf(a) - priceOf(b));
+  return beers[0] ? { item: beers[0], reasonKey: "pair_drink_match" } : null;
+}
+
+function chooseBudgetSafeMain(
+  local: WizardPick,
+  budgetEur: number | null | undefined,
+  answers: WizardAnswers,
+  freetext?: string,
+): ScoredItem {
+  const wantsFoodFirst = answers.hunger === "feast" || answers.hunger === "meal" || isVeryHungryText(freetext ?? "");
+  if (wantsFoodFirst && isDrinkCategory(local.main.item.categoryId)) {
+    const foodFirst = local.pool.find((candidate) => {
+      if (isDrinkCategory(candidate.item.categoryId)) return false;
+      return budgetEur == null || priceOf(candidate.item) <= budgetEur;
+    });
+    if (foodFirst) return foodFirst;
+  }
+  if (budgetEur == null || priceOf(local.main.item) <= budgetEur) return local.main;
+  const affordable = local.pool.find((candidate) => {
+    if (priceOf(candidate.item) > budgetEur) return false;
+    return !wantsFoodFirst || !isDrinkCategory(candidate.item.categoryId);
+  });
+  return affordable ?? local.main;
+}
+
+function buildBudgetAwareCombo(
+  main: ScoredItem["item"],
+  categories: QrMenuCategory[],
+  budgetEur: number | null | undefined,
+  answers: WizardAnswers,
+  freetext?: string,
+): { combo: { side: PairingPick | null; drink: PairingPick | null }; totalEstimatedPrice: number; budgetStatus: BudgetStatus } {
+  const combo = buildCombo(main, categories);
+  let side = combo.side;
+  let drink = combo.drink;
+  let budgetStatus: BudgetStatus = "within_budget";
+  const wantsBeer = wantsBeerText(freetext ?? "") || answers.alcohol === "alcoholic" || answers.drinkProfile === "beer-wine";
+
+  if (!isDrinkCategory(main.categoryId) && wantsBeer) {
+    const remainingForDrink = budgetEur == null ? null : Math.max(0, budgetEur - priceOf(main) - priceOf(side?.item));
+    let beer = findBudgetBeer(categories, remainingForDrink);
+    if (!beer && side && budgetEur != null) {
+      beer = findBudgetBeer(categories, Math.max(0, budgetEur - priceOf(main)));
+      if (beer) side = null;
+    }
+    if (beer) drink = beer;
+  }
+
+  const fits = () => budgetEur == null || comboTotal(main, { side, drink }) <= budgetEur;
+  if (!fits() && side) {
+    side = null;
+    budgetStatus = "food_only_within_budget";
+  }
+  if (!fits() && drink) {
+    drink = null;
+    budgetStatus = "food_only_within_budget";
+  }
+  if (!fits()) {
+    budgetStatus = "over_budget_no_safe_combo";
+  }
+  return {
+    combo: { side, drink },
+    totalEstimatedPrice: comboTotal(main, { side, drink }),
+    budgetStatus,
+  };
+}
+
+function resultIds(result: ResultView | null): string {
+  if (!result) return "";
+  return [
+    result.mainItem.item.id,
+    result.combo.side?.item.id ?? "",
+    result.combo.drink?.item.id ?? "",
+  ].join("|");
+}
+
+function getResultSubtitle(result: ResultView | null, locale: Locale): string {
+  const copy = WIZARD_COPY[locale].subtitles;
+  if (!result) return copy.quickMatch;
+  if (result.budgetEur != null && result.totalEstimatedPrice != null && result.totalEstimatedPrice <= result.budgetEur) {
+    return copy.underBudget;
+  }
+  if (result.combo.drink && !isDrinkCategory(result.mainItem.item.categoryId)) return copy.foodDrink;
+  if (result.matchedFacts?.some((fact) => fact === WIZARD_COPY[locale].veryHungry)) return copy.filling;
+  if (result.source === "groq") return copy.smartPick;
+  return copy.quickMatch;
+}
+
+function formatBudgetLine(result: ResultView, currency: string, locale: Locale): string | null {
+  const total = result.totalEstimatedPrice ?? comboTotal(result.mainItem.item, result.combo);
+  if (result.budgetEur != null) {
+    return `${WIZARD_COPY[locale].total}: ${formatPrice(total, currency, locale)} / ${formatPrice(result.budgetEur, currency, locale)} ${WIZARD_COPY[locale].budget}`;
+  }
+  if (result.combo.side || result.combo.drink) {
+    return `${WIZARD_COPY[locale].total}: ${formatPrice(total, currency, locale)}`;
+  }
+  return null;
+}
+
+function formatBudgetRemaining(result: ResultView, currency: string, locale: Locale): string | null {
+  if (result.budgetEur == null || result.totalEstimatedPrice == null) return null;
+  const remaining = Math.round((result.budgetEur - result.totalEstimatedPrice) * 100) / 100;
+  if (remaining < 0) return null;
+  return `${formatPrice(remaining, currency, locale)} ${WIZARD_COPY[locale].remaining}`;
+}
+
+function comboReasonText(
+  kind: "side" | "drink",
+  result: ResultView,
+  pair: PairingPick,
+  locale: Locale,
+): string {
+  const mainTags = getItemTags(result.mainItem.item.id);
+  const pairTags = getItemTags(pair.item.id);
+  const budgetSafe = result.budgetEur != null && result.totalEstimatedPrice != null && result.totalEstimatedPrice <= result.budgetEur;
+  if (budgetSafe && kind === "drink" && pairTags.state === "alcoholic") {
+    if (locale === "tr") return "Bira isteğine uyuyor ve bütçeyi aşmıyor.";
+    if (locale === "bg") return "Пасва на бира и остава в бюджета.";
+    return "Fits the beer request without breaking your budget.";
+  }
+  if (budgetSafe && kind === "side") {
+    if (locale === "tr") return "Ana yemeği tamamlıyor ve toplamı bütçede tutuyor.";
+    if (locale === "bg") return "Допълва основното и остава в бюджета.";
+    return "Rounds out the main while staying within budget.";
+  }
+  if (kind === "drink" && (mainTags.flavors.includes("smoky") || mainTags.textures.includes("grilled"))) {
+    if (locale === "tr") return "Izgara ve tuzlu lezzetle iyi gider.";
+    if (locale === "bg") return "Подхожда на скара и солен вкус.";
+    return "Works well with grilled, salty food.";
+  }
+  if (kind === "side" && mainTags.portion === "feast") {
+    if (locale === "tr") return "Çok açsan tabağı daha doyurucu yapar.";
+    if (locale === "bg") return "Прави избора още по-засищащ.";
+    return "Makes the pick more filling for a big appetite.";
+  }
+  return t(locale, pair.reasonKey);
+}
+
+function alternativeLabel(alt: ScoredItem, result: ResultView, locale: Locale): string {
+  const copy = WIZARD_COPY[locale].alt;
+  const mainPrice = priceOf(result.mainItem.item);
+  const altPrice = priceOf(alt.item);
+  const altTags = getItemTags(alt.item.id);
+  const mainTags = getItemTags(result.mainItem.item.id);
+  if (altPrice > 0 && mainPrice > 0 && altPrice < mainPrice) return copy.cheaper;
+  if (altTags.portion === "feast" && mainTags.portion !== "feast") return copy.filling;
+  if (altTags.state !== "alcoholic" && mainTags.state === "alcoholic") return copy.noAlcohol;
+  if (altTags.flavors.includes("spicy") && !mainTags.flavors.includes("spicy")) return copy.spicy;
+  if (altTags.vibe === "light" && mainTags.vibe !== "light") return copy.lighter;
+  return copy.cheaper;
 }
 
 // Inline icons — small, no external dependency, themed via currentColor.
@@ -222,11 +692,16 @@ interface ResultView {
   pickIndex: number; // for "show me another" cycling
   source: "groq" | "local" | "surprise";
   rationaleText?: string; // LLM-supplied one-liner (only when source === "groq")
+  budgetEur?: number | null;
+  totalEstimatedPrice?: number | null;
+  budgetStatus?: BudgetStatus;
+  matchedFacts?: string[];
+  requestId?: number;
+  llmAppliedMode?: "replace" | "enriched";
 }
 
 export function MasaTasteWizard({
   categories,
-  activeCategory,
   currency,
   locale,
   onClose,
@@ -238,22 +713,48 @@ export function MasaTasteWizard({
   const [answers, setAnswers] = useState<WizardAnswers>({});
   const [result, setResult] = useState<ResultView | null>(null);
   const [spinningLabel, setSpinningLabel] = useState("");
-  const [refining, setRefining] = useState(false);
   const [freeText, setFreeText] = useState("");
   const [freeTextLoading, setFreeTextLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<"quiz" | "text">("quiz");
-  const [freeTextResult, setFreeTextResult] = useState<IntentResult | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+  const [activeChipKey, setActiveChipKey] = useState<string | null>(null);
   // Bumped on every finishQuiz() call so a late LLM/local response from a
   // previous quiz run (e.g. the user restarted before it resolved) is
   // ignored instead of overwriting the current result.
   const requestIdRef = useRef(0);
+  const localAppliedRequestRef = useRef<number | null>(null);
+  const pendingLlmRef = useRef<{ requestId: number; pick: WizardPickFromLlm } | null>(null);
+  const resultRef = useRef<ResultView | null>(null);
 
   useEffect(() => {
     setHistory(loadHistory());
   }, []);
 
   const triggerClick = () => playClick(soundEnabled);
+  const setResultView = (next: ResultView | null) => {
+    resultRef.current = next;
+    setResult(next);
+  };
+
+  const localLexicon = useMemo(() => parseWithLexicon(freeText), [freeText]);
+  const liveAnswers = useMemo(
+    () => enrichAnswersFromFreeText(localLexicon.answers, freeText),
+    [freeText, localLexicon.answers],
+  );
+  const liveBudgetEur = useMemo(() => budgetInEur(freeText), [freeText]);
+  const liveFacts = useMemo(
+    () => factListForInput(freeText, liveAnswers, liveBudgetEur, locale),
+    [freeText, liveAnswers, liveBudgetEur, locale],
+  );
+
+  useEffect(() => {
+    if (activeTab !== "text" || freeText.trim()) return;
+    const id = window.setInterval(() => {
+      setPlaceholderIndex((idx) => (idx + 1) % WIZARD_COPY[locale].placeholders.length);
+    }, 4000);
+    return () => window.clearInterval(id);
+  }, [activeTab, freeText, locale]);
 
   // -------------------------------------------------------------------------
   // Step navigation
@@ -280,12 +781,136 @@ export function MasaTasteWizard({
     }
   };
 
+  const pushResultHistory = (item: ResultView["mainItem"]["item"]) => {
+    pushHistory({
+      itemId: item.id,
+      titleBg: item.title.bg ?? "",
+      titleTr: item.title.tr ?? "",
+      titleEn: item.title.en ?? "",
+      at: Date.now(),
+    });
+    setHistory(loadHistory());
+  };
+
+  const llmSkipReason = (
+    mode: "buttons" | "freetext",
+    local: WizardPick | null,
+    finalAnswers: WizardAnswers,
+    freetext?: string,
+    budgetEur?: number | null,
+  ): string | null => {
+    const text = (freetext ?? "").trim();
+    if (!sessionToken) return "missing_session_token";
+    if (typeof navigator !== "undefined" && navigator.onLine === false) return "offline";
+    if (mode === "freetext" && text.length < 4 && budgetEur == null) return "empty_input";
+    const hasMixedConstraints =
+      budgetEur != null ||
+      wantsBeerText(text) ||
+      wantsNoAlcoholText(text) ||
+      isVeryHungryText(text) ||
+      finalAnswers.anchor === "both" ||
+      finalAnswers.alcohol != null;
+    if (mode === "freetext" && text.length >= 4) return null;
+    if (local?.confidence !== "high" || hasMixedConstraints) return null;
+    return "high_confidence_local";
+  };
+
+  const applyLlmPick = (
+    requestId: number,
+    llm: WizardPickFromLlm,
+    context: { budgetEur?: number | null; matchedFacts: string[] },
+  ) => {
+    if (requestIdRef.current !== requestId) {
+      wizardDebug("llm:response:rejected", { requestId, reason: "stale_request" });
+      return;
+    }
+    if (localAppliedRequestRef.current !== requestId) {
+      pendingLlmRef.current = { requestId, pick: llm };
+      return;
+    }
+
+    const current = resultRef.current;
+    const budgetEur = context.budgetEur ?? null;
+    const computedTotal = comboTotal(llm.main.item, llm.combo);
+    const llmTotal = llm.totalEstimatedPrice ?? computedTotal;
+    if (budgetEur != null && llmTotal > budgetEur + 0.001) {
+      wizardDebug("llm:response:rejected", { requestId, reason: "budget_overrun", total: llmTotal, budgetEur });
+      return;
+    }
+    if (!llm.rationaleText?.trim() && (llm.confidence ?? 0) < 50) {
+      wizardDebug("llm:response:rejected", { requestId, reason: "no_improvement" });
+      return;
+    }
+    if (current?.confidence === "high" && (llm.confidence ?? 50) < 40 && resultIds(current) !== [
+      llm.main.item.id,
+      llm.combo.side?.item.id ?? "",
+      llm.combo.drink?.item.id ?? "",
+    ].join("|")) {
+      wizardDebug("llm:response:rejected", { requestId, reason: "lower_confidence", confidence: llm.confidence });
+      return;
+    }
+
+    const sameIds = resultIds(current) === [
+      llm.main.item.id,
+      llm.combo.side?.item.id ?? "",
+      llm.combo.drink?.item.id ?? "",
+    ].join("|");
+    const next: ResultView = {
+      mainItem: llm.main,
+      alternatives: llm.alternatives.length > 0 ? llm.alternatives : current?.alternatives ?? [],
+      combo: llm.combo,
+      confidence: "high",
+      isSurprise: false,
+      pickIndex: 0,
+      source: "groq",
+      rationaleText: llm.rationaleText,
+      budgetEur,
+      totalEstimatedPrice: llm.totalEstimatedPrice ?? computedTotal,
+      budgetStatus: llm.budgetStatus,
+      matchedFacts: context.matchedFacts,
+      requestId,
+      llmAppliedMode: sameIds ? "enriched" : "replace",
+    };
+    wizardDebug("llm:response:accepted", {
+      requestId,
+      mode: next.llmAppliedMode,
+      mainItemId: next.mainItem.item.id,
+      total: next.totalEstimatedPrice,
+      confidence: llm.confidence,
+    });
+    setResultView(next);
+    pushResultHistory(next.mainItem.item);
+    wizardDebug("ui:applied-llm", { requestId, mode: next.llmAppliedMode });
+  };
+
+  const flushPendingLlm = (requestId: number, context: { budgetEur?: number | null; matchedFacts: string[] }) => {
+    const pending = pendingLlmRef.current;
+    if (!pending || pending.requestId !== requestId) return;
+    pendingLlmRef.current = null;
+    applyLlmPick(requestId, pending.pick, context);
+  };
+
   const finishQuiz = (
     finalAnswers: WizardAnswers,
     opts: { freetext?: string; budgetEur?: number | null } = {},
   ) => {
-    const mode: "buttons" | "freetext" = opts.freetext ? "freetext" : "buttons";
+    const freetext = opts.freetext?.trim() || "";
+    const mode: "buttons" | "freetext" = freetext ? "freetext" : "buttons";
     const requestId = ++requestIdRef.current;
+    localAppliedRequestRef.current = null;
+    pendingLlmRef.current = null;
+    const budgetEur = opts.budgetEur ?? null;
+    const matchedFacts = factListForInput(freetext, finalAnswers, budgetEur, locale);
+
+    wizardDebug("local:start", { requestId, mode, budgetEur, textLen: freetext.length });
+    const local = pickRecommendation(categories, finalAnswers, locale, freetext);
+    wizardDebug("local:result", {
+      requestId,
+      mainItemId: local?.main.item.id,
+      confidence: local?.confidence,
+      alternatives: local?.alternatives.map((alt) => alt.item.id) ?? [],
+    });
+
     const spin = setInterval(() => {
       const pool = categories.flatMap((c) => c.items.map((i) => ({ ...i, categoryId: c.id })));
       if (pool.length === 0) return;
@@ -295,96 +920,101 @@ export function MasaTasteWizard({
     }, 110);
     setStep("spinning");
 
-    // Kick off LLM in parallel with the 1.2s UX delay. The local pick is the
-    // fallback if the LLM is null, slow (>1.2s + a beat), or fails. We never
-    // block the UI on the network call.
-    const llmPromise: Promise<WizardPickFromLlm | null> = sessionToken
-      ? recommend(
-          {
-            mode,
-            answers: finalAnswers,
-            freetext: opts.freetext,
-            budgetEur: opts.budgetEur ?? null,
-            locale,
-            sessionToken,
-          },
-          categories,
-        )
-      : Promise.resolve(null);
+    const skipReason = llmSkipReason(mode, local, finalAnswers, freetext, budgetEur);
+    if (skipReason) {
+      wizardDebug("llm:request:skipped", { requestId, reason: skipReason });
+    } else {
+      wizardDebug("llm:request:start", { requestId, mode, timeoutMs: CLIENT_LLM_TIMEOUT_MS, budgetEur, textLen: freetext.length });
+      void recommend(
+        {
+          mode,
+          answers: finalAnswers,
+          freetext,
+          budgetEur,
+          locale,
+          sessionToken,
+          requestId: String(requestId),
+          timeoutMs: CLIENT_LLM_TIMEOUT_MS,
+        },
+        categories,
+      ).then((llm) => {
+        if (!llm) return;
+        applyLlmPick(requestId, llm, { budgetEur, matchedFacts });
+      });
+    }
 
-    const localPromise: Promise<WizardPick | null> = new Promise((resolve) => {
-      setTimeout(() => {
-        clearInterval(spin);
-        resolve(pickRecommendation(categories, finalAnswers, locale, opts.freetext));
-      }, 1200);
-    });
-
-    void Promise.all([llmPromise, localPromise]).then(([llm, local]) => {
-      if (requestIdRef.current !== requestId) return; // stale — user restarted/changed answers
-      if (llm) {
-        setResult({
-          mainItem: llm.main,
-          alternatives: llm.alternatives,
-          combo: llm.combo,
-          confidence: "high",
-          isSurprise: false,
-          pickIndex: 0,
-          source: "groq",
-          rationaleText: llm.rationaleText,
-        });
-        pushHistory({
-          itemId: llm.main.item.id,
-          titleBg: llm.main.item.title.bg ?? "",
-          titleTr: llm.main.item.title.tr ?? "",
-          titleEn: llm.main.item.title.en ?? "",
-          at: Date.now(),
-        });
-        setHistory(loadHistory());
-        setStep("result");
-        return;
-      }
+    window.setTimeout(() => {
+      clearInterval(spin);
+      if (requestIdRef.current !== requestId) return;
       if (!local) {
-        // Last-ditch: surprise pick
         const surprise = getSurprisePick(categories);
         if (!surprise) {
+          setResultView(null);
           setStep("result");
-          setResult(null);
           return;
         }
-        const combo = buildCombo(surprise.item, categories);
-        setResult({ mainItem: surprise, alternatives: [], combo, confidence: "low", isSurprise: true, pickIndex: 0, source: "surprise" });
+        const comboMeta = buildBudgetAwareCombo(surprise.item, categories, budgetEur, finalAnswers, freetext);
+        const surpriseResult: ResultView = {
+          mainItem: surprise,
+          alternatives: [],
+          combo: comboMeta.combo,
+          confidence: "low",
+          isSurprise: true,
+          pickIndex: 0,
+          source: "surprise",
+          budgetEur,
+          totalEstimatedPrice: comboMeta.totalEstimatedPrice,
+          budgetStatus: comboMeta.budgetStatus,
+          matchedFacts,
+          requestId,
+        };
+        setResultView(surpriseResult);
         setStep("result");
+        localAppliedRequestRef.current = requestId;
+        wizardDebug("ui:applied-local", { requestId, source: "surprise", mainItemId: surprise.item.id });
+        flushPendingLlm(requestId, { budgetEur, matchedFacts });
         return;
       }
-      const combo = buildCombo(local.main.item, categories);
-      setResult({
-        mainItem: local.main,
-        alternatives: local.alternatives,
-        combo,
+
+      const mainItem = chooseBudgetSafeMain(local, budgetEur, finalAnswers, freetext);
+      const comboMeta = buildBudgetAwareCombo(mainItem.item, categories, budgetEur, finalAnswers, freetext);
+      const localResult: ResultView = {
+        mainItem,
+        alternatives: local.alternatives.filter((alt) => alt.item.id !== mainItem.item.id),
+        combo: comboMeta.combo,
         confidence: local.confidence,
         isSurprise: false,
         pickIndex: 0,
         source: "local",
-      });
-      pushHistory({
-        itemId: local.main.item.id,
-        titleBg: local.main.item.title.bg ?? "",
-        titleTr: local.main.item.title.tr ?? "",
-        titleEn: local.main.item.title.en ?? "",
-        at: Date.now(),
-      });
-      setHistory(loadHistory());
+        budgetEur,
+        totalEstimatedPrice: comboMeta.totalEstimatedPrice,
+        budgetStatus: comboMeta.budgetStatus,
+        matchedFacts,
+        requestId,
+      };
+      setResultView(localResult);
+      pushResultHistory(localResult.mainItem.item);
       setStep("result");
-    });
+      localAppliedRequestRef.current = requestId;
+      wizardDebug("ui:applied-local", {
+        requestId,
+        mainItemId: localResult.mainItem.item.id,
+        total: localResult.totalEstimatedPrice,
+        budgetStatus: localResult.budgetStatus,
+      });
+      flushPendingLlm(requestId, { budgetEur, matchedFacts });
+    }, SPINNER_MIN_MS);
   };
 
   const handleSurprise = () => {
     triggerClick();
     requestIdRef.current++; // invalidate any in-flight finishQuiz response
+    localAppliedRequestRef.current = null;
+    pendingLlmRef.current = null;
     const surprise = getSurprisePick(categories);
     if (!surprise) return;
     const combo = buildCombo(surprise.item, categories);
-    setResult({ mainItem: surprise, alternatives: [], combo, confidence: "low", isSurprise: true, pickIndex: 0, source: "surprise" });
+    setResultView({ mainItem: surprise, alternatives: [], combo, confidence: "low", isSurprise: true, pickIndex: 0, source: "surprise" });
     setStep("result");
   };
 
@@ -420,11 +1050,13 @@ export function MasaTasteWizard({
   const handleRestart = () => {
     triggerClick();
     requestIdRef.current++; // invalidate any in-flight finishQuiz response
+    localAppliedRequestRef.current = null;
+    pendingLlmRef.current = null;
     setStep("intro");
     setAnswers({});
-    setResult(null);
-    setFreeTextResult(null);
+    setResultView(null);
     setFreeText("");
+    setActiveChipKey(null);
     setActiveTab("quiz");
   };
 
@@ -434,7 +1066,7 @@ export function MasaTasteWizard({
     const next = result.alternatives[result.pickIndex] ?? result.alternatives[0];
     const newAlternatives = [result.mainItem, ...result.alternatives.filter((_, i) => i !== result.pickIndex)];
     const combo = buildCombo(next.item, categories);
-    setResult({
+    setResultView({
       mainItem: next,
       alternatives: newAlternatives,
       combo,
@@ -444,51 +1076,37 @@ export function MasaTasteWizard({
       // After "show another" the pick is local — we don't re-call the LLM
       // for the second result because the LLM's job was to pick the winner.
       source: "local",
+      budgetEur: result.budgetEur,
+      totalEstimatedPrice: comboTotal(next.item, combo),
+      budgetStatus: result.budgetStatus,
+      matchedFacts: result.matchedFacts,
     });
   };
 
-  const handleRefine = () => {
-    triggerClick();
-    setRefining(true);
-    setStep("q_mood");
-    setResult(null);
-  };
-
   const handleFreeTextSubmit = async () => {
-    if (!freeText.trim()) return;
+    const text = freeText.trim();
+    if (!text) return;
     triggerClick();
     setFreeTextLoading(true);
     try {
-      const intent = await inferIntent({ text: freeText });
-      setFreeTextResult(intent);
-      const hasAnswers = intent.answers && Object.keys(intent.answers).length > 0;
-      // Always pass the raw text + extracted budget to the LLM, even when the
-      // lexicon produced no signals. Budget is sourced-of-truth regardless.
-      const budgetEur = budgetInEur(freeText);
-      if (hasAnswers || budgetEur != null) {
-        const answers = intent.answers ?? {};
-        setAnswers(answers);
-        setStep("spinning");
-        setTimeout(() => {
-          finishQuiz(answers, { freetext: freeText, budgetEur });
-          setFreeText("");
-          setFreeTextResult(null);
-        }, 800);
-      } else {
-        setFreeTextResult({ answers: {}, coverage: 0, source: "buttons-only", signals: [] });
-      }
+      const intent = await inferIntent({ text });
+      const budgetEur = budgetInEur(text);
+      const enrichedAnswers = enrichAnswersFromFreeText(intent.answers ?? {}, text);
+      setAnswers(enrichedAnswers);
+      finishQuiz(enrichedAnswers, { freetext: text, budgetEur });
+      setFreeText("");
+      setActiveChipKey(null);
     } finally {
       setFreeTextLoading(false);
     }
   };
 
-  const handleChipClick = (labelKey: string) => {
+  const handleChipClick = (chip: { key: string; sentence: string }) => {
     triggerClick();
-    const label = t(locale, labelKey);
+    setActiveChipKey(chip.key);
     setFreeText((prev) => {
-      const trimmed = prev.trim();
-      if (!trimmed) return label;
-      return `${trimmed} ${label}`;
+      if (prev.includes(chip.sentence)) return prev;
+      return appendSentence(prev, chip.sentence);
     });
     setTimeout(() => {
       const el = document.getElementById("wizardFreeTextInput") as HTMLTextAreaElement | null;
@@ -551,24 +1169,28 @@ export function MasaTasteWizard({
           <button
             type="button"
             className={`${styles.wizardTabBtn} ${activeTab === "quiz" ? styles.wizardTabBtnActive : ""}`}
+            data-active={activeTab === "quiz" ? "true" : "false"}
+            aria-pressed={activeTab === "quiz"}
             onClick={() => {
               triggerClick();
               setActiveTab("quiz");
             }}
           >
             <Sparkles size={16} />
-            <span>{t(locale, "wizard_tab_quiz")}</span>
+            <span>{WIZARD_COPY[locale].tabs.quiz}</span>
           </button>
           <button
             type="button"
             className={`${styles.wizardTabBtn} ${activeTab === "text" ? styles.wizardTabBtnActive : ""}`}
+            data-active={activeTab === "text" ? "true" : "false"}
+            aria-pressed={activeTab === "text"}
             onClick={() => {
               triggerClick();
               setActiveTab("text");
             }}
           >
             <MessageSquare size={16} />
-            <span>{t(locale, "wizard_tab_text")}</span>
+            <span>{WIZARD_COPY[locale].tabs.text}</span>
           </button>
         </div>
 
@@ -612,31 +1234,64 @@ export function MasaTasteWizard({
         ) : (
           <div className={styles.wizardFreeTextContainer}>
             <div className={styles.wizardFreeTextBox}>
+              <div className={styles.wizardAssistantHeader}>
+                <span className={styles.wizardAssistantAvatar} aria-hidden="true">
+                  <Sparkles size={16} />
+                </span>
+                <div>
+                  <p className={styles.wizardAssistantName}>{WIZARD_COPY[locale].assistantName}</p>
+                  <p className={styles.wizardAssistantStatus}>{WIZARD_COPY[locale].assistantStatus}</p>
+                </div>
+              </div>
+              <div className={styles.wizardFreeTextHeader}>
+                <label htmlFor="wizardFreeTextInput" className={styles.wizardFreeTextTitle}>
+                  {WIZARD_COPY[locale].freeTitle}
+                </label>
+                <p className={styles.wizardFreeTextSubtitle}>{WIZARD_COPY[locale].freeSubtitle}</p>
+              </div>
               <textarea
                 id="wizardFreeTextInput"
                 className={styles.wizardFreeTextInput}
                 value={freeText}
-                onChange={(e) => setFreeText(e.target.value)}
-                placeholder={t(locale, "free_text_placeholder")}
+                onChange={(e) => {
+                  setFreeText(e.target.value);
+                  if (!e.target.value.trim()) setActiveChipKey(null);
+                }}
+                placeholder={WIZARD_COPY[locale].placeholders[placeholderIndex % WIZARD_COPY[locale].placeholders.length]}
                 rows={3}
                 disabled={freeTextLoading}
                 autoFocus
+                aria-describedby="wizardFreeTextHelp wizardUnderstandingPreview"
               />
-              
-              {/* Suggestion Chips */}
+
               <div className={styles.wizardFreeTextSuggestions}>
-                {SUGGESTION_CHIPS.map((chip) => (
+                {WIZARD_COPY[locale].chips.map((chip) => {
+                  const active = activeChipKey === chip.key && freeText.includes(chip.sentence);
+                  return (
                   <button
-                    key={chip.labelKey}
+                    key={chip.key}
                     type="button"
-                    className={styles.wizardSuggestionChip}
-                    onClick={() => handleChipClick(chip.labelKey)}
+                    className={`${styles.wizardSuggestionChip} ${active ? styles.wizardSuggestionChipActive : ""}`}
+                    onClick={() => handleChipClick(chip)}
                     disabled={freeTextLoading}
+                    aria-pressed={active}
+                    aria-label={chip.sentence}
                   >
-                    <span className={styles.wizardSuggestionEmoji}>{chip.emoji}</span>
-                    <span>{t(locale, chip.labelKey)}</span>
+                    <span>{chip.label}</span>
                   </button>
-                ))}
+                  );
+                })}
+              </div>
+              <div
+                id="wizardUnderstandingPreview"
+                className={`${styles.wizardUnderstandingBar} ${liveFacts.length > 0 ? styles.wizardUnderstandingBarActive : ""}`}
+                aria-live="polite"
+              >
+                {liveFacts.length > 0 ? (
+                  <span>{WIZARD_COPY[locale].understood} {liveFacts.join(" · ")}</span>
+                ) : (
+                  <span id="wizardFreeTextHelp">{WIZARD_COPY[locale].tip}</span>
+                )}
               </div>
             </div>
 
@@ -647,7 +1302,7 @@ export function MasaTasteWizard({
                 onClick={handleFreeTextSubmit}
                 disabled={freeTextLoading || !freeText.trim()}
               >
-                {freeTextLoading ? t(locale, "free_text_loading_ai") : t(locale, "free_text_submit")}
+                {freeTextLoading ? WIZARD_COPY[locale].loading : WIZARD_COPY[locale].submit}
               </button>
               <button
                 type="button"
@@ -655,25 +1310,13 @@ export function MasaTasteWizard({
                 onClick={() => {
                   triggerClick();
                   setFreeText("");
-                  setFreeTextResult(null);
+                  setActiveChipKey(null);
                 }}
                 disabled={freeTextLoading || !freeText.trim()}
               >
-                {t(locale, "wizardRestart")}
+                {WIZARD_COPY[locale].clear}
               </button>
             </div>
-            {freeTextResult && freeTextResult.source === "buttons-only" ? (
-              <p className={styles.wizardFreeTextHint} style={{ marginTop: "10px" }}>{t(locale, "free_text_no_match")}</p>
-            ) : null}
-            {freeTextResult && freeTextResult.signals.length > 0 ? (
-              <div className={styles.wizardFreeTextChips} style={{ marginTop: "10px" }}>
-                {freeTextResult.signals.map((s, i) => (
-                  <span key={`${s.dim}-${i}`} className={styles.wizardFreeTextChip}>
-                    {s.dim}: {s.value}
-                  </span>
-                ))}
-              </div>
-            ) : null}
           </div>
         )}
       </div>
@@ -700,7 +1343,7 @@ export function MasaTasteWizard({
           <div className={styles.wizardResultCard}>
             <p>{t(locale, "result_no_match")}</p>
             <button type="button" className={styles.wizardBtnPrimary} onClick={handleRestart}>
-              {t(locale, "wizardRestart")}
+              {WIZARD_COPY[locale].tryAnother}
             </button>
           </div>
         </div>
@@ -708,19 +1351,24 @@ export function MasaTasteWizard({
     }
     const rationale = explainMatch(result.mainItem, answers, locale);
     const mainName = localized(result.mainItem.item.title, locale);
+    const subtitle = getResultSubtitle(result, locale);
+    const budgetLine = formatBudgetLine(result, currency, locale);
+    const budgetRemaining = formatBudgetRemaining(result, currency, locale);
     // LLM-supplied rationale wins when present; otherwise the local chips
     // generated by explainMatch handle the "why this item" story.
     const showLlmRationale = result.source === "groq" && result.rationaleText && result.rationaleText.trim().length > 0;
     return (
       <div className={styles.wizardStep}>
         <div className={styles.wizardResultCard}>
-          <div className={styles.wizardResultBadge}>{t(locale, "wizardResult")}</div>
-          {result.source === "groq" ? (
-            <div className={styles.wizardResultSurprise}>
-              <Sparkles size={14} />
-              <span>{t(locale, "wizard_ai_label")}</span>
-            </div>
-          ) : null}
+          <div className={styles.wizardResultTopline}>
+            <span className={styles.wizardResultBadge}>{subtitle}</span>
+            {result.source === "groq" ? (
+              <span className={styles.wizardResultSource}>
+                <Sparkles size={13} />
+                {t(locale, "wizard_ai_label")}
+              </span>
+            ) : null}
+          </div>
           {result.isSurprise ? (
             <div className={styles.wizardResultSurprise}>
               <Wand2 size={14} />
@@ -731,17 +1379,33 @@ export function MasaTasteWizard({
           <p className={styles.wizardResultPrice}>
             {formatPrice(result.mainItem.item.price, currency, locale)}
           </p>
+          {budgetLine ? (
+            <div className={styles.wizardBudgetBox}>
+              <p className={styles.wizardBudgetLine}>{budgetLine}</p>
+              {budgetRemaining ? <p className={styles.wizardBudgetRemaining}>{budgetRemaining}</p> : null}
+              {result.budgetStatus === "food_only_within_budget" ? (
+                <p className={styles.wizardBudgetNote}>{WIZARD_COPY[locale].foodOnlyBudget}</p>
+              ) : null}
+            </div>
+          ) : null}
+          {result.matchedFacts && result.matchedFacts.length > 0 ? (
+            <p className={styles.wizardMatchedFacts}>
+              {WIZARD_COPY[locale].matched} {result.matchedFacts.join(" · ")}
+            </p>
+          ) : null}
           {showLlmRationale ? (
             <p className={styles.wizardResultDesc}>{result.rationaleText}</p>
-          ) : null}
-          {rationale.reasons.length > 0 ? (
+          ) : (
+            <p className={styles.wizardResultDesc}>{rationale.sentence}</p>
+          )}
+          {rationale.reasons.length > 0 && !showLlmRationale ? (
             <div className={styles.wizardRationaleChips}>
               {rationale.reasons.map((r, i) => (
                 <span key={i} className={styles.wizardRationaleChip}>{r}</span>
               ))}
             </div>
           ) : null}
-          {result.mainItem.item.description && (() => {
+          {!showLlmRationale && result.mainItem.item.description && (() => {
             const d = localized(result.mainItem.item.description, locale);
             return d ? <p className={styles.wizardResultDesc}>{d}</p> : null;
           })()}
@@ -757,7 +1421,7 @@ export function MasaTasteWizard({
                     <div>
                       <p className={styles.comboItemTitle}>{localized(result.combo.side.item.title, locale)}</p>
                       <p className={styles.comboItemPrice}>{formatPrice(result.combo.side.item.price, currency, locale)}</p>
-                      <p className={styles.comboItemReason}>{t(locale, result.combo.side.reasonKey)}</p>
+                      <p className={styles.comboItemReason}>{comboReasonText("side", result, result.combo.side, locale)}</p>
                     </div>
                   </div>
                 ) : null}
@@ -767,7 +1431,7 @@ export function MasaTasteWizard({
                     <div>
                       <p className={styles.comboItemTitle}>{localized(result.combo.drink.item.title, locale)}</p>
                       <p className={styles.comboItemPrice}>{formatPrice(result.combo.drink.item.price, currency, locale)}</p>
-                      <p className={styles.comboItemReason}>{t(locale, result.combo.drink.reasonKey)}</p>
+                      <p className={styles.comboItemReason}>{comboReasonText("drink", result, result.combo.drink, locale)}</p>
                     </div>
                   </div>
                 ) : null}
@@ -780,9 +1444,12 @@ export function MasaTasteWizard({
             <div className={styles.wizardAlternativesSection}>
               <h5>{t(locale, "result_alternatives_heading")}</h5>
               <div className={styles.wizardAlternativesList}>
-                {result.alternatives.slice(0, 3).map((alt) => (
+                {result.alternatives.slice(0, 2).map((alt) => (
                   <div key={alt.item.id} className={styles.wizardAltItem}>
-                    <span className={styles.wizardAltTitle}>{localized(alt.item.title, locale)}</span>
+                    <span className={styles.wizardAltTitle}>
+                      <span className={styles.wizardAltReason}>{alternativeLabel(alt, result, locale)}</span>
+                      {localized(alt.item.title, locale)}
+                    </span>
                     <span className={styles.wizardAltPrice}>{formatPrice(alt.item.price, currency, locale)}</span>
                   </div>
                 ))}
@@ -794,19 +1461,13 @@ export function MasaTasteWizard({
             <button type="button" className={styles.wizardBtnPrimary} onClick={onClose}>
               {t(locale, "wizard_show_in_menu")}
             </button>
-            {result.alternatives.length > 0 ? (
-              <button type="button" className={styles.wizardBtnSecondary} onClick={handleShowAnother}>
-                <RotateCcw size={14} />
-                <span>{t(locale, "result_show_another")}</span>
-              </button>
-            ) : null}
-            <button type="button" className={styles.wizardBtnSecondary} onClick={handleRefine}>
-              <ArrowLeft size={14} />
-              <span>{t(locale, "result_refine")}</span>
-            </button>
-            <button type="button" className={styles.wizardBtnSecondary} onClick={handleRestart}>
-              <Sparkles size={14} />
-              <span>{t(locale, "wizardRestart")}</span>
+            <button
+              type="button"
+              className={styles.wizardBtnSecondary}
+              onClick={result.alternatives.length > 0 ? handleShowAnother : handleRestart}
+            >
+              <RotateCcw size={14} />
+              <span>{WIZARD_COPY[locale].tryAnother}</span>
             </button>
           </div>
         </div>
@@ -831,7 +1492,7 @@ export function MasaTasteWizard({
           <Sparkles className={styles.wizardSparkle} size={24} />
           <h2>{t(locale, "wizardTitle")}</h2>
           <div className={styles.wizardKicker}>
-            {activeCategory ? localized(activeCategory.title, locale) : ""}
+            {step === "result" || activeTab === "text" ? WIZARD_COPY[locale].headerKicker : WIZARD_COPY[locale].tabs.quiz}
           </div>
         </div>
 

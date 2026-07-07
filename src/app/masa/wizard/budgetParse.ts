@@ -6,18 +6,19 @@
 //   "20€"
 //   "10.50 EUR"
 //
-// Menu prices are stored in Euro — Bulgaria's currency since it adopted the
-// Euro — so the extracted value is used as-is, no currency conversion. The
-// old Bulgarian lev (лв / лева / BGN) is no longer legal tender and is
-// intentionally not recognised here.
+// Menu prices are stored in Euro. Diners may still type Bulgarian lev out of
+// habit, so BGN/лв is accepted and converted using the fixed conversion rate.
 
 import type { Locale } from "../masaTypes";
 
 interface BudgetMatch {
+  /** Budget value in EUR, because menu prices are stored in EUR. */
   value: number;
-  currency: "EUR";
+  currency: "EUR" | "BGN";
   source: string;
 }
+
+const BGN_PER_EUR = 1.95583;
 
 // IMPORTANT: we deliberately do NOT use \b word boundaries. \b only recognises
 // ASCII word characters, so it would fail to anchor after Cyrillic words like
@@ -30,6 +31,11 @@ const PATTERNS: RegExp[] = [
   /(\d+(?:[.,]\d+)?)\s*€/gu,
   // 10 EUR / 10 eur
   /(\d+(?:[.,]\d+)?)\s*(?:EUR|eur)(?=$|[^\p{L}\p{N}])/gu,
+];
+
+const BGN_PATTERNS: RegExp[] = [
+  // 15 лв / 15 лева / 15 BGN / 15 lev
+  /(\d+(?:[.,]\d+)?)\s*(?:лв\.?|лева|лев|BGN|bgn|lev|leva)(?=$|[^\p{L}\p{N}])/giu,
 ];
 
 function parseNumber(raw: string): number {
@@ -46,6 +52,16 @@ export function parseBudget(input: string): BudgetMatch | null {
       const n = parseNumber(m[1]);
       if (Number.isFinite(n) && n > 0) {
         return { value: n, currency: "EUR", source: m[0].trim() };
+      }
+    }
+  }
+  for (const regex of BGN_PATTERNS) {
+    regex.lastIndex = 0;
+    const m = regex.exec(input);
+    if (m) {
+      const n = parseNumber(m[1]);
+      if (Number.isFinite(n) && n > 0) {
+        return { value: Math.round((n / BGN_PER_EUR) * 100) / 100, currency: "BGN", source: m[0].trim() };
       }
     }
   }
