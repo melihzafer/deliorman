@@ -5,11 +5,16 @@
     "items": [
         {
             "icon": "/img/icons/5.svg",
-            "title": "Телефон за резервации",
-            "text": "<a href='/reservation'>+359 89 4766273</a><br/><span style='font-size: 14px; color: #999;'>Работно време: 08:00 - 23:00</span>"
+            "title": "Телефон за поръчки",
+            "text": "<a href='tel:+359896088804'>+359 89 608 8804</a><br/><span style='font-size: 14px; color: #999;'>За поръчки по телефон: 08:00 - 23:00</span>"
         },
         {
-            "icon": "/img/icons/4.svg", 
+            "icon": "/img/icons/3.svg",
+            "title": "Телефон за резервации",
+            "text": "<a href='tel:+3598947662273'>+359 89 476 62273</a><br/><span style='font-size: 14px; color: #999;'>Работно време: 08:00 - 23:00</span>"
+        },
+        {
+            "icon": "/img/icons/4.svg",
             "title": "Имейл за запитвания",
             "text": "<a href='mailto:restaurantdeliorman@gmail.com'>restaurantdeliorman@gmail.com</a><br/><span style='font-size: 14px; color: #999;'>Отговаряме в рамките на 24 часа</span>"
         },

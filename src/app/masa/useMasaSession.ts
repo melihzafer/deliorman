@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { isLocalTestHost, PING_INTERVAL_MS, SESSION_KEY_PREFIX } from "./masaConstants";
+import { PING_INTERVAL_MS, SESSION_KEY_PREFIX } from "./masaConstants";
 import { t } from "./masaTranslations";
 import type { Locale, QrMenuData, SessionState } from "./masaTypes";
 
@@ -8,7 +8,6 @@ export type MasaRole = "guest" | "vip";
 
 interface UseMasaSessionParams {
   locale: Locale;
-  qrKey: string;
   tableId: string;
   vipSecret: string;
 }
@@ -19,7 +18,7 @@ interface StartResponse {
   role?: MasaRole;
 }
 
-export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSessionParams) {
+export function useMasaSession({ locale, tableId, vipSecret }: UseMasaSessionParams) {
   const [sessionState, setSessionState] = useState<SessionState>("loading");
   const [token, setToken] = useState("");
   const [role, setRole] = useState<MasaRole>("guest");
@@ -50,11 +49,47 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
     localeRef.current = locale;
   }, [locale]);
 
+  // NEW EFFECT: Load menu directly and active session bypassing server session verification
   useEffect(() => {
     let cancelled = false;
 
+    async function loadMenuDirectly() {
+      setSessionState("loading");
+      setNotice("");
+      try {
+        const menuRes = await fetch("/data/menu.json", { cache: "no-store" });
+        if (cancelled) return;
+        if (!menuRes.ok) {
+          blockSession(t(localeRef.current, "menuLoadError"));
+          return;
+        }
+        const menu = (await menuRes.json()) as QrMenuData;
+        if (cancelled) return;
+
+        setToken("session-disabled");
+        setRole(vipSecret ? "vip" : "guest");
+        setSessionExpiresAt(0);
+        setMenuData(menu);
+        setActiveCategoryId(menu.categories?.[0]?.id ?? "");
+        setSessionState("active");
+      } catch (err) {
+        console.error("[masa] direct start failed:", err);
+        if (!cancelled) blockSession(t(localeRef.current, "menuLoadError"));
+      }
+    }
+
+    loadMenuDirectly();
+    return () => {
+      cancelled = true;
+    };
+  }, [blockSession, tableId, vipSecret]);
+
+  // OLD EFFECT (DISABLED): session start
+  useEffect(() => {
+    return; // DISABLED: sessions are disabled
+    let cancelled = false;
+
     async function startSession() {
-      const allowLocalTestSession = isLocalTestHost();
       const isVip = Boolean(vipSecret);
 
       if (isVip) {
@@ -99,7 +134,7 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
         return;
       }
 
-      if (!tableId || (!qrKey && !allowLocalTestSession)) {
+      if (!tableId) {
         blockSession(t(localeRef.current, "invalid"));
         return;
       }
@@ -111,7 +146,7 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
         const sessionRes = await fetch("/api/session/start", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ tableId, key: qrKey }),
+          body: JSON.stringify({ tableId }),
         });
         if (cancelled) return;
 
@@ -156,9 +191,11 @@ export function useMasaSession({ locale, qrKey, tableId, vipSecret }: UseMasaSes
     return () => {
       cancelled = true;
     };
-  }, [blockSession, qrKey, sessionKey, tableId, vipSecret]);
+  }, [blockSession, sessionKey, tableId, vipSecret]);
 
+  // OLD EFFECT (DISABLED): session ping
   useEffect(() => {
+    return; // DISABLED: sessions are disabled
     if (!token || sessionState !== "active") return undefined;
 
     const ping = async () => {

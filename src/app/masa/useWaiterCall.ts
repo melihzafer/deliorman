@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { COOLDOWN_KEY_PREFIX, COOLDOWN_MS, SUCCESS_MS } from "./masaConstants";
+import { COOLDOWN_KEY_PREFIX, COOLDOWN_MS, SUCCESS_MS, WAITER_CALL_ENABLED } from "./masaConstants";
 import { t } from "./masaTranslations";
 import type { Locale, WaiterFeedback } from "./masaTypes";
 
@@ -45,6 +45,10 @@ export function useWaiterCall({ blockSession, locale, nowMs, tableId, token }: U
   }, []);
 
   const callWaiter = useCallback(async () => {
+    if (!WAITER_CALL_ENABLED) {
+      // Feature is intentionally disabled. No network call, no UI feedback.
+      return;
+    }
     if (!token || !tableId || callState === "loading" || cooldownSeconds > 0) return;
     setCallState("loading");
 
@@ -101,5 +105,6 @@ export function useWaiterCall({ blockSession, locale, nowMs, tableId, token }: U
     callWaiter,
     cooldownSeconds,
     feedback,
+    isEnabled: WAITER_CALL_ENABLED,
   };
 }

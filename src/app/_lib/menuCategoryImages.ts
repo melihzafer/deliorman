@@ -134,9 +134,19 @@ export const categoryImageCards: Record<string, MenuImageCard[]> = {
   ],
   burgers: [
     {
-      src: "/img/burger.webp",
-      title: txt("Бургер", "Burger", "Burger"),
-      note: txt("Бургери", "Burgerler", "Burgers"),
+      src: "/img/menuCategorised/Burgers/aphrodite_burger.webp",
+      title: txt("Бургер Афродита", "Afrodit Burger", "Aphrodite Burger"),
+      note: txt("хрупкаво пилешко филе, картофи", "çıtır tavuk fileto, patates", "crispy chicken fillet, fries"),
+    },
+    {
+      src: "/img/menuCategorised/Burgers/olymp_burger.webp",
+      title: txt("Олимп бургер", "Olimp Burger", "Olymp Burger"),
+      note: txt("телешко месо, картофи", "dana eti, patates", "beef, fries"),
+    },
+    {
+      src: "/img/menuCategorised/Burgers/royal_burger.webp",
+      title: txt("Роял бургер", "Royal Burger", "Royal Burger"),
+      note: txt("пилешко месо, картофи", "tavuk eti, patates", "chicken meat, fries"),
     },
   ],
   "new-specialties": [
@@ -175,19 +185,77 @@ export const categoryImageCards: Record<string, MenuImageCard[]> = {
   ],
   "beer-cider-other-drinks": [
     {
-      src: "/img/menuCategorised/Soft%20drinks%20%26%20Beverages/cola.webp",
-      title: txt("Кола", "Kola", "Cola"),
-      note: txt("Напитки", "İçecekler", "Drinks"),
+      src: "/img/menuCategorised/Beers/beer_lager.webp",
+      title: txt("Светла бира", "Açık Bira / Lager", "Lager Beer"),
+      note: txt("Студена бира с гъста пяна", "Soğuk lager bira", "Chilled lager beer"),
     },
     {
-      src: "/img/menuCategorised/Soft%20drinks%20%26%20Beverages/sprite.webp",
-      title: txt("Спрайт", "Sprite", "Sprite"),
-      note: txt("Напитки", "İçecekler", "Drinks"),
+      src: "/img/menuCategorised/Beers/beer_wheat.webp",
+      title: txt("Пшенична бира", "Buğday Birası", "Wheat Beer"),
+      note: txt("1664 Бланк, Tuborg или подобни", "1664 Blanc, Tuborg vb.", "1664 Blanc, Tuborg or similar"),
+    },
+  ],
+  "cold-appetizers-sides": [
+    {
+      src: "/img/menuCategorised/ColdAppetizers/lukanka_sudzhuk.webp",
+      title: txt("Луканка и Суджук", "Lukanka Sucuğu & Sucuk", "Lukanka & Sudzhuk"),
+      note: txt("Традиционни сурово-сушени деликатеси", "Geleneksel kuru etler", "Traditional dry-cured meats"),
     },
     {
-      src: "/img/menuCategorised/Soft%20drinks%20%26%20Beverages/Ayran-WEB-10.webp",
-      title: txt("Айрян", "Ayran", "Ayran"),
-      note: txt("Напитки", "İçecekler", "Drinks"),
+      src: "/img/menuCategorised/ColdAppetizers/sirene_kashkaval.webp",
+      title: txt("Сирене и Кашкавал", "Beyaz Peynir & Kaşar Peyniri", "White Cheese & Kashkaval"),
+      note: txt("Подбрани млечни продукти", "Seçkin peynir tabağı", "Select Bulgarian cheese platter"),
+    },
+    {
+      src: "/img/menuCategorised/ColdAppetizers/pastirma.webp",
+      title: txt("Пастърма", "Pastırma", "Pastirma"),
+      note: txt("Сушено говеждо месо с подправки", "Kuru dana eti", "Dry-cured beef pastirma"),
+    },
+  ],
+  rakia: [
+    {
+      src: "/img/menuCategorised/Rakia/rakia_grape.webp",
+      title: txt("Гроздова ракия", "Üzüm Rakısı", "Grape Rakia"),
+      note: txt("Бургас 63, Пещерска или Кехлибар", "Burgas 63, Peşterska veya Kehlibar", "Burgas 63, Peshterska or Kehlibar"),
+    },
+    {
+      src: "/img/menuCategorised/Rakia/rakia_aged.webp",
+      title: txt("Отлежала ракия", "Yıllanmış Rakı", "Aged Rakia"),
+      note: txt("Специална отлежала селекция", "Özel yıllanmış seri", "Special aged selection"),
+    },
+    {
+      src: "/img/menuCategorised/Rakia/rakia_apricot.webp",
+      title: txt("Кайсиева ракия", "Kayısı Rakısı", "Apricot Rakia"),
+      note: txt("Ароматна Исперих кайсиева", "Aromatik İspirih kayısı rakısı", "Aromatic Isperih apricot rakia"),
+    },
+  ],
+  wines: [
+    {
+      src: "/img/menuCategorised/Wines/wine_white.webp",
+      title: txt("Бяло вино", "Beyaz Şarap", "White Wine"),
+      note: txt("Охладено селектирано бяло вино", "Soğuk beyaz şarap", "Chilled select white wine"),
+    },
+    {
+      src: "/img/menuCategorised/Wines/wine_red.webp",
+      title: txt("Червено вино", "Kırmızı Şarap", "Red Wine"),
+      note: txt("Ароматно селектирано червено вино", "Seçkin kırmızı şarap", "Select aromatic red wine"),
+    },
+    {
+      src: "/img/menuCategorised/Wines/wine_rose.webp",
+      title: txt("Розе", "Roze Şarap", "Rosé Wine"),
+      note: txt("Свежо и плодово розе", "Taze ve meyvemsi roze şarap", "Fresh and fruity rosé wine"),
+    },
+  ],
+  "whiskey-vodka": [
+    {
+      src: "/img/menuCategorised/Rakia/rakia_aged.webp",
+      title: txt("Марково Уиски", "Kaliteli Viski", "Premium Whiskey"),
+      note: txt("Джак Даниелс, Джеймсън или Чивас", "Jack Daniels, Jameson veya Chivas", "Jack Daniels, Jameson or Chivas"),
+    },
+    {
+      src: "/img/menuCategorised/Rakia/rakia_grape.webp",
+      title: txt("Класическа Водка", "Klasik Votka", "Classic Vodka"),
+      note: txt("Абсолют, Финландия или Смирноф", "Absolut, Finlandia veya Smirnoff", "Absolut, Finlandia or Smirnoff"),
     },
   ],
 };

@@ -4,7 +4,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import PageBanner from "@components/PageBanner";
 import DarkSection from "@components/DarkSection";
 import NewSpecialtiesCTA from "@components/sections/NewSpecialtiesCTALazy";
-import { getRestaurantPhoneDisplay, getRestaurantPhoneHref } from "@library/siteContact";
+import { getOrdersPhoneDisplay, getOrdersPhoneHref, getReservationsPhoneDisplay, getReservationsPhoneHref } from "@library/siteContact";
 import { buildAlternates } from "@/src/i18n/seo";
 
 export async function generateMetadata() {
@@ -25,8 +25,10 @@ export async function generateMetadata() {
 
 const LunchMenu = async () => {
   const t = await getTranslations("components.lunchMenu");
-  const restaurantPhone = getRestaurantPhoneDisplay();
-  const restaurantPhoneHref = getRestaurantPhoneHref();
+  const ordersPhone = getOrdersPhoneDisplay();
+  const ordersPhoneHref = getOrdersPhoneHref();
+  const reservationsPhone = getReservationsPhoneDisplay();
+  const reservationsPhoneHref = getReservationsPhoneHref();
 
   return (
     <>
@@ -142,7 +144,10 @@ const LunchMenu = async () => {
                       {t("lunchHoursValue")}
                     </p>
                     <p className="tst-text">
-                      {t("reservations")} <a href={restaurantPhoneHref} style={{color: '#05232B', fontWeight: '600'}}>{restaurantPhone}</a>
+                      {t("reservations")} <a href={reservationsPhoneHref} style={{color: '#05232B', fontWeight: '600'}}>{reservationsPhone}</a>
+                    </p>
+                    <p className="tst-text">
+                      Телефон за поръчки: <a href={ordersPhoneHref} style={{color: '#05232B', fontWeight: '600'}}>{ordersPhone}</a>
                     </p>
                   </div>
                 </div>

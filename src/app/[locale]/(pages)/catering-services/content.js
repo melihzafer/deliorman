@@ -80,7 +80,8 @@ export const cateringServicesContent = {
         "Обадете се на нашия екип за консултация и индивидуална оферта за вашето събитие. Ще ви помогнем да изберете перфектното меню и организация.",
       reserve: "Резервирайте",
       menu: "Вижте менюто",
-      phone: "+359 89 4766273",
+      phone: "+359 89 476 62273",
+      ordersPhone: "+359 89 608 8804",
     },
   },
   en: {
@@ -164,7 +165,8 @@ export const cateringServicesContent = {
         "Call our team for a consultation and a tailored offer for your event. We will help you choose the perfect menu and service setup.",
       reserve: "Book now",
       menu: "View the menu",
-      phone: "+359 89 4766273",
+      phone: "+359 89 476 62273",
+      ordersPhone: "+359 89 608 8804",
     },
   },
   tr: {
@@ -248,7 +250,8 @@ export const cateringServicesContent = {
         "Etkinliğiniz için danışmanlık ve size özel teklif almak üzere ekibimizi arayın. En uygun menüyü ve servis planını birlikte belirleyelim.",
       reserve: "Rezervasyon yap",
       menu: "Menüyü görüntüle",
-      phone: "+359 89 4766273",
+      phone: "+359 89 476 62273",
+      ordersPhone: "+359 89 608 8804",
     },
   },
 };

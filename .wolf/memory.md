@@ -3,6 +3,8 @@
 > Chronological action log. Hooks and AI append to this file automatically.
 > Old sessions are consolidated by the daemon weekly.
 | 17:31 | Edited package.json | 1→2 lines | ~17 |
+| 14:43 | Two-phone refactor + waiter call disable | 19 files, ~150 lines | ~3500 |
+| 14:54 | QR menu: drop key gate, set TTL 30min | 4 files, ~30 lines | ~1100 |
 | 17:31 | Created src/app/_lib/sheets.ts | — | ~1110 |
 | 17:31 | Created src/app/_lib/telegram.ts | — | ~192 |
 | 17:32 | Created src/app/api/session/create/route.ts | — | ~311 |
@@ -195,3 +197,142 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+
+## Session: 2026-07-07 14:25
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-07-07 14:34
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 14:36 | Created src/app/_lib/siteContact.js | — | ~982 |
+| 14:36 | Edited src/data/app.json | 2→3 lines | ~70 |
+| 14:36 | Edited src/app/_components/common/MobileBottomNav.jsx | 8→11 lines | ~145 |
+| 14:36 | Edited src/app/_components/common/MobileBottomNav.jsx | 7→7 lines | ~42 |
+| 14:36 | Edited src/app/_layouts/footers/LayoutDefault.jsx | expanded (+11 lines) | ~353 |
+| 14:37 | Edited src/app/_layouts/footers/LayoutDefault.jsx | 14→19 lines | ~263 |
+| 14:37 | Edited src/app/_components/sections/ContactInfo.jsx | expanded (+17 lines) | ~390 |
+| 14:37 | Edited src/app/_components/sections/ContactInfo.jsx | 18→18 lines | ~132 |
+| 14:37 | Edited messages/bg.json | 4→6 lines | ~113 |
+| 14:37 | Edited messages/bg.json | 5→5 lines | ~58 |
+| 14:37 | Edited messages/en.json | 2→4 lines | ~58 |
+| 14:37 | Edited messages/en.json | 4→5 lines | ~56 |
+| 14:37 | Edited messages/tr.json | 2→4 lines | ~62 |
+| 14:37 | Edited messages/tr.json | 4→5 lines | ~58 |
+| 14:38 | Edited src/app/_components/forms/ReservationForm.jsx | inline fix | ~56 |
+| 14:38 | Edited src/app/[locale]/(pages)/catering-services/content.js | 10→11 lines | ~108 |
+| 14:38 | Edited src/app/[locale]/(pages)/catering-services/content.js | 10→11 lines | ~103 |
+| 14:38 | Edited src/app/[locale]/(pages)/catering-services/content.js | 10→11 lines | ~110 |
+| 14:38 | Edited src/app/[locale]/(pages)/terms/content.js | 8→9 lines | ~91 |
+| 14:38 | Edited src/app/[locale]/(pages)/terms/content.js | 8→9 lines | ~90 |
+| 14:38 | Edited src/app/[locale]/(pages)/terms/content.js | 8→9 lines | ~100 |
+| 14:38 | Edited src/app/offline/page.jsx | added 1 import(s) | ~75 |
+| 14:38 | Edited src/app/offline/page.jsx | expanded (+15 lines) | ~364 |
+| 14:38 | Edited src/app/[locale]/(pages)/special-days/page.jsx | added 1 import(s) | ~106 |
+| 14:38 | Edited src/app/[locale]/(pages)/special-days/page.jsx | 4→6 lines | ~81 |
+| 14:38 | Edited src/app/[locale]/(pages)/special-days/page.jsx | 4→8 lines | ~151 |
+| 14:38 | Edited src/app/[locale]/(pages)/lunch-menu/page.jsx | inline fix | ~39 |
+| 14:38 | Edited src/app/[locale]/(pages)/lunch-menu/page.jsx | 4→6 lines | ~87 |
+| 14:38 | Edited src/app/[locale]/(pages)/lunch-menu/page.jsx | 7→10 lines | ~176 |
+| 14:38 | Edited src/app/api/reservation/route.ts | "Възникна грешка при обраб" → "Възникна грешка при обраб" | ~48 |
+| 14:38 | Edited src/app/api/contact/route.ts | "Формата за контакт не е к" → "Формата за контакт не е к" | ~50 |
+| 14:38 | Edited src/app/api/ai/menu-assistant/route.ts | 1→2 lines | ~28 |
+| 14:38 | Edited src/data/sections/reservation/reservation-form.json | inline fix | ~36 |
+| 14:39 | Edited src/data/sections/contact/contact-info.json | 17→22 lines | ~310 |
+| 14:39 | Edited src/app/_components/StructuredData.jsx | 12→15 lines | ~128 |
+| 14:39 | Edited src/data/sections/reservation/reservation-opentable.json | inline fix | ~36 |
+| 14:39 | Edited messages/bg.json | 4→4 lines | ~96 |
+| 14:39 | Edited messages/bg.json | 2→2 lines | ~71 |
+| 14:39 | Edited messages/bg.json | 2→2 lines | ~62 |
+| 14:39 | Edited messages/bg.json | inline fix | ~37 |
+| 14:39 | Edited messages/bg.json | inline fix | ~40 |
+| 14:39 | Edited messages/en.json | 2→2 lines | ~70 |
+| 14:39 | Edited messages/en.json | inline fix | ~5 |
+| 14:39 | Edited messages/tr.json | inline fix | ~5 |
+| 14:39 | Edited messages/en.json | inline fix | ~62 |
+| 14:39 | Edited messages/tr.json | inline fix | ~82 |
+| 14:40 | Edited messages/tr.json | inline fix | ~55 |
+| 14:40 | Edited messages/en.json | inline fix | ~42 |
+| 14:40 | Edited messages/tr.json | inline fix | ~44 |
+| 14:40 | Edited src/app/masa/masaConstants.ts | expanded (+10 lines) | ~169 |
+| 14:40 | Edited src/app/masa/useWaiterCall.ts | 5→5 lines | ~76 |
+| 14:40 | Edited src/app/masa/useWaiterCall.ts | added 1 condition(s) | ~83 |
+| 14:40 | Edited src/app/masa/useWaiterCall.ts | 7→8 lines | ~34 |
+| 14:41 | Edited src/app/masa/MasaClient.tsx | CSS: isEnabled | ~52 |
+| 14:41 | Edited src/app/masa/MasaClient.tsx | 7→7 lines | ~79 |
+| 14:44 | Session end: 55 writes across 19 files (siteContact.js, app.json, MobileBottomNav.jsx, LayoutDefault.jsx, ContactInfo.jsx) | 31 reads | ~32036 tok |
+| 14:50 | Edited src/app/_lib/sheets.ts | inline fix | ~13 |
+| 14:50 | Edited src/app/api/session/start/route.ts | added 1 condition(s) | ~481 |
+| 14:50 | Edited src/app/masa/useMasaSession.ts | modified if() | ~29 |
+| 14:50 | Edited src/app/masa/useMasaSession.ts | modified startSession() | ~22 |
+| 14:51 | Edited src/app/masa/useMasaSession.ts | inline fix | ~21 |
+| 14:51 | Edited src/app/masa/useMasaSession.ts | 6→5 lines | ~27 |
+| 14:51 | Edited src/app/masa/useMasaSession.ts | inline fix | ~25 |
+| 14:51 | Edited src/app/masa/useMasaSession.ts | 5→5 lines | ~36 |
+| 14:51 | Edited src/app/masa/MasaClient.tsx | 4→3 lines | ~51 |
+| 14:51 | Edited src/app/masa/MasaClient.tsx | inline fix | ~16 |
+| 14:51 | Edited src/app/masa/useMasaSession.ts | 6→6 lines | ~62 |
+| 14:54 | Session end: 66 writes across 21 files (siteContact.js, app.json, MobileBottomNav.jsx, LayoutDefault.jsx, ContactInfo.jsx) | 38 reads | ~37531 tok |
+
+## Session: 2026-07-07 16:26
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-07-07 17:27
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 17:29 | Edited src/app/[locale]/table/menu.module.scss | CSS: on | ~276 |
+| 17:34 | Fixed first active chip flush to viewport edge: scroller padding 10px 0 → 10px 16px, dropped :first-child/:last-child margin hacks | src/app/[locale]/table/menu.module.scss | done | ~120 |
+| 17:30 | Session end: 1 writes across 1 files (menu.module.scss) | 4 reads | ~3212 tok |
+| 17:31 | designqc: captured 2 screenshots (72KB, ~5000 tok) | D:/Program Files/Git/masa | ready for eval | ~0 |
+| 17:32 | designqc: captured 0 screenshots (0KB, ~0 tok) | D:/Program Files/Git/table | ready for eval | ~0 |
+| 17:32 | designqc: captured 6 screenshots (228KB, ~15000 tok) | /, /not-found, /opengraph-image, /robots, /sitemap, /sw, /masa/masaAudioUtils, /masa/MasaBottomNav, /masa/MasaCategoryBar, /masa/masaCategoryIcons | ready for eval | ~0 |
+| 17:33 | Session end: 1 writes across 1 files (menu.module.scss) | 5 reads | ~3212 tok |
+
+## Session: 2026-07-07 17:41
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-07-07 17:53
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 17:58 | Edited src/app/masa/wizard/types.ts | expanded (+17 lines) | ~212 |
+| 17:58 | Created src/app/masa/wizard/customerMode.ts | — | ~1281 |
+| 17:59 | Edited src/app/masa/wizard/customerMode.ts | 12→16 lines | ~332 |
+| 18:00 | Created src/app/masa/wizard/candidates.ts | — | ~1681 |
+| 18:00 | Edited src/app/masa/wizard/types.ts | expanded (+6 lines) | ~104 |
+| 18:01 | Created src/app/masa/wizard/budgetRepair.ts | — | ~1497 |
+| 18:01 | Created src/app/masa/wizard/recommendSchema.ts | — | ~2141 |
+| 18:02 | Created src/app/masa/wizard/llmPrompt.ts | — | ~2026 |
+| 18:02 | Edited src/app/api/wizard/recommend/route.ts | expanded (+6 lines) | ~378 |
+| 18:02 | Edited src/app/api/wizard/recommend/route.ts | 12→16 lines | ~147 |
+| 18:03 | Edited src/app/api/wizard/recommend/route.ts | added 2 condition(s) | ~899 |
+| 18:03 | Created src/app/masa/wizard/llmRecommend.ts | — | ~1876 |
+| 18:03 | Edited src/app/masa/MasaTasteWizard.tsx | inline fix | ~17 |
+| 18:03 | Edited src/app/masa/MasaTasteWizard.tsx | 5→9 lines | ~103 |
+| 18:03 | Edited src/app/masa/MasaTasteWizard.tsx | 2→3 lines | ~47 |
+| 18:03 | Edited src/app/masa/MasaTasteWizard.tsx | added 1 condition(s) | ~54 |
+| 18:04 | Edited src/app/masa/MasaTasteWizard.tsx | 3→4 lines | ~51 |
+| 18:04 | Edited src/app/masa/MasaTasteWizard.tsx | 3→4 lines | ~43 |
+| 18:04 | Created tests/unit/wizard/recommendSchema.test.ts | — | ~1990 |
+| 18:05 | Created tests/unit/wizard/llmPrompt.test.ts | — | ~1652 |
+| 18:05 | Created tests/unit/wizard/customerMode.test.ts | — | ~853 |
+| 18:05 | Edited src/app/masa/wizard/customerMode.ts | expanded (+9 lines) | ~142 |
+| 18:05 | Edited src/app/masa/wizard/customerMode.ts | 3→6 lines | ~104 |
+| 18:06 | Created tests/unit/wizard/candidates.test.ts | — | ~850 |
+| 18:07 | Created tests/unit/wizard/candidates.test.ts | — | ~1475 |
+| 18:07 | Created tests/unit/wizard/budgetRepair.test.ts | — | ~1614 |
+| 18:08 | Edited src/app/masa/wizard/budgetRepair.ts | modified if() | ~308 |
+| 18:08 | Edited tests/unit/wizard/budgetRepair.test.ts | 13→13 lines | ~154 |
+| 18:09 | Edited src/app/masa/wizard/customerMode.ts | 5→6 lines | ~75 |
+| 18:09 | Created tests/unit/wizard/realFixture.ts | — | ~862 |
+| 18:10 | Created tests/unit/wizard/scenarios.test.ts | — | ~2291 |
+| 18:10 | Edited src/app/masa/wizard/customerMode.ts | inline fix | ~12 |
+| 18:11 | Edited tests/unit/wizard/llmPrompt.test.ts | 5→6 lines | ~118 |
+| 18:14 | Session end: 33 writes across 16 files (types.ts, customerMode.ts, candidates.ts, budgetRepair.ts, recommendSchema.ts) | 18 reads | ~26922 tok |

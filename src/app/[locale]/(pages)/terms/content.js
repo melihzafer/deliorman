@@ -95,7 +95,8 @@ export const termsContent = {
         title: "Контакт",
         lead: "За въпроси относно резервации и лични данни, свържете се с нас на:",
         items: [
-          "Телефон: +359 89 4766273",
+          "Телефон за поръчки: +359 89 608 8804",
+          "Телефон за резервации: +359 89 476 62273",
           "Имейл: restaurantdeliorman@gmail.com",
         ],
       },
@@ -198,7 +199,8 @@ export const termsContent = {
         title: "Contact",
         lead: "For questions regarding reservations and personal data, contact us at:",
         items: [
-          "Phone: +359 89 4766273",
+          "Orders phone: +359 89 608 8804",
+          "Reservations phone: +359 89 476 62273",
           "Email: restaurantdeliorman@gmail.com",
         ],
       },
@@ -301,7 +303,8 @@ export const termsContent = {
         title: "İletişim",
         lead: "Rezervasyonlar ve kişisel verilerle ilgili sorularınız için bize şu kanallardan ulaşabilirsiniz:",
         items: [
-          "Telefon: +359 89 4766273",
+          "Sipariş telefonu: +359 89 608 8804",
+          "Rezervasyon telefonu: +359 89 476 62273",
           "E-posta: restaurantdeliorman@gmail.com",
         ],
       },

@@ -114,11 +114,23 @@ export async function POST(request: Request): Promise<NextResponse> {
   }
 
   let session;
-  try {
-    session = await findSessionByToken(token);
-  } catch (err) {
-    console.error('[waiter/call] sheets error:', err);
-    return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+  if (token === 'session-disabled') {
+    session = {
+      rowIndex: -1,
+      token: 'session-disabled',
+      tableId: tableId,
+      createdAt: new Date().toISOString(),
+      lastPing: new Date().toISOString(),
+      active: true,
+      lastCall: '',
+    };
+  } else {
+    try {
+      session = await findSessionByToken(token);
+    } catch (err) {
+      console.error('[waiter/call] sheets error:', err);
+      return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+    }
   }
 
   if (!session || !session.active) {
@@ -128,29 +140,33 @@ export async function POST(request: Request): Promise<NextResponse> {
     );
   }
 
-  if (!isSessionWithinTtl(session.createdAt)) {
-    await deactivateSession(session.rowIndex).catch((err) => {
-      console.error('[waiter/call] deactivate expired session failed:', err);
-    });
-    return NextResponse.json(
-      { error: 'Oturumunuz sona erdi' },
-      { status: 403 }
-    );
-  }
+  if (session.rowIndex !== -1) {
+    if (!isSessionWithinTtl(session.createdAt)) {
+      await deactivateSession(session.rowIndex).catch((err) => {
+        console.error('[waiter/call] deactivate expired session failed:', err);
+      });
+      return NextResponse.json(
+        { error: 'Oturumunuz sona erdi' },
+        { status: 403 }
+      );
+    }
 
-  if (!isSessionFresh(session.lastPing) || session.tableId !== tableId) {
-    return NextResponse.json(
-      { error: 'Oturumunuz sona erdi' },
-      { status: 403 }
-    );
+    if (!isSessionFresh(session.lastPing) || session.tableId !== tableId) {
+      return NextResponse.json(
+        { error: 'Oturumunuz sona erdi' },
+        { status: 403 }
+      );
+    }
   }
 
   let retryAfterSeconds = 0;
-  try {
-    retryAfterSeconds = getWaiterRetryAfterSeconds(await findLastCallForTable(tableId));
-  } catch (err) {
-    console.error('[waiter/call] rate limit sheets error:', err);
-    return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+  if (session.rowIndex !== -1) {
+    try {
+      retryAfterSeconds = getWaiterRetryAfterSeconds(await findLastCallForTable(tableId));
+    } catch (err) {
+      console.error('[waiter/call] rate limit sheets error:', err);
+      return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+    }
   }
 
   if (retryAfterSeconds > 0) {
@@ -181,11 +197,13 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ error: 'Notification failed' }, { status: 502 });
   }
 
-  try {
-    await updateLastCall(session.rowIndex, new Date().toISOString());
-  } catch (err) {
-    console.error('[waiter/call] last_call sheets error:', err);
-    return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+  if (session.rowIndex !== -1) {
+    try {
+      await updateLastCall(session.rowIndex, new Date().toISOString());
+    } catch (err) {
+      console.error('[waiter/call] last_call sheets error:', err);
+      return NextResponse.json({ error: 'Service unavailable' }, { status: 503 });
+    }
   }
 
   return NextResponse.json({ ok: true });

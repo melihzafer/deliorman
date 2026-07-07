@@ -7,10 +7,13 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/src/i18n/navigation";
 import PageBanner from "@components/PageBanner";
 import DarkSection from "@components/DarkSection";
+import { getOrdersPhoneDisplay, getReservationsPhoneDisplay } from "@library/siteContact";
 
 const SpecialDays = () => {
   const t = useTranslations("components.specialDays");
   const tc = useTranslations("common");
+  const ordersPhone = getOrdersPhoneDisplay();
+  const reservationsPhone = getReservationsPhoneDisplay();
   const [imageError, setImageError] = useState(false);
 
   return (
@@ -306,7 +309,11 @@ const SpecialDays = () => {
                       
                       <p className="tst-text tst-white-2 mt-3" style={{opacity: 0.8}}>
                         <i className="fas fa-phone" style={{marginRight: '8px'}}></i>
-                        +359 89 4766273
+                        Телефон за поръчки: {ordersPhone}
+                      </p>
+                      <p className="tst-text tst-white-2" style={{opacity: 0.8}}>
+                        <i className="fas fa-calendar-check" style={{marginRight: '8px'}}></i>
+                        Телефон за резервации: {reservationsPhone}
                       </p>
                     </div>
                   </DarkSection>

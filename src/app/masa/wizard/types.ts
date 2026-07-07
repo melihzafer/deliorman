@@ -157,6 +157,29 @@ export interface ScoredItem {
 }
 
 // ---------------------------------------------------------------------------
+// Customer mode — classification used by the LLM candidate pipeline to
+// decide hard filters, value scoring, and budget-repair priority.
+// ---------------------------------------------------------------------------
+
+export type CustomerMode =
+  | "very_hungry_low_budget"
+  | "hungry_normal"
+  | "beer_with_food"
+  | "drink_only"
+  | "sweet_only"
+  | "family_safe"
+  | "adventurous"
+  | "light_fresh"
+  | "budget_value"
+  | "undecided";
+
+export type BudgetStatus =
+  | "within_budget"
+  | "food_only_within_budget"
+  | "drink_only_within_budget"
+  | "over_budget_no_safe_combo";
+
+// ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
 

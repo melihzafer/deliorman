@@ -1,12 +1,10 @@
 import {
+  ALLOWED_BUDGET_STATUS,
   ALLOWED_REASON_KEYS,
-  ALLOWED_TAGS,
   parseLlmJson,
   validateLlmResponse,
 } from "../../../src/app/masa/wizard/recommendSchema";
 import { TEST_CATEGORIES } from "./fixture";
-
-const MENU_IDS = TEST_CATEGORIES.flatMap((c) => c.items.map((i) => i.id));
 
 describe("recommendSchema — parseLlmJson", () => {
   it("parses raw JSON", () => {
@@ -31,186 +29,144 @@ describe("recommendSchema — parseLlmJson", () => {
 });
 
 describe("recommendSchema — validateLlmResponse", () => {
-  const goodMain = {
-    id: "kebabche",
-    matchReasons: ["vibe:adventurous", "texture:grilled"],
+  const good = {
+    language: "bg",
+    primaryItemId: "kebabche",
+    drinkItemId: "carlsberg",
+    sideItemId: "shopska",
+    alternativeItemIds: ["chicken-skewer", "mixed-grill"],
+    budgetStatus: "within_budget",
+    totalEstimatedPrice: 9.71,
+    confidence: 82,
+    reasonKeys: ["filling", "grilled"],
+    customerMessage: "Кебапче с бира и шопска салата.",
   };
 
   it("accepts a well-formed response", () => {
-    const raw = {
-      main: goodMain,
-      alternatives: [
-        { id: "chicken-skewer", matchReasons: ["vibe:comfort"] },
-        { id: "mixed-grill", matchReasons: ["vibe:indulgent", "state:alcoholic"] },
-      ],
-      combo: {
-        side: { id: "shopska", reasonKey: "pair_fresh_side" },
-        drink: { id: "espresso", reasonKey: "pair_drink_default" },
-      },
-      rationale: "Пикантно кебапче с шопска салата.",
-    };
-    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
+    const r = validateLlmResponse(good, TEST_CATEGORIES, "bg");
     expect(r.ok).toBe(true);
-    expect(r.response?.main?.id).toBe("kebabche");
-    expect(r.response?.alternatives).toHaveLength(2);
-    expect(r.response?.combo.side?.id).toBe("shopska");
-    expect(r.response?.combo.drink?.reasonKey).toBe("pair_drink_default");
+    expect(r.response?.primaryItemId).toBe("kebabche");
+    expect(r.response?.drinkItemId).toBe("carlsberg");
+    expect(r.response?.sideItemId).toBe("shopska");
+    expect(r.response?.alternativeItemIds).toEqual(["chicken-skewer", "mixed-grill"]);
+    expect(r.response?.budgetStatus).toBe("within_budget");
+    expect(r.response?.reasonKeys).toEqual(["filling", "grilled"]);
   });
 
-  it("rejects a hallucinated main id", () => {
+  it("drops a hallucinated primaryItemId but keeps validity if other slots are real", () => {
+    const raw = { ...good, primaryItemId: "nonsense-item" };
+    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
+    expect(r.ok).toBe(true);
+    expect(r.response?.primaryItemId).toBeNull();
+    expect(r.response?.drinkItemId).toBe("carlsberg");
+  });
+
+  it("is not ok when nothing in the response is a real id", () => {
     const raw = {
-      main: { id: "nonsense-item", matchReasons: [] },
-      alternatives: [],
-      combo: { side: null, drink: null },
-      rationale: "...",
+      language: "bg",
+      primaryItemId: "fake-1",
+      drinkItemId: "fake-2",
+      sideItemId: "fake-3",
+      alternativeItemIds: ["fake-4"],
+      budgetStatus: "within_budget",
+      totalEstimatedPrice: null,
+      confidence: 50,
+      reasonKeys: [],
+      customerMessage: "...",
     };
     const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
     expect(r.ok).toBe(false);
-    expect(r.response?.main).toBeNull();
+    expect(r.response?.primaryItemId).toBeNull();
   });
 
   it("drops hallucinated alternatives but keeps the valid ones", () => {
+    const raw = { ...good, alternativeItemIds: ["fake-1", "shopska-clone", "chicken-skewer"] };
+    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
+    expect(r.response?.alternativeItemIds).toEqual(["chicken-skewer"]);
+  });
+
+  it("excludes primary/drink/side ids from alternatives (no duplicates)", () => {
+    const raw = { ...good, alternativeItemIds: ["kebabche", "carlsberg", "chicken-skewer"] };
+    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
+    expect(r.response?.alternativeItemIds).toEqual(["chicken-skewer"]);
+  });
+
+  it("caps alternatives to 3", () => {
     const raw = {
-      main: goodMain,
-      alternatives: [
-        { id: "fake-1", matchReasons: [] },
-        { id: "shopska", matchReasons: [] },
-        { id: "fake-2", matchReasons: [] },
-      ],
-      combo: { side: null, drink: null },
-      rationale: "...",
+      ...good,
+      alternativeItemIds: ["chicken-skewer", "mixed-grill", "margherita", "ice-cream", "espresso"],
     };
     const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
-    expect(r.ok).toBe(true);
-    expect(r.response?.alternatives).toHaveLength(1);
-    expect(r.response?.alternatives[0].id).toBe("shopska");
+    expect(r.response?.alternativeItemIds.length).toBe(3);
   });
 
-  it("enforces the budget gate after the LLM picks", () => {
-    const raw = {
-      main: { id: "mixed-grill", matchReasons: [] }, // 34.22 BGN
-      alternatives: [{ id: "kebabche", matchReasons: [] }], // 1.95 BGN
-      combo: { side: null, drink: null },
-      rationale: "...",
-    };
-    // budget = 5 BGN → main is over budget, alternatives within budget
-    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg", { budgetBgn: 5 });
-    expect(r.ok).toBe(false);
-    expect(r.response?.main).toBeNull();
-    expect(r.response?.alternatives).toHaveLength(1);
-  });
-
-  it("keeps the main when it fits the budget", () => {
-    const raw = {
-      main: { id: "kebabche", matchReasons: [] }, // 1.95 BGN
-      alternatives: [],
-      combo: { side: null, drink: null },
-      rationale: "...",
-    };
-    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg", { budgetBgn: 5 });
-    expect(r.ok).toBe(true);
-  });
-
-  it("filters invalid matchReasons to only allowed tags", () => {
-    const raw = {
-      main: { id: "kebabche", matchReasons: ["vibe:adventurous", "nonsense", "color:red"] },
-      alternatives: [],
-      combo: { side: null, drink: null },
-      rationale: "...",
-    };
+  it("filters invalid reasonKeys to only the allowed vocabulary", () => {
+    const raw = { ...good, reasonKeys: ["filling", "made-up-key", "spicy"] };
     const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
-    expect(r.response?.main?.matchReasons).toEqual(["vibe:adventurous"]);
+    expect(r.response?.reasonKeys).toEqual(["filling", "spicy"]);
   });
 
-  it("coerces an invalid reasonKey to pair_default", () => {
-    const raw = {
-      main: goodMain,
-      alternatives: [],
-      combo: {
-        side: { id: "shopska", reasonKey: "make-it-spicy" },
-        drink: { id: "espresso", reasonKey: "pair_drink_default" },
-      },
-      rationale: "...",
-    };
+  it("caps reasonKeys to 4", () => {
+    const raw = { ...good, reasonKeys: ["filling", "grilled", "classic", "fresh", "spicy"] };
     const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
-    expect(r.response?.combo.side?.reasonKey).toBe("pair_default");
+    expect(r.response?.reasonKeys.length).toBe(4);
   });
 
-  it("truncates an overlong rationale", () => {
-    const long = "x".repeat(500);
-    const raw = {
-      main: goodMain,
-      alternatives: [],
-      combo: { side: null, drink: null },
-      rationale: long,
-    };
-    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg", { maxRationaleChars: 50 });
-    expect(r.response?.rationale.length).toBeLessThanOrEqual(51); // 50 + ellipsis
+  it("coerces an invalid budgetStatus to within_budget", () => {
+    const raw = { ...good, budgetStatus: "totally_fine" };
+    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
+    expect(r.response?.budgetStatus).toBe("within_budget");
+  });
+
+  it("clamps confidence to 0-100", () => {
+    expect(validateLlmResponse({ ...good, confidence: 500 }, TEST_CATEGORIES, "bg").response?.confidence).toBe(100);
+    expect(validateLlmResponse({ ...good, confidence: -10 }, TEST_CATEGORIES, "bg").response?.confidence).toBe(0);
+    expect(validateLlmResponse({ ...good, confidence: "not-a-number" }, TEST_CATEGORIES, "bg").response?.confidence).toBe(50);
+  });
+
+  it("truncates an overlong customerMessage", () => {
+    const raw = { ...good, customerMessage: "x".repeat(500) };
+    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg", { maxMessageChars: 50 });
+    expect(r.response?.customerMessage.length).toBeLessThanOrEqual(51); // 50 + ellipsis
+  });
+
+  it("defaults customerMessage length cap to 280", () => {
+    const raw = { ...good, customerMessage: "x".repeat(500) };
+    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
+    expect(r.response?.customerMessage.length).toBeLessThanOrEqual(281);
+  });
+
+  it("falls back to the requested locale when language is missing/invalid", () => {
+    const raw = { ...good, language: "fr" };
+    const r = validateLlmResponse(raw, TEST_CATEGORIES, "tr");
+    expect(r.response?.language).toBe("tr");
+  });
+
+  it("rejects a non-object top-level", () => {
+    expect(validateLlmResponse("nope", TEST_CATEGORIES, "bg").ok).toBe(false);
+    expect(validateLlmResponse(null, TEST_CATEGORIES, "bg").ok).toBe(false);
   });
 
   it("rejects an empty top-level object", () => {
     const r = validateLlmResponse({}, TEST_CATEGORIES, "bg");
     expect(r.ok).toBe(false);
-  });
-
-  it("rejects a non-object top-level", () => {
-    const r = validateLlmResponse("nope", TEST_CATEGORIES, "bg");
-    expect(r.ok).toBe(false);
-  });
-
-  it("handles missing alternatives array gracefully", () => {
-    const raw = {
-      main: goodMain,
-      combo: { side: null, drink: null },
-      rationale: "...",
-    };
-    const r = validateLlmResponse(raw as Record<string, unknown>, TEST_CATEGORIES, "bg");
-    expect(r.ok).toBe(true);
-    expect(r.response?.alternatives).toEqual([]);
-  });
-
-  it("caps alternatives to 3", () => {
-    const raw = {
-      main: goodMain,
-      alternatives: [
-        { id: "kebabche", matchReasons: [] },
-        { id: "chicken-skewer", matchReasons: [] },
-        { id: "shopska", matchReasons: [] },
-        { id: "caesar", matchReasons: [] },
-        { id: "espresso", matchReasons: [] },
-      ],
-      combo: { side: null, drink: null },
-      rationale: "...",
-    };
-    const r = validateLlmResponse(raw, TEST_CATEGORIES, "bg");
-    expect(r.response?.alternatives.length).toBe(3);
+    expect(r.response?.primaryItemId).toBeNull();
   });
 });
 
 describe("recommendSchema — vocabulary exports", () => {
-  it("ALLOWED_TAGS is non-empty and contains expected keys", () => {
-    expect(ALLOWED_TAGS.size).toBeGreaterThan(20);
-    expect(ALLOWED_TAGS.has("vibe:comfort")).toBe(true);
-    expect(ALLOWED_TAGS.has("flavor:spicy")).toBe(true);
-    expect(ALLOWED_TAGS.has("texture:grilled")).toBe(true);
-    expect(ALLOWED_TAGS.has("protein:meat")).toBe(true);
-    expect(ALLOWED_TAGS.has("portion:feast")).toBe(true);
-  });
-
-  it("ALLOWED_REASON_KEYS contains all pair_* keys", () => {
-    expect(ALLOWED_REASON_KEYS.has("pair_fries")).toBe(true);
-    expect(ALLOWED_REASON_KEYS.has("pair_bread")).toBe(true);
-    expect(ALLOWED_REASON_KEYS.has("pair_drink_match")).toBe(true);
-    expect(ALLOWED_REASON_KEYS.has("pair_default")).toBe(true);
+  it("ALLOWED_REASON_KEYS contains the spec vocabulary", () => {
+    for (const k of ["filling", "budget_fit", "beer_pairing", "light", "sweet", "grilled", "classic", "adventurous", "family_safe", "good_value", "fresh", "spicy"]) {
+      expect(ALLOWED_REASON_KEYS.has(k)).toBe(true);
+    }
     expect(ALLOWED_REASON_KEYS.has("nope")).toBe(false);
   });
 
-  it("sanity: the test fixture ids must all be considered real", () => {
-    for (const id of MENU_IDS) {
-      // The validator doesn't expose the index, but the e2e tests above
-      // already cover the lookup. Just make sure the fixture hasn't gone
-      // empty by accident.
-      expect(id.length).toBeGreaterThan(0);
-    }
+  it("ALLOWED_BUDGET_STATUS contains the 4 spec values", () => {
+    expect(ALLOWED_BUDGET_STATUS.has("within_budget")).toBe(true);
+    expect(ALLOWED_BUDGET_STATUS.has("food_only_within_budget")).toBe(true);
+    expect(ALLOWED_BUDGET_STATUS.has("drink_only_within_budget")).toBe(true);
+    expect(ALLOWED_BUDGET_STATUS.has("over_budget_no_safe_combo")).toBe(true);
+    expect(ALLOWED_BUDGET_STATUS.has("nope")).toBe(false);
   });
 });

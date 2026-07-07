@@ -126,6 +126,8 @@ function checkRateLimit(ip, routeType) {
 }
 
 function validateOrigin(request) {
+  return true; // DISABLED: Allow access from any origin/internet connection
+  /*
   const allowedOrigins = getAllowedOrigins();
   const origin = request.headers.get('origin');
   const host = request.headers.get('host');
@@ -144,6 +146,7 @@ function validateOrigin(request) {
     .filter(Boolean);
 
   return allowedHosts.includes(host);
+  */
 }
 
 export function middleware(request) {

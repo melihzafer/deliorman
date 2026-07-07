@@ -68,7 +68,7 @@ export async function POST(request: Request): Promise<NextResponse> {
   const key = typeof body.key === 'string' ? body.key.trim() : '';
   const isLocalDevRequest = isLocalMasaDevRequest(request);
 
-  if (!tableId || (!key && !isLocalDevRequest)) {
+  if (!tableId) {
     return NextResponse.json({ error: 'Invalid session request' }, { status: 400 });
   }
 
@@ -81,13 +81,20 @@ export async function POST(request: Request): Promise<NextResponse> {
     });
   }
 
-  try {
-    if (!verifyTableKey(tableId, key)) {
-      return NextResponse.json({ error: 'Invalid QR session' }, { status: 401 });
+  // The QR menu must be reachable from any internet connection (any
+  // device on the guest WiFi, mobile data, etc.), so we no longer require
+  // a signed HMAC key. A valid tableId is enough to mint a 30-min session.
+  // If a key happens to be supplied we still verify it for backwards
+  // compatibility, but we do not block guests who arrive without one.
+  if (key) {
+    try {
+      if (!verifyTableKey(tableId, key)) {
+        return NextResponse.json({ error: 'Invalid QR session' }, { status: 401 });
+      }
+    } catch (err) {
+      console.error('[session/start] QR secret error:', err);
+      return NextResponse.json({ error: 'Session service unavailable' }, { status: 503 });
     }
-  } catch (err) {
-    console.error('[session/start] QR secret error:', err);
-    return NextResponse.json({ error: 'Session service unavailable' }, { status: 503 });
   }
 
   const token = randomUUID();

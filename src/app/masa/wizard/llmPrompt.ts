@@ -1,78 +1,64 @@
 // Pure prompt builder for the wizard LLM.
 //
-// Produces the { system, user } messages we send to Groq. Pure & testable:
-// no fetch, no env reads, no DOM. The route handler at /api/wizard/recommend
-// reads GROQ_API_KEY / GROQ_MODEL and POSTs the result of this function.
+// Produces the { system, user } messages sent to Groq. Pure & testable: no
+// fetch, no env reads, no DOM. The route handler at /api/wizard/recommend
+// builds a deterministic candidate shortlist first (candidates.ts) and only
+// then calls this function — the LLM never sees the full menu, it reranks
+// and explains a pre-filtered, pre-scored shortlist of 8-15 items.
 //
-// Menu compaction: we never send the full QrMenuCategory tree. We send a
-// flat list of {id, name, price, categoryId, tags} so the LLM can reason
-// about 184 items in ~9-12K tokens. Tags are the same tags the local
-// scoring engine uses — single source of truth.
-//
-// All three locales (bg, tr, en) live in the menu object; we only ship the
-// requested locale's name to the prompt to save tokens. The route reads
-// `categoryId` from the LLM response (which IS in the compacted menu) and
-// resolves the real item client-side.
+// The LLM's role here is narrow on purpose: rerank among valid candidates,
+// pick a human-feeling pairing, and write a short natural-language message.
+// It does not own prices, budget validation, item existence, or fallback
+// selection — recommendSchema.ts and budgetRepair.ts own those.
 
-import type { Locale, QrMenuCategory, QrMenuItem } from "../masaTypes";
-import { localized } from "../masaMenuUtils";
-import { getItemTags } from "./menuTags";
-import type { WizardAnswers } from "./types";
+import type { CandidateItem } from "./candidates";
+import type { CustomerMode, WizardAnswers } from "./types";
+import type { Locale } from "../masaTypes";
 
 export type PromptMode = "buttons" | "freetext";
 
-export interface CompactionEntry {
-  id: string;
-  name: string;
-  price: number | null;
-  categoryId: string;
-  tags: string[]; // e.g. ["vibe:comfort", "flavor:spicy"]
-}
+const LOCALE_LABEL: Record<Locale, string> = {
+  bg: "Bulgarian",
+  tr: "Turkish",
+  en: "English",
+};
 
-const TAG_FIELDS: Array<keyof ReturnType<typeof getItemTags>> = [
-  "vibe",
-  "flavors",
-  "textures",
-  "temp",
-  "state",
-  "profile",
-  "portion",
-  "course",
-  "protein",
-];
+// ---------------------------------------------------------------------------
+// System prompt — hard rules + tone rules + compact few-shot examples.
+// Kept deliberately terse: max_completion_tokens is 450, so a bloated
+// system prompt eats the model's own output budget.
+// ---------------------------------------------------------------------------
 
-function tagListForItem(item: QrMenuItem): string[] {
-  const t = getItemTags(item.id);
-  const out: string[] = [];
-  for (const field of TAG_FIELDS) {
-    const v = t[field];
-    if (Array.isArray(v)) {
-      for (const x of v) out.push(`${String(field)}:${x}`);
-    } else if (typeof v === "string") {
-      // skip "na" tokens to save tokens
-      if (v !== "na" && v !== "none") out.push(`${String(field)}:${v}`);
-    }
-  }
-  return out;
-}
+const SYSTEM_TEMPLATE = `You are Taste Wizard, Deliorman restaurant's multilingual QR-menu assistant in Samuil, Bulgaria.
+You are a practical restaurant waiter, not a generic chatbot. Recommend the best realistic choice using ONLY the "candidates" array below.
+Reply in {{LOCALE_LABEL}} ({{LOCALE}}). All text, especially customerMessage, must be in {{LOCALE_LABEL}}.
 
-export function compactMenu(categories: QrMenuCategory[], locale: Locale): CompactionEntry[] {
-  const out: CompactionEntry[] = [];
-  for (const cat of categories) {
-    for (const item of cat.items) {
-      const name = localized(item.title, locale);
-      if (!name) continue; // skip untranslated items
-      out.push({
-        id: item.id,
-        name,
-        price: item.price,
-        categoryId: cat.id,
-        tags: tagListForItem(item),
-      });
-    }
-  }
-  return out;
-}
+Hard rules:
+- Return JSON only. No markdown fences, no commentary, no preamble.
+- Use only candidate item ids. Never invent items, prices, ingredients, categories, or availability.
+- budget_bgn is a hard cap on primaryItemId + drinkItemId + sideItemId combined. If the best combo exceeds it, drop items or pick a cheaper primary — you do not have to solve this perfectly, the server re-checks and repairs the budget after you answer.
+- If the diner is very hungry (customer_mode = very_hungry_low_budget or hungry_normal), prioritize a filling primary item before any drink or side.
+- Include alcohol only when it fits the budget and context; never push it aggressively.
+- If customer_mode = drink_only, set primaryItemId to null, put the drink in drinkItemId, and only add a small snack to sideItemId if it clearly fits the budget. Never force a full meal.
+- If customer_mode = sweet_only, recommend dessert or a sweet drink only — no grill, meat, salad, or beer.
+- If customer_mode = family_safe, never pick an alcoholic item for any slot.
+- Never shame a low-budget diner. Never say generic filler like "Based on your preferences".
+- customerMessage must be a short, natural, spoken-sounding line, <= 280 characters.
+
+Tone:
+- Turkish: natural spoken Turkish. "Aga" is fine only if the diner's own text is casual. Avoid stiff phrases like "damak zevkinize hitap eder".
+- Bulgarian: practical restaurant Bulgarian, e.g. "Ще те засити", "Най-смисленият избор".
+- English: casual restaurant English, never "Based on your preferences".
+
+Examples (adapt to the real candidates given, do not copy text verbatim):
+1. "10 euro var, çok açım, bira istiyorum" -> filling food first; add beer only if it still fits; else explain gently that food is the smarter pick right now.
+2. "sadece tatlı bir şey istiyorum" -> dessert or sweet drink only, nothing savory.
+3. "çocuklarla geldik, alkol olmasın" -> no alcohol anywhere, familiar family-safe classics.
+4. "değişik ve acılı bir şey öner" -> smoky, spicy, bold, or house-special pick.
+5. "имам 15 лв, много гладен съм" -> best filling item within 15 BGN, skip extras that break budget.
+6. "I want beer but need something cheap to eat" -> cheap filling food first, beer only if the total still fits.
+
+Output strictly valid JSON matching the "schema" field in the user message.`;
 
 // ---------------------------------------------------------------------------
 // Prompt
@@ -84,71 +70,93 @@ export interface BuildPromptInput {
   answers: WizardAnswers;
   freetext?: string;
   budgetBgn?: number | null;
-  menu: QrMenuCategory[];
+  customerMode: CustomerMode;
+  candidates: CandidateItem[];
 }
 
 export interface BuiltPrompt {
   system: string;
   user: string;
-  menuSize: number;
+  candidateCount: number;
   approxInputTokens: number;
 }
 
-const SYSTEM_TEMPLATE = `You are the Deliorman restaurant taste-wizard in Samuil, Bulgaria.
-You recommend menu items and pairings based on diner answers or free-text queries.
-Your output language is {{LOCALE_LABEL}} ({{LOCALE}}). All text fields — especially "rationale" — must be in {{LOCALE_LABEL}}.
+interface CandidatePromptEntry {
+  id: string;
+  name: string;
+  price: number | null;
+  categoryId: string;
+  course: string;
+  portion: string;
+  tags: string[];
+  valueScore: number;
+}
 
-Strict rules:
-- Use ONLY item ids from the provided "menu" array. Never invent ids.
-- Respect "budget_bgn" (BGN) if present — the main pick's price MUST be <= budget_bgn.
-- matchReasons must be valid tag values that exist on the chosen item in the menu. Prefer the tags already listed for that item.
-- combo.side and combo.drink are optional. Pick items that genuinely pair with main. If unsure, set them to null.
-- If the user query is ambiguous and no good match exists, set main to null.
-- Output strictly valid JSON matching the schema in the user message. No markdown fences, no commentary, no preamble.
-- Provide exactly 1 main + 0-3 alternatives + 0-1 combo.side + 0-1 combo.drink + 1 short rationale (<= 240 chars).`;
-
-const LOCALE_LABEL: Record<Locale, string> = {
-  bg: "Bulgarian",
-  tr: "Turkish",
-  en: "English",
-};
+function candidatesForPrompt(candidates: CandidateItem[], locale: Locale): CandidatePromptEntry[] {
+  return candidates.map((c) => ({
+    id: c.id,
+    name: c.name[locale] || c.name.en || c.name.bg,
+    price: c.price,
+    categoryId: c.categoryId,
+    course: c.course,
+    portion: c.portion,
+    tags: [
+      ...c.tags.protein.map((p) => `protein:${p}`),
+      ...c.tags.flavor.map((f) => `flavor:${f}`),
+      ...c.tags.texture.map((t) => `texture:${t}`),
+      ...c.tags.vibe.map((v) => `vibe:${v}`),
+    ],
+    valueScore: c.valueScore,
+  }));
+}
 
 export function buildPrompt(input: BuildPromptInput): BuiltPrompt {
-  const { locale, mode, answers, freetext, budgetBgn, menu } = input;
-  const compacted = compactMenu(menu, locale);
+  const { locale, mode, answers, freetext, budgetBgn, customerMode, candidates } = input;
 
-  const system = SYSTEM_TEMPLATE
-    .replaceAll("{{LOCALE}}", locale)
-    .replaceAll("{{LOCALE_LABEL}}", LOCALE_LABEL[locale]);
+  const system = SYSTEM_TEMPLATE.replaceAll("{{LOCALE}}", locale).replaceAll(
+    "{{LOCALE_LABEL}}",
+    LOCALE_LABEL[locale],
+  );
 
-  // Always include the schema in the user message — the model is good at
-  // producing JSON, but only when the schema is unambiguous.
   const userPayload: Record<string, unknown> = {
     locale,
     mode,
+    customer_mode: customerMode,
     answers: Object.keys(answers).length > 0 ? answers : null,
     freetext: mode === "freetext" && freetext ? freetext : null,
     budget_bgn: budgetBgn ?? null,
     schema: {
-      main: { id: "string (must exist in menu)", matchReasons: "string[] (valid tag values)" },
-      alternatives: "{id, matchReasons}[] (0-3 entries, ids from menu)",
-      combo: {
-        side: "{id, reasonKey: 'pair_* key'} | null",
-        drink: "{id, reasonKey: 'pair_* key'} | null",
-      },
-      rationale: "string in " + LOCALE_LABEL[locale] + ", <= 240 chars",
+      language: "'bg' | 'tr' | 'en'",
+      primaryItemId: "string | null (candidate id)",
+      drinkItemId: "string | null (candidate id)",
+      sideItemId: "string | null (candidate id)",
+      alternativeItemIds: "string[] (0-3 candidate ids, excluding the ids already used above)",
+      budgetStatus:
+        "'within_budget' | 'food_only_within_budget' | 'drink_only_within_budget' | 'over_budget_no_safe_combo'",
+      totalEstimatedPrice: "number | null (sum of the prices you picked, in BGN)",
+      confidence: "number 0-100",
+      reasonKeys: `string[] (0-4, only from valid_reason_keys)`,
+      customerMessage: "string, <= 280 chars, in " + LOCALE_LABEL[locale],
     },
     valid_reason_keys: [
-      "pair_fries", "pair_bread", "pair_fresh_side", "pair_side_default",
-      "pair_drink_match", "pair_drink_default", "pair_dessert", "pair_snack",
-      "pair_rakia", "pair_light", "pair_default",
+      "filling",
+      "budget_fit",
+      "beer_pairing",
+      "light",
+      "sweet",
+      "grilled",
+      "classic",
+      "adventurous",
+      "family_safe",
+      "good_value",
+      "fresh",
+      "spicy",
     ],
-    menu: compacted,
+    candidates: candidatesForPrompt(candidates, locale),
   };
 
   const user = JSON.stringify(userPayload);
-  // Rough token estimate: ~4 chars/token for English; Bulgarian ~3 chars/token.
   const approxInputTokens = Math.ceil((system.length + user.length) / 4);
 
-  return { system, user, menuSize: compacted.length, approxInputTokens };
+  return { system, user, candidateCount: candidates.length, approxInputTokens };
 }

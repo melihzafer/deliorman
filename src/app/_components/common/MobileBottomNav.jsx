@@ -2,10 +2,13 @@
 
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/src/i18n/navigation";
-import { getRestaurantPhoneHref } from "@library/siteContact";
+import { getOrdersPhoneHref, getReservationsPhoneHref } from "@library/siteContact";
 import styles from "./MobileBottomNav.module.scss";
 
-const restaurantPhoneHref = getRestaurantPhoneHref();
+// The bottom-nav call button dials the orders line so guests can place
+// food/takeaway orders directly. Reservations stay on the contact page.
+const ordersPhoneHref = getOrdersPhoneHref();
+const reservationsPhoneHref = getReservationsPhoneHref();
 
 export default function MobileBottomNav() {
   const tNav = useTranslations("nav");
@@ -29,7 +32,7 @@ export default function MobileBottomNav() {
       label: tNav("reservation"),
     },
     {
-      href: restaurantPhoneHref,
+      href: ordersPhoneHref,
       icon: "fas fa-phone",
       label: tNav("call"),
       isExternal: true,

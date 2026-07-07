@@ -26,12 +26,21 @@ export function MasaCategoryBar({
 
   // Keep the active chip in view when the category changes (e.g. via the wizard).
   useEffect(() => {
-    const chip = activeRef.current;
     const scroller = scrollerRef.current;
-    if (!chip || !scroller) return;
-    const left = chip.offsetLeft - scroller.offsetWidth / 2 + chip.offsetWidth / 2;
+    if (!scroller) return;
+
+    // If active category is the first one, ensure we stay scrolled to 0
+    if (categories.length > 0 && activeCategoryId === categories[0].id) {
+      scroller.scrollTo({ left: 0, behavior: "smooth" });
+      return;
+    }
+
+    const chip = activeRef.current;
+    if (!chip) return;
+    let left = chip.offsetLeft - scroller.offsetWidth / 2 + chip.offsetWidth / 2;
+    if (left < 30) left = 0;
     scroller.scrollTo({ left, behavior: "smooth" });
-  }, [activeCategoryId]);
+  }, [activeCategoryId, categories]);
 
   return (
     <nav className={styles.catBar} aria-label="Menu categories">

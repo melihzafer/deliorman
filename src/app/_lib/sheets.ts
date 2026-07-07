@@ -5,7 +5,7 @@ const SHEET_NAME = 'sessions';
 const RANGE = `${SHEET_NAME}!A:F`;
 const HEADER = ['token', 'masa_id', 'created_at', 'last_ping', 'active', 'last_call'];
 
-export const SESSION_TTL_MS = 2 * 60 * 60 * 1000;
+export const SESSION_TTL_MS = 30 * 60 * 1000;
 export const SESSION_FRESH_MS = 90 * 1000;
 export const WAITER_CALL_COOLDOWN_MS = 3 * 60 * 1000;
 

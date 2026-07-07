@@ -5,6 +5,16 @@ export const BGN_PER_EUR = 1.95583;
 export const SESSION_KEY_PREFIX = "deliorman.masa.session";
 export const COOLDOWN_KEY_PREFIX = "deliorman.masa.cooldown";
 
+/**
+ * Waiter-call feature flag.
+ *
+ * When false the QR-menu waiter-call hook short-circuits the network
+ * request and the floating action button is rendered as disabled.
+ * The code paths are kept intact so the feature can be re-enabled
+ * by flipping this single constant.
+ */
+export const WAITER_CALL_ENABLED = false;
+
 const LOCAL_TEST_HOSTS = new Set([
   "localhost:3000",
   "localhost:3001",

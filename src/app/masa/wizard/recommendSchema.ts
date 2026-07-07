@@ -1,6 +1,6 @@
 // Hand-rolled schema validator for the LLM's JSON output.
 //
-// llama-3.1-8b-instruct with response_format=json_object is good, but not
+// llama-3.1-8b-instant with response_format=json_object is good, but not
 // perfect. It can:
 //   - Return a string for a number field
 //   - Return a hallucinated item id
@@ -9,79 +9,74 @@
 //   - Forget an array
 //   - Invent a reasonKey that doesn't exist
 //
-// We never trust the LLM. Every id is checked against the real menu, every
-// reason is checked against the allowed tag list, every numeric field is
-// coerced and bounded, and the response is normalised before being returned
-// to the wizard UI. Any item id we can't prove exists is dropped — and if
-// the main pick drops out, the whole result is null and the client falls
-// back to the local scoring engine.
+// We never trust the LLM for prices, budget, or item existence. Every id is
+// checked against the real menu, every reasonKey is checked against the
+// allowed vocabulary, every numeric field is coerced and bounded. This
+// validator only shapes and sanity-checks the response — it does NOT decide
+// the final budget-safe combination. That is budgetRepair.ts's job, called
+// by the route handler after validation succeeds.
 
 import type { Locale, QrMenuCategory } from "../masaTypes";
+import type { BudgetStatus } from "./types";
 
 // ---------------------------------------------------------------------------
 // Output types — what the LLM is asked to produce.
 // ---------------------------------------------------------------------------
 
-export interface LlmPick {
-  id: string;
-  matchReasons: string[]; // tag values like "vibe:comfort"
-}
-
-export interface LlmCombo {
-  side: { id: string; reasonKey: string } | null;
-  drink: { id: string; reasonKey: string } | null;
-}
+export type ReasonKey =
+  | "filling"
+  | "budget_fit"
+  | "beer_pairing"
+  | "light"
+  | "sweet"
+  | "grilled"
+  | "classic"
+  | "adventurous"
+  | "family_safe"
+  | "good_value"
+  | "fresh"
+  | "spicy";
 
 export interface LlmResponse {
-  main: LlmPick | null;
-  alternatives: LlmPick[];
-  combo: LlmCombo;
-  rationale: string; // localised one-liner
+  language: Locale;
+  primaryItemId: string | null;
+  drinkItemId: string | null;
+  sideItemId: string | null;
+  alternativeItemIds: string[];
+  budgetStatus: BudgetStatus;
+  totalEstimatedPrice: number | null;
+  confidence: number; // 0..100
+  reasonKeys: ReasonKey[];
+  customerMessage: string;
 }
 
 // ---------------------------------------------------------------------------
-// Allowed vocabularies — must match tag union types in ./types.ts.
+// Allowed vocabularies
 // ---------------------------------------------------------------------------
 
-export const ALLOWED_TAGS: ReadonlySet<string> = new Set([
-  // vibe
-  "vibe:traditional-bg", "vibe:comfort", "vibe:modern", "vibe:indulgent",
-  "vibe:light", "vibe:celebratory", "vibe:adventurous",
-  // flavor
-  "flavor:savory", "flavor:sweet", "flavor:umami", "flavor:spicy",
-  "flavor:fresh", "flavor:smoky", "flavor:bitter", "flavor:tart", "flavor:fruity",
-  // texture
-  "texture:grilled", "texture:fried", "texture:baked", "texture:raw",
-  "texture:creamy", "texture:crispy", "texture:liquid", "texture:chewy",
-  "texture:smooth", "texture:crumbly", "texture:soft",
-  // temp
-  "temp:hot", "temp:cold", "temp:room",
-  // protein
-  "protein:meat", "protein:poultry", "protein:fish", "protein:seafood",
-  "protein:dairy", "protein:vegetable", "protein:grain", "protein:legume",
-  "protein:fruit", "protein:sweet", "protein:mixed", "protein:none",
-  // portion
-  "portion:snack", "portion:meal", "portion:feast",
-  // profile (drinks)
-  "profile:caffeine", "profile:fruity", "profile:herbal", "profile:malty",
-  "profile:hoppy", "profile:wine", "profile:spirit",
-  // state (drinks)
-  "state:alcoholic", "state:non-alcoholic", "state:low-alcohol",
+export const ALLOWED_REASON_KEYS: ReadonlySet<string> = new Set<ReasonKey>([
+  "filling",
+  "budget_fit",
+  "beer_pairing",
+  "light",
+  "sweet",
+  "grilled",
+  "classic",
+  "adventurous",
+  "family_safe",
+  "good_value",
+  "fresh",
+  "spicy",
 ]);
 
-export const ALLOWED_REASON_KEYS: ReadonlySet<string> = new Set([
-  "pair_fries",
-  "pair_bread",
-  "pair_fresh_side",
-  "pair_side_default",
-  "pair_drink_match",
-  "pair_drink_default",
-  "pair_dessert",
-  "pair_snack",
-  "pair_rakia",
-  "pair_light",
-  "pair_default",
+export const ALLOWED_BUDGET_STATUS: ReadonlySet<string> = new Set<BudgetStatus>([
+  "within_budget",
+  "food_only_within_budget",
+  "drink_only_within_budget",
+  "over_budget_no_safe_combo",
 ]);
+
+const VALID_LOCALES: ReadonlySet<string> = new Set(["bg", "tr", "en"]);
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -90,21 +85,18 @@ export const ALLOWED_REASON_KEYS: ReadonlySet<string> = new Set([
 interface MenuIndex {
   ids: Set<string>;
   idToPrice: Map<string, number | null>;
-  idToCategory: Map<string, string>;
 }
 
 function buildMenuIndex(categories: QrMenuCategory[]): MenuIndex {
   const ids = new Set<string>();
   const idToPrice = new Map<string, number | null>();
-  const idToCategory = new Map<string, string>();
   for (const cat of categories) {
     for (const item of cat.items) {
       ids.add(item.id);
       idToPrice.set(item.id, item.price);
-      idToCategory.set(item.id, cat.id);
     }
   }
-  return { ids, idToPrice, idToCategory };
+  return { ids, idToPrice };
 }
 
 function isRecord(v: unknown): v is Record<string, unknown> {
@@ -115,57 +107,26 @@ function asString(v: unknown): string | null {
   return typeof v === "string" ? v.trim() : null;
 }
 
+function asId(v: unknown, idx: MenuIndex): string | null {
+  const id = asString(v);
+  if (!id || !idx.ids.has(id)) return null;
+  return id;
+}
+
 function asStringArray(v: unknown): string[] {
   if (!Array.isArray(v)) return [];
   return v.filter((x): x is string => typeof x === "string").map((s) => s.trim());
 }
 
-function normalisePick(raw: unknown, idx: MenuIndex, budgetBgn: number | null): LlmPick | null {
-  if (!isRecord(raw)) return null;
-  const id = asString(raw.id);
-  if (!id || !idx.ids.has(id)) return null;
-  const itemPrice = idx.idToPrice.get(id) ?? null;
-  // Hard filter: drop picks that breach the budget. This is the code-side
-  // budget gate that runs AFTER the LLM — a defence in depth.
-  if (budgetBgn != null && itemPrice != null && itemPrice > budgetBgn) return null;
-  const reasonsRaw = asStringArray(raw.matchReasons);
-  const matchReasons = reasonsRaw.filter((r) => ALLOWED_TAGS.has(r));
-  return { id, matchReasons };
+function clampConfidence(v: unknown): number {
+  const n = typeof v === "number" ? v : typeof v === "string" ? Number.parseFloat(v) : NaN;
+  if (!Number.isFinite(n)) return 50;
+  return Math.max(0, Math.min(100, Math.round(n)));
 }
 
-function normaliseCombo(
-  raw: unknown,
-  idx: MenuIndex,
-  budgetBgn: number | null,
-): LlmCombo {
-  const empty: LlmCombo = { side: null, drink: null };
-  if (!isRecord(raw)) return empty;
-  const side = normalisePick(raw.side, idx, budgetBgn);
-  const drink = normalisePick(raw.drink, idx, budgetBgn);
-  // Combo items can be null in our schema; coerce shape to {id, reasonKey}
-  // and validate reasonKey.
-  function ensureShape(p: LlmPick | null, slot: unknown): { id: string; reasonKey: string } | null {
-    if (!p) return null;
-    if (!isRecord(slot)) return { id: p.id, reasonKey: "pair_default" };
-    const rk = asString(slot.reasonKey) ?? "pair_default";
-    const safeRk = ALLOWED_REASON_KEYS.has(rk) ? rk : "pair_default";
-    return { id: p.id, reasonKey: safeRk };
-  }
-  return {
-    side: ensureShape(side, raw.side),
-    drink: ensureShape(drink, raw.drink),
-  };
-}
-
-export interface ValidateOptions {
-  budgetBgn?: number | null;
-  maxRationaleChars?: number;
-}
-
-export interface ValidateResult {
-  ok: boolean;
-  response: LlmResponse | null;
-  errors: string[];
+function coercePrice(v: unknown): number | null {
+  const n = typeof v === "number" ? v : typeof v === "string" ? Number.parseFloat(v) : NaN;
+  return Number.isFinite(n) && n >= 0 ? Math.round(n * 100) / 100 : null;
 }
 
 // ---------------------------------------------------------------------------
@@ -184,6 +145,16 @@ export function parseLlmJson(text: string): unknown {
   }
 }
 
+export interface ValidateOptions {
+  maxMessageChars?: number;
+}
+
+export interface ValidateResult {
+  ok: boolean;
+  response: LlmResponse | null;
+  errors: string[];
+}
+
 export function validateLlmResponse(
   raw: unknown,
   categories: QrMenuCategory[],
@@ -195,42 +166,65 @@ export function validateLlmResponse(
     return { ok: false, response: null, errors: ["top-level is not an object"] };
   }
   const idx = buildMenuIndex(categories);
-  const budgetBgn = options.budgetBgn ?? null;
-  const maxRationale = options.maxRationaleChars ?? 280;
+  const maxMessage = options.maxMessageChars ?? 280;
 
-  const main = raw.main == null ? null : normalisePick(raw.main, idx, budgetBgn);
-  if (raw.main != null && !main) errors.push("main pick rejected (unknown id or over budget)");
+  const language = asString(raw.language);
+  const safeLocale: Locale = language && VALID_LOCALES.has(language) ? (language as Locale) : locale;
 
-  const altsRaw = Array.isArray(raw.alternatives) ? raw.alternatives : [];
-  const alternatives: LlmPick[] = [];
+  const primaryItemId = asId(raw.primaryItemId, idx);
+  if (raw.primaryItemId != null && !primaryItemId) errors.push("primaryItemId rejected (unknown id)");
+
+  const drinkItemId = asId(raw.drinkItemId, idx);
+  if (raw.drinkItemId != null && !drinkItemId) errors.push("drinkItemId rejected (unknown id)");
+
+  const sideItemId = asId(raw.sideItemId, idx);
+  if (raw.sideItemId != null && !sideItemId) errors.push("sideItemId rejected (unknown id)");
+
+  const altsRaw = asStringArray(raw.alternativeItemIds);
+  const alternativeItemIds: string[] = [];
+  const seen = new Set<string>([primaryItemId, drinkItemId, sideItemId].filter(Boolean) as string[]);
   for (const a of altsRaw) {
-    const p = normalisePick(a, idx, budgetBgn);
-    if (p) alternatives.push(p);
-    if (alternatives.length >= 3) break;
+    if (!idx.ids.has(a) || seen.has(a)) continue;
+    seen.add(a);
+    alternativeItemIds.push(a);
+    if (alternativeItemIds.length >= 3) break;
   }
 
-  const combo = normaliseCombo(raw.combo, idx, budgetBgn);
+  const budgetStatusRaw = asString(raw.budgetStatus);
+  const budgetStatus: BudgetStatus =
+    budgetStatusRaw && ALLOWED_BUDGET_STATUS.has(budgetStatusRaw)
+      ? (budgetStatusRaw as BudgetStatus)
+      : "within_budget";
 
-  let rationale = asString(raw.rationale) ?? "";
-  // Hard cap the rationale so a chatty model can't blow up the UI.
-  if (rationale.length > maxRationale) {
-    rationale = rationale.slice(0, maxRationale).trimEnd() + "…";
+  const totalEstimatedPrice = raw.totalEstimatedPrice == null ? null : coercePrice(raw.totalEstimatedPrice);
+  const confidence = clampConfidence(raw.confidence);
+
+  const reasonKeysRaw = asStringArray(raw.reasonKeys);
+  const reasonKeys = reasonKeysRaw.filter((k): k is ReasonKey => ALLOWED_REASON_KEYS.has(k)).slice(0, 4);
+
+  let customerMessage = asString(raw.customerMessage) ?? "";
+  if (customerMessage.length > maxMessage) {
+    customerMessage = customerMessage.slice(0, maxMessage).trimEnd() + "…";
   }
 
-  const response: LlmResponse = { main, alternatives, combo, rationale };
+  const response: LlmResponse = {
+    language: safeLocale,
+    primaryItemId,
+    drinkItemId,
+    sideItemId,
+    alternativeItemIds,
+    budgetStatus,
+    totalEstimatedPrice,
+    confidence,
+    reasonKeys,
+    customerMessage,
+  };
 
-  // ok=true when we have a main + at least 1 alternative (or 1 alternative
-  // when main is null is not enough — the wizard needs a winner).
-  const ok = main != null;
-  if (!ok) errors.push("no valid main pick after validation");
+  // Structural ok — a well-formed object we can hand to budgetRepair. A
+  // missing/hallucinated primaryItemId is NOT a hard failure here: the
+  // repair step fills it from the local candidate shortlist. It's only a
+  // hard failure when literally nothing usable came back at all.
+  const ok = primaryItemId != null || drinkItemId != null || sideItemId != null || alternativeItemIds.length > 0;
+  if (!ok) errors.push("no valid item ids in response");
   return { ok, response, errors };
 }
-
-// ---------------------------------------------------------------------------
-// Convenience — turn LLM response into something the wizard UI can use.
-// The UI's existing rationale.ts still works on the matchReasons list, so
-// we just hand back the validated structure. The caller (llmRecommend.ts)
-// re-derives the chips using explainMatch when the LLM result wins.
-// ---------------------------------------------------------------------------
-
-export type { MenuIndex };

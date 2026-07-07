@@ -61,7 +61,7 @@ const ReservationForm = () => {
             </button>
             <button type="button" className="tst-btn tst-btn-2" onClick={resetForm}>{t("newReservation")}</button>
           </div>
-          <p className="rsv-success-phone-note">{t("forChanges")} <a href="tel:+359894766273">+359 89 4766273</a></p>
+          <p className="rsv-success-phone-note">{t("forChanges")} <a href="tel:+3598947662273">+359 89 476 62273</a> · {t("ordersPhoneLabel")} <a href="tel:+359896088804">+359 89 608 8804</a></p>
         </motion.div>
         <style jsx>{formStyles}</style>
       </>

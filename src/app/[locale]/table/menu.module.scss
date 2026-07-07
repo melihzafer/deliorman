@@ -80,10 +80,17 @@
   margin: 0 auto;
   min-height: var(--header-h);
   padding: 8px 12px;
-  display: grid;
-  grid-template-columns: 44px 1fr auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
 }
 
 .settingsBtn {
@@ -109,31 +116,33 @@
 
 .brand {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 1px;
+  gap: 10px;
   min-width: 0;
 }
 
-.brandRow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
+.brandText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1px;
 }
 
 .brandLogo {
-  width: 26px;
-  height: 26px;
+  width: 38px;
+  height: 38px;
   object-fit: contain;
   display: block;
+  flex-shrink: 0;
 }
 
 .brandName {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 22px;
-  line-height: 1;
+  font-size: 20px;
+  line-height: 1.1;
   letter-spacing: 0.04em;
   color: var(--ink);
   white-space: nowrap;
@@ -142,9 +151,10 @@
 .brandTable {
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--ink-faint);
+  line-height: 1.1;
   white-space: nowrap;
 }
 
@@ -195,7 +205,10 @@
   margin: 0 auto;
   display: flex;
   gap: 8px;
-  padding: 10px 12px;
+  /* Horizontal padding keeps the first/last chips off the viewport edge
+     without relying on :first-child/:last-child margin hacks, which can
+     break under sticky/overflow ancestors. */
+  padding: 10px 16px;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -225,6 +238,10 @@
   cursor: pointer;
   transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
 
+  span {
+    color: inherit;
+  }
+
   &:hover {
     border-color: var(--line-strong);
     color: var(--ink);
@@ -232,13 +249,17 @@
 }
 
 .catChipActive {
-  background: var(--brand);
-  border-color: var(--brand);
-  color: var(--on-brand);
+  background: var(--brand) !important;
+  border-color: var(--brand) !important;
+  color: var(--on-brand) !important;
   box-shadow: var(--shadow-sm);
 
+  span {
+    color: var(--on-brand) !important;
+  }
+
   .catIcon {
-    color: var(--on-brand);
+    color: var(--on-brand) !important;
   }
 }
 

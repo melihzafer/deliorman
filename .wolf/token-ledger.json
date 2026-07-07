@@ -2,14 +2,14 @@
   "version": 1,
   "created_at": "2026-04-24T14:26:11.935Z",
   "lifetime": {
-    "total_tokens_estimated": 58052,
-    "total_reads": 39,
-    "total_writes": 86,
-    "total_sessions": 9,
-    "anatomy_hits": 13,
-    "anatomy_misses": 26,
-    "repeated_reads_blocked": 20,
-    "estimated_savings_vs_bare_cli": 2819
+    "total_tokens_estimated": 160965,
+    "total_reads": 148,
+    "total_writes": 242,
+    "total_sessions": 15,
+    "anatomy_hits": 16,
+    "anatomy_misses": 131,
+    "repeated_reads_blocked": 43,
+    "estimated_savings_vs_bare_cli": 113584
   },
   "sessions": [
     {
@@ -759,6 +759,1541 @@
         "writes_count": 30,
         "repeated_reads_blocked": 1,
         "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-07-07-1434",
+      "started": "2026-07-07T11:34:20.581Z",
+      "ended": "2026-07-07T11:44:18.310Z",
+      "reads": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/common/MobileBottomNav.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/common/MobileBottomNav.module.scss",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/siteContact.js",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaBottomNav.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useWaiterCall.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/app.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/contact/contact-info.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/ContactInfo.jsx",
+          "tokens_estimated": 1002,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_layouts/footers/LayoutDefault.jsx",
+          "tokens_estimated": 1950,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_layouts/headers/LayoutDefault.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/NewSpecialtiesCTA.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/Testimonials.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/special-days/page.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/lunch-menu/page.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/__tests__/bgPhoneUtils.test.js",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/bgPhoneUtils.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/StructuredData.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/offline/page.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 11345,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 11420,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/forms/ReservationForm.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/catering-services/content.js",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/terms/content.js",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/reservation/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/contact/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/reservation/reservation-form.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/reservation/reservation-opentable.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/masaConstants.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/siteContact.js",
+          "tokens_estimated": 982,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/app.json",
+          "tokens_estimated": 70,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/common/MobileBottomNav.jsx",
+          "tokens_estimated": 145,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/common/MobileBottomNav.jsx",
+          "tokens_estimated": 42,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_layouts/footers/LayoutDefault.jsx",
+          "tokens_estimated": 353,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_layouts/footers/LayoutDefault.jsx",
+          "tokens_estimated": 263,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/ContactInfo.jsx",
+          "tokens_estimated": 390,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/ContactInfo.jsx",
+          "tokens_estimated": 132,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 113,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 58,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 58,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 56,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 62,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 58,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/forms/ReservationForm.jsx",
+          "tokens_estimated": 56,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/catering-services/content.js",
+          "tokens_estimated": 108,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/catering-services/content.js",
+          "tokens_estimated": 103,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/catering-services/content.js",
+          "tokens_estimated": 110,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/terms/content.js",
+          "tokens_estimated": 91,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/terms/content.js",
+          "tokens_estimated": 90,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/terms/content.js",
+          "tokens_estimated": 100,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/offline/page.jsx",
+          "tokens_estimated": 75,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/offline/page.jsx",
+          "tokens_estimated": 364,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/special-days/page.jsx",
+          "tokens_estimated": 106,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/special-days/page.jsx",
+          "tokens_estimated": 81,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/special-days/page.jsx",
+          "tokens_estimated": 151,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/lunch-menu/page.jsx",
+          "tokens_estimated": 39,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/lunch-menu/page.jsx",
+          "tokens_estimated": 87,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/lunch-menu/page.jsx",
+          "tokens_estimated": 176,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/reservation/route.ts",
+          "tokens_estimated": 48,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/contact/route.ts",
+          "tokens_estimated": 50,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+          "tokens_estimated": 28,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/reservation/reservation-form.json",
+          "tokens_estimated": 36,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/contact/contact-info.json",
+          "tokens_estimated": 310,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/StructuredData.jsx",
+          "tokens_estimated": 128,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/reservation/reservation-opentable.json",
+          "tokens_estimated": 36,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 96,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 71,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 62,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 40,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 70,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 5,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 5,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 62,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 82,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 55,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 42,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 44,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/masaConstants.ts",
+          "tokens_estimated": 169,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useWaiterCall.ts",
+          "tokens_estimated": 76,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useWaiterCall.ts",
+          "tokens_estimated": 83,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useWaiterCall.ts",
+          "tokens_estimated": 34,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 52,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 79,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 25717,
+        "output_tokens_estimated": 6319,
+        "reads_count": 31,
+        "writes_count": 55,
+        "repeated_reads_blocked": 9,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-07-07-1434",
+      "started": "2026-07-07T11:34:20.581Z",
+      "ended": "2026-07-07T11:54:34.486Z",
+      "reads": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/common/MobileBottomNav.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/common/MobileBottomNav.module.scss",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/siteContact.js",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaBottomNav.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useWaiterCall.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 2939,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/app.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/contact/contact-info.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/ContactInfo.jsx",
+          "tokens_estimated": 1002,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_layouts/footers/LayoutDefault.jsx",
+          "tokens_estimated": 1950,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_layouts/headers/LayoutDefault.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/NewSpecialtiesCTA.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/Testimonials.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/special-days/page.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/lunch-menu/page.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/__tests__/bgPhoneUtils.test.js",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/bgPhoneUtils.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/StructuredData.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/offline/page.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 11345,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 11420,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/forms/ReservationForm.jsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/catering-services/content.js",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/terms/content.js",
+          "tokens_estimated": 0,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/reservation/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/contact/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/reservation/reservation-form.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/reservation/reservation-opentable.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/masaConstants.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/middleware.js",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useMasaSession.ts",
+          "tokens_estimated": 1773,
+          "was_repeated": true,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/masaDevSession.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/session/start/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/session/ping/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/sheets.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaStopPress.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/siteContact.js",
+          "tokens_estimated": 982,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/app.json",
+          "tokens_estimated": 70,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/common/MobileBottomNav.jsx",
+          "tokens_estimated": 145,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/common/MobileBottomNav.jsx",
+          "tokens_estimated": 42,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_layouts/footers/LayoutDefault.jsx",
+          "tokens_estimated": 353,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_layouts/footers/LayoutDefault.jsx",
+          "tokens_estimated": 263,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/ContactInfo.jsx",
+          "tokens_estimated": 390,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/sections/ContactInfo.jsx",
+          "tokens_estimated": 132,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 113,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 58,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 58,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 56,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 62,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 58,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/forms/ReservationForm.jsx",
+          "tokens_estimated": 56,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/catering-services/content.js",
+          "tokens_estimated": 108,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/catering-services/content.js",
+          "tokens_estimated": 103,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/catering-services/content.js",
+          "tokens_estimated": 110,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/terms/content.js",
+          "tokens_estimated": 91,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/terms/content.js",
+          "tokens_estimated": 90,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/terms/content.js",
+          "tokens_estimated": 100,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/offline/page.jsx",
+          "tokens_estimated": 75,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/offline/page.jsx",
+          "tokens_estimated": 364,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/special-days/page.jsx",
+          "tokens_estimated": 106,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/special-days/page.jsx",
+          "tokens_estimated": 81,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/special-days/page.jsx",
+          "tokens_estimated": 151,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/lunch-menu/page.jsx",
+          "tokens_estimated": 39,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/lunch-menu/page.jsx",
+          "tokens_estimated": 87,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/(pages)/lunch-menu/page.jsx",
+          "tokens_estimated": 176,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/reservation/route.ts",
+          "tokens_estimated": 48,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/contact/route.ts",
+          "tokens_estimated": 50,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+          "tokens_estimated": 28,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/reservation/reservation-form.json",
+          "tokens_estimated": 36,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/contact/contact-info.json",
+          "tokens_estimated": 310,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_components/StructuredData.jsx",
+          "tokens_estimated": 128,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/data/sections/reservation/reservation-opentable.json",
+          "tokens_estimated": 36,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 96,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 71,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 62,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 37,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/bg.json",
+          "tokens_estimated": 40,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 70,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 5,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 5,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 62,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 82,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 55,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/en.json",
+          "tokens_estimated": 42,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/messages/tr.json",
+          "tokens_estimated": 44,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/masaConstants.ts",
+          "tokens_estimated": 169,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useWaiterCall.ts",
+          "tokens_estimated": 76,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useWaiterCall.ts",
+          "tokens_estimated": 83,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useWaiterCall.ts",
+          "tokens_estimated": 34,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 52,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 79,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/_lib/sheets.ts",
+          "tokens_estimated": 13,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/session/start/route.ts",
+          "tokens_estimated": 481,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useMasaSession.ts",
+          "tokens_estimated": 29,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useMasaSession.ts",
+          "tokens_estimated": 22,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useMasaSession.ts",
+          "tokens_estimated": 21,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useMasaSession.ts",
+          "tokens_estimated": 27,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useMasaSession.ts",
+          "tokens_estimated": 25,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useMasaSession.ts",
+          "tokens_estimated": 36,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 51,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 16,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/useMasaSession.ts",
+          "tokens_estimated": 62,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 30429,
+        "output_tokens_estimated": 7102,
+        "reads_count": 38,
+        "writes_count": 66,
+        "repeated_reads_blocked": 14,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-07-07-1727",
+      "started": "2026-07-07T14:27:17.710Z",
+      "ended": "2026-07-07T14:30:31.496Z",
+      "reads": [
+        {
+          "file": "C:/Users/melih/.claude/image-cache/f2dc4328-ff5f-4136-8dd1-19b4e3800b22/1.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/menu.module.scss",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaCategoryBar.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 2916,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/menu.module.scss",
+          "tokens_estimated": 296,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 2916,
+        "output_tokens_estimated": 296,
+        "reads_count": 4,
+        "writes_count": 1,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      }
+    },
+    {
+      "id": "session-2026-07-07-1727",
+      "started": "2026-07-07T14:27:17.710Z",
+      "ended": "2026-07-07T14:33:01.146Z",
+      "reads": [
+        {
+          "file": "C:/Users/melih/.claude/image-cache/f2dc4328-ff5f-4136-8dd1-19b4e3800b22/1.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/menu.module.scss",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaCategoryBar.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+          "tokens_estimated": 2916,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "C:/Users/melih/AppData/Local/Temp/claude/D--Projects-Web-deliorman/cc99378d-da2c-4fba-b2df-4ce624a2877b/tasks/bxrkedzr4.output",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/[locale]/table/menu.module.scss",
+          "tokens_estimated": 296,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 2916,
+        "output_tokens_estimated": 296,
+        "reads_count": 5,
+        "writes_count": 1,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      }
+    },
+    {
+      "id": "session-2026-07-07-1741",
+      "started": "2026-07-07T14:41:49.737Z",
+      "ended": "2026-07-07T14:43:15.783Z",
+      "reads": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/types.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/scoring.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/menuTags.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/nextStep.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/pairings.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/rationale.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetParse.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/intentRouter.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/recommendSchema.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmRecommend.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/masaTranslations.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 13,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      }
+    },
+    {
+      "id": "session-2026-07-07-1753",
+      "started": "2026-07-07T14:53:33.023Z",
+      "ended": "2026-07-07T15:14:05.736Z",
+      "reads": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/types.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/scoring.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmRecommend.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/recommendSchema.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetParse.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/menuTags.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/pairings.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/rationale.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/intentRouter.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/intentLexicon.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/lexicon.json",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/fixture.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/recommendSchema.test.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/llmPrompt.test.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+          "tokens_estimated": 1533,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/types.ts",
+          "tokens_estimated": 212,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+          "tokens_estimated": 1281,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+          "tokens_estimated": 332,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts",
+          "tokens_estimated": 1681,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/types.ts",
+          "tokens_estimated": 104,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetRepair.ts",
+          "tokens_estimated": 1497,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/recommendSchema.ts",
+          "tokens_estimated": 2141,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+          "tokens_estimated": 2026,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+          "tokens_estimated": 378,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+          "tokens_estimated": 147,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+          "tokens_estimated": 899,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmRecommend.ts",
+          "tokens_estimated": 1876,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+          "tokens_estimated": 17,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+          "tokens_estimated": 103,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+          "tokens_estimated": 47,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+          "tokens_estimated": 54,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+          "tokens_estimated": 51,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+          "tokens_estimated": 43,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/recommendSchema.test.ts",
+          "tokens_estimated": 1990,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/llmPrompt.test.ts",
+          "tokens_estimated": 1652,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/customerMode.test.ts",
+          "tokens_estimated": 853,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+          "tokens_estimated": 142,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+          "tokens_estimated": 104,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/candidates.test.ts",
+          "tokens_estimated": 850,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/candidates.test.ts",
+          "tokens_estimated": 1475,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/budgetRepair.test.ts",
+          "tokens_estimated": 1614,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetRepair.ts",
+          "tokens_estimated": 308,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/budgetRepair.test.ts",
+          "tokens_estimated": 154,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+          "tokens_estimated": 75,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/realFixture.ts",
+          "tokens_estimated": 862,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/scenarios.test.ts",
+          "tokens_estimated": 2291,
+          "action": "create"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+          "tokens_estimated": 12,
+          "action": "edit"
+        },
+        {
+          "file": "D:/Projects/Web/deliorman/tests/unit/wizard/llmPrompt.test.ts",
+          "tokens_estimated": 118,
+          "action": "edit"
+        }
+      ],
+      "totals": {
+        "input_tokens_estimated": 1533,
+        "output_tokens_estimated": 25389,
+        "reads_count": 18,
+        "writes_count": 33,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
       }
     }
   ],

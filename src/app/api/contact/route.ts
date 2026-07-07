@@ -150,7 +150,7 @@ ${validatedMessage}
     if (!process.env.RESEND_API_KEY) {
       console.error('RESEND_API_KEY not configured. Cannot send contact email.');
       return NextResponse.json<ContactErrorResponse>(
-        { success: false, errors: [{ message: 'Формата за контакт не е конфигурирана. Моля, обадете се на +359 89 4766273.' }] },
+        { success: false, errors: [{ message: 'Формата за контакт не е конфигурирана. Моля, обадете се на +359 89 476 62273 (резервации) / +359 89 608 8804 (поръчки).' }] },
         { status: 503 },
       );
     }

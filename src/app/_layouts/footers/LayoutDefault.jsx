@@ -7,11 +7,16 @@ import FooterGallery from "@layouts/footers/Gallery";
 import { getLocalizedAppData } from "@data/getLocalizedAppData";
 import GoogleReviewsBadge from "@components/common/GoogleReviewsBadge";
 import { useMemo } from "react";
+import { getOrdersPhoneDisplay, getOrdersPhoneHref, getReservationsPhoneDisplay, getReservationsPhoneHref } from "@library/siteContact";
 
 const DefaultFooter = () => {
   const locale = useLocale();
   const t = useTranslations("footer");
   const localizedAppData = useMemo(() => getLocalizedAppData(locale), [locale]);
+  const ordersPhoneDisplay = getOrdersPhoneDisplay();
+  const ordersPhoneHref = getOrdersPhoneHref();
+  const reservationsPhoneDisplay = getReservationsPhoneDisplay();
+  const reservationsPhoneHref = getReservationsPhoneHref();
 
   const scrollToTop = (e) => {
     window.scrollTo({top: 0, behavior: 'smooth'});
@@ -56,7 +61,18 @@ const DefaultFooter = () => {
                         <div className="tst-mb-60">
                             <h5 className="tst-mb-30 tst-text-shadow">{localizedAppData.footer.contact.title || t("contactTitle")}</h5>
                             <ul className="tst-footer-contact tst-text-shadow tst-mb-30">
-                                <li><span className="tst-label">{t("phoneLabel")} :</span><span className="tst-text">{t("phoneValue")}</span></li>
+                                <li>
+                                  <span className="tst-label">{t("ordersPhoneLabel")} :</span>
+                                  <span className="tst-text">
+                                    <a href={ordersPhoneHref} className="tst-color tst-anima-link">{ordersPhoneDisplay}</a>
+                                  </span>
+                                </li>
+                                <li>
+                                  <span className="tst-label">{t("reservationsPhoneLabel")} :</span>
+                                  <span className="tst-text">
+                                    <a href={reservationsPhoneHref} className="tst-color tst-anima-link">{reservationsPhoneDisplay}</a>
+                                  </span>
+                                </li>
                                 <li><span className="tst-label">{t("emailLabel")} :</span><span className="tst-text">{t("emailValue")}</span></li>
                                 <li><span className="tst-label">{t("addressLabel")} :</span><span className="tst-text">{t("addressValue")}</span></li>
                             </ul>

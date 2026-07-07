@@ -693,6 +693,422 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-06-19T22:29:00.405Z"
+    },
+    {
+      "id": "bug-042",
+      "timestamp": "2026-07-07T11:36:33.010Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/data/app.json",
+      "root_cause": "Had \"Телефон \\n за резервации\"",
+      "fix": "Changed to \"Телефон за поръчки\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:36:33.010Z"
+    },
+    {
+      "id": "bug-043",
+      "timestamp": "2026-07-07T11:36:39.405Z",
+      "error_message": "Significant refactor of ",
+      "file": "src/app/_components/common/MobileBottomNav.jsx",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 8→11 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:36:39.405Z"
+    },
+    {
+      "id": "bug-044",
+      "timestamp": "2026-07-07T11:36:40.062Z",
+      "error_message": "CSS fix: href",
+      "file": "src/app/_components/common/MobileBottomNav.jsx",
+      "root_cause": "href: restaurantPhoneHref, → ordersPhoneHref,",
+      "fix": "Changed href: restaurantPhoneHref, → ordersPhoneHref,",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:36:40.062Z"
+    },
+    {
+      "id": "bug-045",
+      "timestamp": "2026-07-07T11:37:12.089Z",
+      "error_message": "CSS fix: icon",
+      "file": "src/app/_components/sections/ContactInfo.jsx",
+      "root_cause": "icon: CONTACT_INFO_ICONS[0], → CONTACT_INFO_ICONS[1],",
+      "fix": "Changed icon: CONTACT_INFO_ICONS[0], → CONTACT_INFO_ICONS[1],",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T11:37:32.944Z"
+    },
+    {
+      "id": "bug-046",
+      "timestamp": "2026-07-07T11:38:09.419Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/_components/forms/ReservationForm.jsx",
+      "root_cause": "Had \"tel:+359894766273\"",
+      "fix": "Changed to \"tel:+3598947662273\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:38:09.419Z"
+    },
+    {
+      "id": "bug-047",
+      "timestamp": "2026-07-07T11:38:28.241Z",
+      "error_message": "CSS fix: fontSize",
+      "file": "src/app/offline/page.jsx",
+      "root_cause": "fontSize: \"1.2rem\", → \"0.95rem\",",
+      "fix": "Changed fontSize: \"1.2rem\", → \"0.95rem\",",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:38:28.241Z"
+    },
+    {
+      "id": "bug-048",
+      "timestamp": "2026-07-07T11:38:38.803Z",
+      "error_message": "Significant refactor of ",
+      "file": "src/app/[locale]/(pages)/lunch-menu/page.jsx",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 4→6 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:38:38.803Z"
+    },
+    {
+      "id": "bug-049",
+      "timestamp": "2026-07-07T11:38:48.550Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/api/reservation/route.ts",
+      "root_cause": "Had 'Възникна грешка при обработката на резервацията. ",
+      "fix": "Changed to 'Възникна грешка при обработката на резервацията. ",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T11:38:49.809Z"
+    },
+    {
+      "id": "bug-050",
+      "timestamp": "2026-07-07T11:38:55.486Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/data/sections/reservation/reservation-form.json",
+      "root_cause": "Had \"ОБАДЕТЕ СЕ НА +359 89 4766273 ИЛИ ПОПЪЛНЕТЕ ФОРМА",
+      "fix": "Changed to \"ОБАДЕТЕ СЕ НА +359 89 476 62273 (РЕЗЕРВАЦИИ) ИЛИ ",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:38:55.486Z"
+    },
+    {
+      "id": "bug-051",
+      "timestamp": "2026-07-07T11:39:06.485Z",
+      "error_message": "CSS fix: text",
+      "file": "src/app/_components/StructuredData.jsx",
+      "root_cause": "text: item.answer.replace('{phone → item.answer",
+      "fix": "Changed text: item.answer.replace('{phone → item.answer",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:39:06.485Z"
+    },
+    {
+      "id": "bug-052",
+      "timestamp": "2026-07-07T11:39:12.261Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/data/sections/reservation/reservation-opentable.json",
+      "root_cause": "Had \"ОБАДЕТЕ СЕ НА +359 89 6088804 ИЛИ ПОПЪЛНЕТЕ ФОРМА",
+      "fix": "Changed to \"ОБАДЕТЕ СЕ НА +359 89 476 62273 (РЕЗЕРВАЦИИ) ИЛИ ",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:39:12.261Z"
+    },
+    {
+      "id": "bug-053",
+      "timestamp": "2026-07-07T11:39:19.266Z",
+      "error_message": "Incorrect value in code",
+      "file": "messages/bg.json",
+      "root_cause": "Had \"Свържете се с Ресторант Делиорман — ул. „Хаджи Ди",
+      "fix": "Changed to \"Свържете се с Ресторант Делиорман — ул. „Хаджи Ди",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 4,
+      "last_seen": "2026-07-07T11:39:27.074Z"
+    },
+    {
+      "id": "bug-054",
+      "timestamp": "2026-07-07T11:39:28.274Z",
+      "error_message": "Incorrect value in code",
+      "file": "messages/en.json",
+      "root_cause": "Had \"Contact Restaurant Deliorman — 6 Hadji Dimitar St",
+      "fix": "Changed to \"Contact Restaurant Deliorman — 6 Hadji Dimitar St",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T11:40:09.274Z"
+    },
+    {
+      "id": "bug-055",
+      "timestamp": "2026-07-07T11:39:45.786Z",
+      "error_message": "Wrong reference: 4766273 should be 476",
+      "file": "messages/en.json",
+      "root_cause": "Used \"4766273\" instead of \"476\"",
+      "fix": "Changed 4766273 → 476",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:39:45.786Z"
+    },
+    {
+      "id": "bug-056",
+      "timestamp": "2026-07-07T11:39:46.302Z",
+      "error_message": "Wrong reference: 4766273 should be 476",
+      "file": "messages/tr.json",
+      "root_cause": "Used \"4766273\" instead of \"476\"",
+      "fix": "Changed 4766273 → 476",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:39:46.303Z"
+    },
+    {
+      "id": "bug-057",
+      "timestamp": "2026-07-07T11:39:57.692Z",
+      "error_message": "Incorrect value in code",
+      "file": "messages/tr.json",
+      "root_cause": "Had \"Web sitemizdeki Rezervasyon sayfası üzerinden çev",
+      "fix": "Changed to \"Web sitemizdeki Rezervasyon sayfası üzerinden çev",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T11:40:08.414Z"
+    },
+    {
+      "id": "bug-058",
+      "timestamp": "2026-07-07T11:40:22.005Z",
+      "error_message": "Type error",
+      "file": "src/app/masa/masaConstants.ts",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:40:22.005Z"
+    },
+    {
+      "id": "bug-059",
+      "timestamp": "2026-07-07T11:40:24.855Z",
+      "error_message": "Wrong condition in logic",
+      "file": "src/app/masa/useWaiterCall.ts",
+      "root_cause": "Condition was: if (!token || !tableId || callState === \"loading\" || c)",
+      "fix": "Changed to: if (!WAITER_CALL_ENABLED)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:40:24.855Z"
+    },
+    {
+      "id": "bug-060",
+      "timestamp": "2026-07-07T11:50:41.710Z",
+      "error_message": "Wrong condition in logic",
+      "file": "src/app/masa/useMasaSession.ts",
+      "root_cause": "Condition was: if (!tableId || (!qrKey && !allowLocalTestSession)",
+      "fix": "Changed to: if (!tableId)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T11:50:41.710Z"
+    },
+    {
+      "id": "bug-061",
+      "timestamp": "2026-07-07T15:02:48.467Z",
+      "error_message": "Missing error handling in unknown",
+      "file": "src/app/api/wizard/recommend/route.ts",
+      "root_cause": "Code path had no error handling — exceptions would propagate uncaught",
+      "fix": "Added try/catch block",
+      "tags": [
+        "auto-detected",
+        "error-handling",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:02:48.467Z"
+    },
+    {
+      "id": "bug-062",
+      "timestamp": "2026-07-07T15:03:03.544Z",
+      "error_message": "Significant refactor of ",
+      "file": "src/app/api/wizard/recommend/route.ts",
+      "root_cause": "6 lines replaced/restructured",
+      "fix": "Rewrote 34→81 lines (6 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:03:03.544Z"
+    },
+    {
+      "id": "bug-063",
+      "timestamp": "2026-07-07T15:03:57.508Z",
+      "error_message": "Missing guard clause",
+      "file": "src/app/masa/MasaTasteWizard.tsx",
+      "root_cause": "No early return/throw for edge case: requestIdRef.current !== requestId",
+      "fix": "Added guard clause: if (requestIdRef.current !== requestId)",
+      "tags": [
+        "auto-detected",
+        "guard-clause",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:03:57.508Z"
+    },
+    {
+      "id": "bug-064",
+      "timestamp": "2026-07-07T15:05:45.100Z",
+      "error_message": "Type error",
+      "file": "src/app/masa/wizard/customerMode.ts",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:05:45.100Z"
+    },
+    {
+      "id": "bug-065",
+      "timestamp": "2026-07-07T15:08:30.882Z",
+      "error_message": "Significant refactor of ",
+      "file": "src/app/masa/wizard/budgetRepair.ts",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 17→26 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:08:30.882Z"
+    },
+    {
+      "id": "bug-066",
+      "timestamp": "2026-07-07T15:10:53.007Z",
+      "error_message": "Wrong condition in logic",
+      "file": "src/app/masa/wizard/customerMode.ts",
+      "root_cause": "Condition was: if (wantsDrinkOnly && !wantsBeer)",
+      "fix": "Changed to: if (wantsDrinkOnly)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:10:53.007Z"
+    },
+    {
+      "id": "bug-067",
+      "timestamp": "2026-07-07T15:11:04.892Z",
+      "error_message": "Type error",
+      "file": "tests/unit/wizard/llmPrompt.test.ts",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:11:04.892Z"
     }
   ]
 }

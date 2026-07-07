@@ -1,23 +1,40 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/src/i18n/navigation";
-import { getRestaurantPhoneDisplay } from "@library/siteContact";
+import { getOrdersPhoneDisplay, getOrdersPhoneHref, getReservationsPhoneDisplay, getReservationsPhoneHref } from "@library/siteContact";
 
 const CONTACT_INFO_ICONS = [
   "fas fa-phone",
+  "fas fa-phone-volume",
   "fas fa-envelope",
   "fas fa-location-dot",
 ];
 
 const ContactInfoSection = async () => {
   const t = await getTranslations("contact");
-  const phoneDisplay = getRestaurantPhoneDisplay();
+  const ordersPhoneDisplay = getOrdersPhoneDisplay();
+  const ordersPhoneHref = getOrdersPhoneHref();
+  const reservationsPhoneDisplay = getReservationsPhoneDisplay();
+  const reservationsPhoneHref = getReservationsPhoneHref();
   const infoItems = [
     {
       icon: CONTACT_INFO_ICONS[0],
+      title: t("ordersPhoneTitle"),
+      content: (
+        <>
+          <a href={ordersPhoneHref}>{ordersPhoneDisplay}</a>
+          <br />
+          <span style={{ fontSize: "14px", color: "#595959" }}>
+            {t("ordersPhoneNote")}
+          </span>
+        </>
+      ),
+    },
+    {
+      icon: CONTACT_INFO_ICONS[1],
       title: t("reservationPhoneTitle"),
       content: (
         <>
-          <Link href="/reservation">{phoneDisplay}</Link>
+          <a href={reservationsPhoneHref}>{reservationsPhoneDisplay}</a>
           <br />
           <span style={{ fontSize: "14px", color: "#595959" }}>
             {t("workingHours")}
@@ -26,7 +43,7 @@ const ContactInfoSection = async () => {
       ),
     },
     {
-      icon: CONTACT_INFO_ICONS[1],
+      icon: CONTACT_INFO_ICONS[2],
       title: t("emailInquiriesTitle"),
       content: (
         <>
@@ -41,7 +58,7 @@ const ContactInfoSection = async () => {
       ),
     },
     {
-      icon: CONTACT_INFO_ICONS[2],
+      icon: CONTACT_INFO_ICONS[3],
       title: t("addressTitle"),
       content: (
         <>

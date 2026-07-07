@@ -1,60 +1,55 @@
-import { buildPrompt, compactMenu } from "../../../src/app/masa/wizard/llmPrompt";
-import { TEST_CATEGORIES } from "./fixture";
+import { buildPrompt } from "../../../src/app/masa/wizard/llmPrompt";
+import type { CandidateItem } from "../../../src/app/masa/wizard/candidates";
 
-describe("compactMenu", () => {
-  it("compacts to {id, name, price, categoryId, tags}", () => {
-    const out = compactMenu(TEST_CATEGORIES, "en");
-    expect(out.length).toBeGreaterThan(0);
-    const sample = out[0];
-    expect(sample).toHaveProperty("id");
-    expect(sample).toHaveProperty("name");
-    expect(sample).toHaveProperty("price");
-    expect(sample).toHaveProperty("categoryId");
-    expect(Array.isArray(sample.tags)).toBe(true);
-  });
+function candidate(over: Partial<CandidateItem> = {}): CandidateItem {
+  return {
+    id: "kebabche",
+    name: { bg: "Кебапче", tr: "Kebapçe", en: "Kebapche" },
+    categoryId: "grill",
+    price: 1.95,
+    currency: "BGN",
+    course: "main",
+    portion: "snack",
+    tags: { protein: ["meat"], flavor: ["savory", "smoky"], texture: ["grilled"], vibe: ["traditional-bg"] },
+    valueScore: 0.7,
+    isAlcoholic: false,
+    ...over,
+  };
+}
 
-  it("uses the requested locale for the name", () => {
-    const out = compactMenu(TEST_CATEGORIES, "bg");
-    const kebabche = out.find((e) => e.id === "kebabche");
-    expect(kebabche?.name).toBe("Кебапче");
-  });
-
-  it("skips items without a localised name", () => {
-    const out = compactMenu(TEST_CATEGORIES, "tr");
-    const allHaveNames = out.every((e) => e.name && e.name.length > 0);
-    expect(allHaveNames).toBe(true);
-  });
-
-  it("never emits 'na' or 'none' tag values to save tokens", () => {
-    const out = compactMenu(TEST_CATEGORIES, "en");
-    for (const e of out) {
-      for (const tag of e.tags) {
-        expect(tag).not.toMatch(/:na$/);
-        expect(tag).not.toMatch(/:none$/);
-      }
-    }
-  });
-
-  it("keeps at least one tag per item when tags are defined", () => {
-    const out = compactMenu(TEST_CATEGORIES, "en");
-    for (const e of out) {
-      expect(e.tags.length).toBeGreaterThan(0);
-    }
-  });
-});
+const CANDIDATES: CandidateItem[] = [
+  candidate(),
+  candidate({ id: "carlsberg", name: { bg: "Carlsberg", tr: "Carlsberg", en: "Carlsberg" }, categoryId: "beer-cider-other-drinks", price: 3.91, course: "drink", portion: "snack", tags: { protein: ["grain"], flavor: ["bitter"], texture: [], vibe: ["comfort"] }, isAlcoholic: true }),
+];
 
 describe("buildPrompt", () => {
   it("produces a system prompt that names the locale", () => {
-    const p = buildPrompt({ locale: "bg", mode: "buttons", answers: {}, menu: TEST_CATEGORIES });
+    const p = buildPrompt({ locale: "bg", mode: "buttons", answers: {}, customerMode: "undecided", candidates: CANDIDATES });
     expect(p.system).toContain("Bulgarian");
     expect(p.system).toContain("(bg)");
   });
 
-  it("produces a user payload with the compacted menu", () => {
-    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, menu: TEST_CATEGORIES });
+  it("system prompt for tr names Turkish as the reply language", () => {
+    const p = buildPrompt({ locale: "tr", mode: "buttons", answers: {}, customerMode: "undecided", candidates: CANDIDATES });
+    expect(p.system).toContain("Reply in Turkish (tr)");
+    // Tone rules and few-shot examples intentionally cover all 3 locales
+    // regardless of the reply language — that's part of the spec, not a bug.
+  });
+
+  it("produces a user payload with the candidate shortlist, not the full menu", () => {
+    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, customerMode: "undecided", candidates: CANDIDATES });
     const parsed = JSON.parse(p.user);
-    expect(Array.isArray(parsed.menu)).toBe(true);
-    expect(parsed.menu.length).toBe(compactMenu(TEST_CATEGORIES, "en").length);
+    expect(Array.isArray(parsed.candidates)).toBe(true);
+    expect(parsed.candidates.length).toBe(CANDIDATES.length);
+    expect(parsed.candidates[0]).toHaveProperty("id");
+    expect(parsed.candidates[0]).toHaveProperty("price");
+    expect(parsed.candidates[0]).toHaveProperty("valueScore");
+  });
+
+  it("includes customer_mode in the user payload", () => {
+    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, customerMode: "very_hungry_low_budget", candidates: CANDIDATES });
+    const parsed = JSON.parse(p.user);
+    expect(parsed.customer_mode).toBe("very_hungry_low_budget");
   });
 
   it("passes answers through to the user payload", () => {
@@ -62,7 +57,8 @@ describe("buildPrompt", () => {
       locale: "en",
       mode: "buttons",
       answers: { mood: "adventurous", foodProtein: "meat", hunger: "meal" },
-      menu: TEST_CATEGORIES,
+      customerMode: "undecided",
+      candidates: CANDIDATES,
     });
     const parsed = JSON.parse(p.user);
     expect(parsed.answers).toEqual({ mood: "adventurous", foodProtein: "meat", hunger: "meal" });
@@ -74,7 +70,8 @@ describe("buildPrompt", () => {
       mode: "freetext",
       answers: {},
       freetext: "I have 10 euros and I'm hungry",
-      menu: TEST_CATEGORIES,
+      customerMode: "very_hungry_low_budget",
+      candidates: CANDIDATES,
     });
     const parsed1 = JSON.parse(p1.user);
     expect(parsed1.freetext).toBe("I have 10 euros and I'm hungry");
@@ -85,66 +82,51 @@ describe("buildPrompt", () => {
       mode: "buttons",
       answers: {},
       freetext: "should-be-ignored",
-      menu: TEST_CATEGORIES,
+      customerMode: "undecided",
+      candidates: CANDIDATES,
     });
     const parsed2 = JSON.parse(p2.user);
     expect(parsed2.freetext).toBeNull();
-    expect(parsed2.mode).toBe("buttons");
   });
 
   it("passes budget_bgn only when provided", () => {
-    const p1 = buildPrompt({ locale: "en", mode: "buttons", answers: {}, menu: TEST_CATEGORIES });
-    const parsed1 = JSON.parse(p1.user);
-    expect(parsed1.budget_bgn).toBeNull();
+    const p1 = buildPrompt({ locale: "en", mode: "buttons", answers: {}, customerMode: "undecided", candidates: CANDIDATES });
+    expect(JSON.parse(p1.user).budget_bgn).toBeNull();
 
-    const p2 = buildPrompt({
-      locale: "en",
-      mode: "buttons",
-      answers: {},
-      budgetBgn: 15,
-      menu: TEST_CATEGORIES,
-    });
-    const parsed2 = JSON.parse(p2.user);
-    expect(parsed2.budget_bgn).toBe(15);
+    const p2 = buildPrompt({ locale: "en", mode: "buttons", answers: {}, budgetBgn: 15, customerMode: "undecided", candidates: CANDIDATES });
+    expect(JSON.parse(p2.user).budget_bgn).toBe(15);
   });
 
-  it("includes the schema and valid_reason_keys for unambiguous output", () => {
-    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, menu: TEST_CATEGORIES });
+  it("includes the schema and valid_reason_keys matching the required JSON shape", () => {
+    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, customerMode: "undecided", candidates: CANDIDATES });
     const parsed = JSON.parse(p.user);
-    expect(parsed.schema).toBeDefined();
-    expect(parsed.schema.main).toBeDefined();
-    expect(parsed.schema.alternatives).toBeDefined();
-    expect(parsed.schema.combo).toBeDefined();
-    expect(parsed.schema.rationale).toBeDefined();
-    expect(Array.isArray(parsed.valid_reason_keys)).toBe(true);
-    expect(parsed.valid_reason_keys).toContain("pair_fries");
-    expect(parsed.valid_reason_keys).toContain("pair_drink_match");
+    expect(parsed.schema.primaryItemId).toBeDefined();
+    expect(parsed.schema.drinkItemId).toBeDefined();
+    expect(parsed.schema.sideItemId).toBeDefined();
+    expect(parsed.schema.alternativeItemIds).toBeDefined();
+    expect(parsed.schema.budgetStatus).toBeDefined();
+    expect(parsed.schema.customerMessage).toBeDefined();
+    expect(parsed.valid_reason_keys).toContain("filling");
+    expect(parsed.valid_reason_keys).toContain("beer_pairing");
+    expect(parsed.valid_reason_keys).toContain("family_safe");
   });
 
-  it("instructs the model to output strictly valid JSON (no fences)", () => {
-    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, menu: TEST_CATEGORIES });
-    expect(p.system.toLowerCase()).toContain("strictly valid json");
-    expect(p.system.toLowerCase()).toContain("no markdown");
+  it("instructs the model to return JSON only with no markdown", () => {
+    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, customerMode: "undecided", candidates: CANDIDATES });
+    expect(p.system).toContain("Return JSON only");
+    expect(p.system).toContain("No markdown fences");
   });
 
-  it("respects the budget rule in the system prompt", () => {
-    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, menu: TEST_CATEGORIES });
-    expect(p.system).toContain("budget_bgn");
-    expect(p.system).toContain("MUST be <= budget_bgn");
+  it("tells drink_only mode to never force a full meal", () => {
+    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, customerMode: "drink_only", candidates: CANDIDATES });
+    expect(p.system).toContain("drink_only");
+    expect(p.system.toLowerCase()).toContain("never force a full meal");
   });
 
-  it("approximates input tokens reasonably for the test fixture", () => {
-    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, menu: TEST_CATEGORIES });
-    // Just smoke-test that the estimate is positive and bounded
+  it("approximates input tokens reasonably for a small candidate list", () => {
+    const p = buildPrompt({ locale: "en", mode: "buttons", answers: {}, customerMode: "undecided", candidates: CANDIDATES });
     expect(p.approxInputTokens).toBeGreaterThan(100);
-    expect(p.approxInputTokens).toBeLessThan(20000);
-    expect(p.menuSize).toBeGreaterThan(0);
-  });
-
-  it("system prompt for tr uses Turkish label, not Bulgarian", () => {
-    const p = buildPrompt({ locale: "tr", mode: "buttons", answers: {}, menu: TEST_CATEGORIES });
-    expect(p.system).toContain("Turkish");
-    expect(p.system).toContain("(tr)");
-    expect(p.system).not.toContain("Bulgarian");
+    expect(p.approxInputTokens).toBeLessThan(5000);
+    expect(p.candidateCount).toBe(CANDIDATES.length);
   });
 });

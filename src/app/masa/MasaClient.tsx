@@ -35,7 +35,6 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
   const vipSecret = searchParams.get("vip")?.trim() || "";
   const isVipLink = vipSecret.length > 0;
   const tableId = isVipLink ? "" : normalizeTableId(searchParams.get("id"));
-  const qrKey = isVipLink ? "" : searchParams.get("key")?.trim() || "";
 
   const [locale, setLocale] = useState<Locale>(() =>
     normalizeLocale(searchParams.get("lang"), initialLocale),
@@ -58,11 +57,11 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
     sessionExpiresAt,
     setActiveCategoryId,
     token,
-  } = useMasaSession({ locale, qrKey, tableId, vipSecret });
+  } = useMasaSession({ locale, tableId, vipSecret });
 
   const isVip = role === "vip";
 
-  const { callState, callWaiter, cooldownSeconds, feedback } = useWaiterCall({
+  const { callState, callWaiter, cooldownSeconds, feedback, isEnabled: isWaiterCallEnabled } = useWaiterCall({
     blockSession,
     locale,
     nowMs,
@@ -245,7 +244,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
             <Sparkles size={22} aria-hidden="true" />
           </button>
 
-          {!isVip ? (
+          {!isVip && isWaiterCallEnabled ? (
             <button
               type="button"
               className={`${styles.callFab} ${isCoolingDown ? styles.callFabBusy : ""}`}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Sparkles, X, RotateCcw, ArrowLeft, Wand2, MessageSquare, ChevronDown } from "lucide-react";
 import { formatPrice, localized } from "./masaMenuUtils";
 import { t } from "./masaTranslations";
@@ -244,6 +244,10 @@ export function MasaTasteWizard({
   const [activeTab, setActiveTab] = useState<"quiz" | "text">("quiz");
   const [freeTextResult, setFreeTextResult] = useState<IntentResult | null>(null);
   const [history, setHistory] = useState<HistoryEntry[]>([]);
+  // Bumped on every finishQuiz() call so a late LLM/local response from a
+  // previous quiz run (e.g. the user restarted before it resolved) is
+  // ignored instead of overwriting the current result.
+  const requestIdRef = useRef(0);
 
   useEffect(() => {
     setHistory(loadHistory());
@@ -281,6 +285,7 @@ export function MasaTasteWizard({
     opts: { freetext?: string; budgetBgn?: number | null } = {},
   ) => {
     const mode: "buttons" | "freetext" = opts.freetext ? "freetext" : "buttons";
+    const requestId = ++requestIdRef.current;
     const spin = setInterval(() => {
       const pool = categories.flatMap((c) => c.items.map((i) => ({ ...i, categoryId: c.id })));
       if (pool.length === 0) return;
@@ -315,6 +320,7 @@ export function MasaTasteWizard({
     });
 
     void Promise.all([llmPromise, localPromise]).then(([llm, local]) => {
+      if (requestIdRef.current !== requestId) return; // stale — user restarted/changed answers
       if (llm) {
         setResult({
           mainItem: llm.main,
@@ -374,6 +380,7 @@ export function MasaTasteWizard({
 
   const handleSurprise = () => {
     triggerClick();
+    requestIdRef.current++; // invalidate any in-flight finishQuiz response
     const surprise = getSurprisePick(categories);
     if (!surprise) return;
     const combo = buildCombo(surprise.item, categories);
@@ -412,6 +419,7 @@ export function MasaTasteWizard({
 
   const handleRestart = () => {
     triggerClick();
+    requestIdRef.current++; // invalidate any in-flight finishQuiz response
     setStep("intro");
     setAnswers({});
     setResult(null);

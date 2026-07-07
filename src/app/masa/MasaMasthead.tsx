@@ -33,32 +33,35 @@ export function MasaMasthead({
   return (
     <header className={styles.header}>
       <div className={styles.headerInner}>
-        <button
-          type="button"
-          className={styles.settingsBtn}
-          aria-label={t(locale, "settings")}
-          aria-expanded={menuOpen}
-          onClick={onOpenMenu}
-        >
-          <Settings2 size={20} aria-hidden="true" />
-        </button>
+        <div className={styles.headerLeft}>
+          <button
+            type="button"
+            className={styles.settingsBtn}
+            aria-label={t(locale, "settings")}
+            aria-expanded={menuOpen}
+            onClick={onOpenMenu}
+          >
+            <Settings2 size={20} aria-hidden="true" />
+          </button>
 
-        <div className={styles.brand}>
-          <span className={styles.brandRow}>
+          <div className={styles.brand}>
             <Image
               src="/img/deliorman_colorized_logo.svg"
               alt=""
-              width={26}
-              height={26}
+              width={38}
+              height={38}
               className={styles.brandLogo}
               priority
               aria-hidden="true"
+              style={{ objectFit: 'contain', display: 'block' }}
             />
-            <span className={styles.brandName}>Deliorman</span>
-          </span>
-          <span className={`${styles.brandTable} ${isVip ? styles.brandTableVip : ""}`}>
-            {tableLabel}
-          </span>
+            <div className={styles.brandText}>
+              <span className={styles.brandName}>{t(locale, "brandName")}</span>
+              <span className={`${styles.brandTable} ${isVip ? styles.brandTableVip : ""}`}>
+                {tableLabel}
+              </span>
+            </div>
+          </div>
         </div>
 
         <div className={styles.langGroup} role="group" aria-label={t(locale, "language")}>

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import AppData from "@data/app.json";
+import { getOrdersPhoneDisplay, getOrdersPhoneHref, getReservationsPhoneDisplay, getReservationsPhoneHref } from "@library/siteContact";
 
 export default function OfflinePage() {
   return (
@@ -98,17 +99,32 @@ export default function OfflinePage() {
         <p style={{ marginBottom: "0.25rem" }}>
           Можете да ни се обадите директно:
         </p>
-        <a
-          href="tel:+359894766273"
-          style={{
-            color: "var(--color-accent, #f39c12)",
-            textDecoration: "none",
-            fontWeight: 600,
-            fontSize: "1.2rem",
-          }}
-        >
-          +359 89 4766273
-        </a>
+        <p style={{ marginBottom: "0.25rem" }}>
+          Телефон за поръчки:{" "}
+          <a
+            href={getOrdersPhoneHref()}
+            style={{
+              color: "var(--color-accent, #f39c12)",
+              textDecoration: "none",
+              fontWeight: 600,
+            }}
+          >
+            {getOrdersPhoneDisplay()}
+          </a>
+        </p>
+        <p style={{ marginBottom: "0.25rem" }}>
+          Телефон за резервации:{" "}
+          <a
+            href={getReservationsPhoneHref()}
+            style={{
+              color: "var(--color-accent, #f39c12)",
+              textDecoration: "none",
+              fontWeight: 600,
+            }}
+          >
+            {getReservationsPhoneDisplay()}
+          </a>
+        </p>
         <p style={{ marginTop: "0.75rem", fontSize: "0.85rem" }}>
           с. Самуил, ул. &quot;Хаджи Димитър&quot; №6, обл. Разград
         </p>

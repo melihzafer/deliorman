@@ -3,9 +3,12 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import { buildPrompt, type PromptMode } from "../../../masa/wizard/llmPrompt";
-import { parseLlmJson, validateLlmResponse } from "../../../masa/wizard/recommendSchema";
+import { parseLlmJson, validateLlmResponse, type ReasonKey } from "../../../masa/wizard/recommendSchema";
+import { classifyCustomerMode } from "../../../masa/wizard/customerMode";
+import { buildCandidateShortlist } from "../../../masa/wizard/candidates";
+import { repairBudget } from "../../../masa/wizard/budgetRepair";
 import type { Locale, QrMenuData } from "../../../masa/masaTypes";
-import type { WizardAnswers } from "../../../masa/wizard/types";
+import type { BudgetStatus, WizardAnswers } from "../../../masa/wizard/types";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -23,13 +26,16 @@ interface RecommendResponse {
   ok: boolean;
   source: "groq" | "empty";
   response: null | {
-    main: { id: string; matchReasons: string[] } | null;
-    alternatives: { id: string; matchReasons: string[] }[];
-    combo: {
-      side: { id: string; reasonKey: string } | null;
-      drink: { id: string; reasonKey: string } | null;
-    };
-    rationale: string;
+    language: Locale;
+    primaryItemId: string | null;
+    drinkItemId: string | null;
+    sideItemId: string | null;
+    alternativeItemIds: string[];
+    budgetStatus: BudgetStatus;
+    totalEstimatedPrice: number | null;
+    confidence: number;
+    reasonKeys: ReasonKey[];
+    customerMessage: string;
   };
   errors?: string[];
 }
@@ -154,8 +160,12 @@ async function callGroq(system: string, user: string, signal: AbortSignal): Prom
         { role: "user", content: user },
       ],
       response_format: { type: "json_object" },
-      temperature: 0.3,
-      max_tokens: 600,
+      // Low randomness on purpose: this is decision logic (budget, item
+      // ids), not creative writing. A chatty/creative model here means
+      // hallucinated ids and blown budgets that the validator has to catch.
+      temperature: 0.2,
+      top_p: 0.9,
+      max_tokens: 450,
     }),
     signal,
   });
@@ -233,19 +243,38 @@ export async function POST(request: Request): Promise<NextResponse<RecommendResp
     return NextResponse.json({ ok: false, source: "empty", response: null, errors: ["menu"] }, { status: 200 });
   }
 
-  // 6. Build prompt
-  const prompt = buildPrompt({ locale, mode, answers, freetext, budgetBgn, menu: menu.categories });
+  // 6. Classify customer mode and build the deterministic candidate
+  // shortlist. This is the code-owned filtering/scoring step: the LLM never
+  // sees the full ~184-item menu, only the top 8-15 valid candidates.
+  const customerMode = classifyCustomerMode({ answers, freetext, budgetBgn });
+  const candidates = buildCandidateShortlist({
+    categories: menu.categories,
+    answers,
+    customerMode,
+    budgetBgn,
+    freetext,
+    locale,
+  });
+  if (candidates.length === 0) {
+    return NextResponse.json({ ok: false, source: "empty", response: null, errors: ["no-candidates"] }, { status: 200 });
+  }
 
-  // 7. Call Groq
+  // 7. Build prompt (rerank_and_explain mode — the LLM reranks/explains the
+  // shortlist; explain_only, where the local top pick is trusted outright
+  // and the LLM only writes the customerMessage, is a future extension of
+  // this same pipeline).
+  const prompt = buildPrompt({ locale, mode, answers, freetext, budgetBgn, customerMode, candidates });
+
+  // 8. Call Groq
   const timeoutMs = Number.parseInt(process.env.GROQ_TIMEOUT_MS ?? "5000", 10);
   const content = await callGroqWithRetry(prompt.system, prompt.user, timeoutMs);
   if (!content) {
     return NextResponse.json({ ok: false, source: "empty", response: null, errors: ["groq"] }, { status: 200 });
   }
 
-  // 8. Parse + validate
+  // 9. Parse + validate (structure/id/vocabulary only — no budget logic)
   const parsed = parseLlmJson(content);
-  const validated = validateLlmResponse(parsed, menu.categories, locale, { budgetBgn });
+  const validated = validateLlmResponse(parsed, menu.categories, locale);
   if (!validated.ok || !validated.response) {
     return NextResponse.json({
       ok: false,
@@ -255,10 +284,38 @@ export async function POST(request: Request): Promise<NextResponse<RecommendResp
     }, { status: 200 });
   }
 
+  // 10. Deterministic budget repair — the code, not the LLM, owns the final
+  // selected combination and whether it fits the diner's budget.
+  const repaired = repairBudget({
+    primaryItemId: validated.response.primaryItemId,
+    drinkItemId: validated.response.drinkItemId,
+    sideItemId: validated.response.sideItemId,
+    candidates,
+    budgetBgn,
+    customerMode,
+  });
+
+  if (!repaired.primaryItemId && !repaired.drinkItemId) {
+    // No safe combo at all — never surface a broken/empty pick to the UI,
+    // fall all the way back to the local deterministic engine.
+    return NextResponse.json({ ok: false, source: "empty", response: null, errors: ["no-safe-combo"] }, { status: 200 });
+  }
+
   return NextResponse.json({
     ok: true,
     source: "groq",
-    response: validated.response,
+    response: {
+      language: validated.response.language,
+      primaryItemId: repaired.primaryItemId,
+      drinkItemId: repaired.drinkItemId,
+      sideItemId: repaired.sideItemId,
+      alternativeItemIds: validated.response.alternativeItemIds,
+      budgetStatus: repaired.budgetStatus,
+      totalEstimatedPrice: repaired.totalEstimatedPrice,
+      confidence: validated.response.confidence,
+      reasonKeys: validated.response.reasonKeys,
+      customerMessage: validated.response.customerMessage,
+    },
   });
 }
 

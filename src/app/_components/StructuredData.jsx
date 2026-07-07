@@ -172,7 +172,10 @@ export default async function StructuredData() {
       name: item.question,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.answer.replace('{phone}', restaurantPhoneDisplay),
+        text: item.answer
+          .replace('{phone}', restaurantPhoneDisplay)
+          .replace('{ordersPhone}', '+359 89 608 8804')
+          .replace('{reservationsPhone}', '+359 89 476 62273'),
       },
     })),
   }
