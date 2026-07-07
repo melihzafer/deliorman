@@ -198,7 +198,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
                 >
                   <MasaMenuList
                     activeCategory={activeCategory}
-                    currency={menuData?.currency ?? "BGN"}
+                    currency={menuData?.currency ?? "EUR"}
                     locale={locale}
                     styles={styles}
                     showImages={showImages}
@@ -287,7 +287,7 @@ export default function MasaClient({ initialLocale = "bg" }: MasaClientProps = {
         <MasaTasteWizard
           categories={categories}
           activeCategory={activeCategory}
-          currency={menuData?.currency ?? "BGN"}
+          currency={menuData?.currency ?? "EUR"}
           locale={locale}
           onClose={() => {
             playClick(soundEnabled);

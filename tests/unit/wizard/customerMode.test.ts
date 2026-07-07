@@ -5,7 +5,7 @@ describe("classifyCustomerMode", () => {
     const mode = classifyCustomerMode({
       answers: { anchor: "food" },
       freetext: "Cebimde 10 euro var, çok açım ve canım bira istiyor.",
-      budgetBgn: 19.56,
+      budgetEur: 10,
     });
     expect(mode).toBe("very_hungry_low_budget");
   });
@@ -14,13 +14,13 @@ describe("classifyCustomerMode", () => {
     const mode = classifyCustomerMode({
       answers: { anchor: "food", alcohol: "alcoholic" },
       freetext: "I want beer but I also need something cheap to eat",
-      budgetBgn: null,
+      budgetEur: null,
     });
     expect(mode).toBe("beer_with_food");
   });
 
   it("classifies a pure drink request with no food signal as drink_only", () => {
-    const mode = classifyCustomerMode({ answers: {}, freetext: "само бира", budgetBgn: null });
+    const mode = classifyCustomerMode({ answers: {}, freetext: "само бира", budgetEur: null });
     expect(mode).toBe("drink_only");
   });
 
@@ -28,7 +28,7 @@ describe("classifyCustomerMode", () => {
     const mode = classifyCustomerMode({
       answers: { foodProtein: "sweet-only" },
       freetext: "sadece tatlı bir şey istiyorum",
-      budgetBgn: null,
+      budgetEur: null,
     });
     expect(mode).toBe("sweet_only");
   });
@@ -37,13 +37,13 @@ describe("classifyCustomerMode", () => {
     const mode = classifyCustomerMode({
       answers: {},
       freetext: "çocuklarla geldik, alkol olmasın",
-      budgetBgn: null,
+      budgetEur: null,
     });
     expect(mode).toBe("family_safe");
   });
 
   it("classifies an adventurous/spicy request", () => {
-    const mode = classifyCustomerMode({ answers: {}, freetext: "acı ve farklı bir şey öner", budgetBgn: null });
+    const mode = classifyCustomerMode({ answers: {}, freetext: "acı ve farklı bir şey öner", budgetEur: null });
     expect(mode).toBe("adventurous");
   });
 
@@ -51,7 +51,7 @@ describe("classifyCustomerMode", () => {
     const mode = classifyCustomerMode({
       answers: {},
       freetext: "hafif bir şey istiyorum midem ağır",
-      budgetBgn: null,
+      budgetEur: null,
     });
     expect(mode).toBe("light_fresh");
   });
@@ -60,26 +60,26 @@ describe("classifyCustomerMode", () => {
     const mode = classifyCustomerMode({
       answers: { anchor: "food" },
       freetext: "çok param yok ama doyurucu olsun",
-      budgetBgn: null,
+      budgetEur: null,
     });
     expect(mode).toBe("budget_value");
   });
 
   it("falls back to undecided with no signals", () => {
-    const mode = classifyCustomerMode({ answers: {}, freetext: "", budgetBgn: null });
+    const mode = classifyCustomerMode({ answers: {}, freetext: "", budgetEur: null });
     expect(mode).toBe("undecided");
   });
 
   it("never classifies very_hungry_low_budget without a budget", () => {
-    const mode = classifyCustomerMode({ answers: { hunger: "feast" }, freetext: "çok açım", budgetBgn: null });
+    const mode = classifyCustomerMode({ answers: { hunger: "feast" }, freetext: "çok açım", budgetEur: null });
     expect(mode).not.toBe("very_hungry_low_budget");
   });
 
-  it("classifies Bulgarian 'very hungry' with an explicit BGN budget", () => {
+  it("classifies Bulgarian 'very hungry' with an explicit EUR budget", () => {
     const mode = classifyCustomerMode({
       answers: {},
-      freetext: "имам 15 лв и съм много гладен",
-      budgetBgn: 15,
+      freetext: "имам 15 евро и съм много гладен",
+      budgetEur: 15,
     });
     expect(mode).toBe("very_hungry_low_budget");
   });

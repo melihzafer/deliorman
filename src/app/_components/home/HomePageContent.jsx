@@ -12,6 +12,7 @@ import HeroSlider from "@components/sliders/Hero";
 import Testimonials from "@components/sections/Testimonials";
 import StatsCounter from "@components/sections/StatsCounter";
 import TrustIndicators from "@components/sections/TrustIndicators";
+import FAQ from "@components/sections/FAQ";
 
 export default function HomePageContent() {
   return (
@@ -41,6 +42,8 @@ export default function HomePageContent() {
               <CountersSection />
               <Divider />
               <Testimonials />
+              <Divider />
+              <FAQ />
             </div>
           </div>
         </div>

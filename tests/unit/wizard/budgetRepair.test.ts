@@ -7,7 +7,7 @@ function candidate(over: Partial<CandidateItem> = {}): CandidateItem {
     name: { bg: "", tr: "", en: "" },
     categoryId: "grill",
     price: 5,
-    currency: "BGN",
+    currency: "EUR",
     course: "main",
     portion: "meal",
     tags: { protein: [], flavor: [], texture: [], vibe: [] },
@@ -32,7 +32,7 @@ describe("repairBudget", () => {
       drinkItemId: "carlsberg-0-0",
       sideItemId: "shopska",
       candidates: CANDIDATES,
-      budgetBgn: 20,
+      budgetEur: 20,
       customerMode: "hungry_normal",
     });
     expect(r.primaryItemId).toBe("kebabche");
@@ -48,7 +48,7 @@ describe("repairBudget", () => {
       drinkItemId: "carlsberg-0-0",
       sideItemId: "shopska",
       candidates: CANDIDATES,
-      budgetBgn: 8, // 1.95 + 4.3 + 7.82 = 14.07, over; drop side -> 6.25, fits
+      budgetEur: 8, // 1.95 + 4.3 + 7.82 = 14.07, over; drop side -> 6.25, fits
       customerMode: "hungry_normal",
     });
     expect(r.primaryItemId).toBe("kebabche");
@@ -63,7 +63,7 @@ describe("repairBudget", () => {
       drinkItemId: "carlsberg", // alcoholic
       sideItemId: null,
       candidates: CANDIDATES,
-      budgetBgn: 2, // 1.95 + 3.91 = 5.86, over; drop drink -> 1.95, fits
+      budgetEur: 2, // 1.95 + 3.91 = 5.86, over; drop drink -> 1.95, fits
       customerMode: "beer_with_food",
     });
     expect(r.primaryItemId).toBe("kebabche");
@@ -73,11 +73,11 @@ describe("repairBudget", () => {
 
   it("never exceeds the budget: replaces an over-budget primary with the best affordable candidate", () => {
     const r = repairBudget({
-      primaryItemId: "mixed-grill", // 34.22 BGN
+      primaryItemId: "mixed-grill", // 34.22
       drinkItemId: null,
       sideItemId: null,
       candidates: CANDIDATES,
-      budgetBgn: 5,
+      budgetEur: 5,
       customerMode: "very_hungry_low_budget",
     });
     expect(r.primaryItemId).toBe("kebabche"); // cheapest/highest-value affordable main
@@ -92,7 +92,7 @@ describe("repairBudget", () => {
       drinkItemId: null,
       sideItemId: null,
       candidates: [tinyBudget],
-      budgetBgn: 5,
+      budgetEur: 5,
       customerMode: "hungry_normal",
     });
     expect(r.primaryItemId).toBeNull();
@@ -107,7 +107,7 @@ describe("repairBudget", () => {
       drinkItemId: null,
       sideItemId: null,
       candidates: CANDIDATES,
-      budgetBgn: null,
+      budgetEur: null,
       customerMode: "hungry_normal",
     });
     expect(r.primaryItemId).not.toBeNull();
@@ -120,7 +120,7 @@ describe("repairBudget", () => {
       drinkItemId: "carlsberg-0-0",
       sideItemId: null,
       candidates: CANDIDATES,
-      budgetBgn: null,
+      budgetEur: null,
       customerMode: "drink_only",
     });
     expect(r.primaryItemId).toBeNull();
@@ -131,10 +131,10 @@ describe("repairBudget", () => {
   it("drink_only mode tries a cheaper drink instead of forcing food when over budget", () => {
     const r = repairBudget({
       primaryItemId: null,
-      drinkItemId: "carlsberg-0-0", // 4.3 BGN — over a 4.0 budget
+      drinkItemId: "carlsberg-0-0", // 4.3 — over a 4.0 budget
       sideItemId: null,
       candidates: CANDIDATES,
-      budgetBgn: 4.0, // carlsberg-0-0 doesn't fit; carlsberg (3.91) does
+      budgetEur: 4.0, // carlsberg-0-0 doesn't fit; carlsberg (3.91) does
       customerMode: "drink_only",
     });
     expect(r.drinkItemId).toBe("carlsberg");
@@ -148,7 +148,7 @@ describe("repairBudget", () => {
       drinkItemId: null,
       sideItemId: null,
       candidates: CANDIDATES,
-      budgetBgn: null,
+      budgetEur: null,
       customerMode: "hungry_normal",
     });
     // Falls back to the best real candidate instead of trusting the fake id.

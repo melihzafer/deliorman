@@ -20,7 +20,7 @@ export interface CandidateItem {
   name: { bg: string; tr: string; en: string };
   categoryId: string;
   price: number | null;
-  currency: "BGN";
+  currency: "EUR";
   course: ItemTags["course"];
   portion: ItemTags["portion"];
   tags: {
@@ -37,7 +37,7 @@ export interface BuildCandidatesInput {
   categories: QrMenuCategory[];
   answers: WizardAnswers;
   customerMode: CustomerMode;
-  budgetBgn?: number | null;
+  budgetEur?: number | null;
   freetext?: string;
   locale: Locale;
   limit?: number;
@@ -85,7 +85,7 @@ function computeValueScore(
   price: number | null,
   tags: ItemTags,
   mode: CustomerMode,
-  budgetBgn: number | null,
+  budgetEur: number | null,
 ): number {
   let v = 0.5;
 
@@ -98,7 +98,7 @@ function computeValueScore(
   else if (STARCH_PROTEINS.has(tags.protein)) v += 0.05;
 
   if (price != null) {
-    const referenceBudget = budgetBgn ?? 20;
+    const referenceBudget = budgetEur ?? 10;
     const ratio = price / Math.max(1, referenceBudget);
     if (ratio <= 0.35) v += 0.15;
     else if (ratio <= 0.7) v += 0.08;
@@ -113,7 +113,7 @@ function computeValueScore(
     if ((tags.course === "side" || tags.course === "starter") && tags.portion === "snack") v -= 0.1;
   }
   if (mode === "drink_only" && tags.course !== "drink") v -= 0.1;
-  if (mode === "budget_value" && price != null && price > (budgetBgn ?? 30) * 0.6) v -= 0.1;
+  if (mode === "budget_value" && price != null && price > (budgetEur ?? 15) * 0.6) v -= 0.1;
 
   return Math.max(0, Math.min(1, v));
 }
@@ -126,7 +126,7 @@ function squash(score: number): number {
 
 export function buildCandidateShortlist(input: BuildCandidatesInput): CandidateItem[] {
   const { categories, answers, customerMode, locale, freetext } = input;
-  const budgetBgn = input.budgetBgn ?? null;
+  const budgetEur = input.budgetEur ?? null;
   const limit = Math.max(MIN_LIMIT, Math.min(MAX_LIMIT, input.limit ?? DEFAULT_LIMIT));
 
   const scored = scoreItems(categories, answers, locale, freetext);
@@ -136,7 +136,7 @@ export function buildCandidateShortlist(input: BuildCandidatesInput): CandidateI
     .map((s) => {
       const tags = getItemTags(s.item.id);
       if (!passesModeFilter(tags, customerMode)) return null;
-      const valueScore = computeValueScore(s.item.price, tags, customerMode, budgetBgn);
+      const valueScore = computeValueScore(s.item.price, tags, customerMode, budgetEur);
       const rank = 0.55 * squash(s.score) + 0.45 * valueScore;
       return { scored: s, tags, valueScore, rank };
     })
@@ -153,7 +153,7 @@ export function buildCandidateShortlist(input: BuildCandidatesInput): CandidateI
     },
     categoryId: s.item.categoryId,
     price: s.item.price,
-    currency: "BGN",
+    currency: "EUR",
     course: tags.course,
     portion: tags.portion,
     tags: {

@@ -20,7 +20,7 @@ export interface RepairInput {
   drinkItemId: string | null;
   sideItemId: string | null;
   candidates: CandidateItem[];
-  budgetBgn: number | null;
+  budgetEur: number | null;
   customerMode: CustomerMode;
 }
 
@@ -45,7 +45,7 @@ function bestCandidate(
 }
 
 export function repairBudget(input: RepairInput): RepairResult {
-  const { candidates, budgetBgn, customerMode } = input;
+  const { candidates, budgetEur, customerMode } = input;
   const byId = new Map(candidates.map((c) => [c.id, c]));
   const neverForcePrimary = customerMode === "drink_only";
 
@@ -75,7 +75,7 @@ export function repairBudget(input: RepairInput): RepairResult {
     return "within_budget";
   };
 
-  if (budgetBgn == null) {
+  if (budgetEur == null) {
     const t = total();
     return {
       primaryItemId: primaryId,
@@ -86,7 +86,7 @@ export function repairBudget(input: RepairInput): RepairResult {
     };
   }
 
-  if (total() <= budgetBgn) {
+  if (total() <= budgetEur) {
     return {
       primaryItemId: primaryId,
       drinkItemId: drinkId,
@@ -103,7 +103,7 @@ export function repairBudget(input: RepairInput): RepairResult {
   // dropping the only thing the diner asked for isn't a repair.
   if (sideId) {
     sideId = null;
-    if (total() <= budgetBgn) {
+    if (total() <= budgetEur) {
       return {
         primaryItemId: primaryId,
         drinkItemId: drinkId,
@@ -115,7 +115,7 @@ export function repairBudget(input: RepairInput): RepairResult {
   }
   if (!neverForcePrimary && drinkId) {
     drinkId = null;
-    if (total() <= budgetBgn) {
+    if (total() <= budgetEur) {
       return { primaryItemId: primaryId, drinkItemId: drinkId, sideItemId: sideId, totalEstimatedPrice: total(), budgetStatus: "food_only_within_budget" };
     }
   }
@@ -125,7 +125,7 @@ export function repairBudget(input: RepairInput): RepairResult {
   if (!neverForcePrimary) {
     const cheaper = bestCandidate(
       candidates,
-      (c) => c.course !== "drink" && c.price != null && c.price <= budgetBgn,
+      (c) => c.course !== "drink" && c.price != null && c.price <= budgetEur,
     );
     if (cheaper) {
       return {
@@ -139,7 +139,7 @@ export function repairBudget(input: RepairInput): RepairResult {
   } else {
     const cheaperDrink = bestCandidate(
       candidates,
-      (c) => c.course === "drink" && c.price != null && c.price <= budgetBgn,
+      (c) => c.course === "drink" && c.price != null && c.price <= budgetEur,
     );
     if (cheaperDrink) {
       return {

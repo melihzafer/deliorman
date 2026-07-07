@@ -1,38 +1,713 @@
 {
-  "session_id": "session-2026-07-07-1826",
-  "started": "2026-07-07T15:26:36.470Z",
+  "session_id": "session-2026-07-07-1907",
+  "started": "2026-07-07T16:07:51.104Z",
   "files_read": {
-    "D:/Projects/Web/deliorman/package.json": {
+    "D:/Projects/Web/deliorman/src/app/_components/menu/ai/MenuAIAssistant.jsx": {
       "count": 1,
       "tokens": 0,
-      "first_read": "2026-07-07T15:30:03.691Z"
+      "first_read": "2026-07-07T16:10:13.762Z"
     },
-    "D:/Projects/Web/deliorman/next.config.js": {
+    "D:/Projects/Web/deliorman/src/app/_components/menu/ai/AIAssistantModal.jsx": {
       "count": 1,
       "tokens": 0,
-      "first_read": "2026-07-07T15:30:03.991Z"
+      "first_read": "2026-07-07T16:10:14.506Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts": {
+      "count": 6,
+      "tokens": 3895,
+      "first_read": "2026-07-07T16:10:14.563Z"
+    },
+    "D:/Projects/Web/deliorman/.env.example": {
+      "count": 3,
+      "tokens": 583,
+      "first_read": "2026-07-07T16:10:26.543Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts": {
+      "count": 1,
+      "tokens": 2026,
+      "first_read": "2026-07-07T16:12:30.536Z"
+    },
+    "D:/Projects/Web/deliorman/src/data/getLocalizedMenuData.js": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:12:59.340Z"
+    },
+    "D:/Projects/Web/deliorman/env.example": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:15:59.990Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/masaMenuUtils.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:26:54.186Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/masaConstants.ts": {
+      "count": 1,
+      "tokens": 309,
+      "first_read": "2026-07-07T16:26:54.511Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetParse.ts": {
+      "count": 2,
+      "tokens": 631,
+      "first_read": "2026-07-07T16:29:59.288Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetRepair.ts": {
+      "count": 1,
+      "tokens": 1588,
+      "first_read": "2026-07-07T16:29:59.592Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts": {
+      "count": 1,
+      "tokens": 1681,
+      "first_read": "2026-07-07T16:30:09.614Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts": {
+      "count": 1,
+      "tokens": 1529,
+      "first_read": "2026-07-07T16:30:10.002Z"
     },
     "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts": {
       "count": 1,
       "tokens": 3547,
-      "first_read": "2026-07-07T15:30:23.464Z"
+      "first_read": "2026-07-07T16:30:10.326Z"
     },
-    "D:/Projects/Web/deliorman/src/app/_lib/sheets.ts": {
-      "count": 1,
-      "tokens": 2215,
-      "first_read": "2026-07-07T15:31:09.696Z"
+    "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx": {
+      "count": 2,
+      "tokens": 10510,
+      "first_read": "2026-07-07T16:30:36.825Z"
     },
-    "D:/Projects/Web/deliorman/src/app/api/session/start/route.ts": {
+    "D:/Projects/Web/deliorman/src/app/masa/wizard/llmRecommend.ts": {
       "count": 1,
-      "tokens": 990,
-      "first_read": "2026-07-07T15:31:09.881Z"
+      "tokens": 1876,
+      "first_read": "2026-07-07T16:30:42.406Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx": {
+      "count": 1,
+      "tokens": 2916,
+      "first_read": "2026-07-07T16:32:27.118Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/masa/masaTranslations.ts": {
+      "count": 3,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:32:34.116Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/_components/menu/MenuItem2.jsx": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:32:54.691Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/_components/common/DailySpecial.jsx": {
+      "count": 2,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:33:24.978Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/_components/StructuredData.jsx": {
+      "count": 2,
+      "tokens": 2208,
+      "first_read": "2026-07-07T16:33:50.307Z"
+    },
+    "D:/Projects/Web/deliorman/src/data/specialties.json": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:33:50.675Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/api/search/route.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:33:51.344Z"
+    },
+    "D:/Projects/Web/deliorman/messages/bg.json": {
+      "count": 1,
+      "tokens": 11681,
+      "first_read": "2026-07-07T16:35:07.007Z"
+    },
+    "D:/Projects/Web/deliorman/messages/en.json": {
+      "count": 1,
+      "tokens": 11453,
+      "first_read": "2026-07-07T16:35:23.371Z"
+    },
+    "D:/Projects/Web/deliorman/messages/tr.json": {
+      "count": 1,
+      "tokens": 11541,
+      "first_read": "2026-07-07T16:35:23.567Z"
+    },
+    "D:/Projects/Web/deliorman/tests/unit/wizard/budgetParse.test.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:35:54.194Z"
+    },
+    "C:/Users/melih/AppData/Local/Temp/claude/D--Projects-Web-deliorman/9eab0c8a-ad92-4ece-b9ac-757717a5e6fa/scratchpad/tsc_out2.txt": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:39:33.892Z"
+    },
+    "D:/Projects/Web/deliorman/tests/unit/wizard/fixture.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:39:46.395Z"
+    },
+    "D:/Projects/Web/deliorman/tests/unit/wizard/realFixture.ts": {
+      "count": 1,
+      "tokens": 862,
+      "first_read": "2026-07-07T16:39:56.664Z"
+    },
+    "D:/Projects/Web/deliorman/tests/unit/wizard/budgetRepair.test.ts": {
+      "count": 2,
+      "tokens": 1618,
+      "first_read": "2026-07-07T16:40:36.189Z"
+    },
+    "D:/Projects/Web/deliorman/tests/unit/wizard/candidates.test.ts": {
+      "count": 3,
+      "tokens": 1473,
+      "first_read": "2026-07-07T16:40:36.575Z"
+    },
+    "D:/Projects/Web/deliorman/tests/unit/wizard/customerMode.test.ts": {
+      "count": 3,
+      "tokens": 852,
+      "first_read": "2026-07-07T16:40:36.935Z"
+    },
+    "D:/Projects/Web/deliorman/tests/unit/wizard/llmPrompt.test.ts": {
+      "count": 1,
+      "tokens": 1686,
+      "first_read": "2026-07-07T16:40:37.312Z"
+    },
+    "D:/Projects/Web/deliorman/tests/unit/wizard/scenarios.test.ts": {
+      "count": 2,
+      "tokens": 2291,
+      "first_read": "2026-07-07T16:40:37.663Z"
+    },
+    "D:/Projects/Web/deliorman/src/app/_components/menu/__tests__/MenuFiltered.test.jsx": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-07-07T16:44:01.254Z"
     }
   },
-  "files_written": [],
-  "edit_counts": {},
-  "anatomy_hits": 3,
-  "anatomy_misses": 2,
-  "repeated_reads_warned": 0,
+  "files_written": [
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+      "action": "edit",
+      "tokens": 124,
+      "at": "2026-07-07T16:14:59.450Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+      "action": "edit",
+      "tokens": 401,
+      "at": "2026-07-07T16:15:09.071Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+      "action": "edit",
+      "tokens": 57,
+      "at": "2026-07-07T16:15:16.230Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+      "action": "edit",
+      "tokens": 444,
+      "at": "2026-07-07T16:15:30.388Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+      "action": "edit",
+      "tokens": 59,
+      "at": "2026-07-07T16:15:40.043Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/_components/menu/ai/AIAssistantModal.jsx",
+      "action": "edit",
+      "tokens": 83,
+      "at": "2026-07-07T16:15:45.457Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/_components/menu/ai/AIAssistantModal.jsx",
+      "action": "edit",
+      "tokens": 26,
+      "at": "2026-07-07T16:15:49.196Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/env.example",
+      "action": "edit",
+      "tokens": 6,
+      "at": "2026-07-07T16:16:02.746Z"
+    },
+    {
+      "file": "C:/Users/melih/AppData/Local/Temp/claude/D--Projects-Web-deliorman/9eab0c8a-ad92-4ece-b9ac-757717a5e6fa/scratchpad/convert-bgn-to-eur.mjs",
+      "action": "create",
+      "tokens": 389,
+      "at": "2026-07-07T16:31:46.682Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/masaConstants.ts",
+      "action": "edit",
+      "tokens": 48,
+      "at": "2026-07-07T16:32:12.538Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/masaMenuUtils.ts",
+      "action": "edit",
+      "tokens": 12,
+      "at": "2026-07-07T16:32:15.999Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/masaMenuUtils.ts",
+      "action": "edit",
+      "tokens": 166,
+      "at": "2026-07-07T16:32:24.140Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/MasaClient.tsx",
+      "action": "edit",
+      "tokens": 11,
+      "at": "2026-07-07T16:32:30.774Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/masaTranslations.ts",
+      "action": "edit",
+      "tokens": 11,
+      "at": "2026-07-07T16:32:43.800Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/masaTranslations.ts",
+      "action": "edit",
+      "tokens": 14,
+      "at": "2026-07-07T16:32:47.596Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/masaTranslations.ts",
+      "action": "edit",
+      "tokens": 12,
+      "at": "2026-07-07T16:32:50.972Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/_components/menu/MenuItem2.jsx",
+      "action": "edit",
+      "tokens": 33,
+      "at": "2026-07-07T16:33:21.630Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/_components/common/DailySpecial.jsx",
+      "action": "edit",
+      "tokens": 182,
+      "at": "2026-07-07T16:33:44.929Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/_components/StructuredData.jsx",
+      "action": "edit",
+      "tokens": 9,
+      "at": "2026-07-07T16:34:05.309Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/data/specialties.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:34:08.730Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/data/specialties.json",
+      "action": "edit",
+      "tokens": 9,
+      "at": "2026-07-07T16:34:12.626Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/data/specialties.json",
+      "action": "edit",
+      "tokens": 9,
+      "at": "2026-07-07T16:34:15.516Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/search/route.ts",
+      "action": "edit",
+      "tokens": 23,
+      "at": "2026-07-07T16:34:18.905Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+      "action": "edit",
+      "tokens": 11,
+      "at": "2026-07-07T16:34:44.153Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/ai/menu-assistant/route.ts",
+      "action": "edit",
+      "tokens": 25,
+      "at": "2026-07-07T16:34:52.073Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/bg.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:11.224Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/bg.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:14.445Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/bg.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:18.631Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/en.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:28.708Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/en.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:32.006Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/en.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:35.073Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/tr.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:39.585Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/tr.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:43.029Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/messages/tr.json",
+      "action": "edit",
+      "tokens": 8,
+      "at": "2026-07-07T16:35:46.358Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetParse.ts",
+      "action": "create",
+      "tokens": 631,
+      "at": "2026-07-07T16:36:23.316Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+      "action": "edit",
+      "tokens": 67,
+      "at": "2026-07-07T16:36:29.371Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+      "action": "edit",
+      "tokens": 92,
+      "at": "2026-07-07T16:36:35.480Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+      "action": "edit",
+      "tokens": 24,
+      "at": "2026-07-07T16:36:39.771Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+      "action": "edit",
+      "tokens": 27,
+      "at": "2026-07-07T16:36:43.883Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/customerMode.ts",
+      "action": "edit",
+      "tokens": 29,
+      "at": "2026-07-07T16:36:48.520Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts",
+      "action": "edit",
+      "tokens": 12,
+      "at": "2026-07-07T16:36:52.297Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts",
+      "action": "edit",
+      "tokens": 40,
+      "at": "2026-07-07T16:36:57.219Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts",
+      "action": "edit",
+      "tokens": 42,
+      "at": "2026-07-07T16:37:03.433Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts",
+      "action": "edit",
+      "tokens": 20,
+      "at": "2026-07-07T16:37:07.529Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts",
+      "action": "edit",
+      "tokens": 27,
+      "at": "2026-07-07T16:37:12.323Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts",
+      "action": "edit",
+      "tokens": 157,
+      "at": "2026-07-07T16:37:19.356Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/candidates.ts",
+      "action": "edit",
+      "tokens": 13,
+      "at": "2026-07-07T16:37:24.300Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetRepair.ts",
+      "action": "edit",
+      "tokens": 26,
+      "at": "2026-07-07T16:37:29.130Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetRepair.ts",
+      "action": "edit",
+      "tokens": 16,
+      "at": "2026-07-07T16:37:32.862Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetRepair.ts",
+      "action": "edit",
+      "tokens": 3,
+      "at": "2026-07-07T16:37:40.737Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+      "action": "edit",
+      "tokens": 75,
+      "at": "2026-07-07T16:37:45.912Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+      "action": "edit",
+      "tokens": 28,
+      "at": "2026-07-07T16:37:52.110Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+      "action": "edit",
+      "tokens": 23,
+      "at": "2026-07-07T16:37:56.213Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+      "action": "edit",
+      "tokens": 26,
+      "at": "2026-07-07T16:38:00.875Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+      "action": "edit",
+      "tokens": 10,
+      "at": "2026-07-07T16:38:04.607Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmPrompt.ts",
+      "action": "edit",
+      "tokens": 24,
+      "at": "2026-07-07T16:38:08.098Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmRecommend.ts",
+      "action": "edit",
+      "tokens": 20,
+      "at": "2026-07-07T16:38:15.816Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/llmRecommend.ts",
+      "action": "edit",
+      "tokens": 13,
+      "at": "2026-07-07T16:38:19.858Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+      "action": "edit",
+      "tokens": 15,
+      "at": "2026-07-07T16:38:23.989Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+      "action": "edit",
+      "tokens": 19,
+      "at": "2026-07-07T16:38:27.626Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+      "action": "edit",
+      "tokens": 14,
+      "at": "2026-07-07T16:38:31.052Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/MasaTasteWizard.tsx",
+      "action": "edit",
+      "tokens": 83,
+      "at": "2026-07-07T16:38:45.167Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+      "action": "edit",
+      "tokens": 30,
+      "at": "2026-07-07T16:38:51.103Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+      "action": "edit",
+      "tokens": 63,
+      "at": "2026-07-07T16:38:56.378Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+      "action": "edit",
+      "tokens": 68,
+      "at": "2026-07-07T16:39:01.034Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+      "action": "edit",
+      "tokens": 30,
+      "at": "2026-07-07T16:39:05.928Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/api/wizard/recommend/route.ts",
+      "action": "edit",
+      "tokens": 29,
+      "at": "2026-07-07T16:39:14.186Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/fixture.ts",
+      "action": "edit",
+      "tokens": 6,
+      "at": "2026-07-07T16:39:50.444Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/realFixture.ts",
+      "action": "edit",
+      "tokens": 609,
+      "at": "2026-07-07T16:40:30.261Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/budgetParse.test.ts",
+      "action": "create",
+      "tokens": 811,
+      "at": "2026-07-07T16:41:20.330Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/budgetRepair.test.ts",
+      "action": "edit",
+      "tokens": 13,
+      "at": "2026-07-07T16:41:44.824Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/budgetRepair.test.ts",
+      "action": "edit",
+      "tokens": 18,
+      "at": "2026-07-07T16:41:48.753Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/candidates.test.ts",
+      "action": "edit",
+      "tokens": 366,
+      "at": "2026-07-07T16:42:10.852Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/candidates.test.ts",
+      "action": "edit",
+      "tokens": 70,
+      "at": "2026-07-07T16:42:20.301Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/customerMode.test.ts",
+      "action": "edit",
+      "tokens": 27,
+      "at": "2026-07-07T16:42:36.250Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/customerMode.test.ts",
+      "action": "edit",
+      "tokens": 78,
+      "at": "2026-07-07T16:42:45.311Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/tests/unit/wizard/scenarios.test.ts",
+      "action": "edit",
+      "tokens": 420,
+      "at": "2026-07-07T16:43:15.540Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/masa/wizard/budgetParse.ts",
+      "action": "edit",
+      "tokens": 55,
+      "at": "2026-07-07T16:43:36.429Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/_components/menu/__tests__/MenuFiltered.test.jsx",
+      "action": "edit",
+      "tokens": 48,
+      "at": "2026-07-07T16:44:10.101Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/_components/menu/__tests__/MenuFiltered.test.jsx",
+      "action": "edit",
+      "tokens": 26,
+      "at": "2026-07-07T16:44:16.044Z"
+    },
+    {
+      "file": "D:/Projects/Web/deliorman/src/app/_components/menu/__tests__/MenuFiltered.test.jsx",
+      "action": "edit",
+      "tokens": 64,
+      "at": "2026-07-07T16:44:21.842Z"
+    }
+  ],
+  "edit_counts": {
+    "src/app/api/ai/menu-assistant/route.ts": 7,
+    "src/app/_components/menu/ai/AIAssistantModal.jsx": 2,
+    "env.example": 1,
+    "C:/Users/melih/AppData/Local/Temp/claude/D--Projects-Web-deliorman/9eab0c8a-ad92-4ece-b9ac-757717a5e6fa/scratchpad/convert-bgn-to-eur.mjs": 1,
+    "src/app/masa/masaConstants.ts": 1,
+    "src/app/masa/masaMenuUtils.ts": 2,
+    "src/app/masa/MasaClient.tsx": 1,
+    "src/app/masa/masaTranslations.ts": 3,
+    "src/app/_components/menu/MenuItem2.jsx": 1,
+    "src/app/_components/common/DailySpecial.jsx": 1,
+    "src/app/_components/StructuredData.jsx": 1,
+    "src/data/specialties.json": 3,
+    "src/app/api/search/route.ts": 1,
+    "messages/bg.json": 3,
+    "messages/en.json": 3,
+    "messages/tr.json": 3,
+    "src/app/masa/wizard/budgetParse.ts": 2,
+    "src/app/masa/wizard/customerMode.ts": 5,
+    "src/app/masa/wizard/candidates.ts": 7,
+    "src/app/masa/wizard/budgetRepair.ts": 3,
+    "src/app/masa/wizard/llmPrompt.ts": 6,
+    "src/app/masa/wizard/llmRecommend.ts": 2,
+    "src/app/masa/MasaTasteWizard.tsx": 4,
+    "src/app/api/wizard/recommend/route.ts": 5,
+    "tests/unit/wizard/fixture.ts": 1,
+    "tests/unit/wizard/realFixture.ts": 1,
+    "tests/unit/wizard/budgetParse.test.ts": 1,
+    "tests/unit/wizard/budgetRepair.test.ts": 2,
+    "tests/unit/wizard/candidates.test.ts": 2,
+    "tests/unit/wizard/customerMode.test.ts": 2,
+    "tests/unit/wizard/scenarios.test.ts": 1,
+    "src/app/_components/menu/__tests__/MenuFiltered.test.jsx": 3
+  },
+  "anatomy_hits": 20,
+  "anatomy_misses": 16,
+  "repeated_reads_warned": 19,
   "cerebrum_warnings": 0,
-  "stop_count": 0
+  "stop_count": 3
 }

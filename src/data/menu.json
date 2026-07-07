@@ -10,73 +10,73 @@
         {
           "title": "Кафе еспресо",
           "amount": "60 ml",
-          "price": 1.95,
+          "price": 1,
           "text": ""
         },
         {
           "title": "Кафе \"Лаваца\" капсула",
           "amount": "60 ml",
-          "price": 2.73,
+          "price": 1.4,
           "text": ""
         },
         {
           "title": "Нес кафе",
           "amount": "60 ml",
-          "price": 1.95,
+          "price": 1,
           "text": ""
         },
         {
           "title": "Капучино",
           "amount": "150 ml",
-          "price": 2.73,
+          "price": 1.4,
           "text": ""
         },
         {
           "title": "Мокачино",
           "amount": "150 ml",
-          "price": 2.73,
+          "price": 1.4,
           "text": ""
         },
         {
           "title": "Горещ шоколад",
           "amount": "150 ml",
-          "price": 2.73,
+          "price": 1.4,
           "text": ""
         },
         {
           "title": "Прясно мляко",
           "amount": "150 ml",
-          "price": 2.15,
+          "price": 1.1,
           "text": ""
         },
         {
           "title": "Чай билков",
           "amount": "150 ml",
-          "price": 1.76,
+          "price": 0.9,
           "text": "мента, лайка, букет, черен, зелен"
         },
         {
           "title": "Плодов чай",
           "amount": "150 ml",
-          "price": 1.76,
+          "price": 0.9,
           "text": "лимон, малина, горски плод"
         },
         {
           "title": "Мед",
           "amount": "15 ml",
-          "price": 0.78,
+          "price": 0.4,
           "text": ""
         },
         {
           "title": "Каничка мляко",
           "amount": "50 ml",
-          "price": 0.78,
+          "price": 0.4,
           "text": ""
         },
         {
           "title": "Сметана",
           "amount": "10 ml",
-          "price": 0.78,
+          "price": 0.4,
           "text": "суха, кондензирана, спрей"
         }
       ]
@@ -90,37 +90,37 @@
         {
           "title": "Шопска салата",
           "amount": "400 g",
-          "price": 7.82,
+          "price": 4,
           "text": "домати, краставици, пипер, лук, сирене, маслини"
         },
         {
           "title": "Салата Делиорман",
           "amount": "500 g",
-          "price": 10.75,
+          "price": 5.5,
           "text": "домати, краставици, кашкавал, сирене, шунка, снежанка, печена чушка, маслини"
         },
         {
           "title": "Салата Овчарска",
           "amount": "550 g",
-          "price": 9.77,
+          "price": 5,
           "text": "домати, краставици, пипер, лук, гъби, шунка, кашкавал, сирене, яйце, маслини"
         },
         {
           "title": "Салата гръцка",
           "amount": "450 g",
-          "price": 7.82,
+          "price": 4,
           "text": "домати, краставици, печен пипер, сирене, маслини, лук, лимон, зехтин, риган"
         },
         {
           "title": "Салата „Цезар“",
           "amount": "450 g",
-          "price": 11.73,
+          "price": 6,
           "text": "айсберг, пилешко филе, чери домати, краставици, крутони, пармезан, сос"
         },
         {
           "title": "Зелена салата с риба тон",
           "amount": "300 g",
-          "price": 10.75,
+          "price": 5.5,
           "text": "маруля, краставици, маслини, риба тон, зехтин"
         }
       ]
@@ -134,73 +134,73 @@
         {
           "title": "Лучени кръгчета",
           "amount": "300 g",
-          "price": 8.8,
+          "price": 4.5,
           "text": ""
         },
         {
           "title": "Кашкавал пане",
           "amount": "200 g",
-          "price": 11.55,
+          "price": 5.91,
           "text": ""
         },
         {
           "title": "Пилешки филенца с корнфлейкс",
           "amount": "400 g",
-          "price": 13.4,
+          "price": 6.85,
           "text": ""
         },
         {
           "title": "Пържени картофи",
           "amount": "200 g",
-          "price": 6.84,
+          "price": 3.5,
           "text": ""
         },
         {
           "title": "Пържени картофи със сирене",
           "amount": "250 g",
-          "price": 7.62,
+          "price": 3.9,
           "text": ""
         },
         {
           "title": "Пилешки крилца",
           "amount": "400 g",
-          "price": 11.55,
+          "price": 5.91,
           "text": ""
         },
         {
           "title": "Пържени картофи по селски",
           "amount": "200 g",
-          "price": 7.62,
+          "price": 3.9,
           "text": ""
         },
         {
           "title": "Омлет с шунка и гарнитура",
           "amount": "300 g",
-          "price": 9.58,
+          "price": 4.9,
           "text": ""
         },
         {
           "title": "Порция дюнер",
           "amount": "400 g",
-          "price": 13.4,
+          "price": 6.85,
           "text": ""
         },
         {
           "title": "Свински ребра печени",
           "amount": "300 g",
-          "price": 13.4,
+          "price": 6.85,
           "text": ""
         },
         {
           "title": "Топени сиренца",
           "amount": "200 g",
-          "price": 9.58,
+          "price": 4.9,
           "text": ""
         },
         {
           "title": "Бейби моцарела",
           "amount": "350 g",
-          "price": 13.4,
+          "price": 6.85,
           "text": ""
         }
       ]
@@ -214,91 +214,91 @@
         {
           "title": "Пилешка супа",
           "amount": "300 ml",
-          "price": 3.91,
+          "price": 2,
           "text": ""
         },
         {
           "title": "Шкембе чорба",
           "amount": "300 ml",
-          "price": 3.91,
+          "price": 2,
           "text": ""
         },
         {
           "title": "Супа топчета",
           "amount": "300 ml",
-          "price": 3.91,
+          "price": 2,
           "text": ""
         },
         {
           "title": "Таратор",
           "amount": "300 ml",
-          "price": 3.71,
+          "price": 1.9,
           "text": ""
         },
         {
           "title": "Пилешки дробчета",
           "amount": "350 g",
-          "price": 8.8,
+          "price": 4.5,
           "text": "лук, моркови, пипер"
         },
         {
           "title": "Пилешки сърца",
           "amount": "300 g",
-          "price": 9.58,
+          "price": 4.9,
           "text": "лук, моркови"
         },
         {
           "title": "Пилешки воденички",
           "amount": "300 g",
-          "price": 9.58,
+          "price": 4.9,
           "text": "лук, моркови"
         },
         {
           "title": "Сандвич кайма",
           "amount": "200 g",
-          "price": 5.08,
+          "price": 2.6,
           "text": ""
         },
         {
           "title": "Сандвич кашкавал и шунка",
           "amount": "200 g",
-          "price": 5.08,
+          "price": 2.6,
           "text": ""
         },
         {
           "title": "Сандвич кашкавал",
           "amount": "200 g",
-          "price": 4.49,
+          "price": 2.3,
           "text": ""
         },
         {
           "title": "Сандвич сирене, яйца и кашкавал",
           "amount": "200 g",
-          "price": 5.86,
+          "price": 3,
           "text": ""
         },
         {
           "title": "Филия хляб",
           "amount": "",
-          "price": 0.29,
+          "price": 0.15,
           "text": ""
         },
         {
           "title": "Филия хляб-препечена",
           "amount": "",
-          "price": 0.39,
+          "price": 0.2,
           "text": ""
         },
         {
           "title": "Гръцка питка",
           "amount": "100 g",
-          "price": 1.36,
+          "price": 0.7,
           "text": ""
         },
         {
           "title": "Гръцка чеснова питка",
           "amount": "100 g",
-          "price": 1.36,
+          "price": 0.7,
           "text": ""
         }
       ]
@@ -312,43 +312,43 @@
         {
           "title": "Делиорман",
           "amount": "400 g",
-          "price": 9.58,
+          "price": 4.9,
           "text": "доматен сос, шунка, мар. гъби, кашкавал, луканка, сирене, кис. краставички, чес. паста, босилек"
         },
         {
           "title": "Бонджорно",
           "amount": "400 g",
-          "price": 8.8,
+          "price": 4.5,
           "text": "доматен сос, сирене, кашкавал"
         },
         {
           "title": "Маргарита",
           "amount": "400 g",
-          "price": 7.62,
+          "price": 3.9,
           "text": "доматен сос, кашкавал, босилек"
         },
         {
           "title": "Компира",
           "amount": "400 g",
-          "price": 8.8,
+          "price": 4.5,
           "text": "доматен сос, шунка, пресни гъби, кашкавал"
         },
         {
           "title": "Карлеона",
           "amount": "400 g",
-          "price": 9.58,
+          "price": 4.9,
           "text": "доматен сос, шунка, луканка, кис. краставици, кашкавал"
         },
         {
           "title": "Антигуа",
           "amount": "400 g",
-          "price": 8.8,
+          "price": 4.5,
           "text": "доматен сос, шунка, кашкавал"
         },
         {
           "title": "Неаполитана",
           "amount": "400 g",
-          "price": 9.58,
+          "price": 4.9,
           "text": "доматен сос, пилешко филе, пресни гъби, маслини, царевица, кашкавал"
         }
       ]
@@ -362,61 +362,61 @@
         {
           "title": "Кюфте",
           "amount": "80 g",
-          "price": 1.95,
+          "price": 1,
           "text": ""
         },
         {
           "title": "Кебапче",
           "amount": "80 g",
-          "price": 1.95,
+          "price": 1,
           "text": ""
         },
         {
           "title": "Телешко кюфте",
           "amount": "80 g",
-          "price": 2.73,
+          "price": 1.4,
           "text": ""
         },
         {
           "title": "Пилешки шиш",
           "amount": "100 g",
-          "price": 3.91,
+          "price": 2,
           "text": ""
         },
         {
           "title": "Свински шиш",
           "amount": "100 g",
-          "price": 4.3,
+          "price": 2.2,
           "text": ""
         },
         {
           "title": "Пилешка пържола бут",
           "amount": "250 g",
-          "price": 7.62,
+          "price": 3.9,
           "text": ""
         },
         {
           "title": "Свинска пържола",
           "amount": "250 g",
-          "price": 8.8,
+          "price": 4.5,
           "text": ""
         },
         {
           "title": "Адана кебап",
           "amount": "160 g",
-          "price": 6.84,
+          "price": 3.5,
           "text": ""
         },
         {
           "title": "Татарско кюфте",
           "amount": "200 g",
-          "price": 5.67,
+          "price": 2.9,
           "text": ""
         },
         {
           "title": "Мешена скара",
           "amount": "900 g",
-          "price": 34.22,
+          "price": 17.5,
           "text": ""
         }
       ]
@@ -430,55 +430,55 @@
         {
           "title": "Пилешки сач със зеленчуци",
           "amount": "1000 g",
-          "price": 28.35,
+          "price": 14.5,
           "text": ""
         },
         {
           "title": "Свински сач със зеленчуци",
           "amount": "1000 g",
-          "price": 28.35,
+          "price": 14.5,
           "text": ""
         },
         {
           "title": "Агнешки сач със зеленчуци",
           "amount": "1000 g",
-          "price": 43,
+          "price": 21.99,
           "text": ""
         },
         {
           "title": "Телешки език",
           "amount": "200 g",
-          "price": 15.45,
+          "price": 7.9,
           "text": ""
         },
         {
           "title": "Хапки „Делиорман“",
           "amount": "700 g",
-          "price": 23.27,
+          "price": 11.9,
           "text": ""
         },
         {
           "title": "Меча лапа",
           "amount": "300 g",
-          "price": 12.7,
+          "price": 6.49,
           "text": ""
         },
         {
           "title": "Цаца",
           "amount": "200 g",
-          "price": 5.86,
+          "price": 3,
           "text": ""
         },
         {
           "title": "Скумрия",
           "amount": "250 g",
-          "price": 12.71,
+          "price": 6.5,
           "text": ""
         },
         {
           "title": "Шаран на тиган",
           "amount": "750 g",
-          "price": 35,
+          "price": 17.9,
           "text": ""
         }
       ]
@@ -492,19 +492,19 @@
         {
           "title": "Бургер Афродита",
           "amount": "350 g",
-          "price": 12.71,
+          "price": 6.5,
           "text": "хрупкаво пилешко филе, чедър, марул, кис. краставици, гарн. пържени картофи и сосове"
         },
         {
           "title": "Олимп бургер",
           "amount": "350 g",
-          "price": 12.71,
+          "price": 6.5,
           "text": "телешко месо, чедър, марул, кис. краставици, гарн. пържени картофи и сосове"
         },
         {
           "title": "Роял бургер",
           "amount": "300 g",
-          "price": 12.71,
+          "price": 6.5,
           "text": "пил. месо, марул, чедър, кис. краставици, гарн. пържени картофи и сосове"
         }
       ]
@@ -518,19 +518,19 @@
         {
           "title": "Шиш „Делиорман“",
           "amount": "300 g",
-          "price": 13.49,
+          "price": 6.9,
           "text": "телешка кайма, арабска питка, лук"
         },
         {
           "title": "Телешко печено",
           "amount": "300 g",
-          "price": 21.31,
+          "price": 10.9,
           "text": "телешко месо от рибица, чесън, картофи"
         },
         {
           "title": "Агнешки деликатес на шиш",
           "amount": "450 g",
-          "price": 31.1,
+          "price": 15.9,
           "text": "агнешко месо, зеленчуци"
         }
       ]
@@ -544,49 +544,49 @@
         {
           "title": "Луканка",
           "amount": "100 g",
-          "price": 7.82,
+          "price": 4,
           "text": ""
         },
         {
           "title": "Суджук",
           "amount": "100 g",
-          "price": 9.58,
+          "price": 4.9,
           "text": ""
         },
         {
           "title": "Пастърма",
           "amount": "100 g",
-          "price": 13.49,
+          "price": 6.9,
           "text": ""
         },
         {
           "title": "Сирене",
           "amount": "100 g",
-          "price": 4.88,
+          "price": 2.5,
           "text": ""
         },
         {
           "title": "Кашкавал",
           "amount": "100 g",
-          "price": 4.88,
+          "price": 2.5,
           "text": ""
         },
         {
           "title": "Топла гарнитура",
           "amount": "200 g",
-          "price": 3.91,
+          "price": 2,
           "text": "ориз, картофи"
         },
         {
           "title": "Студена гарнитура",
           "amount": "150 g",
-          "price": 2.93,
+          "price": 1.5,
           "text": "зеле, моркови"
         },
         {
           "title": "Студена гарнитура",
           "amount": "150 g",
-          "price": 2.93,
+          "price": 1.5,
           "text": "домати, краставици"
         }
       ]
@@ -600,37 +600,37 @@
         {
           "title": "Лешници",
           "amount": "100 gr",
-          "price": 6.84,
+          "price": 3.5,
           "text": ""
         },
         {
           "title": "Бадеми",
           "amount": "100 gr",
-          "price": 6.84,
+          "price": 3.5,
           "text": ""
         },
         {
           "title": "Индийско кашу",
           "amount": "100 gr",
-          "price": 6.84,
+          "price": 3.5,
           "text": ""
         },
         {
           "title": "Фъстъци",
           "amount": "100 gr",
-          "price": 2.93,
+          "price": 1.5,
           "text": ""
         },
         {
           "title": "Кюнефе",
           "amount": "200 g",
-          "price": 10.75,
+          "price": 5.5,
           "text": ""
         },
         {
           "title": "Сладолед",
           "amount": "",
-          "price": 5.67,
+          "price": 2.9,
           "text": ""
         }
       ]
@@ -644,79 +644,79 @@
         {
           "title": "„Пещерска“ Гроздова отлежала",
           "amount": "50 ml",
-          "price": 2.34,
+          "price": 1.2,
           "text": ""
         },
         {
           "title": "„Кехлибар“ Гроздова",
           "amount": "50 ml",
-          "price": 2.54,
+          "price": 1.3,
           "text": ""
         },
         {
           "title": "„Бургаска“ Мускатова",
           "amount": "50 ml",
-          "price": 2.73,
+          "price": 1.4,
           "text": ""
         },
         {
           "title": "„Бургаска“ Гроздова",
           "amount": "50 ml",
-          "price": 2.34,
+          "price": 1.2,
           "text": ""
         },
         {
           "title": "„Бургас 63“",
           "amount": "50 ml",
-          "price": 3.71,
+          "price": 1.9,
           "text": ""
         },
         {
           "title": "„Бургас 63“ Барел",
           "amount": "50 ml",
-          "price": 4.3,
+          "price": 2.2,
           "text": ""
         },
         {
           "title": "„Сливенска перла“ Барел",
           "amount": "50 ml",
-          "price": 4.3,
+          "price": 2.2,
           "text": ""
         },
         {
           "title": "„Кайлъшка“ Гроздова",
           "amount": "50 ml",
-          "price": 2.54,
+          "price": 1.3,
           "text": ""
         },
         {
           "title": "„Троянска“ Сливова отлежала",
           "amount": "50 ml",
-          "price": 2.93,
+          "price": 1.5,
           "text": ""
         },
         {
           "title": "„Търговище“ Мускатова отлежала",
           "amount": "50 ml",
-          "price": 2.73,
+          "price": 1.4,
           "text": ""
         },
         {
           "title": "„Кортен“ отлежала Резерва",
           "amount": "50 ml",
-          "price": 4.88,
+          "price": 2.5,
           "text": ""
         },
         {
           "title": "„Стралджанска“ мускатова Барел",
           "amount": "50 ml",
-          "price": 4.3,
+          "price": 2.2,
           "text": ""
         },
         {
           "title": "„Исперих“ кайсиева",
           "amount": "50 ml",
-          "price": 4.3,
+          "price": 2.2,
           "text": ""
         }
       ]
@@ -730,109 +730,109 @@
         {
           "title": "„Търговище“ - Мускат / Совиньон Блан",
           "amount": "750 ml",
-          "price": 14.66,
+          "price": 7.5,
           "text": "Бяло вино"
         },
         {
           "title": "„Квантум“ - Шардоне / Совиньон Блан",
           "amount": "750 ml",
-          "price": 20.53,
+          "price": 10.5,
           "text": "Бяло вино"
         },
         {
           "title": "„Pearl White“ Совиньон Блан & Семийон",
           "amount": "750 ml",
-          "price": 25.23,
+          "price": 12.9,
           "text": "Бяло вино"
         },
         {
           "title": "„Кортен“ Шардоне",
           "amount": "750 ml",
-          "price": 35,
+          "price": 17.9,
           "text": "Бяло вино"
         },
         {
           "title": "Наливна кана",
           "amount": "500 ml",
-          "price": 8.41,
+          "price": 4.3,
           "text": "Бяло вино"
         },
         {
           "title": "Наливна чаша",
           "amount": "150 ml",
-          "price": 2.93,
+          "price": 1.5,
           "text": "Бяло вино"
         },
         {
           "title": "„Търговище“ Каберне",
           "amount": "750 ml",
-          "price": 14.66,
+          "price": 7.5,
           "text": "Червено вино"
         },
         {
           "title": "„Квантум“ - Каберне / Мерло",
           "amount": "750 ml",
-          "price": 20.53,
+          "price": 10.5,
           "text": "Червено вино"
         },
         {
           "title": "„Deep Red“ Каберне",
           "amount": "750 ml",
-          "price": 25.23,
+          "price": 12.9,
           "text": "Червено вино"
         },
         {
           "title": "„Кортен“ - Мерло / Каберне",
           "amount": "750 ml",
-          "price": 35,
+          "price": 17.9,
           "text": "Червено вино"
         },
         {
           "title": "Наливна кана",
           "amount": "500 ml",
-          "price": 8.41,
+          "price": 4.3,
           "text": "Червено вино"
         },
         {
           "title": "Наливна чаша",
           "amount": "150 ml",
-          "price": 2.93,
+          "price": 1.5,
           "text": "Червено вино"
         },
         {
           "title": "„Търговище“ розе",
           "amount": "750 ml",
-          "price": 14.66,
+          "price": 7.5,
           "text": "Розе"
         },
         {
           "title": "„Квантум“ розе",
           "amount": "750 ml",
-          "price": 20.53,
+          "price": 10.5,
           "text": "Розе"
         },
         {
           "title": "„PURE PINK“ розе Сира & Мурведър",
           "amount": "750 ml",
-          "price": 25.23,
+          "price": 12.9,
           "text": "Розе"
         },
         {
           "title": "„Кортен“ розе Сира",
           "amount": "750 ml",
-          "price": 35,
+          "price": 17.9,
           "text": "Розе"
         },
         {
           "title": "Наливна кана розе",
           "amount": "500 ml",
-          "price": 8.41,
+          "price": 4.3,
           "text": "Розе"
         },
         {
           "title": "Наливна чаша розе",
           "amount": "150 ml",
-          "price": 2.93,
+          "price": 1.5,
           "text": "Розе"
         }
       ]
@@ -846,91 +846,91 @@
         {
           "title": "Carlsberg",
           "amount": "500 ml",
-          "price": 3.91,
+          "price": 2,
           "text": ""
         },
         {
           "title": "Carlsberg 0.0%",
           "amount": "330 ml",
-          "price": 4.3,
+          "price": 2.2,
           "text": ""
         },
         {
           "title": "1664 Blanc",
           "amount": "330 ml",
-          "price": 4.3,
+          "price": 2.2,
           "text": ""
         },
         {
           "title": "Budweiser",
           "amount": "500 ml",
-          "price": 4.88,
+          "price": 2.5,
           "text": ""
         },
         {
           "title": "Tuborg",
           "amount": "500 ml",
-          "price": 3.32,
+          "price": 1.7,
           "text": ""
         },
         {
           "title": "Шуменско Светло",
           "amount": "500 ml",
-          "price": 2.93,
+          "price": 1.5,
           "text": ""
         },
         {
           "title": "Шуменско Специално",
           "amount": "330 ml",
-          "price": 2.54,
+          "price": 1.3,
           "text": ""
         },
         {
           "title": "Пиринско",
           "amount": "500 ml",
-          "price": 2.93,
+          "price": 1.5,
           "text": ""
         },
         {
           "title": "Пиринско Младо пиво",
           "amount": "330 ml",
-          "price": 2.54,
+          "price": 1.3,
           "text": ""
         },
         {
           "title": "Съмърсби",
           "amount": "330 ml",
-          "price": 3.32,
+          "price": 1.7,
           "text": ""
         },
         {
           "title": "Узо „Плумари“",
           "amount": "50 ml",
-          "price": 2.34,
+          "price": 1.2,
           "text": ""
         },
         {
           "title": "Мастика „Пещера“",
           "amount": "50 ml",
-          "price": 1.76,
+          "price": 0.9,
           "text": ""
         },
         {
           "title": "Джин „Савой“",
           "amount": "50 ml",
-          "price": 2.54,
+          "price": 1.3,
           "text": ""
         },
         {
           "title": "Коняк „Метакса“",
           "amount": "50 ml",
-          "price": 3.32,
+          "price": 1.7,
           "text": ""
         },
         {
           "title": "Мента „Пещера“",
           "amount": "50 ml",
-          "price": 1.76,
+          "price": 0.9,
           "text": ""
         }
       ]
@@ -944,109 +944,109 @@
         {
           "title": "„Паспорт“",
           "amount": "50 ml",
-          "price": 2.73,
+          "price": 1.4,
           "text": ""
         },
         {
           "title": "„Балантайс“",
           "amount": "50 ml",
-          "price": 3.12,
+          "price": 1.6,
           "text": ""
         },
         {
           "title": "„Джеймсън“",
           "amount": "50 ml",
-          "price": 3.91,
+          "price": 2,
           "text": ""
         },
         {
           "title": "„Джони Уокър“ Ред Лейбъл",
           "amount": "50 ml",
-          "price": 3.12,
+          "price": 1.6,
           "text": ""
         },
         {
           "title": "„Джим Бийм“",
           "amount": "50 ml",
-          "price": 3.32,
+          "price": 1.7,
           "text": ""
         },
         {
           "title": "„Тюламор Дю“",
           "amount": "50 ml",
-          "price": 3.71,
+          "price": 1.9,
           "text": ""
         },
         {
           "title": "„Джак Даниелс“",
           "amount": "50 ml",
-          "price": 4.88,
+          "price": 2.5,
           "text": ""
         },
         {
           "title": "„Джони Уокър“ Блек Лейбъл",
           "amount": "50 ml",
-          "price": 5.47,
+          "price": 2.8,
           "text": ""
         },
         {
           "title": "„Чивас Регал“",
           "amount": "50 ml",
-          "price": 5.47,
+          "price": 2.8,
           "text": ""
         },
         {
           "title": "„Бушмилс“ Блек Буш",
           "amount": "50 ml",
-          "price": 5.47,
+          "price": 2.8,
           "text": ""
         },
         {
           "title": "Водка „Флирт“",
           "amount": "50 ml",
-          "price": 1.76,
+          "price": 0.9,
           "text": ""
         },
         {
           "title": "Водка „Аляска“",
           "amount": "50 ml",
-          "price": 1.76,
+          "price": 0.9,
           "text": ""
         },
         {
           "title": "Водка „Смирноф“",
           "amount": "50 ml",
-          "price": 2.03,
+          "price": 1.04,
           "text": ""
         },
         {
           "title": "Водка „Абсолют“",
           "amount": "50 ml",
-          "price": 2.03,
+          "price": 1.04,
           "text": ""
         },
         {
           "title": "Водка „Руски стандарт“",
           "amount": "50 ml",
-          "price": 3.32,
+          "price": 1.7,
           "text": ""
         },
         {
           "title": "Водка „Финландия“",
           "amount": "50 ml",
-          "price": 3.32,
+          "price": 1.7,
           "text": ""
         },
         {
           "title": "Водка „Белуга“",
           "amount": "50 ml",
-          "price": 6.84,
+          "price": 3.5,
           "text": ""
         },
         {
           "title": "Водка „Сива Гъска“",
           "amount": "50 ml",
-          "price": 6.84,
+          "price": 3.5,
           "text": ""
         }
       ]

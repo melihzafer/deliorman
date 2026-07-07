@@ -100,7 +100,7 @@ export function makeMenu(): QrMenuData {
   return {
     version: 1,
     restaurantName: "Test",
-    currency: "BGN",
+    currency: "EUR",
     categories: TEST_CATEGORIES,
   };
 }

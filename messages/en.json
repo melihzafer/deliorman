@@ -29,6 +29,8 @@
     "next": "Next",
     "previous": "Previous",
     "skipToContent": "Skip to content",
+    "faqEyebrow": "Questions & Answers",
+    "faqTitle": "Frequently Asked Questions",
     "reservations": "Reservations",
     "reserveTable": "Reserve a Table",
     "requiredField": "Required field",
@@ -45,7 +47,7 @@
   "reservation": {
     "title": "Reserve a Table",
     "subtitle": "Reservation",
-    "description": "CALL +359 89 476 62273 OR FILL OUT THE FORM BELOW",
+    "description": "CALL +359 89 476 6273 OR FILL OUT THE FORM BELOW",
     "pageTitle": "Reservation",
     "pageDescription": "Reserve a table at Restaurant Deliorman and enjoy  exquisite cuisine and cozy atmosphere in the village of Samuil.",
     "breadTitle": "Table Reservation",
@@ -60,7 +62,7 @@
     "submit": "Reserve",
     "submitting": "Submitting...",
     "success": "Reservation sent successfully!",
-    "error": "Error submitting. Please try again or call +359 89 476 62273.",
+    "error": "Error submitting. Please try again or call +359 89 476 6273.",
     "privacyConsent": "I agree with the",
     "termsLink": "terms and conditions",
     "privacyInfo": "and personal data policy.",
@@ -194,7 +196,7 @@
     "submit": "Send Message",
     "submitting": "Sending...",
     "success": "Thank you for your message! We will contact you soon.",
-    "error": "Error sending. Please try again or call +359 89 476 62273.",
+    "error": "Error sending. Please try again or call +359 89 476 6273.",
     "nameMinLength": "Name must be at least 2 characters",
     "lastNameMinLength": "Last name must be at least 2 characters",
     "invalidPhone": "Invalid phone number",
@@ -248,11 +250,11 @@
     "galleryPageTitle": "Gallery | Interior, Exterior and Decoration",
     "galleryPageDescription": "Browse the gallery of Restaurant Deliorman — cosy interiors, a beautiful garden and special decorations for your celebrations in Samuil, Razgrad.",
     "contactTitle": "Contact | Address, Phone and Working Hours",
-    "contactDescription": "Contact Restaurant Deliorman — 6 Hadji Dimitar St., Samuil, Razgrad District. Orders phone: +359 89 608 8804, reservations phone: +359 89 476 62273.",
+    "contactDescription": "Contact Restaurant Deliorman — 6 Hadji Dimitar St., Samuil, Razgrad District. Orders phone: +359 89 608 8804, reservations phone: +359 89 476 6273.",
     "searchTitle": "Search",
     "searchDescription": "Search results in the blog and menu of Restaurant Deliorman.",
     "reservationTitle": "Table Reservation | Online and by Phone",
-    "reservationDescription": "Reserve a table at Restaurant Deliorman online or at +359 89 476 62273 (reservations) / +359 89 608 8804 (orders).",
+    "reservationDescription": "Reserve a table at Restaurant Deliorman online or at +359 89 476 6273 (reservations) / +359 89 608 8804 (orders).",
     "aboutTitle": "About Us | The Story of Deliorman Restaurant",
     "aboutDescription": "Learn more about Deliorman Restaurant in Samuil, Razgrad region. Our story, team and passion for authentic Bulgarian cuisine and traditional recipes.",
     "feedbackTitle": "Feedback | Share Your Opinion",
@@ -296,21 +298,21 @@
         "title": "Deliorman Skewer",
         "text": "Finely sliced meat marinated in our signature spice blend, slowly grilled to perfect tenderness. Served with a unique spicy sauce.",
         "weight": "300 g",
-        "price": "12.90 BGN",
+        "price": "€6.60",
         "image": "/img/menuCategorised/newSpecialties/shish_deliorman.webp"
       },
       {
         "title": "Roast Beef",
         "text": "Tender roast beef with a choice of garnish, served warm and prepared according to traditional recipes.",
         "weight": "300 g",
-        "price": "19.90 BGN",
+        "price": "€10.17",
         "image": "/img/menuCategorised/newSpecialties/teleshko.webp"
       },
       {
         "title": "Lamb Skewer Delicacy",
         "text": "Tender lamb marinated in special sauce, slowly grilled to preserve its juiciness and aroma. Served with seasonal roasted vegetables.",
         "weight": "500 g",
-        "price": "29.90 BGN",
+        "price": "€15.29",
         "image": "/img/menuCategorised/newSpecialties/agneshki.webp"
       }
     ]
@@ -632,10 +634,18 @@
     "breadcrumbs": {
       "home": "Home",
       "menu": "Menu",
+      "lunchMenu": "Lunch Menu",
       "about": "About Us",
       "gallery": "Gallery",
+      "history": "History",
+      "cateringServices": "Catering",
+      "services": "Services",
+      "specialDays": "Special Days",
       "reservation": "Reservation",
-      "contact": "Contact"
+      "contact": "Contact",
+      "feedback": "Feedback",
+      "search": "Search",
+      "terms": "Terms"
     },
     "faq": [
       {
@@ -644,7 +654,7 @@
       },
       {
         "question": "How can I make a reservation at Restaurant Deliorman?",
-        "answer": "You can reserve online through our Reservation page or by phone at +359 89 476 62273. For phone orders, call +359 89 608 8804. We recommend booking ahead for groups larger than 6 and for weekends."
+        "answer": "You can reserve online through our Reservation page or by phone at +359 89 476 6273. For phone orders, call +359 89 608 8804. We recommend booking ahead for groups larger than 6 and for weekends."
       },
       {
         "question": "Is there parking near Restaurant Deliorman?",

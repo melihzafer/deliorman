@@ -6,7 +6,11 @@ import { useLocale, useTranslations } from "next-intl";
 import styles from "../../../_styles/scss/ui/AIAssistant.module.scss";
 
 const MAX_MESSAGE_CHARS = 500;
-const MAX_HISTORY_MESSAGES = 10;
+// Must stay in lockstep with MAX_HISTORY_MESSAGES/MAX_HISTORY_CHARS in
+// src/app/api/ai/menu-assistant/route.ts — the server rejects (400) any
+// history array/entry that exceeds its own caps.
+const MAX_HISTORY_MESSAGES = 6;
+const MAX_HISTORY_CHARS = 500;
 
 export const AIAssistantModal = ({ isOpen, onClose, table = null }) => {
   const t = useTranslations("aiAssistant");
@@ -98,7 +102,7 @@ export const AIAssistantModal = ({ isOpen, onClose, table = null }) => {
       const history = messages
         .filter((m) => !m.error && m.content)
         .slice(-MAX_HISTORY_MESSAGES)
-        .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
+        .map((m) => ({ role: m.role, content: m.content.slice(0, MAX_HISTORY_CHARS) }));
 
       setMessages((prev) => [
         ...prev,

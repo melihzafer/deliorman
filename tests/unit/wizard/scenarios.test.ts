@@ -8,7 +8,7 @@
 // outage or a bad model response falls back to.
 
 import { parseWithLexicon } from "../../../src/app/masa/wizard/intentLexicon";
-import { budgetInBGN } from "../../../src/app/masa/wizard/budgetParse";
+import { budgetInEur } from "../../../src/app/masa/wizard/budgetParse";
 import { classifyCustomerMode } from "../../../src/app/masa/wizard/customerMode";
 import { buildCandidateShortlist } from "../../../src/app/masa/wizard/candidates";
 import { repairBudget } from "../../../src/app/masa/wizard/budgetRepair";
@@ -19,13 +19,13 @@ const ALL_IDS = new Set(REAL_MENU_CATEGORIES.flatMap((c) => c.items.map((i) => i
 
 function runPipeline(freetext: string, locale: "bg" | "tr" | "en" = "bg") {
   const lex = parseWithLexicon(freetext);
-  const budgetBgn = budgetInBGN(freetext);
-  const customerMode = classifyCustomerMode({ answers: lex.answers, freetext, budgetBgn });
+  const budgetEur = budgetInEur(freetext);
+  const customerMode = classifyCustomerMode({ answers: lex.answers, freetext, budgetEur });
   const candidates = buildCandidateShortlist({
     categories: REAL_MENU_CATEGORIES,
     answers: lex.answers,
     customerMode,
-    budgetBgn,
+    budgetEur,
     freetext,
     locale,
   });
@@ -34,10 +34,10 @@ function runPipeline(freetext: string, locale: "bg" | "tr" | "en" = "bg") {
     drinkItemId: null,
     sideItemId: null,
     candidates,
-    budgetBgn,
+    budgetEur,
     customerMode,
   });
-  return { lex, budgetBgn, customerMode, candidates, repaired };
+  return { lex, budgetEur, customerMode, candidates, repaired };
 }
 
 function idsAreReal(...ids: (string | null)[]) {
@@ -48,20 +48,20 @@ function idsAreReal(...ids: (string | null)[]) {
 
 describe("required scenario: 10 euro var çok açım bira istiyorum", () => {
   it("never exceeds budget and prioritizes a filling food item", () => {
-    const { customerMode, repaired, budgetBgn } = runPipeline("10 euro var çok açım bira istiyorum", "tr");
+    const { customerMode, repaired, budgetEur } = runPipeline("10 euro var çok açım bira istiyorum", "tr");
     expect(customerMode).toBe("very_hungry_low_budget");
-    expect(budgetBgn).not.toBeNull();
+    expect(budgetEur).not.toBeNull();
     idsAreReal(repaired.primaryItemId, repaired.drinkItemId, repaired.sideItemId);
     expect(repaired.primaryItemId).not.toBeNull();
     if (repaired.totalEstimatedPrice != null) {
-      expect(repaired.totalEstimatedPrice).toBeLessThanOrEqual(budgetBgn!);
+      expect(repaired.totalEstimatedPrice).toBeLessThanOrEqual(budgetEur!);
     }
   });
 });
 
 describe("required scenario: Cebimde 10 euro var, çok açım ve canım bira istiyor", () => {
   it("never exceeds budget and prioritizes food over beer", () => {
-    const { customerMode, repaired, budgetBgn, candidates } = runPipeline(
+    const { customerMode, repaired, budgetEur, candidates } = runPipeline(
       "Cebimde 10 euro var, çok açım ve canım bira istiyor.",
       "tr",
     );
@@ -72,27 +72,27 @@ describe("required scenario: Cebimde 10 euro var, çok açım ve canım bira ist
     expect(primaryTags.course).not.toBe("dessert");
     expect(primaryTags.course).not.toBe("drink");
     if (repaired.totalEstimatedPrice != null) {
-      expect(repaired.totalEstimatedPrice).toBeLessThanOrEqual(budgetBgn!);
+      expect(repaired.totalEstimatedPrice).toBeLessThanOrEqual(budgetEur!);
     }
     expect(candidates.every((c) => ALL_IDS.has(c.id))).toBe(true);
   });
 });
 
-describe("required scenario: 30 leva imam, gladan sam, bira mi se pie", () => {
-  it("extracts a 30 BGN budget and never exceeds it", () => {
-    const { budgetBgn, repaired } = runPipeline("30 leva imam, gladan sam, bira mi se pie", "bg");
-    expect(budgetBgn).toBe(30);
+describe("required scenario: 30 evro imam, gladan sam, bira mi se pie", () => {
+  it("extracts a 30 EUR budget and never exceeds it", () => {
+    const { budgetEur, repaired } = runPipeline("30 evro imam, gladan sam, bira mi se pie", "bg");
+    expect(budgetEur).toBe(30);
     if (repaired.totalEstimatedPrice != null) {
       expect(repaired.totalEstimatedPrice).toBeLessThanOrEqual(30);
     }
   });
 });
 
-describe("required scenario: имам 15 лв и съм много гладен", () => {
-  it("classifies very_hungry_low_budget with a 15 BGN cap and stays within it", () => {
-    const { customerMode, budgetBgn, repaired } = runPipeline("имам 15 лв и съм много гладен", "bg");
+describe("required scenario: имам 15 евро и съм много гладен", () => {
+  it("classifies very_hungry_low_budget with a 15 EUR cap and stays within it", () => {
+    const { customerMode, budgetEur, repaired } = runPipeline("имам 15 евро и съм много гладен", "bg");
     expect(customerMode).toBe("very_hungry_low_budget");
-    expect(budgetBgn).toBe(15);
+    expect(budgetEur).toBe(15);
     expect(repaired.primaryItemId).not.toBeNull();
     if (repaired.totalEstimatedPrice != null) {
       expect(repaired.totalEstimatedPrice).toBeLessThanOrEqual(15);
@@ -101,13 +101,13 @@ describe("required scenario: имам 15 лв и съм много гладен"
 });
 
 describe("required scenario: I have 10 euro, starving, want beer", () => {
-  it("prioritizes filling food within the converted EUR budget", () => {
-    const { customerMode, budgetBgn, repaired } = runPipeline("I have 10 euro, starving, want beer", "en");
+  it("prioritizes filling food within the EUR budget", () => {
+    const { customerMode, budgetEur, repaired } = runPipeline("I have 10 euro, starving, want beer", "en");
     expect(customerMode).toBe("very_hungry_low_budget");
-    expect(budgetBgn).toBeCloseTo(19.5583, 2);
+    expect(budgetEur).toBe(10);
     expect(repaired.primaryItemId).not.toBeNull();
     if (repaired.totalEstimatedPrice != null) {
-      expect(repaired.totalEstimatedPrice).toBeLessThanOrEqual(budgetBgn!);
+      expect(repaired.totalEstimatedPrice).toBeLessThanOrEqual(budgetEur!);
     }
   });
 });

@@ -7,7 +7,7 @@ function candidate(over: Partial<CandidateItem> = {}): CandidateItem {
     name: { bg: "Кебапче", tr: "Kebapçe", en: "Kebapche" },
     categoryId: "grill",
     price: 1.95,
-    currency: "BGN",
+    currency: "EUR",
     course: "main",
     portion: "snack",
     tags: { protein: ["meat"], flavor: ["savory", "smoky"], texture: ["grilled"], vibe: ["traditional-bg"] },
@@ -89,12 +89,12 @@ describe("buildPrompt", () => {
     expect(parsed2.freetext).toBeNull();
   });
 
-  it("passes budget_bgn only when provided", () => {
+  it("passes budget_eur only when provided", () => {
     const p1 = buildPrompt({ locale: "en", mode: "buttons", answers: {}, customerMode: "undecided", candidates: CANDIDATES });
-    expect(JSON.parse(p1.user).budget_bgn).toBeNull();
+    expect(JSON.parse(p1.user).budget_eur).toBeNull();
 
-    const p2 = buildPrompt({ locale: "en", mode: "buttons", answers: {}, budgetBgn: 15, customerMode: "undecided", candidates: CANDIDATES });
-    expect(JSON.parse(p2.user).budget_bgn).toBe(15);
+    const p2 = buildPrompt({ locale: "en", mode: "buttons", answers: {}, budgetEur: 15, customerMode: "undecided", candidates: CANDIDATES });
+    expect(JSON.parse(p2.user).budget_eur).toBe(15);
   });
 
   it("includes the schema and valid_reason_keys matching the required JSON shape", () => {

@@ -342,3 +342,144 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+| 18:48 | Edited src/i18n/seo.js | 1→4 lines | ~84 |
+| 18:48 | Edited src/app/robots.ts | "https://restorantdeliorma" → "https://www.restorantdeli" | ~16 |
+| 18:48 | Edited src/app/layout.jsx | "https://restorantdeliorma" → "https://www.restorantdeli" | ~16 |
+| 18:48 | Edited src/app/[locale]/(pages)/reservation/page.jsx | CSS: alternates | ~240 |
+| 18:48 | Edited src/app/sitemap.ts | 19→22 lines | ~218 |
+| 18:48 | Edited src/app/sitemap.ts | 5→4 lines | ~22 |
+| 18:49 | Edited src/middleware.js | modified if() | ~133 |
+| 18:49 | Edited messages/bg.json | expanded (+8 lines) | ~127 |
+| 18:49 | Edited messages/en.json | expanded (+8 lines) | ~125 |
+| 18:49 | Edited messages/tr.json | expanded (+8 lines) | ~129 |
+| 18:49 | Edited src/app/_components/StructuredData.jsx | modified stripLocalePrefix() | ~550 |
+| 18:50 | Edited src/app/_components/StructuredData.jsx | CSS: breadcrumb | ~476 |
+| 18:50 | Created src/app/_components/sections/FAQ.jsx | — | ~522 |
+| 18:50 | Edited messages/bg.json | 1→3 lines | ~38 |
+| 18:51 | Edited messages/en.json | 1→3 lines | ~36 |
+| 18:51 | Edited messages/tr.json | 1→3 lines | ~32 |
+| 18:51 | Created src/app/_components/sections/FAQ.module.scss | — | ~320 |
+| 18:51 | Edited src/app/_components/home/HomePageContent.jsx | added 1 import(s) | ~68 |
+| 18:51 | Edited src/app/_components/home/HomePageContent.jsx | 6→8 lines | ~53 |
+
+## Session: 2026-07-07 18:59
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-07-07 18:59
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 19:01 | Edited src/app/_components/sections/FAQ.module.scss | 3→3 lines | ~19 |
+| 19:01 | Edited src/app/_components/sections/FAQ.module.scss | 6→6 lines | ~28 |
+| 19:01 | Session end: 2 writes across 1 files (FAQ.module.scss) | 1 reads | ~371 tok |
+| 19:04 | Edited src/app/_lib/siteContact.js | 2→2 lines | ~36 |
+| 19:04 | Edited src/app/_components/StructuredData.jsx | inline fix | ~19 |
+| 19:04 | Edited src/data/sections/reservation/reservation-opentable.json | inline fix | ~36 |
+| 19:04 | Edited src/data/sections/reservation/reservation-form.json | inline fix | ~36 |
+| 19:04 | Edited src/data/sections/contact/contact-info.json | inline fix | ~44 |
+| 19:04 | Edited src/app/api/ai/menu-assistant/route.ts | "- Phone for reservations:" → "- Phone for reservations:" | ~15 |
+| 19:04 | Edited src/app/api/contact/route.ts | "Формата за контакт не е к" → "Формата за контакт не е к" | ~50 |
+| 19:04 | Edited src/app/api/reservation/route.ts | "Възникна грешка при обраб" → "Възникна грешка при обраб" | ~48 |
+| 19:04 | Edited src/app/[locale]/(pages)/terms/content.js | "Телефон за резервации: +3" → "Телефон за резервации: +3" | ~15 |
+| 19:04 | Edited src/app/_components/forms/ReservationForm.jsx | inline fix | ~56 |
+| 19:04 | Edited src/data/app.json | inline fix | ~24 |
+| 19:04 | Edited src/app/[locale]/(pages)/catering-services/content.js | "+359 89 476 62273" → "+359 89 476 6273" | ~10 |
+| 19:04 | Edited messages/bg.json | inline fix | ~5 |
+| 19:04 | Edited messages/en.json | inline fix | ~5 |
+| 19:04 | Edited messages/tr.json | inline fix | ~5 |
+| 19:04 | Edited src/app/[locale]/(pages)/terms/content.js | "Reservations phone: +359 " → "Reservations phone: +359 " | ~14 |
+| 19:04 | Edited src/app/[locale]/(pages)/terms/content.js | "Rezervasyon telefonu: +35" → "Rezervasyon telefonu: +35" | ~15 |
+| 19:05 | Session end: 19 writes across 13 files (FAQ.module.scss, siteContact.js, StructuredData.jsx, reservation-opentable.json, reservation-form.json) | 11 reads | ~22690 tok |
+
+## Session: 2026-07-07 19:07
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 19:14 | Edited src/app/api/ai/menu-assistant/route.ts | 4→8 lines | ~124 |
+| 19:15 | Edited src/app/api/ai/menu-assistant/route.ts | added 2 condition(s) | ~401 |
+| 19:15 | Edited src/app/api/ai/menu-assistant/route.ts | 3→5 lines | ~57 |
+| 19:15 | Edited src/app/api/ai/menu-assistant/route.ts | added error handling | ~444 |
+| 19:15 | Edited src/app/api/ai/menu-assistant/route.ts | 1→3 lines | ~59 |
+| 19:15 | Edited src/app/_components/menu/ai/AIAssistantModal.jsx | 2→6 lines | ~83 |
+| 19:15 | Edited src/app/_components/menu/ai/AIAssistantModal.jsx | inline fix | ~26 |
+| 19:16 | Edited env.example | 1024 → 450 | ~6 |
+| 19:20 | Diagnosed "Ask Deli" via Vercel get_runtime_errors: Groq 429 TPM cap hit in prod (2026-07-05); local 503 not_configured (no .env.local). Fixed token footprint + added 429 retry. Verified QR wizard spec already done (126/126 tests pass, commit c5cc840) — no reimplementation needed. | route.ts, AIAssistantModal.jsx, .env.example, env.example | ~9000 |
+| 19:18 | Session end: 8 writes across 3 files (route.ts, AIAssistantModal.jsx, env.example) | 7 reads | ~7121 tok |
+| 19:21 | Session end: 8 writes across 3 files (route.ts, AIAssistantModal.jsx, env.example) | 7 reads | ~7704 tok |
+| 19:31 | Created C:/Users/melih/AppData/Local/Temp/claude/D--Projects-Web-deliorman/9eab0c8a-ad92-4ece-b9ac-757717a5e6fa/scratchpad/convert-bgn-to-eur.mjs | — | ~363 |
+| 19:32 | Edited src/app/masa/masaConstants.ts | 5→4 lines | ~48 |
+| 19:32 | Edited src/app/masa/masaMenuUtils.ts | 2→1 lines | ~12 |
+| 19:32 | Edited src/app/masa/masaMenuUtils.ts | modified formatPrice() | ~166 |
+| 19:32 | Edited src/app/masa/MasaClient.tsx | "BGN" → "EUR" | ~11 |
+| 19:32 | Edited src/app/masa/masaTranslations.ts | "Цени в евро · фиксиран ку" → "Всички цени са в евро" | ~11 |
+| 19:32 | Edited src/app/masa/masaTranslations.ts | "Fiyatlar Euro · sabit kur" → "Tüm fiyatlar Euro cinsind" | ~14 |
+| 19:32 | Edited src/app/masa/masaTranslations.ts | "Prices in euro · fixed ra" → "All prices are in euro" | ~12 |
+| 19:33 | Edited src/app/_components/menu/MenuItem2.jsx | inline fix | ~33 |
+| 19:33 | Edited src/app/_components/common/DailySpecial.jsx | 14→12 lines | ~182 |
+| 19:34 | Edited src/app/_components/StructuredData.jsx | "BGN" → "EUR" | ~9 |
+| 19:34 | Edited src/data/specialties.json | inline fix | ~8 |
+| 19:34 | Edited src/data/specialties.json | inline fix | ~9 |
+| 19:34 | Edited src/data/specialties.json | inline fix | ~9 |
+| 19:34 | Edited src/app/api/search/route.ts | inline fix | ~23 |
+| 19:34 | Edited src/app/api/ai/menu-assistant/route.ts | "- All prices are in Bulga" → "- All prices are in Euro " | ~11 |
+| 19:34 | Edited src/app/api/ai/menu-assistant/route.ts | inline fix | ~25 |
+| 19:35 | Edited messages/bg.json | inline fix | ~8 |
+| 19:35 | Edited messages/bg.json | inline fix | ~8 |
+| 19:35 | Edited messages/bg.json | inline fix | ~8 |
+| 19:35 | Edited messages/en.json | inline fix | ~8 |
+| 19:35 | Edited messages/en.json | inline fix | ~8 |
+| 19:35 | Edited messages/en.json | inline fix | ~8 |
+| 19:35 | Edited messages/tr.json | inline fix | ~8 |
+| 19:35 | Edited messages/tr.json | inline fix | ~8 |
+| 19:35 | Edited messages/tr.json | inline fix | ~8 |
+| 19:36 | Created src/app/masa/wizard/budgetParse.ts | — | ~631 |
+| 19:36 | Edited src/app/masa/wizard/customerMode.ts | 4→4 lines | ~67 |
+| 19:36 | Edited src/app/masa/wizard/customerMode.ts | modified classifyCustomerMode() | ~92 |
+| 19:36 | Edited src/app/masa/wizard/customerMode.ts | inline fix | ~24 |
+| 19:36 | Edited src/app/masa/wizard/customerMode.ts | inline fix | ~27 |
+| 19:36 | Edited src/app/masa/wizard/customerMode.ts | inline fix | ~29 |
+| 19:36 | Edited src/app/masa/wizard/candidates.ts | 2→2 lines | ~12 |
+| 19:36 | Edited src/app/masa/wizard/candidates.ts | 5→5 lines | ~40 |
+| 19:37 | Edited src/app/masa/wizard/candidates.ts | modified computeValueScore() | ~42 |
+| 19:37 | Edited src/app/masa/wizard/candidates.ts | modified if() | ~20 |
+| 19:37 | Edited src/app/masa/wizard/candidates.ts | inline fix | ~27 |
+| 19:37 | Edited src/app/masa/wizard/candidates.ts | 12→12 lines | ~157 |
+| 19:37 | Edited src/app/masa/wizard/candidates.ts | 2→2 lines | ~13 |
+| 19:37 | Edited src/app/masa/wizard/budgetRepair.ts | 3→3 lines | ~26 |
+| 19:37 | Edited src/app/masa/wizard/budgetRepair.ts | inline fix | ~16 |
+| 19:37 | Edited src/app/masa/wizard/budgetRepair.ts | inline fix | ~3 |
+| 19:37 | Edited src/app/masa/wizard/llmPrompt.ts | inline fix | ~75 |
+| 19:37 | Edited src/app/masa/wizard/llmPrompt.ts | "имам 15 лв, много гладен " → "имам 8 евро, много гладен" | ~28 |
+| 19:37 | Edited src/app/masa/wizard/llmPrompt.ts | 3→3 lines | ~23 |
+| 19:38 | Edited src/app/masa/wizard/llmPrompt.ts | inline fix | ~26 |
+| 19:38 | Edited src/app/masa/wizard/llmPrompt.ts | inline fix | ~10 |
+| 19:38 | Edited src/app/masa/wizard/llmPrompt.ts | "number | null (sum of the" → "number | null (sum of the" | ~24 |
+| 19:38 | Edited src/app/masa/wizard/llmRecommend.ts | 3→3 lines | ~20 |
+| 19:38 | Edited src/app/masa/wizard/llmRecommend.ts | inline fix | ~13 |
+| 19:38 | Edited src/app/masa/MasaTasteWizard.tsx | inline fix | ~15 |
+| 19:38 | Edited src/app/masa/MasaTasteWizard.tsx | inline fix | ~19 |
+| 19:38 | Edited src/app/masa/MasaTasteWizard.tsx | inline fix | ~14 |
+| 19:38 | Edited src/app/masa/MasaTasteWizard.tsx | budgetInBGN() → budgetInEur() | ~83 |
+| 19:38 | Edited src/app/api/wizard/recommend/route.ts | 5→5 lines | ~30 |
+| 19:38 | Edited src/app/api/wizard/recommend/route.ts | 4→4 lines | ~63 |
+| 19:39 | Edited src/app/api/wizard/recommend/route.ts | 9→9 lines | ~68 |
+| 19:39 | Edited src/app/api/wizard/recommend/route.ts | inline fix | ~30 |
+| 19:39 | Edited src/app/api/wizard/recommend/route.ts | 5→5 lines | ~29 |
+| 19:39 | Edited tests/unit/wizard/fixture.ts | "BGN" → "EUR" | ~6 |
+| 19:40 | Edited tests/unit/wizard/realFixture.ts | 52→52 lines | ~609 |
+| 19:41 | Created tests/unit/wizard/budgetParse.test.ts | — | ~811 |
+| 19:41 | Edited tests/unit/wizard/budgetRepair.test.ts | inline fix | ~13 |
+| 19:41 | Edited tests/unit/wizard/budgetRepair.test.ts | inline fix | ~18 |
+| 19:42 | Edited tests/unit/wizard/candidates.test.ts | 31→31 lines | ~366 |
+| 19:42 | Edited tests/unit/wizard/candidates.test.ts | 6→6 lines | ~70 |
+| 19:42 | Edited tests/unit/wizard/customerMode.test.ts | 2→2 lines | ~27 |
+| 19:42 | Edited tests/unit/wizard/customerMode.test.ts | 8→8 lines | ~78 |
+| 19:43 | Edited tests/unit/wizard/scenarios.test.ts | modified if() | ~420 |
+| 19:43 | Edited src/app/masa/wizard/budgetParse.ts | 3→3 lines | ~55 |
+| 19:44 | Edited src/app/_components/menu/__tests__/MenuFiltered.test.jsx | 2→2 lines | ~48 |
+| 19:44 | Edited src/app/_components/menu/__tests__/MenuFiltered.test.jsx | inline fix | ~26 |
+| 19:44 | Edited src/app/_components/menu/__tests__/MenuFiltered.test.jsx | 3→3 lines | ~64 |
+| 19:46 | Currency migration BGN/lev -> EUR (Bulgaria real changeover): converted 155 prices in both menu.json at fixed rate 1.95583, renamed wizard budgetBgn->budgetEur end-to-end, removed all лв/leva/BGN parsing+display, updated 7 wizard test files + fixtures. tsc clean, 125/125 wizard tests pass, verified Ask Deli live returns EUR prices. | src/data/menu.json, public/data/menu.json, 15+ files, 7 tests | ~55000 |
+| 19:46 | Session end: 81 writes across 30 files (route.ts, AIAssistantModal.jsx, env.example, convert-bgn-to-eur.mjs, masaConstants.ts) | 36 reads | ~83407 tok |

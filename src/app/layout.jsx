@@ -40,7 +40,7 @@ import MobileBottomNav from "@components/common/MobileBottomNav";
 
 // IMPORTANT: This must match the real canonical domain used in production.
 // Google uses it to resolve icon/manifest URLs.
-const siteUrl = 'https://restorantdeliorman.com';
+const siteUrl = 'https://www.restorantdeliorman.com';
 
 /** @type {import('next').Metadata} */
 export const metadata = {

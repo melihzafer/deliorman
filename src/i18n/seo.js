@@ -1,6 +1,9 @@
 import { routing } from './routing';
 
-export const SITE_URL = 'https://restorantdeliorman.com';
+// The canonical host is www — restorantdeliorman.com 307-redirects here at
+// the Vercel domain level. Every canonical/hreflang/sitemap/JSON-LD URL must
+// use this same host or the redirect and the metadata contradict each other.
+export const SITE_URL = 'https://www.restorantdeliorman.com';
 
 export function getLocalizedPath(pathname = '/', locale = routing.defaultLocale) {
   const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`;

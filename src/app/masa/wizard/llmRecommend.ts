@@ -27,7 +27,7 @@ export interface RecommendInput {
   mode: "buttons" | "freetext";
   answers: WizardAnswers;
   freetext?: string;
-  budgetBgn?: number | null;
+  budgetEur?: number | null;
   locale: Locale;
   sessionToken: string;
   /** AbortController for in-flight cancellation (e.g. user closes modal) */
@@ -128,7 +128,7 @@ export async function recommend(
         mode: input.mode,
         answers: input.answers,
         freetext: input.freetext ?? "",
-        budgetBgn: input.budgetBgn ?? null,
+        budgetEur: input.budgetEur ?? null,
         locale: input.locale,
         sessionToken: input.sessionToken,
       }),

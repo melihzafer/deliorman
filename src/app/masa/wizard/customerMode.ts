@@ -13,10 +13,10 @@
 
 import type { CustomerMode, WizardAnswers } from "./types";
 
-// BGN reference: a "low/medium" budget for a single diner. 45 BGN ≈ 23 EUR,
-// comfortably above one filling main + a drink at Deliorman's price points,
-// but low enough that a hungry diner needs value-first picks.
-const MEDIUM_BUDGET_MAX_BGN = 45;
+// EUR reference: a "low/medium" budget for a single diner — comfortably
+// above one filling main + a drink at Deliorman's price points, but low
+// enough that a hungry diner needs value-first picks.
+const MEDIUM_BUDGET_MAX_EUR = 23;
 
 const VERY_HUNGRY_KEYWORDS = [
   "çok aç", "çok açım", "acıktım", "aç karnına", "kurt gibi aç",
@@ -77,13 +77,13 @@ function containsAny(haystack: string, needles: string[]): boolean {
 export interface ClassifyModeInput {
   answers: WizardAnswers;
   freetext?: string;
-  budgetBgn?: number | null;
+  budgetEur?: number | null;
 }
 
 export function classifyCustomerMode(input: ClassifyModeInput): CustomerMode {
   const { answers } = input;
   const text = (input.freetext || "").toLowerCase();
-  const budgetBgn = input.budgetBgn ?? null;
+  const budgetEur = input.budgetEur ?? null;
 
   const isSweetOnlyAnswer = answers.foodProtein === "sweet-only";
   const veryHungry = answers.hunger === "feast" || containsAny(text, VERY_HUNGRY_KEYWORDS);
@@ -96,7 +96,7 @@ export function classifyCustomerMode(input: ClassifyModeInput): CustomerMode {
   const wantsAdventurous = answers.mood === "adventurous" || containsAny(text, ADVENTUROUS_KEYWORDS);
   const wantsLight = answers.mood === "healthy" || containsAny(text, LIGHT_KEYWORDS);
   const wantsCheap = containsAny(text, CHEAP_KEYWORDS);
-  const budgetIsLowMedium = budgetBgn != null && budgetBgn <= MEDIUM_BUDGET_MAX_BGN;
+  const budgetIsLowMedium = budgetEur != null && budgetEur <= MEDIUM_BUDGET_MAX_EUR;
   // "sweet-only" means dessert-only, not a savory-meal signal — keep it out
   // of wantsFoodSignal so sweet_only classification isn't shadowed.
   const wantsFoodSignal =
@@ -106,13 +106,13 @@ export function classifyCustomerMode(input: ClassifyModeInput): CustomerMode {
   const wantsDrinkOnly = !wantsFoodSignal && (answers.anchor === "drink" || wantsBeer);
 
   // Priority order mirrors the spec's classification rules exactly.
-  if (veryHungry && budgetBgn != null && budgetIsLowMedium) return "very_hungry_low_budget";
+  if (veryHungry && budgetEur != null && budgetIsLowMedium) return "very_hungry_low_budget";
   if (wantsBeer && (wantsFoodSignal || veryHungry)) return "beer_with_food";
   if (wantsDrinkOnly) return "drink_only";
   if (wantsSweet && !wantsFoodSignal) return "sweet_only";
   if (wantsFamily) return "family_safe";
   if (wantsAdventurous) return "adventurous";
   if (wantsLight) return "light_fresh";
-  if (wantsCheap || (budgetBgn != null && budgetIsLowMedium && !veryHungry)) return "budget_value";
+  if (wantsCheap || (budgetEur != null && budgetIsLowMedium && !veryHungry)) return "budget_value";
   return "undecided";
 }

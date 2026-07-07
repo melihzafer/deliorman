@@ -11,7 +11,7 @@ import { nextStep, questionNumber } from "./wizard/nextStep";
 import { buildCombo, type PairingPick } from "./wizard/pairings";
 import { explainMatch } from "./wizard/rationale";
 import { inferIntent, type IntentResult } from "./wizard/intentRouter";
-import { budgetInBGN } from "./wizard/budgetParse";
+import { budgetInEur } from "./wizard/budgetParse";
 import { recommend, type WizardPickFromLlm } from "./wizard/llmRecommend";
 import type { ScoredItem, WizardAnswers, WizardStep } from "./wizard/types";
 
@@ -282,7 +282,7 @@ export function MasaTasteWizard({
 
   const finishQuiz = (
     finalAnswers: WizardAnswers,
-    opts: { freetext?: string; budgetBgn?: number | null } = {},
+    opts: { freetext?: string; budgetEur?: number | null } = {},
   ) => {
     const mode: "buttons" | "freetext" = opts.freetext ? "freetext" : "buttons";
     const requestId = ++requestIdRef.current;
@@ -304,7 +304,7 @@ export function MasaTasteWizard({
             mode,
             answers: finalAnswers,
             freetext: opts.freetext,
-            budgetBgn: opts.budgetBgn ?? null,
+            budgetEur: opts.budgetEur ?? null,
             locale,
             sessionToken,
           },
@@ -464,13 +464,13 @@ export function MasaTasteWizard({
       const hasAnswers = intent.answers && Object.keys(intent.answers).length > 0;
       // Always pass the raw text + extracted budget to the LLM, even when the
       // lexicon produced no signals. Budget is sourced-of-truth regardless.
-      const budgetBgn = budgetInBGN(freeText);
-      if (hasAnswers || budgetBgn != null) {
+      const budgetEur = budgetInEur(freeText);
+      if (hasAnswers || budgetEur != null) {
         const answers = intent.answers ?? {};
         setAnswers(answers);
         setStep("spinning");
         setTimeout(() => {
-          finishQuiz(answers, { freetext: freeText, budgetBgn });
+          finishQuiz(answers, { freetext: freeText, budgetEur });
           setFreeText("");
           setFreeTextResult(null);
         }, 800);

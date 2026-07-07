@@ -1,5 +1,5 @@
 import React from "react";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import ScrollHint from "@layouts/scroll-hint/Index";
 import Divider from "@layouts/divider/Index";
@@ -7,12 +7,15 @@ import Divider from "@layouts/divider/Index";
 import PageBanner from "@components/PageBanner";
 import ContactInfoSection from "@components/sections/ContactInfo";
 import ReservationFormSection from "@components/sections/ReservationForm";
+import { buildAlternates } from "@/src/i18n/seo";
 
 export async function generateMetadata() {
   const t = await getTranslations("meta");
+  const locale = await getLocale();
   return {
     title: t("reservationTitle"),
     description: t("reservationDescription"),
+    alternates: buildAlternates("/reservation", locale),
     openGraph: {
       title: t("reservationTitle"),
       description: t("reservationDescription"),

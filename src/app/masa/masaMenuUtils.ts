@@ -1,4 +1,3 @@
-import { BGN_PER_EUR } from "./masaConstants";
 import { t } from "./masaTranslations";
 import type { Locale, LocalizedText } from "./masaTypes";
 
@@ -46,13 +45,15 @@ export function getEditionLabel(date: Date, locale: Locale): string {
   return "Вечерно издание";
 }
 
-export function formatPrice(price: number | null, currency: string, locale: Locale): string {
+// Menu prices are stored (and always displayed) in Euro — Bulgaria's currency
+// since it adopted the Euro. The `currency` param is kept for call-site
+// compatibility but is no longer branched on.
+export function formatPrice(price: number | null, _currency: string, locale: Locale): string {
   if (typeof price !== "number") return t(locale, "noPrice");
-  const amount = currency === "BGN" ? price / BGN_PER_EUR : price;
   return new Intl.NumberFormat(locale === "tr" ? "tr-TR" : locale === "en" ? "en-IE" : "bg-BG", {
     style: "currency",
     currency: "EUR",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(amount);
+  }).format(price);
 }

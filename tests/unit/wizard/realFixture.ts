@@ -17,53 +17,53 @@ function cat(id: string, items: QrMenuItem[]): QrMenuCategory {
 
 export const REAL_MENU_CATEGORIES: QrMenuCategory[] = [
   cat("hot-beverages", [
-    item("kafe-espreso", "Еспресо", "Espresso", "Espresso", 1.95),
-    item("kapuchino", "Капучино", "Cappuccino", "Cappuccino", 2.73),
+    item("kafe-espreso", "Еспресо", "Espresso", "Espresso", 1),
+    item("kapuchino", "Капучино", "Cappuccino", "Cappuccino", 1.4),
   ]),
   cat("salads", [
-    item("shopska-salata", "Шопска салата", "Şopska Salata", "Shopska Salad", 7.82),
-    item("salata-tsezar", "Салата Цезар", "Sezar Salata", "Caesar Salad", 11.73),
+    item("shopska-salata", "Шопска салата", "Şopska Salata", "Shopska Salad", 4),
+    item("salata-tsezar", "Салата Цезар", "Sezar Salata", "Caesar Salad", 6),
   ]),
   cat("hot-appetizers", [
-    item("parzheni-kartofi", "Пържени картофи", "Kızarmış Patates", "French Fries", 4.5),
-    item("pileshki-kriltsa", "Пилешки крилца", "Tavuk Kanat", "Chicken Wings", 7.5),
+    item("parzheni-kartofi", "Пържени картофи", "Kızarmış Patates", "French Fries", 2.3),
+    item("pileshki-kriltsa", "Пилешки крилца", "Tavuk Kanat", "Chicken Wings", 3.83),
   ]),
   cat("soups-sandwiches", [
-    item("shkembe-chorba", "Шкембе чорба", "İşkembe Çorbası", "Tripe Soup", 5.5),
+    item("shkembe-chorba", "Шкембе чорба", "İşkembe Çorbası", "Tripe Soup", 2.81),
   ]),
   cat("pizzas", [
-    item("margarita", "Маргарита", "Margarita", "Margherita", 9.5),
+    item("margarita", "Маргарита", "Margarita", "Margherita", 4.86),
   ]),
   cat("grill", [
-    item("kyufte", "Кюфте", "Köfte", "Meatball", 3.5),
-    item("kebapche", "Кебапче", "Kebapçe", "Kebapche", 3.5),
-    item("meshena-skara", "Мешена скара", "Karışık Izgara", "Mixed Grill", 34.22),
+    item("kyufte", "Кюфте", "Köfte", "Meatball", 1.79),
+    item("kebapche", "Кебапче", "Kebapçe", "Kebapche", 1.79),
+    item("meshena-skara", "Мешена скара", "Karışık Izgara", "Mixed Grill", 17.5),
   ]),
   cat("saj-fish-specialties", [
-    item("skumriya", "Скумрия", "Uskumru", "Mackerel", 12.9),
+    item("skumriya", "Скумрия", "Uskumru", "Mackerel", 6.6),
   ]),
   cat("burgers", [
-    item("royal-burger", "Роял бургер", "Royal Burger", "Royal Burger", 9.9),
+    item("royal-burger", "Роял бургер", "Royal Burger", "Royal Burger", 5.06),
   ]),
   cat("cold-appetizers-sides", [
-    item("sirene", "Сирене", "Peynir", "Cheese", 6.5),
-    item("studena-garnitura-domati", "Студена гарнитура домати", "Domates", "Tomato Side", 3.5),
+    item("sirene", "Сирене", "Peynir", "Cheese", 3.32),
+    item("studena-garnitura-domati", "Студена гарнитура домати", "Domates", "Tomato Side", 1.79),
   ]),
   cat("nuts-desserts", [
-    item("kyunefe", "Кюнефе", "Künefe", "Kunefe", 6.5),
-    item("sladoled", "Сладолед", "Dondurma", "Ice Cream", 5.67),
+    item("kyunefe", "Кюнефе", "Künefe", "Kunefe", 3.32),
+    item("sladoled", "Сладолед", "Dondurma", "Ice Cream", 2.9),
   ]),
   cat("rakia", [
-    item("peshterska-grozdova-otlezhala", "Пещерска гроздова", "Peşterska", "Peshterska Rakia", 2.34),
+    item("peshterska-grozdova-otlezhala", "Пещерска гроздова", "Peşterska", "Peshterska Rakia", 1.2),
   ]),
   cat("wines", [
-    item("targovishte-kaberne", "Търговище Каберне", "Targovişte Kaberne", "Targovishte Cabernet", 4.5),
+    item("targovishte-kaberne", "Търговище Каберне", "Targovişte Kaberne", "Targovishte Cabernet", 2.3),
   ]),
   cat("beer-cider-other-drinks", [
-    item("carlsberg", "Карлсберг", "Carlsberg", "Carlsberg", 3.91),
-    item("carlsberg-0-0", "Карлсберг 0.0", "Carlsberg 0.0", "Carlsberg 0.0", 4.3),
+    item("carlsberg", "Карлсберг", "Carlsberg", "Carlsberg", 2),
+    item("carlsberg-0-0", "Карлсберг 0.0", "Carlsberg 0.0", "Carlsberg 0.0", 2.2),
   ]),
   cat("whiskey-vodka", [
-    item("pasport", "Passport", "Passport", "Passport", 4.5),
+    item("pasport", "Passport", "Passport", "Passport", 2.3),
   ]),
 ];

@@ -1,7 +1,6 @@
 export const PING_INTERVAL_MS = 60_000;
 export const COOLDOWN_MS = 180_000;
 export const SUCCESS_MS = 5_000;
-export const BGN_PER_EUR = 1.95583;
 export const SESSION_KEY_PREFIX = "deliorman.masa.session";
 export const COOLDOWN_KEY_PREFIX = "deliorman.masa.cooldown";
 

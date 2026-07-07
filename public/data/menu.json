@@ -1,7 +1,7 @@
 {
   "version": 1,
   "restaurantName": "Deliorman",
-  "currency": "BGN",
+  "currency": "EUR",
   "categories": [
     {
       "id": "hot-beverages",
@@ -30,7 +30,7 @@
             "en": ""
           },
           "amount": "60 ml",
-          "price": 1.95,
+          "price": 1,
           "allergens": []
         },
         {
@@ -46,7 +46,7 @@
             "en": ""
           },
           "amount": "60 ml",
-          "price": 2.73,
+          "price": 1.4,
           "allergens": []
         },
         {
@@ -62,7 +62,7 @@
             "en": ""
           },
           "amount": "60 ml",
-          "price": 1.95,
+          "price": 1,
           "allergens": []
         },
         {
@@ -78,7 +78,7 @@
             "en": ""
           },
           "amount": "150 ml",
-          "price": 2.73,
+          "price": 1.4,
           "allergens": []
         },
         {
@@ -94,7 +94,7 @@
             "en": ""
           },
           "amount": "150 ml",
-          "price": 2.73,
+          "price": 1.4,
           "allergens": []
         },
         {
@@ -110,7 +110,7 @@
             "en": ""
           },
           "amount": "150 ml",
-          "price": 2.73,
+          "price": 1.4,
           "allergens": []
         },
         {
@@ -126,7 +126,7 @@
             "en": ""
           },
           "amount": "150 ml",
-          "price": 2.15,
+          "price": 1.1,
           "allergens": []
         },
         {
@@ -142,7 +142,7 @@
             "en": "mint, chamomile, bouquet, black, green"
           },
           "amount": "150 ml",
-          "price": 1.76,
+          "price": 0.9,
           "allergens": []
         },
         {
@@ -158,7 +158,7 @@
             "en": "lemon, raspberry, forest fruits"
           },
           "amount": "150 ml",
-          "price": 1.76,
+          "price": 0.9,
           "allergens": []
         },
         {
@@ -174,7 +174,7 @@
             "en": ""
           },
           "amount": "15 ml",
-          "price": 0.78,
+          "price": 0.4,
           "allergens": []
         },
         {
@@ -190,7 +190,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 0.78,
+          "price": 0.4,
           "allergens": []
         },
         {
@@ -206,7 +206,7 @@
             "en": "powdered, condensed, spray"
           },
           "amount": "10 ml",
-          "price": 0.78,
+          "price": 0.4,
           "allergens": []
         }
       ]
@@ -238,7 +238,7 @@
             "en": "tomatoes, cucumbers, peppers, onions, white cheese, olives"
           },
           "amount": "400 g",
-          "price": 7.82,
+          "price": 4,
           "allergens": []
         },
         {
@@ -254,7 +254,7 @@
             "en": "tomatoes, cucumbers, kashkaval, white cheese, ham, Snow White salad, roasted pepper, olives"
           },
           "amount": "500 g",
-          "price": 10.75,
+          "price": 5.5,
           "allergens": []
         },
         {
@@ -270,7 +270,7 @@
             "en": "tomatoes, cucumbers, peppers, onions, mushrooms, ham, kashkaval, white cheese, egg, olives"
           },
           "amount": "550 g",
-          "price": 9.77,
+          "price": 5,
           "allergens": []
         },
         {
@@ -286,7 +286,7 @@
             "en": "tomatoes, cucumbers, roasted pepper, white cheese, olives, onion, lemon, olive oil, oregano"
           },
           "amount": "450 g",
-          "price": 7.82,
+          "price": 4,
           "allergens": []
         },
         {
@@ -302,7 +302,7 @@
             "en": "iceberg lettuce, chicken fillet, cherry tomatoes, cucumbers, croutons, parmesan, sauce"
           },
           "amount": "450 g",
-          "price": 11.73,
+          "price": 6,
           "allergens": []
         },
         {
@@ -318,7 +318,7 @@
             "en": "lettuce, cucumbers, olives, tuna, olive oil"
           },
           "amount": "300 g",
-          "price": 10.75,
+          "price": 5.5,
           "allergens": []
         }
       ]
@@ -350,7 +350,7 @@
             "en": ""
           },
           "amount": "300 g",
-          "price": 8.8,
+          "price": 4.5,
           "allergens": []
         },
         {
@@ -366,7 +366,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 11.55,
+          "price": 5.91,
           "allergens": []
         },
         {
@@ -382,7 +382,7 @@
             "en": ""
           },
           "amount": "400 g",
-          "price": 13.4,
+          "price": 6.85,
           "allergens": []
         },
         {
@@ -398,7 +398,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 6.84,
+          "price": 3.5,
           "allergens": []
         },
         {
@@ -414,7 +414,7 @@
             "en": ""
           },
           "amount": "250 g",
-          "price": 7.62,
+          "price": 3.9,
           "allergens": []
         },
         {
@@ -430,7 +430,7 @@
             "en": ""
           },
           "amount": "400 g",
-          "price": 11.55,
+          "price": 5.91,
           "allergens": []
         },
         {
@@ -446,7 +446,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 7.62,
+          "price": 3.9,
           "allergens": []
         },
         {
@@ -462,7 +462,7 @@
             "en": ""
           },
           "amount": "300 g",
-          "price": 9.58,
+          "price": 4.9,
           "allergens": []
         },
         {
@@ -478,7 +478,7 @@
             "en": ""
           },
           "amount": "400 g",
-          "price": 13.4,
+          "price": 6.85,
           "allergens": []
         },
         {
@@ -494,7 +494,7 @@
             "en": ""
           },
           "amount": "300 g",
-          "price": 13.4,
+          "price": 6.85,
           "allergens": []
         },
         {
@@ -510,7 +510,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 9.58,
+          "price": 4.9,
           "allergens": []
         },
         {
@@ -526,7 +526,7 @@
             "en": ""
           },
           "amount": "350 g",
-          "price": 13.4,
+          "price": 6.85,
           "allergens": []
         }
       ]
@@ -558,7 +558,7 @@
             "en": ""
           },
           "amount": "300 ml",
-          "price": 3.91,
+          "price": 2,
           "allergens": []
         },
         {
@@ -574,7 +574,7 @@
             "en": ""
           },
           "amount": "300 ml",
-          "price": 3.91,
+          "price": 2,
           "allergens": []
         },
         {
@@ -590,7 +590,7 @@
             "en": ""
           },
           "amount": "300 ml",
-          "price": 3.91,
+          "price": 2,
           "allergens": []
         },
         {
@@ -606,7 +606,7 @@
             "en": ""
           },
           "amount": "300 ml",
-          "price": 3.71,
+          "price": 1.9,
           "allergens": []
         },
         {
@@ -622,7 +622,7 @@
             "en": "onions, carrots, peppers"
           },
           "amount": "350 g",
-          "price": 8.8,
+          "price": 4.5,
           "allergens": []
         },
         {
@@ -638,7 +638,7 @@
             "en": "onions, carrots"
           },
           "amount": "300 g",
-          "price": 9.58,
+          "price": 4.9,
           "allergens": []
         },
         {
@@ -654,7 +654,7 @@
             "en": "onions, carrots"
           },
           "amount": "300 g",
-          "price": 9.58,
+          "price": 4.9,
           "allergens": []
         },
         {
@@ -670,7 +670,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 5.08,
+          "price": 2.6,
           "allergens": []
         },
         {
@@ -686,7 +686,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 5.08,
+          "price": 2.6,
           "allergens": []
         },
         {
@@ -702,7 +702,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 4.49,
+          "price": 2.3,
           "allergens": []
         },
         {
@@ -718,7 +718,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 5.86,
+          "price": 3,
           "allergens": []
         },
         {
@@ -734,7 +734,7 @@
             "en": ""
           },
           "amount": "",
-          "price": 0.29,
+          "price": 0.15,
           "allergens": []
         },
         {
@@ -750,7 +750,7 @@
             "en": ""
           },
           "amount": "",
-          "price": 0.39,
+          "price": 0.2,
           "allergens": []
         },
         {
@@ -766,7 +766,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 1.36,
+          "price": 0.7,
           "allergens": []
         },
         {
@@ -782,7 +782,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 1.36,
+          "price": 0.7,
           "allergens": []
         }
       ]
@@ -814,7 +814,7 @@
             "en": "tomato sauce, ham, marinated mushrooms, kashkaval, lukanka sausage, white cheese, pickles, garlic paste, basil"
           },
           "amount": "400 g",
-          "price": 9.58,
+          "price": 4.9,
           "allergens": []
         },
         {
@@ -830,7 +830,7 @@
             "en": "tomato sauce, white cheese, kashkaval"
           },
           "amount": "400 g",
-          "price": 8.8,
+          "price": 4.5,
           "allergens": []
         },
         {
@@ -846,7 +846,7 @@
             "en": "tomato sauce, kashkaval, basil"
           },
           "amount": "400 g",
-          "price": 7.62,
+          "price": 3.9,
           "allergens": []
         },
         {
@@ -862,7 +862,7 @@
             "en": "tomato sauce, ham, fresh mushrooms, kashkaval"
           },
           "amount": "400 g",
-          "price": 8.8,
+          "price": 4.5,
           "allergens": []
         },
         {
@@ -878,7 +878,7 @@
             "en": "tomato sauce, ham, lukanka sausage, pickles, kashkaval"
           },
           "amount": "400 g",
-          "price": 9.58,
+          "price": 4.9,
           "allergens": []
         },
         {
@@ -894,7 +894,7 @@
             "en": "tomato sauce, ham, kashkaval"
           },
           "amount": "400 g",
-          "price": 8.8,
+          "price": 4.5,
           "allergens": []
         },
         {
@@ -910,7 +910,7 @@
             "en": "tomato sauce, chicken fillet, fresh mushrooms, olives, sweetcorn, kashkaval"
           },
           "amount": "400 g",
-          "price": 9.58,
+          "price": 4.9,
           "allergens": []
         }
       ]
@@ -942,7 +942,7 @@
             "en": ""
           },
           "amount": "80 g",
-          "price": 1.95,
+          "price": 1,
           "allergens": []
         },
         {
@@ -958,7 +958,7 @@
             "en": ""
           },
           "amount": "80 g",
-          "price": 1.95,
+          "price": 1,
           "allergens": []
         },
         {
@@ -974,7 +974,7 @@
             "en": ""
           },
           "amount": "80 g",
-          "price": 2.73,
+          "price": 1.4,
           "allergens": []
         },
         {
@@ -990,7 +990,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 3.91,
+          "price": 2,
           "allergens": []
         },
         {
@@ -1006,7 +1006,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 4.3,
+          "price": 2.2,
           "allergens": []
         },
         {
@@ -1022,7 +1022,7 @@
             "en": ""
           },
           "amount": "250 g",
-          "price": 7.62,
+          "price": 3.9,
           "allergens": []
         },
         {
@@ -1038,7 +1038,7 @@
             "en": ""
           },
           "amount": "250 g",
-          "price": 8.8,
+          "price": 4.5,
           "allergens": []
         },
         {
@@ -1054,7 +1054,7 @@
             "en": ""
           },
           "amount": "160 g",
-          "price": 6.84,
+          "price": 3.5,
           "allergens": []
         },
         {
@@ -1070,7 +1070,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 5.67,
+          "price": 2.9,
           "allergens": []
         },
         {
@@ -1086,7 +1086,7 @@
             "en": ""
           },
           "amount": "900 g",
-          "price": 34.22,
+          "price": 17.5,
           "allergens": []
         }
       ]
@@ -1118,7 +1118,7 @@
             "en": ""
           },
           "amount": "1000 g",
-          "price": 28.35,
+          "price": 14.5,
           "allergens": []
         },
         {
@@ -1134,7 +1134,7 @@
             "en": ""
           },
           "amount": "1000 g",
-          "price": 28.35,
+          "price": 14.5,
           "allergens": []
         },
         {
@@ -1150,7 +1150,7 @@
             "en": ""
           },
           "amount": "1000 g",
-          "price": 43,
+          "price": 21.99,
           "allergens": []
         },
         {
@@ -1166,7 +1166,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 15.45,
+          "price": 7.9,
           "allergens": []
         },
         {
@@ -1182,7 +1182,7 @@
             "en": ""
           },
           "amount": "700 g",
-          "price": 23.27,
+          "price": 11.9,
           "allergens": []
         },
         {
@@ -1198,7 +1198,7 @@
             "en": ""
           },
           "amount": "300 g",
-          "price": 12.7,
+          "price": 6.49,
           "allergens": []
         },
         {
@@ -1214,7 +1214,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 5.86,
+          "price": 3,
           "allergens": []
         },
         {
@@ -1230,7 +1230,7 @@
             "en": ""
           },
           "amount": "250 g",
-          "price": 12.71,
+          "price": 6.5,
           "allergens": []
         },
         {
@@ -1246,7 +1246,7 @@
             "en": ""
           },
           "amount": "750 g",
-          "price": 35,
+          "price": 17.9,
           "allergens": []
         }
       ]
@@ -1278,7 +1278,7 @@
             "en": "crispy chicken fillet, cheddar, lettuce, pickles, served with fries and sauces"
           },
           "amount": "350 g",
-          "price": 12.71,
+          "price": 6.5,
           "allergens": []
         },
         {
@@ -1294,7 +1294,7 @@
             "en": "beef, cheddar, lettuce, pickles, served with fries and sauces"
           },
           "amount": "350 g",
-          "price": 12.71,
+          "price": 6.5,
           "allergens": []
         },
         {
@@ -1310,7 +1310,7 @@
             "en": "chicken meat, lettuce, cheddar, pickles, served with fries and sauces"
           },
           "amount": "300 g",
-          "price": 12.71,
+          "price": 6.5,
           "allergens": []
         }
       ]
@@ -1342,7 +1342,7 @@
             "en": "minced beef, Arabic flatbread, onion"
           },
           "amount": "300 g",
-          "price": 13.49,
+          "price": 6.9,
           "allergens": []
         },
         {
@@ -1358,7 +1358,7 @@
             "en": "beef round, garlic, potatoes"
           },
           "amount": "300 g",
-          "price": 21.31,
+          "price": 10.9,
           "allergens": []
         },
         {
@@ -1374,7 +1374,7 @@
             "en": "lamb meat, vegetables"
           },
           "amount": "450 g",
-          "price": 31.1,
+          "price": 15.9,
           "allergens": []
         }
       ]
@@ -1406,7 +1406,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 7.82,
+          "price": 4,
           "allergens": []
         },
         {
@@ -1422,7 +1422,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 9.58,
+          "price": 4.9,
           "allergens": []
         },
         {
@@ -1438,7 +1438,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 13.49,
+          "price": 6.9,
           "allergens": []
         },
         {
@@ -1454,7 +1454,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 4.88,
+          "price": 2.5,
           "allergens": []
         },
         {
@@ -1470,7 +1470,7 @@
             "en": ""
           },
           "amount": "100 g",
-          "price": 4.88,
+          "price": 2.5,
           "allergens": []
         },
         {
@@ -1486,7 +1486,7 @@
             "en": "rice, potatoes"
           },
           "amount": "200 g",
-          "price": 3.91,
+          "price": 2,
           "allergens": []
         },
         {
@@ -1502,7 +1502,7 @@
             "en": "cabbage, carrots"
           },
           "amount": "150 g",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         },
         {
@@ -1518,7 +1518,7 @@
             "en": "tomatoes, cucumbers"
           },
           "amount": "150 g",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         }
       ]
@@ -1550,7 +1550,7 @@
             "en": ""
           },
           "amount": "100 gr",
-          "price": 6.84,
+          "price": 3.5,
           "allergens": []
         },
         {
@@ -1566,7 +1566,7 @@
             "en": ""
           },
           "amount": "100 gr",
-          "price": 6.84,
+          "price": 3.5,
           "allergens": []
         },
         {
@@ -1582,7 +1582,7 @@
             "en": ""
           },
           "amount": "100 gr",
-          "price": 6.84,
+          "price": 3.5,
           "allergens": []
         },
         {
@@ -1598,7 +1598,7 @@
             "en": ""
           },
           "amount": "100 gr",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         },
         {
@@ -1614,7 +1614,7 @@
             "en": ""
           },
           "amount": "200 g",
-          "price": 10.75,
+          "price": 5.5,
           "allergens": []
         },
         {
@@ -1630,7 +1630,7 @@
             "en": ""
           },
           "amount": "",
-          "price": 5.67,
+          "price": 2.9,
           "allergens": []
         }
       ]
@@ -1662,7 +1662,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.34,
+          "price": 1.2,
           "allergens": []
         },
         {
@@ -1678,7 +1678,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.54,
+          "price": 1.3,
           "allergens": []
         },
         {
@@ -1694,7 +1694,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.73,
+          "price": 1.4,
           "allergens": []
         },
         {
@@ -1710,7 +1710,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.34,
+          "price": 1.2,
           "allergens": []
         },
         {
@@ -1726,7 +1726,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.71,
+          "price": 1.9,
           "allergens": []
         },
         {
@@ -1742,7 +1742,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 4.3,
+          "price": 2.2,
           "allergens": []
         },
         {
@@ -1758,7 +1758,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 4.3,
+          "price": 2.2,
           "allergens": []
         },
         {
@@ -1774,7 +1774,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.54,
+          "price": 1.3,
           "allergens": []
         },
         {
@@ -1790,7 +1790,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         },
         {
@@ -1806,7 +1806,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.73,
+          "price": 1.4,
           "allergens": []
         },
         {
@@ -1822,7 +1822,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 4.88,
+          "price": 2.5,
           "allergens": []
         },
         {
@@ -1838,7 +1838,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 4.3,
+          "price": 2.2,
           "allergens": []
         },
         {
@@ -1854,7 +1854,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 4.3,
+          "price": 2.2,
           "allergens": []
         }
       ]
@@ -1886,7 +1886,7 @@
             "en": "White Wine"
           },
           "amount": "750 ml",
-          "price": 14.66,
+          "price": 7.5,
           "allergens": []
         },
         {
@@ -1902,7 +1902,7 @@
             "en": "White Wine"
           },
           "amount": "750 ml",
-          "price": 20.53,
+          "price": 10.5,
           "allergens": []
         },
         {
@@ -1918,7 +1918,7 @@
             "en": "White Wine"
           },
           "amount": "750 ml",
-          "price": 25.23,
+          "price": 12.9,
           "allergens": []
         },
         {
@@ -1934,7 +1934,7 @@
             "en": "White Wine"
           },
           "amount": "750 ml",
-          "price": 35,
+          "price": 17.9,
           "allergens": []
         },
         {
@@ -1950,7 +1950,7 @@
             "en": "White Wine"
           },
           "amount": "500 ml",
-          "price": 8.41,
+          "price": 4.3,
           "allergens": []
         },
         {
@@ -1966,7 +1966,7 @@
             "en": "White Wine"
           },
           "amount": "150 ml",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         },
         {
@@ -1982,7 +1982,7 @@
             "en": "Red Wine"
           },
           "amount": "750 ml",
-          "price": 14.66,
+          "price": 7.5,
           "allergens": []
         },
         {
@@ -1998,7 +1998,7 @@
             "en": "Red Wine"
           },
           "amount": "750 ml",
-          "price": 20.53,
+          "price": 10.5,
           "allergens": []
         },
         {
@@ -2014,7 +2014,7 @@
             "en": "Red Wine"
           },
           "amount": "750 ml",
-          "price": 25.23,
+          "price": 12.9,
           "allergens": []
         },
         {
@@ -2030,7 +2030,7 @@
             "en": "Red Wine"
           },
           "amount": "750 ml",
-          "price": 35,
+          "price": 17.9,
           "allergens": []
         },
         {
@@ -2046,7 +2046,7 @@
             "en": "Red Wine"
           },
           "amount": "500 ml",
-          "price": 8.41,
+          "price": 4.3,
           "allergens": []
         },
         {
@@ -2062,7 +2062,7 @@
             "en": "Red Wine"
           },
           "amount": "150 ml",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         },
         {
@@ -2078,7 +2078,7 @@
             "en": "Rosé"
           },
           "amount": "750 ml",
-          "price": 14.66,
+          "price": 7.5,
           "allergens": []
         },
         {
@@ -2094,7 +2094,7 @@
             "en": "Rosé"
           },
           "amount": "750 ml",
-          "price": 20.53,
+          "price": 10.5,
           "allergens": []
         },
         {
@@ -2110,7 +2110,7 @@
             "en": "Rosé"
           },
           "amount": "750 ml",
-          "price": 25.23,
+          "price": 12.9,
           "allergens": []
         },
         {
@@ -2126,7 +2126,7 @@
             "en": "Rosé"
           },
           "amount": "750 ml",
-          "price": 35,
+          "price": 17.9,
           "allergens": []
         },
         {
@@ -2142,7 +2142,7 @@
             "en": "Rosé"
           },
           "amount": "500 ml",
-          "price": 8.41,
+          "price": 4.3,
           "allergens": []
         },
         {
@@ -2158,7 +2158,7 @@
             "en": "Rosé"
           },
           "amount": "150 ml",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         }
       ]
@@ -2190,7 +2190,7 @@
             "en": ""
           },
           "amount": "500 ml",
-          "price": 3.91,
+          "price": 2,
           "allergens": []
         },
         {
@@ -2206,7 +2206,7 @@
             "en": ""
           },
           "amount": "330 ml",
-          "price": 4.3,
+          "price": 2.2,
           "allergens": []
         },
         {
@@ -2222,7 +2222,7 @@
             "en": ""
           },
           "amount": "330 ml",
-          "price": 4.3,
+          "price": 2.2,
           "allergens": []
         },
         {
@@ -2238,7 +2238,7 @@
             "en": ""
           },
           "amount": "500 ml",
-          "price": 4.88,
+          "price": 2.5,
           "allergens": []
         },
         {
@@ -2254,7 +2254,7 @@
             "en": ""
           },
           "amount": "500 ml",
-          "price": 3.32,
+          "price": 1.7,
           "allergens": []
         },
         {
@@ -2270,7 +2270,7 @@
             "en": ""
           },
           "amount": "500 ml",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         },
         {
@@ -2286,7 +2286,7 @@
             "en": ""
           },
           "amount": "330 ml",
-          "price": 2.54,
+          "price": 1.3,
           "allergens": []
         },
         {
@@ -2302,7 +2302,7 @@
             "en": ""
           },
           "amount": "500 ml",
-          "price": 2.93,
+          "price": 1.5,
           "allergens": []
         },
         {
@@ -2318,7 +2318,7 @@
             "en": ""
           },
           "amount": "330 ml",
-          "price": 2.54,
+          "price": 1.3,
           "allergens": []
         },
         {
@@ -2334,7 +2334,7 @@
             "en": ""
           },
           "amount": "330 ml",
-          "price": 3.32,
+          "price": 1.7,
           "allergens": []
         },
         {
@@ -2350,7 +2350,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.34,
+          "price": 1.2,
           "allergens": []
         },
         {
@@ -2366,7 +2366,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 1.76,
+          "price": 0.9,
           "allergens": []
         },
         {
@@ -2382,7 +2382,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.54,
+          "price": 1.3,
           "allergens": []
         },
         {
@@ -2398,7 +2398,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.32,
+          "price": 1.7,
           "allergens": []
         },
         {
@@ -2414,7 +2414,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 1.76,
+          "price": 0.9,
           "allergens": []
         }
       ]
@@ -2446,7 +2446,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.73,
+          "price": 1.4,
           "allergens": []
         },
         {
@@ -2462,7 +2462,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.12,
+          "price": 1.6,
           "allergens": []
         },
         {
@@ -2478,7 +2478,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.91,
+          "price": 2,
           "allergens": []
         },
         {
@@ -2494,7 +2494,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.12,
+          "price": 1.6,
           "allergens": []
         },
         {
@@ -2510,7 +2510,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.32,
+          "price": 1.7,
           "allergens": []
         },
         {
@@ -2526,7 +2526,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.71,
+          "price": 1.9,
           "allergens": []
         },
         {
@@ -2542,7 +2542,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 4.88,
+          "price": 2.5,
           "allergens": []
         },
         {
@@ -2558,7 +2558,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 5.47,
+          "price": 2.8,
           "allergens": []
         },
         {
@@ -2574,7 +2574,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 5.47,
+          "price": 2.8,
           "allergens": []
         },
         {
@@ -2590,7 +2590,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 5.47,
+          "price": 2.8,
           "allergens": []
         },
         {
@@ -2606,7 +2606,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 1.76,
+          "price": 0.9,
           "allergens": []
         },
         {
@@ -2622,7 +2622,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 1.76,
+          "price": 0.9,
           "allergens": []
         },
         {
@@ -2638,7 +2638,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.03,
+          "price": 1.04,
           "allergens": []
         },
         {
@@ -2654,7 +2654,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 2.03,
+          "price": 1.04,
           "allergens": []
         },
         {
@@ -2670,7 +2670,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.32,
+          "price": 1.7,
           "allergens": []
         },
         {
@@ -2686,7 +2686,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 3.32,
+          "price": 1.7,
           "allergens": []
         },
         {
@@ -2702,7 +2702,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 6.84,
+          "price": 3.5,
           "allergens": []
         },
         {
@@ -2718,7 +2718,7 @@
             "en": ""
           },
           "amount": "50 ml",
-          "price": 6.84,
+          "price": 3.5,
           "allergens": []
         }
       ]

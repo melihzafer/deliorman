@@ -1127,6 +1127,696 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-07-07T15:17:19.000Z"
+    },
+    {
+      "id": "bug-069",
+      "timestamp": "2026-07-07T15:48:25.030Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/robots.ts",
+      "root_cause": "Had 'https://restorantdeliorman.com'",
+      "fix": "Changed to 'https://www.restorantdeliorman.com'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:48:25.030Z"
+    },
+    {
+      "id": "bug-070",
+      "timestamp": "2026-07-07T15:48:30.255Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/layout.jsx",
+      "root_cause": "Had 'https://restorantdeliorman.com'",
+      "fix": "Changed to 'https://www.restorantdeliorman.com'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:48:30.255Z"
+    },
+    {
+      "id": "bug-071",
+      "timestamp": "2026-07-07T15:49:53.070Z",
+      "error_message": "CSS fix: https",
+      "file": "src/app/_components/StructuredData.jsx",
+      "root_cause": "https: //restorantdeliorman.com' → //www.restorantdeliorman.com'",
+      "fix": "Changed https: //restorantdeliorman.com' → //www.restorantdeliorman.com'",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T15:50:07.037Z"
+    },
+    {
+      "id": "bug-072",
+      "timestamp": "2026-07-07T16:01:14.904Z",
+      "error_message": "CSS fix: color",
+      "file": "src/app/_components/sections/FAQ.module.scss",
+      "root_cause": "color: rgba(255, 255, 255, 0.92) → rgba(26, 26, 26, 0.92)",
+      "fix": "Changed color: rgba(255, 255, 255, 0.92) → rgba(26, 26, 26, 0.92)",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "scss"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T16:01:19.688Z"
+    },
+    {
+      "id": "bug-073",
+      "timestamp": "2026-07-07T16:04:06.643Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/_lib/siteContact.js",
+      "root_cause": "Had \"+359 89 476 62273\"",
+      "fix": "Changed to \"+359 89 476 6273\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:06.643Z"
+    },
+    {
+      "id": "bug-074",
+      "timestamp": "2026-07-07T16:04:07.805Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/_components/StructuredData.jsx",
+      "root_cause": "Had '+359 89 476 62273'",
+      "fix": "Changed to '+359 89 476 6273'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:07.805Z"
+    },
+    {
+      "id": "bug-075",
+      "timestamp": "2026-07-07T16:04:10.325Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/data/sections/reservation/reservation-opentable.json",
+      "root_cause": "Had \"ОБАДЕТЕ СЕ НА +359 89 476 62273 (РЕЗЕРВАЦИИ) ИЛИ ",
+      "fix": "Changed to \"ОБАДЕТЕ СЕ НА +359 89 476 6273 (РЕЗЕРВАЦИИ) ИЛИ +",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:10.325Z"
+    },
+    {
+      "id": "bug-076",
+      "timestamp": "2026-07-07T16:04:12.516Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/data/sections/reservation/reservation-form.json",
+      "root_cause": "Had \"ОБАДЕТЕ СЕ НА +359 89 476 62273 (РЕЗЕРВАЦИИ) ИЛИ ",
+      "fix": "Changed to \"ОБАДЕТЕ СЕ НА +359 89 476 6273 (РЕЗЕРВАЦИИ) ИЛИ +",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:12.516Z"
+    },
+    {
+      "id": "bug-077",
+      "timestamp": "2026-07-07T16:04:14.334Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/data/sections/contact/contact-info.json",
+      "root_cause": "Had '>+359 89 476 62273</a><br/><span style='",
+      "fix": "Changed to '>+359 89 476 6273</a><br/><span style='",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:14.334Z"
+    },
+    {
+      "id": "bug-078",
+      "timestamp": "2026-07-07T16:04:15.173Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/api/ai/menu-assistant/route.ts",
+      "root_cause": "Had '- Phone for reservations: +359 89 476 62273.'",
+      "fix": "Changed to '- Phone for reservations: +359 89 476 6273.'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:04:18.720Z"
+    },
+    {
+      "id": "bug-079",
+      "timestamp": "2026-07-07T16:04:19.836Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/[locale]/(pages)/terms/content.js",
+      "root_cause": "Had \"Телефон за резервации: +359 89 476 62273\"",
+      "fix": "Changed to \"Телефон за резервации: +359 89 476 6273\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 4,
+      "last_seen": "2026-07-07T16:04:51.584Z"
+    },
+    {
+      "id": "bug-080",
+      "timestamp": "2026-07-07T16:04:23.085Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/_components/forms/ReservationForm.jsx",
+      "root_cause": "Had \"tel:+3598947662273\"",
+      "fix": "Changed to \"tel:+359894766273\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:23.085Z"
+    },
+    {
+      "id": "bug-081",
+      "timestamp": "2026-07-07T16:04:23.871Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/data/app.json",
+      "root_cause": "Had \"+359 89 476 62273\"",
+      "fix": "Changed to \"+359 89 476 6273\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:23.871Z"
+    },
+    {
+      "id": "bug-082",
+      "timestamp": "2026-07-07T16:04:33.878Z",
+      "error_message": "Wrong reference: 62273 should be 6273",
+      "file": "messages/bg.json",
+      "root_cause": "Used \"62273\" instead of \"6273\"",
+      "fix": "Changed 62273 → 6273",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:33.878Z"
+    },
+    {
+      "id": "bug-083",
+      "timestamp": "2026-07-07T16:04:34.978Z",
+      "error_message": "Wrong reference: 62273 should be 6273",
+      "file": "messages/en.json",
+      "root_cause": "Used \"62273\" instead of \"6273\"",
+      "fix": "Changed 62273 → 6273",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:34.978Z"
+    },
+    {
+      "id": "bug-084",
+      "timestamp": "2026-07-07T16:04:35.545Z",
+      "error_message": "Wrong reference: 62273 should be 6273",
+      "file": "messages/tr.json",
+      "root_cause": "Used \"62273\" instead of \"6273\"",
+      "fix": "Changed 62273 → 6273",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:04:35.545Z"
+    },
+    {
+      "id": "bug-085",
+      "timestamp": "2026-07-07T16:14:59.453Z",
+      "error_message": "Type error",
+      "file": "src/app/api/ai/menu-assistant/route.ts",
+      "root_cause": "Missing or incorrect type annotation",
+      "fix": "Added type assertion/annotation",
+      "tags": [
+        "auto-detected",
+        "type-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:14:59.453Z"
+    },
+    {
+      "id": "bug-086",
+      "timestamp": "2026-07-07T16:15:09.073Z",
+      "error_message": "Missing guard clause",
+      "file": "src/app/api/ai/menu-assistant/route.ts",
+      "root_cause": "No early return/throw for edge case: cached",
+      "fix": "Added guard clause: if (cached)",
+      "tags": [
+        "auto-detected",
+        "guard-clause",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:15:09.073Z"
+    },
+    {
+      "id": "bug-087",
+      "timestamp": "2026-07-07T16:15:30.390Z",
+      "error_message": "Missing error handling in function",
+      "file": "src/app/api/ai/menu-assistant/route.ts",
+      "root_cause": "Code path had no error handling — exceptions would propagate uncaught",
+      "fix": "Added try/catch block",
+      "tags": [
+        "auto-detected",
+        "error-handling",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:15:30.390Z"
+    },
+    {
+      "id": "bug-088",
+      "timestamp": "2026-07-07T16:15:49.198Z",
+      "error_message": "Wrong reference: 2000 should be MAX_HISTORY_CHARS",
+      "file": "src/app/_components/menu/ai/AIAssistantModal.jsx",
+      "root_cause": "Used \"2000\" instead of \"MAX_HISTORY_CHARS\"",
+      "fix": "Changed 2000 → MAX_HISTORY_CHARS",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:15:49.198Z"
+    },
+    {
+      "id": "bug-089",
+      "timestamp": "2026-07-07T16:16:02.749Z",
+      "error_message": "Wrong reference: 1024 should be 450",
+      "file": "env.example",
+      "root_cause": "Used \"1024\" instead of \"450\"",
+      "fix": "Changed 1024 → 450",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "example"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:16:02.749Z"
+    },
+    {
+      "id": "bug-090",
+      "timestamp": "2026-07-07T16:20:00.000Z",
+      "error_message": "\"Ask Deli\" (Попитай Дели) chat assistant fails intermittently in production and always fails locally",
+      "file": "src/app/api/ai/menu-assistant/route.ts",
+      "root_cause": "Production: confirmed via Vercel runtime error logs — Groq 429 'Rate limit reached ... tokens per minute (TPM): Limit 6000' on 2026-07-05. The route re-sends the ENTIRE menu as the system prompt on every single message (Groq has no prompt caching) plus up to 12 history messages x 2000 chars plus a 1024-token output reservation, so a single request could need ~3800+ tokens against a shared 6000 TPM org-wide cap. Local: no .env.local exists at all, so GROQ_API_KEY/ANTHROPIC_API_KEY are unset and getProvider() returns null, causing a hard 503 'not_configured' on every call with no local fallback (unlike the wizard route, which fails silently).",
+      "fix": "Reduced MAX_HISTORY_MESSAGES 12->6 and MAX_HISTORY_CHARS 2000->500 in route.ts (kept in lockstep with AIAssistantModal.jsx, which now imports the same constants for its history slice). Lowered default AI_MAX_TOKENS 1024->450 to match the system prompt's '1-4 sentences' instruction. Memoized renderMenuForPrompt()/buildSystemPrompt() per locale (module-level Map) to avoid recomputing the static menu text every request. Added fetchGroqCompletion() which retries once on a 429, honoring Groq's own 'try again in Ns' hint (capped at 3s) instead of failing the chat outright. Local 503 not_configured is a real gap (no .env.local with GROQ_API_KEY) that needs a key from the user — flagged, not silently worked around.",
+      "tags": [
+        "production-bug",
+        "rate-limit",
+        "groq",
+        "ai-assistant",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:20:00.000Z"
+    },
+    {
+      "id": "bug-091",
+      "timestamp": "2026-07-07T16:32:16.002Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/masa/masaMenuUtils.ts",
+      "root_cause": "Had \"./masaConstants\"",
+      "fix": "Changed to \"./masaTranslations\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:32:16.002Z"
+    },
+    {
+      "id": "bug-092",
+      "timestamp": "2026-07-07T16:32:30.776Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/masa/MasaClient.tsx",
+      "root_cause": "Had \"BGN\"",
+      "fix": "Changed to \"EUR\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:32:30.776Z"
+    },
+    {
+      "id": "bug-093",
+      "timestamp": "2026-07-07T16:32:43.803Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/masa/masaTranslations.ts",
+      "root_cause": "Had \"Цени в евро · фиксиран курс 1 € = 1.95583 лв.\"",
+      "fix": "Changed to \"Всички цени са в евро\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:32:50.975Z"
+    },
+    {
+      "id": "bug-094",
+      "timestamp": "2026-07-07T16:34:05.311Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/_components/StructuredData.jsx",
+      "root_cause": "Had 'BGN'",
+      "fix": "Changed to 'EUR'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:34:05.311Z"
+    },
+    {
+      "id": "bug-095",
+      "timestamp": "2026-07-07T16:34:08.732Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/data/specialties.json",
+      "root_cause": "Had \"12.90 лв.\"",
+      "fix": "Changed to \"6.60 €\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:34:15.518Z"
+    },
+    {
+      "id": "bug-096",
+      "timestamp": "2026-07-07T16:34:18.908Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/api/search/route.ts",
+      "root_cause": "Had `${price.toFixed(2)} лв`",
+      "fix": "Changed to `€${price.toFixed(2)}`",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:34:52.077Z"
+    },
+    {
+      "id": "bug-097",
+      "timestamp": "2026-07-07T16:35:11.225Z",
+      "error_message": "Incorrect value in code",
+      "file": "messages/bg.json",
+      "root_cause": "Had \"12.90 лв.\"",
+      "fix": "Changed to \"6.60 €\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:35:18.633Z"
+    },
+    {
+      "id": "bug-098",
+      "timestamp": "2026-07-07T16:35:28.710Z",
+      "error_message": "Incorrect value in code",
+      "file": "messages/en.json",
+      "root_cause": "Had \"12.90 BGN\"",
+      "fix": "Changed to \"€6.60\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:35:35.075Z"
+    },
+    {
+      "id": "bug-099",
+      "timestamp": "2026-07-07T16:35:39.587Z",
+      "error_message": "Incorrect value in code",
+      "file": "messages/tr.json",
+      "root_cause": "Had \"12.90 BGN\"",
+      "fix": "Changed to \"€6.60\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "json"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:35:46.360Z"
+    },
+    {
+      "id": "bug-100",
+      "timestamp": "2026-07-07T16:36:43.886Z",
+      "error_message": "Wrong reference: budgetBgn should be budgetEur",
+      "file": "src/app/masa/wizard/customerMode.ts",
+      "root_cause": "Used \"budgetBgn\" instead of \"budgetEur\"",
+      "fix": "Changed budgetBgn → budgetEur",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T16:36:48.524Z"
+    },
+    {
+      "id": "bug-101",
+      "timestamp": "2026-07-07T16:36:52.299Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/masa/wizard/candidates.ts",
+      "root_cause": "Had \"BGN\"",
+      "fix": "Changed to \"EUR\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T16:37:24.302Z"
+    },
+    {
+      "id": "bug-102",
+      "timestamp": "2026-07-07T16:37:12.326Z",
+      "error_message": "Wrong condition in logic",
+      "file": "src/app/masa/wizard/candidates.ts",
+      "root_cause": "Condition was: if (mode === \"budget_value\" && price != null && price )",
+      "fix": "Changed to: if (mode === \"budget_value\" && price != null && price )",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:37:12.326Z"
+    },
+    {
+      "id": "bug-103",
+      "timestamp": "2026-07-07T16:37:29.133Z",
+      "error_message": "Wrong reference: budgetBgn should be budgetEur",
+      "file": "src/app/masa/wizard/budgetRepair.ts",
+      "root_cause": "Used \"budgetBgn\" instead of \"budgetEur\"",
+      "fix": "Changed budgetBgn → budgetEur",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:37:40.739Z"
+    },
+    {
+      "id": "bug-104",
+      "timestamp": "2026-07-07T16:37:52.113Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/masa/wizard/llmPrompt.ts",
+      "root_cause": "Had \"имам 15 лв, много гладен съм\"",
+      "fix": "Changed to \"имам 8 евро, много гладен съм\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T16:38:08.100Z"
+    },
+    {
+      "id": "bug-105",
+      "timestamp": "2026-07-07T16:37:56.215Z",
+      "error_message": "Wrong reference: budgetBgn should be budgetEur",
+      "file": "src/app/masa/wizard/llmPrompt.ts",
+      "root_cause": "Used \"budgetBgn\" instead of \"budgetEur\"",
+      "fix": "Changed budgetBgn → budgetEur",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T16:38:00.878Z"
+    },
+    {
+      "id": "bug-106",
+      "timestamp": "2026-07-07T16:38:15.819Z",
+      "error_message": "Wrong reference: budgetBgn should be budgetEur",
+      "file": "src/app/masa/wizard/llmRecommend.ts",
+      "root_cause": "Used \"budgetBgn\" instead of \"budgetEur\"",
+      "fix": "Changed budgetBgn → budgetEur",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:38:15.819Z"
+    },
+    {
+      "id": "bug-107",
+      "timestamp": "2026-07-07T16:38:23.991Z",
+      "error_message": "Wrong reference: budgetInBGN should be budgetInEur",
+      "file": "src/app/masa/MasaTasteWizard.tsx",
+      "root_cause": "Used \"budgetInBGN\" instead of \"budgetInEur\"",
+      "fix": "Changed budgetInBGN → budgetInEur",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-07-07T16:38:27.628Z"
+    },
+    {
+      "id": "bug-108",
+      "timestamp": "2026-07-07T16:38:45.169Z",
+      "error_message": "CSS fix: freetext",
+      "file": "src/app/masa/MasaTasteWizard.tsx",
+      "root_cause": "freetext: freeText, budgetBgn → freeText, budgetEur",
+      "fix": "Changed freetext: freeText, budgetBgn → freeText, budgetEur",
+      "tags": [
+        "auto-detected",
+        "style-fix",
+        "tsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:38:45.169Z"
+    },
+    {
+      "id": "bug-109",
+      "timestamp": "2026-07-07T16:39:05.930Z",
+      "error_message": "Wrong reference: budgetBgn should be budgetEur",
+      "file": "src/app/api/wizard/recommend/route.ts",
+      "root_cause": "Used \"budgetBgn\" instead of \"budgetEur\"",
+      "fix": "Changed budgetBgn → budgetEur",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:39:05.930Z"
+    },
+    {
+      "id": "bug-110",
+      "timestamp": "2026-07-07T16:39:50.446Z",
+      "error_message": "Incorrect value in code",
+      "file": "tests/unit/wizard/fixture.ts",
+      "root_cause": "Had \"BGN\"",
+      "fix": "Changed to \"EUR\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "ts"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T16:39:50.446Z"
+    },
+    {
+      "id": "bug-111",
+      "timestamp": "2026-07-07T16:44:10.103Z",
+      "error_message": "Incorrect value in code",
+      "file": "src/app/_components/menu/__tests__/MenuFiltered.test.jsx",
+      "root_cause": "Had '8.50 лв.'",
+      "fix": "Changed to '4.35 €'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "jsx"
+      ],
+      "related_bugs": [],
+      "occurrences": 3,
+      "last_seen": "2026-07-07T16:44:21.845Z"
     }
   ]
 }

@@ -15,32 +15,32 @@ function item(id: string, bg: string, tr: string, en: string, price: number): Qr
 const REAL_CATEGORIES: QrMenuCategory[] = [
   {
     id: "salads", order: 1, title: { bg: "", tr: "", en: "" }, description: { bg: "", tr: "", en: "" },
-    items: [item("shopska-salata", "Шопска", "Şopska", "Shopska", 7.82)],
+    items: [item("shopska-salata", "Шопска", "Şopska", "Shopska", 4)],
   },
   {
     id: "grill", order: 2, title: { bg: "", tr: "", en: "" }, description: { bg: "", tr: "", en: "" },
     items: [
-      item("kyufte", "Кюфте", "Köfte", "Meatball", 3.5),
-      item("meshena-skara", "Мешена скара", "Karışık Izgara", "Mixed Grill", 34.22),
+      item("kyufte", "Кюфте", "Köfte", "Meatball", 1.79),
+      item("meshena-skara", "Мешена скара", "Karışık Izgara", "Mixed Grill", 17.5),
     ],
   },
   {
     id: "nuts-desserts", order: 3, title: { bg: "", tr: "", en: "" }, description: { bg: "", tr: "", en: "" },
     items: [
-      item("kyunefe", "Кюнефе", "Künefe", "Kunefe", 6.5),
-      item("sladoled", "Сладолед", "Dondurma", "Ice Cream", 5.67),
+      item("kyunefe", "Кюнефе", "Künefe", "Kunefe", 3.32),
+      item("sladoled", "Сладолед", "Dondurma", "Ice Cream", 2.9),
     ],
   },
   {
     id: "beer-cider-other-drinks", order: 4, title: { bg: "", tr: "", en: "" }, description: { bg: "", tr: "", en: "" },
     items: [
-      item("carlsberg", "Карлсберг", "Carlsberg", "Carlsberg", 3.91),
-      item("carlsberg-0-0", "Карлсберг 0.0", "Carlsberg 0.0", "Carlsberg 0.0", 4.3),
+      item("carlsberg", "Карлсберг", "Carlsberg", "Carlsberg", 2),
+      item("carlsberg-0-0", "Карлсберг 0.0", "Carlsberg 0.0", "Carlsberg 0.0", 2.2),
     ],
   },
   {
     id: "rakia", order: 5, title: { bg: "", tr: "", en: "" }, description: { bg: "", tr: "", en: "" },
-    items: [item("peshterska-grozdova-otlezhala", "Пещерска", "Peşterska", "Peshterska", 2.34)],
+    items: [item("peshterska-grozdova-otlezhala", "Пещерска", "Peşterska", "Peshterska", 1.2)],
   },
 ];
 
@@ -50,7 +50,7 @@ describe("buildCandidateShortlist", () => {
       categories: TEST_CATEGORIES,
       answers: { anchor: "food" },
       customerMode: "hungry_normal",
-      budgetBgn: null,
+      budgetEur: null,
       locale: "en",
     });
     expect(out.length).toBeGreaterThan(0);
@@ -68,7 +68,7 @@ describe("buildCandidateShortlist", () => {
       categories: TEST_CATEGORIES,
       answers: {},
       customerMode: "undecided",
-      budgetBgn: null,
+      budgetEur: null,
       locale: "en",
     });
     expect(out.length).toBeLessThanOrEqual(15);
@@ -79,7 +79,7 @@ describe("buildCandidateShortlist", () => {
       categories: TEST_CATEGORIES,
       answers: {},
       customerMode: "undecided",
-      budgetBgn: null,
+      budgetEur: null,
       locale: "en",
       limit: 3, // below MIN_LIMIT (8), should be clamped up
     });
@@ -91,7 +91,7 @@ describe("buildCandidateShortlist", () => {
       categories: REAL_CATEGORIES,
       answers: { foodProtein: "sweet-only" },
       customerMode: "sweet_only",
-      budgetBgn: null,
+      budgetEur: null,
       locale: "en",
     });
     expect(out.length).toBeGreaterThan(0);
@@ -107,7 +107,7 @@ describe("buildCandidateShortlist", () => {
       categories: REAL_CATEGORIES,
       answers: {},
       customerMode: "family_safe",
-      budgetBgn: null,
+      budgetEur: null,
       locale: "en",
     });
     for (const c of out) {
@@ -122,11 +122,11 @@ describe("buildCandidateShortlist", () => {
       categories: REAL_CATEGORIES,
       answers: { anchor: "food" },
       customerMode: "very_hungry_low_budget",
-      budgetBgn: 20,
+      budgetEur: 10,
       locale: "en",
     });
     const kyufte = out.find((c) => c.id === "kyufte");
-    const mixedGrill = out.find((c) => c.id === "meshena-skara"); // 34.22 BGN, way over a 20 BGN budget
+    const mixedGrill = out.find((c) => c.id === "meshena-skara"); // 17.5, way over a 10 budget
     expect(kyufte).toBeDefined();
     expect(mixedGrill).toBeDefined();
     expect(kyufte!.valueScore).toBeGreaterThan(mixedGrill!.valueScore);

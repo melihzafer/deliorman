@@ -36,7 +36,7 @@ Reply in {{LOCALE_LABEL}} ({{LOCALE}}). All text, especially customerMessage, mu
 Hard rules:
 - Return JSON only. No markdown fences, no commentary, no preamble.
 - Use only candidate item ids. Never invent items, prices, ingredients, categories, or availability.
-- budget_bgn is a hard cap on primaryItemId + drinkItemId + sideItemId combined. If the best combo exceeds it, drop items or pick a cheaper primary — you do not have to solve this perfectly, the server re-checks and repairs the budget after you answer.
+- budget_eur is a hard cap (in Euro) on primaryItemId + drinkItemId + sideItemId combined. If the best combo exceeds it, drop items or pick a cheaper primary — you do not have to solve this perfectly, the server re-checks and repairs the budget after you answer.
 - If the diner is very hungry (customer_mode = very_hungry_low_budget or hungry_normal), prioritize a filling primary item before any drink or side.
 - Include alcohol only when it fits the budget and context; never push it aggressively.
 - If customer_mode = drink_only, set primaryItemId to null, put the drink in drinkItemId, and only add a small snack to sideItemId if it clearly fits the budget. Never force a full meal.
@@ -55,7 +55,7 @@ Examples (adapt to the real candidates given, do not copy text verbatim):
 2. "sadece tatlı bir şey istiyorum" -> dessert or sweet drink only, nothing savory.
 3. "çocuklarla geldik, alkol olmasın" -> no alcohol anywhere, familiar family-safe classics.
 4. "değişik ve acılı bir şey öner" -> smoky, spicy, bold, or house-special pick.
-5. "имам 15 лв, много гладен съм" -> best filling item within 15 BGN, skip extras that break budget.
+5. "имам 8 евро, много гладен съм" -> best filling item within €8, skip extras that break budget.
 6. "I want beer but need something cheap to eat" -> cheap filling food first, beer only if the total still fits.
 
 Output strictly valid JSON matching the "schema" field in the user message.`;
@@ -69,7 +69,7 @@ export interface BuildPromptInput {
   mode: PromptMode;
   answers: WizardAnswers;
   freetext?: string;
-  budgetBgn?: number | null;
+  budgetEur?: number | null;
   customerMode: CustomerMode;
   candidates: CandidateItem[];
 }
@@ -111,7 +111,7 @@ function candidatesForPrompt(candidates: CandidateItem[], locale: Locale): Candi
 }
 
 export function buildPrompt(input: BuildPromptInput): BuiltPrompt {
-  const { locale, mode, answers, freetext, budgetBgn, customerMode, candidates } = input;
+  const { locale, mode, answers, freetext, budgetEur, customerMode, candidates } = input;
 
   const system = SYSTEM_TEMPLATE.replaceAll("{{LOCALE}}", locale).replaceAll(
     "{{LOCALE_LABEL}}",
@@ -124,7 +124,7 @@ export function buildPrompt(input: BuildPromptInput): BuiltPrompt {
     customer_mode: customerMode,
     answers: Object.keys(answers).length > 0 ? answers : null,
     freetext: mode === "freetext" && freetext ? freetext : null,
-    budget_bgn: budgetBgn ?? null,
+    budget_eur: budgetEur ?? null,
     schema: {
       language: "'bg' | 'tr' | 'en'",
       primaryItemId: "string | null (candidate id)",
@@ -133,7 +133,7 @@ export function buildPrompt(input: BuildPromptInput): BuiltPrompt {
       alternativeItemIds: "string[] (0-3 candidate ids, excluding the ids already used above)",
       budgetStatus:
         "'within_budget' | 'food_only_within_budget' | 'drink_only_within_budget' | 'over_budget_no_safe_combo'",
-      totalEstimatedPrice: "number | null (sum of the prices you picked, in BGN)",
+      totalEstimatedPrice: "number | null (sum of the prices you picked, in EUR)",
       confidence: "number 0-100",
       reasonKeys: `string[] (0-4, only from valid_reason_keys)`,
       customerMessage: "string, <= 280 chars, in " + LOCALE_LABEL[locale],

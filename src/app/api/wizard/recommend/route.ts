@@ -17,7 +17,7 @@ interface RecommendBody {
   mode?: unknown;
   answers?: unknown;
   freetext?: unknown;
-  budgetBgn?: unknown;
+  budgetEur?: unknown;
   locale?: unknown;
   sessionToken?: unknown;
 }
@@ -233,8 +233,8 @@ export async function POST(request: Request): Promise<NextResponse<RecommendResp
     : "buttons";
   const answers = isWizardAnswers(body.answers) ? body.answers : {};
   const freetext = typeof body.freetext === "string" ? body.freetext : "";
-  const budgetBgn = typeof body.budgetBgn === "number" && Number.isFinite(body.budgetBgn) && body.budgetBgn > 0
-    ? body.budgetBgn
+  const budgetEur = typeof body.budgetEur === "number" && Number.isFinite(body.budgetEur) && body.budgetEur > 0
+    ? body.budgetEur
     : null;
 
   // 5. Load menu
@@ -246,12 +246,12 @@ export async function POST(request: Request): Promise<NextResponse<RecommendResp
   // 6. Classify customer mode and build the deterministic candidate
   // shortlist. This is the code-owned filtering/scoring step: the LLM never
   // sees the full ~184-item menu, only the top 8-15 valid candidates.
-  const customerMode = classifyCustomerMode({ answers, freetext, budgetBgn });
+  const customerMode = classifyCustomerMode({ answers, freetext, budgetEur });
   const candidates = buildCandidateShortlist({
     categories: menu.categories,
     answers,
     customerMode,
-    budgetBgn,
+    budgetEur,
     freetext,
     locale,
   });
@@ -263,7 +263,7 @@ export async function POST(request: Request): Promise<NextResponse<RecommendResp
   // shortlist; explain_only, where the local top pick is trusted outright
   // and the LLM only writes the customerMessage, is a future extension of
   // this same pipeline).
-  const prompt = buildPrompt({ locale, mode, answers, freetext, budgetBgn, customerMode, candidates });
+  const prompt = buildPrompt({ locale, mode, answers, freetext, budgetEur, customerMode, candidates });
 
   // 8. Call Groq
   const timeoutMs = Number.parseInt(process.env.GROQ_TIMEOUT_MS ?? "5000", 10);
@@ -291,7 +291,7 @@ export async function POST(request: Request): Promise<NextResponse<RecommendResp
     drinkItemId: validated.response.drinkItemId,
     sideItemId: validated.response.sideItemId,
     candidates,
-    budgetBgn,
+    budgetEur,
     customerMode,
   });
 

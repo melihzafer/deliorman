@@ -1,7 +1,6 @@
 import { MetadataRoute } from 'next'
 import { routing } from '@/src/i18n/routing'
 import {
-  SITE_URL,
   getAlternateLanguages,
   getLocalizedUrl,
 } from '@/src/i18n/seo'
@@ -24,12 +23,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]
 
   const staticUrls: MetadataRoute.Sitemap = [
-    {
-      url: SITE_URL,
+    ...routing.locales.map((locale) => ({
+      url: getLocalizedUrl('/', locale),
+      alternates: {
+        languages: getAlternateLanguages('/'),
+      },
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
-      priority: 1.0,
-    },
+      priority: locale === routing.defaultLocale ? 1.0 : 0.9,
+    })),
     ...localizedPages.flatMap((route) =>
       routing.locales.map((locale) => ({
         url: getLocalizedUrl(route, locale),

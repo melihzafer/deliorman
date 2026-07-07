@@ -22,19 +22,17 @@ export default function DailySpecial() {
       maximumFractionDigits: 2,
     }).format(price);
     
-    if (locale === 'bg') return `${formattedNumber} лв.`;
-    if (locale === 'tr') return `${formattedNumber} лв`;
-    return `${formattedNumber} BGN`;
+    return `€${formattedNumber}`;
   };
 
   const DAILY_SPECIALS = {
-    1: { name: t('chickenSoup'), description: t('chickenSoupDesc'), price: 5.50 },
-    2: { name: t('moussaka'), description: t('moussakaDesc'), price: 9.90 },
-    3: { name: t('kebapcheta'), description: `5 ${t('kebapchetaDesc')}`, price: 8.50 },
-    4: { name: t('tripe'), description: t('tripeDesc'), price: 6.50 },
-    5: { name: t('grilledFish'), description: t('grilledFishDesc'), price: 12.90 },
-    6: { name: t('mixedGrill'), description: t('mixedGrillDesc'), price: 24.90 },
-    0: { name: t('roastLamb'), description: t('roastLambDesc'), price: 15.90 },
+    1: { name: t('chickenSoup'), description: t('chickenSoupDesc'), price: 2.81 },
+    2: { name: t('moussaka'), description: t('moussakaDesc'), price: 5.06 },
+    3: { name: t('kebapcheta'), description: `5 ${t('kebapchetaDesc')}`, price: 4.35 },
+    4: { name: t('tripe'), description: t('tripeDesc'), price: 3.32 },
+    5: { name: t('grilledFish'), description: t('grilledFishDesc'), price: 6.60 },
+    6: { name: t('mixedGrill'), description: t('mixedGrillDesc'), price: 12.73 },
+    0: { name: t('roastLamb'), description: t('roastLambDesc'), price: 8.13 },
   };
 
   const today = new Date().getDay();

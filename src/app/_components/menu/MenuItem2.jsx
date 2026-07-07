@@ -33,7 +33,7 @@ const MenuItem2 = memo(function MenuItem2({ item }) {
           </div>
           <div className="tst-menu-book-bottom">
             <div className="tst-menu-book-price">
-              <div className="tst-price"><span className="tst-symbol">{item.currency}</span>{item.price} лв</div>
+              <div className="tst-price"><span className="tst-symbol">€</span>{Number(item.price).toFixed(2)}</div>
               <div className="tst-weight">{item.amount}</div>
             </div>
           </div>

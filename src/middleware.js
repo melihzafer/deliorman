@@ -183,6 +183,11 @@ export function middleware(request) {
   if (!routeType) {
     const response = intlMiddleware(request);
     response.headers.set('x-request-id', requestId);
+    // Forwarded as a request header to the page render (Next.js propagates
+    // headers set on a middleware NextResponse to the downstream request).
+    // Used by StructuredData.jsx to build route-accurate breadcrumbs instead
+    // of one hardcoded site-wide list.
+    response.headers.set('x-pathname', pathname);
     return response;
   }
 

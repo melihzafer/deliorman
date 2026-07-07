@@ -71,7 +71,7 @@ function latToBg(str: string): string {
 }
 
 function formatPrice(price: number | string | null | undefined, amount: string | undefined): string {
-  const p = typeof price === 'number' ? `${price.toFixed(2)} лв` : (price || '');
+  const p = typeof price === 'number' ? `€${price.toFixed(2)}` : (price || '');
   return amount ? `${p} / ${amount}` : p;
 }
 

@@ -22,8 +22,12 @@ const ANTHROPIC_MODEL = process.env.AI_MODEL || 'claude-opus-4-8';
 
 const MAX_BODY_BYTES = 50_000;
 const MAX_MESSAGE_CHARS = 500;
-const MAX_HISTORY_MESSAGES = 12;
-const MAX_HISTORY_CHARS = 2000;
+// Kept small on purpose: the full menu is re-sent as the system prompt on
+// every single message (Groq has no prompt caching), so history is the one
+// lever we control per-request. 12 messages x 2000 chars used to let a single
+// request's token need balloon past Groq's free-tier 6000 TPM cap on its own.
+const MAX_HISTORY_MESSAGES = 6;
+const MAX_HISTORY_CHARS = 500;
 
 const SUPPORTED_LOCALES = ['bg', 'en', 'tr'] as const;
 
@@ -71,8 +75,16 @@ interface ChatMessage {
 /**
  * Render the menu as compact plain text — far fewer tokens than raw JSON,
  * and a byte-stable string per locale so the prompt prefix stays cacheable.
+ * Memoized per locale: the menu is static per process, and Groq has no
+ * server-side prompt caching, so recomputing this on every message was pure
+ * waste on top of the token cost of resending it.
  */
+const menuPromptCache = new Map<string, string>();
+
 function renderMenuForPrompt(locale: string): string {
+  const cached = menuPromptCache.get(locale);
+  if (cached) return cached;
+
   const menu = getLocalizedMenuData(locale) as { categories: MenuCategory[] };
   const lines: string[] = [];
 
@@ -80,27 +92,33 @@ function renderMenuForPrompt(locale: string): string {
     lines.push(`## ${category.name}`);
     for (const item of category.items) {
       const details = [item.amount, item.text].filter(Boolean).join('; ');
-      const price = typeof item.price === 'number' ? `${item.price.toFixed(2)} лв` : '';
+      const price = typeof item.price === 'number' ? `€${item.price.toFixed(2)}` : '';
       lines.push(`- ${item.title}${details ? ` (${details})` : ''}${price ? ` — ${price}` : ''}`);
     }
     lines.push('');
   }
 
-  return lines.join('\n');
+  const rendered = lines.join('\n');
+  menuPromptCache.set(locale, rendered);
+  return rendered;
 }
 
+const systemPromptCache = new Map<string, string>();
+
 function buildSystemPrompt(locale: (typeof SUPPORTED_LOCALES)[number]): string {
-  return [
+  const cached = systemPromptCache.get(locale);
+  if (cached) return cached;
+  const prompt = [
     'You are "Дели" (Deli), the friendly digital waiter of restaurant "Делиорман" (Deliorman) in Bulgaria.',
     'Guests scan a QR code at their table and chat with you while browsing the digital menu.',
     '',
     'RESTAURANT FACTS:',
     '- Name: Ресторант Делиорман (Restaurant Deliorman)',
     '- Cuisine: traditional Bulgarian and Deliorman-region dishes, grilled specialties, salads, homemade desserts.',
-    '- Phone for reservations: +359 89 476 62273.',
+    '- Phone for reservations: +359 89 476 6273.',
     '- Phone for orders: +359 89 608 8804.',
     '- Reservations can also be made online on the /reservation page.',
-    '- All prices are in Bulgarian leva (лв).',
+    '- All prices are in Euro (€).',
     '',
     'FULL MENU:',
     renderMenuForPrompt(locale),
@@ -113,6 +131,8 @@ function buildSystemPrompt(locale: (typeof SUPPORTED_LOCALES)[number]): string {
     `- Reply in ${LANGUAGE_NAMES[locale]} unless the guest clearly writes in another language — then mirror their language.`,
     '- Respond only with your final answer. Do not include exploratory reasoning or meta-commentary about your process.',
   ].join('\n');
+  systemPromptCache.set(locale, prompt);
+  return prompt;
 }
 
 function errorJson(status: number, code: string, message: string): NextResponse {
@@ -131,6 +151,35 @@ function getProvider(): 'groq' | 'anthropic' | null {
 }
 
 /**
+ * POST the chat completion request to Groq, retrying once on a 429.
+ * The full menu system prompt makes single requests token-heavy against
+ * Groq's free-tier 6000 TPM cap; a burst of guests can trip it even though
+ * each individual request is legitimate. Groq's error body includes its own
+ * "try again in Ns" hint — honor it (capped) instead of failing the chat.
+ */
+async function fetchGroqCompletion(payload: string): Promise<Response> {
+  const doFetch = () =>
+    fetch(`${GROQ_BASE_URL}/chat/completions`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: payload,
+    });
+
+  const first = await doFetch();
+  if (first.status !== 429) return first;
+
+  const detail = await first.text().catch(() => '');
+  const retryMatch = detail.match(/try again in ([\d.]+)s/i);
+  const waitMs = retryMatch ? Math.ceil(parseFloat(retryMatch[1]) * 1000) + 200 : 1500;
+  await new Promise((resolve) => setTimeout(resolve, Math.min(waitMs, 3000)));
+
+  return doFetch();
+}
+
+/**
  * Stream text deltas from Groq's OpenAI-compatible chat completions API.
  */
 async function streamGroq(
@@ -138,20 +187,15 @@ async function streamGroq(
   messages: ChatMessage[],
   maxTokens: number,
 ): Promise<ReadableStream<Uint8Array>> {
-  const response = await fetch(`${GROQ_BASE_URL}/chat/completions`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
+  const response = await fetchGroqCompletion(
+    JSON.stringify({
       model: GROQ_MODEL,
       stream: true,
       max_tokens: maxTokens,
       temperature: 0.4,
       messages: [{ role: 'system', content: system }, ...messages],
     }),
-  });
+  );
 
   if (!response.ok || !response.body) {
     const detail = await response.text().catch(() => '');
@@ -304,7 +348,9 @@ export async function POST(request: Request): Promise<Response> {
   const { message, history, locale, table } = parsed;
 
   const system = buildSystemPrompt(locale);
-  const maxTokens = envLimit('AI_MAX_TOKENS', 1024);
+  // The system prompt already asks for 1-4 sentences / a max-5-item list, so
+  // 1024 reserved output tokens was mostly wasted TPM budget on every call.
+  const maxTokens = envLimit('AI_MAX_TOKENS', 450);
   const messages: ChatMessage[] = [
     ...history.map((entry) => ({ role: entry.role, content: entry.content })),
     {

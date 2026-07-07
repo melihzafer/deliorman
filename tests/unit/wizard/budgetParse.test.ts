@@ -1,4 +1,4 @@
-import { budgetHint, budgetInBGN, parseBudget } from "../../../src/app/masa/wizard/budgetParse";
+import { budgetHint, budgetInEur, parseBudget } from "../../../src/app/masa/wizard/budgetParse";
 
 describe("parseBudget", () => {
   it("parses English euros", () => {
@@ -10,16 +10,21 @@ describe("parseBudget", () => {
     expect(parseBudget("budget is 1 euro")?.value).toBe(1);
   });
 
-  it("parses Bulgarian лева / лев", () => {
-    expect(parseBudget("Бюджет 20 лева")?.value).toBe(20);
-    expect(parseBudget("Бюджет 20 лева")?.currency).toBe("BGN");
-    expect(parseBudget("имам 30 лв")?.value).toBe(30);
-    expect(parseBudget("имам 30 лв")?.currency).toBe("BGN");
-    expect(parseBudget("30 лв.")?.value).toBe(30);
+  it("parses Bulgarian евро / евра", () => {
+    expect(parseBudget("Бюджет 20 евро")?.value).toBe(20);
+    expect(parseBudget("Бюджет 20 евро")?.currency).toBe("EUR");
+    expect(parseBudget("имам 30 евро")?.value).toBe(30);
+    expect(parseBudget("имам 30 евро")?.currency).toBe("EUR");
   });
 
-  it("parses Turkish lira is intentionally not recognised (we normalise to BGN)", () => {
-    // Turkish free-text is rare in our context; we don't accept lira.
+  it("does not recognise the old Bulgarian lev (лв / лева / BGN) — no longer legal tender", () => {
+    expect(parseBudget("имам 30 лв")).toBeNull();
+    expect(parseBudget("30 лева")).toBeNull();
+    expect(parseBudget("30 BGN")).toBeNull();
+    expect(parseBudget("30 leva")).toBeNull();
+  });
+
+  it("parses Turkish lira is intentionally not recognised (only euro is a valid budget currency)", () => {
     expect(parseBudget("30 lira")).toBeNull();
   });
 
@@ -30,7 +35,7 @@ describe("parseBudget", () => {
   });
 
   it("parses decimal values", () => {
-    expect(parseBudget("10,5 лева")?.value).toBe(10.5);
+    expect(parseBudget("10,5 евро")?.value).toBe(10.5);
     expect(parseBudget("10.50 EUR")?.value).toBe(10.5);
   });
 
@@ -42,7 +47,7 @@ describe("parseBudget", () => {
 
   it("returns null for nonsense numbers", () => {
     expect(parseBudget("zero euros")).toBeNull();
-    expect(parseBudget("abc лв")).toBeNull();
+    expect(parseBudget("abc евро")).toBeNull();
   });
 
   it("captures the source span", () => {
@@ -50,38 +55,29 @@ describe("parseBudget", () => {
   });
 });
 
-describe("budgetInBGN", () => {
-  it("returns BGN value unchanged", () => {
-    expect(budgetInBGN("30 лева")).toBe(30);
-    expect(budgetInBGN("30 лв")).toBe(30);
-  });
-
-  it("converts EUR to BGN using the fixed rate", () => {
-    // 10 EUR * 1.95583 = 19.5583
-    const v = budgetInBGN("10 euros");
-    expect(v).toBeCloseTo(19.5583, 3);
+describe("budgetInEur", () => {
+  it("returns the euro value unchanged (menu prices are already in EUR)", () => {
+    expect(budgetInEur("30 евро")).toBe(30);
+    expect(budgetInEur("10 euros")).toBe(10);
   });
 
   it("returns null when nothing matches", () => {
-    expect(budgetInBGN("no money here")).toBeNull();
+    expect(budgetInEur("no money here")).toBeNull();
+    expect(budgetInEur("30 лв")).toBeNull();
   });
 });
 
 describe("budgetHint", () => {
   it("formats bg locale", () => {
-    expect(budgetHint("30 лева", "bg")).toBe("Бюджет: 30 лв");
+    expect(budgetHint("30 евро", "bg")).toBe("Бюджет: 30 €");
   });
   it("formats tr locale", () => {
-    expect(budgetHint("30 лева", "tr")).toBe("Bütçe: 30 BGN");
+    expect(budgetHint("30 евро", "tr")).toBe("Bütçe: 30 €");
   });
   it("formats en locale", () => {
-    expect(budgetHint("30 лева", "en")).toBe("Budget: 30 BGN");
+    expect(budgetHint("30 евро", "en")).toBe("Budget: €30");
   });
   it("returns null when no budget", () => {
     expect(budgetHint("just hungry", "en")).toBeNull();
-  });
-  it("converts EUR to BGN before formatting", () => {
-    // 10 EUR -> ~19.56 BGN
-    expect(budgetHint("10 euros", "en")).toMatch(/^Budget: 19\.5\d BGN$/);
   });
 });
