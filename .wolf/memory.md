@@ -8,6 +8,7 @@
 | 17:31 | Created src/app/_lib/sheets.ts | — | ~1110 |
 | 17:31 | Created src/app/_lib/telegram.ts | — | ~192 |
 | 17:32 | Created src/app/api/session/create/route.ts | — | ~311 |
+| 18:30 | Diagnosed Vercel prod build ERROR (dpl_6qwSq5o7Fqod5oWo4atk7HYtMMvk, commit c5cc840) via Vercel build logs | none (investigation) | ~4000 |
 | 17:32 | Created src/app/api/session/ping/route.ts | — | ~319 |
 | 17:32 | Created src/app/api/waiter/call/route.ts | — | ~542 |
 | 17:33 | Created src/app/[locale]/table/page.jsx | — | ~136 |
@@ -336,3 +337,8 @@
 | 18:10 | Edited src/app/masa/wizard/customerMode.ts | inline fix | ~12 |
 | 18:11 | Edited tests/unit/wizard/llmPrompt.test.ts | 5→6 lines | ~118 |
 | 18:14 | Session end: 33 writes across 16 files (types.ts, customerMode.ts, candidates.ts, budgetRepair.ts, recommendSchema.ts) | 18 reads | ~26922 tok |
+
+## Session: 2026-07-07 18:26
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|

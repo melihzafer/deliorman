@@ -1109,6 +1109,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-07-07T15:11:04.892Z"
+    },
+    {
+      "id": "bug-068",
+      "timestamp": "2026-07-07T15:17:19.000Z",
+      "error_message": "Vercel production build failed: uncaughtException TypeError: Cannot read properties of undefined (reading 'length') at ignore-listed frames, during 'Creating an optimized production build'",
+      "file": "N/A (Vercel build cache, not app code)",
+      "root_cause": "Deployment dpl_6qwSq5o7Fqod5oWo4atk7HYtMMvk (commit c5cc840, the large Masa wizard refactor adding/renaming src/app/masa/wizard/*.ts modules) restored the webpack build cache from the previous successful deployment (dpl_5M7DCuiVqeXRPbL7B5HbLfdRanYF, commit 3d403b1, pre-refactor module graph). Webpack's persistent cache tried to incrementally reuse the stale module graph against the new source tree and threw internally before app code ran. A clean local `npm run build` (no cache) succeeded on the same commit, confirming it was cache corruption, not a code defect.",
+      "fix": "Not a code fix. Resolved by pushing a new commit to main to trigger a fresh Vercel build; if that hits the same stale-cache error again, redeploy from the Vercel dashboard with 'Use existing Build Cache' unchecked.",
+      "tags": [
+        "vercel",
+        "build-cache",
+        "webpack",
+        "deployment",
+        "false-alarm"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-07-07T15:17:19.000Z"
     }
   ]
 }
