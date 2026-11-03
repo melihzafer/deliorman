@@ -483,3 +483,17 @@
 | 19:44 | Edited src/app/_components/menu/__tests__/MenuFiltered.test.jsx | 3→3 lines | ~64 |
 | 19:46 | Currency migration BGN/lev -> EUR (Bulgaria real changeover): converted 155 prices in both menu.json at fixed rate 1.95583, renamed wizard budgetBgn->budgetEur end-to-end, removed all лв/leva/BGN parsing+display, updated 7 wizard test files + fixtures. tsc clean, 125/125 wizard tests pass, verified Ask Deli live returns EUR prices. | src/data/menu.json, public/data/menu.json, 15+ files, 7 tests | ~55000 |
 | 19:46 | Session end: 81 writes across 30 files (route.ts, AIAssistantModal.jsx, env.example, convert-bgn-to-eur.mjs, masaConstants.ts) | 36 reads | ~83407 tok |
+
+## Session: 2026-11-03 16:08
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 16:09 | Edited src/app/_components/forms/reservation/useReservationForm.js | reduced (-7 lines) | ~60 |
+| 16:10 | Fixed reservation month/day i18n keys; diagnosed 500 = Telegram bot lacks channel admin | useReservationForm.js | i18n fixed, telegram needs config | ~3k |
+| 16:10 | Session end: 1 writes across 1 files (useReservationForm.js) | 0 reads | ~60 tok |
+| 16:15 | Session end: 1 writes across 1 files (useReservationForm.js) | 0 reads | ~60 tok |
+| 16:18 | Session end: 1 writes across 1 files (useReservationForm.js) | 0 reads | ~60 tok |
+| 16:19 | Session end: 1 writes across 1 files (useReservationForm.js) | 0 reads | ~60 tok |
+| 16:21 | Edited src/app/api/reservation/reservationValidation.ts | 2→4 lines | ~41 |
+| 16:21 | formatDateBg: added timeZone UTC to prevent day shift | reservationValidation.ts | done | ~1k |
+| 16:21 | Session end: 2 writes across 2 files (useReservationForm.js, reservationValidation.ts) | 0 reads | ~101 tok |

@@ -100,6 +100,8 @@ function formatDateBg(date: string): string {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
+      // "YYYY-MM-DD" UTC gece yarısı olarak parse edilir; sunucu TZ'si günü kaydırmasın
+      timeZone: 'UTC',
     });
   } catch {
     return date;

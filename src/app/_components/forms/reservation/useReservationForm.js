@@ -22,16 +22,9 @@ export default function useReservationForm() {
   const [successData, setSuccessData] = useState(null);
   const [termsModalOpen, setTermsModalOpen] = useState(false);
 
-  const monthNames = useMemo(() => [
-    t("months.january"), t("months.february"), t("months.march"), t("months.april"),
-    t("months.may"), t("months.june"), t("months.july"), t("months.august"),
-    t("months.september"), t("months.october"), t("months.november"), t("months.december")
-  ], [t]);
-
-  const dayNamesFull = useMemo(() => [
-    t("days.sunday"), t("days.monday"), t("days.tuesday"), t("days.wednesday"),
-    t("days.thursday"), t("days.friday"), t("days.saturday")
-  ], [t]);
+  // messages/*.json -> reservation.monthNames / dayNames (array, Pazar'dan başlar)
+  const monthNames = useMemo(() => t.raw("monthNames"), [t]);
+  const dayNamesFull = useMemo(() => t.raw("dayNames"), [t]);
 
   const stepLabels = useMemo(() => t.raw("stepLabels"), [t]);
 

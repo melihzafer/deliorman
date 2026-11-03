@@ -1817,6 +1817,55 @@
       "related_bugs": [],
       "occurrences": 3,
       "last_seen": "2026-07-07T16:44:21.845Z"
+    },
+    {
+      "id": "bug-112",
+      "timestamp": "2026-11-03T14:09:10.374Z",
+      "error_message": "Significant refactor of ",
+      "file": "src/app/_components/forms/reservation/useReservationForm.js",
+      "root_cause": "9 lines replaced/restructured",
+      "fix": "Rewrote 10→3 lines (9 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-11-03T14:09:10.374Z"
+    },
+    {
+      "id": "bug-113",
+      "timestamp": "2026-11-03T14:10:03.347Z",
+      "error_message": "MISSING_MESSAGE: reservation.months.* / reservation.days.* (bg) — review step shows raw keys",
+      "file": "src/app/_components/forms/reservation/useReservationForm.js",
+      "root_cause": "Hook used t(\"months.x\")/t(\"days.x\") but messages only define reservation.monthNames / dayNames arrays",
+      "fix": "Use t.raw(\"monthNames\") and t.raw(\"dayNames\")",
+      "tags": [
+        "i18n",
+        "next-intl",
+        "reservation"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-11-03T14:10:03.347Z"
+    },
+    {
+      "id": "bug-114",
+      "timestamp": "2026-11-03T14:10:03.347Z",
+      "error_message": "POST /api/reservation 500 — Telegram send failed: Bad Request: need administrator rights in the channel chat",
+      "file": "src/app/api/reservation/reservationTelegram.ts",
+      "root_cause": "Telegram bot is not an admin (post permission) in the TELEGRAM_RESERVATIONS_CHAT_ID channel",
+      "fix": "Config fix (no code): add bot as channel admin with Post Messages permission",
+      "tags": [
+        "telegram",
+        "reservation",
+        "production",
+        "config"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-11-03T14:10:03.347Z"
     }
   ]
 }
